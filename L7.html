@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 7 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L6.html">&larr; Lecture 6</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 7 · T3 2026</div>
+  <h1>Nickel has to choose</h1>
+  <p class="lede">Every nickel atom in a mafic or ultramafic magma faces a choice. It can slip into the crystal lattice of olivine, the first mineral to grow, and stay scattered through the rock forever. Or it can dissolve into droplets of sulphide liquid that sink and pool into ore. Magmatic nickel deposits exist only where the magma was tricked into choosing sulphide. This lecture is about how that trick works, and about the deposits in the Western Australian goldfields where 2.7 billion year old lava did it.</p>
+
+  <div class="lab" id="nkLab">
+    <h4><span>Nickel’s choice</span><b id="nkTag">ready</b></h4>
+    <canvas id="nkCanvas" aria-label="Animation of a cooling magma chamber in which nickel atoms are captured by olivine crystals or by sulphide droplets"></canvas>
+    <div class="chips" style="margin-top:.6rem" role="group" aria-label="Conditions"><button class="chip" type="button" id="nkS" aria-pressed="false">Add sulphur-rich sediment</button><button class="chip" type="button" id="nkSi" aria-pressed="false">Contaminate with silica</button></div>
+    <div class="row"><button class="btn" type="button" id="nkGo">Cool the magma</button></div>
+    <div class="readout">
+      <div><small>Ni in sulphide</small><b id="nkSul">0%</b></div>
+      <div><small>Ni locked in olivine</small><b id="nkOl">0%</b></div>
+      <div><small>Result</small><b id="nkRes">?</b></div>
+    </div>
+    <p class="say" id="nkSay">Green dots are nickel. Run it once as it is, then change the conditions and run it again.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model of the idea in slides 7 and 8 and the recording; not real partition coefficients.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#types">Straight from the mantle</a></li>
+      <li><a href="#petro">Petrology refresher</a></li>
+      <li><a href="#olivine">The olivine problem</a></li>
+      <li><a href="#settle">Settling out</a></li>
+      <li><a href="#world">Where the big deposits are</a></li>
+      <li><a href="#production">How laterites took over</a></li>
+      <li><a href="#minerals">What the ore is made of</a></li>
+      <li><a href="#komatiite">Komatiites: lava like water</a></li>
+      <li><a href="#kambalda">Kambalda: lava rivers</a></li>
+      <li><a href="#shoots">Type 1: ore shoots</a></li>
+      <li><a href="#mtkeith">Type 2: Mount Keith</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="types" data-log="Types"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>Straight from the mantle</h2>
+  <p>Magmatic ore deposits form inside the magma itself, while it crystallises, not from fluids that leave it later. The main families are nickel-copper sulphide deposits (Archaean komatiite-hosted, mafic intrusion-related conduits, and layered mafic-ultramafic complexes), primary platinum group element (PGE) deposits, chromium-vanadium-titanium oxide deposits (layered complexes and podiform chromitites), phosphorus deposits in syenites and carbonatites, rare earth deposits, and diamonds in kimberlites and lamproites. <strong>All of them come from primary, mantle-derived magmas.</strong> <span class="srcs">slide 4</span></p>
+  <p>Ian has worked in this field since he was a student: an honours project on PGEs in podiform chromitites at Mount Lightning in southern NSW, a PhD on the chromitites of the Tumut Serpentinite Province, a postdoc on the Bushveld Complex in South Africa and consulting on nickel in Laos. Podiform chromitites matter because they supply metallurgical-grade chromium, the chromium in chrome steel. <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <p>This lecture covers the petrology you need and the nickel-copper sulphide deposits hosted by komatiites. Lecture 8 picks up the mafic intrusions, PGE, oxide, phosphorus and nickel laterite deposits.</p>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="petro" data-log="Petrology"><div class="wrap">
+  <div class="kicker">Refresher <span class="depth">12 to 26 m</span></div>
+  <h2>Petrology refresher: names that matter</h2>
+  <p>Keep two kinds of name apart. <strong>Acid, intermediate, basic and ultrabasic</strong> are chemical terms, based on silica. <strong>Felsic, mafic and ultramafic</strong> are mineralogical terms, based on what the rock is made of. They usually line up, but they mean different things. <span class="srcs">slide 6</span></p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Chemical name</th><th>SiO₂</th><th>Mineralogy</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Acid (felsic)</td><td>over 63%</td><td>mostly feldspars and quartz</td><td>granite</td></tr>
+      <tr><td>Intermediate</td><td>55 to 63%</td><td>mostly feldspars, some ferromagnesian minerals</td><td>andesite</td></tr>
+      <tr><td>Basic (mafic)</td><td>45 to 55%</td><td>mostly dark minerals plus plagioclase</td><td>basalt, gabbro</td></tr>
+      <tr><td>Ultrabasic (ultramafic)</td><td>under 45%</td><td>olivine and pyroxene, or hornblende</td><td>dunite, peridotite</td></tr>
+    </tbody>
+  </table></div>
+  <p>Magmatic ore lives in the ultramafic and mafic end. Among the gabbroic rocks, <strong>norite</strong> (a pyroxene-rich gabbro whose pyroxene is orthopyroxene) is the one to remember: it hosts much of the world’s PGE and some of its sulphide ore. Among ultramafic rocks, name them by olivine, orthopyroxene and clinopyroxene. <button class="term" data-t="harzburgite">Harzburgite</button> (olivine plus orthopyroxene) makes up most of the oceanic mantle; <button class="term" data-t="lherzolite">lherzolite</button> (olivine with both pyroxenes) most of the continental mantle; wehrlite and websterite are much rarer. <span class="srcs">slides 6 and 7</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="lab" id="rnLab">
+    <h4><span>Name the ultramafic rock</span><b id="rnCount">0 / 4 named</b></h4>
+    <svg class="grid-svg" id="rnSvg" viewBox="0 0 640 380" role="img" aria-label="Olivine, orthopyroxene, clinopyroxene triangle: tap a point to name the rock"></svg>
+    <p class="say" id="rnSay">Tap anywhere in the triangle. Each corner is 100% of that mineral.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Field boundaries follow the standard ultramafic triangle: dunite over 90% olivine, peridotites 40 to 90%, pyroxenites below that.</p>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="olivine" data-log="Olivine"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">26 to 40 m</span></div>
+  <h2>The olivine problem</h2>
+  <p>A basic or ultrabasic magma can separate into two liquids that won’t mix, like oil and water: a silicate melt and a much denser <button class="term" data-t="sulphide melt">sulphide melt</button>. That immiscible sulphide liquid separates at 1200 to 1400 °C, the top of Bowen’s reaction series. Nickel, copper and the PGEs prefer the sulphide liquid. <span class="srcs">slide 8</span></p>
+  <p>The catch is olivine. In Bowen’s series it crystallises first from a basic magma, and nickel fits neatly into its structure in place of magnesium. If olivine grows early, it soaks up the nickel, and none is left for the sulphide. So the key point on the slide is <strong>olivine suppression</strong>: to make a nickel sulphide deposit, the magma has to skip early olivine and crystallise pyroxene first. Three things can do that, all forms of contamination: <span class="srcs">slides 7 and 8</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="mix">
+    <div><b>Add silica</b>Olivine plus silica makes pyroxene. A magma that picks up silica-rich crust crystallises pyroxene straight away.</div>
+    <div><b>Add iron</b>Contamination by iron-rich rock pushes the magma towards iron-rich pyroxene first.</div>
+    <div><b>Reduce it</b>A reducing environment, such as a magma intruding through a coal bed, has the same effect.</div>
+  </div>
+  <p>And if olivine isn’t suppressed? The nickel stays dispersed in olivine. That rock can still become ore much later, when weathering breaks the olivine down and concentrates nickel in a <strong>laterite</strong>. <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="lab" id="bwLab">
+    <h4><span>Cool a basic magma</span><b id="bwT">1400 °C</b></h4>
+    <svg class="grid-svg" id="bwSvg" viewBox="0 0 640 320" role="img" aria-label="Bowen's reaction series: minerals light up as the magma cools"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="bwRange">Cool the magma <b id="bwRangeV">high temperature</b></label><input type="range" id="bwRange" min="0" max="100" step="1" value="0"></div></div>
+    <div class="chips" style="margin-top:.5rem"><button class="chip" type="button" id="bwSup" aria-pressed="false">Suppress olivine</button></div>
+    <p class="say" id="bwSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Order of crystallisation from slide 8 (1200 to 1400 °C at the top, 700 to 800 °C at the bottom); spacing between minerals is schematic.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L7/slide008_1.jpg" alt="Bowen's reaction series: olivine, pyroxene, amphibole, biotite on the discontinuous branch; calcium to sodium plagioclase on the continuous branch; then K-feldspar, muscovite and quartz">
+    <figcaption>Bowen’s reaction series: olivine first on the discontinuous branch, calcium-rich plagioclase first on the continuous branch, quartz last. <span class="srcs">slide 8</span></figcaption>
+  </figure>
+  <div class="keybox"><b>Memorise</b><ul><li>Sulphide melt is immiscible with silicate melt and separates at 1200 to 1400 °C; Ni, Cu and PGE go into it.</li><li>Olivine crystallising early steals the nickel. Suppress olivine (silica, iron or reducing contamination) and nickel goes into the sulphide.</li></ul></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="settle" data-log="Segregation"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">40 to 52 m</span></div>
+  <h2>Settling out: segregation and cumulates</h2>
+  <p>Once dense minerals or droplets form, gravity does the concentrating. Heavy minerals crystallise, sink to the floor of the magma chamber and pile up as a <button class="term" data-t="cumulate">cumulate</button> layer or band. That’s <strong>segregation</strong>. It can concentrate chromite, magnetite, ilmenite, and immiscible sulphides carrying Cu, Ni, Pt and the other PGEs. <span class="srcs">slides 9 and 10</span></p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Mineral or melt</th><th>Specific gravity</th></tr></thead>
+    <tbody>
+      <tr><td>Felsic magma</td><td>2.2</td></tr><tr><td>Mafic magma</td><td>2.8</td></tr><tr><td>Plagioclase</td><td>2.8</td></tr><tr><td>Enstatite (orthopyroxene)</td><td>3.3</td></tr><tr><td>Olivine</td><td>3.3 to 4.2</td></tr><tr><td>Chalcopyrite</td><td>4.2</td></tr><tr><td>Chromite</td><td>4.5 to 4.8</td></tr><tr><td>Magnetite</td><td>5.1</td></tr><tr><td>Gold</td><td>15 to 19</td></tr><tr><td>Platinum</td><td>14 to 21.5</td></tr>
+    </tbody>
+  </table></div>
+  <p>Plagioclase has about the same density as a mafic magma, so it doesn’t sink; it tends to float to the top of the chamber, as you see in the Bushveld and other layered intrusions. The spinels (chromite, magnetite), the sulphides and the platinum group minerals sink readily. <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="lab" id="sgLab">
+    <h4><span>Let the chamber settle</span><b id="sgTag">ready</b></h4>
+    <canvas id="sgCanvas" aria-label="Animation of crystals and sulphide droplets sinking or floating in a magma chamber according to their density"></canvas>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="sgGo">Let it settle</button></div>
+    <div class="legend" id="sgLegend"></div>
+    <p class="say" id="sgSay">Each particle sinks at a speed that grows with how much denser it is than the 2.8 magma.</p>
+  </div>
+  <p>The classic example is the <strong>Merensky Reef</strong> in the Bushveld gabbro-norite of South Africa: a layer only 1 to 5 m thick, rich in Pt, Fe, Ni, Cu and Cr. Ian’s view is that a reef that thin could probably never be mined anywhere else; it was mined because of the labour available there. <span class="srcs">slide 10</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="world" data-log="Deposits"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">52 to 66 m</span></div>
+  <h2>Where the big deposits are</h2>
+  <p>There are two broad kinds of primary Ni-Cu sulphide deposit. <strong>Archaean komatiite-hosted</strong> deposits are concentrated in the Norseman-Wiluna greenstone belt of Western Australia and the Abitibi greenstone belt of Canada. <strong>Mafic intrusion-related</strong> deposits include Voisey’s Bay (Canada), Jinchuan (China; many pipe-like bodies rather than one intrusion, and most of China’s nickel), Pechenga and Norilsk (Russia), Sudbury (Canada), Kabanga (Tanzania), the Duluth Complex (Minnesota) and the Giles Complex in the Musgrave Ranges, on the South Australia-Western Australia border. <span class="srcs">slide 11</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <p>Grade and tonnage pull against each other: the highest-grade deposits tend to be small, the biggest tend to be low grade. Victor and Cosmos in WA run over 10% Ni but only around a million tonnes; Duluth is the biggest of all but very low grade. Norilsk is the exception: big <em>and</em> rich. <span class="srcs">slides 14 and 15</span></p>
+  <div class="lab" id="gtLab">
+    <h4><span>The largest Ni-Cu-(PGE) sulphide deposits</span><b id="gtCount">tap 4</b></h4>
+    <svg class="grid-svg" id="gtSvg" viewBox="0 0 640 380" role="img" aria-label="Log plot of deposit size against nickel grade, with lines of equal contained nickel"></svg>
+    <div class="readout" id="gtRead">
+      <div><small>Deposit</small><b id="gtN">tap a dot</b></div>
+      <div><small>Size</small><b id="gtMt">?</b></div>
+      <div><small>Ni · Cu · PGE</small><b id="gtG">?</b></div>
+      <div><small>Contained Ni</small><b id="gtC">?</b></div>
+    </div>
+    <p class="say" id="gtSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Data from slide 15. Contained nickel = tonnes × grade, worked out here.</p>
+  </div>
+  <p>One oddity Ian mentioned: <strong>Avebury</strong> in Tasmania was a remobilised nickel deposit. Devonian granites intruded ultramafic rocks, and heat-driven convection pulled nickel out of the ultramafic <em>silicates</em> and concentrated it on the granite contact. It was high grade but small, in very rough ground, and it closed. <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="production" data-log="Production"><div class="wrap">
+  <div class="kicker">Economics <span class="depth">66 to 76 m</span></div>
+  <h2>How laterites took over</h2>
+  <p>Primary sulphides used to be the main source of the world’s nickel, mostly from Norilsk and Sudbury. Now laterites supply around 65%, and production is dominated by Indonesia, the Philippines and New Caledonia. The laterites were known in the 1950s but were too expensive to process; new processing techniques changed that. Indonesia’s rise was paid for largely by Chinese investment in processing plants on Sulawesi, which treat ore from many small deposits through one central plant. <span class="srcs">slides 16 and 17</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="lab" id="prLab">
+    <h4><span>Main nickel producers (t Ni)</span><b id="prYr">2023</b></h4>
+    <svg class="grid-svg" id="prSvg" viewBox="0 0 640 330" role="img" aria-label="Bar chart of nickel production by country"></svg>
+    <div class="chips" style="margin-top:.6rem"><button class="chip" type="button" id="pr23" aria-pressed="true">2023</button><button class="chip" type="button" id="pr25" aria-pressed="false">2025</button></div>
+    <p class="say" id="prSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Slide 17, source USGS 2026.</p>
+  </div>
+  <p>Australia fell from 160 000 to 45 000 t because it can’t compete on cost; ten years ago it was second only to Canada. Mount Keith is still the biggest Australian operation, and most of Kambalda is on hold. Platinum is a valuable by-product: even at about 0.6 g/t, WA nickel ore gets a useful bonus from it. South Africa dominates platinum production through the Merensky Reef. <span class="srcs">slide 16</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="minerals" data-log="Minerals"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">76 to 88 m</span></div>
+  <h2>What the ore is made of</h2>
+  <p>In these deposits you see <strong>pyrrhotite</strong> almost everywhere: it makes up the bulk of the sulphide. It is a nuisance. It oxidises very fast, and the reaction gives off heat; in some WA nickel mines the waste piles have caught fire on their own. The mineral you actually want is <strong>pentlandite</strong>, by far the main nickel mineral, as small grains or along fractures in the pyrrhotite. <strong>Chalcopyrite</strong> is the only common copper mineral. Minor minerals are <strong>millerite</strong> (NiS, in the supergene zone), the PGE minerals <strong>cooperite</strong> ((Pt,Pd,Ni)S) and <strong>sperrylite</strong> (PtAs₂), and magnetite. Gangue is olivine, pyroxene and plagioclase. Grades vary from 0.2% to 12% Ni. <span class="srcs">slide 18</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L7/slide018_3.jpg" alt="Dark ore specimen studded with bright, silvery metallic crystals">
+    <figcaption>Sperrylite (PtAs₂) crystals in ore from Norilsk, which produces the best sperrylite crystals in the world. <span class="srcs">slide 18</span> <span class="srcs">lecture recording, 28 Sep</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Which mineral?</span><b id="mnScore">0 / 5</b></h4>
+    <div class="cards" id="mnCards"></div>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Pentlandite always comes with pyrrhotite: in reflected light, pale yellow, isotropic, intergrown with bronze pyrrhotite (Lecture 4).</li><li>Pyrrhotite is the bulk of the ore; some of it is magnetic.</li><li>Sudbury, Kambalda and Coolac are the magmatic deposits in the ore suites.</li></ul><span class="srcs">slide 18</span></div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="komatiite" data-log="Komatiites"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">88 to 102 m</span></div>
+  <h2>Komatiites: lava like water</h2>
+  <p>The komatiite-hosted deposits formed in the Archaean, 2.7 to 3.0 billion years ago, when the mantle was much hotter. <button class="term" data-t="komatiite">Komatiites</button> are ultramafic lavas, almost all olivine and pyroxene, that erupted from submarine fissures at about 1400 °C (modern Hawaiian basalts erupt at roughly 1000 to 1200 °C). They had very low viscosity and flowed like water. They built a pattern of thick, slowly cooling channels with cumulate textures, and thin sheet flows that quenched fast against the cold seawater, giving <button class="term" data-t="spinifex texture">spinifex texture</button>. Between the flows lay sulphide-bearing sediments: that’s where the sulphur came from. <span class="srcs">slide 20</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a komatiite flow top</span><span class="srcs">slide 1</span></div>
+    <img loading="lazy" decoding="async" src="img/L7/slide001_1.jpg" alt="Green rock with long, thin, criss-crossing dark blades">
+    <p class="ask">Name the texture. What does it tell you about how this lava cooled?</p>
+    <details data-obs="spinifex"><summary>Show what I see</summary><div class="seen"><p>This is <b>spinifex texture</b>: long, thin, bladed crystals (originally olivine) criss-crossing like the spinifex grass of the WA outback. It forms when ultramafic lava cools very fast, in the thin quenched sheet flows and flow tops. The rock is green because metamorphism turned the olivine to serpentine, which is why the host belts are called greenstone belts.</p></div></details>
+  </div>
+  <p>The Norseman-Wiluna belt runs north from Norseman to Wiluna, with magmatic nickel sulphide deposits and orogenic gold all along it. The nickel is <strong>syngenetic</strong> (formed with the lavas); the gold is <strong>epigenetic</strong> and sits in later structures. Later deformation, metamorphism and granite emplacement have masked much of the original igneous character. <span class="srcs">slides 20 to 22</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L7/slide021_1.jpg" alt="Geological map of the Yilgarn craton showing greenstone belts from Norseman to Wiluna">
+    <figcaption>The Norseman-Wiluna greenstone belt: ancient altered ocean-floor basalts and komatiites, intruded by granites. <span class="srcs">slide 21</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="kambalda" data-log="Kambalda"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">102 to 116 m</span></div>
+  <h2>Kambalda: lava rivers</h2>
+  <p>Kambalda sits near Kalgoorlie, beside the salt pan of Lake Lefroy. Canadian explorers in the 1950s and 60s found nothing there, because they explored the Canadian way, on fresh glaciated rock. At Kambalda there’s about 100 m of weathered material on top. An Australian junior, Western Mining, understood weathered terrain and found the nickel quickly with soil geochemistry. <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the setting</span><span class="srcs">slides 25 and 26</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L7/slide025_1.jpg" alt="Flat, pale blue expanse of a salt lake with small dark islands"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L7/slide026_1.jpg" alt="Aerial view of orange open-cut pits in flat red country"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">A is Lake Lefroy, a salt lake; one mine runs under it. B shows the Kambalda open cuts in the 1970s. What problem does the salt lake create for mining sulphide ore underneath it?</p>
+    <details data-obs="lefroy"><summary>Show the reasoning</summary><div class="seen"><p>Salt water and oxidising sulphides wreck equipment. Ian has been down that mine: equipment lasts no more than about four years, because everything rusts and the oxidising sulphides make sulphuric acid. It makes mining under the lake very costly. Open cuts (B) were the cheap start when the ore came close to surface.</p></div></details>
+  </div>
+  <p>The <strong>Kambalda Dome</strong> is probably an old magma chamber, later folded. The nickel ore shoots (Hunt, Red Hill, Lunnon, Victor, Fisher, Durkin and others) sit at the base of the komatiite sequence, on the contact with the footwall basalt, where interflow sulphidic sediments supplied the sulphur. <span class="srcs">slides 23 and 27</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <p>Think of the lava as a river. Komatiite at 1400 °C, flowing like water, <strong>thermally eroded</strong> the floor it ran over, cutting embayments into the basalt and melting the sulphide-bearing sediments into the flow. Their sulphur combined with nickel from the lava, and a sulphide liquid separated. What happened next depended on how fast the lava was moving. <span class="srcs">slide 24</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="lab" id="lvLab">
+    <h4><span>Run the lava river</span><b id="lvTag"></b></h4>
+    <canvas id="lvCanvas" aria-label="Cross-section of a komatiite lava channel eroding sulphidic sediment, with sulphide droplets either settling to the base or staying dispersed"></canvas>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="lvV">Flow velocity <b id="lvVV">quiet</b></label><input type="range" id="lvV" min="0" max="100" step="1" value="20"></div></div>
+    <div class="row"><button class="btn ghost" type="button" id="lvReset">Restart the flow</button></div>
+    <p class="say" id="lvSay"></p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L7/slide024_1.jpg" alt="Plan view of a large komatiite lava flow field with a central lava conduit, and cross-sections of a disseminated orebody in the conduit and a massive orebody at its base">
+    <figcaption>Lava rivers and volcanic facies: sheet flows flank a channelised conduit. Massive sulphide (Type I) sits at the base of the conduit; disseminated sulphide (Type II) fills the thicker, faster part. <span class="srcs">slide 24, CSIRO Exploration and Mining 2001</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · underground at Kambalda</span><span class="srcs">slide 30</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L7/slide030_1.jpg" alt="Underground wall of layered pale and dark rock"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L7/slide030_2.jpg" alt="Dark rounded pillow shapes with bright metallic material filling the gaps, a hammer for scale"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">A and B are both ore. Describe how the sulphide sits in each.</p>
+    <details data-obs="kamb-ore"><summary>Show what I see</summary><div class="seen"><p><b>A</b> is a banded, nickel-rich cumulate: layers with disseminated sulphides that settled out with the crystals. <b>B</b> is sulphide filling the spaces between basalt pillows: the dense sulphide liquid drained down into gaps in the footwall. Both are segregation; B shows how mobile the sulphide liquid was.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="shoots" data-log="Ore shoots"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">116 to 130 m</span></div>
+  <h2>Type 1: the Kambalda ore shoots</h2>
+  <p>Kambalda-style (Type 1) ore sits in lava channels in both flood flow and compound flow facies, usually in the basal flow, with thermal erosion into the rocks below. The bodies are ribbons: 1 to 5 m thick, 50 to 100 m wide and 100 to 700 m long, with aggregates up to 2 km down plunge, mostly under 5 Mt and often under 1 Mt. They are stratified from the base up: <span class="srcs">slide 32</span></p>
+  <div class="mix">
+    <div><b>Massive sulphide</b>Over 80% sulphide, an irregular basal zone about 2 m thick, 2 to 20% Ni.</div>
+    <div><b>Matrix sulphide</b>A more regular zone with sulphide filling between silicate grains, 1 to 6% Ni.</div>
+    <div><b>Disseminated sulphide</b>Under 40% sulphide, an irregular upper zone, 1 to 2% Ni.</div>
+  </div>
+  <p>Then the geology moved them. Folding, faulting and later dykes and stocks have cut and shifted the shoots, so the ore today doesn’t sit where it formed; that’s why drilling is critical. Metamorphism grew coarse pyrite and secondary magnetite in the matrix ore. The magnetite is useful: magnetic surveys can find the ore. Faulting also softened the host, turning ultramafic rock to serpentinite, with talc and magnesite alteration where fluid came through. <span class="srcs">slides 31 and 32</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L7/slide028_1.jpg" alt="Oblique cross-section with drill holes through serpentinised peridotite showing intercepts such as 3.4 m at 4.54% Ni and 27 m at 0.92% Ni">
+    <figcaption>Drilling the lenses: intercepts range from 3.4 m at 4.54% Ni to 27 m at 0.92% Ni, and one hole hit a fault with no significant assay. The lenses are long but narrow. <span class="srcs">slide 28</span></figcaption>
+  </figure>
+  <div class="lab" id="dsLab">
+    <h4><span>Drill the ore shoot</span><b id="dsLeft"></b></h4>
+    <p class="say" style="margin-top:0" id="dsAsk">A Type 1 ore shoot sits on the footwall contact somewhere along this section, and a fault and a later dyke have been through. Tap the surface to drill a vertical hole. Six holes.</p>
+    <svg class="grid-svg" id="dsSvg" viewBox="0 0 640 320" role="img" aria-label="Cross-section: tap the surface to drill holes and log the intercepts"></svg>
+    <div class="row" style="margin-top:.5rem"><button class="btn ghost" type="button" id="dsNew">New section</button></div>
+    <p class="say" id="dsSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented section for teaching; zone thicknesses and grades follow slide 32.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L7/slide031_1.jpg" alt="Cross-section of the Lunnon Shoot with multiple thin komatiite and porphyritic units and offset ore">
+    <figcaption>The Lunnon Shoot: offset many times by faults and intrusions, and locally up to about 20% Ni. <span class="srcs">slide 31</span> <span class="srcs">lecture recording, 28 Sep</span></figcaption>
+  </figure>
+  <div class="keybox"><b>Memorise</b><ul><li>Type 1 (Kambalda): ribbons 1 to 5 m thick, 50 to 100 m wide, 100 to 700 m long; usually under 5 Mt.</li><li>Massive over 80% sulphide, 2 to 20% Ni; matrix 1 to 6% Ni; disseminated under 40% sulphide, 1 to 2% Ni.</li><li>Kambalda: 162 Mt at 2.07% Ni overall.</li></ul><span class="srcs">slides 15 and 32</span></div>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="mtkeith" data-log="Mt Keith"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">130 to 140 m</span></div>
+  <h2>Type 2: Mount Keith</h2>
+  <p>Mount Keith-style (Type 2) ore formed in lava channels with transgressive lower contacts, as cumulate flow units within flood flow facies. The orebody is a locally thickened cumulate unit up to 800 m thick, 1 to 3 km wide and over 1 km down plunge. Sulphide is disseminated, only 1 to 5% of the rock, as grains in an olivine cumulate that is now serpentinite, and the grade is under 1% Ni (about 0.6%). It is pentlandite-dominated; copper sulphides appear only in the lower part. Metamorphism and fluids have overprinted it, especially along structures, and it has a long weathering history: when Mount Keith opened, laterite ore was mined first, before the sulphide. <span class="srcs">slide 33</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <p>Why mine 0.6% nickel? Size and access: Mount Keith is about a billion tonnes (1022 Mt on slide 15), and it could be open cut from the surface. <span class="srcs">slide 15</span> <span class="srcs">lecture recording, 28 Sep</span></p>
+  <div class="lab">
+    <h4><span>Type 1 or Type 2?</span><b id="tyScore">0 / 6</b></h4>
+    <div class="cards" id="tyCards"></div>
+  </div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">140 to 146 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">146 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 8 finishes magmatic deposits: Sudbury, Norilsk and the other intrusion-hosted Ni-Cu deposits, PGE in layered intrusions like the Bushveld, chromite and Fe-Ti-V oxides, phosphorus, and the nickel laterites that now dominate supply. Lecture 13 comes back to the same WA greenstone belts for orogenic gold.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 7 slides (Magmatic ore deposits part 1, 33 slides; photos and figures tagged by slide) and the Echo360 recording of 28 September 2026. Figures in the slides come from published sources (CSIRO, AGSO, Natural Resources Canada and others) and are shown only as lecture material. Where the recording and the slide differ on Mount Keith’s size and grade, this page uses slide 15. The animations, the rock namer and the drilling game are teaching models, not real data.</p>
+  <p><a href="L6.html">&larr; Lecture 6</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You can spell pentlandite.'],[35,'Graduate geologist','You know why olivine is the enemy.'],[100,'Project geologist','You can drill a ribbon ore shoot.'],[180,'Senior geologist','You think in lava rivers.'],[270,'Chief geologist','Western Mining would have hired you in 1966.']];
+var G={
+ "harzburgite":"Ultramafic rock of olivine and orthopyroxene; most of the oceanic mantle.",
+ "lherzolite":"Ultramafic rock of olivine with both orthopyroxene and clinopyroxene; most of the continental mantle.",
+ "dunite":"Ultramafic rock with over 90% olivine.",
+ "peridotite":"Ultramafic rock of olivine and pyroxene with over 40% olivine.",
+ "pyroxenite":"Ultramafic rock with under 40% olivine and more pyroxene than hornblende.",
+ "norite":"A gabbro whose pyroxene is orthopyroxene; host to much PGE and sulphide ore.",
+ "acid":"Chemical term: over 63% SiO₂.",
+ "felsic":"Mineralogical term: mostly feldspar and quartz.",
+ "ultrabasic":"Chemical term: under 45% SiO₂.",
+ "sulphide melt":"An immiscible sulphide liquid that separates from a mafic or ultramafic silicate magma and collects Ni, Cu and PGE.",
+ "immiscible":"Unable to mix: two liquids that stay separate, like oil and water.",
+ "olivine suppression":"Stopping olivine crystallising early, so that nickel goes into sulphide melt instead of olivine.",
+ "contamination":"A magma taking in crustal material (silica, iron-rich rock, carbon) that changes how it crystallises.",
+ "segregation":"Dense crystals or droplets sinking through a magma and collecting on the chamber floor.",
+ "cumulate":"A rock or layer made of crystals that accumulated by settling in a magma chamber.",
+ "Merensky Reef":"A 1 to 5 m layer in the Bushveld Complex rich in Pt, Fe, Ni, Cu and Cr.",
+ "pentlandite":"(Fe,Ni)₉S₈, the main nickel ore mineral, in grains and along fractures in pyrrhotite.",
+ "pyrrhotite":"Fe₁₋ₓS, the bulk of magmatic Ni sulphide ore; oxidises fast and gives off heat.",
+ "millerite":"NiS, a minor nickel sulphide of the supergene zone.",
+ "cooperite":"(Pt,Pd,Ni)S, a platinum group mineral.",
+ "sperrylite":"PtAs₂, a platinum arsenide; Norilsk has the best crystals.",
+ "komatiite":"An Archaean ultramafic lava, erupted at about 1400 °C with very low viscosity.",
+ "spinifex texture":"Long, thin, bladed olivine crystals in quickly quenched komatiite.",
+ "greenstone belt":"A belt of altered, metamorphosed volcanic rocks, green from serpentine and chlorite.",
+ "thermal erosion":"Hot lava melting and cutting down into the rock it flows over.",
+ "interflow sediment":"Sediment between lava flows; at Kambalda it carried the sulphur.",
+ "flood flow facies":"Broad komatiite flow fields from sustained high-volume eruption.",
+ "compound flow facies":"Komatiite fields built of many smaller flow lobes.",
+ "ore shoot":"A ribbon-like, plunging body of ore.",
+ "laterite":"A deeply weathered, residual soil profile; nickel laterites now supply most of the world’s nickel.",
+ "syngenetic":"Formed at the same time as the host rock.",
+ "epigenetic":"Formed after the host rock."
+};
+var CP={
+ cp1:{q:'What do all magmatic ore deposits have in common?',o:['They formed from seawater','They are associated with primary, mantle-derived magmas','They are all in granites'],a:1,e:'Ni-Cu sulphides, PGE, Cr-V-Ti oxides, P, REE and diamonds all come from mantle-derived magmas.'},
+ cp2:{q:'A rock is 70% olivine and 30% orthopyroxene, with no clinopyroxene. What is it?',o:['Dunite','Harzburgite','Wehrlite'],a:1,e:'Olivine plus orthopyroxene is harzburgite, the main rock of the oceanic mantle. Dunite needs over 90% olivine.'},
+ cp3:{q:'Why does a magma need olivine suppressed to make a nickel sulphide deposit?',o:['Olivine is too dense','Early olivine takes the nickel into its structure, leaving none for the sulphide melt','Olivine dissolves sulphide'],a:1,e:'Suppress olivine (with silica, iron or reducing contamination) and nickel goes into the immiscible sulphide liquid.'},
+ cp4:{q:'Why does plagioclase tend to float to the top of a mafic magma chamber?',o:['It has about the same density as mafic magma (2.8), slightly less','It is magnetic','It crystallises last'],a:0,e:'Minerals denser than the 2.8 magma sink; plagioclase, at about 2.8, rises to the top instead.'},
+ cp5:{q:'Which deposit is both very large and high grade, with nearly 4% Cu and about 10 g/t PGE?',o:['Duluth','Norilsk','Mount Keith'],a:1,e:'Norilsk: 1257 Mt at 1.84% Ni, 3.75% Cu, 10 g/t PGE. Duluth is huge but very low grade.'},
+ cp6:{q:'Where does most of the world’s nickel come from now?',o:['Primary sulphide deposits like Kambalda','Laterites, mainly in Indonesia, the Philippines and New Caledonia','Seafloor nodules'],a:1,e:'New processing made laterites cheap; they now supply around 65%, and Indonesia leads.'},
+ cp7:{q:'Most of the sulphide in Kambalda ore is pyrrhotite, yet the miners want...',o:['pyrite','pentlandite, the main nickel mineral','magnetite'],a:1,e:'Pentlandite carries the nickel, as grains and along fractures in the pyrrhotite.'},
+ cp8:{q:'Where did the sulphur in the komatiite-hosted deposits come from?',o:['The mantle only','Sulphide-bearing sediments between the lava flows','Seawater sulphate in the vents'],a:1,e:'The hot lava eroded and assimilated the interflow sulphidic sediments.'},
+ cp9:{q:'In a komatiite lava river, where do you get massive sulphide rather than disseminated?',o:['Where the flow is fast and turbulent','Where the flow is quiet, so sulphide droplets have time to sink to the base','Only at the flow top'],a:1,e:'Quiescent flow lets the sulphide segregate to the base; high velocity keeps it mixed and disseminated.'},
+ cp10:{q:'Why is drilling so critical at Kambalda?',o:['The ore is very deep','The ribbon-like shoots are narrow and have been cut and offset by faults, folds and dykes','Gold gets in the way'],a:1,e:'Long, narrow lenses that later deformation has moved are easy to miss.'},
+ cp11:{q:'Mount Keith grades only about 0.6% Ni. Why can it be mined?',o:['It is very high in gold','It is about a billion tonnes and could be open cut from the surface','It is under a salt lake'],a:1,e:'Size and easy access make up for the low grade.'}
+};
+var ST=[
+ ['Distinguish acid from felsic, and basic from mafic.','Recall','Acid and basic are chemical terms based on silica (over 63%; 45 to 55%). Felsic and mafic are mineralogical terms (mostly feldspar and quartz; mostly dark minerals plus plagioclase).'],
+ ['Explain olivine suppression and give three ways a magma can achieve it.','Apply','Olivine crystallising early takes nickel into its structure. If olivine is suppressed, pyroxene crystallises first and nickel goes into the immiscible sulphide melt. Silica contamination (olivine + SiO₂ → pyroxene), contamination by iron-rich rock, or a reducing environment such as a coal bed.'],
+ ['Why do chromite, magnetite and sulphide droplets collect at the base of a magma chamber while plagioclase does not?','Recall','They are much denser (chromite 4.5 to 4.8, magnetite 5.1, chalcopyrite 4.2) than mafic magma (2.8), so they sink and form cumulates. Plagioclase (2.8) has about the same density and floats to the top.'],
+ ['Describe the general relationship between grade and tonnage in magmatic Ni-Cu deposits, with an exception.','Recall','High-grade deposits tend to be small (Victor and Cosmos, over 10% Ni, about 1 Mt) and the largest tend to be low grade (Duluth, 4000 Mt at 0.2%). Norilsk is the exception: 1257 Mt at 1.84% Ni, 3.75% Cu and 10 g/t PGE.'],
+ ['Why has Australian nickel production collapsed in recent years?','Think','Laterites, mainly in Indonesia, became cheap to process, helped by Chinese investment in central processing plants on Sulawesi. Australian sulphide mines can’t compete on cost, so production fell from 160 000 t (2023) to 45 000 t (2025) and much of Kambalda is on hold.'],
+ ['List the main ore minerals of a magmatic Ni-Cu sulphide deposit and the role of each.','Recall','Pyrrhotite (the bulk; oxidises fast and gives off heat), pentlandite (main Ni mineral), chalcopyrite (main Cu mineral), with minor millerite (supergene NiS), cooperite and sperrylite (PGE minerals) and magnetite.'],
+ ['Why are komatiites restricted to the Archaean, and what textures do they show?','Think','The mantle was much hotter, so ultramafic melts erupted at about 1400 °C. Slowly cooled channels show cumulate textures; thin, fast-quenched sheet flows show spinifex texture.'],
+ ['How did Western Mining find Kambalda when Canadian explorers didn’t?','Recall','The Canadians explored as if for fresh, glaciated outcrop. Kambalda has about 100 m of weathered cover; Western Mining understood weathered terrain and found the nickel with soil geochemistry.'],
+ ['Explain how flow velocity controls massive versus disseminated sulphide in a komatiite channel.','Apply','Thermal erosion of sulphidic sediment releases sulphur that forms sulphide droplets. Where the flow is quiet, droplets have time to sink and pool at the base as massive sulphide; where it is fast and turbulent, they stay mixed through the lava as disseminated sulphide.'],
+ ['Compare Type 1 (Kambalda) and Type 2 (Mount Keith) komatiite-hosted deposits.','Synthesise','Type 1: thin ribbons (1 to 5 m thick, 50 to 100 m wide, 100 to 700 m long, under 5 Mt), stratified massive-matrix-disseminated sulphide with up to 20% Ni at the base, in lava channels with thermal erosion. Type 2: a thick cumulate body (up to 800 m thick, 1 to 3 km wide) with 1 to 5% disseminated sulphide in olivine cumulate, about 0.6% Ni but very large (about 1 billion t) and open-pittable.']
+];
+GEO.start({key:'geos3141-L7-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* nickel's choice */
+var nc=$('#nkCanvas'),nx=nc.getContext('2d'),NW=640,NH=300,nk=1,nS=false,nSi=false,nRun=false,nT=0,atoms=[],ols=[],drops=[],pyx=[];
+function nkReset(){var r=rng(11);atoms=[];for(var i=0;i<120;i++)atoms.push({x:60+r()*520,y:50+r()*200,vx:(r()-.5)*.6,vy:(r()-.5)*.6,st:'melt',h:null});ols=[];drops=[];pyx=[];nT=0;nkDraw();nkStats();}
+function nkDraw(){var c=nx;c.clearRect(0,0,NW,NH);c.fillStyle='#2A1B16';c.fillRect(0,0,NW,NH);
+  var g=c.createLinearGradient(0,30,0,270);g.addColorStop(0,'#C8553A');g.addColorStop(1,'#8E3424');c.fillStyle=g;c.beginPath();c.moveTo(40,30);c.lineTo(600,30);c.quadraticCurveTo(620,30,620,50);c.lineTo(620,262);c.quadraticCurveTo(620,280,600,280);c.lineTo(40,280);c.quadraticCurveTo(20,280,20,262);c.lineTo(20,50);c.quadraticCurveTo(20,30,40,30);c.fill();
+  ols.forEach(function(o){c.fillStyle='rgba(190,220,140,.9)';c.beginPath();for(var k=0;k<6;k++){var a=k*Math.PI/3+o.rot;c.lineTo(o.x+Math.cos(a)*o.r,o.y+Math.sin(a)*o.r*.7);}c.closePath();c.fill();});
+  pyx.forEach(function(o){c.fillStyle='rgba(40,70,50,.85)';c.fillRect(o.x-o.r,o.y-o.r*.4,o.r*2,o.r*.8);});
+  drops.forEach(function(d){c.fillStyle='#D4A83A';c.beginPath();c.arc(d.x,d.y,d.r,0,Math.PI*2);c.fill();c.fillStyle='rgba(255,240,190,.6)';c.beginPath();c.arc(d.x-d.r*.3,d.y-d.r*.3,d.r*.3,0,Math.PI*2);c.fill();});
+  atoms.forEach(function(a){c.fillStyle=a.st==='melt'?'#7CFC9A':a.st==='ol'?'#2E7D32':'#1B5E20';c.beginPath();c.arc(a.x,a.y,a.st==='melt'?2.6:2,0,Math.PI*2);c.fill();});
+  c.fillStyle='rgba(255,255,255,.85)';c.font=fontPx(nk);c.fillText(nRun?'cooling…':nT>=1?'crystallised':'hot magma',30,22);
+  c.fillText((nS?'+ sulphidic sediment ':'')+(nSi?'+ silica':''),220,22);}
+function nkStats(){var tot=atoms.length,s=atoms.filter(function(a){return a.st==='sul';}).length,o=atoms.filter(function(a){return a.st==='ol';}).length;$('#nkSul').textContent=Math.round(s/tot*100)+'%';$('#nkOl').textContent=Math.round(o/tot*100)+'%';return [s/tot,o/tot];}
+function nkStep(){nT=Math.min(1,nT+.0035);var r=Math.random;
+  if(!nSi&&nT<.7&&ols.length<26&&r()<.22)ols.push({x:50+r()*540,y:50+r()*200,r:4,rot:r()*3});
+  if(nSi&&nT>.15&&pyx.length<22&&r()<.14)pyx.push({x:50+r()*540,y:50+r()*200,r:5});
+  var sOn=nS&&(nSi?nT>.02:nT>.25);if(sOn&&drops.length<16&&r()<.12)drops.push({x:60+r()*520,y:60+r()*170,r:3,vy:0});
+  ols.forEach(function(o){if(o.r<12)o.r+=.05;});pyx.forEach(function(o){if(o.r<11)o.r+=.05;});drops.forEach(function(d){if(d.r<8)d.r+=.03;if(nT>.65){d.vy+=.03;d.y=Math.min(270-d.r,d.y+d.vy);}});
+  atoms.forEach(function(a){if(a.st==='melt'){a.x+=a.vx;a.y+=a.vy;if(a.x<30||a.x>610)a.vx*=-1;if(a.y<40||a.y>270)a.vy*=-1;
+      if(ols.length&&r()<ols.length*.0009){a.st='ol';a.h=ols[Math.floor(r()*ols.length)];}
+      else if(drops.length&&r()<drops.length*.0016){a.st='sul';a.h=drops[Math.floor(r()*drops.length)];}}
+    else if(a.h){a.x+=(a.h.x-a.x)*.08;a.y+=(a.h.y-a.y)*.08;}});}
+function nkEnd(){nkDraw();var q=nkStats(),s=q[0],o=q[1],ore=s>.6;$('#nkRes').textContent=ore?'Ni sulphide ore':s>.15?'weak':'no ore';$('#nkTag').textContent=ore?'ore':'no ore';
+  $('#nkSay').innerHTML=!nS?'No sulphur, so no sulphide liquid: the nickel ended up locked in <b>olivine</b>. No magmatic ore, though weathering could one day concentrate it in a <b>laterite</b>.':!nSi?'Sulphur arrived, but olivine grew first and took most of the nickel. A little went into the sulphide: not enough for good ore. Now <b>suppress olivine</b>.':'Silica turned the early crystals into <b>pyroxene</b>, which doesn’t take nickel, and sulphur from the sediment made <b>immiscible sulphide droplets</b>. They collected the nickel and sank to the floor: <b>magmatic nickel sulphide ore</b>.';
+  if(ore){award('nk-ore',5,'Made magmatic nickel ore');FX.burst($('#nkGo'));}}
+var nLast=0;function nkLoop(ts){if(!nRun)return;var n=nLast?Math.min(40,Math.max(1,Math.round((ts-nLast)/16))):1;nLast=ts;for(var i=0;i<n&&nT<1;i++)nkStep();nkDraw();nkStats();if(nT<1)requestAnimationFrame(nkLoop);else{nRun=false;nkEnd();}}
+$('#nkGo').addEventListener('click',function(){nkReset();if(reduce){while(nT<1)nkStep();nkDraw();nkEnd();return;}nLast=0;nRun=true;requestAnimationFrame(nkLoop);});
+$('#nkS').addEventListener('click',function(){nS=!nS;this.setAttribute('aria-pressed',nS);nkDraw();});
+$('#nkSi').addEventListener('click',function(){nSi=!nSi;this.setAttribute('aria-pressed',nSi);nkDraw();});
+nkReset();
+
+/* rock namer */
+var rn=$('#rnSvg'),rnSeen={},A=[320,30],B=[60,350],C=[580,350];
+function rnName(ol,opx,cpx){var px=opx+cpx,fo=px?opx/px:0,fc=px?cpx/px:0;
+  if(ol>=90)return ['Dunite','Over 90% olivine. Chromite pods (podiform chromitites) sit in dunite.'];
+  if(ol>=40){if(cpx<5)return ['Harzburgite','Olivine plus orthopyroxene: most of the oceanic mantle.'];if(opx<5)return ['Wehrlite','Olivine plus clinopyroxene: much rarer.'];return ['Lherzolite','Olivine with both pyroxenes: most of the continental mantle.'];}
+  if(ol>=10){if(cpx<5)return ['Olivine orthopyroxenite','A pyroxenite with some olivine.'];if(opx<5)return ['Olivine clinopyroxenite','A pyroxenite with some olivine.'];return ['Olivine websterite','Both pyroxenes with some olivine: uncommon.'];}
+  if(cpx<5)return ['Orthopyroxenite','Almost all orthopyroxene.'];if(opx<5)return ['Clinopyroxenite','Almost all clinopyroxene.'];return ['Websterite','Both pyroxenes: very uncommon.'];}
+function rnDraw(pt){rn.innerHTML='';el('polygon',{points:[A,B,C].map(function(p){return p.join(',');}).join(' '),fill:'var(--paper)',stroke:'var(--line)','stroke-width':2},rn);
+  function lerp(p,q,t){return [p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];}
+  [[.9,'90'],[.4,'40'],[.1,'10']].forEach(function(l){var p=lerp(B,A,l[0]),q=lerp(C,A,l[0]);el('line',{x1:p[0],y1:p[1],x2:q[0],y2:q[1],stroke:'var(--line)','stroke-width':1.5},rn);txt(rn,q[0]+6,q[1]+4,l[1]+'% ol',{'font-size':11,fill:'var(--muted)'});});
+  txt(rn,A[0]-24,A[1]-8,'Olivine',{'font-size':14,fill:'var(--ink)'});txt(rn,B[0]-40,B[1]+22,'Orthopyroxene',{'font-size':14,fill:'var(--ink)'});txt(rn,C[0]-50,C[1]+22,'Clinopyroxene',{'font-size':14,fill:'var(--ink)'});
+  txt(rn,A[0]-22,A[1]+40,'dunite',{'font-size':11,fill:'var(--muted)'});txt(rn,A[0]-34,A[1]+170,'peridotites',{'font-size':12,fill:'var(--muted)'});txt(rn,A[0]-36,A[1]+300,'pyroxenites',{'font-size':12,fill:'var(--muted)'});
+  if(pt)el('circle',{cx:pt[0],cy:pt[1],r:7,fill:'var(--gold-hi)',stroke:'var(--ink)','stroke-width':2},rn);}
+rn.addEventListener('click',function(e){var p=rn.createSVGPoint();p.x=e.clientX;p.y=e.clientY;p=p.matrixTransform(rn.getScreenCTM().inverse());
+  var x=p.x,y=p.y,d=(B[1]-C[1])*(A[0]-C[0])+(C[0]-B[0])*(A[1]-C[1]);var a=((B[1]-C[1])*(x-C[0])+(C[0]-B[0])*(y-C[1]))/d,b=((C[1]-A[1])*(x-C[0])+(A[0]-C[0])*(y-C[1]))/d,c=1-a-b;
+  if(a<0||b<0||c<0)return;var ol=a*100,opx=b*100,cpx=c*100,n=rnName(ol,opx,cpx);rnDraw([x,y]);
+  $('#rnSay').innerHTML='<b>'+n[0]+'</b>: olivine '+Math.round(ol)+'%, orthopyroxene '+Math.round(opx)+'%, clinopyroxene '+Math.round(cpx)+'%. '+n[1];SND.play('flip');
+  rnSeen[n[0]]=1;var k=Object.keys(rnSeen).length;$('#rnCount').textContent=Math.min(k,4)+' / 4 named';if(k>=4)award('rn-4',4,'Named four ultramafic rocks');});
+rnDraw();
+
+/* Bowen's series with olivine suppression */
+var bw=$('#bwSvg'),bwSup=false,bwSeenSup=false;
+var DISC=[['Olivine',0],['Pyroxene',18],['Amphibole',36],['Biotite',54]],CONT=[['Ca plagioclase',4],['Ca-Na plagioclase',28],['Na plagioclase',52]],LOW=[['K-feldspar',70],['Muscovite',82],['Quartz',94]];
+function bwDraw(v){bw.innerHTML='';el('rect',{x:0,y:0,width:640,height:320,fill:'var(--paper)'},bw);
+  var g=el('linearGradient',{id:'bwg',x1:0,y1:0,x2:0,y2:1},bw);el('stop',{offset:0,'stop-color':'#C8553A','stop-opacity':.35},g);el('stop',{offset:1,'stop-color':'#4E8FB0','stop-opacity':.25},g);el('rect',{x:0,y:0,width:640,height:320,fill:'url(#bwg)'},bw);
+  function node(name,at,x,w){var y=24+at*2.7,on=v>=at,sup=bwSup&&name==='Olivine';el('rect',{x:x,y:y,width:w,height:24,rx:6,fill:sup?'var(--line)':on?'var(--gold-hi)':'var(--bg)',stroke:'var(--line)',opacity:sup?.5:1},bw);txt(bw,x+8,y+16,name+(sup?' (suppressed)':''),{'font-size':12,fill:on&&!sup?'#2A1D05':'var(--muted)','text-decoration':sup?'line-through':'none'});}
+  DISC.forEach(function(d){node(d[0],d[1],40,200);});CONT.forEach(function(d){node(d[0],d[1],400,200);});LOW.forEach(function(d){node(d[0],d[1],220,200);});
+  txt(bw,40,16,'discontinuous',{'font-size':11,fill:'var(--muted)'});txt(bw,400,16,'continuous',{'font-size':11,fill:'var(--muted)'});
+  if(v<20){el('ellipse',{cx:320,cy:60,rx:70,ry:22,fill:'#D4A83A',opacity:.9},bw);txt(bw,264,64,'sulphide melt separates',{'font-size':11,fill:'#2A1D05'});}
+  var T=Math.round(1400-v*6.5);$('#bwT').textContent=(v<10?'1200 to 1400':v>88?'700 to 800':'cooling')+' °C';$('#bwRangeV').textContent=v<10?'high temperature':v>88?'low temperature':'cooling';
+  var first=bwSup?'pyroxene':'olivine';$('#bwSay').innerHTML=v<20?(bwSup?'Olivine is suppressed, so <b>pyroxene</b> crystallises first and doesn’t take the nickel. The immiscible <b>sulphide melt</b> collects the Ni, Cu and PGE.':'<b>Olivine</b> crystallises first and takes nickel into its structure, while the immiscible sulphide melt separates. The two compete for nickel, and olivine is winning.'):v<60?'Down the series: amphibole and biotite on one branch, plagioclase turning from calcium-rich to sodium-rich on the other.':'At the bottom: K-feldspar, muscovite and quartz, the felsic minerals.';}
+$('#bwRange').addEventListener('input',function(){bwDraw(+this.value);});
+$('#bwSup').addEventListener('click',function(){bwSup=!bwSup;this.setAttribute('aria-pressed',bwSup);bwDraw(+$('#bwRange').value);if(bwSup)award('bw-sup',3,'Suppressed olivine');});
+bwDraw(0);
+
+/* segregation */
+var sc=$('#sgCanvas'),sx=sc.getContext('2d'),SW=640,SH=300,sk=1,sP=[],sRun=false,sT=0;
+var SGM=[['Plagioclase',2.75,'#E6E1D4'],['Enstatite',3.3,'#6E7F5A'],['Olivine',3.75,'#9BC26B'],['Chalcopyrite (sulphide)',4.2,'#D4A83A'],['Chromite',4.65,'#2A2424'],['Magnetite',5.1,'#5A5F66'],['Platinum',17,'#D9D9DE']];
+$('#sgLegend').innerHTML=SGM.map(function(m){return '<span><span style="display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:'+m[2]+';border:1px solid var(--line);vertical-align:-1px"></span> '+m[0]+' ('+m[1]+')</span>';}).join('');
+function sgReset(){var r=rng(5);sP=[];SGM.forEach(function(m,i){var n=i===6?4:i===0?26:20;for(var k=0;k<n;k++)sP.push({x:40+r()*560,y:40+r()*200,m:i,v:0,rest:false});});sT=0;sgDraw();}
+function sgDraw(){var c=sx;c.clearRect(0,0,SW,SH);var g=c.createLinearGradient(0,20,0,290);g.addColorStop(0,'#B5472E');g.addColorStop(1,'#7A2E1F');c.fillStyle=g;c.fillRect(20,20,600,270);
+  sP.forEach(function(p){var m=SGM[p.m];c.fillStyle=m[2];c.beginPath();if(p.m===0){c.fillRect(p.x-5,p.y-1.6,10,3.2);}else{c.arc(p.x,p.y,p.m===6?3.6:3,0,Math.PI*2);c.fill();}c.fill();});
+  c.fillStyle='rgba(255,255,255,.85)';c.font=fontPx(sk);c.fillText('mafic magma, SG 2.8',30,38);}
+function sgStep(){sT++;var floorH={};sP.forEach(function(p){if(p.rest)return;var d=SGM[p.m][1]-2.8;var v=d<0?-.25:Math.min(3,.18*d+.05);p.y+=v;
+  if(d<0&&p.y<28){p.y=28+Math.random()*6;p.rest=true;}
+  if(d>=0){var col=Math.floor(p.x/8),top=286-(floorH[col]||0);var stack=sP.filter(function(q){return q.rest&&Math.floor(q.x/8)===col&&SGM[q.m][1]>=2.8;}).length;var lim=286-stack*3.4;if(p.y>=lim){p.y=lim;p.rest=true;}}});}
+var sLast=0;function sgLoop(ts){if(!sRun)return;var n=sLast&&ts?Math.min(40,Math.max(1,Math.round((ts-sLast)/16))):1;sLast=ts||0;for(var i=0;i<n;i++)sgStep();sgDraw();if(sP.some(function(p){return !p.rest;})&&sT<900)requestAnimationFrame(sgLoop);else{sRun=false;$('#sgTag').textContent='settled';$('#sgSay').innerHTML='Platinum, magnetite and chromite reached the floor first, then the sulphide and olivine, then enstatite: a <b>cumulate</b> layer. Plagioclase rose to the roof. That ordering by density is how chromitite seams and sulphide-rich layers form.';award('sg',4,'Settled a magma chamber');}}
+$('#sgGo').addEventListener('click',function(){sgReset();$('#sgTag').textContent='settling';if(reduce){for(var i=0;i<900;i++)sgStep();sgDraw();sRun=true;sgLoop();return;}sLast=0;sRun=true;requestAnimationFrame(sgLoop);});
+sgReset();
+
+/* grade and tonnage */
+var gts=$('#gtSvg'),gtSeen={};
+var GD=[['Norilsk',1257,1.84,3.75,10],['Sudbury',1648,1.20,1.08,1.17],['Duluth',4000,.20,.60,.66],['Mount Keith',1022,.60,.02,.11],['Jinchuan',515,1.06,.75,.26],['Pechenga',339,1.18,.63,.32],['Thompson 1',154,2.32,.16,.83],['Thompson 2',380,.64,null,null],['Kambalda',162,2.07,.15,.80],['Tati',337,.26,.21,.35],['Voisey’s Bay',137,1.59,.85,.19]];
+var X0=80,X1=600,Y0=330,Y1=30;function gx(mt){return X0+(Math.log10(mt)-2)/(Math.log10(5000)-2)*(X1-X0);}function gy(p){return Y0-(Math.log10(p)-Math.log10(.15))/(Math.log10(3)-Math.log10(.15))*(Y0-Y1);}
+function gtDraw(sel){gts.innerHTML='';el('rect',{x:X0,y:Y1,width:X1-X0,height:Y0-Y1,fill:'var(--paper)',stroke:'var(--line)'},gts);
+  [1e5,1e6,1e7].forEach(function(c){var pts=[];for(var lm=2;lm<=Math.log10(5000);lm+=.05){var mt=Math.pow(10,lm),p=c/(mt*1e6)*100;if(p>=.15&&p<=3)pts.push(gx(mt)+','+gy(p));}if(pts.length>1){el('polyline',{points:pts.join(' '),fill:'none',stroke:'var(--muted)','stroke-dasharray':'4 4','stroke-width':1},gts);var last=pts[pts.length-1].split(',');txt(gts,+last[0]-50,+last[1]-6,(c>=1e7?'10 Mt':c>=1e6?'1 Mt':'0.1 Mt')+' Ni',{'font-size':11,fill:'var(--muted)'});}});
+  [100,1000].forEach(function(m){txt(gts,gx(m)-10,Y0+16,m+' Mt',{'font-size':11,fill:'var(--muted)'});});[.2,.5,1,2].forEach(function(p){txt(gts,X0-36,gy(p)+4,p+'%',{'font-size':11,fill:'var(--muted)'});});
+  txt(gts,X1-120,Y0+30,'size (Mt, log)',{'font-size':12,fill:'var(--ink)'});txt(gts,8,Y1-10,'Ni grade (log)',{'font-size':12,fill:'var(--ink)'});
+  GD.forEach(function(d,i){var on=sel===i;var g=el('g',{style:'cursor:pointer'},gts);el('circle',{cx:gx(d[1]),cy:gy(d[2]),r:on?10:7,fill:on?'var(--gold-hi)':gtSeen[i]?'var(--mal)':'var(--hem)',stroke:'var(--ink)','stroke-width':on?2:1},g);txt(g,gx(d[1])+10,gy(d[2])-8,d[0],{'font-size':11,fill:'var(--ink)'});
+    g.addEventListener('click',function(){gtPick(i);});});}
+function gtPick(i){var d=GD[i];gtSeen[i]=1;gtDraw(i);$('#gtN').textContent=d[0];$('#gtMt').textContent=d[1]+' Mt';$('#gtG').textContent=d[2]+'% Ni'+(d[3]!==null?' · '+d[3]+'% Cu · '+d[4]+' g/t':'');var c=d[1]*1e6*d[2]/100;$('#gtC').textContent=(c/1e6).toFixed(c>=1e7?0:1)+' Mt Ni';
+  $('#gtSay').innerHTML=i===0?'Norilsk is big <b>and</b> rich, with the highest copper and PGE grades of all: the richest of these deposits by far.':i===2?'Duluth is the biggest by tonnage, but at 0.2% Ni it holds less nickel than Norilsk.':i===3?'Mount Keith: a billion tonnes of low-grade, open-pittable ore.':i===8?'Kambalda: small overall, but high grade.':'Compare its position with the dashed lines of equal contained nickel.';
+  var k=Object.keys(gtSeen).length;$('#gtCount').textContent=k>=4?'explored':'tap '+(4-k)+' more';if(k>=4)award('gt-4',4,'Read the grade-tonnage plot');SND.play('flip');}
+gtDraw(-1);
+
+/* production */
+var prs=$('#prSvg'),prY='2023',prSeen={};
+var PD=[['Indonesia',1800000,2600000],['Philippines',400000,270000],['Russia',200000,200000],['New Caledonia',230000,140000],['Canada',180000,140000],['China',110000,120000],['Brazil',89000,70000],['Australia',160000,45000]];
+function prDraw(){prs.innerHTML='';var j=prY==='2023'?1:2;PD.forEach(function(d,i){var y=14+i*38,w=d[j]/2600000*380;txt(prs,8,y+20,d[0],{'font-size':13,fill:'var(--ink)'});el('rect',{x:130,y:y+6,width:Math.max(3,w),height:20,rx:3,fill:d[0]==='Australia'?'var(--gold)':d[0]==='Indonesia'?'var(--hem)':'var(--slate)'},prs);txt(prs,136+w,y+21,(d[j]/1000).toLocaleString('en-AU')+' kt',{'font-size':12,fill:'var(--ink)'});});
+  $('#prYr').textContent=prY;$('#prSay').innerHTML=prY==='2023'?'2023: Indonesia already dwarfs everyone. Australia is still in the top ten at 160 000 t.':'2025: Indonesia up to 2.6 million tonnes; Australia down to 45 000 t, below Brazil. New Caledonia is falling as it depletes its laterites.';
+  prSeen[prY]=1;if(prSeen['2023']&&prSeen['2025'])award('pr',3,'Compared 2023 with 2025');}
+$('#pr23').addEventListener('click',function(){prY='2023';this.setAttribute('aria-pressed','true');$('#pr25').setAttribute('aria-pressed','false');prDraw();});
+$('#pr25').addEventListener('click',function(){prY='2025';this.setAttribute('aria-pressed','true');$('#pr23').setAttribute('aria-pressed','false');prDraw();});
+prDraw();
+
+/* minerals */
+var MN=['Pyrrhotite','Pentlandite','Chalcopyrite','Millerite','Sperrylite'];
+mcCards($('#mnCards'),[
+ {lbl:'Mineral',q:'The main nickel ore mineral, in grains and along fractures in the bulk sulphide',o:['Pyrrhotite','Pentlandite','Pyrite'],a:1,e:'Pentlandite, (Fe,Ni)₉S₈.'},
+ {lbl:'Mineral',q:'The bulk of the ore; it oxidises fast and can set waste piles alight',o:['Pyrrhotite','Chalcopyrite','Magnetite'],a:0,e:'Pyrrhotite, Fe₁₋ₓS. Its oxidation is exothermic.'},
+ {lbl:'Mineral',q:'The only common copper mineral in these ores',o:['Bornite','Chalcopyrite','Covellite'],a:1,e:'Chalcopyrite, CuFeS₂.'},
+ {lbl:'Mineral',q:'NiS, a minor mineral of the supergene zone',o:['Millerite','Cooperite','Sperrylite'],a:0,e:'Millerite.'},
+ {lbl:'Mineral',q:'PtAs₂, a platinum group mineral; Norilsk has the finest crystals',o:['Cooperite','Sperrylite','Pentlandite'],a:1,e:'Sperrylite.'}
+],'mn',2,function(r,n){$('#mnScore').textContent=r+' / '+n;});
+
+/* lava river */
+var lc=$('#lvCanvas'),lx=lc.getContext('2d'),LW=640,LH=300,lk=1,lV=20,lOn=false,lT=0,lP=[],lD=[],lSeen={},lErode=0;
+function lvReset(){lP=[];lD=[];lT=0;lErode=0;for(var i=0;i<90;i++)lP.push({x:Math.random()*LW,y:70+Math.random()*120});}
+function lvBase(x){return 200+lErode*40*Math.exp(-Math.pow((x-320)/110,2));}
+function lvDraw(){var c=lx;c.clearRect(0,0,LW,LH);c.fillStyle='#163245';c.fillRect(0,0,LW,60);
+  c.fillStyle='#2F6B3A';c.fillRect(0,200,LW,LH-200);c.fillStyle='#C9B048';c.beginPath();c.moveTo(0,200);for(var x=0;x<=LW;x+=8)c.lineTo(x,lvBase(x));c.lineTo(LW,200);c.closePath();c.fill();
+  c.fillStyle='#C9B048';c.globalAlpha=1-Math.min(1,lErode);c.fillRect(0,200,LW,10);c.globalAlpha=1;
+  var g=c.createLinearGradient(0,60,0,200);g.addColorStop(0,'#E07A3E');g.addColorStop(1,'#B8452A');c.fillStyle=g;c.beginPath();c.moveTo(0,60);c.lineTo(LW,60);c.lineTo(LW,200);for(var x2=LW;x2>=0;x2-=8)c.lineTo(x2,lvBase(x2));c.closePath();c.fill();
+  c.fillStyle='rgba(255,220,170,.5)';lP.forEach(function(p){c.fillRect(p.x,p.y,6,1.4);});
+  lD.forEach(function(d){c.fillStyle='#D4A83A';c.beginPath();c.arc(d.x,d.y,d.r,0,Math.PI*2);c.fill();});
+  c.fillStyle='rgba(255,255,255,.88)';c.font=fontPx(lk);c.fillText('komatiite lava, about 1400 °C  →',14,80);c.fillText('sulphidic sediment',14,216);c.fillText('footwall basalt',14,280);c.fillText('seawater',14,30);}
+function lvStep(){lT++;var v=.4+lV/100*5;lP.forEach(function(p){p.x+=v*(1+Math.sin(p.y)*.2);if(p.x>LW)p.x-=LW;});lErode=Math.min(1,lErode+.0025);
+  if(lD.length<70&&Math.random()<.25*lErode)lD.push({x:200+Math.random()*240,y:lvBase(320)-6,r:2+Math.random()*1.5,vy:0});
+  lD.forEach(function(d){var turb=lV/100;d.x+=v*.6*(.3+turb);if(d.x>LW-10)d.x=20+Math.random()*60;
+    if(turb<.45){var b=lvBase(d.x)-d.r-2;d.vy+=.03*(1-turb*2);d.y=Math.min(b,d.y+d.vy);if(d.y>=b){d.x-=v*.6*(.3+turb);}}
+    else{d.y+=(Math.random()-.5)*3-(d.y-130)*.02;}});}
+function lvSay(){var q=lV<45;$('#lvVV').textContent=lV<20?'quiet':lV<45?'gentle':lV<75?'fast':'turbulent';$('#lvTag').textContent=q?'massive sulphide forming':'disseminated sulphide';
+  $('#lvSay').innerHTML=q?'Quiet flow: the lava erodes the sulphidic sediment, and the sulphide droplets have time to sink and pool in the eroded embayment at the base. That’s <b>massive sulphide</b>, the high-grade basal ore.':'Fast, turbulent flow: the droplets are kept stirred through the lava and never settle. That makes <b>disseminated sulphide</b> through the channel instead.';
+  lSeen[q?'m':'d']=1;if(lSeen.m&&lSeen.d)award('lv',5,'Made massive and disseminated ore');}
+function lvLoop(){if(!lOn)return;lvStep();lvDraw();requestAnimationFrame(lvLoop);}
+$('#lvV').addEventListener('input',function(){lV=+this.value;lvSay();if(reduce){for(var i=0;i<300;i++)lvStep();lvDraw();}});
+$('#lvReset').addEventListener('click',function(){lvReset();if(reduce){for(var i=0;i<400;i++)lvStep();lvDraw();}});
+lvReset();lvSay();
+onVisible(lc,function(v){if(reduce){for(var i=0;i<400;i++)lvStep();lvDraw();return;}if(v&&!lOn){lOn=true;requestAnimationFrame(lvLoop);}else if(!v)lOn=false;});
+
+/* drill the ore shoot */
+var dss=$('#dsSvg'),ds={};
+function dsGeo(x){var off=x>ds.fx?ds.off:0;return 200+off+(x-320)*.12;}
+function dsNew(){var r=Math.random;ds={cx:180+r()*280,fx:0,off:46,dyke:0,holes:[],left:6,done:false,hitM:false};ds.fx=ds.cx+(r()<.5?-1:1)*(40+r()*40);ds.dyke=ds.cx+(r()<.5?-70:70);dsDraw();$('#dsSay').textContent='';$('#dsAsk').textContent='A Type 1 ore shoot sits on the footwall contact somewhere along this section, and a fault and a later dyke have been through. Tap the surface to drill a vertical hole. Six holes.';}
+function zoneAt(x){var cx=ds.cx,half=55;var ox=x>ds.fx&&ds.cx<=ds.fx?0:0;var d=Math.abs(x-cx);if(d>half)return null;if(Math.abs(x-ds.dyke)<12)return 'dyke';var t=1-d/half;return {m:t>.55?2:0,mat:t>.25?1.2+t*2:0,dis:1+t*3};}
+function dsDraw(){dss.innerHTML='';el('rect',{x:0,y:0,width:640,height:320,fill:'var(--paper)'},dss);el('rect',{x:0,y:0,width:640,height:16,fill:'#C9A46A'},dss);
+  var top='M0 '+dsGeo(0);for(var x=0;x<=640;x+=8){if(Math.abs(x-ds.fx)<8)top+=' L'+ds.fx+' '+dsGeo(ds.fx-1)+' L'+ds.fx+' '+dsGeo(ds.fx+1);top+=' L'+x+' '+dsGeo(x);}
+  el('path',{d:top+' L640 320 L0 320 Z',fill:'#5E8A5A',opacity:.85},dss);el('path',{d:top+' L640 16 L0 16 Z',fill:'#9C8E78',opacity:.55},dss);
+  el('line',{x1:ds.fx,y1:16,x2:ds.fx+30,y2:320,stroke:'#2A2424','stroke-width':2.5,'stroke-dasharray':'8 4'},dss);
+  el('rect',{x:ds.dyke-10,y:16,width:20,height:304,fill:'#7A6A86',opacity:.75},dss);
+  txt(dss,8,dsGeo(8)-8,'komatiite (hanging wall)',{'font-size':11,fill:'#2A2424'});txt(dss,8,dsGeo(8)+18,'footwall basalt',{'font-size':11,fill:'#fff'});txt(dss,ds.dyke-14,34,'dyke',{'font-size':11,fill:'#fff'});txt(dss,ds.fx+6,34,'fault',{'font-size':11,fill:'#2A2424'});
+  if(ds.done){var x0=ds.cx-55,x1=ds.cx+55;var p='';for(var xx=x0;xx<=x1;xx+=5){if(Math.abs(xx-ds.dyke)<10)continue;var z=zoneAt(xx);if(!z)continue;var y=dsGeo(xx);el('rect',{x:xx,y:y-z.dis*2-z.mat*2,width:5,height:z.dis*2+z.mat*2+z.m*2,fill:z.m?'#D4A83A':z.mat?'#B08A3A':'#8C7A4A'},dss);}}
+  ds.holes.forEach(function(h){var y=dsGeo(h.x);el('line',{x1:h.x,y1:16,x2:h.x,y2:y+30,stroke:'var(--ink)','stroke-width':2},dss);if(h.lab)txt(dss,h.x+4,y-6,h.lab,{'font-size':11,fill:'var(--ink)'});});
+  $('#dsLeft').textContent=ds.done?'section closed':ds.left+' holes left';}
+dss.addEventListener('click',function(e){if(ds.done||ds.left<=0)return;var p=dss.createSVGPoint();p.x=e.clientX;p.y=e.clientY;p=p.matrixTransform(dss.getScreenCTM().inverse());var x=Math.max(8,Math.min(632,p.x));
+  var z=zoneAt(x),lab,say;
+  if(z==='dyke'){lab='dyke';say='Your hole went through the later <b>dyke</b>: no sulphide, the dyke has cut out the ore here.';}
+  else if(!z){lab='NSA';say='No significant assay: just the contact, no sulphide.';}
+  else if(z.m){var th=(1.5+Math.random()*1.5).toFixed(1),gr=(4+Math.random()*10).toFixed(2);lab=th+' m @ '+gr+'% Ni';say='<b>Massive sulphide at the base!</b> '+th+' m at '+gr+'% Ni, with matrix and disseminated ore above it.';ds.hitM=true;}
+  else if(z.mat){var t2=(2+Math.random()*4).toFixed(1),g2=(1+Math.random()*3).toFixed(2);lab=t2+' m @ '+g2+'% Ni';say='Matrix sulphide: '+t2+' m at '+g2+'% Ni. You’re on the shoot; the massive base should be close.';}
+  else{var t3=(3+Math.random()*10).toFixed(1),g3=(.8+Math.random()*.8).toFixed(2);lab=t3+' m @ '+g3+'% Ni';say='Disseminated sulphide: '+t3+' m at '+g3+'% Ni, the edge of the shoot.';}
+  if(x>ds.fx&&ds.cx<ds.fx&&Math.abs(x-ds.cx)<70)say+=' Note the contact is lower on this side of the fault.';
+  ds.holes.push({x:x,lab:lab});ds.left--;SND.play('tick');
+  if(ds.hitM&&!ds.done){ds.done=true;COMBO.hit();award('ds-hit',COMBO.pts(6),'Hit massive nickel sulphide'+COMBO.tag());FX.burst($('#dsNew'));say+=' Section closed: you found the high-grade base.';}
+  else if(!ds.left){ds.done=true;award('ds-try',2,'Drilled a full section');say+=' Out of holes. Here’s where the shoot was.';}
+  dsDraw();$('#dsSay').innerHTML=say;});
+$('#dsNew').addEventListener('click',dsNew);
+dsNew();
+
+/* Type 1 or Type 2 */
+var TY=['Type 1 (Kambalda)','Type 2 (Mount Keith)'];
+mcCards($('#tyCards'),[
+ {lbl:'Feature',q:'Ribbon-like body 1 to 5 m thick and 50 to 100 m wide',o:TY,a:0,e:'Kambalda-style ore shoots are thin ribbons.'},
+ {lbl:'Feature',q:'A cumulate unit up to 800 m thick and 1 to 3 km wide',o:TY,a:1,e:'Mount Keith is a huge thickened cumulate body.'},
+ {lbl:'Feature',q:'Basal massive sulphide with 2 to 20% Ni',o:TY,a:0,e:'The massive base of a Kambalda shoot.'},
+ {lbl:'Feature',q:'1 to 5% disseminated sulphide in olivine cumulate, about 0.6% Ni',o:TY,a:1,e:'Low grade, but enormous and open-pittable.'},
+ {lbl:'Feature',q:'Lava channel with thermal erosion into the footwall and sulphidic sediments',o:TY,a:0,e:'Classic Kambalda setting.'},
+ {lbl:'Feature',q:'Laterite ore mined first after a long weathering history',o:TY,a:1,e:'Mount Keith started on its laterite cap.'}
+],'ty',2,function(r,n){$('#tyScore').textContent=r+' / '+n;});
+
+GEO.finish(function(){nk=fitCanvas(nc,nx,NW,NH);nkDraw();sk=fitCanvas(sc,sx,SW,SH);sgDraw();lk=fitCanvas(lc,lx,LW,LH);lvDraw();});
+})();
+</script>
+</body>
+</html>
