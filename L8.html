@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 8 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L7.html">&larr; Lecture 7</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 8 · T3 2026</div>
+  <h1>A little sulphide, a lot of magma</h1>
+  <p class="lede">Lecture 7 showed how nickel gets into a sulphide liquid. This one asks how rich that liquid gets, and follows magmatic ore through its most spectacular homes: a meteorite crater in Canada, flood basalts in Siberia, a layered intrusion 400 km across in South Africa, chromite pods in old oceanic mantle near Tumut, and the weathered tropical soils that now supply most of the world’s nickel. Start with the number that controls the grade.</p>
+
+  <div class="lab" id="rfLab">
+    <h4><span>The R-factor mixer</span><b id="rfTag"></b></h4>
+    <svg class="grid-svg" id="rfSvg" viewBox="0 0 640 260" role="img" aria-label="A tank of silicate magma with a pool of sulphide liquid; the sulphide gets smaller and richer as R increases"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="rfR">R-factor (magma : sulphide) <b id="rfRV">100</b></label><input type="range" id="rfR" min="0" max="100" step="1" value="40"></div></div>
+    <div class="chips" style="margin-top:.4rem"><button class="chip" type="button" id="rfB" aria-pressed="true">Basaltic magma</button><button class="chip" type="button" id="rfU" aria-pressed="false">Ultramafic magma</button></div>
+    <div class="readout">
+      <div><small>Sulphide per 1000 t magma</small><b id="rfAmt">?</b></div>
+      <div><small>Ni in the sulphide</small><b id="rfNi">?</b></div>
+      <div><small>Verdict</small><b id="rfVer">?</b></div>
+    </div>
+    <p class="say" id="rfSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model: uses the standard R-factor mass balance with assumed round-number sulphide-silicate partition coefficients for Ni (500 in basalt, 100 in ultramafic magma), starting Ni from slide 19 (basalt about 300 ppm, ultramafic about 3000 ppm), and a ceiling of about 30 wt% Ni, near pure nickel-rich sulphide.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#rfactor">The R-factor</a></li>
+      <li><a href="#intrusions">Mafic intrusion-hosted deposits</a></li>
+      <li><a href="#sudbury">Sudbury: ore from an impact</a></li>
+      <li><a href="#norilsk">Norilsk, Jinchuan, Monchegorsk</a></li>
+      <li><a href="#genesis">The genetic model and the economics</a></li>
+      <li><a href="#pge">Platinum group elements</a></li>
+      <li><a href="#bushveld">The Bushveld Complex</a></li>
+      <li><a href="#oxides">Chromium, vanadium and titanium</a></li>
+      <li><a href="#podiform">Podiform chromitites</a></li>
+      <li><a href="#phos">Phosphorus: Khibiny</a></li>
+      <li><a href="#laterite">Nickel laterites</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="rfactor" data-log="R-factor"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>The R-factor: how rich the sulphide gets</h2>
+  <p>The <button class="term" data-t="R-factor">R-factor</button> measures how much silicate magma has equilibrated with a given amount of segregated sulphide melt. A <strong>large</strong> R-factor means only a little sulphide melt has met a lot of magma, so that little sulphide has scavenged a large concentration of nickel, copper and PGE. A <strong>small</strong> R-factor means lots of sulphide melt, each part of it holding only a small concentration. <span class="srcs">slide 1</span></p>
+  <p>So for magmatic nickel sulphide deposits you want a large R-factor: all the available nickel and copper partitioned into a small volume of sulphide. For nickel laterites you want the opposite, a small R-factor, with the nickel left in the silicate (in olivine), which weathering later concentrates. <span class="srcs">slide 2</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <p>The starting magma matters too: basalts carry about 100 to 500 ppm Ni, ultramafic magmas about 2000 to 4000 ppm. Run the mixer at the top with both. <span class="srcs">slide 19</span></p>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="intrusions" data-log="Intrusions"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 26 m</span></div>
+  <h2>Mafic intrusion-hosted deposits</h2>
+  <p>Sudbury, Norilsk, Voisey’s Bay and Jinchuan are intrusion-hosted. Ore sits in lenticular irregularities at the lower gabbro-wall rock contact (the contaminated zones), in stratiform zones within layered gabbro, and in irregular offshoots and vein swarms into the intruded rocks. It is zoned: a lower zone of massive and brecciated sulphide (over 70% sulphide), overlain by network sulphide (40 to 70%) and then disseminated sulphide (15 to 40%). The sulphide is about 70% pyrrhotite, 15% pentlandite and 15% chalcopyrite. <span class="srcs">slide 3</span></p>
+  <p>In massive ore, coarse pentlandite forms patches and veins in pyrrhotite, consistent with cooling from an originally homogeneous Fe-Ni-S liquid. Disseminated ore is trapped droplets of that liquid. Metamorphism has barely touched these deposits, but local hydrothermal reworking happens, especially of PGE along faults. Where an arsenic-rich granite intrudes, platinum combines with the arsenic, giving secondary zones of platinum arsenide (sperrylite). <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <p>These systems tap the mantle through deep structures in thick crust. Magma rises through deep, mid-crustal and shallow chambers, sills and dykes, and on the way it is <strong>contaminated</strong> by crustal rocks: silica, sulphur and Fe³⁺, plus carbon from coal or sulphate from evaporites. That triggers early sulphide saturation. Gabbroic variants have high Cu/Ni (Sudbury, Norilsk), ultrabasic ones low, and further fractionation of the sulphide liquid itself pushes Cu/Ni higher further from the main ore. <span class="srcs">slide 4</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="lab" id="plLab">
+    <h4><span>How deep has erosion cut?</span><b id="plTag"></b></h4>
+    <svg class="grid-svg" id="plSvg" viewBox="0 0 640 340" role="img" aria-label="Magma plumbing system from a deep chamber to lavas at the surface, with an erosion level you can lower"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="plE">Erosion <b id="plEV">none</b></label><input type="range" id="plE" min="0" max="100" step="1" value="0"></div></div>
+    <p class="say" id="plSay"></p>
+  </div>
+  <div class="lab">
+    <h4><span>What does each contaminant do?</span><b id="ctScore">0 / 4</b></h4>
+    <div class="cards" id="ctCards"></div>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="sudbury" data-log="Sudbury"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">26 to 40 m</span></div>
+  <h2>Sudbury: ore from an impact</h2>
+  <p>Sudbury, in Canada, is an unusual mafic body in a deformed basin shape, and the best explanation is a meteorite impact. The impact struck a region already being pulled apart, so the fractures went all the way down to the mantle, and mantle melt rose up through them. The Sudbury Igneous Complex (SIC) is the result: norite at the base with sulphides disseminated through it and in massive lenses, a contaminated sublayer at its margin, granophyre (a fine-grained granitic rock) on top, and the Onaping tuffs, a fallback breccia of impact debris, overlying it all. There isn’t one deposit but many, all around the rim. <span class="srcs">slides 5 and 6</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a hand specimen from Sudbury</span><span class="srcs">slide 7</span></div>
+    <img loading="lazy" decoding="async" src="img/L8/slide007_2.jpg" alt="A hand-held rock with fine, fan-like striations across its surface">
+    <p class="ask">The striations fan across the surface. What kind of structure is this, and what does it tell you about Sudbury?</p>
+    <details data-obs="shatter"><summary>Show the reasoning</summary><div class="seen"><p>This looks like a <b>shatter cone</b>: striated, cone-shaped fracture surfaces made by the shock wave of a high-velocity impact. Ian pointed to the beautiful shatter cones around Sudbury as part of the evidence that the basin is an impact structure. Ordinary igneous or tectonic processes don’t make them.</p></div></details>
+  </div>
+  <div class="lab" id="sicLab">
+    <h4><span>Build the Sudbury Igneous Complex</span><b id="sicStep">step 1 of 5</b></h4>
+    <svg class="grid-svg" id="sicSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of the Sudbury impact basin developing through five steps"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="sicBack">Back</button><button class="btn" type="button" id="sicNext">Next step</button></div>
+    <p class="say" id="sicSay"></p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L8/slide010_3.jpg" alt="Map of the Sudbury structure showing the melt rocks inside the rim of the impact crater and radial offset dykes named Worthington, Copper Cliff, Frood, Manchester, Foy and others">
+    <figcaption>The offset dykes radiate from the impact crater like spokes: Worthington, Copper Cliff, Frood, Foy, Hess, Manchester and others. Much of the ore is in these offsets and the sublayer. Copper Cliff, furthest out, is the most copper-rich. <span class="srcs">slide 10</span> <span class="srcs">lecture recording, 29 Sep</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="norilsk" data-log="Norilsk"><div class="wrap">
+  <div class="kicker">Case studies <span class="depth">40 to 54 m</span></div>
+  <h2>Norilsk, Jinchuan and Monchegorsk</h2>
+  <p><strong>Norilsk-Talnakh</strong>, in northern Siberia, belongs to the Permian-Triassic Siberian flood basalts. Huge lithospheric faults let magma through to sills like the Talnakh intrusion, which carries the biggest deposits, with the lavas above them. The ore field is about 100 by 50 km, with more deposits beyond it: they will be mining and exploring there for generations. Massive sulphide sits at the base of the intrusions and into the footwall; disseminated sulphide in taxitic (irregular, mish-mash textured) gabbro-dolerite. The key ingredient is contamination: the sills intruded <strong>evaporites</strong>, whose sulphate supplied sulphur, plus silica and Fe³⁺ from the country rocks. Because the whole system is preserved, it can be mined to great depth. <span class="srcs">slides 11 to 13</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <p><strong>Jinchuan</strong>, on the southern margin of the Sino-Korean craton in a Proterozoic incipient oceanic rift, isn’t one intrusion but a series of pipe-like ultramafic bodies, with ore at their bases, and supplies most of China’s nickel. <span class="srcs">slide 14</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Monchegorsk, Arctic Russia</span><span class="srcs">slides 15 and 16</span></div>
+    <div class="quad">
+      <div><img loading="lazy" decoding="async" src="img/L8/slide015_1.jpg" alt="Ian Graham standing on a hill above a barren, smoky industrial landscape with a smelter"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide016_1.jpg" alt="Grey outcrop with pale veins and a hammer"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide016_2.jpg" alt="Pale weathered rock surface studded with dark, protruding crystals and a hammer"><div class="cap">C</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide016_3.jpg" alt="A brassy, metallic boulder with a hammer"><div class="cap">D</div></div>
+    </div>
+    <p class="ask">Ian is in A, above a town where nickel has been smelted since the 1930s. In C the dark crystals stand out from a pale surface. Why, and what is D?</p>
+    <details data-obs="monche"><summary>Show the reasoning</summary><div class="seen"><p>Decades of smelting have made Monchegorsk one of the most polluted places Ian has been: little vegetation, sulphuric acid in the air, and a freshwater lake about 50 km away with a pH of 3. The upside for a geologist is perfect outcrop, because nothing grows on it. In C, acid has dissolved the <b>plagioclase</b> along grain boundaries, so the resistant <b>orthopyroxene</b> crystals of the gabbronorite stand proud. D is <b>massive sulphide ore</b>, mainly pyrrhotite with pentlandite and chalcopyrite.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="genesis" data-log="Genesis"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">54 to 68 m</span></div>
+  <h2>The genetic model and the economics</h2>
+  <p>Ni sulphide deposits are <strong>magmatic</strong>: they crystallise directly from a silicate melt with no hydrothermal stage. The silicate melt becomes saturated in sulphur, and immiscible sulphide droplets form, when its temperature drops, when silica rises (contamination by silica-rich crust) or when sulphur rises (contamination by crustal sulphur). How much Ni, Cu and PGE the droplets get depends on the magma’s starting metal content, the partition coefficient between the two melts, and the proportion of sulphide to silicate and how well they mix (the R-factor). The droplets segregate to the base of the conduit or chamber because sulphide liquid (SG about 4.4) is far denser than silicate liquid (about 3.3), helped by flow separation. Then the sulphide liquid crystallises, and can fractionate into Cu-rich and Ni-rich parts. <span class="srcs">slides 18 and 19</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="lab" id="gnLab">
+    <h4><span>Put the ore-forming steps in order</span><b id="gnTag">0 / 5</b></h4>
+    <div class="cards" id="gnBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="gnSay">Tap the steps in the order they happen.</p>
+    <div class="row"><button class="btn ghost" type="button" id="gnReset">Shuffle again</button></div>
+  </div>
+  <p>Mineralogy drives the economics. Late exsolution of pentlandite from pyrrhotite helps processing, because it makes coarser pentlandite. Metamorphism can partly replace iron sulphides by magnetite in matrix ores. Deep oxidation replaces pyrrhotite and pentlandite with <button class="term" data-t="violarite">violarite</button> (Ni₂FeS₄). Fluids carrying As and CO₂ come in along faults and shears. In the mine, complex shapes, especially in extrusive deposits, mean high costs to define and extract ore, and pyrrhotite must be managed because it oxidises so fast in waste piles. <span class="srcs">slide 17</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>Intrusion-hosted zoning: massive and brecciated (over 70% sulphide), network (40 to 70%), disseminated (15 to 40%).</li><li>Sulphide is about 70% pyrrhotite, 15% pentlandite, 15% chalcopyrite.</li><li>Sulphide liquid SG about 4.4 vs silicate liquid about 3.3.</li><li>Starting Ni: basalt 100 to 500 ppm; ultramafic 2000 to 4000 ppm.</li></ul><span class="srcs">slides 3 and 19</span></div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="pge" data-log="PGE"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">68 to 82 m</span></div>
+  <h2>Platinum group elements</h2>
+  <p>The six PGEs split into two groups that behave differently. The <strong>PPGE</strong> (platinum, palladium, rhodium) partition strongly into sulphide. The <strong>IPGE</strong> (iridium, osmium, ruthenium) tend to stay behind in the host rock. Platinum matters well beyond jewellery: much of it goes into catalysts and engines. South Africa produces about five times as much platinum as anyone else, which is why the world kept buying from it even during apartheid; Russia leads palladium, almost all from Norilsk. <span class="srcs">slides 20 to 22</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <p>Primary PGE deposits come in several styles: orthomagmatic, from magma mixing in layered intrusions (the Bushveld’s UG2, Merensky Reef and Platreef; the J-M Reef of Stillwater; the Great Dyke of Zimbabwe); contamination-related, as by-products (Norilsk, Sudbury, Kambalda, Thompson); and a rare deuteric style, the <strong>hortonolite</strong> pipes of the Bushveld (Onverwacht, Mooihoek, Driekop), iron-rich olivine pipes that were the first hard-rock platinum ever mined, in the early 1900s. <span class="srcs">slide 23</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="lab" id="pgLab">
+    <h4><span>The main primary PGE deposits</span><b id="pgCount">tap 3</b></h4>
+    <svg class="grid-svg" id="pgSvg" viewBox="0 0 640 340" role="img" aria-label="Plot of deposit size against total PGE grade, with bubbles sized by contained PGE"></svg>
+    <div class="readout"><div><small>Deposit</small><b id="pgN">tap a bubble</b></div><div><small>Size · PGE grade</small><b id="pgG">?</b></div><div><small>Contained PGE</small><b id="pgC">?</b></div></div>
+    <p class="say" id="pgSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Data from slide 24; contained PGE = tonnes × grade, worked out here.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L8/slide025_2.jpg" alt="Electron microscope image of a rounded metallic grain about 300 micrometres long">
+    <figcaption>A platinum-iron alloy grain from the Bushveld, about 300 µm across. In the UG2, the PGE probably sit as alloys attached to the chromite. <span class="srcs">slide 25</span> <span class="srcs">lecture recording, 29 Sep</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="bushveld" data-log="Bushveld"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">82 to 96 m</span></div>
+  <h2>The Bushveld Complex</h2>
+  <p>The Bushveld, north of Johannesburg, is a huge layered intrusion about 400 km across, in western, far western, eastern and northern limbs. Its Merensky Reef and UG2 chromitite are the world’s major source of platinum and rhodium, and it also holds world-class magnetite, chromite, vanadium, titanium and phosphorus deposits, while its later granites supply South Africa’s tin. Heavy elements, sulphide droplets and oxide minerals settled out during its early cooling. It intruded the carbonate-rich Transvaal Supergroup, a source of contamination. <span class="srcs">slides 25 and 26</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L8/slide026_1.jpg" alt="Geological map of the Bushveld Complex showing its limbs around Pretoria and mining centres">
+    <figcaption>The Bushveld limbs. Main mining centres include Brits, Rustenburg and Impala in the west, Burgersfort and Steelpoort in the east, and Mokopane in the north, where the Platreef is mined. <span class="srcs">slide 26</span> <span class="srcs">lecture recording, 29 Sep</span></figcaption>
+  </figure>
+  <p>The intrusion is layered from a lower zone, through the critical zone (with the LG6 and UG2 chromitites and the Merensky Reef near its top), into the main zone, about 2 km of near-identical gabbronorite (Ian has seen it in core: the same rock for 2 km), then the upper zone and a roof of granophyre and felsite. The reefs are only a few metres thick but run consistently for over 200 km. Each fresh batch of magma deposits dense chromite at the base and lets plagioclase float to form anorthosite above: hence the rhythmic layering. A hot new batch can thermally erode the layer below, making the dips called <strong>potholes</strong> in the Merensky Reef. <span class="srcs">slides 27 and 28</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="lab" id="bvLab">
+    <h4><span>Build a layered intrusion</span><b id="bvTag">0 batches</b></h4>
+    <svg class="grid-svg" id="bvSvg" viewBox="0 0 640 320" role="img" aria-label="Magma chamber in which each new batch lays down chromitite and anorthosite layers"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="bvAdd">Inject a new batch</button><button class="btn ghost" type="button" id="bvPot">Hot batch: erode a pothole</button><button class="btn ghost" type="button" id="bvClear">Start again</button></div>
+    <p class="say" id="bvSay">Inject a batch of magma and watch what settles and what floats.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · layered rocks</span><span class="srcs">slides 37 and 38</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L8/slide037_1.jpg" alt="Outcrop of alternating black and white layers"><div class="cap">A · Bushveld</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide038_1.jpg" alt="Boulder with parallel dark and grey bands and a hammer"><div class="cap">B · Sopche, Monchegorsk</div></div>
+    </div>
+    <p class="ask">Name the black and the white layers in A, and explain why they alternate.</p>
+    <details data-obs="layers"><summary>Show the reasoning</summary><div class="seen"><p>Black is <b>chromitite</b>, white is <b>anorthosite</b>. Each new batch of magma crystallised chromite, which sank, and plagioclase, which floated: a chromitite layer, then anorthosite, then the next batch. It looks like sedimentary bedding, and the process is just as physical. B is layered chromitite at Sopche, more like a layered intrusion than a pod.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="oxides" data-log="Cr-V-Ti"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">96 to 108 m</span></div>
+  <h2>Chromium, vanadium and titanium</h2>
+  <p>Chromium is in chromite, whose chemistry is complex. Vanadium and titanium are locked in magnetite and ilmenite. Economic V and Ti deposits are mostly distinct oxide-rich layers, up to several metres thick, in large layered mafic-ultramafic intrusions; titanium also comes from mineral sands, and vanadium from some sedimentary uranium deposits. The oxide layers need an oxidising magma, the opposite of the reduced conditions for sulphides. Metallurgical-grade chromium comes from <strong>podiform chromitites</strong> in the upper mantle part of ophiolites; the Bushveld’s layered chromitites give chemical-grade chromium. <span class="srcs">slide 29</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <p>Making an economic oxide deposit takes a chain of conditions: a high initial concentration (or constant replenishment) of Cr, Ti and V; early crystallisation of chromite, magnetite and ilmenite; a way to concentrate them (gravity settling, segregation, or crystals rolling down a tilted chamber floor); stable temperature, pressure and oxidation state long enough to build thick layers; a way to remove the lighter minerals, such as floating plagioclase; and preservation. <span class="srcs">slide 40</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="lab" id="prLab">
+    <h4><span>Who produces what</span><b id="prTag"></b></h4>
+    <div class="chips" id="prC" role="group" aria-label="Commodity"></div>
+    <svg class="grid-svg" id="prSvg" viewBox="0 0 640 300" role="img" aria-label="Bar chart of production by country for the chosen commodity"></svg>
+    <p class="say" id="prSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">USGS figures from slides 21, 22 and 31 to 35, latest year shown, with the earliest year as a faint bar. Units as on the slides; USGS reports ilmenite and rutile in thousand tonnes and vanadium in tonnes.</p>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="podiform" data-log="Podiform"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">108 to 122 m</span></div>
+  <h2>Podiform chromitites</h2>
+  <p>Podiform chromitites sit in the upper mantle, generally near the crust-mantle boundary of oceanic lithosphere, which is why you find them only in ophiolites. Like everything else in this lecture they are conduits. A basaltic magma flows through a channel in harzburgite and reacts with it, leaving a <strong>rim of dunite</strong> around the channel; chromite crystallises from repeated magma mixing, and because it is denser than the magma it accumulates as a pod. Nodular ore is typical. Turkey, Kazakhstan, India and Albania mine podiform chromite. <span class="srcs">slide 36</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L8/slide036_2.jpg" alt="Diagram of a chromitite pod inside a channel of dunite within harzburgite, scale bar 1 m">
+    <figcaption>Idealised podiform chromitite: a chromitite pod in a dunite envelope, inside harzburgite. <span class="srcs">slide 36</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Coolac Serpentinite Belt, southern NSW</span><span class="srcs">slide 39</span></div>
+    <div class="quad">
+      <div><img loading="lazy" decoding="async" src="img/L8/slide039_1.jpg" alt="Grassy hills of the Coolac Serpentinite Belt"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide039_2.jpg" alt="Weathered rock with parallel raised ribs"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide039_3.jpg" alt="Pale rock with a dark vein-like streak and a red pen"><div class="cap">C</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide039_4.jpg" alt="Pale rock studded with dark rounded nodules and a hammer"><div class="cap">D</div></div>
+    </div>
+    <p class="ask">This is Ian’s PhD area. Name the chromite texture in D, and what C and B show.</p>
+    <details data-obs="coolac"><summary>Show the reasoning</summary><div class="seen"><p><b>D</b> is <b>nodular chromitite</b>: rounded chromite nodules in pale dunite, typical of podiform deposits. <b>C</b> is a vein-like segregation of chromitite. <b>B</b> is primary layering in the host harzburgite, alternating olivine-rich and orthopyroxene-rich layers that weather out as ribs. A is the landscape of the serpentinite belt.</p></div></details>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Coolac is a magmatic ore suite: massive chromitite, disseminated chromite in serpentinised dunite, and chromitite breccia (Quilters specimens).</li><li>Chromite in reflected light: brownish grey, low reflectance, isotropic, curved conchoidal fractures, usually with olivine (Lecture 4).</li></ul><span class="srcs">slide 39; lab specimen sheet</span></div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="phos" data-log="Phosphorus"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">122 to 132 m</span></div>
+  <h2>Phosphorus: Khibiny</h2>
+  <p>Primary phosphorus deposits occur high in the sequence of large layered intrusions, and in large, highly alkaline, reduced syenite intrusions. The ore mineral is <strong>apatite</strong>, in distinctive lenses of magmatic origin. The chemistry around it is exotic: Na-rich pyroxenes and amphiboles, Ti-Zr silicates, REE carbonates, Nb oxides, even K sulphides and very soluble fluorides such as red villiaumite (NaF). Rare earths are important by-products. <span class="srcs">slide 41</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Khibiny massif, Arctic Circle</span><span class="srcs">slide 42</span></div>
+    <div class="quad" style="grid-template-columns:repeat(3,1fr)">
+      <div><img loading="lazy" decoding="async" src="img/L8/slide042_2.jpg" alt="Large grey open-cut mine in treeless hills"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide042_3.jpg" alt="White rock with sprays of dark needle-like crystals"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L8/slide042_4.jpg" alt="Rock with golden-brown radiating bladed crystals labelled astrophyllite"><div class="cap">C</div></div>
+    </div>
+    <p class="ask">A is an apatite mine. Why would the rocks of B and C tell you this is an alkaline intrusion?</p>
+    <details data-obs="khibiny"><summary>Show the reasoning</summary><div class="seen"><p>Khibiny is a circular, highly alkaline intrusion, rich in sodium, potassium, fluorine and CO₂. Its minerals show it: dark sprays of Na-rich pyroxene and amphibole (B) and golden <b>astrophyllite</b> (C), a Ti-bearing alkaline silicate. Ordinary gabbros and granites don’t carry these. The open cut (A) mines apatite, with rare earths as a by-product.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="laterite" data-log="Laterites"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">132 to 144 m</span></div>
+  <h2>Nickel laterites</h2>
+  <p>Laterites now account for most world nickel production and about 70% of nickel resources: Indonesia, the Philippines, New Caledonia, Cuba and Australia, with potential in PNG and across Southeast Asia. The source rocks are ultramafic, mostly serpentinised olivine-rich rock in ophiolites or komatiites, with about 0.2 to 0.4% Ni substituting for Mg in olivine. Intense tropical weathering, present or past, leaches out the magnesium and silica and concentrates the nickel. They were known in the 1950s; only newer processing made them pay. Which process works depends on where the Ni and Co sit: garnierite ore is smelted; clay ore uses pressure acid leaching (PAL), with acid consumption issues; limonitic ore uses a hydrometallurgical ammonia leach. <span class="srcs">slides 44 and 45</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Shevchenko deposit, Urals</span><span class="srcs">slide 44</span></div>
+    <img loading="lazy" decoding="async" src="img/L8/slide044_1.jpg" alt="Orange and brown pit wall of weathered serpentinite labelled with nickel grades of 1.88, 1.80 and 1.47 percent">
+    <p class="ask">The face is weathered serpentinite with grades of 1.47 to 1.88% Ni. What was this rock before weathering, and why is it now ore?</p>
+    <details data-obs="shev"><summary>Show the reasoning</summary><div class="seen"><p>It was an <b>ultramafic rock</b>, serpentinised peridotite or dunite, carrying only about 0.2 to 0.4% Ni in its olivine. Intense weathering stripped out the magnesium and silica and left the nickel behind, concentrated several times over, sorbed onto fine goethite and in clays. No sulphide was ever involved.</p></div></details>
+  </div>
+  <div class="lab" id="ltLab">
+    <h4><span>Dig a laterite profile</span><b id="ltCount">0 / 6 zones</b></h4>
+    <svg class="grid-svg" id="ltSvg" viewBox="0 0 640 360" role="img" aria-label="Nickel laterite profile from ferricrete at the surface to fresh peridotite at the base; tap a depth"></svg>
+    <p class="say" id="ltSay">Tap the profile to sample each zone, from top to bottom.</p>
+  </div>
+  <p>Profiles reach about 100 m. Mature profiles form in drier climates such as Western Australia; immature ones in humid climates such as central Africa. Rejuvenation that lowers the water table lets nickel be enriched further. Deposits are classed by the main Ni carrier: <strong>garnierite</strong> (talc-like Ni silicate: higher Ni, low Co), <strong>smectite</strong> clays (low to moderate Ni), or <strong>oxide</strong> (goethite: low Ni, high Co). <span class="srcs">slides 47, 48 and 50</span> <span class="srcs">lecture recording, 29 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L8/slide047_1.jpg" alt="Three laterite profiles: Western Australian, Brazilian and an immature humid profile, with ferricrete, limonite, saprolite and serpentinised peridotite">
+    <figcaption>Variants of lateritic Ni ore, from mature (dry climate) to immature (humid climate). <span class="srcs">slide 47</span></figcaption>
+  </figure>
+  <div class="keybox"><b>Memorise</b><ul><li>Laterites: most world Ni production, about 70% of resources; source rock 0.2 to 0.4% Ni in olivine.</li><li>Saprolite has the highest Ni; the limonite zone the highest Co.</li><li>Garnierite (smelting), clay (PAL), limonite (ammonia leach).</li></ul><span class="srcs">slides 44 to 50</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 9 turns to sediment-hosted SEDEX deposits and Lecture 10 to VMS, the ancient relatives of the vents in Lecture 6. The laterite profile here is the same weathering story as Lecture 2, aimed at nickel instead of copper.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 8 slides (Magmatic ore deposits part 2, 52 slides; photos and figures tagged by slide) and the Echo360 recording of 29 September 2026. Figures in the slides come from published sources (Natural Resources Canada, Lightfoot et al. 1997, Duzhikov et al. 1992, USGS and others) and are shown only as lecture material. The R-factor mixer uses an assumed partition coefficient; the mixer, the Sudbury steps, the layering builder and the laterite profile are teaching models, not real data.</p>
+  <p><a href="L7.html">&larr; Lecture 7</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know what an R-factor is.'],[35,'Graduate geologist','You can tell norite from granophyre.'],[100,'Project geologist','You can find the offset dykes.'],[180,'Senior geologist','You can log the Bushveld critical zone.'],[270,'Chief geologist','Platinum markets call you first.']];
+var G={
+ "R-factor":"The mass ratio of silicate magma to the sulphide melt it has equilibrated with. High R: a little sulphide, very rich in Ni, Cu and PGE.",
+ "partition coefficient":"How strongly an element prefers one phase over another, here sulphide over silicate melt.",
+ "sulphide saturation":"The point at which a silicate magma can hold no more sulphur, so immiscible sulphide droplets form.",
+ "contamination":"Crustal material (silica, sulphur, Fe³⁺, carbon, sulphate) added to a magma, triggering early sulphide saturation.",
+ "sublayer":"The inclusion-rich, contaminated base of the Sudbury Igneous Complex, rich in sulphide.",
+ "offset dyke":"A radial or concentric dyke of quartz diorite around the Sudbury structure; many host ore.",
+ "granophyre":"A fine-grained granitic rock; the upper part of the Sudbury melt sheet.",
+ "shatter cone":"A striated, cone-shaped fracture formed by the shock wave of a meteorite impact.",
+ "taxitic":"An irregular, mish-mash texture with no particular pattern, typical of Norilsk ore-bearing gabbro-dolerite.",
+ "flood basalt":"An enormous outpouring of basalt lava, like the Permian-Triassic Siberian Traps at Norilsk.",
+ "evaporite":"Salt and sulphate rock left by evaporation; at Norilsk it supplied sulphur.",
+ "violarite":"Ni₂FeS₄, which replaces pyrrhotite and pentlandite during deep oxidation.",
+ "PPGE":"Platinum, palladium and rhodium: they partition into sulphide.",
+ "IPGE":"Iridium, osmium and ruthenium: they tend to stay in the host rock.",
+ "hortonolite":"An iron-rich olivine; hortonolite pipes in the Bushveld were the first hard-rock platinum mined.",
+ "layered intrusion":"A large mafic-ultramafic intrusion built of layers of settled crystals, like the Bushveld.",
+ "Merensky Reef":"A thin, pegmatoidal Bushveld layer rich in PGE, Ni, Cu and Cr.",
+ "UG2":"The Bushveld’s Upper Group 2 chromitite: the world’s largest platinum resource.",
+ "Platreef":"The PGE-bearing pyroxenite of the Bushveld’s northern limb, with interstitial sulphide.",
+ "anorthosite":"A rock made almost entirely of plagioclase; it forms where plagioclase floats in a magma chamber.",
+ "chromitite":"A rock made mostly of chromite.",
+ "pothole":"A dip in a Bushveld reef where a hot new magma batch thermally eroded the layer below.",
+ "podiform chromitite":"A pod of chromitite in the mantle part of an ophiolite, source of metallurgical-grade chromium.",
+ "ophiolite":"A slice of oceanic lithosphere (mantle and crust) thrust onto land.",
+ "nodular chromitite":"Chromitite made of rounded chromite nodules, typical of podiform deposits.",
+ "apatite":"A calcium phosphate mineral; the ore of phosphorus.",
+ "alkaline intrusion":"An intrusion rich in Na and K, often with exotic minerals, REE and apatite.",
+ "nickel laterite":"A nickel deposit formed by intense weathering of ultramafic rock.",
+ "saprolite":"Weathered rock that keeps the parent texture; the highest-Ni zone of a laterite.",
+ "limonite zone":"Fine goethite-rich zone of a laterite; highest cobalt.",
+ "garnierite":"A talc-like Ni-Mg silicate of high-grade laterite ore.",
+ "PAL":"Pressure acid leaching: processing clay-type laterite with acid at high pressure."
+};
+var CP={
+ cp1:{q:'For a magmatic nickel sulphide deposit you want...',o:['a small R-factor: lots of sulphide melt','a large R-factor: a little sulphide melt that has met a lot of magma','no sulphide at all'],a:1,e:'A high R-factor concentrates Ni, Cu and PGE into a small volume of sulphide. Laterites want the opposite.'},
+ cp2:{q:'In an intrusion-hosted deposit, where is the massive sulphide?',o:['At the top of the intrusion','In the lower zone, at the base and contact, overlain by network then disseminated sulphide','Only in the country rock far away'],a:1,e:'Dense sulphide liquid collects at the base: massive (over 70%), then network, then disseminated.'},
+ cp3:{q:'Why is Sudbury unique among Ni-Cu deposits?',o:['It formed in a meteorite impact structure, with mantle melt rising through impact fractures','It is a laterite','It has no sulphide'],a:0,e:'An impact into a rifting region fractured the crust down to the mantle; ore sits in the sublayer and offset dykes.'},
+ cp4:{q:'At Norilsk, what supplied much of the sulphur?',o:['Seawater','Evaporites intruded by the sills','The mantle alone'],a:1,e:'The sills intruded evaporites, whose sulphate added sulphur, along with silica and Fe³⁺ from the country rocks.'},
+ cp5:{q:'Why do massive sulphides collect at the base of an intrusion or flow?',o:['Sulphide liquid (about 4.4) is far denser than silicate liquid (about 3.3)','They crystallise first at the top and fall','Groundwater carries them down'],a:0,e:'Gravity segregation, helped by flow separation.'},
+ cp6:{q:'Which deposit is small but has by far the highest PGE grade on slide 24?',o:['UG2','Stillwater, about 21 g/t','Platreef'],a:1,e:'Stillwater: 323 Mt at 20.7 g/t PGE. UG2 is the giant, 5743 Mt at 5.7 g/t.'},
+ cp7:{q:'What makes the alternating chromitite and anorthosite layers in the Bushveld?',o:['Each new magma batch settles dense chromite at the base while plagioclase floats','Hydrothermal veins','Weathering'],a:0,e:'Repeated batches give rhythmic layering; a hot batch can also erode a pothole.'},
+ cp8:{q:'Where does metallurgical-grade chromium come from?',o:['Podiform chromitites in the mantle part of ophiolites','Laterites','Mineral sands'],a:0,e:'Layered intrusions like the Bushveld give chemical-grade chromium; podiform pods give metallurgical grade.'},
+ cp9:{q:'A chromitite pod sits in a dunite envelope inside harzburgite. Why the dunite?',o:['It is a reaction rim where the basaltic magma in the channel reacted with harzburgite','It is weathered chromite','It came from a later dyke'],a:0,e:'Podiform chromitites are conduits; the magma reacts with the host and leaves dunite around the channel.'},
+ cp10:{q:'What is the ore mineral of primary magmatic phosphorus deposits?',o:['Apatite','Monazite','Chromite'],a:0,e:'Apatite, in lenses within layered intrusions or alkaline syenites like Khibiny.'},
+ cp11:{q:'Which laterite zone has the highest nickel?',o:['Ferricrete at the top','Saprolite, where the parent rock texture is preserved','Fresh peridotite at the base'],a:1,e:'Saprolite has the highest Ni; the limonite zone above has the highest Co.'}
+};
+var ST=[
+ ['Define the R-factor and say why nickel sulphide and nickel laterite deposits want opposite values.','Recall','The ratio of silicate magma to the sulphide melt it equilibrates with. Sulphide deposits want a high R (a small volume of sulphide very rich in Ni, Cu, PGE); laterites want a low R so nickel stays in olivine, to be concentrated later by weathering.'],
+ ['Describe the zoning and mineralogy of an intrusion-hosted Ni-Cu deposit.','Recall','A lower zone of massive and brecciated sulphide (over 70%), then network (40 to 70%) and disseminated (15 to 40%) sulphide. About 70% pyrrhotite, 15% pentlandite, 15% chalcopyrite.'],
+ ['Why does contamination matter so much in these deposits? Give three contaminants.','Apply','It triggers early sulphide saturation (and olivine suppression). Silica-rich crust, crustal sulphur (sulphide-bearing sediments or evaporite sulphate), Fe³⁺, and carbon such as coal.'],
+ ['Outline the Sudbury model from impact to ore.','Think','An impact into a rifting region fractured the crust down to the mantle. A melt sheet formed and quartz diorite was injected into offset dykes. The sheet separated into norite below and granophyre above; dense sulphides segregated into the sublayer embayments and offsets; Cu-rich fractions moved furthest out, as at Copper Cliff.'],
+ ['Why can Norilsk be mined to great depth while Voisey’s Bay exposes a deep chamber?','Think','Norilsk’s whole plumbing system, from sills to the lavas above, is preserved. At Voisey’s Bay erosion has stripped the upper levels, exposing the mid-crustal chamber level.'],
+ ['Distinguish PPGE from IPGE.','Recall','PPGE (Pt, Pd, Rh) partition strongly into sulphide; IPGE (Ir, Os, Ru) tend to stay in the host rock.'],
+ ['Explain rhythmic chromitite-anorthosite layering and potholes in the Bushveld.','Apply','Each new batch of magma crystallises dense chromite that sinks to form chromitite and plagioclase that floats to form anorthosite. A hotter new batch can thermally erode the layer below, making potholes in the Merensky Reef.'],
+ ['List the conditions needed to form an economic Cr-V-Ti oxide deposit.','Recall','High initial Cr, Ti, V or replenishment; early crystallisation of chromite, magnetite, ilmenite; a concentrating process (gravity, segregation, movement); stable T, P and oxidation state for thick layers; removal of light minerals such as floating plagioclase; preservation.'],
+ ['How do podiform chromitites form, and why are they found only in ophiolites?','Think','Basaltic magma flows through channels in mantle harzburgite, reacts with it to leave a dunite rim, and crystallises chromite by magma mixing; the dense chromite accumulates as pods. This happens in the oceanic upper mantle, which is only exposed on land in ophiolites.'],
+ ['Draw or describe a nickel laterite profile and say where Ni and Co peak and how each ore type is processed.','Synthesise','From the top: ferricrete, transported limonite, limonite (highest Co, Ni highest at its base), intermediate zone of quartz and kaolinite, saprolite (highest Ni), fresh peridotite. Garnierite ore is smelted, clay ore is processed by pressure acid leaching, limonitic ore by ammonia leach.']
+];
+GEO.start({key:'geos3141-L8-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* R-factor mixer */
+var rfs=$('#rfSvg'),rfC0=300,rfSeen={};
+function rfR(v){return Math.round(Math.pow(10,1+v/100*4));}
+function rfDraw(){var v=+$('#rfR').value,R=rfR(v),D=rfC0>1000?100:500,cs=rfC0*D*(R+1)/(R+D),ni=Math.min(30,cs/1e4),amt=1000/(R+1);
+  rfs.innerHTML='';el('rect',{x:0,y:0,width:640,height:260,fill:'var(--paper)'},rfs);
+  el('rect',{x:40,y:30,width:300,height:200,rx:12,fill:'#B5472E'},rfs);txt(rfs,52,52,'silicate magma',{'font-size':13,fill:'#FFE3D6'});
+  var h=Math.max(2,Math.min(150,amt*1.2));el('rect',{x:46,y:224-h,width:288,height:h,rx:6,fill:mix('#E9D79A','#C99A1E',Math.min(1,ni/12))},rfs);txt(rfs,52,220-h,'sulphide melt',{'font-size':12,fill:'var(--ink)'});
+  var n=Math.min(60,Math.round(ni*5));for(var i=0;i<n;i++){el('circle',{cx:56+(i*37)%270,cy:224-((i*13)%Math.max(4,h-4))-2,r:2.2,fill:'#1B5E20'},rfs);}
+  el('rect',{x:380,y:40,width:220,height:24,rx:4,fill:'var(--bg)'},rfs);el('rect',{x:380,y:40,width:Math.min(220,ni/15*220),height:24,rx:4,fill:'var(--gold-hi)'},rfs);txt(rfs,380,34,'Ni in the sulphide',{'font-size':12,fill:'var(--muted)'});txt(rfs,386,57,ni.toFixed(1)+' wt% Ni',{'font-size':13,fill:'var(--ink)'});
+  el('rect',{x:380,y:110,width:220,height:24,rx:4,fill:'var(--bg)'},rfs);el('rect',{x:380,y:110,width:Math.min(220,amt/100*220),height:24,rx:4,fill:'var(--slate)'},rfs);txt(rfs,380,104,'amount of sulphide',{'font-size':12,fill:'var(--muted)'});txt(rfs,386,127,amt<1?amt.toFixed(2)+' t':amt.toFixed(0)+' t',{'font-size':13,fill:'var(--ink)'});
+  txt(rfs,380,180,'R = '+R.toLocaleString('en-AU'),{'font-size':18,fill:'var(--ink)'});
+  $('#rfRV').textContent=R.toLocaleString('en-AU');$('#rfAmt').textContent=(amt<1?amt.toFixed(2):amt.toFixed(0))+' t';$('#rfNi').textContent=ni.toFixed(1)+' wt%';
+  var good=ni>=5;$('#rfVer').textContent=good?'rich sulphide ore':ni>=1.5?'weak':'barely mineralised';$('#rfTag').textContent=rfC0>1000?'ultramafic magma':'basaltic magma';
+  $('#rfSay').innerHTML=R<100?'Low R: lots of sulphide, each tonne carrying little nickel. A big, low-grade mess.':R<3000?'Middling R: the sulphide is getting richer as it shrinks.':'High R: a small pool of sulphide has scavenged nickel from a huge volume of magma. That’s the recipe for high-grade sulphide ore.';
+  rfSeen[R<100?'lo':R>3000?'hi':'mid']=1;if(rfSeen.lo&&rfSeen.hi)award('rf',4,'Explored the R-factor');}
+$('#rfR').addEventListener('input',rfDraw);
+$('#rfB').addEventListener('click',function(){rfC0=300;this.setAttribute('aria-pressed','true');$('#rfU').setAttribute('aria-pressed','false');rfDraw();});
+$('#rfU').addEventListener('click',function(){rfC0=3000;this.setAttribute('aria-pressed','true');$('#rfB').setAttribute('aria-pressed','false');rfDraw();});
+rfDraw();
+
+/* plumbing and erosion */
+var pls=$('#plSvg'),plSeen={};
+function plDraw(){var e=+$('#plE').value,cut=20+e*2.8;pls.innerHTML='';el('rect',{x:0,y:0,width:640,height:340,fill:'#D9CDB8'},pls);
+  el('rect',{x:0,y:0,width:640,height:40,fill:'#7B6A8C',opacity:.6},pls);txt(pls,12,26,'lavas',{'font-size':12,fill:'#fff'});
+  el('path',{d:'M300 340 L300 300 Q260 280 300 260 L310 200 Q240 190 320 170 L320 110 Q260 100 330 90 L335 40 L345 40 L340 90 Q400 100 342 110 L342 170 Q420 190 330 200 L330 260 Q380 280 330 300 L330 340 Z',fill:'#C8553A'},pls);
+  el('ellipse',{cx:315,cy:300,rx:120,ry:26,fill:'#B5472E'},pls);txt(pls,440,305,'deep chamber, 30 to 40 km',{'font-size':12,fill:'var(--ink)'});
+  el('ellipse',{cx:320,cy:185,rx:90,ry:18,fill:'#B5472E'},pls);txt(pls,420,190,'mid-crustal chamber',{'font-size':12,fill:'var(--ink)'});
+  el('rect',{x:220,y:100,width:200,height:10,fill:'#B5472E'},pls);el('rect',{x:250,y:72,width:150,height:8,fill:'#B5472E'},pls);txt(pls,430,100,'sills and staging chambers',{'font-size':12,fill:'var(--ink)'});
+  [[300,108],[360,106],[270,78],[330,76]].forEach(function(p){el('ellipse',{cx:p[0],cy:p[1],rx:12,ry:4,fill:'#D4A83A'},pls);});el('ellipse',{cx:320,cy:200,rx:30,ry:6,fill:'#D4A83A'},pls);
+  el('line',{x1:0,y1:60,x2:640,y2:60,stroke:'#2B7A68','stroke-width':2,'stroke-dasharray':'6 4'},pls);txt(pls,12,56,'Norilsk erosional level',{'font-size':11,fill:'#2B7A68'});
+  el('line',{x1:0,y1:170,x2:640,y2:170,stroke:'#2F55A4','stroke-width':2,'stroke-dasharray':'6 4'},pls);txt(pls,12,166,'Voisey’s Bay erosional level',{'font-size':11,fill:'#2F55A4'});
+  el('rect',{x:0,y:0,width:640,height:cut,fill:'#8FB7D6',opacity:.85},pls);txt(pls,560,Math.max(16,cut-6),'eroded',{'font-size':12,fill:'#163245'});
+  var lvl=cut<62?'n':cut>=165&&cut<=200?'v':cut>200?'deep':'mid';$('#plEV').textContent=e===0?'none':Math.round(e)+'%';
+  $('#plTag').textContent=lvl==='n'?'Norilsk level':lvl==='v'?'Voisey’s Bay level':lvl==='deep'?'deep roots':'upper crust';
+  $('#plSay').innerHTML=lvl==='n'?'Almost nothing removed, like Norilsk: lavas, sills and staging chambers all preserved, with sulphide in the sills. Norilsk can be mined to great depth.':lvl==='v'?'Erosion has stripped everything down to the mid-crustal chamber, like Voisey’s Bay: you mine what pooled in and around that chamber.':lvl==='deep'?'Only the deep roots are left. Any sulphide that pooled higher up has gone.':'The upper sills are gone; ore that sat in them has been eroded.';
+  plSeen[lvl]=1;if(plSeen.n&&plSeen.v)award('pl',4,'Compared Norilsk and Voisey’s Bay');}
+$('#plE').addEventListener('input',plDraw);plDraw();
+
+/* contamination cards */
+var CTO=['Adds sulphur','Adds silica: suppresses olivine','Acts as a reductant'];
+mcCards($('#ctCards'),[
+ {lbl:'Contaminant',q:'Evaporite (gypsum, anhydrite) beds below Norilsk',o:CTO,a:0,e:'Sulphate from evaporites added sulphur to the magma.'},
+ {lbl:'Contaminant',q:'Quartz-rich crustal rocks melted into the magma',o:CTO,a:1,e:'Olivine + silica makes pyroxene, so nickel goes to the sulphide.'},
+ {lbl:'Contaminant',q:'Coal measures the magma intrudes through',o:CTO,a:2,e:'Carbon is a strong reductant, pushing the magma to sulphide saturation.'},
+ {lbl:'Contaminant',q:'Sulphide-bearing metasediments in the crust',o:CTO,a:0,e:'Crustal sulphide adds sulphur, as at Kambalda too.'}
+],'ct',2,function(r,n){$('#ctScore').textContent=r+' / '+n;});
+
+/* Sudbury steps */
+var sics=$('#sicSvg'),sicS=1;
+var SICS=['','<b>1. Impact.</b> A large meteorite strikes a region already being pulled apart, and fractures reach right down to the mantle.','<b>2. Melt sheet.</b> A sheet of melt forms in the crater, and quartz diorite is injected into radial and concentric <b>offset dykes</b>. Mantle melt adds to it.','<b>3. Separation.</b> The sheet separates into <b>norite</b> below and <b>granophyre</b> above; sulphide droplets segregate and crustal inclusions are assimilated. Onaping fallback breccia covers it.','<b>4. Accumulation.</b> Dense sulphides sink into the inclusion-rich <b>sublayer</b> embayments at the base and into the offsets.','<b>5. Crystallisation.</b> The sheet crystallises from base and roof. The sulphide liquid differentiates: copper-rich fractions end up furthest out (Copper Cliff). Later faulting and metamorphism modify it.'];
+function sicDraw(){sics.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'var(--paper)'},sics);
+  el('path',{d:'M0 80 L120 80 Q200 250 320 250 Q440 250 520 80 L640 80 L640 300 L0 300 Z',fill:'#B9AE98'},sics);
+  if(sicS===1){el('circle',{cx:320,cy:30,r:14,fill:'#3A3330'},sics);el('line',{x1:380,y1:-10,x2:330,y2:24,stroke:'#C8553A','stroke-width':4},sics);for(var i=0;i<7;i++){el('line',{x1:320+(i-3)*40,y1:250,x2:320+(i-3)*60,y2:300,stroke:'#C8553A','stroke-width':2},sics);}}
+  if(sicS>=2){el('path',{d:'M140 110 Q210 230 320 230 Q430 230 500 110 Z',fill:'#C8553A'},sics);[[200,170,170,300],[440,170,470,300]].forEach(function(d){el('line',{x1:d[0],y1:d[1],x2:d[2],y2:d[3],stroke:'#8C5A50','stroke-width':8},sics);});}
+  if(sicS>=3){el('path',{d:'M140 110 Q170 150 230 160 L410 160 Q470 150 500 110 Z',fill:'#E3C7B8'},sics);txt(sics,280,140,'granophyre',{'font-size':13,fill:'var(--ink)'});txt(sics,290,200,'norite',{'font-size':13,fill:'#FFE3D6'});el('path',{d:'M120 80 Q320 60 520 80 L520 96 Q320 76 120 96 Z',fill:'#7B7368'},sics);txt(sics,250,70,'Onaping fallback breccia',{'font-size':11,fill:'var(--ink)'});}
+  if(sicS>=4){el('path',{d:'M215 215 Q320 245 425 215 L425 225 Q320 255 215 225 Z',fill:'#D4A83A'},sics);[[190,230],[455,230]].forEach(function(p){el('ellipse',{cx:p[0],cy:p[1],rx:8,ry:22,fill:'#D4A83A'},sics);});txt(sics,250,268,'sulphide in the sublayer and offsets',{'font-size':12,fill:'var(--ink)'});}
+  if(sicS>=5){el('ellipse',{cx:478,cy:285,rx:9,ry:12,fill:'#C9783D'},sics);txt(sics,494,290,'Cu-rich, furthest out',{'font-size':12,fill:'#C9783D'});}
+  $('#sicStep').textContent='step '+sicS+' of 5';$('#sicSay').innerHTML=SICS[sicS]+' <span class="srcs">slides 7 to 9</span>';$('#sicBack').disabled=sicS===1;$('#sicNext').disabled=sicS===5;}
+$('#sicNext').addEventListener('click',function(){if(sicS<5){sicS++;sicDraw();SND.play('flip');if(sicS===5)award('sic',4,'Built the Sudbury Igneous Complex');}});
+$('#sicBack').addEventListener('click',function(){if(sicS>1){sicS--;sicDraw();}});
+sicDraw();
+
+/* genetic order game */
+var GN=['Mantle-derived magma rises through the crust along deep structures','Contamination (silica, sulphur, Fe³⁺, carbon) triggers sulphide saturation','Immiscible sulphide droplets scavenge Ni, Cu and PGE from the magma','Dense droplets (about 4.4 vs 3.3) settle to the base of the conduit or chamber','The sulphide liquid crystallises; Cu-rich fractions move further out'];
+var gnNext=0;
+function gnBuild(){var b=$('#gnBox');b.innerHTML='';gnNext=0;$('#gnTag').textContent='0 / 5';$('#gnSay').textContent='Tap the steps in the order they happen.';
+  var order=GN.map(function(s,i){return i;});for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=GN[i];
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===gnNext){gnNext++;c.disabled=true;c.textContent=gnNext+'. '+GN[i];c.style.borderColor='var(--mal)';SND.play('ok');$('#gnTag').textContent=gnNext+' / 5';
+      if(gnNext===5){COMBO.hit();award('gn',COMBO.pts(5),'Genetic model in order'+COMBO.tag());FX.burst(c);$('#gnSay').textContent='That’s the magmatic sulphide model: no hydrothermal stage anywhere in it.';}}
+      else{FX.shake(c);COMBO.miss();$('#gnSay').textContent='Not yet: what has to happen before that?';}});b.appendChild(c);});}
+$('#gnReset').addEventListener('click',gnBuild);gnBuild();
+
+/* PGE deposits */
+var pgs=$('#pgSvg'),pgSeen={};
+var PG=[['UG2 (Bushveld)',5743,5.70],['Merensky (Bushveld)',4210,6.21],['Platreef (Bushveld)',1597,4.12],['Great Dyke (Zimbabwe)',2574,5.42],['Stillwater (USA)',323,20.70],['Norilsk (Russia)',1257,10.03]];
+function px(mt){return 70+(Math.log10(mt)-2.3)/(Math.log10(8000)-2.3)*520;}function py(g){return 300-(Math.log10(g)-Math.log10(3))/(Math.log10(30)-Math.log10(3))*260;}
+function pgDraw(sel){pgs.innerHTML='';el('rect',{x:70,y:40,width:520,height:260,fill:'var(--paper)',stroke:'var(--line)'},pgs);
+  [300,1000,3000].forEach(function(m){txt(pgs,px(m)-14,318,m+' Mt',{'font-size':11,fill:'var(--muted)'});});[4,10,20].forEach(function(g){txt(pgs,24,py(g)+4,g+' g/t',{'font-size':11,fill:'var(--muted)'});});
+  txt(pgs,470,334,'size (Mt, log)',{'font-size':12,fill:'var(--ink)'});txt(pgs,8,30,'total PGE (log)',{'font-size':12,fill:'var(--ink)'});
+  PG.forEach(function(d,i){var c=d[1]*d[2],r=Math.sqrt(c)/12,g=el('g',{style:'cursor:pointer'},pgs);el('circle',{cx:px(d[1]),cy:py(d[2]),r:r,fill:sel===i?'var(--gold-hi)':pgSeen[i]?'var(--mal)':'var(--slate)',opacity:.75,stroke:'var(--ink)'},g);txt(g,px(d[1])-r,py(d[2])-r-4,d[0],{'font-size':11,fill:'var(--ink)'});g.addEventListener('click',function(){pgPick(i);});});}
+function pgPick(i){var d=PG[i];pgSeen[i]=1;pgDraw(i);$('#pgN').textContent=d[0];$('#pgG').textContent=d[1]+' Mt · '+d[2]+' g/t';$('#pgC').textContent=Math.round(d[1]*d[2]).toLocaleString('en-AU')+' t PGE';
+  $('#pgSay').innerHTML=i===0?'UG2 is the world’s biggest platinum resource by far: a fine-grained chromitite with very little sulphide; the PGE probably sit as alloys on the chromite.':i===1?'The Merensky Reef: a coarse, pegmatoidal layer with pyroxene and chromite, more sulphide and slightly higher grade than UG2.':i===2?'The Platreef, high in the northern limb: pyroxenite with interstitial sulphide, more nickel but lower PGE.':i===4?'Stillwater is small but extraordinarily high grade.':i===5?'Norilsk is a Ni-Cu deposit first, but its PGE make it the palladium giant.':'The Great Dyke of Zimbabwe: big and steady.';
+  var k=Object.keys(pgSeen).length;$('#pgCount').textContent=k>=3?'explored':'tap '+(3-k)+' more';if(k>=3)award('pg',4,'Compared the PGE giants');SND.play('flip');}
+pgDraw(-1);
+
+/* Bushveld layering builder */
+var bvs=$('#bvSvg'),bv={layers:[],pot:false,anim:false};
+function bvDraw(){bvs.innerHTML='';el('rect',{x:0,y:0,width:640,height:320,fill:'#8E3424'},bvs);var y=300;
+  bv.layers.forEach(function(L){var h=L.h;var d='M20 '+y+' L620 '+y+' L620 '+(y-h)+' L20 '+(y-h)+' Z';if(L.pot){d='M20 '+y+' L250 '+y+' Q320 '+(y+26)+' 390 '+y+' L620 '+y+' L620 '+(y-h)+' L390 '+(y-h)+' Q320 '+(y-h+26)+' 250 '+(y-h)+' L20 '+(y-h)+' Z';}
+    el('path',{d:d,fill:L.c},bvs);y-=h;});
+  txt(bvs,30,24,'magma chamber',{'font-size':12,fill:'#FFE3D6'});
+  if(bv.layers.length){txt(bvs,470,24,bv.layers.filter(function(l){return l.k==='cr';}).length+' chromitite layers',{'font-size':12,fill:'#FFE3D6'});}
+  $('#bvTag').textContent=bv.layers.filter(function(l){return l.k==='cr';}).length+' batches';}
+function bvAdd(pot){if(bv.anim)return;var top=300-bv.layers.reduce(function(s,l){return s+l.h;},0);if(top<70){$('#bvSay').textContent='The chamber is full. Start again to build more.';return;}
+  var parts=[],c=bvs;bv.anim=true;var r=rng(Math.floor(Math.random()*1e5));for(var i=0;i<60;i++)parts.push({x:30+r()*580,y:40+r()*(top-60),k:i%2?'cr':'pl'});
+  var g=el('g',{},bvs),t0=0;parts.forEach(function(p){p.y0=p.y;});
+  function step(ts){if(!t0)t0=ts||1;var f=Math.min(1,((ts||t0)-t0)/1200);g.innerHTML='';parts.forEach(function(p){p.y=p.k==='cr'?p.y0+(top-3-p.y0)*f:p.y0-(p.y0-40)*f;el('circle',{cx:p.x,cy:p.y,r:3,fill:p.k==='cr'?'#141212':'#F2F0EA'},g);});
+    if(f<1&&!reduce)requestAnimationFrame(step);else{g.remove();if(pot&&bv.layers.length){bv.layers.forEach(function(l){l.pot=true;});}bv.layers.push({k:'cr',h:8,c:'#141212',pot:pot});bv.layers.push({k:'an',h:20,c:'#ECEAE4',pot:pot});bv.anim=false;bvDraw();
+      var n=bv.layers.filter(function(l){return l.k==='cr';}).length;
+      $('#bvSay').innerHTML=pot?'A <b>hot</b> batch: it thermally eroded a dip into the layers below before laying down its own. That dip is a <b>pothole</b>, a familiar headache when mining the Merensky Reef.':n===1?'Chromite (SG about 4.5 to 4.8) sank to make a <b>chromitite</b> layer; plagioclase, about as dense as the magma, floated up to make <b>anorthosite</b> above it.':'Another batch, another pair: chromitite then anorthosite. Repeat it and you get the rhythmic layering of the Bushveld critical zone.';
+      if(n>=3)award('bv',4,'Built rhythmic layering');if(pot)award('bv-pot',3,'Made a pothole');SND.play('flip');}}
+  requestAnimationFrame(step);}
+$('#bvAdd').addEventListener('click',function(){bvAdd(false);});$('#bvPot').addEventListener('click',function(){bvAdd(true);});
+$('#bvClear').addEventListener('click',function(){bv.layers=[];bvDraw();$('#bvSay').textContent='Inject a batch of magma and watch what settles and what floats.';});
+bvDraw();
+
+/* who produces what */
+var PR={
+ Pt:{n:'Platinum (kg)',y:['2022','2025'],d:[['South Africa',124000,120000],['Russia',20000,20000],['Zimbabwe',17000,18000],['Canada',5400,5000],['Other countries',4580,3900],['USA',3000,1800]],s:'South Africa produces about five times as much platinum as anyone else, from the Bushveld.'},
+ Pd:{n:'Palladium (kg)',y:['2022','2025'],d:[['Russia',87000,84000],['South Africa',37100,70000],['Canada',16100,16000],['Zimbabwe',14300,15000],['USA',10100,6200],['Other countries',2700,2900]],s:'Russia leads palladium, almost all from Norilsk; South Africa has nearly doubled since 2022.'},
+ Cr:{n:'Chromium (kt)',y:['2022','2025'],d:[['South Africa',19100,23000],['Turkey',5410,9000],['Kazakhstan',6000,7000],['Other countries',5380,3000],['India',4000,3000],['Brazil',0,2000],['Finland',2000,1900]],s:'South Africa’s chromite is the Bushveld’s layered chromitites; Turkey, Kazakhstan and India mine podiform chromitites; Finland’s Kemi is a layered intrusion.'},
+ Il:{n:'Ilmenite',y:['2024','2025'],d:[['China',3040,3200],['Mozambique',1930,1900],['South Africa',1260,1300],['Australia',600,780],['Norway',432,390],['Canada',360,360],['Senegal',345,370],['Madagascar',300,300]],s:'China leads, much of it from intrusions; Mozambique and Australia from mineral sands (Australia’s are old dune sands).'},
+ Ru:{n:'Rutile',y:['2024','2025'],d:[['Australia',200,200],['Sierra Leone',80,110],['South Africa',102,100],['India',12,13]],s:'Australia is the world’s number one rutile producer, all from mineral sands.'},
+ V:{n:'Vanadium',y:['2024','2025'],d:[['China',84000,82000],['Russia',21000,21000],['Brazil',5190,5300],['South Africa',8050,5000]],s:'China, Russia and South Africa dominate vanadium; the USA, once a big producer, no longer is.'}};
+var prK='Pt',prSeen={};
+var prChips=$('#prC');Object.keys(PR).forEach(function(k){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=PR[k].n.replace(/ \(.*\)/,'');b.setAttribute('aria-pressed',k===prK);b.addEventListener('click',function(){prK=k;$$('#prC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');prDraw();});prChips.appendChild(b);});
+function prDraw(){var P=PR[prK],max=Math.max.apply(null,P.d.map(function(r){return Math.max(r[1],r[2]);}));var prs=$('#prSvg');prs.innerHTML='';
+  P.d.forEach(function(r,i){var y=10+i*36,w1=r[1]/max*380,w2=r[2]/max*380;txt(prs,8,y+20,r[0],{'font-size':13,fill:'var(--ink)'});el('rect',{x:150,y:y+6,width:Math.max(2,w1),height:20,rx:3,fill:'var(--line)'},prs);el('rect',{x:150,y:y+10,width:Math.max(2,w2),height:12,rx:3,fill:r[0]==='South Africa'?'var(--gold)':r[0]==='Australia'?'var(--mal)':'var(--slate)'},prs);txt(prs,156+Math.max(w1,w2),y+21,r[2].toLocaleString('en-AU'),{'font-size':12,fill:'var(--ink)'});});
+  $('#prTag').textContent=P.n+', '+P.y[1]+' (faint: '+P.y[0]+')';$('#prSay').textContent=P.s;prSeen[prK]=1;if(Object.keys(prSeen).length>=4)award('pr',4,'Compared four commodities');}
+prDraw();
+
+/* laterite profile */
+var lts=$('#ltSvg'),ltSeen={};
+var LZ=[['Ferricrete',0,40,'#7A2E1F','Cemented pisolitic goethite-hematite and sand at the surface. Not the ore.'],['Transported limonite',40,80,'#B5472E','Hematite-goethite moved from elsewhere: typically very low Ni.'],['Limonite zone',80,150,'#C9783D','In situ fine goethite with some parent texture. The highest Co grades, and Ni highest at its base. Oxide ore: processed by ammonia leach.'],['Intermediate zone',150,190,'#D9C9A8','Secondary quartz and kaolinite.'],['Saprolite',190,280,'#8FA36A','Porous, with the parent rock texture preserved: the highest Ni grades. Garnierite (smelted) or smectite clay (pressure acid leach) ore.'],['Fresh peridotite',280,340,'#3E5C3A','Olivine, pyroxene and spinel, with only 0.2 to 0.4% Ni locked in olivine.']];
+function ltDraw(sel){lts.innerHTML='';el('rect',{x:0,y:0,width:640,height:360,fill:'var(--paper)'},lts);
+  LZ.forEach(function(z,i){el('rect',{x:120,y:z[1]+10,width:240,height:z[2]-z[1],fill:z[3],stroke:sel===i?'var(--gold-hi)':'none','stroke-width':4},lts);txt(lts,372,z[1]+10+(z[2]-z[1])/2+4,z[0]+(ltSeen[i]?' ✓':''),{'font-size':13,fill:'var(--ink)'});});
+  var niY=[.05,.1,.5,.4,1,.2],coY=[.05,.1,1,.3,.4,.05];var ni='',co='';LZ.forEach(function(z,i){var y=z[1]+10+(z[2]-z[1])/2;ni+=(i?' L':'M')+(20+niY[i]*90)+' '+y;co+=(i?' L':'M')+(20+coY[i]*90)+' '+y;});
+  el('path',{d:ni,fill:'none',stroke:'var(--mal)','stroke-width':3},lts);el('path',{d:co,fill:'none',stroke:'var(--azu)','stroke-width':3,'stroke-dasharray':'5 3'},lts);txt(lts,14,354,'Ni',{'font-size':12,fill:'var(--mal)'});txt(lts,40,354,'Co',{'font-size':12,fill:'var(--azu)'});txt(lts,64,354,'(relative, schematic)',{'font-size':11,fill:'var(--muted)'});}
+lts.addEventListener('click',function(e){var p=lts.createSVGPoint();p.x=e.clientX;p.y=e.clientY;p=p.matrixTransform(lts.getScreenCTM().inverse());var y=p.y-10;
+  var i=LZ.findIndex(function(z){return y>=z[1]&&y<z[2];});if(i<0)return;ltSeen[i]=1;ltDraw(i);$('#ltSay').innerHTML='<b>'+LZ[i][0]+'.</b> '+LZ[i][4]+' <span class="srcs">slide 50</span>';SND.play('tick');
+  var k=Object.keys(ltSeen).length;$('#ltCount').textContent=k+' / 6 zones';if(k>=6)award('lt',5,'Logged a whole laterite profile');});
+ltDraw(-1);
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
