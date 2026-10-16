@@ -644,7 +644,7 @@ var GEO = {
   /* ---------- lab test practice: timed stations over LAB (labdata.js) ---------- */
   labLoad: function () {
     var s = null; try { s = JSON.parse(localStorage.getItem('geos3141-lab') || 'null'); } catch (e) {}
-    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['min', 'micro', 'hand', 'core'] };
+    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['suite', 'min', 'micro', 'hand', 'core'] };
     return s;
   },
   lab: function () {
@@ -653,7 +653,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Hand specimen', core: 'Drill core' };
+    var KIND = { suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Hand specimen', core: 'Drill core' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -668,6 +668,14 @@ var GEO = {
         out.push({ id: 'min-' + m.n, kind: 'min', lec: 4, sec: 'virtual', img: m.ppl, xpl: m.xpl, mic: true, m: m, lbl: 'Unknown, plane-polarised reflected light',
           q: 'Name the mineral in the centre of the field.', o: opts.map(function (x) { return x.n; }), a: opts.indexOf(m),
           e: m.n + ' (' + m.f + '). ' + m.dist + ' Colour: ' + m.col + '; reflectance ' + REF[m.ref] + '.' });
+      });
+      (LAB.suites || []).forEach(function (x) {
+        var type = LAB.suiteType[x.dep], others = shuffle(LAB.suiteTypes.filter(function (t) { return t !== type; })).slice(0, 3);
+        var opts = shuffle(others.concat([type]));
+        out.push({ id: 'suite-' + x.img, kind: 'suite', img: x.img, mic: false, lbl: 'Lab ore suite · polished block, reflected light',
+          q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
+          e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '. Look at which sulphides and oxides are there and how they sit together, then ask what kind of system makes that assemblage.',
+          link: type === 'Regolith' ? 'L2.html#supergene' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       return out;
     }
@@ -753,15 +761,19 @@ var GEO = {
         var pts = COMBO.pts(Math.max(1, 3 - c.used) + (quick ? 1 : 0)); run.oz += pts; L.xp += pts;
         FX.burst(btn); FX.float('+' + pts + ' oz'); SND.play('ok');
         $('#ltWhy').innerHTML = '<b>Right' + (quick ? ', and quick' : '') + '.</b> +' + pts + ' oz' + COMBO.tag() + '. ';
-        $('#ltWhy').appendChild(document.createTextNode(st.e)); $('#ltWhy').className = 'lt-why ok';
+        $('#ltWhy').appendChild(document.createTextNode(st.e)); credit(st); $('#ltWhy').className = 'lt-why ok';
       } else {
         COMBO.miss(); run.miss.push(st);
         if (btn) { btn.classList.add('wrong'); FX.shake(btn); } else SND.play('alarm');
         $('#ltWhy').innerHTML = '<b>' + (btn ? 'Not that one.' : 'Time’s up.') + '</b> It’s ' + st.o[st.a] + '. ';
-        $('#ltWhy').appendChild(document.createTextNode(st.e)); $('#ltWhy').className = 'lt-why bad';
+        $('#ltWhy').appendChild(document.createTextNode(st.e)); credit(st); $('#ltWhy').className = 'lt-why bad';
       }
       L.seen[st.id] = r; keep(); GEO.dayMark(); paintCombo();
       $('#ltNext').hidden = false; $('#ltNext').textContent = run.i + 1 < run.list.length ? 'Next station' : 'See results'; $('#ltNext').focus();
+    }
+    function credit(st) {
+      if (!st.credit) return; var w = $('#ltWhy'); w.appendChild(document.createTextNode(' '));
+      var a = node('a', 'lt-credit', 'Photo: Ian Graham, GEOS3141 lab collection', w); a.href = st.credit; a.target = '_blank'; a.rel = 'noopener';
     }
     function paintCombo() { var c = $('#ltCombo'); c.hidden = COMBO.n < 2; c.textContent = COMBO.n + ' in a row' + (COMBO.mult() > 1 ? ' ×' + COMBO.mult() : ''); c.classList.toggle('hot', COMBO.mult() >= 2); }
     $('#ltNext').addEventListener('click', function () { run.i++; if (run.i < run.list.length) station(); else results(); });
@@ -782,7 +794,9 @@ var GEO = {
         run.miss.forEach(function (st) {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
           var t = node('div', '', null, row); node('b', '', st.o[st.a], t); node('p', '', st.e, t);
-          var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec;
+          if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
+          else if (st.link) { var a2 = node('a', '', 'Review the supergene profile in Lecture 2 →', t); a2.href = st.link; }
+          else if (st.credit) { var a3 = node('a', '', 'See the original photo →', t); a3.href = st.credit; a3.target = '_blank'; a3.rel = 'noopener'; }
         });
       }
       $('#ltMisses').hidden = !run.miss.length; paintSetup();

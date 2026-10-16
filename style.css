@@ -445,3 +445,4 @@ em{font-style:italic}
 @media (max-width:520px){.lt-opt>span{min-width:0;width:100%}.lt-miss{grid-template-columns:5.5rem minmax(0,1fr)}.lt-miss .mic,.lt-miss .lt-img{width:5.5rem}}
 
 body{padding-bottom:3.4rem}
+.lt-credit{font-size:.8rem;color:var(--muted)}
