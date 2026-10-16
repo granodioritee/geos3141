@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 6 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L5.html">&larr; Lecture 5</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 6 · T3 2026</div>
+  <h1>Ore you can watch forming</h1>
+  <p class="lede">Every deposit you'll meet in this course is a fossil of a process. On the seafloor, some of those processes are still running: hot fluid pours out of the crust, hits cold seawater and drops metal sulphides in front of a camera. You can measure the temperature, the pH and the metal content while the ore forms. That makes these vents the closest thing geology has to a lab experiment on how VMS deposits are made. First, get down there.</p>
+
+  <div class="lab" id="dive">
+    <h4><span>Dive to the vent field</span><b id="dvTag">surface</b></h4>
+    <canvas id="dvCanvas" aria-label="Animated view from a submersible descending through the ocean to a black smoker"></canvas>
+    <div class="ctl" style="margin-top:.7rem"><div><label for="dvDepth">Depth <b id="dvDepthV">0 m</b></label><input type="range" id="dvDepth" min="0" max="2500" step="10" value="0"></div></div>
+    <div class="readout">
+      <div><small>Pressure</small><b id="dvP">1 atm</b></div>
+      <div><small>Water at the bottom</small><b id="dvW">?</b></div>
+      <div><small>Light</small><b id="dvL">sunlit</b></div>
+    </div>
+    <p class="say" id="dvSay">Drag the depth slider down. The submersible <i>Alvin</i> worked at about 2.5 km, where the water is 2 °C and the pressure is 250 atmospheres. <span class="srcs">slide 6</span></p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#why">Why study ore forming today</a></li>
+      <li><a href="#dive1977">The first vents</a></li>
+      <li><a href="#smoker">How a black smoker works</a></li>
+      <li><a href="#chimney">Inside a chimney</a></li>
+      <li><a href="#field">The vent field and its plumbing</a></li>
+      <li><a href="#life">Life at the vents</a></li>
+      <li><a href="#find">Finding vents</a></li>
+      <li><a href="#setting">Which setting makes VMS?</a></li>
+      <li><a href="#kermadec">Kermadec Arc and Brothers volcano</a></li>
+      <li><a href="#vapour">How metals ride up as vapour</a></li>
+      <li><a href="#mining">Seafloor mining: hype and reality</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="why" data-log="Why"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>Why study ore that's forming today</h2>
+  <p>The deposits we mine aren't only the products of processes that switched off long ago. Many are relics of processes that are still going on somewhere right now. That matters because a rock only gives you the end result. A living system lets you <strong>quantify the process</strong>: you can measure the fluid temperature directly, its pH, how much metal and how many volatiles it carries, and how fast it's flowing. Those numbers then help you explore for new deposits and predict where known ones continue. <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <p>Three deposit types can be watched forming today: <button class="term" data-t="VMS">VMS</button> deposits on the seafloor, epithermal gold around active volcanoes and hot springs, and roll-front uranium. All of them sit where plate tectonics predicts. The present-day examples are wider than you might expect:</p>
+  <div class="mix">
+    <div><b>Seafloor vents</b>Black smokers along spreading ridges and arcs. The star of this lecture.</div>
+    <div><b>Arc volcanoes</b>Visit any active arc volcano, from the Mediterranean to White Island off New Zealand, and you'll see sulphides coming out of the vents.</div>
+    <div><b>Hot springs</b>Paralana Hot Springs in South Australia is now fenced off because of the very high radon coming out with the water.</div>
+    <div><b>Rivers</b>Alluvial gold today becomes palaeoalluvial gold tomorrow. The world's biggest gold system, the Witwatersrand, is a reworked palaeoalluvial deposit.</div>
+    <div><b>Weathering basalt</b>Future aluminium and iron ore. When iron ore was above US$120 a tonne, companies looked at mining weathered basalts in NSW and Tasmania.</div>
+  </div>
+  <p class="srcs" style="display:inline-block">slide 4 · lecture recording, 25 Sep</p>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="dive1977" data-log="First vents"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>The first vents, 1977</h2>
+  <p>Vents were first found in 1977 on the <button class="term" data-t="East Pacific Rise">East Pacific Rise</button> and the Galapagos spreading centre, between the Pacific, Cocos and Nazca plates. The crust there spreads apart at about 6 cm a year. The dive site sat inside the fault-bounded graben that runs along the crest of the rise, exactly where you'd expect magma to be close to the surface. <span class="srcs">slide 9</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide009_1.jpg" alt="Map of the eastern Pacific showing the East Pacific Rise and Galapagos spreading centre between the Pacific, Cocos and Nazca plates">
+    <figcaption>The first discoveries: the East Pacific Rise and the Galapagos spreading centre. <span class="srcs">slide 9</span></figcaption>
+  </figure>
+  <p>The first surveys towed a camera along a 10 km stretch of the rise, and the result set the rules for everything since. Venting is a <strong>normal</strong> feature of mid-ocean ridges. But only some vents are active at any moment, and the active ones vary a lot in how vigorous, how hot and what composition they are. Vents die, and some come back to life later. Keep that in mind when you look at an ancient deposit: it records many vents switching on and off, not one steady pipe. <span class="srcs">slide 10</span></p>
+  <p>Getting there is the hard part. <i>Alvin</i>, the American submersible, worked at about 2.5 km depth, where the water is 2 °C and the pressure is about 250 atmospheres. You're folded into a tiny sphere with no physical link to the ship, only radio. When Cornel de Ronde's team from GNS Science first sampled Brothers volcano, they happened to be in the old <i>Alvin</i> with glass viewports. They ran into hydrogen sulphide and other gases pouring out of the vents, which would have attacked the acrylic windows of newer submersibles. Old technology won that day. <span class="srcs">slide 6</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · on the seafloor</span><span class="srcs">slides 7 and 8</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L6/slide007_1.jpg" alt="A submersible's sampling arm reaching towards a smoking chimney on the dark seafloor"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide008_1.jpg" alt="Rounded, bulbous dark lava forms on the seafloor"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">A shows a sample being taken. B is lava on the floor of the rise. What is the lava, and what would you expect its surface to look like in hand specimen?</p>
+    <details data-obs="pillows"><summary>Show what I see</summary><div class="seen"><p><b>A</b> is the submersible's arm snapping a sample off an active black smoker, so the mineralogy can be studied as it forms. <b>B</b> is recent, still-hot <button class="term" data-t="pillow lava">pillow lava</button>. Lava erupting into 2 °C water chills instantly, so the rims are glassy. Ian brought a sample from an active Brothers volcano to the lecture to show exactly that: very glassy, because it froze the moment it met the cold water.</p></div></details>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Glassy, quenched rinds on basalt mean eruption into water: pillows sit in the volcanic sequence of seafloor VMS settings. <span class="srcs">lecture recording, 25 Sep</span></li></ul></div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="smoker" data-log="Black smokers"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">24 to 38 m</span></div>
+  <h2>How a black smoker works</h2>
+  <p>Below the vent, seawater has soaked down through cracks, been heated by magma and turned into a hot, acidic fluid carrying dissolved metals: somewhere around 150 to 300 °C on the slide, and 350 to 400 °C in the hottest black smokers. It shoots out of the seafloor into water that is <strong>cold (2 °C), alkaline and saline</strong>. Mixing with that seawater, together with the sudden drop in pressure as it leaves the rock, makes the dissolved metals insoluble, and sulphides precipitate. For zinc, the slide writes it as <span class="srcs">slides 8 and 38</span></p>
+  <p class="calc">Zn²⁺ + 2HS⁻  →  ZnS (sphalerite) + H₂S</p>
+  <p>The "smoke" isn't smoke at all. It's a cloud of tiny metal sulphide particles that crystallise the instant the hot fluid meets the cold water. That's why the sulphides in modern vent deposits are <strong>extremely fine grained</strong>. Ancient VMS sulphides are coarser because they have been partly recrystallised since. <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="lab" id="mixLab">
+    <h4><span>Vent fluid lab</span><b id="mxType"></b></h4>
+    <canvas id="mxCanvas" aria-label="Animation of hot vent fluid rising from a chimney into cold seawater and precipitating mineral particles"></canvas>
+    <div class="ctl" style="margin-top:.7rem"><div><label for="mxT">Vent fluid temperature <b id="mxTV">350 °C</b></label><input type="range" id="mxT" min="200" max="400" step="5" value="350"></div></div>
+    <div class="legend" id="mxLegend"></div>
+    <p class="say" id="mxSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model. The temperature bands follow slides 18 and 38 and the recording (copper minerals around 350 °C, sphalerite and galena below that, white smokers 260 to 300 °C); real vents overlap.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · two vents</span><span class="srcs">slide 38</span></div>
+    <img loading="lazy" decoding="async" src="img/L6/slide038_1.jpg" alt="Two vents side by side: on the left pale cloudy fluid, on the right a dense black plume">
+    <p class="ask">Which vent is hotter, and what is each one putting into the water?</p>
+    <details data-obs="smokers"><summary>Show the reasoning</summary><div class="seen"><p>The right-hand vent is a <b>black smoker</b>: hotter (350 to 400 °C), with dissolved metals precipitating as tiny dark sulphide particles. The left is a <b>white smoker</b>: cooler (260 to 300 °C), giving off lighter-coloured barium, calcium and silicon minerals such as baryte, anhydrite and amorphous silica. The sulphide ore comes from the black smokers, not the white ones.</p></div></details>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Seafloor at about 2.5 km: 2 °C and about 250 atm.</li><li>Black smokers: 350 to 400 °C, metal sulphides. White smokers: 260 to 300 °C, Ba, Ca and Si minerals (baryte, anhydrite, silica).</li><li>Precipitation is driven by mixing hot, acidic, metal-rich fluid with cold, alkaline, saline seawater, plus the pressure drop at the seafloor.</li><li>Mounds: sphalerite, pyrite, chalcopyrite. Chimneys: sphalerite, galena, anhydrite.</li></ul></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="chimney" data-log="Chimneys"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">38 to 52 m</span></div>
+  <h2>Inside a chimney</h2>
+  <p>A chimney is a pipe the vent builds around its own jet. It starts when seawater right next to the hot jet is heated: calcium sulphate is less soluble when hot, so <button class="term" data-t="anhydrite">anhydrite</button> precipitates and makes a first fragile wall. That wall shields the fluid inside from the seawater, and sulphides start to crystallise against it. The hottest fluid flows up the open centre, so the centre is where the high-temperature minerals end up. <span class="srcs">slides 18 and 21</span></p>
+  <p>The result is a zoned tube. Slide 18 lists the zoning of a black smoker chimney: the <strong>exterior</strong>, in contact with cold seawater, is anhydrite, gypsum and sphalerite; the <strong>interior</strong>, bathed in the hottest fluid, is copper minerals: chalcopyrite, <button class="term" data-t="cubanite">cubanite</button> and bornite. Pyrrhotite, pyrite and sphalerite make up the cooler black smoker material. White smoker chimneys are amorphous silica, baryte and pyrite, sometimes with sulphur and a little sphalerite. Copper minerals form around 350 °C; sphalerite and galena form below that, down to about 150 °C. <span class="srcs">slide 18</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="lab" id="chLab">
+    <h4><span>Grow a chimney</span><b id="chStage">ready</b></h4>
+    <svg class="grid-svg" id="chSvg" viewBox="0 0 640 360" role="img" aria-label="Cross-section of a black smoker chimney growing on the seafloor, with clickable mineral zones"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="chPlay">Grow it</button><span style="font-size:.85rem;color:var(--muted)">Then tap each zone of the cut chimney.</span></div>
+    <p class="say" id="chSay">Press Grow it to watch the wall build, then tap the zones to read them.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a real chimney, cut open</span><span class="srcs">slide 23</span></div>
+    <img loading="lazy" decoding="async" src="img/L6/slide023_2.jpg" alt="A broken black smoker chimney fragment labelled chalcopyrite, sphalerite, pyrite and anhydrite across its thickness">
+    <p class="ask">The fragment is labelled across its thickness. Which side faced the hot central channel, and which faced the seawater?</p>
+    <details data-obs="chimney"><summary>Show the reasoning</summary><div class="seen"><p>The <b>chalcopyrite</b> side lined the hot channel: copper minerals need the hottest fluid. Moving outwards, the minerals step down in temperature through sphalerite and pyrite to <b>anhydrite</b> on the outer wall, where heated seawater precipitated calcium sulphate. Read any chimney the same way: copper inside, zinc and iron in the middle, sulphate outside.</p></div></details>
+  </div>
+  <div class="lab">
+    <h4><span>Sort the chimney minerals</span><b id="sortScore">0 / 6</b></h4>
+    <div class="cards" id="sortCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Black smoker chimney exterior: anhydrite (CaSO₄), gypsum (CaSO₄·2H₂O), sphalerite (ZnS).</li><li>Interior: chalcopyrite (CuFeS₂), cubanite (CuFe₂S₃), bornite (Cu₅FeS₄).</li><li>White smoker chimney: amorphous silica, baryte (BaSO₄), pyrite, with sulphur and some sphalerite.</li><li>Copper minerals ≈ 350 °C; sphalerite and galena below that, to about 150 °C.</li></ul></div>
+  <div class="labbox"><b>At the lab test</b><ul><li>In the VMS ore suites (Rosebery, Mount Lyell, Scuddles, Woodlawn), copper-rich parts (chalcopyrite, bornite) record hotter fluid than zinc-lead-rich parts (sphalerite, galena). <span class="srcs">slide 18</span></li><li>Ancient VMS sulphides are coarser than modern vent sulphides because they have been partly recrystallised. <span class="srcs">lecture recording, 25 Sep</span></li><li>Baryte, anhydrite or gypsum and silica point to the cooler, sulphate-rich end of the system.</li></ul></div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="field" data-log="Vent field"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">52 to 66 m</span></div>
+  <h2>The vent field and its plumbing</h2>
+  <p>Zoom out from one chimney to the whole system. A magma body sits below. It drives <button class="term" data-t="convection">convection</button>: cold seawater is drawn down through fractures in the host rock on all sides, heated and changed as it reacts with the hot rock, and rises in a central upflow to the vents. On the way down it loses magnesium and sulphate; on the way up it carries metals, H₂S, silica, methane and helium. The highest temperature is in the reaction zone just above the magma (about 400 °C); focused flow reaches the seafloor at about 350 °C, while warm diffuse flow seeps out around it at 2 to 60 °C. <span class="srcs">slides 21 and 22</span></p>
+  <div class="lab" id="cvLab">
+    <h4><span>Run the convection cell</span><b id="cvTag"></b></h4>
+    <canvas id="cvCanvas" aria-label="Animated cross-section of seawater circulating through oceanic crust above a magma chamber and venting at a black smoker"></canvas>
+    <div class="chips" style="margin-top:.6rem" role="group" aria-label="Overlay"><button class="chip" type="button" id="cvFlow" aria-pressed="true">Fluid flow</button><button class="chip" type="button" id="cvZone" aria-pressed="false">Alteration zoning</button><button class="chip" type="button" id="cvTemp" aria-pressed="false">Temperatures</button></div>
+    <p class="say" id="cvSay">Blue seawater is drawn down, heats up as it nears the magma, and rises to the vent. Switch on the overlays.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide021_1.jpg" alt="Block diagram of a black smoker complex 3700 m below the surface, with seawater entrainment arrows and zoned breccias below the vent">
+    <figcaption>Vent field architecture. Under the black smoker complex the rock is zoned too: massive pyrite breccia right under the vent, pyrite-anhydrite and pyrite-silica breccias around it, silicified wall rock, and chloritised basalt breccia further out and deeper. White smokers sit off to the side, where the fluid is cooler. <span class="srcs">slide 21</span></figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide022_1.jpg" alt="Diagram of vent chemistry: magma at 1200 °C, high-temperature reaction zone at 400 °C, focused 350 °C flow to a chimney, diffuse 2 to 60 °C flow, a drifting plume, metalliferous sediments and iron-magnesium crusts">
+    <figcaption>Deep sea vent chemistry. The buoyant plume drifts away from the vent carrying helium-3, Mn²⁺, FeOOH, MnO₂, methane, Fe²⁺, iron sulphides, radon-222 and H₂S. Away from the vent, iron and manganese drop out as <b>metalliferous sediments</b> and <b>iron-magnesium crusts</b>. <span class="srcs">slide 22</span></figcaption>
+  </figure>
+  <p>That last detail is an exploration tool. If you find iron and manganese crusts or metalliferous sediments in an ancient volcanic sequence (in Cyprus-type or Kuroko-type VMS country, say), you know you're in the right environment, and sulphide mounds may be nearby. They're a <strong>vector</strong> towards ore. <span class="srcs">lecture recording, 25 Sep</span></p>
+  <p>One more condition: <strong>preservation</strong>. A sulphide mound is a heap of very fine, loose particles. On the seafloor it starts to oxidise and fall apart. To become an ore deposit it has to be buried quickly, by lava, ash or sediment, before it's destroyed. Chimneys also switch off and new ones pop up elsewhere in the field, so a mound grows in pulses. <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="labbox"><b>At the lab test</b><ul><li>Chloritised basalt, silicified wall rock and pyrite-rich breccias are the alteration under a VMS vent: the footwall feeder, not the massive ore. <span class="srcs">slide 21</span></li></ul></div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="life" data-log="Life"><div class="wrap">
+  <div class="kicker">Side trip <span class="depth">66 to 76 m</span></div>
+  <h2>Life at the vents</h2>
+  <p>Vents are acidic, hot in places and full of dissolved metals, yet they teem with life. Tube worms don't eat in the usual sense: they host microorganisms in their tissues that metabolise sulphide from the vent fluid, and in exchange the microbes make organic compounds from the vent chemicals and seawater. The worms also feed on microbial flocs spewed out by the springs. Giant white spider crabs and bright pink prawns crowd around them; the crustaceans are brightly coloured because of the metals they absorb. Ian has seen images of crabs walking across a molten sulphur lake on the seafloor without any trouble. <span class="srcs">slide 19</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · vent fauna</span><span class="srcs">slide 19</span></div>
+    <div class="quad" style="grid-template-columns:repeat(3,1fr)">
+      <div><img loading="lazy" decoding="async" src="img/L6/slide019_1.jpg" alt="White tubes with red plumes: giant tube worms"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide019_2.jpg" alt="A pale long-legged crab on dark rock"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide019_3.jpg" alt="Pink shrimp crowded on pale mineral-coated rock"><div class="cap">C</div></div>
+    </div>
+    <p class="ask">None of these animals can use sunlight at 2 km. What's at the base of their food chain?</p>
+    <details data-obs="fauna"><summary>Show the reasoning</summary><div class="seen"><p><b>Chemistry, not light.</b> Microbes use the energy in the vent chemicals (especially sulphide) to make organic matter. The tube worms (A) farm those microbes inside their bodies; crabs (B) and prawns (C) graze and hunt in the same food web. These organisms are <button class="term" data-t="extremophile">extremophiles</button>.</p></div></details>
+  </div>
+  <div class="lab">
+    <h4><span>Match the extremophile</span><b id="exScore">0 / 6</b></h4>
+    <div class="cards" id="exCards"></div>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="find" data-log="Finding vents"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">76 to 90 m</span></div>
+  <h2>Finding vents</h2>
+  <p>You can't see 2 km down, so vents are found in stages. First, <strong>sonar</strong>: the ship sends sound pulses that bounce off the seafloor and come back, building a bathymetric map. The 3D images of Brothers volcano aren't photographs; they're sonar. <span class="srcs">slide 24</span></p>
+  <p>Next, find the plume. A <button class="term" data-t="CTD">CTD</button> package (conductivity, temperature, depth) is towed or lowered on a cable. Its light-scattering sensor measures turbidity in <button class="term" data-t="NTU">NTU</button>: a vent plume full of particles (mainly sulphur, and iron and manganese oxyhydroxides) blocks light. Its <button class="term" data-t="ORP">ORP</button> sensor tracks dissolved reduced chemicals such as H₂S; there's a sharp drop right where fresh vent fluid is coming out. Bottle samples of the water confirm the chemistry. Then you go and sample rock with a submersible or remotely operated vehicle, and occasionally drill. <span class="srcs">slide 25</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide016_2.jpg" alt="Vertical section across NW Rota-1 submarine volcano coloured by turbidity, with a red plume over the summit and murky layers down the flanks">
+    <figcaption>Particle plumes over NW Rota-1 volcano, mapped with a light-scattering sensor. Red is murky water, blue is clear: an intense plume over the summit and turbid layers deep along the flanks. <span class="srcs">slide 16</span></figcaption>
+  </figure>
+  <div class="lab" id="phLab">
+    <h4><span>Plume hunt</span><b id="phLeft"></b></h4>
+    <p class="say" style="margin-top:0" id="phAsk">A vent is hidden somewhere on this seamount. Tap the sea surface to lower the CTD there. You have five casts; then send the ROV to where you think the vent is.</p>
+    <svg class="grid-svg" id="phSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of a seamount; tap to lower the CTD and read turbidity, then pick the vent"></svg>
+    <div class="legend"><span>Turbidity: </span><span style="color:#3D7FB8">clear</span><span style="color:#5FA35F">slight</span><span style="color:#D9A52C">murky</span><span style="color:#C8553A">plume</span><span>· ▼ ORP drop</span></div>
+    <div class="row" style="margin-top:.5rem"><button class="btn" type="button" id="phRov">Send the ROV</button><button class="btn ghost" type="button" id="phNew">New cruise</button></div>
+    <p class="say" id="phSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented data for teaching: the plume drifts with a current, as real plumes do.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · rock sampling</span><span class="srcs">slide 26</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L6/slide026_2.jpg" alt="A robotic claw gripping the side of a chimney"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide026_3.jpg" alt="A claw placing a rusty chimney piece into a numbered sample tray"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">Why does each sample go into its own numbered bay?</p>
+    <details data-obs="claw"><summary>Show the reasoning</summary><div class="seen"><p>The claw breaks the chimney off mechanically, then drops it into a numbered container. With the vehicle's position known, every sample is tied to an exact spot on the seafloor, so the mineralogy and chemistry can be mapped. It's expensive data: a research cruise costs several million dollars, and one towed sensor array lost after the Hunga Tonga eruption was worth about $10 million.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="setting" data-log="Settings"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">90 to 102 m</span></div>
+  <h2>Which setting makes VMS?</h2>
+  <p>Known vent fields sit on plate boundaries: mid-ocean ridges, back-arc spreading centres, island arcs, and a few in plate interiors. Over 300 sites were known by 2005, probably about 500 now, with very few in polar waters because rough seas and ice make the work so hard. Most of the work has been in the calmer margins of the Pacific. <span class="srcs">slides 11, 12 and 27</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="lab" id="stLab">
+    <h4><span>Modern vents vs the rock record</span><b id="stTag"></b></h4>
+    <svg class="grid-svg" id="stSvg" viewBox="0 0 640 260" role="img" aria-label="Bar chart of active vent fields by tectonic setting"></svg>
+    <div class="chips" style="margin-top:.6rem"><button class="chip" type="button" id="stNow" aria-pressed="true">Active vents today</button><button class="chip" type="button" id="stPast" aria-pressed="false">What survives</button></div>
+    <p class="say" id="stSay"></p>
+  </div>
+  <p>Mid-ocean ridges were once assumed to be the best analogue for ancient VMS deposits, because that's where vents were first found and where most active sites are. The thinking has shifted towards <strong>island arcs</strong> (and back-arcs). Ridge crust is mostly subducted, so its deposits rarely survive, while arc and back-arc deposits are better preserved. Arcs are also the more favourable setting for <strong>large</strong> VMS deposits, because more sulphide is available. Modern vents have also given a petrogenetic framework: compare the volcanic rocks of modern arcs with ancient terranes and you can classify where an old VMS district formed. <span class="srcs">slides 27 to 29</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide027_1.jpg" alt="Block diagram of back-arc basin, island arc, mid-ocean ridge and continental rift settings with red VMS deposits">
+    <figcaption>Geologic settings where volcanogenic seafloor massive sulphides form. <span class="srcs">slide 27</span></figcaption>
+  </figure>
+  <div class="keybox"><b>Memorise</b><ul><li>Active vent fields: mid-ocean ridge about 65%, back-arc about 22%, island arc about 12%, intraplate about 1%.</li><li>Ridge deposits are mostly subducted; arc and back-arc deposits survive and are the closest analogues of ancient VMS.</li></ul></div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="kermadec" data-log="Kermadec"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">102 to 116 m</span></div>
+  <h2>Kermadec Arc and Brothers volcano</h2>
+  <p>The <button class="term" data-t="Kermadec Arc">Kermadec Arc</button> runs about 1200 km from New Zealand's North Island towards Tonga. It's the most hydrothermally active stretch of intra-oceanic arc in the world, with about 30 major submarine volcanoes and at least three VMS deposits forming now, mostly in 2 to 4 km of water. White Island (Whakaari) is its nearest volcano to New Zealand; most of the others are entirely underwater, with only a few tiny islands poking through. GNS Science has mapped it for some 30 years, partly because those volcanoes are a hazard to the North Island. <span class="srcs">slides 30 to 32</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide031_1.jpg" alt="Map of the Kermadec Arc from New Zealand towards Tonga with Brothers volcano marked">
+    <figcaption>The Kermadec Arc, with Brothers marked. <span class="srcs">slide 31</span></figcaption>
+  </figure>
+  <p><button class="term" data-t="Brothers volcano">Brothers</button> is a submarine caldera about 400 km off the coast, its rim around 1.2 km below sea level and its floor about 2.2 km down. It's divided into an upper cone, a lower cone and the NW, SE and W caldera walls, and the geology differs between them. The active sites are the cones and the NW caldera. The NW caldera holds the most significant Cu-Au-Ag deposit on the whole arc, with up to 90 ppm gold. Drilling in 2018 got poor core recovery: 2.5 km of water over an active volcano is not a friendly place to drill. Much of the exploration happened because the New Zealand Navy ran the cruises as training exercises. <span class="srcs">slides 33 to 35</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Brothers NW caldera</span><span class="srcs">slides 35 and 36</span></div>
+    <div class="quad">
+      <div><img loading="lazy" decoding="async" src="img/L6/slide035_1.jpg" alt="Tall chimney specimen with orange-brown and grey patches"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide035_2.jpg" alt="Grey and dark chimney specimen"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide035_3.jpg" alt="Seafloor view of two smoking chimneys labelled twin beehives"><div class="cap">C</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L6/slide036_3.jpg" alt="Several orange and grey chimneys on the seafloor at Brothers"><div class="cap">D</div></div>
+    </div>
+    <p class="ask">A and B are a copper-rich and a zinc-rich chimney from the NW caldera. C and D show chimneys in place. What different conditions do Cu-rich and Zn-rich chimneys record, and why might one chimney be both?</p>
+    <details data-obs="brothers"><summary>Show the reasoning</summary><div class="seen"><p>A <b>Cu-rich</b> chimney grew from <b>high-temperature</b> fluid (chalcopyrite forms around 350 °C); a <b>Zn-rich</b> one from <b>cooler</b> fluid (sphalerite, galena). One chimney can change along its length: Ian pointed out a chimney whose side grew at high temperature while its very top was lower temperature, with sphalerite and pyrite. Activity changes all the time: in D some chimneys are active and others have been broken off and gone quiet. C is the "twin beehives" site, where a copper-rich chimney was sampled.</p></div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide015_1.jpg" alt="A scientist in a lab beside large yellow lumps of sulphur and a dark rock sample">
+    <figcaption>Cornel de Ronde of GNS Science with sulphur from a molten sulphur lake on the seafloor near Brothers. The pressure at depth lets sulphur pool as a liquid. These are not friendly environments. <span class="srcs">slide 15</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="vapour" data-log="Vapour"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">116 to 128 m</span></div>
+  <h2>How metals ride up as vapour</h2>
+  <p>In arc systems the metals don't only travel dissolved in liquid. Sulphur in its <strong>vapour</strong> form is the main transport: tiny droplets of sulphide and metal-bearing vapour bubble out of the magma, the sulphur acting as a <button class="term" data-t="ligand">ligand</button> that holds onto the metal. These bubbles rise and are swept up (entrained) by the circulating hydrothermal fluid. Near the surface the pressure falls, the vapour and the sulphide separate, the sulphide becomes insoluble, and it precipitates right at the seafloor interface. The ore isn't made deep down; it's made where the pressure drops suddenly. <span class="srcs">slides 39 and 40</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <div class="lab" id="vpLab">
+    <h4><span>Follow a metal up the volcano</span><b id="vpStep">step 1 of 5</b></h4>
+    <svg class="grid-svg" id="vpSvg" viewBox="0 0 640 340" role="img" aria-label="Cross-section of a submarine arc volcano showing magma, rising vapour bubbles carrying sulphide droplets and deposition at the seafloor"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="vpBack">Back</button><button class="btn" type="button" id="vpNext">Next step</button></div>
+    <p class="say" id="vpSay"></p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide040_1.jpg" alt="Cross-section of a submarine volcano from 1 to 2 km below sea level with fresh hydrous magma, rising bubbles and circulating fluid arrows">
+    <figcaption>The magmatic arc system: a magma boiling zone, vapour exsolution, sulphide and metal vapour bubbles, entrainment by convecting fluid, and deposition at the seafloor. <span class="srcs">slide 40, modified from Gruen et al. 2014</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="mining" data-log="Mining"><div class="wrap">
+  <div class="kicker">Economics <span class="depth">128 to 140 m</span></div>
+  <h2>Seafloor mining: hype and reality</h2>
+  <p>Every few years seafloor massive sulphides (SMS) make headlines as untold riches. The grades are real. Solwara 1, in the Bismarck Sea off Papua New Guinea, was identified by CSIRO in 1996 at 1.6 km depth and graded about 7% copper (land deposits run around 0.6%) and more than 20 g/t gold on the slide. Nautilus Minerals held about 450 000 km² of tenements, got an environmental permit in 2009 and a mining lease in January 2011. In 2018 it went bankrupt, despite good scientists and plenty of money behind it. <span class="srcs">slides 41 to 44</span> <span class="srcs">lecture recording, 25 Sep</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L6/slide045_1.jpg" alt="Diagram of a seafloor production system: a support vessel, a riser and lifting system, and machines on the seafloor 1600 m down">
+    <figcaption>The proposed system: remotely operated seafloor production tools (an auxiliary cutter to cut benches, a bulk cutter, and a collecting machine that vacuums the cut rock up as a slurry), a riser and lifting system, and a production support vessel on the surface. The waste would be pumped back out. <span class="srcs">slides 45 and 46</span></figcaption>
+  </figure>
+  <p>So why didn't it happen? Look at size, not just grade.</p>
+  <div class="lab" id="gtLab">
+    <h4><span>Grade vs tonnage</span><b id="gtTag"></b></h4>
+    <svg class="grid-svg" id="gtSvg" viewBox="0 0 640 300" role="img" aria-label="Bar chart comparing copper grade and contained copper of seafloor, VMS and porphyry deposits"></svg>
+    <div class="chips" style="margin-top:.6rem"><button class="chip" type="button" id="gtGrade" aria-pressed="true">Copper grade (%)</button><button class="chip" type="button" id="gtMetal" aria-pressed="false">Copper in the ground (t)</button></div>
+    <p class="say" id="gtSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Resources and grades from slide 47 (Golder Associates 2008; Collins et al. 2004; Wilton 1998). Contained copper = tonnes × grade, worked out here.</p>
+  </div>
+  <p>Solwara's whole resource is about two million tonnes. Kidd Creek, a land VMS deposit, is 115 Mt; Ok Tedi, a porphyry, is about 910 Mt. That's why BHP and Rio Tinto stay away. On top of size come all the practical problems: <span class="srcs">slides 47 and 48</span></p>
+  <div class="mix">
+    <div><b>It strips the seafloor</b>Mining destroys all life on the area being mined, and the waste is pumped back into the ocean.</div>
+    <div><b>You can't report it</b>Resources are normally reported from drill core, metre by metre. These are based on grab samples, so tonnage and grade are unpredictable, and you can't report to a stock exchange the normal way (think back to JORC in Lecture 1).</div>
+    <div><b>It's expensive</b>You need a stable platform, remote machines and a riser at 1.6 km depth, in a region with cyclones.</div>
+    <div><b>Fixing things</b>A broken machine more than a kilometre down has to come all the way up.</div>
+    <div><b>The law is unclear</b>Mining law in international waters isn't settled. Inside a nation's exclusive economic zone the nation owns the rights, so companies target small Pacific nations that need the money.</div>
+    <div><b>No need</b>There are enough known resources on land. Mining is supply and demand: when metal prices rise, lower-grade land deposits open up.</div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Solwara 1 (Bismarck Sea, PNG): found by CSIRO 1996, 1.6 km deep, ≈ 7% Cu and high gold; lease 2011; Nautilus bankrupt 2018.</li><li>Tiny: ≈ 2 Mt vs Kidd Creek 115 Mt and Ok Tedi ≈ 910 Mt.</li></ul></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">140 to 146 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">146 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>The vents in this lecture are the living version of the VMS deposits in Lecture 10, and the arc systems link forward to porphyry and epithermal deposits (Lectures 11 and 14). The alteration around the feeder zone is the same chlorite, sericite and silica alteration you met in Lecture 2.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 6 slides (48 slides; photos and figures tagged by slide) and the Echo360 recording of 25 September 2026. Figures in the slides come from NOAA, GNS Science, WHOI, Nautilus Minerals and published papers, and are shown here only as lecture material. Where the recording and slide 18 disagree on which side of a chimney is hottest, this page follows the slide. The animations, the plume hunt and the vent fluid lab are teaching models, not real data.</p>
+  <p><a href="L5.html">&larr; Lecture 5</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You’ve seen a vent on TV.'],[35,'Graduate geologist','You can read a chimney.'],[100,'Project geologist','You can find a plume with a CTD.'],[180,'Senior geologist','You know which settings keep their ore.'],[270,'Chief geologist','The board asks you about seafloor mining, and you say no.']];
+var G={
+ "VMS":"Volcanogenic massive sulphide deposit: a body of massive sulphide formed on or just below the seafloor by hydrothermal vents in a volcanic setting.",
+ "SMS":"Seafloor massive sulphide: the modern, still-forming seafloor equivalent of a VMS deposit.",
+ "black smoker":"A high-temperature vent (about 350 to 400 °C) whose fluid precipitates a black cloud of fine metal sulphide particles.",
+ "white smoker":"A cooler vent (about 260 to 300 °C) giving off pale barium, calcium and silicon minerals such as baryte, anhydrite and silica.",
+ "chimney":"A pipe of minerals built around a vent's jet, zoned from hot copper minerals inside to cooler sulphate and zinc minerals outside.",
+ "mound":"A heap of sulphide built up around vents over time, mainly sphalerite, pyrite and some chalcopyrite.",
+ "anhydrite":"Calcium sulphate (CaSO₄). Precipitates when seawater is heated, forming the first walls of chimneys.",
+ "cubanite":"A copper-iron sulphide (CuFe₂S₃) found in the hot interior of black smoker chimneys.",
+ "bornite":"A copper-iron sulphide (Cu₅FeS₄); a high-temperature copper mineral in chimney interiors.",
+ "pillow lava":"Rounded lava forms made when lava erupts into water; the rims quench to glass.",
+ "East Pacific Rise":"The spreading ridge in the eastern Pacific, spreading at about 6 cm a year, where vents were first found in 1977.",
+ "convection":"Circulation driven by heat: cold seawater sinks through fractures, heats near the magma and rises to the vents.",
+ "focused flow":"Hot fluid (about 350 °C) channelled up through the vent and chimney.",
+ "diffuse flow":"Warm fluid (about 2 to 60 °C) seeping out through the seafloor around a vent.",
+ "metalliferous sediment":"Iron- and manganese-rich sediment that settles out of vent plumes away from the vent; a vector towards sulphides.",
+ "plume":"The cloud of vent fluid and particles that rises from a vent and then spreads sideways and drifts with currents.",
+ "CTD":"Conductivity-temperature-depth instrument package, towed or lowered from a ship, often with turbidity and ORP sensors.",
+ "NTU":"Nephelometric turbidity units: how much particulate matter scatters light in the water. High NTU marks a plume.",
+ "ORP":"Oxidation-reduction potential: drops sharply where reduced chemicals such as H₂S from fresh vent fluid are present.",
+ "extremophile":"An organism that thrives in extreme conditions such as heat, pressure, acidity or salinity.",
+ "hyperthermophile":"An organism that lives above about 80 °C, as at deep-sea vents.",
+ "piezophile":"An organism that thrives at very high pressure (to 130 MPa), as at deep-sea vents.",
+ "island arc":"A chain of volcanoes above a subduction zone; the closest modern analogue of most ancient VMS settings.",
+ "back-arc basin":"A spreading basin behind an arc; hosts about 22% of active vent fields.",
+ "Kermadec Arc":"An intra-oceanic arc running about 1200 km from New Zealand towards Tonga; the most hydrothermally active in the world.",
+ "Brothers volcano":"A submarine caldera on the Kermadec Arc whose NW caldera hosts a Cu-Au-Ag deposit with up to 90 ppm gold.",
+ "caldera":"A large collapse depression at the top of a volcano.",
+ "ligand":"An ion or molecule that bonds to a metal and carries it; here, sulphur in vapour.",
+ "vapour exsolution":"Gas separating out of a magma as bubbles as it rises and decompresses.",
+ "entrainment":"Being swept along by a moving fluid: vapour bubbles are carried up by circulating hydrothermal fluid.",
+ "exclusive economic zone":"The sea area around a nation over which it holds rights to resources, including seafloor minerals.",
+ "Solwara 1":"Seafloor massive sulphide deposit in the Bismarck Sea, PNG: about 7% Cu but only about 2 Mt; never mined.",
+ "palaeoalluvial":"An old river (alluvial) deposit now preserved in the rock record, like the Witwatersrand gold."
+};
+var CP={
+ cp1:{q:'What can a present-day mineralising system give you that an ancient orebody can’t?',o:['Higher grades','Direct measurements of fluid temperature, pH, metal content and flow while it forms','Bigger tonnages'],a:1,e:'A rock is the end result. A living vent lets you quantify the process itself.'},
+ cp2:{q:'What did the first towed-camera surveys of the East Pacific Rise show?',o:['Every vent is active and the same','Venting is normal along the ridge, but only some vents are active and they differ in temperature and composition','Vents occur only at the ends of transform faults'],a:1,e:'Vents switch on and off and vary a lot, which is why ancient deposits record many pulses.'},
+ cp3:{q:'What mainly makes sulphides precipitate at a black smoker?',o:['Seawater evaporating','Hot, acidic, metal-rich fluid mixing with cold, alkaline seawater, plus a pressure drop','Bacteria eating the metals'],a:1,e:'Mixing and the pressure drop at the seafloor make the metals insoluble, so they crystallise as tiny sulphide particles.'},
+ cp4:{q:'A cut chimney has chalcopyrite and bornite lining its channel and anhydrite on the outside. Why?',o:['The channel carried the hottest fluid, so copper minerals formed there; the outside met cold seawater','Copper is heavy and sank inwards','The outside formed later at higher temperature'],a:0,e:'Copper minerals need the hottest fluid. Heated seawater on the outer wall precipitates calcium sulphate.'},
+ cp5:{q:'You find iron-manganese crusts and metalliferous sediment in an old volcanic sequence. What does that suggest?',o:['You’re far from any hydrothermal system','You’re in the right environment, and sulphide mounds may be nearby','The rocks were weathered on land'],a:1,e:'Fe and Mn settle out of plumes away from vents, so they are a vector towards sulphides.'},
+ cp6:{q:'Tube worms survive at vents because...',o:['they photosynthesise','they host microbes that use vent chemicals such as sulphide and supply organic compounds','they eat the chimney'],a:1,e:'It’s a chemical food chain: the microbes turn vent chemistry into organic matter.'},
+ cp7:{q:'Turbidity is high in a layer above the summit, but ORP drops sharply only over one spot near the seafloor. Where is the vent?',o:['Wherever turbidity is highest in the plume layer','Under the ORP drop, because dissolved reduced chemicals haven’t spread far','At the sea surface'],a:1,e:'Particles in the plume drift with currents. The ORP drop marks fresh vent fluid close to its source.'},
+ cp8:{q:'About 65% of active vent fields are on mid-ocean ridges, yet ancient VMS deposits look more like arc settings. Why?',o:['Ridge crust is mostly subducted, while arc and back-arc deposits are preserved and tend to be bigger','Mid-ocean ridges never make sulphides','Arcs are colder'],a:0,e:'Preservation decides what reaches the rock record, and arcs also favour larger VMS deposits.'},
+ cp9:{q:'Why is the Kermadec Arc called a natural laboratory?',o:['It’s the most hydrothermally active intra-oceanic arc, with about 30 major submarine volcanoes and at least three VMS deposits forming now','It has the deepest trench on Earth','Its volcanoes are extinct, so it’s safe'],a:0,e:'You can watch arc-type VMS systems, the best analogues of ancient deposits, in action.'},
+ cp10:{q:'In the arc vapour-transport model, where do the sulphides finally precipitate?',o:['Deep in the magma chamber','At the seafloor, where the pressure drops suddenly','In the atmosphere'],a:1,e:'Vapour carries sulphur and metal up; the sudden pressure drop at the seafloor makes the sulphide insoluble.'},
+ cp11:{q:'Solwara 1 graded about 7% Cu, ten times a typical land deposit. Why was it never mined?',o:['The grade was too low','It was tiny (about 2 Mt), couldn’t be drilled to report properly, was costly at 1.6 km depth, and the company went bankrupt','PNG banned copper mining'],a:1,e:'Size and practicality beat grade. Kidd Creek is 115 Mt and Ok Tedi about 910 Mt.'}
+};
+var ST=[
+ ['Why are present-day vents so useful for understanding VMS deposits?','Recall','They are a natural laboratory: you can measure fluid temperature, pH, metal content and flux directly, sample chimneys as they form, and compare modern volcanic rocks with ancient terranes to classify old VMS districts.'],
+ ['Write the reaction the slide gives for sphalerite precipitation, and say what drives it.','Recall','Zn²⁺ + 2HS⁻ → ZnS + H₂S. It is driven by hot, acidic, metal-rich vent fluid mixing with cold (2 °C), alkaline, saline seawater, together with the pressure drop at the seafloor.'],
+ ['Describe the mineral zoning across a black smoker chimney wall and explain it.','Apply','Inside, next to the hot channel: chalcopyrite, cubanite and bornite (copper minerals, about 350 °C). Outside, against cold seawater: anhydrite, gypsum and sphalerite. The hot fluid flows up the centre, and heated seawater precipitates calcium sulphate on the outer wall.'],
+ ['How do black and white smokers differ?','Recall','Black smokers are hotter (350 to 400 °C) and precipitate metal sulphides. White smokers are cooler (260 to 300 °C) and give off barium, calcium and silicon minerals such as baryte, anhydrite and amorphous silica.'],
+ ['Why are modern vent sulphides finer grained than those in ancient VMS deposits?','Think','They crystallise instantly as tiny particles when the fluid meets cold seawater. Ancient deposits have had time to be partly recrystallised, which coarsens the grains.'],
+ ['What has to happen to a sulphide mound for it to become an ore deposit?','Think','It must be preserved: buried quickly by lava, ash or sediment, because it is a loose heap of fine sulphide that would otherwise oxidise and break down on the seafloor.'],
+ ['How would you locate an active vent from a ship?','Apply','Map the seafloor with sonar; tow or lower a CTD with a light-scattering sensor to find turbid plumes (high NTU) and an ORP sensor to find fresh reduced fluid; take bottle samples; then sample rock with a submersible or ROV, and possibly drill.'],
+ ['Give the share of active vent fields in each tectonic setting and explain why arcs are the better analogue for ancient VMS.','Recall','About 65% mid-ocean ridge, 22% back-arc, 12% island arc and 1% intraplate. Ridge crust is mostly subducted, while arc and back-arc deposits are preserved, and arcs favour larger sulphide bodies.'],
+ ['Explain the vapour-transport model for metals in a magmatic arc system.','Think','The magma boils and exsolves vapour; sulphur in vapour acts as a ligand and carries metal in compound vapour bubbles; these are entrained by convecting hydrothermal fluid; near the seafloor the pressure drops suddenly, the sulphide becomes insoluble and precipitates at the seafloor.'],
+ ['Give four reasons seafloor massive sulphides like Solwara 1 have not been mined.','Synthesise','Any four: the deposits are tiny (about 2 Mt vs hundreds of Mt on land); tonnage and grade are unpredictable because they rely on grab samples, not drill core, so they can’t be reported normally; it is very expensive at 1.6 km depth in cyclone country; it destroys seafloor life; mining law in international waters is unclear; equipment is hard to repair; and there are enough resources on land.']
+];
+GEO.start({key:'geos3141-L6-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* dive to the vent field */
+var dc=$('#dvCanvas'),dx=dc.getContext('2d'),DW=640,DH=300,dk=1,dDepth=0,dT=0,dOn=false,snow=[],plume=[];
+(function(){var r=rng(6);for(var i=0;i<70;i++)snow.push([r()*DW,r()*DH,.3+r()*.7]);})();
+function dDraw(){var c=dx,f=dDepth/2500;
+  var g=c.createLinearGradient(0,0,0,DH);g.addColorStop(0,mix('#63B7D8','#03101A',Math.min(1,f*1.3)));g.addColorStop(1,mix('#2A7BA4','#010609',Math.min(1,f*1.15)));c.fillStyle=g;c.fillRect(0,0,DW,DH);
+  if(f<.2){c.fillStyle='rgba(255,255,255,'+(.13*(1-f/.2))+')';for(var s=0;s<4;s++){c.beginPath();c.moveTo(70+s*160,0);c.lineTo(110+s*160,0);c.lineTo(140+s*160,DH);c.lineTo(80+s*160,DH);c.closePath();c.fill();}}
+  c.fillStyle='rgba(255,255,255,'+(.2+.35*f)+')';snow.forEach(function(p){var y=(p[1]+dT*10*p[2])%DH;c.fillRect(p[0],y,1.6,1.6);});
+  var sf=cl((dDepth-2100)/400);
+  if(sf>0){var y0=DH-80*sf;c.fillStyle='#1B1A1D';c.beginPath();c.moveTo(0,DH);c.lineTo(0,y0+20);for(var x=0;x<=DW;x+=40){c.quadraticCurveTo(x+20,y0+(x%80?8:-6),x+40,y0+14);}c.lineTo(DW,DH);c.closePath();c.fill();
+    c.fillStyle='#2A2627';[[60,y0+22,30],[130,y0+16,26],[540,y0+20,34],[600,y0+26,24]].forEach(function(q){c.beginPath();c.ellipse(q[0],q[1],q[2],q[2]*.55,0,0,Math.PI*2);c.fill();});
+    var cx=430,ct=y0-60*sf;c.fillStyle='#3A3330';c.beginPath();c.moveTo(cx-22,y0+16);c.lineTo(cx-10,ct);c.lineTo(cx+10,ct);c.lineTo(cx+22,y0+16);c.closePath();c.fill();c.fillStyle='#B07A3A';c.fillRect(cx-6,ct+10,12,y0-ct);
+    if(sf>.6){if(plume.length<90&&!reduce)plume.push({x:cx+(Math.random()-.5)*6,y:ct,v:.6+Math.random()*.8,a:1,r:3+Math.random()*3});plume.forEach(function(p){p.y-=p.v;p.x+=Math.sin((p.y+p.r)*.05)*.6;p.r+=.08;p.a-=.006;});plume=plume.filter(function(p){return p.a>0;});plume.forEach(function(p){c.fillStyle='rgba(92,84,80,'+(p.a*.8)+')';c.beginPath();c.arc(p.x,p.y,p.r,0,Math.PI*2);c.fill();});}}
+  var sx=200,sy=110+Math.sin(dT*1.5)*4;if(f>.3){c.fillStyle='rgba(255,240,180,'+(.18*Math.min(1,(f-.3)*3))+')';c.beginPath();c.moveTo(sx+30,sy+4);c.lineTo(sx+330,sy-40);c.lineTo(sx+330,sy+150);c.closePath();c.fill();}
+  c.fillStyle='#E9E3D6';c.beginPath();c.ellipse(sx,sy,38,20,0,0,Math.PI*2);c.fill();c.fillStyle='#C8553A';c.fillRect(sx-14,sy-30,28,12);c.fillStyle='#4E8FB0';c.beginPath();c.arc(sx+24,sy+2,6,0,Math.PI*2);c.fill();
+  c.fillStyle='rgba(255,255,255,.85)';c.font=fontPx(dk);c.fillText(Math.round(dDepth)+' m',12,22);}
+function dSet(v){dDepth=+v;var P=Math.round(1+dDepth/10);$('#dvDepthV').textContent=dDepth+' m';$('#dvP').textContent=P+' atm';$('#dvL').textContent=dDepth<200?'sunlit':dDepth<1000?'fading':'none';
+  var bottom=dDepth>=2490;$('#dvW').textContent=bottom?'2 °C':'?';$('#dvTag').textContent=bottom?'2.5 km down':dDepth>0?'descending':'surface';
+  if(bottom){$('#dvSay').innerHTML='You’re at the vent field: 2 °C water and about 250 atmospheres. The black cloud is the vent fluid dropping fine metal sulphide particles as it hits the cold water. <span class="srcs">slide 6</span>';award('dive',4,'Reached the vent field');}
+  if(reduce)dDraw();}
+$('#dvDepth').addEventListener('input',function(){dSet(this.value);});
+function dLoop(){if(!dOn)return;dT+=.016;dDraw();requestAnimationFrame(dLoop);}
+onVisible(dc,function(v){if(reduce){dDraw();return;}if(v&&!dOn){dOn=true;requestAnimationFrame(dLoop);}else if(!v)dOn=false;});
+onTheme(function(){dDraw();});
+
+/* vent fluid lab */
+var mc=$('#mxCanvas'),mx=mc.getContext('2d'),MW=640,MH=320,mk=1,mT=350,mParts=[],mOn=false,mSeen={};
+var MIN={cp:['chalcopyrite','#D4A83A'],bn:['bornite','#9C5FA8'],sp:['sphalerite','#6B4A2E'],gn:['galena','#A9B2BC'],py:['pyrite','#C9BE7A'],an:['anhydrite','#F2F0EA'],si:['silica','#DCE6EA'],ba:['baryte','#BFC6CC']};
+function regime(){return mT<300?'white':mT<340?'zn':'cu';}
+var MIXES={cu:[['cp',.4],['bn',.1],['py',.25],['sp',.25]],zn:[['sp',.45],['gn',.2],['py',.3],['cp',.05]],white:[['si',.4],['ba',.3],['an',.15],['py',.15]]};
+function pick(m){var r=Math.random(),s=0;for(var i=0;i<m.length;i++){s+=m[i][1];if(r<s)return m[i][0];}return m[0][0];}
+function mInfo(){var r=regime();mSeen[r]=1;$('#mxTV').textContent=mT+' °C';
+  $('#mxType').textContent=r==='white'?'white smoker':r==='zn'?'black smoker, Zn-rich':'black smoker, Cu-rich';
+  $('#mxSay').innerHTML=r==='white'?'At this temperature you get a <b>white smoker</b>: pale barium, calcium and silicon minerals (silica, baryte, anhydrite) with a little pyrite. No sulphide ore cloud.':r==='zn'?'A <b>black smoker</b> carrying zinc and lead: <b>sphalerite and galena</b> with pyrite crystallise as the fluid mixes and cools.':'The hottest fluid: a <b>copper-rich black smoker</b>. <b>Chalcopyrite</b> (and bornite) crystallise first from the hot jet; sphalerite and pyrite follow as it cools.';
+  var mixn=MIXES[r].map(function(q){return q[0];});$('#mxLegend').innerHTML=mixn.map(function(k){return '<span><span style="display:inline-block;width:.7rem;height:.7rem;border-radius:50%;background:'+MIN[k][1]+';border:1px solid var(--line);vertical-align:-1px"></span> '+MIN[k][0]+'</span>';}).join('');
+  if(mSeen.white&&mSeen.zn&&mSeen.cu)award('mx-all',5,'Ran every kind of vent');}
+function mStep(){var r=regime(),n=reduce?0:3;for(var i=0;i<n;i++)mParts.push({x:320+(Math.random()-.5)*10,y:236,vx:(Math.random()-.5)*.5,vy:-(1.2+Math.random()*1.1)*(.6+mT/600),age:0,m:pick(MIXES[r])});
+  mParts.forEach(function(p){p.age++;p.x+=p.vx+Math.sin((p.age+p.y)*.04)*.4;p.y+=p.vy;p.vy*=.993;p.vx*=1.003;if(p.age>40)p.vx+=(p.x>320?.01:-.01);});
+  mParts=mParts.filter(function(p){return p.y>-10&&p.age<420;});if(mParts.length>700)mParts.splice(0,mParts.length-700);}
+function mDraw(){var c=mx,r=regime();var g=c.createLinearGradient(0,0,0,MH);g.addColorStop(0,'#0B2433');g.addColorStop(1,'#061722');c.fillStyle=g;c.fillRect(0,0,MW,MH);
+  c.fillStyle='#211C1A';c.fillRect(0,290,MW,30);
+  c.fillStyle=r==='white'?'#CFCBC2':'#3A3330';c.beginPath();c.moveTo(286,292);c.lineTo(304,236);c.lineTo(336,236);c.lineTo(354,292);c.closePath();c.fill();
+  c.fillStyle='#F2F0EA';c.fillRect(300,236,6,56);c.fillRect(334,236,6,56);
+  c.fillStyle=r==='cu'?'#D4A83A':r==='zn'?'#6B4A2E':'#DCE6EA';c.fillRect(312,236,4,56);c.fillRect(324,236,4,56);
+  mParts.forEach(function(p){var hot=Math.max(0,1-p.age/45);if(hot>0){c.fillStyle='rgba(255,'+Math.round(120+80*(1-hot))+',60,'+(.55*hot)+')';c.beginPath();c.arc(p.x,p.y,3.2,0,Math.PI*2);c.fill();}
+    if(p.age>8){var a=Math.min(1,(p.age-8)/30)*Math.max(0,1-p.age/420);var col=MIN[p.m][1];c.fillStyle=r==='white'?rgba(col,a*.7):rgba(col,a*.9);c.beginPath();c.arc(p.x,p.y,1.8,0,Math.PI*2);c.fill();}});
+  c.fillStyle='rgba(255,255,255,.85)';c.font=fontPx(mk);c.fillText('vent fluid '+mT+' °C',14,22);c.fillText('seawater 2 °C',MW-112,22);c.fillText('chimney',366,282);}
+function mLoop(){if(!mOn)return;mStep();mDraw();requestAnimationFrame(mLoop);}
+$('#mxT').addEventListener('input',function(){mT=+this.value;mInfo();if(reduce)mDraw();});
+onVisible(mc,function(v){if(reduce){mDraw();return;}if(v&&!mOn){mOn=true;requestAnimationFrame(mLoop);}else if(!v)mOn=false;});
+mInfo();
+
+/* grow a chimney */
+var chs=$('#chSvg'),chH=0,chRun=false,chSeen={};
+var CHZ={
+ out:{n:'Exterior wall',t:'Anhydrite (CaSO₄), gypsum (CaSO₄·2H₂O) and sphalerite (ZnS). Seawater heated against the jet precipitates calcium sulphate first: this is how the chimney wall starts.',c:'#EDEBE5'},
+ mid:{n:'Middle of the wall',t:'Pyrite (FeS₂), pyrrhotite (Fe₁₋ₓS) and sphalerite (ZnS): sulphides crystallising behind the anhydrite as the fluid cools outwards, mostly below about 350 °C.',c:'#6E5B3E'},
+ inn:{n:'Lining of the channel',t:'Chalcopyrite (CuFeS₂), cubanite (CuFe₂S₃) and bornite (Cu₅FeS₄). The hottest fluid flows past here, about 350 °C, so the copper minerals form on the inside.',c:'#D4A83A'},
+ fl:{n:'Central channel',t:'Hot, acidic vent fluid (350 to 400 °C in black smokers) rising up the open pipe. It leaves the top as the black “smoke” of fine sulphide particles.',c:'#C8553A'}};
+function chDraw(){chs.innerHTML='';var W=640,base=320,top=base-chH;
+  el('rect',{x:0,y:0,width:W,height:360,fill:'#0B2433'},chs);el('rect',{x:0,y:base,width:W,height:40,fill:'#211C1A'},chs);
+  for(var i=0;i<6;i++){var y=60+i*40;el('path',{d:'M'+(40+i*8)+' '+y+' q 30 -10 60 0',stroke:'#4E8FB0','stroke-width':2,fill:'none',opacity:.6},chs);el('path',{d:'M'+(540-i*8)+' '+y+' q 30 -10 60 0',stroke:'#4E8FB0','stroke-width':2,fill:'none',opacity:.6},chs);}
+  txt(chs,24,40,'seawater 2 °C',{fill:'#cfe6f0','font-size':13});
+  if(chH>0){var cx=320,wOut=70,wMid=46,wIn=20,ch=10;
+    function band(id,w,col,inner){var g=el('g',{'data-z':id,style:'cursor:pointer'},chs);el('path',{d:'M'+(cx-w)+' '+base+' L'+(cx-w*.8)+' '+top+' L'+(cx-inner*.8)+' '+top+' L'+(cx-inner)+' '+base+' Z',fill:col},g);el('path',{d:'M'+(cx+w)+' '+base+' L'+(cx+w*.8)+' '+top+' L'+(cx+inner*.8)+' '+top+' L'+(cx+inner)+' '+base+' Z',fill:col},g);g.addEventListener('click',function(){chPick(id);});return g;}
+    band('out',wOut,CHZ.out.c,wMid);if(chH>60)band('mid',wMid,CHZ.mid.c,wIn);if(chH>120)band('inn',wIn,CHZ.inn.c,ch);
+    var f=el('g',{'data-z':'fl',style:'cursor:pointer'},chs);el('path',{d:'M'+(cx-ch)+' '+base+' L'+(cx-ch*.8)+' '+top+' L'+(cx+ch*.8)+' '+top+' L'+(cx+ch)+' '+base+' Z',fill:CHZ.fl.c},f);f.addEventListener('click',function(){chPick('fl');});
+    for(var k=0;k<4;k++){el('circle',{cx:cx+(k%2?6:-6),cy:top-12-k*16,r:8+k*3,fill:'#191414',opacity:.55-k*.1},chs);}
+    if(chH>=200){txt(chs,cx+80,top+30,'exterior: anhydrite',{fill:'#EDEBE5','font-size':12});txt(chs,cx+80,top+90,'middle: Fe and Zn sulphides',{fill:'#d9c9a8','font-size':12});txt(chs,cx+80,top+150,'lining: Cu minerals',{fill:'#E2B341','font-size':12});}}
+}
+function chPick(id){var z=CHZ[id];chSeen[id]=1;$('#chSay').innerHTML='<b>'+z.n+'.</b> '+z.t;SND.play('flip');$$('[data-z]',chs).forEach(function(g){g.setAttribute('opacity',g.getAttribute('data-z')===id?'1':'.55');});
+  if(chSeen.out&&chSeen.mid&&chSeen.inn&&chSeen.fl)award('ch-zones',5,'Read every zone of the chimney');}
+function chStep(){chH=Math.min(200,chH+1.4);chDraw();$('#chStage').textContent=chH<60?'anhydrite wall':chH<120?'sulphides behind it':chH<200?'copper lining':'grown';
+  $('#chSay').innerHTML=chH<60?'Seawater next to the hot jet is heated, and <b>anhydrite</b> precipitates as a first wall.':chH<120?'Behind that wall, <b>iron and zinc sulphides</b> crystallise as the fluid cools outwards.':chH<200?'The hottest fluid flows up the centre, so <b>copper minerals</b> line the channel.':'Grown. Tap each zone to read it.';
+  if(chH<200)requestAnimationFrame(chStep);else{chRun=false;award('ch-grow',3,'Grew a chimney');}}
+$('#chPlay').addEventListener('click',function(){if(chRun)return;chH=0;chSeen={};if(reduce){chH=200;chDraw();$('#chStage').textContent='grown';award('ch-grow',3,'Grew a chimney');return;}chRun=true;requestAnimationFrame(chStep);});
+chDraw();
+
+/* sort the chimney minerals */
+var SO=['Chimney interior (hottest)','Chimney exterior','White smoker'];
+mcCards($('#sortCards'),[
+ {lbl:'Mineral',q:'Chalcopyrite, CuFeS₂',o:SO,a:0,e:'Copper mineral of the hot channel lining, about 350 °C.'},
+ {lbl:'Mineral',q:'Anhydrite, CaSO₄',o:SO,a:1,e:'Precipitates from heated seawater on the outer wall, starting the chimney.'},
+ {lbl:'Mineral',q:'Amorphous silica and baryte',o:SO,a:2,e:'The pale Si and Ba minerals of cooler white smokers.'},
+ {lbl:'Mineral',q:'Cubanite, CuFe₂S₃',o:SO,a:0,e:'Another high-temperature copper mineral of the interior.'},
+ {lbl:'Mineral',q:'Gypsum, CaSO₄·2H₂O',o:SO,a:1,e:'Hydrated calcium sulphate on the cool exterior.'},
+ {lbl:'Mineral',q:'Bornite, Cu₅FeS₄',o:SO,a:0,e:'Copper-rich sulphide that needs the hottest fluid.'}
+],'sort',2,function(r,n){$('#sortScore').textContent=r+' / '+n;if(r===n)award('sort-all',4,'Sorted the whole chimney');});
+
+/* vent field convection */
+var cc=$('#cvCanvas'),cx2=cc.getContext('2d'),CW=640,CH=300,ck=1,cParts=[],cOn=false,cv={flow:true,zone:false,temp:false},cvSeen={};
+function seafloor(x){return 128-26*Math.exp(-Math.pow((x-330)/90,2));}
+function cvSpawn(){var side=Math.random()<.5?-1:1,x0=side<0?20+Math.random()*190:450+Math.random()*170;cParts.push({x0:x0,side:side,t:0,v:.0022+Math.random()*.0018,j:(Math.random()-.5)*30});}
+function cvPos(p){var t=p.t,vx=330,x,y;if(t<.45){var u=t/.45;x=p.x0+(vx+p.side*60-p.x0)*u*.6;y=seafloor(p.x0)+u*(205-seafloor(p.x0))+p.j*Math.sin(u*3);}
+  else if(t<.65){var u2=(t-.45)/.2;x=p.x0+(vx+p.side*60-p.x0)*.6+(vx-(p.x0+(vx+p.side*60-p.x0)*.6))*u2;y=205+p.j*.3*(1-u2);}
+  else{var u3=(t-.65)/.35;x=vx+p.j*.15*(1-u3);y=205-(205-seafloor(vx)-2)*u3;}return [x,y];}
+function cvDraw(){var c=cx2;c.clearRect(0,0,CW,CH);c.fillStyle='#0E3448';c.fillRect(0,0,CW,CH);
+  c.fillStyle='#5A4636';c.beginPath();c.moveTo(0,CH);for(var x=0;x<=CW;x+=8)c.lineTo(x,seafloor(x));c.lineTo(CW,CH);c.closePath();c.fill();
+  c.fillStyle='#C8553A';c.beginPath();c.ellipse(330,CH+10,200,58,0,0,Math.PI*2);c.fill();
+  c.fillStyle='rgba(212,120,60,.75)';c.fillRect(0,seafloor(0)-3,150,5);c.fillStyle='rgba(120,150,200,.8)';c.fillRect(175,seafloor(175)-3,60,4);
+  if(cv.zone){[[300,360,104,128,'#B49A3A'],[290,370,128,150,'#C9BE7A'],[272,388,150,175,'#DCE6EA'],[245,415,175,200,'#7FA36A']].forEach(function(z){c.fillStyle=rgba(z[4],.55);c.beginPath();c.moveTo(z[0],z[2]);c.lineTo(z[1],z[2]);c.lineTo(z[1]+10,z[3]);c.lineTo(z[0]-10,z[3]);c.closePath();c.fill();});}
+  if(cv.flow)cParts.forEach(function(p){var q=cvPos(p),h=Math.min(1,Math.max(0,(p.t-.25)/.4));c.fillStyle='rgb('+Math.round(70+185*h)+','+Math.round(160-80*h)+','+Math.round(220-170*h)+')';c.beginPath();c.arc(q[0],q[1],2.4,0,Math.PI*2);c.fill();});
+  c.fillStyle='#2E2826';c.beginPath();c.moveTo(322,seafloor(330)+2);c.lineTo(326,seafloor(330)-22);c.lineTo(334,seafloor(330)-22);c.lineTo(338,seafloor(330)+2);c.closePath();c.fill();
+  for(var k=0;k<5;k++){c.fillStyle='rgba(20,16,16,'+(.6-k*.1)+')';c.beginPath();c.arc(330+k*9,seafloor(330)-30-k*12,6+k*3,0,Math.PI*2);c.fill();}
+  for(var w=0;w<3;w++){c.fillStyle='rgba(235,235,230,'+(.35-w*.08)+')';c.beginPath();c.arc(440+w*5,seafloor(440)-10-w*10,4+w*2,0,Math.PI*2);c.fill();}
+  c.font=fontPx(ck);c.fillStyle='rgba(255,255,255,.9)';
+  if(cv.temp){[['seawater 2 °C',14,22],['focused flow 350 °C',352,seafloor(330)-40],['diffuse flow 2 to 60 °C',462,seafloor(462)-30],['reaction zone 400 °C',345,226],['magma 1200 °C',300,CH-10]].forEach(function(t){c.fillText(t[0],t[1],t[2]);});}
+  else{c.fillText('black smoker',352,seafloor(330)-40);c.fillText('white smoker',462,seafloor(462)-30);c.fillText('magma',306,CH-10);}
+  c.fillStyle='rgba(255,255,255,.75)';c.fillText('metalliferous sediment',8,seafloor(0)-10);c.fillText('Fe-Mg crust',178,seafloor(175)+18);}
+function cvLoop(){if(!cOn)return;if(cParts.length<160)cvSpawn();cParts.forEach(function(p){p.t+=p.v;});cParts=cParts.filter(function(p){return p.t<1;});cvDraw();requestAnimationFrame(cvLoop);}
+function cvSay(){var s=[];if(cv.zone)s.push('Under the vent the rock is zoned: <b>massive pyrite breccia</b> right under the chimney, then <b>pyrite-anhydrite</b> and <b>pyrite-silica</b> breccias, then <b>silicified wall rock</b>, with <b>chloritised basalt breccia</b> deeper and further out.');
+  if(cv.temp)s.push('Temperatures from slide 22: magma 1200 °C, reaction zone 400 °C, focused vent flow 350 °C, diffuse flow 2 to 60 °C, seawater 2 °C.');
+  $('#cvSay').innerHTML=s.length?s.join(' '):'Blue seawater is drawn down, heats up as it nears the magma, and rises to the vent. Switch on the overlays.';
+  $('#cvTag').textContent=(cv.zone?'zoning ':'')+(cv.temp?'temperatures':'');if(cvSeen.zone&&cvSeen.temp)award('cv-all',4,'Read the vent field plumbing');if(reduce)cvDraw();}
+[['cvFlow','flow'],['cvZone','zone'],['cvTemp','temp']].forEach(function(b){$('#'+b[0]).addEventListener('click',function(){cv[b[1]]=!cv[b[1]];this.setAttribute('aria-pressed',cv[b[1]]?'true':'false');if(cv[b[1]])cvSeen[b[1]]=1;cvSay();});});
+if(reduce){for(var i0=0;i0<120;i0++){cvSpawn();cParts[cParts.length-1].t=Math.random();}}
+onVisible(cc,function(v){if(reduce){cvDraw();return;}if(v&&!cOn){cOn=true;requestAnimationFrame(cvLoop);}else if(!v)cOn=false;});
+
+/* extremophiles */
+var EX=['Thermophile','Hyperthermophile','Halophile','Acidophile','Alkaliphile','Psychrophile','Piezophile','Xerophile'];
+function exOpts(a,b,c){return [a,b,c];}
+mcCards($('#exCards'),[
+ {lbl:'Where it lives',q:'Deep-sea vents and hot springs, above 80 °C',o:exOpts('Thermophile','Hyperthermophile','Psychrophile'),a:1,e:'Hyperthermophiles live above 80 °C; thermophiles above 50 °C.'},
+ {lbl:'Where it lives',q:'Crushing pressure, up to 130 MPa, at deep-sea vents',o:exOpts('Piezophile','Halophile','Xerophile'),a:0,e:'Piezophiles thrive under pressure.'},
+ {lbl:'Where it lives',q:'Sulphur springs and acid mine waters, pH below 2',o:exOpts('Alkaliphile','Acidophile','Thermophile'),a:1,e:'Acidophiles love low pH.'},
+ {lbl:'Where it lives',q:'Salt lakes and salt mines, over 20% salt',o:exOpts('Halophile','Psychrophile','Piezophile'),a:0,e:'Extreme halophiles live above 20% salt.'},
+ {lbl:'Where it lives',q:'Arctic and Antarctic pack ice, below 15 °C',o:exOpts('Hyperthermophile','Psychrophile','Acidophile'),a:1,e:'Psychrophiles like the cold.'},
+ {lbl:'Where it lives',q:'Chile’s Atacama Desert, extremely dry',o:exOpts('Halophile','Alkaliphile','Xerophile'),a:2,e:'Xerophiles resist extreme dryness.'}
+],'ex',2,function(r,n){$('#exScore').textContent=r+' / '+n;});
+
+/* plume hunt */
+var phs=$('#phSvg'),ph={};
+function prof(x){return 270-150*Math.exp(-Math.pow((x-330)/120,2))-20*Math.exp(-Math.pow((x-470)/50,2));}
+function ntu(x,y){var drift=70,cx=ph.vx+drift,layer=Math.exp(-Math.pow((y-(prof(ph.vx)-70))/26,2));var lat=Math.exp(-Math.pow((x-cx)/90,2));var near=Math.exp(-Math.pow((x-ph.vx)/30,2))*Math.exp(-Math.pow((y-(prof(ph.vx)-25))/40,2));return Math.min(1,layer*lat*1.05+near*.9);}
+function ntuCol(v){return v<.15?'#3D7FB8':v<.35?'#5FA35F':v<.6?'#D9A52C':'#C8553A';}
+function phNew(){var r=Math.random();ph={vx:250+r*170,casts:[],left:5,done:false,rov:false};phDraw();$('#phSay').textContent='';$('#phRov').disabled=false;$('#phRov').textContent='Send the ROV';$('#phAsk').textContent='A vent is hidden somewhere on this seamount. Tap the sea surface to lower the CTD there. You have five casts; then send the ROV to where you think the vent is.';}
+function phDraw(){phs.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'#0B2433'},phs);el('rect',{x:0,y:0,width:640,height:14,fill:'#2A7BA4'},phs);
+  var d='M0 300';for(var x=0;x<=640;x+=8)d+=' L'+x+' '+prof(x).toFixed(1);d+=' L640 300 Z';el('path',{d:d,fill:'#3A2E28'},phs);
+  ph.casts.forEach(function(cx){var bot=prof(cx);for(var y=16;y<bot;y+=8){el('rect',{x:cx-5,y:y,width:10,height:8,fill:ntuCol(ntu(cx,y+4))},phs);}
+    if(Math.abs(cx-ph.vx)<28)txt(phs,cx-6,bot-4,'▼',{fill:'#FFF3C4','font-size':14});el('line',{x1:cx,y1:0,x2:cx,y2:14,stroke:'#fff','stroke-width':2},phs);});
+  if(ph.done){el('circle',{cx:ph.vx,cy:prof(ph.vx)-4,r:7,fill:'none',stroke:'#E2B341','stroke-width':3},phs);txt(phs,ph.vx-14,prof(ph.vx)-16,'vent',{fill:'#E2B341','font-size':12});}
+  if(ph.guess!==undefined)el('line',{x1:ph.guess,y1:prof(ph.guess)-30,x2:ph.guess,y2:prof(ph.guess),stroke:'#fff','stroke-width':2,'stroke-dasharray':'4 3'},phs);
+  $('#phLeft').textContent=ph.done?'cruise over':ph.rov?'pick the vent':ph.left+' casts left';}
+phs.addEventListener('click',function(e){if(ph.done)return;var pt=phs.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(phs.getScreenCTM().inverse());var x=Math.max(10,Math.min(630,p.x));
+  if(ph.rov){ph.guess=x;ph.done=true;var dist=Math.abs(x-ph.vx);if(dist<26){COMBO.hit();award('ph-win',COMBO.pts(6),'Vent found'+COMBO.tag());FX.burst($('#phRov'));$('#phSay').innerHTML='<b>The ROV lands on a smoking chimney.</b> You read the ORP drop rather than chasing the turbid layer downstream.';}
+    else{COMBO.miss();FX.shake($('#phRov'));$('#phSay').innerHTML='<b>Missed by '+Math.round(dist*10)+' m.</b> The plume drifted with the current, so the murkiest water sat downstream of the vent. The ▼ ORP drop marks fresh vent fluid right over the source.';award('ph-try',2,'Finished a cruise');}
+    phDraw();$('#phRov').disabled=true;return;}
+  if(ph.left<=0)return;ph.casts.push(x);ph.left--;SND.play('tick');phDraw();
+  var hi=Math.abs(x-ph.vx)<28;$('#phSay').innerHTML=hi?'<b>ORP drop near the bottom</b> (▼): fresh, reduced vent fluid is close.':'Turbidity column logged. Look for where the murky layer is, and remember plumes drift with currents.';
+  if(!ph.left){ph.rov=true;phDraw();$('#phAsk').textContent='Casts used up. Tap the seafloor where you want the ROV to land.';}});
+$('#phRov').addEventListener('click',function(){if(ph.done)return;ph.rov=true;phDraw();$('#phAsk').textContent='Tap the seafloor where you want the ROV to land.';});
+$('#phNew').addEventListener('click',phNew);
+phNew();
+
+/* settings chart */
+var sts=$('#stSvg'),stMode='now',stSeen={};
+var STD=[['Mid-ocean ridge',65,'#4E8FB0'],['Back-arc basin',22,'#2B7A68'],['Island arc',12,'#C8553A'],['Intraplate',1,'#9CA3A8']];
+function stDraw(){sts.innerHTML='';var past=stMode==='past';STD.forEach(function(d,i){var y=24+i*56,w=d[1]/65*400;var fade=past&&i===0;
+  txt(sts,8,y+26,d[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:160,y:y+8,width:Math.max(4,w),height:28,rx:4,fill:d[2],opacity:fade?.25:1},sts);txt(sts,168+w,y+28,d[1]+'%',{'font-size':14,fill:'var(--ink)'});
+  if(past&&i===0){el('line',{x1:160,y1:y+22,x2:560,y2:y+22,stroke:'var(--hem)','stroke-width':2},sts);txt(sts,330,y+52,'mostly subducted, rarely preserved',{'font-size':12,fill:'var(--hem)'});}
+  if(past&&(i===1||i===2))txt(sts,170+w+44,y+28,'preserved; favours large VMS',{'font-size':12,fill:'var(--mal)'});});
+  $('#stTag').textContent=past?'the rock record':'active vent fields';
+  $('#stSay').innerHTML=past?'What makes it into the rock record is a different picture. Ridge crust goes back down subduction zones, taking its sulphides with it. Arc and back-arc deposits survive, and arcs also have more sulphide to make big deposits. <span class="srcs">slides 27 to 29</span>':'Share of active vent fields by setting, from the recording: mid-ocean ridges dominate today. <span class="srcs">lecture recording, 25 Sep</span>';
+  stSeen[stMode]=1;if(stSeen.now&&stSeen.past)award('st-both',3,'Compared today with the rock record');}
+$('#stNow').addEventListener('click',function(){stMode='now';this.setAttribute('aria-pressed','true');$('#stPast').setAttribute('aria-pressed','false');stDraw();});
+$('#stPast').addEventListener('click',function(){stMode='past';this.setAttribute('aria-pressed','true');$('#stNow').setAttribute('aria-pressed','false');stDraw();});
+stDraw();
+
+/* vapour transport stepper */
+var vps=$('#vpSvg'),vpS=1,vpT=0,vpOn=false,vpB=[];
+var VPSAY=['','<b>1. Magma boiling zone.</b> Fresh hydrous magma sits about 2 km below sea level. As it rises and decompresses it starts to boil.','<b>2. Magmatic vapour exsolution.</b> Vapour separates out of the magma as bubbles, no longer dissolved in it.','<b>3. Sulphide and metal vapour bubbles.</b> Sulphur in the vapour acts as a ligand and holds onto metal: tiny compound sulphide droplets ride on the bubbles.','<b>4. Entrained.</b> The circulating hydrothermal fluid sweeps the bubbles and droplets upwards.','<b>5. Deposition at the seafloor.</b> Near the surface the pressure drops suddenly, vapour and sulphide separate, the sulphide becomes insoluble and precipitates right at the seafloor.'];
+function vpBuild(){vps.innerHTML='';el('rect',{x:0,y:0,width:640,height:340,fill:'#0B2433'},vps);
+  el('path',{d:'M0 120 L200 110 L290 40 L350 40 L440 110 L640 120 L640 340 L0 340 Z',fill:'#5E4C3C'},vps);
+  el('path',{d:'M300 40 L340 40 L360 200 L280 200 Z',fill:'#3B3233'},vps);
+  el('path',{d:'M200 340 Q320 210 440 340 Z',fill:'#C8553A'},vps);
+  txt(vps,214,330,'fresh hydrous magma',{'font-size':13,fill:'#FFE3D6'});
+  if(vpS>=4){[[250,180,'M250 180 q -30 -60 40 -110'],[390,180,'M390 180 q 30 -60 -40 -110']].forEach(function(a){el('path',{d:a[2],fill:'none',stroke:'#7DB7D6','stroke-width':3,'stroke-dasharray':'6 5',opacity:.9},vps);});}
+  if(vpS>=5){el('path',{d:'M304 40 L310 18 L330 18 L336 40 Z',fill:'#1E1A1A'},vps);txt(vps,352,28,'sulphides precipitate (pressure drop)',{'font-size':12,fill:'#E2B341'});}
+  vpB.forEach(function(b){b.g=el('g',{},vps);el('circle',{cx:0,cy:0,r:b.r,fill:'rgba(255,255,255,.85)'},b.g);if(vpS>=3)el('circle',{cx:b.r*.6,cy:b.r*.4,r:2.4,fill:'#2A2424'},b.g);});
+  $('#vpStep').textContent='step '+vpS+' of 5';$('#vpSay').innerHTML=VPSAY[vpS]+' <span class="srcs">slides 39 and 40</span>';$('#vpBack').disabled=vpS===1;$('#vpNext').disabled=vpS===5;}
+function vpReset(){vpB=[];var n=vpS===1?10:18;for(var i=0;i<n;i++)vpB.push({x:250+Math.random()*140,y:250+Math.random()*80,r:vpS===1?2+Math.random()*2:3+Math.random()*3,v:.2+Math.random()*.5});vpBuild();}
+function vpTick(){vpT++;vpB.forEach(function(b){var top=vpS===1?230:vpS===2?150:vpS===3?120:40;b.y-=b.v*(vpS>=4?1.6:1);b.x+=Math.sin((vpT+b.y)*.05)*.4;if(vpS>=4)b.x+=(320-b.x)*.01;if(b.y<top){b.y=300+Math.random()*30;b.x=250+Math.random()*140;}b.g.setAttribute('transform','translate('+b.x.toFixed(1)+' '+b.y.toFixed(1)+')');});}
+function vpLoop(){if(!vpOn)return;vpTick();requestAnimationFrame(vpLoop);}
+$('#vpNext').addEventListener('click',function(){if(vpS<5){vpS++;vpReset();vpTick();if(vpS===5)award('vp',4,'Followed the metal to the seafloor');}});
+$('#vpBack').addEventListener('click',function(){if(vpS>1){vpS--;vpReset();vpTick();}});
+vpReset();vpTick();
+onVisible(vps,function(v){if(reduce)return;if(v&&!vpOn){vpOn=true;requestAnimationFrame(vpLoop);}else if(!v)vpOn=false;});
+
+/* grade vs tonnage */
+var gts=$('#gtSvg'),gtMode='grade',gtSeen={};
+var GT=[['Triple Junction (Fiji), SMS',.5,6.93,'#4E8FB0'],['Solwara 1 (PNG), SMS',2.17,7.25,'#4E8FB0'],['Whim Creek (WA), VMS',3.4,1.5,'#2B7A68'],['Kidd Mine (Canada), VMS',115,2.2,'#2B7A68'],['Ok Tedi (PNG), porphyry',910,.8,'#C8553A']];
+function gtDraw(){gts.innerHTML='';var g=gtMode==='grade';var max=g?8:7300000;
+  GT.forEach(function(d,i){var y=18+i*54,val=g?d[2]:d[1]*1e6*d[2]/100,w=Math.max(3,val/max*380);
+    txt(gts,8,y+22,d[0],{'font-size':13,fill:'var(--ink)'});el('rect',{x:8,y:y+28,width:w,height:16,rx:3,fill:d[3]},gts);
+    txt(gts,14+w,y+41,g?d[2]+'% Cu':(val>=1e6?(val/1e6).toFixed(2)+' Mt':Math.round(val/1000)+' kt')+' Cu',{'font-size':12,fill:'var(--ink)'});});
+  $('#gtTag').textContent=g?'grade':'contained copper';
+  $('#gtSay').innerHTML=g?'By grade, the seafloor deposits look spectacular: about 7% copper, nearly ten times Ok Tedi.':'Now multiply by tonnes. Solwara holds about 0.16 Mt of copper; Kidd Creek about 2.5 Mt; Ok Tedi about 7.3 Mt, roughly 45 times Solwara. That’s why big miners aren’t interested.';
+  gtSeen[gtMode]=1;if(gtSeen.grade&&gtSeen.metal)award('gt-both',4,'Weighed grade against tonnage');}
+$('#gtGrade').addEventListener('click',function(){gtMode='grade';this.setAttribute('aria-pressed','true');$('#gtMetal').setAttribute('aria-pressed','false');gtDraw();});
+$('#gtMetal').addEventListener('click',function(){gtMode='metal';this.setAttribute('aria-pressed','true');$('#gtGrade').setAttribute('aria-pressed','false');gtDraw();});
+gtDraw();
+
+GEO.finish(function(){dk=fitCanvas(dc,dx,DW,DH);dDraw();mk=fitCanvas(mc,mx,MW,MH);mDraw();ck=fitCanvas(cc,cx2,CW,CH);cvDraw();});
+})();
+</script>
+</body>
+</html>

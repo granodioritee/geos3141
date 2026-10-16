@@ -676,7 +676,7 @@ var GEO = {
         out.push({ id: 'suite-' + x.img, kind: 'suite', img: x.img, mic: false, lbl: 'Lab ore suite · polished block, reflected light',
           q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
           e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '. Look at which sulphides and oxides are there and how they sit together, then ask what kind of system makes that assemblage.',
-          link: type === 'Regolith' ? 'L2.html#supergene' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? 'L6.html#chimney' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
       var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {});
@@ -817,7 +817,7 @@ var GEO = {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
           var t = node('div', '', null, row); node('b', '', st.o[st.a], t); node('p', '', st.e, t);
           if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
-          else if (st.link) { var a2 = node('a', '', 'Review the supergene profile in Lecture 2 →', t); a2.href = st.link; }
+          else if (st.link) { var a2 = node('a', '', st.link.indexOf('L6') === 0 ? 'Review modern VMS chimneys in Lecture 6 →' : 'Review the supergene profile in Lecture 2 →', t); a2.href = st.link; }
           else if (st.credit) { var a3 = node('a', '', 'See the original photo →', t); a3.href = st.credit; a3.target = '_blank'; a3.rel = 'noopener'; }
         });
       }
