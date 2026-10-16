@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 1 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+
+<aside id="rail" aria-label="Drill log">
+  <div class="dm num" id="railDepth">0 m downhole</div>
+  <div class="hole" id="railHole"><span class="bit" id="railBit"></span></div>
+</aside>
+
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div style="font-family:var(--mono);font-size:.78rem;display:flex;justify-content:flex-end;margin-bottom:1rem"><a href="L2.html" style="color:var(--muted);text-decoration:none">Lecture 2 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 1 · T3 2026</div>
+  <h1>Why a pile of rock is worth billions, or nothing</h1>
+  <p class="lede">Three ideas run under everything in this lecture. Ore is an economic word. Nature has to concentrate metals by enormous factors to make it. And how it does that depends on tectonics, magma and moving water. Let's start with the second one, and you can do the concentrating yourself.</p>
+
+  <div class="lab" id="conc">
+    <h4><span>Concentrator</span><b>pick a metal, then press the button</b></h4>
+    <div class="chips" role="group" aria-label="Pick a metal">
+      <button class="chip" type="button" data-m="Al">Al</button>
+      <button class="chip" type="button" data-m="Fe">Fe</button>
+      <button class="chip" type="button" data-m="Cu" aria-pressed="true">Cu</button>
+      <button class="chip" type="button" data-m="Zn">Zn</button>
+      <button class="chip" type="button" data-m="Au">Au</button>
+      <button class="chip" type="button" data-m="Sn">Sn</button>
+    </div>
+    <canvas id="concCanvas" height="240" aria-label="Animation of scattered metal grains in ordinary crust gathering into a small ore body"></canvas>
+    <div class="readout">
+      <div><small>Average crust</small><b id="concAb">55 ppm</b></div>
+      <div><small>Needed to mine</small><b id="concGr">1%</b></div>
+      <div><small>Concentration</small><b id="concF">1×</b></div>
+      <div><small>In normal rock</small><b id="concOne" style="font-size:.95rem">1 part in 18 000</b></div>
+    </div>
+    <p class="say" id="concHow"></p>
+    <div class="row"><button class="btn" type="button" id="concGo">Concentrate it</button><span style="font-size:.85rem;color:var(--muted)">Dots are scaled, not to the atom: common metals get more of them, and a bigger concentration factor squeezes them into a smaller ore body.</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#about">The big picture</a></li>
+      <li><a href="#ore">Ore is an economic word</a></li>
+      <li><a href="#concentration">Concentration factors</a></li>
+      <li><a href="#grade">Grade, tonnage and assays</a></li>
+      <li><a href="#resources">From drill hole to reserve</a></li>
+      <li><a href="#words">Timing and depth words</a></li>
+      <li><a href="#tectonics">Tectonics as the first filter</a></li>
+      <li><a href="#magmas">Magma chemistry picks the metals</a></li>
+      <li><a href="#hydrothermal">The hydrothermal chain</a></li>
+      <li><a href="#classify">Why classification is slippery</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#next">Where this goes next</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="about" data-log="Big picture"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>The big picture</h2>
+  <p>This lecture throws a lot of vocabulary at you very quickly: syngenetic, epigenetic, hypogene, supergene, metallotect, mesothermal. Please don't memorise it as a list. Hold onto one sentence instead: <em>an ore deposit is an unusually high concentration of elements that are normally spread thinly through the crust.</em> That's also why deposits are hard to find. Every other idea in Lecture 1 answers one of three follow-up questions.</p>
+  <p>First, <strong>when does a concentration count as ore?</strong> That's an economic question, so you'll meet grade, tonnage, resources, reserves and even geopolitics. Second, <strong>how much does nature have to concentrate a metal?</strong> That's the concentration factor, and it explains why some deposits are common and others are rare. Third, <strong>what processes can do that concentrating?</strong> Tectonic setting, magma type and hydrothermal fluids. Those processes are the backbone of every deposit lecture for the rest of term, so time spent here pays off later.</p>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 210" role="img" aria-labelledby="f0t" style="min-width:520px">
+      <title id="f0t">The three questions behind Lecture 1 and the topics that answer each</title>
+      <defs><marker id="ar0" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g font-size="14">
+        <rect x="10" y="14" width="220" height="176" rx="10" fill="var(--bg)" stroke="var(--gold)" stroke-width="2.5"/>
+        <text x="120" y="46" text-anchor="middle" font-weight="700" fill="var(--ink)" font-size="16">Is it ore?</text>
+        <text x="120" y="76" text-anchor="middle" fill="var(--muted)">grade and tonnage</text>
+        <text x="120" y="96" text-anchor="middle" fill="var(--muted)">ore vs gangue</text>
+        <text x="120" y="116" text-anchor="middle" fill="var(--muted)">resources and reserves</text>
+        <text x="120" y="136" text-anchor="middle" fill="var(--muted)">price, cost, politics</text>
+        <text x="120" y="172" text-anchor="middle" fill="var(--gold)" font-size="12" font-weight="700" letter-spacing="2">ECONOMICS</text>
+        <rect x="250" y="14" width="220" height="176" rx="10" fill="var(--bg)" stroke="var(--hem)" stroke-width="2.5"/>
+        <text x="360" y="46" text-anchor="middle" font-weight="700" fill="var(--ink)" font-size="16">How much enrichment?</text>
+        <text x="360" y="76" text-anchor="middle" fill="var(--muted)">crustal abundance</text>
+        <text x="360" y="96" text-anchor="middle" fill="var(--muted)">cut-off grade</text>
+        <text x="360" y="116" text-anchor="middle" fill="var(--muted)">concentration factor</text>
+        <text x="360" y="172" text-anchor="middle" fill="var(--hem)" font-size="12" font-weight="700" letter-spacing="2">GEOCHEMISTRY</text>
+        <rect x="490" y="14" width="220" height="176" rx="10" fill="var(--bg)" stroke="var(--mal)" stroke-width="2.5"/>
+        <text x="600" y="46" text-anchor="middle" font-weight="700" fill="var(--ink)" font-size="16">What did the work?</text>
+        <text x="600" y="76" text-anchor="middle" fill="var(--muted)">tectonic setting</text>
+        <text x="600" y="96" text-anchor="middle" fill="var(--muted)">magma type</text>
+        <text x="600" y="116" text-anchor="middle" fill="var(--muted)">hydrothermal fluids</text>
+        <text x="600" y="136" text-anchor="middle" fill="var(--muted)">weathering, sediments</text>
+        <text x="600" y="172" text-anchor="middle" fill="var(--mal)" font-size="12" font-weight="700" letter-spacing="2">PROCESS</text>
+        <path d="M232 102 h14" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar0)"/>
+        <path d="M472 102 h14" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar0)"/>
+      </g>
+    </svg></div>
+    <figcaption>Every definition you meet in this lecture lives in one of these boxes. When a new term turns up later in the course, ask yourself which box it belongs in.</figcaption>
+  </figure>
+  <p>One note on how this page works. It's laid out like a drill hole: the bar at the top shows how far down you are, and the games and checkpoints pay out in ounces of gold. Collect enough and you'll work your way from field assistant to chief geologist. Your progress is saved in this browser only.</p>
+</div></section>
+
+<section id="ore" data-log="Ore"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>Ore is an economic word, not a rock type</h2>
+  <p>Here's the formal definition: ore is <em>any naturally occurring material from which a mineral or aggregate of value can be extracted at a profit</em>. Look hard at the last two words. A body of rock at 0.3 per cent copper can be ore at one copper price and waste at another, without a single atom in it changing. So a rock is never simply "ore". It's ore under a particular set of prices, costs, technology and rules. Don't take my word for it; move the sliders.</p>
+
+  <div class="lab" id="cut">
+    <h4><span>Cut-off grade: ore or waste?</span><b>block model of a porphyry</b></h4>
+    <div class="ctl">
+      <div><label for="cutPrice">Copper price <b id="cutPriceV">US$9 500/t</b></label><input type="range" id="cutPrice" min="5000" max="14000" step="250" value="9500"></div>
+      <div><label for="cutCost">Mining + processing cost <b id="cutCostV">US$22/t ore</b></label><input type="range" id="cutCost" min="8" max="40" step="1" value="22"></div>
+    </div>
+    <svg class="grid-svg" id="cutSvg" viewBox="0 0 640 360" role="img" aria-label="Grid of 144 mining blocks coloured as ore or waste depending on the cut-off grade"></svg>
+    <div class="legend"><span><i style="background:var(--waste)"></i>waste</span><span><i style="background:var(--gold-hi)"></i>ore near cut-off</span><span><i style="background:var(--hem)"></i>high-grade ore</span><span id="cutHover" class="num">Tap a block to see its grade</span></div>
+    <div class="readout">
+      <div><small>Cut-off grade</small><b id="cutCo">0.27% Cu</b></div>
+      <div><small>Ore</small><b id="cutOre">0 Mt</b></div>
+      <div><small>Average grade</small><b id="cutAvg">0%</b></div>
+      <div><small>Operating margin</small><b id="cutMargin">US$0</b></div>
+    </div>
+    <div class="goal" id="g-cut1"><i>✓</i><span>Crash test: drop copper to US$6 000/t and watch what survives.</span></div>
+    <div class="goal" id="g-cut2"><i>✓</i><span>Boom time: find conditions where more than 100 of the 144 blocks are ore.</span></div>
+    <p class="say" style="font-size:.88rem;color:var(--muted)">Each block is 4 Mt. Cut-off = cost ÷ (price × 85% recovery). The margin ignores the capital cost of building the mine, which can run to billions. Block grades are made up for the game.</p>
+  </div>
+
+  <p>Notice what you just did: the rocks never changed, but the ore did. The same logic decides which minerals count as <button class="term" data-t="ore mineral">ore minerals</button> and which are <button class="term" data-t="gangue">gangue</button>. An ore mineral is the one you get paid for. Gangue comes out of the ground with it, and you pay to crush, process and dump it. Quartz, carbonates, chlorite, micas and pyrite are the usual gangue minerals. But "usual" doesn't mean "always".</p>
+
+  <div class="example">
+    <span class="tag"><span>Real deposit · Mount Isa pyrite</span><span class="srcs">slide 15</span></span>
+    <p>At most sulphide deposits pyrite is a nuisance: worthless, acid-generating, and it dilutes your concentrate. At Mount Isa it has been treated as an ore mineral. Why? Phosphate Hill, roughly 150 km south, needs sulphuric acid to turn phosphate rock into fertiliser. Roast pyrite and you get sulphur dioxide, and from there sulphuric acid. Same mineral, same geology. The only thing that changed is that someone nearby will pay for it.</p>
+  </div>
+
+  <p>It also helps to split ore into three kinds, depending on whether you can actually see what you're mining. <strong>Bulk commodities</strong> like iron and manganese ore are basically the mineral itself, mined by the hundreds of millions of tonnes. <strong>Sulphide ores</strong> are metal-rich and visible: a galena-rich specimen might carry around 10 per cent lead. <strong>Invisible ores</strong> are most gold deposits, where grades are a few grams per tonne and you'll almost never see gold. The Witwatersrand conglomerates are the classic case: the largest gold accumulation known, and you can't see the gold. That's why mines run on-site labs for <button class="term" data-t="grade control">grade control</button>. After every blast the broken rock is sampled and assayed, because you can't tell ore from waste by eye and processing waste costs real money.</p>
+
+  <div class="note">
+    <span class="tag"><span>Field note · "economic" now includes politics</span><span class="srcs">lecture recording, 14 Sep</span></span>
+    <p>Over the last three to five years the industry has shifted. Price used to be the whole story. Now governments fund deposits that wouldn't stack up on price alone, because they want secure supply. Tungsten is a good example: it's essential for hardened projectiles, China dominates production and has restricted exports, so US defence money is now flowing into Australian tungsten. The flip side is Australian nickel, which has been squeezed by large, cheap laterite nickel production with on-site processing in Indonesia.</p>
+    <p>This is also why <button class="term" data-t="critical minerals">critical minerals</button> is a slightly misleading phrase. No mineral is critical in itself. A commodity becomes critical when a particular country depends on it and doesn't control the supply, which is why every country's list is different.</p>
+  </div>
+
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="concentration" data-log="Concentration"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">24 to 36 m</span></div>
+  <h2>Concentration factors: how hard nature has to work</h2>
+  <p>Every element has an average abundance in the continental crust. To make an ore deposit, some process has to collect that element from a huge volume of ordinary rock and pack it into a small volume at a grade worth mining. Divide the minimum economic grade by the crustal average and you get the <button class="term" data-t="concentration factor">concentration factor</button>. Think of it as a measure of how unlikely a deposit is.</p>
+  <p>Aluminium is already 8.2 per cent of the crust, so you only need to quadruple it to make bauxite, and intense tropical weathering does exactly that by leaching everything else away. Tin is only about 2 parts per million, but you need around half a per cent to mine it, so something has to concentrate it about 2500 times. That's why tin deposits are tied to a narrow set of processes (highly evolved, reduced granites and their fluids), while iron and aluminium deposits are comparatively easy to find.</p>
+
+  <figure>
+    <svg viewBox="0 0 720 380" role="img" aria-labelledby="f1t">
+      <title id="f1t">Bar chart of concentration factors on a log scale, from aluminium at 4 times to tin at 2500 times</title>
+      <g font-size="13" fill="var(--muted)">
+        <line x1="90" y1="330" x2="700" y2="330" stroke="var(--line)" stroke-width="1.5"/>
+        <line x1="293" y1="20" x2="293" y2="330" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <line x1="497" y1="20" x2="497" y2="330" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <line x1="700" y1="20" x2="700" y2="330" stroke="var(--line)" stroke-dasharray="3 4"/>
+        <text x="90" y="352" text-anchor="middle">1×</text><text x="293" y="352" text-anchor="middle">10×</text>
+        <text x="497" y="352" text-anchor="middle">100×</text><text x="690" y="352" text-anchor="middle">1000×</text>
+        <text x="395" y="374" text-anchor="middle" font-size="12">concentration factor (log scale)</text>
+      </g>
+      <g id="bars" font-size="14"></g>
+    </svg>
+    <figcaption>Each gridline is ten times the last, and tin runs past the end at 2500×. The red bars need more than 500× concentration. <span class="srcs">slide 29</span></figcaption>
+  </figure>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Metal</th><th>Crustal average</th><th>Economic grade</th><th>Factor</th></tr></thead>
+    <tbody>
+      <tr><td>Aluminium</td><td class="n">8.2%</td><td class="n">30%</td><td class="n">~4×</td></tr>
+      <tr><td>Iron</td><td class="n">5.6%</td><td class="n">50%</td><td class="n">~9×</td></tr>
+      <tr><td>Nickel</td><td class="n">75 ppm</td><td class="n">1%</td><td class="n">~130×</td></tr>
+      <tr><td>Copper</td><td class="n">55 ppm</td><td class="n">1%</td><td class="n">~180×</td></tr>
+      <tr><td>Zinc</td><td class="n">70 ppm</td><td class="n">5%</td><td class="n">~700×</td></tr>
+      <tr><td>Platinum</td><td class="n">5 ppb</td><td class="n">5 g/t</td><td class="n">~1000×</td></tr>
+      <tr><td>Gold</td><td class="n">4 ppb</td><td class="n">5 g/t</td><td class="n">~1250×</td></tr>
+      <tr><td>Tin</td><td class="n">2 ppm</td><td class="n">0.5%</td><td class="n">~2500×</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="example">
+    <span class="tag"><span>Worked example · check the gold number yourself</span></span>
+    <p>Gold averages 4 ppb in the crust, and 5 g/t is a typical mining grade.</p>
+    <div class="calc">5 g/t  = 5 g per 1 000 000 g = 5 ppm = 5000 ppb
+5000 ppb ÷ 4 ppb     = 1250×</div>
+    <p>Here's the trick that makes all of this easy: <strong>1 g/t is exactly 1 ppm</strong>, because a tonne is a million grams. Once that clicks, every row in the table is a one-line division.</p>
+  </div>
+
+  <p>Now a puzzle worth sitting with. Zinc needs a bigger factor than nickel, yet zinc deposits are far more common. How? The factor tells you how big the job is, not how often nature gets it done. Zinc is happily carried by warm, salty fluids that circulate through sedimentary basins all the time. Nickel sulphide ore mostly needs a sulphide liquid to separate from a very hot ultramafic magma, which is a much rarer event. So read the table as "how big is the job", then ask "which processes can do it, and how often do they happen?"</p>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="grade" data-log="Grade"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">36 to 48 m</span></div>
+  <h2>Grade, tonnage, and what an assay actually is</h2>
+  <p>Every deposit is described by two numbers: <button class="term" data-t="tonnage">tonnage</button> (how much ore) and <button class="term" data-t="grade">grade</button> (how much metal per tonne). Multiply them and you get <strong>contained metal</strong>, which is what the market actually cares about. The units depend on the commodity. Precious metals (gold, silver, the platinum group elements) go in grams per tonne. Base metals (copper, lead, zinc, tungsten) go in weight per cent. Oxide ores such as iron, manganese, uranium and rare earths are quoted as weight per cent of the <em>oxide</em>. Diamonds are carats per cubic metre, because there's so little gem in the rock (1 carat is 0.2 g). Play with the units until they feel natural.</p>
+
+  <div class="lab" id="assay">
+    <h4><span>Assay desk</span><b>convert and calculate</b></h4>
+    <div class="tabs" role="group" aria-label="Assay desk mode">
+      <button type="button" data-tab="conv" aria-pressed="true">Unit converter</button>
+      <button type="button" data-tab="metal" aria-pressed="false">Contained metal</button>
+    </div>
+    <div id="tabConv">
+      <div class="ctl">
+        <div><label for="cvVal">Value</label><input type="number" id="cvVal" value="2.5" step="any" min="0"></div>
+        <div><label for="cvUnit">Unit</label><select id="cvUnit"><option value="gt" selected>g/t</option><option value="ppm">ppm</option><option value="ppb">ppb</option><option value="pct">%</option><option value="ozt">troy oz per tonne</option></select></div>
+      </div>
+      <div class="readout" id="cvOut"></div>
+    </div>
+    <div id="tabMetal" hidden>
+      <div class="ctl">
+        <div><label for="cTon">Ore tonnage (Mt)</label><input id="cTon" type="number" min="0" step="any" value="605"></div>
+        <div><label for="cUnit">Grade unit</label><select id="cUnit"><option value="gt">g/t (precious metals)</option><option value="pct">% (base metals)</option></select></div>
+        <div><label for="cGrade">Grade</label><input id="cGrade" type="number" min="0" step="any" value="0.64"></div>
+        <div><label for="cPrice" id="cPriceLbl">Price (US$ per oz)</label><input id="cPrice" type="number" min="0" step="any" value="4500"></div>
+      </div>
+      <div class="readout" id="cOut"></div>
+      <p class="say" style="font-size:.86rem;color:var(--muted)">Loaded with Alumbrera's gold at about US$4500/oz. In situ value ignores every cost and recovery loss, so it's always far larger than any real profit.</p>
+    </div>
+  </div>
+
+  <h3>Grade is an average, built one metre at a time</h3>
+  <p>A reported grade is an average of drill assays. Standard practice in Australia is to cut the core in half, crush one half and send it for <button class="term" data-t="assay">assay</button> in one-metre intervals. You sample every metre the same way, whether or not you can see mineralisation in it. If you only sampled the bits that looked good, you'd bias the grade upwards and overstate the deposit. Grade is also an economic term, so waste has no grade at all.</p>
+  <p>Inside a deposit you'll hear about low, moderate, high and very high grade zones. In gold deposits the very top end is called <button class="term" data-t="bonanza">bonanza</button> grade, generally over 100 g/t, and epithermal or orogenic systems that average 2 g/t can have patches over 1000 g/t.</p>
+  <div class="note">
+    <span class="tag"><span>Field note · treat bonanzas as a bonus</span><span class="srcs">lecture recording, 14 Sep</span></span>
+    <p>When you model a deposit, leave the bonanza intercepts out or cap them. They're real, but they're unpredictable, and a mine plan built around them will overstate what you actually recover. Industry calls the capping a <button class="term" data-t="top cut">top cut</button>. Quick gut check: is 2.5 g/t gold high or low grade? These days it's quite good. Some operations mine at 0.5 g/t or less.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag"><span>Real deposit · Bajo de la Alumbrera, Argentina</span><span class="srcs">slides 26 and 27</span></span>
+    <p>Alumbrera is a porphyry copper-gold deposit in the Andes: 605 Mt at 0.54% Cu and 0.64 g/t Au. Turn that into contained metal:</p>
+    <div class="calc">Copper: 605 000 000 t × 0.0054       ≈ 3.3 million t Cu
+Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
+    <p>Neither grade looks impressive on its own, but over 605 million tonnes it's world class. That's the porphyry business model: low grade, enormous tonnage, bulk open pit. It's also why majors like BHP and Rio Tinto mostly chase porphyries and iron ore. Now here's the site before anyone mined it. Can you see where the deposit is?</p>
+  </div>
+
+  <div class="lab" id="photo">
+    <h4><span>Spot the deposit · Alumbrera 1975</span><b id="spotState">click where you'd send a field crew</b></h4>
+    <div class="spot" id="spot"><img loading="lazy" decoding="async" src="img/L1/slide026_emf1.jpg" alt="Alumbrera in 1975: dark mountains behind pale, bleached, bare hills, with scrubby slopes in the foreground"><div class="ring" id="spotRing"></div></div>
+    <p class="say" id="spotSay">Hint: look at colour and plants, not shape.</p>
+    <div class="row"><button class="btn ghost" type="button" id="spotShow">Show me</button></div>
+    <div id="wipeWrap" hidden>
+      <div class="wipe" id="wipe">
+        <img loading="lazy" decoding="async" src="img/L1/slide026_emf1.jpg" alt="Alumbrera in 1975 before development">
+        <img loading="lazy" decoding="async" class="after" id="wipeAfter" src="img/L1/slide027_emf1.jpg" alt="Alumbrera in 1999: terraced open pit with a drill rig and site buildings">
+        <div class="line" id="wipeLine"></div>
+        <span class="lbl" style="left:.5rem">1975</span><span class="lbl" style="right:.5rem">1999</span>
+      </div>
+      <label for="wipeR" style="font-size:.8rem;color:var(--muted);display:block;margin-top:.4rem">Drag to compare 1975 and 1999</label>
+      <input type="range" id="wipeR" min="0" max="100" value="50">
+    </div>
+  </div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="resources" data-log="Resources"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">48 to 60 m</span></div>
+  <h2>From drill hole to reserve: a ladder of confidence</h2>
+  <p>Finding mineralisation in one hole doesn't give you a mine. A deposit has to climb a ladder of knowledge and confidence, and in Australia the words on each rung have legal meaning under the <button class="term" data-t="JORC Code">JORC Code</button>. The bottom rung is <strong>exploration results</strong>: assays from holes. Once you have enough holes to estimate tonnage and grade, you have a <button class="term" data-t="mineral resource">mineral resource</button>, and it comes in three levels. <strong>Inferred</strong> rests on widely spaced holes, so you're assuming the mineralisation continues between them; read company announcements with that in mind, because "inferred" can hide a lot of optimism. <strong>Indicated</strong> means the holes are close enough that continuity is reasonable. <strong>Measured</strong> means the data are dense enough that you know tonnage and grade with high confidence.</p>
+  <p>The jump to an <button class="term" data-t="ore reserve">ore reserve</button> is a different kind of step. A reserve is the part of a resource you've shown can be mined at a profit once you apply the <button class="term" data-t="modifying factors">modifying factors</button>: mining method, metallurgy, economics, marketing, legal, environmental, social and government. Indicated can become <strong>probable</strong>. Measured can become <strong>proved</strong>, or only probable if some factor is still uncertain. Inferred never converts directly. The best way to feel this is to run a drilling program.</p>
+
+  <div class="lab" id="drill">
+    <h4><span>Drill it out</span><b id="drillBudget">14 holes left</b></h4>
+    <p class="say" style="margin-top:0">There's a copper body somewhere under this paddock. Click to drill. Spread your first holes out to find it, then infill to build confidence. When you're ready, run a feasibility study and see what survives as a reserve.</p>
+    <svg class="grid-svg" id="drillSvg" viewBox="0 0 600 400" role="img" aria-label="Exploration grid of 96 cells; click cells to drill holes and classify the resource"></svg>
+    <div class="legend"><span><i style="background:var(--paper)"></i>untested</span><span><i id="lgInf"></i>inferred</span><span><i id="lgInd"></i>indicated</span><span><i id="lgMea"></i>measured</span><span><i style="background:var(--mal)"></i>reserve</span></div>
+    <div class="readout">
+      <div><small>Inferred</small><b id="dInf">0 Mt</b></div>
+      <div><small>Indicated</small><b id="dInd">0 Mt</b></div>
+      <div><small>Measured</small><b id="dMea">0 Mt</b></div>
+      <div><small>Ore reserve</small><b id="dRes">not yet</b></div>
+    </div>
+    <div class="row">
+      <button class="btn" type="button" id="drillStudy" disabled>Run feasibility study</button>
+      <button class="btn ghost" type="button" id="drillReset">New prospect</button>
+    </div>
+    <div class="event" id="drillEvent">Each cell is 2 Mt. A cell counts as resource if its estimated grade is above 0.3% Cu. Measured needs a hole in or next to the cell plus at least three holes nearby.</div>
+    <div class="goal" id="g-drill"><i>✓</i><span>Declare at least 20 Mt of ore reserve.</span></div>
+  </div>
+
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 330" role="img" aria-labelledby="f2t" style="min-width:520px">
+      <title id="f2t">Exploration results lead to inferred, indicated and measured resources, which convert to probable and proved reserves through the modifying factors</title>
+      <defs><marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g font-size="14">
+        <text x="150" y="26" text-anchor="middle" font-weight="700" fill="var(--ink)">MINERAL RESOURCES</text>
+        <text x="150" y="44" text-anchor="middle" fill="var(--muted)" font-size="12">in situ estimates</text>
+        <text x="570" y="26" text-anchor="middle" font-weight="700" fill="var(--ink)">ORE RESERVES</text>
+        <text x="570" y="44" text-anchor="middle" fill="var(--muted)" font-size="12">mineable estimates</text>
+        <rect x="40" y="60" width="220" height="44" rx="6" fill="var(--bg)" stroke="var(--line)" stroke-width="2"/><text x="150" y="88" text-anchor="middle" fill="var(--muted)">Exploration results</text>
+        <rect x="40" y="124" width="220" height="44" rx="6" fill="var(--gold-hi)" fill-opacity=".3" stroke="var(--gold)" stroke-width="2"/><text x="150" y="152" text-anchor="middle" fill="var(--ink)">Inferred</text>
+        <rect x="40" y="188" width="220" height="44" rx="6" fill="var(--gold-hi)" fill-opacity=".55" stroke="var(--gold)" stroke-width="2"/><text x="150" y="216" text-anchor="middle" fill="var(--ink)">Indicated</text>
+        <rect x="40" y="252" width="220" height="44" rx="6" fill="var(--gold-hi)" fill-opacity=".9" stroke="var(--gold)" stroke-width="2"/><text x="150" y="280" text-anchor="middle" fill="var(--ink)" font-weight="700">Measured</text>
+        <rect x="460" y="188" width="220" height="44" rx="6" fill="var(--mal)" fill-opacity=".35" stroke="var(--mal)" stroke-width="2"/><text x="570" y="216" text-anchor="middle" fill="var(--ink)">Probable</text>
+        <rect x="460" y="252" width="220" height="44" rx="6" fill="var(--mal)" fill-opacity=".7" stroke="var(--mal)" stroke-width="2"/><text x="570" y="280" text-anchor="middle" fill="var(--ink)" font-weight="700">Proved</text>
+        <path d="M262 210 H456" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar1)"/>
+        <path d="M262 274 H456" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar1)"/>
+        <path d="M262 268 L456 220" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#ar1)"/>
+        <rect x="300" y="116" width="120" height="58" rx="6" fill="var(--paper)" stroke="var(--hem)" stroke-width="2"/>
+        <text x="360" y="141" text-anchor="middle" fill="var(--hem)" font-size="12" font-weight="700">MODIFYING</text>
+        <text x="360" y="159" text-anchor="middle" fill="var(--hem)" font-size="12" font-weight="700">FACTORS</text>
+        <path d="M20 66 V 292" stroke="var(--ink)" stroke-width="2" marker-end="url(#ar1)"/>
+        <text x="14" y="185" text-anchor="middle" fill="var(--muted)" font-size="11" transform="rotate(-90 14 185)">more knowledge and confidence</text>
+      </g>
+    </svg></div>
+    <figcaption>The whole ladder on one page. The dashed line is a measured resource that can only reach probable because some modifying factor is still uncertain. <span class="srcs">slide 30, after Robb 2005</span></figcaption>
+  </figure>
+
+  <p>Two practical things to keep in mind. First, the gap between discovery and mining is typically <strong>10 to 15 years</strong>, and the capital is eye-watering: a porphyry project on the Argentina and Chile border is spending billions on rail, power and accommodation before a single tonne is mined. Second, most discoveries now come from small and mid-sized companies that can't afford to build mines, so they sell or form a <button class="term" data-t="joint venture">joint venture</button> with a major. Once a mine is running, though, the margins can be huge. Rough numbers: iron ore selling at about US$100/t and costing about US$30/t to produce leaves around 70 per cent as margin.</p>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="words" data-log="Timing words"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">60 to 72 m</span></div>
+  <h2>Timing, direction and depth: three questions to ask any ore</h2>
+  <p>Most of the definitions in this lecture are really three questions you should ask every time you pick up a piece of ore.</p>
+  <h3>When did it form? Syngenetic or epigenetic</h3>
+  <p><button class="term" data-t="syngenetic">Syngenetic</button> ore formed at the same time as the rock around it, like a placer gravel or a massive sulphide layer that settled on the seafloor along with the sediment. <button class="term" data-t="epigenetic">Epigenetic</button> ore arrived later. Any vein is epigenetic, because you need solid rock to crack before you can fill the crack. This matters when you explore: syngenetic ore follows stratigraphy, so you trace a favourable layer, while epigenetic ore follows the plumbing, so you trace structures. The shape words fit onto this too. <strong>Stratiform</strong> ore is a layer within the sediment, <strong>stratabound</strong> ore is confined to one unit but may have replaced it later, and <strong>discordant</strong> ore cuts across layering.</p>
+  <h3>Which way was the water going? Hypogene or supergene</h3>
+  <p><button class="term" data-t="hypogene">Hypogene</button> ore was deposited by fluids rising from depth. <button class="term" data-t="supergene">Supergene</button> ore formed from water moving down during weathering, which leaches metals near the surface and redeposits them lower down. Supergene enrichment can make a deposit. The Endeavor mine at Cobar is a good example: supergene enrichment produced zones of native silver rich enough to change the economics. You'll go deep on this in Lecture 2.</p>
+
+  <div class="lab" id="gen">
+    <h4><span>Watch it form</span><b id="genGoal">play all four</b></h4>
+    <div class="tabs" role="group" aria-label="Choose an ore-forming mechanism" id="genTabs">
+      <button type="button" data-g="syn" aria-pressed="true">Syngenetic</button>
+      <button type="button" data-g="epi" aria-pressed="false">Epigenetic</button>
+      <button type="button" data-g="hyp" aria-pressed="false">Hypogene</button>
+      <button type="button" data-g="sup" aria-pressed="false">Supergene</button>
+    </div>
+    <canvas id="genCanvas" aria-label="Animated cross-section showing how the chosen type of ore forms"></canvas>
+    <p class="say" id="genSay" aria-live="polite"></p>
+    <div class="row"><button class="btn ghost" type="button" id="genReplay">Replay</button></div>
+  </div>
+
+  <h3>How deep and how hot? Epithermal, mesothermal, hypothermal</h3>
+  <p>These three words describe hydrothermal deposits by the depth and temperature they formed at. They come from Lindgren's classification about a century ago, and "epithermal" in particular is still used every day. Drag the probe down through the crust and watch what changes.</p>
+
+  <div class="lab" id="probeLab">
+    <h4><span>Thermometer probe</span><b id="probeGoal">visit all three zones</b></h4>
+    <div class="probe">
+      <svg id="probeSvg" viewBox="0 0 180 420" role="img" aria-label="Crustal column from surface to 7 km deep with a draggable probe"></svg>
+      <div>
+        <div class="zone-name" id="pzName">Epithermal</div>
+        <div class="readout">
+          <div><small>Depth</small><b id="pzDepth">0.8 km</b></div>
+          <div><small>Temperature</small><b id="pzTemp">130 °C</b></div>
+        </div>
+        <p class="say" id="pzSay"></p>
+        <label for="probeR" style="font-size:.8rem;color:var(--muted)">Depth</label>
+        <input type="range" id="probeR" min="0" max="7" step="0.1" value="0.8">
+      </div>
+    </div>
+    <h4 style="margin-top:1.2rem"><span>Minerals as thermometers · which zone?</span></h4>
+    <div class="cards3" id="zoneQuiz"></div>
+  </div>
+  <p style="font-size:.95rem">The useful habit here is to treat minerals as thermometers. Chalcopyrite generally needs more than about 200 °C, so if a sample is full of it, think twice before calling it epithermal. If a vein is all galena, sphalerite and fine banded quartz, the shallow, cooler end is a better bet. Use the 200 °C line as a rule of thumb rather than a hard law; you'll lean on it constantly in the ore suite labs. <span class="srcs">slide 18 and recording</span></p>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="tectonics" data-log="Tectonics"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">72 to 84 m</span></div>
+  <h2>Tectonics is the first filter</h2>
+  <p>Before you worry about a particular hill, ask whether you're even in the right kind of crust. Each deposit type needs a particular combination of heat, fluid, magma and stress, and plate tectonics sets that combination. So the first pass of <button class="term" data-t="greenfield">greenfield</button> exploration is simple to say: which setting does this deposit need, and where is that setting preserved? Test your instincts before I give you the answers.</p>
+
+  <div class="lab" id="pros">
+    <h4><span>Prospector</span><b id="prosScore">0 / 5 first-try</b></h4>
+    <p class="say" style="margin-top:0;font-size:1.05rem" id="prosAsk"></p>
+    <div class="figscroll"><svg viewBox="0 0 720 300" id="tecSvg" class="grid-svg" role="img" aria-labelledby="f4t" style="min-width:520px;cursor:crosshair">
+      <title id="f4t">Schematic cross-section from a rifted continental margin, across an ocean with a spreading centre, to a subduction zone and continental arc</title>
+      <rect x="0" y="0" width="720" height="300" fill="var(--sky)"/>
+      <rect x="0" y="100" width="720" height="200" fill="var(--sea)" opacity=".6"/>
+      <rect x="0" y="200" width="720" height="100" fill="var(--mantle)" opacity=".8"/>
+      <path d="M0 96 L70 96 L88 146 L150 150 L168 104 L215 108 L250 172 L250 215 L0 215 Z" fill="var(--crust)"/>
+      <path d="M88 146 L150 150 L150 156 L88 152 Z" fill="var(--slate)" opacity=".5"/>
+      <path d="M78 100 L96 150 M160 106 L144 152" stroke="var(--ink)" stroke-width="1.6"/>
+      <path d="M250 172 L415 176 L415 188 L250 186 Z" fill="var(--slate)" opacity=".55"/>
+      <path d="M325 174 l-6 -10 h12 z" fill="var(--magma)"/>
+      <path d="M325 164 q-4 -12 2 -22 q6 -10 0 -20" stroke="var(--ink)" stroke-width="3" fill="none" opacity=".6"/>
+      <path d="M415 176 Q470 200 520 245 Q560 280 600 300 L640 300 Q590 270 545 232 Q490 190 425 188 Z" fill="var(--slate)" opacity=".75"/>
+      <path d="M430 160 L470 104 L500 90 L530 70 L555 58 L580 66 L610 54 L640 74 L680 64 L720 70 L720 225 L560 225 Q500 195 432 176 Z" fill="var(--crust)" stroke="var(--line)"/>
+      <path d="M545 238 Q556 200 560 168" stroke="var(--magma)" stroke-width="4" fill="none" stroke-dasharray="5 4"/>
+      <ellipse cx="562" cy="156" rx="28" ry="15" fill="var(--magma)" opacity=".9"/>
+      <path d="M562 142 L562 100" stroke="var(--magma)" stroke-width="6"/>
+      <path d="M660 76 L690 220 M680 72 L705 210" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="6 4"/>
+      <g font-size="12" fill="var(--ink)">
+        <text x="10" y="86">rift basin, growth faults</text>
+        <text x="338" y="152">spreading centre</text>
+        <text x="372" y="210">trench</text>
+        <text x="455" y="268">subducting slab</text>
+        <text x="520" y="44">continental arc</text>
+        <text x="612" y="242">shear zones</text>
+        <text x="10" y="290" fill="var(--muted)">mantle</text>
+      </g>
+      <g id="tecMarks"></g>
+      <g id="tecClicks"></g>
+    </svg></div>
+    <p class="say" id="prosSay" aria-live="polite"></p>
+    <div class="row"><button class="btn" type="button" id="prosNext" hidden>Next target</button><button class="btn ghost" type="button" id="prosFree" hidden>Explore all five</button></div>
+    <div id="prosTabs" hidden>
+      <div class="tabs" role="group" aria-label="Choose a deposit type" id="tecTabs"></div>
+    </div>
+    <p class="say" style="font-size:.85rem;color:var(--muted)">Schematic and not to scale. The spreading centre stands in for the back-arc basins where most VMS forms; real back-arcs open up behind an arc, on the overriding plate.</p>
+  </div>
+
+  <p>Two words you'll hear constantly: <button class="term" data-t="greenfield">greenfield</button> and <button class="term" data-t="brownfield">brownfield</button>. Brownfield is near existing or historic mines, like Cobar. Greenfield is where nothing has been found before. Olympic Dam is the great greenfield story: the team was testing an idea about sediment-hosted copper and instead found a completely new style of deposit (iron oxide copper-gold, or IOCG) that turned out to be one of the largest in the world. The lesson for you: a good geological idea, tested properly, can beat a model that only looks for what's already known.</p>
+  <h3>Australia's particular problem: cover</h3>
+  <p>Australia hasn't been glaciated recently, so instead of fresh, scraped bedrock, most of the continent is blanketed by <button class="term" data-t="regolith">regolith</button> and transported sediment, in places more than 100 metres thick. By one industry estimate, around 99 per cent of Australian exploration holes stop shallower than 100 metres. Put those two facts together and you get a badly under-explored continent. Even long-settled country around Orange keeps producing new porphyry discoveries once people look in a different way.</p>
+  <figure>
+    <img src="img/L1/slide032_1.jpg" alt="Map of Australia: outcropping shields in orange, the Tasman Fold Belt in grey and covered basins in beige, with major mining districts marked" loading="lazy" style="width:100%;height:auto;border-radius:6px">
+    <figcaption>Look at where the famous districts sit: nearly all on or next to outcropping shield or fold belt. The beige basins cover most of the continent and have barely been tested. Olympic Dam is the exception that proves the point, found under roughly 300 m of cover. <span class="srcs">slide 32, after R.E. Smith, CRC LEME</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="magmas" data-log="Magmas"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">84 to 96 m</span></div>
+  <h2>Magma chemistry picks the metals</h2>
+  <p>You met tholeiitic, calc-alkaline and alkaline series in second year as petrology. They come back here because each series carries a different set of metals. Know the magma type and you know which deposits are even possible.</p>
+  <p>Work it out from where each magma comes from. <strong>Tholeiitic</strong> magmas are the most mantle-like: basalts from ridges, young arcs and big mafic intrusions, low in potassium, around 53 per cent silica. Mantle melts carry chromium, nickel, platinum group elements, titanium and vanadium, and the main concentrating process is crystals or sulphide droplets physically separating from the melt. Think Bushveld chromitites and Sudbury nickel-copper sulphides. Hydrothermal overprinting matters much less here.</p>
+  <p><strong>Calc-alkaline</strong> magmas form above subduction zones, from melting of the mantle wedge (fluxed by water from the slab) with varying amounts of crust mixed in. They're wet and oxidised, and when they crystallise in the upper crust they release large volumes of metal-bearing fluid. That's the recipe for porphyry copper-gold-molybdenum, skarns and many epithermal systems, where the hydrothermal stage does the real work.</p>
+  <p><strong>Alkaline</strong> magmas (shoshonites, syenites, carbonatites, kimberlites, lamproites) come from small-degree melting deep in the mantle, in rifts, cratons and some arcs. Small melt fractions concentrate the incompatible elements, so these give you rare earths, phosphate, some iron oxide ores and, through kimberlites and lamproites, diamonds. So if you're after primary rare earths, don't bother with tholeiites or calc-alkaline rocks. Go find the alkaline ones. Now try sorting them yourself.</p>
+
+  <div class="lab" id="sorter">
+    <h4><span>Magma sorter</span><b id="sortState">tap a deposit, then tap its magma series</b></h4>
+    <ul class="pool" id="sortPool" aria-label="Deposits to sort"></ul>
+    <div class="bins">
+      <div class="bin" data-bin="tho" tabindex="0" role="button" aria-label="Tholeiitic bin"><h5>Tholeiitic</h5><ul></ul></div>
+      <div class="bin" data-bin="calc" tabindex="0" role="button" aria-label="Calc-alkaline bin"><h5>Calc-alkaline</h5><ul></ul></div>
+      <div class="bin" data-bin="alk" tabindex="0" role="button" aria-label="Alkaline bin"><h5>Alkaline</h5><ul></ul></div>
+    </div>
+    <div class="row"><button class="btn" type="button" id="sortCheck">Check</button><button class="btn ghost" type="button" id="sortReset">Reset</button></div>
+    <p class="say" id="sortSay" aria-live="polite"></p>
+  </div>
+
+  <h3>Oxidised or reduced</h3>
+  <p>One more split is worth knowing: oxidation state. Oxidised granitoids carry primary magnetite and tend to make porphyry copper-gold deposits, because sulphur stays as sulphate in the melt rather than locking copper and gold into early sulphides. Reduced granitoids (ilmenite instead of magnetite) are where tin and tungsten deposits form, and the most evolved ones make pegmatites with lithium, beryllium and fluorine. That means a quick magnetic susceptibility reading on a granite tells you something about which commodity it could be linked to. <span class="srcs">slide 42</span></p>
+</div></section>
+
+<section id="hydrothermal" data-log="Hydrothermal"><div class="wrap">
+  <div class="kicker">Concept 8 <span class="depth">96 to 108 m</span></div>
+  <h2>The hydrothermal chain: break one link and you get nothing</h2>
+  <p>Most deposits you'll study this term are hydrothermal, at least in part, so you need a clear picture of what it takes to make one. Think of it as a chain: a metal source, a fluid that can carry metal, a pathway to focus it, a trap that makes it drop the metal, a seal to keep it there long enough, and preservation afterwards. Every link must hold. And add one blunt rule: every deposit is structurally controlled. Run the simulation, then switch links off and watch how each failure looks.</p>
+
+  <div class="lab" id="chain">
+    <h4><span>Hydrothermal system simulator</span><b id="chainPct">Deposit 0%</b></h4>
+    <div class="chips" role="group" aria-label="Links in the chain" id="chainLinks"></div>
+    <canvas id="chainCanvas" height="300" aria-label="Simulation of metal-bearing fluid rising from a magma along a fault into a trap"></canvas>
+    <p class="say" id="chainSay" aria-live="polite"></p>
+    <div class="row"><button class="btn" type="button" id="chainPause">Pause</button><button class="btn ghost" type="button" id="chainReset">Reset deposit</button></div>
+    <div class="goal" id="g-chain1"><i>✓</i><span>Grow a full deposit with every link working.</span></div>
+    <div class="goal" id="g-chain2"><i>✓</i><span>Break the chain at least once and read why it failed.</span></div>
+  </div>
+
+  <p>The trap is where most of the chemistry happens, and you'll keep coming back to it. Hydrothermal fluids are usually <em>undersaturated</em> in metals, meaning they're carrying less than they could. They only drop their load when something changes fast: the fluid cools, the pressure falls and it boils, it mixes with cooler groundwater, or it reacts with a rock (limestone is the classic) that neutralises its acidity. Each pass only leaves a little metal behind, so you need an enormous volume of fluid flowing through the same small volume of rock for a long time. That's the deeper reason focused structures and seals matter so much.</p>
+
+  <div class="example">
+    <span class="tag"><span>Worked example · can a magma really supply that much water?</span><span class="srcs">slide 44</span></span>
+    <p>A cubic kilometre of quartz monzonite magma with 3 wt% water is said to release about 100 Mt of water once it rises to around 3.5 km, where water starts to exsolve. Check it yourself with second-year numbers:</p>
+    <div class="calc">Mass  ≈ 1 × 10⁹ m³ × 2600 kg/m³ ≈ 2.6 × 10¹² kg ≈ 2600 Mt
+Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
+    <p>You get about 80 Mt, the same order as 100 Mt. Porphyry intrusions are often tens of cubic kilometres, so the magma alone can supply billions of tonnes of hot, metal-bearing fluid.</p>
+  </div>
+  <h3>Alteration: the bigger target</h3>
+  <p>Wherever these fluids go, they react with the wall rock and change its minerals, texture and chemistry. That's <button class="term" data-t="hydrothermal alteration">hydrothermal alteration</button>, a form of <button class="term" data-t="metasomatism">metasomatism</button>. Here's why you should care: alteration halos are far larger than the ore itself, often by orders of magnitude, and they're what geophysical and geochemical surveys pick up first. Find the alteration, then follow it inward to the ore.</p>
+  <h3>Where the water comes from</h3>
+  <p>Magmatic water is only one source. Fluids can also be <button class="term" data-t="meteoric water">meteoric</button>, seawater, <button class="term" data-t="connate water">connate</button> or metamorphic, and real systems often mix several. Picture a continuum. At the hot end, metals separate directly from magma (chromite, Ni-Cu sulphides). In the middle, fluids exsolve from a cooling magma (pegmatites, porphyries). At the cool end, those fluids mix with meteoric water or seawater (epithermal, SEDEX, exhalative deposits). One system can run through the whole range as it cools.</p>
+</div></section>
+
+<section id="classify" data-log="Classification"><div class="wrap">
+  <div class="kicker">Concept 9 <span class="depth">108 to 120 m</span></div>
+  <h2>Why classification is slippery, and why scale matters</h2>
+  <p>Early classifications (Lindgren) sorted deposits by what you could observe. Later ones (Meyer, Guilbert and Park, Misra, Robb) became genetic, sorting by the process that formed them. Some names never went genetic: Carlin, Mississippi Valley type and Witwatersrand are still named after places, mostly because people still argue about how they formed.</p>
+  <p>Classification is hard because nature ignores our boxes. A magmatic system becomes hydrothermal as it cools. Buried sediments release fluids that alter and mineralise them. Deformation opens new pathways, and fluids reuse old weaknesses, so one area can be mineralised several times by unrelated events. My advice is to be a bit of a non-classifier: "porphyry" is useful shorthand, but every real deposit has its own character, and you shouldn't force it to match the textbook model.</p>
+  <div class="example">
+    <span class="tag"><span>Real deposit · Argyle, and the danger of one model</span><span class="srcs">lecture recording, 14 Sep</span></span>
+    <p>The working model at De Beers held that economic diamonds only occur in kimberlite, and that meant the Argyle area wasn't followed up properly. Argyle turned out to be hosted by <button class="term" data-t="lamproite">lamproite</button>, and it became the world's largest diamond producer by volume and the main source of pink diamonds until it closed in 2020. Use a model as a tool for finding the next deposit. Treat it as a definition and you'll walk straight past the ones that don't fit.</p>
+  </div>
+  <h3>Look at every scale</h3>
+  <p>Look at a deposit at every scale you can, from metallogenic province down through district, mine, outcrop and microscope, because each scale answers a different question. Is the setting right? Where's the plumbing? What's the sequence of events? Can the ore minerals actually be processed? Kelian in Kalimantan is a cautionary tale: an epithermal gold deposit whose true nature (hosted by a <button class="term" data-t="diatreme">diatreme</button>) wasn't fully understood until it had been mined out.</p>
+  <p>Three labels go with this. A <button class="term" data-t="metallotect">metallotect</button> is any feature that helped concentrate metals (a fault, a reactive unit, a particular intrusion). A <strong>metallogenic province</strong> is a region with a characteristic group of deposits. A <strong>metallogenic epoch</strong> is a favourable time window. The Ordovician Macquarie Arc in central NSW is both the place and the time for porphyry copper-gold in the state.</p>
+  <div class="mix">
+    <div><b>Hypogene vs hypothermal</b>Hypogene is fluid direction (rising). Hypothermal is depth and temperature (deep, hot). An epithermal deposit is still hypogene.</div>
+    <div><b>Resource vs reserve</b>Resources are what's in the ground. Reserves are what you've shown you can mine at a profit.</div>
+    <div><b>Stratiform vs stratabound</b>Stratiform forms as a layer. Stratabound is confined to a layer but may have replaced it later.</div>
+    <div><b>ppm and g/t</b>The same thing. 1 g/t = 1 ppm, and 1% = 10 000 ppm.</div>
+  </div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">120 to 132 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. If you got it, claim the ounces. Be honest; nobody's watching but you.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">132 to 144 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>These are the terms this lecture assumes you already know, or only defines in passing. The dotted words in the text open them in place. Drill the deck until it's empty.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+</div></section>
+
+<section id="next" data-log="Next"><div class="wrap">
+  <div class="kicker">The bigger picture <span class="depth">144 to 156 m</span></div>
+  <h2>Where this goes next</h2>
+  <p>The course runs from large-scale processes down to specific deposit types, and this lecture is the map. Here's where each idea comes back.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Idea from Lecture 1</th><th>Picked up in</th></tr></thead>
+    <tbody>
+      <tr><td>Supergene processes, alteration halos</td><td>L2 Weathering, oxidation and alteration</td></tr>
+      <tr><td>Veins, stockworks, breccias, replacement</td><td>L3 Breccias, veins and ore textures</td></tr>
+      <tr><td>Ore vs gangue minerals</td><td>L4 Ore petrography, and every ore suite lab</td></tr>
+      <tr><td>"Every deposit is structurally controlled"</td><td>L5 Structural controls</td></tr>
+      <tr><td>Seafloor and syngenetic ore</td><td>L6 Ocean floor systems, L9 SEDEX, L10 VMS</td></tr>
+      <tr><td>Tholeiitic magmas, chromite, Ni-Cu-PGE</td><td>L7 and L8 Magmatic deposits</td></tr>
+      <tr><td>Oxidised calc-alkaline magmas, magmatic water</td><td>L11 Porphyry Cu-Au-Mo</td></tr>
+      <tr><td>Epithermal vs mesothermal, bonanza grades</td><td>L12 to L14 Gold deposits</td></tr>
+      <tr><td>Reduced granites, tin and tungsten</td><td>L15 Granite-related Sn-W-Mo</td></tr>
+      <tr><td>Alkaline magmas, REE, diamonds, critical minerals</td><td>L18 to L20</td></tr>
+      <tr><td>Resources, reserves, economics</td><td>Mineral Economics lab, JORC material</td></tr>
+    </tbody>
+  </table></div>
+  <p>One practical point for assessment: the ore suites are worth 50 per cent, and they lean directly on this vocabulary. You'll be describing ore and gangue minerals, textures and likely setting. Your first ore suite page isn't marked, but it's where you get feedback, so take it seriously and redo it.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">156 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 1 slides (photos from slides 26, 27 and 32) and the Echo360 recording of 14 September 2026. The small tags next to facts show where they came from. The recording's transcript is machine-generated, so spoken details were cross-checked against the slides where possible. Game numbers (block grades, costs, recoveries, drilling results) are invented for teaching and are not real deposit data. Not an official UNSW resource.</p>
+  <p><a href="L2.html">Next: Lecture 2, weathering, oxidation and alteration &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You have a hat and a hammer.'],[30,'Graduate geologist','Trusted with the core shed.'],[90,'Project geologist','Running a drill program.'],[160,'Senior geologist','Signing off on resource models.'],[240,'Chief geologist','The board calls you about discoveries.']];
+var G={
+ "ore mineral":"A mineral you get paid for. Which minerals count depends on the deposit and the market.",
+ "gangue":"Minerals mined along with the ore that have no value in that deposit, such as quartz, carbonates and usually pyrite. Pronounced 'gang'.",
+ "grade control":"Day-to-day sampling and assaying at an operating mine to decide which blasted rock goes to the mill and which to the waste dump.",
+ "critical minerals":"A policy term for commodities a particular country considers essential and supply-risky. Lists differ between countries and departments.",
+ "concentration factor":"Economic grade divided by average crustal abundance: how much a process has to enrich an element to make ore.",
+ "tonnage":"The mass of ore in a deposit, usually in millions of tonnes (Mt).",
+ "grade":"The concentration of the valuable commodity in ore: g/t for precious metals, wt% for base metals. Waste has no grade.",
+ "assay":"A laboratory chemical analysis that measures how much of a metal is in a sample.",
+ "bonanza":"Exceptionally high grade, usually over 100 g/t gold, typical of some epithermal and orogenic deposits.",
+ "top cut":"Capping very high assays at a set value during resource estimation so a few extreme results don't inflate the overall grade.",
+ "cut-off grade":"The lowest grade that can be mined and processed at a profit. Rock below it is treated as waste.",
+ "JORC Code":"The Australasian code for reporting exploration results, mineral resources and ore reserves, signed off by a Competent Person.",
+ "mineral resource":"An estimate of tonnage and grade in the ground with reasonable prospects of eventual economic extraction: inferred, indicated or measured.",
+ "ore reserve":"The part of a measured or indicated resource shown to be economically mineable after the modifying factors: probable or proved.",
+ "modifying factors":"Mining, metallurgical, economic, marketing, legal, environmental, social and government considerations used to turn resources into reserves.",
+ "joint venture":"A partnership where companies share the cost and ownership of a project, common when a junior brings in a major to fund a mine.",
+ "syngenetic":"Ore formed at the same time as its host rock, such as a seafloor massive sulphide layer or a placer.",
+ "epigenetic":"Ore introduced after its host rock formed, such as any vein.",
+ "hypogene":"Formed by rising fluids from depth, usually hot hydrothermal fluids.",
+ "supergene":"Formed by descending surface waters during weathering, which leach metals near the surface and redeposit them lower down.",
+ "greenfield":"Exploration in an area with no known deposits or previous mining.",
+ "brownfield":"Exploration in or near an existing or historic mining area.",
+ "regolith":"The blanket of weathered rock, soil and transported sediment over fresh bedrock; tens to over 100 m thick in much of Australia.",
+ "hydrothermal alteration":"Changes to a rock's minerals, texture and chemistry caused by reaction with hot fluids.",
+ "metasomatism":"Changing a rock's chemical composition by adding or removing components through fluid flow, in an open system.",
+ "meteoric water":"Water that fell as rain or snow and entered the ground as groundwater.",
+ "connate water":"Water trapped in sediment pores when the sediment was deposited.",
+ "lamproite":"An ultrapotassic, mantle-derived alkaline volcanic rock. Like kimberlite it can carry diamonds, as at Argyle.",
+ "kimberlite":"A volatile-rich ultramafic rock erupted from deep in the mantle in narrow pipes; the classic diamond host.",
+ "diatreme":"A volcanic pipe filled with broken rock, blasted out when magma or gas meets groundwater explosively.",
+ "metallotect":"Any geological, tectonic, lithological or geochemical feature that helped concentrate one or more elements.",
+ "exsolution":"One phase separating out of another as conditions change, like water bubbling out of a rising magma as pressure drops.",
+ "ligand":"An ion or molecule (such as Cl⁻ or HS⁻) that bonds to a metal in solution and lets the fluid carry it.",
+ "ppm and ppb":"Parts per million and per billion by mass. 1 ppm = 1 g/t = 1000 ppb; 1% = 10 000 ppm.",
+ "IOCG":"Iron oxide copper-gold deposit, the class defined by Olympic Dam.",
+ "porphyry":"A large, low-grade copper (gold, molybdenum) deposit formed by fluids from an oxidised intrusion in an arc."
+};
+var CP={
+ cp1:{q:'The copper price halves overnight. What happens to the copper ore at a mine?',o:['Nothing. The rocks haven’t changed.','Some of it becomes waste because the cut-off grade rises.','The grade of every block drops.'],a:1,e:'Ore is defined by profit. A lower price means a higher cut-off, so lower-grade blocks become waste. The grades themselves don’t change.'},
+ cp2:{q:'1 g/t is the same as...',o:['1 ppm','1 ppb','0.1%'],a:0,e:'A tonne is a million grams, so 1 g in a tonne is one part per million. 0.1% would be 1000 ppm.'},
+ cp3:{q:'A deposit is 20 Mt at 2.5 g/t Au. Roughly how much gold does it contain?',o:['About 50 000 oz','About 1.6 million oz','About 50 million oz'],a:1,e:'20 000 000 t × 2.5 g/t = 50 000 000 g. Divide by 31.1 g/oz and you get about 1.6 million ounces.'},
+ cp4:{q:'Which of these can be converted straight into an ore reserve?',o:['An inferred resource','An indicated resource','Exploration results'],a:1,e:'Indicated converts to probable, and measured to proved or probable. Inferred never converts directly.'},
+ cp5:{q:'A galena-sphalerite vein with chalcedony bands and no chalcopyrite cuts across bedding. Best label?',o:['Syngenetic and hypothermal','Epigenetic and epithermal','Syngenetic and epithermal'],a:1,e:'Cutting across bedding makes it epigenetic. Low-temperature minerals and no chalcopyrite point to the shallow, cool epithermal zone.'},
+ cp6:{q:'Your company wants a SEDEX zinc deposit. Where do you look first?',o:['A continental arc above a subduction zone','A rifted continental margin or rift basin','The middle of a stable craton with no basins'],a:1,e:'SEDEX forms where basin brines rise up growth faults in rifted margins and intracontinental rifts, not in arcs.'}
+};
+var ST=[
+ ['A copper deposit hasn’t changed since last year, but the company has stopped calling part of it ore. How is that possible?','Recall','Ore is defined by whether it can be extracted at a profit. If the copper price fell or costs rose, the cut-off grade went up and the lower-grade parts are no longer economic, so they’re reclassified. The rocks are the same; the economics changed.'],
+ ['Why is pyrite gangue at most deposits but ore at Mount Isa?','Recall','Pyrite is only ore if someone pays for it. Phosphate Hill, south of Mount Isa, needs sulphuric acid to process phosphate, and pyrite (FeS₂) is a sulphur source for that acid. Elsewhere it’s worthless and a liability, because it makes acid mine drainage.'],
+ ['Calculate the concentration factor for copper if average crust is 55 ppm and the economic grade is 1%.','Calculate','1% is 10 000 ppm. 10 000 ÷ 55 ≈ 180, so copper must be concentrated about 180 times.'],
+ ['Zinc needs a bigger concentration factor than nickel, yet zinc deposits are more common. Does that contradict the idea?','Think','No. The factor is how much enrichment is needed, not how often it happens. Zinc moves easily in low-temperature saline basin fluids, which circulate commonly. Nickel sulphide ore needs a sulphide liquid to separate from a hot ultramafic magma, which is much rarer.'],
+ ['Why do companies sample every metre of half core, even sections with no visible mineralisation?','Recall','Grade is an average over the whole interval. Sampling only what looks mineralised would bias the average upwards. And in many gold deposits the gold is invisible anyway.'],
+ ['A company reports a large inferred resource and says it’s "about to start mining". What should make you sceptical?','Think','Inferred is the lowest confidence category and can’t become a reserve directly. Mining needs indicated or measured resources plus studies showing the modifying factors are satisfied, which usually takes years.'],
+ ['A quartz vein full of chalcopyrite cuts bedding in a sandstone. Syngenetic or epigenetic, and is it likely epithermal?','Apply','Epigenetic, because it cuts bedding. Probably not epithermal: abundant chalcopyrite suggests more than about 200 °C, pointing to mesothermal or deeper conditions, or a porphyry-related setting.'],
+ ['You’re exploring for primary REE in a region with a tholeiitic gabbro, a calc-alkaline granodiorite and an alkaline syenite with carbonatite dykes. Where do you start?','Apply','The alkaline syenite and carbonatite. REE are incompatible elements concentrated by small-degree mantle melting, which is exactly what produces alkaline magmas and carbonatites.'],
+ ['Why is an alteration halo usually a better exploration target than the ore body?','Think','The fluid reacted with a much larger volume of rock than the ore occupies, so the halo can be orders of magnitude bigger and easier to detect. Zoning within it then helps you vector toward the ore.'],
+ ['Give two different reasons why a region with lots of hot fluid flow might have no deposit.','Synthesise','Any broken link works. No trap, so the metals stayed dissolved and dispersed. No focusing structure, so metal spread thinly through a huge volume. Or a deposit formed and was later eroded, so preservation failed.']
+];
+GEO.start({key:'geos3141-L1-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:156,goals:{'g-cut1':'cut-crash','g-cut2':'cut-boom','g-drill':'drill-reserve','g-chain1':'chain-full','g-chain2':'chain-break'}});
+
+/* concentrator */
+var M={
+ Al:{ab:'8.2%',gr:'30%',f:4,one:'1 part in 12',how:'Aluminium only needs roughly quadrupling. Intense tropical weathering leaches the other elements away and leaves bauxite behind, as in northern Queensland and the Northern Territory.'},
+ Fe:{ab:'5.6%',gr:'50%',f:9,one:'1 part in 18',how:'Iron needs about nine times. Banded iron formations, upgraded by weathering, do it on a continental scale in the Pilbara.'},
+ Cu:{ab:'55 ppm',gr:'1%',f:180,one:'1 part in 18 000',how:'Copper needs about 180 times. Magmatic fluids from oxidised arc intrusions do it in porphyries; basin brines do it in sediment-hosted copper.'},
+ Zn:{ab:'70 ppm',gr:'5%',f:700,one:'1 part in 14 000',how:'Zinc needs about 700 times, yet zinc deposits are common: warm basin brines carry it easily into seafloor muds (SEDEX) and black smokers (VMS).'},
+ Au:{ab:'4 ppb',gr:'5 g/t',f:1250,one:'1 part in 250 million',how:'Gold needs about 1250 times. Fluids focused through shear zones (orogenic) or boiling near the surface (epithermal) drop it in tiny volumes of rock.'},
+ Sn:{ab:'2 ppm',gr:'0.5%',f:2500,one:'1 part in 500 000',how:'Tin needs about 2500 times, the hardest job on the list. Only fluids from highly evolved, reduced granites manage it.'}
+};
+var cc=$('#concCanvas'),cx=cc.getContext('2d'),cMetal='Cu',cT=0,cDir=0,cLast=0,cW=600,cH=240;
+var R0=rng(7),grains=[],atoms=[];
+for(var i=0;i<900;i++)grains.push([R0(),R0(),0.5+R0()*1.6,R0()]);
+/* how each metal looks: more abundant metals get more dots; a bigger concentration factor squeezes them into a smaller ore body */
+var V={Al:{n:150,r:1.9,col:'#AEB8C2',lab:'bauxite'},Fe:{n:120,r:1.6,col:'#B5523B',lab:'iron ore'},Cu:{n:48,r:1,col:'#C9783D',lab:'ore body'},
+       Zn:{n:52,r:.95,col:'#7F97AA',lab:'ore body'},Au:{n:12,r:.42,col:'#E2B341',lab:'ore shoot'},Sn:{n:20,r:.5,col:'#6B7681',lab:'tin lode'}};
+function buildAtoms(m){var r=rng(m.charCodeAt(0)*31+m.charCodeAt(1)),v=V[m];atoms=[];
+  for(var j=0;j<v.n;j++){var a=r()*Math.PI*2,rr=Math.sqrt(r());atoms.push({sx:0.03+r()*0.94,sy:0.06+r()*0.88,tx:0.74+Math.cos(a)*rr*0.075*v.r,ty:0.6+Math.sin(a)*rr*0.11*v.r,d:r()*0.35});}}
+var cCol={};function cColors(){cCol={grain:css('--muted'),gold:css('--gold-hi'),hem:css('--hem'),ink:css('--ink'),crust:css('--crust')};}
+cColors();onTheme(function(){cColors();drawConc()});
+function resizeConc(){cW=cc.clientWidth||600;cH=240;var dpr=sizeCanvas(cc,cW,cH);cx.setTransform(dpr,0,0,dpr,0,0);drawConc();}
+function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+function drawConc(){
+  var v=V[cMetal];
+  cx.clearRect(0,0,cW,cH);cx.fillStyle=rgba(cCol.crust,.35);cx.fillRect(0,0,cW,cH);
+  grains.forEach(function(g){cx.fillStyle=rgba(cCol.grain,.18+g[3]*.25);cx.fillRect(g[0]*cW,g[1]*cH,g[2]+1,g[2]+1);});
+  var e=ease(cT),rx=.075*cW*v.r+10,ry=.11*cH*v.r+10;
+  cx.save();cx.globalAlpha=e;cx.strokeStyle=cCol.hem;cx.setLineDash([5,4]);cx.lineWidth=2;cx.beginPath();cx.ellipse(.74*cW,.6*cH,rx,ry,0,0,Math.PI*2);cx.stroke();
+  cx.setLineDash([]);cx.fillStyle=cCol.ink;cx.font='600 12px "IBM Plex Mono",monospace';cx.textAlign='center';cx.fillText(v.lab,.74*cW,Math.max(14,.6*cH-ry-8));cx.textAlign='left';cx.restore();
+  var rad=cMetal==='Au'?4.6:cMetal==='Al'||cMetal==='Fe'?3:3.6;
+  atoms.forEach(function(p){var t=Math.max(0,Math.min(1,(cT-p.d*.6)/(1-p.d*.6)));var k=ease(t);
+    var x=(p.sx+(p.tx-p.sx)*k)*cW,y=(p.sy+(p.ty-p.sy)*k)*cH;
+    if(k>0&&k<1){cx.strokeStyle=rgba(v.col,.4);cx.lineWidth=1;cx.beginPath();cx.moveTo(p.sx*cW,p.sy*cH);cx.lineTo(x,y);cx.stroke();}
+    cx.fillStyle=v.col;cx.beginPath();cx.arc(x,y,rad,0,Math.PI*2);cx.fill();cx.strokeStyle=rgba(cCol.ink,.55);cx.lineWidth=1;cx.stroke();});
+  var f=M[cMetal].f;$('#concF').textContent=Math.max(1,Math.round(1+(f-1)*e))+'×';
+}
+function stepConc(ts){if(!cLast)cLast=ts;var dt=Math.min(.05,(ts-cLast)/1000);cLast=ts;cT+=cDir*dt/2.4;if(cDir>0&&cT>=1){cT=1;cDir=0}if(cDir<0&&cT<=0){cT=0;cDir=0}drawConc();if(cDir)requestAnimationFrame(stepConc);else cLast=0;}
+function setMetal(m){cMetal=m;var d=M[m];$('#concAb').textContent=d.ab;$('#concGr').textContent=d.gr;$('#concOne').textContent=d.one;$('#concHow').textContent=d.how;
+  buildAtoms(m);cT=0;cDir=0;$('#concGo').textContent='Concentrate it';
+  $$('#conc .chip').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-m')===m?'true':'false')});drawConc();}
+$$('#conc .chip').forEach(function(b){b.addEventListener('click',function(){setMetal(b.getAttribute('data-m'));award('conc-'+b.getAttribute('data-m'),1,'New metal tested')})});
+$('#concGo').addEventListener('click',function(){
+  var going=cT<0.5;cDir=going?1:-1;$('#concGo').textContent=going?'Scatter it again':'Concentrate it';
+  if(reduce){cT=going?1:0;cDir=0;drawConc();}else{cLast=0;requestAnimationFrame(stepConc);}
+  if(going)award('conc',5,'You made your first ore body');
+});
+setMetal('Cu');
+/* concentration bars */
+var bars=$('#bars');
+[["Al",4],["Fe",9],["Ni",130],["Cu",180],["Zn",700],["Pt",1000],["Au",1250],["Sn",2500]].forEach(function(d,i){
+  var sx=function(v){return 90+Math.log10(v)/3*610};var y=28+i*37,w=Math.min(sx(d[1]),712)-90,hot=d[1]>500;
+  var t=el('text',{x:78,y:y+19,'text-anchor':'end',fill:'var(--ink)','font-weight':'700'},bars);t.textContent=d[0];
+  el('rect',{x:90,y:y,height:26,rx:3,width:w,fill:hot?'var(--hem)':'var(--gold)',opacity:'.88'},bars);
+  var inside=w>90;var v=el('text',{x:inside?90+w-8:90+w+8,y:y+18,'text-anchor':inside?'end':'start',fill:inside?'var(--paper)':'var(--ink)','font-weight':'700'},bars);v.textContent=d[1]+'×';
+});
+/* cut-off game */
+var CW=16,CH=9,cutR=rng(42),blocks=[];
+for(var y=0;y<CH;y++)for(var x=0;x<CW;x++){var g0=0.06+1.3*Math.exp(-((x-7.5)*(x-7.5)/20+(y-4.2)*(y-4.2)/7))+(cutR()-.5)*.18;blocks.push({x:x,y:y,g:Math.max(.02,g0)});}
+var cutSvg=$('#cutSvg'),cutRects=[];
+blocks.forEach(function(b,i){var r=el('rect',{x:b.x*40+1,y:b.y*40+1,width:38,height:38,rx:3},cutSvg);r.style.cursor='pointer';
+  var tell=function(){$('#cutHover').textContent='Block '+(i+1)+': '+b.g.toFixed(2)+'% Cu';};
+  r.addEventListener('click',tell);r.addEventListener('mouseenter',tell);cutRects.push(r);});
+var cutMoved=false;
+function drawCut(){
+  var price=+$('#cutPrice').value,cost=+$('#cutCost').value,rec=.85;
+  var co=cost/(price*rec)*100;
+  $('#cutPriceV').textContent='US$'+fmt(price,0)+'/t';$('#cutCostV').textContent='US$'+cost+'/t ore';
+  var n=0,sumg=0,margin=0;var gh=css('--gold-hi'),hm=css('--hem'),ws=css('--waste'),ln=css('--line');
+  blocks.forEach(function(b,i){var ore=b.g>=co;var r=cutRects[i];
+    if(ore){n++;sumg+=b.g;margin+=4e6*(b.g/100*rec*price-cost);r.setAttribute('fill',mix(gh,hm,(b.g-co)/1.0));r.setAttribute('stroke','none');}
+    else{r.setAttribute('fill',ws);r.setAttribute('stroke',ln);}});
+  $('#cutCo').textContent=co.toFixed(2)+'% Cu';$('#cutOre').textContent=fmt(n*4,0)+' Mt';
+  $('#cutAvg').textContent=n?(sumg/n).toFixed(2)+'% Cu':'none';$('#cutMargin').textContent=money(margin);
+  if(cutMoved){award('cut-move',8,'You turned ore into waste without touching a rock');if(price<=6000)award('cut-crash',10,'Crash test complete');if(n>100)award('cut-boom',10,'Boom time: low cut-off, huge tonnage');}
+}
+['cutPrice','cutCost'].forEach(function(id){$('#'+id).addEventListener('input',function(){cutMoved=true;drawCut()})});
+onTheme(drawCut);drawCut();
+/* assay desk */
+$$('#assay .tabs button').forEach(function(b){b.addEventListener('click',function(){var t=b.getAttribute('data-tab');
+  $$('#assay .tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+  $('#tabConv').hidden=t!=='conv';$('#tabMetal').hidden=t!=='metal';})});
+var TOPPM={gt:1,ppm:1,ppb:.001,pct:10000,ozt:31.1035};
+function conv(user){var v=parseFloat($('#cvVal').value),u=$('#cvUnit').value,o=$('#cvOut');
+  if(!(v>=0)){o.innerHTML='<div><small>Check input</small><b>Enter a number</b></div>';return;}
+  var ppm=v*TOPPM[u];var rows=[['ppm',fmt(ppm,4)],['g/t',fmt(ppm,4)],['ppb',fmt(ppm*1000,2)],['%',fmt(ppm/10000,6)],['oz per tonne',fmt(ppm/31.1035,4)]];
+  o.innerHTML=rows.map(function(r){return '<div><small>'+r[0]+'</small><b>'+r[1]+'</b></div>'}).join('');
+  if(user)award('conv',4,'Units tamed');}
+['cvVal','cvUnit'].forEach(function(id){$('#'+id).addEventListener('input',function(){conv(true)})});conv(false);
+function cmetal(user){var t=parseFloat($('#cTon').value)*1e6,g=parseFloat($('#cGrade').value),p=parseFloat($('#cPrice').value),u=$('#cUnit').value,o=$('#cOut');
+  $('#cPriceLbl').textContent=u==='gt'?'Price (US$ per oz)':'Price (US$ per tonne of metal)';
+  if(!(t>=0&&g>=0&&p>=0)){o.innerHTML='<div><small>Check input</small><b>Enter numbers</b></div>';return;}
+  var cells;
+  if(u==='gt'){var grams=t*g,oz=grams/31.1035;cells=[['Contained',fmt(grams/1e6)+' t'],['Ounces',fmt(oz/1e6,2)+' Moz'],['In situ value',money(oz*p)],['Per tonne of ore',money(g/31.1035*p)]];}
+  else{var m=t*g/100;cells=[['Contained',fmt(m/1e6,2)+' Mt'],['In situ value',money(m*p)],['Per tonne of ore',money(g/100*p)]];}
+  o.innerHTML=cells.map(function(r){return '<div><small>'+r[0]+'</small><b>'+r[1]+'</b></div>'}).join('');
+  if(user)award('metal',4,'Contained metal calculated');}
+$('#cUnit').addEventListener('change',function(){if($('#cUnit').value==='pct'){$('#cGrade').value='0.54';$('#cPrice').value='9500'}else{$('#cGrade').value='0.64';$('#cPrice').value='4500'}cmetal(true)});
+['cTon','cGrade','cPrice'].forEach(function(id){$('#'+id).addEventListener('input',function(){cmetal(true)})});cmetal(false);
+/* spot the deposit */
+var spot=$('#spot'),ring=$('#spotRing'),spotDone=false;
+ring.style.left='10%';ring.style.top='30%';ring.style.width='82%';ring.style.height='36%';
+function reveal(won){spotDone=true;spot.classList.add('found');$('#wipeWrap').hidden=false;$('#spotShow').hidden=true;
+  $('#spotState').textContent=won?'found it':'revealed';
+  $('#spotSay').textContent=(won?'Good eye. ':'')+'The pale, bleached hills in the middle ground, with almost no vegetation, sit over the porphyry. Metals in the soil are toxic to many plants, and the top of the system was leached and bleached, so the deposit showed up as a colour anomaly you could see from the air. Now drag the slider to see the same view in 1999.';
+  if(won)award('spot',8,'You spotted a porphyry from its colour anomaly');}
+spot.addEventListener('click',function(e){if(spotDone)return;var r=spot.getBoundingClientRect();var x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  var p=document.createElement('span');p.className='ping';p.style.left=(x*100)+'%';p.style.top=(y*100)+'%';spot.appendChild(p);
+  if(x>.1&&x<.92&&y>.3&&y<.64)reveal(true);else $('#spotSay').textContent=y<.3?'That’s the barren range behind. Look lower, where the colour changes.':'Those scrubby slopes are normal vegetation. Where do the plants disappear?';});
+$('#spotShow').addEventListener('click',function(){reveal(false)});
+$('#wipeR').addEventListener('input',function(){var v=$('#wipeR').value;$('#wipeAfter').style.clipPath='inset(0 0 0 '+v+'%)';$('#wipeLine').style.left=v+'%';});
+/* drill it out */
+var DW=12,DH=8,DC=50,dSeed=11,dField=[],holes=[],study=null,BUDGET=14;
+function newField(seed){var r=rng(seed);var cx0=3+r()*6,cy0=2+r()*4,ax=4+r()*4,ay=2.2+r()*2;dField=[];
+  for(var yy=0;yy<DH;yy++)for(var xx=0;xx<DW;xx++){dField.push(Math.max(0,1.15*Math.exp(-((xx-cx0)*(xx-cx0)/ax+(yy-cy0)*(yy-cy0)/ay))+(r()-.5)*.12));}}
+var dSvg=$('#drillSvg'),dCells=[],dTexts=[],dMarks=[];
+for(var y2=0;y2<DH;y2++)for(var x2=0;x2<DW;x2++){(function(x,y){var i=y*DW+x;
+  var r=el('rect',{x:x*DC+1,y:y*DC+1,width:DC-2,height:DC-2,rx:3},dSvg);r.style.cursor='crosshair';
+  var c=el('circle',{cx:x*DC+DC/2,cy:y*DC+DC/2-6,r:5},dSvg);c.style.display='none';c.style.pointerEvents='none';
+  var t=el('text',{x:x*DC+DC/2,y:y*DC+DC/2+14,'text-anchor':'middle','font-size':'12','font-weight':'700',fill:'var(--ink)'},dSvg);t.style.pointerEvents='none';
+  r.addEventListener('click',function(){drillAt(i)});dCells.push(r);dMarks.push(c);dTexts.push(t);})(x2,y2);}
+function drillAt(i){if(study||holes.indexOf(i)>=0||holes.length>=BUDGET)return;holes.push(i);award('drill-first',3,'First hole in the ground');drawDrill();}
+function classify(){var out=[];for(var i=0;i<DW*DH;i++){var x=i%DW,y=Math.floor(i/DW),num=0,den=0,dmin=99,near=0;
+  holes.forEach(function(h){var hx=h%DW,hy=Math.floor(h/DW),d=Math.hypot(hx-x,hy-y);if(d<dmin)dmin=d;if(d<=2.6)near++;if(d<=3.5){var w=1/Math.pow(Math.max(d,.5),2);num+=w*dField[h];den+=w;}});
+  var est=den?num/den:null,cat=null;
+  if(est!==null&&est>=.3){if(dmin<=1.01&&near>=3)cat='mea';else if(dmin<=2.01&&near>=2)cat='ind';else if(dmin<=3.5)cat='inf';}
+  out.push({est:est,cat:cat});}return out;}
+function drawDrill(){var C=classify(),pa=css('--paper'),gh=css('--gold-hi'),gd=css('--gold'),ln=css('--line'),ml=css('--mal'),ink=css('--ink'),hm=css('--hem');
+  var cols={inf:mix(pa,gh,.35),ind:mix(pa,gh,.75),mea:gd};
+  $('#lgInf').style.background=cols.inf;$('#lgInd').style.background=cols.ind;$('#lgMea').style.background=cols.mea;
+  var t={inf:0,ind:0,mea:0};
+  C.forEach(function(c,i){var r=dCells[i];var res=study&&study.res[i];
+    var fill=res?ml:(c.cat?cols[c.cat]:pa);if(study&&study.excl[i])fill=mix(pa,hm,.3);
+    r.setAttribute('fill',fill);r.setAttribute('stroke',ln);
+    if(c.cat)t[c.cat]+=2;
+    var drilled=holes.indexOf(i)>=0;dMarks[i].style.display=drilled?'':'none';dMarks[i].setAttribute('fill',(res||c.cat==='mea')?pa:ink);
+    dTexts[i].textContent=drilled?dField[i].toFixed(2):'';dTexts[i].setAttribute('fill',(res||c.cat==='mea')?pa:ink);});
+  $('#dInf').textContent=t.inf+' Mt';$('#dInd').textContent=t.ind+' Mt';$('#dMea').textContent=t.mea+' Mt';
+  $('#drillBudget').textContent=(BUDGET-holes.length)+' holes left';
+  $('#drillStudy').disabled=!!study||(t.ind+t.mea)===0;
+  if(!study)$('#dRes').textContent='not yet';
+}
+var EVENTS=[
+ {txt:'<b>Metallurgy:</b> test work returns 88% copper recovery. Everything converts as planned.',ex:function(){return false}},
+ {txt:'<b>Heritage:</b> a registered Aboriginal heritage site covers the two eastern columns. Those blocks are excluded from the reserve.',ex:function(x){return x>=10}},
+ {txt:'<b>Geotechnical:</b> weak rock means a flatter pit wall, so the top row of blocks costs too much to reach and drops out.',ex:function(x,y){return y===0}},
+ {txt:'<b>Price:</b> the copper price used in the study drops, so blocks estimated below 0.4% Cu fall below the new cut-off.',ex:function(x,y,c){return c.est<.4}}
+];
+$('#drillStudy').addEventListener('click',function(){var C=classify();var ev=EVENTS[Math.floor(Math.random()*EVENTS.length)];var res=[],excl=[],prob=0,prov=0;
+  C.forEach(function(c,i){var x=i%DW,y=Math.floor(i/DW);var cand=c.cat==='ind'||c.cat==='mea';var out=cand&&ev.ex(x,y,c);excl.push(out);
+    var ok=cand&&!out;res.push(ok);if(ok){if(c.cat==='mea')prov+=2;else prob+=2;}});
+  study={res:res,excl:excl};drawDrill();
+  $('#dRes').textContent=(prov+prob)+' Mt';
+  $('#drillEvent').innerHTML=ev.txt+'<br>Result: <b>'+prov+' Mt proved</b> and <b>'+prob+' Mt probable</b>. Inferred blocks never convert, however good they look.'+(prov+prob<20?' Try again with more infill drilling.':'');
+  if(prov+prob>=20)award('drill-reserve',15,'Reserve declared');
+});
+$('#drillReset').addEventListener('click',function(){dSeed+=1;newField(dSeed);holes=[];study=null;$('#drillEvent').textContent='New prospect, same rules: find it with spaced holes, then infill to build confidence.';drawDrill();});
+newField(dSeed);onTheme(drawDrill);drawDrill();
+/* thermometer probe */
+var pSvg=$('#probeSvg');var PY0=20,PY1=400,KM=7;
+function kmY(k){return PY0+(PY1-PY0)*k/KM}
+(function(){var defs=el('defs',{},pSvg);var lg=el('linearGradient',{id:'pg',x1:0,y1:0,x2:0,y2:1},defs);
+  el('stop',{offset:0,'stop-color':'var(--crust)'},lg);el('stop',{offset:1,'stop-color':'var(--magma)'},lg);
+  el('rect',{x:50,y:PY0,width:80,height:PY1-PY0,fill:'url(#pg)',rx:4,opacity:'.8'},pSvg);
+  [[0,1.5,'EPI'],[1.5,4.5,'MESO'],[4.5,7,'HYPO']].forEach(function(z){if(z[1]<7)el('line',{x1:44,x2:136,y1:kmY(z[1]),y2:kmY(z[1]),stroke:'var(--ink)','stroke-width':1.5},pSvg);
+    var t=el('text',{x:90,y:(kmY(z[0])+kmY(z[1]))/2+4,'text-anchor':'middle','font-size':'12','font-weight':'700',fill:'var(--ink)','letter-spacing':'1'},pSvg);t.textContent=z[2];});
+  [0,1.5,4.5,7].forEach(function(k){var t=el('text',{x:40,y:kmY(k)+4,'text-anchor':'end','font-size':'11',fill:'var(--muted)'},pSvg);t.textContent=k+' km';});
+  el('line',{id:'pLine',x1:46,x2:160,y1:0,y2:0,stroke:'var(--ink)','stroke-width':2.5},pSvg);
+  el('circle',{id:'pDot',cx:160,cy:0,r:9,fill:'var(--gold-hi)',stroke:'var(--ink)','stroke-width':2},pSvg);})();
+function tempAt(k){if(k<=1.5)return 50+k/1.5*150;if(k<=4.5)return 200+(k-1.5)/3*200;return Math.min(600,400+(k-4.5)/2.5*200);}
+var ZONES={epi:{n:'Epithermal',s:'Shallow and relatively cool: within about 1.5 km of the surface and 50 to 200 °C. Fluids here often boil or mix with groundwater. Expect galena, sphalerite and banded quartz or chalcedony; chalcopyrite is scarce because it generally needs more than about 200 °C. This is home to bonanza gold-silver veins.'},
+ meso:{n:'Mesothermal',s:'Intermediate depth: 1.5 to 4.5 km and 200 to 400 °C. Chalcopyrite becomes common alongside pyrite, galena and sphalerite. Many orogenic gold veins in metamorphic belts formed in roughly these conditions.'},
+ hypo:{n:'Hypothermal',s:'Deep and hot: beyond 4.5 km and 400 to 600 °C, getting close to the conditions where rocks begin to melt. Here hydrothermal processes start to grade into magmatic ones.'}};
+var visited={},probeLive=false;
+function setProbe(k){k=Math.max(0,Math.min(KM,k));$('#probeR').value=k;var y=kmY(k);$('#pLine').setAttribute('y1',y);$('#pLine').setAttribute('y2',y);$('#pDot').setAttribute('cy',y);
+  var z=k<1.5?'epi':k<4.5?'meso':'hypo';$('#pzName').textContent=ZONES[z].n;$('#pzSay').textContent=ZONES[z].s;
+  $('#pzDepth').textContent=k.toFixed(1)+' km';$('#pzTemp').textContent=Math.round(tempAt(k))+' °C';
+  if(probeLive){visited[z]=1;if(Object.keys(visited).length===3){$('#probeGoal').textContent='all three zones visited';award('probe',8,'Probe run complete');}}}
+$('#probeR').addEventListener('input',function(){probeLive=true;setProbe(+this.value)});
+var dragging=false;function ptK(e){var pt=pSvg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(pSvg.getScreenCTM().inverse());return (p.y-PY0)/(PY1-PY0)*KM;}
+pSvg.addEventListener('pointerdown',function(e){dragging=true;probeLive=true;try{pSvg.setPointerCapture(e.pointerId)}catch(x){}setProbe(ptK(e))});
+pSvg.addEventListener('pointermove',function(e){if(dragging)setProbe(ptK(e))});
+pSvg.addEventListener('pointerup',function(){dragging=false});
+setProbe(0.8);
+var ZQ=[{q:'Banded quartz-chalcedony vein with galena and sphalerite. No chalcopyrite anywhere.',a:'Epithermal'},
+ {q:'Quartz vein packed with chalcopyrite and pyrite. Fluid inclusions give about 320 °C.',a:'Mesothermal'},
+ {q:'Fluid inclusions homogenise at around 520 °C, and the vein sits several kilometres down.',a:'Hypothermal'}];
+var zq=$('#zoneQuiz');
+ZQ.forEach(function(item,i){var d=document.createElement('div');d.className='mcard';d.innerHTML='<div>'+item.q+'</div><div class="opts"></div>';
+  var o=d.querySelector('.opts');var tries=0;
+  ['Epithermal','Mesothermal','Hypothermal'].forEach(function(n){var b=document.createElement('button');b.type='button';b.textContent=n;
+    b.addEventListener('click',function(){if(d.dataset.done)return;tries++;if(n===item.a){b.classList.add('right');d.dataset.done=1;if(tries===1)award('zq'+i,5,'Mineral thermometer read');}else b.classList.add('wrong');});o.appendChild(b);});
+  zq.appendChild(d);});
+/* prospector */
+var TZ={
+ sed:{x:119,y:140,n:'SEDEX Pb-Zn',t:'<b>SEDEX (sediment-hosted Pb-Zn)</b> forms in rifted continental margins and intracontinental rift basins. Basin brines are driven up growth faults and drop their metals in or just below the seafloor muds. So if you want SEDEX, don’t waste time in arc terrains.'},
+ vms:{x:325,y:160,n:'VMS Cu-Zn',t:'<b>Volcanogenic massive sulphide (VMS)</b> forms on the seafloor, mostly in oceanic back-arc basins. Seawater is drawn down through hot volcanic rock, leaches metals, and vents back out as black smokers. It’s syngenetic. Less commonly it forms in continental back-arcs.'},
+ por:{x:562,y:108,n:'porphyry Cu-Au',t:'<b>Porphyry Cu-Au-Mo</b> forms above subduction zones in continental and oceanic arcs. Wet, oxidised calc-alkaline magma stalls a few kilometres down and releases huge volumes of metal-bearing fluid into the fractured rock above. Alumbrera, and Cadia in the Macquarie Arc, are examples.'},
+ epi:{x:578,y:72,n:'epithermal Au-Ag',t:'<b>Epithermal Au-Ag</b> sits at the very top of arc systems, within about 1.5 km of the surface, often above or beside a porphyry at depth. A useful rule: below a big high-sulphidation epithermal system, expect a porphyry somewhere underneath, though how far down is hard to predict.'},
+ oro:{x:683,y:150,n:'orogenic gold',t:'<b>Orogenic gold</b> forms in deforming mountain belts: fore-arc and back-arc settings and craton margins. Metamorphic fluids released deep in the crust rise up crustal-scale shear zones and drop gold where conditions change. Kalgoorlie in the Yilgarn is the Australian type example.'}
+};
+var order=['sed','por','vms','oro','epi'],pi=0,ptries=0,pDone=false,tecSvg=$('#tecSvg'),marks=$('#tecMarks'),clicks=$('#tecClicks');
+var markEls={};Object.keys(TZ).forEach(function(k){var g=el('g',{},marks);el('circle',{cx:TZ[k].x,cy:TZ[k].y,r:11,fill:'var(--gold-hi)',stroke:'var(--ink)','stroke-width':2},g);g.style.display='none';markEls[k]=g;});
+function ask(){var k=order[pi];clicks.innerHTML='';ptries=0;$('#prosAsk').innerHTML='Target '+(pi+1)+' of 5: <b>'+TZ[k].n+'</b>. Click where you’d start exploring.';$('#prosSay').textContent='';$('#prosNext').hidden=true;}
+function score(){var n=order.filter(function(k){return S.done['pros-'+k]}).length;$('#prosScore').textContent=n+' / 5 first-try';}
+tecSvg.addEventListener('click',function(e){if(pDone||!$('#prosNext').hidden)return;var pt=tecSvg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(tecSvg.getScreenCTM().inverse());
+  var best=null,bd=1e9;Object.keys(TZ).forEach(function(k){var d=Math.hypot(TZ[k].x-p.x,TZ[k].y-p.y);if(d<bd){bd=d;best=k}});
+  var target=order[pi];ptries++;var hit=best===target&&bd<60;
+  el('path',{d:'M'+(p.x-7)+' '+(p.y-7)+' l14 14 m0 -14 l-14 14',stroke:hit?'var(--mal)':'var(--hem)','stroke-width':3.5},clicks);
+  if(hit){markEls[target].style.display='';$('#prosSay').innerHTML=(ptries===1?'Spot on. ':'Got there. ')+TZ[target].t;
+    if(ptries===1)award('pros-'+target,8,'Good ground picked');score();
+    if(pi<order.length-1)$('#prosNext').hidden=false;else{pDone=true;$('#prosFree').hidden=false;$('#prosAsk').innerHTML='All five targets placed. Nice work.';}}
+  else{$('#prosSay').innerHTML=bd<60?'That spot suits <b>'+TZ[best].n+'</b>, not '+TZ[target].n+'. Think about what this deposit needs, then try again.':'Not much forms there. Think about heat, fluid and setting, then try again.';}
+});
+$('#prosNext').addEventListener('click',function(){pi++;ask()});
+$('#prosFree').addEventListener('click',function(){$('#prosTabs').hidden=false;$('#prosFree').hidden=true;freeTab('por')});
+var tabsBox=$('#tecTabs');Object.keys(TZ).forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=TZ[k].n;b.dataset.k=k;b.addEventListener('click',function(){freeTab(k)});tabsBox.appendChild(b);});
+function freeTab(k){$$('#tecTabs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false')});
+  Object.keys(markEls).forEach(function(m){markEls[m].style.display='';markEls[m].style.opacity=m===k?'1':'.25'});clicks.innerHTML='';$('#prosSay').innerHTML=TZ[k].t;}
+ask();score();
+/* magma sorter */
+var TOK=[['Chromite','tho'],['Platinum group elements','tho'],['Ni-Cu sulphide','tho'],['Ti-V magnetite','tho'],['Porphyry Cu-Au-Mo','calc'],['Skarn','calc'],['Epithermal Au-Ag','calc'],['Rare earth elements','alk'],['Diamonds','alk'],['Apatite-magnetite','alk']];
+var WHY={tho:'Mantle-like melts carry Cr, Ni, PGE, Ti and V, concentrated by crystals or sulphide liquid separating from the magma.',calc:'Wet, oxidised arc magmas release metal-rich fluids: porphyry, skarn and epithermal systems.',alk:'Small-degree, deep mantle melts concentrate incompatible elements (REE, P) and carry diamonds in kimberlite and lamproite.'};
+var selTok=null;
+function armBins(on){$$('.bin').forEach(function(b){b.classList.toggle('armed',on)})}
+function pick(li){if(selTok)selTok.classList.remove('sel');if(selTok===li){selTok=null;armBins(false);return;}selTok=li;li.classList.add('sel');li.classList.remove('right','wrong');armBins(true);}
+function buildSorter(){var pool=$('#sortPool');pool.innerHTML='';$$('.bin ul').forEach(function(u){u.innerHTML=''});$('#sortSay').textContent='';selTok=null;armBins(false);
+  var r=rng((Date.now()%997)+3);TOK.slice().sort(function(){return r()-.5}).forEach(function(t){var li=document.createElement('li');li.className='tok';li.textContent=t[0];li.dataset.ans=t[1];li.draggable=true;li.tabIndex=0;
+    li.addEventListener('click',function(e){e.stopPropagation();pick(li)});li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();pick(li)}});
+    li.addEventListener('dragstart',function(e){if(selTok)selTok.classList.remove('sel');selTok=li;try{e.dataTransfer.setData('text/plain',t[0])}catch(x){}});pool.appendChild(li);});}
+function drop(bin){if(!selTok)return;selTok.classList.remove('sel','right','wrong');$('ul',bin).appendChild(selTok);selTok=null;armBins(false);}
+$$('.bin').forEach(function(b){b.addEventListener('click',function(){drop(b)});b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();drop(b)}});
+  b.addEventListener('dragover',function(e){e.preventDefault();b.classList.add('over')});b.addEventListener('dragleave',function(){b.classList.remove('over')});
+  b.addEventListener('drop',function(e){e.preventDefault();b.classList.remove('over');drop(b)});});
+$('#sortPool').addEventListener('click',function(){if(selTok&&selTok.closest('.bin')){$('#sortPool').appendChild(selTok);selTok.classList.remove('sel');selTok=null;armBins(false);}});
+$('#sortCheck').addEventListener('click',function(){var left=$$('#sortPool .tok').length,wrong=0,miss={};
+  $$('.bin').forEach(function(b){$$('.tok',b).forEach(function(t){var ok=t.dataset.ans===b.dataset.bin;t.classList.toggle('right',ok);t.classList.toggle('wrong',!ok);if(!ok){wrong++;miss[t.dataset.ans]=1}})});
+  if(left){$('#sortSay').textContent=left+' still to place. Put every deposit in a bin first.';return;}
+  if(!wrong){$('#sortSay').textContent='All ten correct. The pattern to remember: where a magma comes from decides which metals it can carry.';$('#sortState').textContent='sorted';award('sorter',15,'Magmas sorted');}
+  else $('#sortSay').textContent=wrong+' in the wrong bin. Tap a red one to pick it up again. Clue: '+Object.keys(miss).map(function(k){return WHY[k]}).join(' ');});
+$('#sortReset').addEventListener('click',buildSorter);buildSorter();
+/* hydrothermal chain simulator */
+var LINKS=[['source','Metal source'],['transport','Carrier fluid'],['pathway','Pathway'],['trap','Trap'],['seal','Seal'],['preserve','Preservation']];
+var L={};LINKS.forEach(function(l){L[l[0]]=true});
+var lc=$('#chainLinks');LINKS.forEach(function(l){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=l[1];b.setAttribute('aria-pressed','true');
+  b.addEventListener('click',function(){L[l[0]]=!L[l[0]];b.setAttribute('aria-pressed',L[l[0]]?'true':'false');if(!L[l[0]])award('chain-break',5,'Chain broken on purpose');chainMsg();});lc.appendChild(b);});
+var hc=$('#chainCanvas'),hx=hc.getContext('2d'),HW=720,HH=300,parts=[],specks=[],ore=0,erosion=0,paused=false,running=false,hCol={};
+var P=[[95,262],[210,215],[320,175],[430,138],[540,108]],VENT=[600,18],TRAP={x:540,y:108,rx:52,ry:24},ORE_FULL=420;
+function hColors(){hCol={sky:css('--sky'),crust:css('--crust'),magma:css('--magma'),ink:css('--ink'),muted:css('--muted'),gold:css('--gold-hi'),slate:css('--slate'),sea:css('--sea'),mal:css('--mal'),paper:css('--paper')};}
+hColors();onTheme(function(){hColors();drawChain()});
+var segLen=[],totLen=0;for(var s=0;s<P.length-1;s++){var dd0=Math.hypot(P[s+1][0]-P[s][0],P[s+1][1]-P[s][1]);segLen.push(dd0);totLen+=dd0;}
+function along(t){var dd=t*totLen;for(var s=0;s<segLen.length;s++){if(dd<=segLen[s]){var f=dd/segLen[s];return [P[s][0]+(P[s+1][0]-P[s][0])*f,P[s][1]+(P[s+1][1]-P[s][1])*f];}dd-=segLen[s];}return P[P.length-1];}
+function resizeChain(){var w=hc.clientWidth||720;var h=Math.round(w*HH/HW);var dpr=sizeCanvas(hc,w,h);hx.setTransform(dpr*w/HW,0,0,dpr*w/HW,0,0);drawChain();}
+function spawn(){parts.push({mode:L.pathway?'path':'diffuse',t:0,x:P[0][0]+(Math.random()-.5)*30,y:P[0][1]+(Math.random()-.5)*10,v:.0035+Math.random()*.003,j:(Math.random()-.5)*14,life:0,metal:L.transport});}
+function chainMsg(){var off=LINKS.filter(function(l){return !L[l[0]]}).map(function(l){return l[0]})[0];var m={
+  source:'No metal source: the magma is barren, or nothing has been leached from the rocks, so even perfect plumbing only moves water. No deposit.',
+  transport:'The fluid is the wrong chemistry (not hot, salty or acidic enough, or missing ligands like Cl⁻), so it can’t carry metal. Those grey drops reach the trap empty.',
+  pathway:'No structure: the fluid seeps out in every direction and the metal is spread thinly through a huge volume of rock. Every deposit needs plumbing.',
+  trap:'Nothing changes at the top: no cooling, boiling, mixing or reactive rock, so the fluid stays undersaturated and carries its metal straight out to the surface.',
+  seal:'No seal: the fluid leaks through the trap too quickly. Some metal drops out, but the deposit grows slowly and stays low grade.',
+  preserve:'The deposit formed, but uplift and erosion are now stripping it away from the top. Plenty of great deposits from the past are simply gone.'};
+  $('#chainSay').textContent=off?m[off]:'Every link is working. Metal-rich fluid rises from the magma, the fault focuses it, and it drops its metal in the trap under the seal. Now switch a link off.';}
+function stepChain(){
+  if(L.source&&Math.random()<.9)spawn();
+  for(var i=parts.length-1;i>=0;i--){var p=parts[i];p.life++;
+    if(p.mode==='path'){p.t+=p.v;if(p.t>=1){if(L.trap&&p.metal&&Math.random()<(L.seal?.85:.25)){ore++;var a=Math.random()*Math.PI*2,rr=Math.sqrt(Math.random());specks.push([TRAP.x+Math.cos(a)*rr*TRAP.rx*.9,TRAP.y+Math.sin(a)*rr*TRAP.ry*.9]);parts.splice(i,1);continue;}p.mode='escape';}
+      else{var q=along(p.t);p.x=q[0]+p.j*.3;p.y=q[1]+p.j*.15;}}
+    if(p.mode==='escape'){p.x+=(VENT[0]-p.x)*.04+(Math.random()-.5);p.y+=(VENT[1]-p.y)*.04-.6;if(p.y<VENT[1]+4||p.life>600){parts.splice(i,1);continue;}}
+    if(p.mode==='diffuse'){p.x+=(Math.random()-.5)*4;p.y+=(Math.random()-.5)*3-.25;if(p.life>170){parts.splice(i,1);continue;}}}
+  if(!L.preserve&&specks.length)erosion=Math.min(TRAP.y+TRAP.ry-34,erosion+.08);
+  else if(L.preserve&&erosion>0)erosion=Math.max(0,erosion-.3);
+  if(erosion>0){var before=specks.length;specks=specks.filter(function(sp){return sp[1]>erosion+40});ore=Math.max(0,ore-(before-specks.length));}
+  if(specks.length>900)specks.splice(0,specks.length-900);
+  var pct=Math.min(100,Math.round(ore/ORE_FULL*100));$('#chainPct').textContent='Deposit '+pct+'%';
+  if(pct>=100&&LINKS.every(function(l){return L[l[0]]}))award('chain-full',15,'A complete hydrothermal deposit');
+}
+function drawChain(){var c=hx;c.clearRect(0,0,HW,HH);
+  c.fillStyle=hCol.sky;c.fillRect(0,0,HW,HH);
+  var surf=40+erosion;c.fillStyle=hCol.crust;c.fillRect(0,surf,HW,HH-surf);
+  c.strokeStyle=hCol.ink;c.lineWidth=1.5;c.beginPath();c.moveTo(0,surf);c.lineTo(HW,surf);c.stroke();
+  c.font='12px system-ui,sans-serif';c.fillStyle=hCol.ink;c.fillText(erosion>0?'land surface (eroding)':'land surface',10,surf-6);
+  if(L.seal){c.fillStyle=rgba(hCol.slate,.45);c.fillRect(440,TRAP.y-TRAP.ry-20,210,14);c.fillStyle=hCol.ink;c.fillText('seal (impermeable cap)',448,TRAP.y-TRAP.ry-24);}
+  c.fillStyle=rgba(hCol.mal,L.trap?.28:.08);c.beginPath();c.ellipse(TRAP.x,TRAP.y,TRAP.rx,TRAP.ry,0,0,Math.PI*2);c.fill();
+  c.strokeStyle=rgba(hCol.mal,L.trap?.9:.3);c.setLineDash([4,3]);c.lineWidth=1.5;c.stroke();c.setLineDash([]);
+  c.fillStyle=hCol.ink;c.fillText(L.trap?'trap: boiling, mixing, reactive rock':'no trap',TRAP.x-60,TRAP.y+TRAP.ry+16);
+  if(L.pathway){c.strokeStyle=rgba(hCol.ink,.5);c.lineWidth=10;c.lineCap='round';c.beginPath();c.moveTo(P[0][0],P[0][1]);for(var k=1;k<P.length;k++)c.lineTo(P[k][0],P[k][1]);c.stroke();c.lineWidth=1;
+    c.save();c.translate(250,186);c.rotate(-.36);c.fillStyle=hCol.ink;c.fillText('fault zone',0,-10);c.restore();}
+  c.fillStyle=L.source?hCol.magma:rgba(hCol.muted,.6);c.beginPath();c.ellipse(90,272,72,22,0,0,Math.PI*2);c.fill();
+  c.fillStyle='#ffffff';c.fillText(L.source?'magma (metal source)':'barren source',34,276);
+  c.fillStyle=hCol.gold;specks.forEach(function(sp){c.fillRect(sp[0]-1.6,sp[1]-1.6,3.2,3.2);});
+  parts.forEach(function(p){c.fillStyle=p.metal?rgba(hCol.gold,.95):rgba(hCol.sea,.95);c.beginPath();c.arc(p.x,p.y,p.metal?2.6:2.2,0,Math.PI*2);c.fill();});
+}
+function loopChain(){if(!running)return;if(!paused){stepChain();stepChain();}drawChain();requestAnimationFrame(loopChain);}
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!running){running=true;requestAnimationFrame(loopChain);}else if(!e.isIntersecting)running=false;})},{threshold:.05}).observe(hc);}
+else{running=true;requestAnimationFrame(loopChain);}
+$('#chainPause').addEventListener('click',function(){paused=!paused;this.textContent=paused?'Resume':'Pause'});
+$('#chainReset').addEventListener('click',function(){ore=0;specks=[];parts=[];erosion=0;$('#chainPct').textContent='Deposit 0%';drawChain();});
+chainMsg();
+/* watch it form: syngenetic, epigenetic, hypogene, supergene */
+var gc=$('#genCanvas'),gx=gc.getContext('2d'),GW=640,GH=260,gMode='syn',gStart=0,gRun=false,gSeen={},gCol={};
+var GTXT={
+ syn:'<b>Syngenetic.</b> Metal-rich fluid vents onto the seafloor and sulphide settles out as a layer while sediment is still piling up. Then more sediment buries it. The ore is a layer in the stratigraphy, so you explore by tracing that layer.',
+ epi:'<b>Epigenetic.</b> The rock pile is already solid. A fracture opens, hot fluid rises through it, and quartz and sulphide fill the crack. The vein cuts straight across bedding, so you explore by tracing the structure.',
+ hyp:'<b>Hypogene.</b> Hot fluid released from a cooling magma rises up a fault and drops its metal where conditions change. The fluid moves upward, from deep and hot to shallow and cooler.',
+ sup:'<b>Supergene.</b> Rainwater soaks down into a sulphide body near the surface. Oxygen and acid leach metal from the top, leaving a rusty leached cap (gossan). The water carries the metal down and it reprecipitates at the water table as a high-grade enrichment blanket.'
+};
+function gColors(){gCol={sky:css('--sky'),sea:css('--sea'),crust:css('--crust'),paper:css('--paper'),ink:css('--ink'),muted:css('--muted'),gold:css('--gold-hi'),hem:css('--hem'),magma:css('--magma'),slate:css('--slate'),mantle:css('--mantle')};}
+gColors();onTheme(function(){gColors();drawGen(gRun?Math.min(1,(performance.now()-gStart)/5000):1,0)});
+function resizeGen(){var w=gc.clientWidth||640,h=Math.round(w*GH/GW);var dpr=sizeCanvas(gc,w,h);gx.setTransform(dpr*w/GW,0,0,dpr*w/GW,0,0);drawGen(gRun?Math.min(1,(performance.now()-gStart)/5000):1,0);}
+function cl(v){return Math.max(0,Math.min(1,v))}
+function layerCol(k){return mix(gCol.crust,gCol.paper,k%2?.28:0)}
+function lbl(t,x,y,col,align){gx.fillStyle=col||gCol.ink;gx.textAlign=align||'left';gx.fillText(t,x,y);gx.textAlign='left';}
+function drawGen(p,tau){var c=gx;c.clearRect(0,0,GW,GH);c.font='12px system-ui,sans-serif';c.lineCap='round';
+  if(gMode==='syn'){
+    c.fillStyle=gCol.sea;c.fillRect(0,0,GW,GH);var top=240;
+    for(var k=0;k<5;k++){var h=cl(p*5-k)*30;if(h<=0)continue;var y0=240-k*30-h;c.fillStyle=k===2?mix(gCol.gold,gCol.hem,.35):layerCol(k);c.fillRect(30,y0,580,h);top=y0;}
+    var vent=p>0.36&&p<0.62;
+    if(p>0.36){c.fillStyle=gCol.ink;c.fillRect(312,180-Math.min(18,(p-.36)*200),12,Math.min(18,(p-.36)*200));}
+    if(vent){for(var j=0;j<26;j++){var ph=(tau*.55+j/26)%1;c.fillStyle=rgba(gCol.ink,(1-ph)*.55);c.beginPath();c.arc(318+Math.sin(j*7+tau*2)*14*ph,170-ph*120,3+ph*7,0,Math.PI*2);c.fill();
+      if(ph>.55){c.fillStyle=rgba(gCol.gold,(1-ph)*1.4);c.fillRect(150+((j*53)%340),110+ph*60,3,3);}}}
+    lbl('seafloor',36,top-6,gCol.ink);
+    if(p>.5)lbl('sulphide layer settles with the sediment',620,240-2*30-12,gCol.ink,'end');
+    if(p>.95)lbl('buried, still parallel to bedding',620,40,gCol.ink,'end');
+    lbl('black smoker',330,p>.36&&p<.62?60:-20,gCol.ink);
+  }
+  else if(gMode==='epi'){
+    c.fillStyle=gCol.sky;c.fillRect(0,0,GW,GH);
+    for(var k2=0;k2<6;k2++){c.fillStyle=layerCol(k2);c.fillRect(30,240-(k2+1)*32,580,32);}
+    var pts=[[300,240],[318,205],[306,170],[330,135],[318,100],[340,50]];var L1=cl(p/.35);
+    c.strokeStyle=gCol.ink;c.lineWidth=2;c.beginPath();c.moveTo(pts[0][0],pts[0][1]);var n=(pts.length-1)*L1;
+    for(var s2=1;s2<pts.length;s2++){if(s2<=n)c.lineTo(pts[s2][0],pts[s2][1]);else{var f=n-(s2-1);if(f>0)c.lineTo(pts[s2-1][0]+(pts[s2][0]-pts[s2-1][0])*f,pts[s2-1][1]+(pts[s2][1]-pts[s2-1][1])*f);break;}}c.stroke();
+    var vw=cl((p-.35)/.6)*9;if(vw>0){c.strokeStyle=gCol.gold;c.lineWidth=vw;c.beginPath();c.moveTo(pts[0][0],pts[0][1]);for(var s3=1;s3<pts.length;s3++)c.lineTo(pts[s3][0],pts[s3][1]);c.stroke();}
+    if(p>.3&&p<.98){for(var j2=0;j2<14;j2++){var ph2=(tau*.35+j2/14)%1;var q=ph2*(pts.length-1),si=Math.floor(q),ff=q-si;if(si>=pts.length-1)continue;
+      c.fillStyle=rgba(gCol.hem,.9);c.beginPath();c.arc(pts[si][0]+(pts[si+1][0]-pts[si][0])*ff,pts[si][1]+(pts[si+1][1]-pts[si][1])*ff,3,0,Math.PI*2);c.fill();}}
+    lbl('bedding formed first',36,30,gCol.ink);
+    if(p>.2)lbl('fracture opens later',360,150,gCol.ink);
+    if(p>.6)lbl('vein fills it, cutting across the layers',360,170,gCol.ink);
+  }
+  else if(gMode==='hyp'){
+    c.fillStyle=gCol.sky;c.fillRect(0,0,GW,40);c.fillStyle=gCol.crust;c.fillRect(0,40,GW,GH-40);
+    c.strokeStyle=gCol.ink;c.lineWidth=1.5;c.beginPath();c.moveTo(0,40);c.lineTo(GW,40);c.stroke();
+    c.fillStyle=gCol.magma;c.beginPath();c.ellipse(220,262,150,40,0,0,Math.PI*2);c.fill();
+    c.strokeStyle=rgba(gCol.ink,.55);c.lineWidth=8;c.beginPath();c.moveTo(240,228);c.lineTo(430,90);c.stroke();
+    var rr=6+cl(p)*34;c.fillStyle=mix(gCol.gold,gCol.hem,.2);c.beginPath();c.ellipse(440,86,rr*1.4,rr*.7,-.4,0,Math.PI*2);c.fill();
+    for(var j3=0;j3<18;j3++){var ph3=(tau*.4+j3/18)%1;var x3=240+(430-240)*ph3,y3=228+(90-228)*ph3;c.fillStyle=rgba(gCol.gold,.95);c.beginPath();c.arc(x3+Math.sin(j3*5)*4,y3,3,0,Math.PI*2);c.fill();}
+    lbl('cooling magma releases hot fluid',90,250,'#ffffff');
+    lbl('fluid rises up the fault',140,150,gCol.ink);
+    if(p>.3)lbl('ore where conditions change',470,130,gCol.ink);
+    c.strokeStyle=gCol.ink;c.lineWidth=2;c.beginPath();c.moveTo(610,235);c.lineTo(610,155);c.stroke();c.beginPath();c.moveTo(602,165);c.lineTo(610,153);c.lineTo(618,165);c.stroke();lbl('upward',600,200,gCol.ink,'end');
+  }
+  else{
+    c.fillStyle=gCol.sky;c.fillRect(0,0,GW,60);c.fillStyle=gCol.crust;c.fillRect(0,60,GW,GH-60);
+    c.strokeStyle=gCol.ink;c.lineWidth=1.5;c.beginPath();c.moveTo(0,60);c.lineTo(GW,60);c.stroke();
+    var WT=150;c.fillStyle=mix(gCol.slate,gCol.gold,.35);c.fillRect(260,60,120,190);
+    var leach=60+cl(p)*(WT-60);c.fillStyle=mix(gCol.hem,gCol.crust,.35);c.fillRect(260,60,120,leach-60);
+    var blanket=cl(p)*26;c.fillStyle=gCol.gold;c.fillRect(260,WT,120,blanket);
+    c.strokeStyle=gCol.sea;c.lineWidth=2;c.setLineDash([7,5]);c.beginPath();c.moveTo(0,WT);c.lineTo(GW,WT);c.stroke();c.setLineDash([]);
+    for(var j4=0;j4<34;j4++){var ph4=(tau*.3+j4/34)%1;var x4=40+((j4*71)%560);var y4=4+ph4*(WT-4);var inBody=x4>260&&x4<380&&y4>60;
+      c.fillStyle=inBody?rgba(gCol.gold,.95):rgba(gCol.slate,.8);c.beginPath();c.arc(x4,y4,inBody?2.8:2.2,0,Math.PI*2);c.fill();}
+    lbl('rain soaks down',20,22,gCol.ink);
+    lbl('leached cap / gossan',390,Math.max(80,(60+leach)/2+4),gCol.ink);
+    lbl('water table',20,WT-6,gCol.ink);
+    if(p>.25)lbl('enrichment blanket',390,WT+16,gCol.ink);
+    lbl('primary sulphide',390,215,gCol.ink);
+  }
+}
+function genTick(now){if(!gRun)return;var t=(now-gStart)/1000;drawGen(Math.min(1,t/5),t);if(t>14){gRun=false;return;}requestAnimationFrame(genTick);}
+function playGen(m){gMode=m;$$('#genTabs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.g===m?'true':'false')});$('#genSay').innerHTML=GTXT[m];
+  gSeen[m]=1;var n=Object.keys(gSeen).length;$('#genGoal').textContent=n<4?(n+' of 4 played'):'all four played';if(n===4)award('genesis',6,'Four ways to make ore, watched');
+  if(reduce){drawGen(1,0);return;}gStart=performance.now();if(!gRun){gRun=true;requestAnimationFrame(genTick);}}
+$$('#genTabs button').forEach(function(b){b.addEventListener('click',function(){playGen(b.dataset.g)})});
+$('#genReplay').addEventListener('click',function(){playGen(gMode)});
+$('#genSay').innerHTML=GTXT.syn;
+if('IntersectionObserver' in window){var gObs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){gObs.disconnect();if(!Object.keys(gSeen).length)playGen('syn');}})},{threshold:.4});gObs.observe(gc);}
+/* bars grow in when first seen */
+(function(){var rs=$$('#bars rect');if(reduce||!('IntersectionObserver' in window))return;var fin=rs.map(function(r){return +r.getAttribute('width')});
+  var o=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;o.disconnect();var t0=performance.now();
+    rs.forEach(function(r){r.setAttribute('width',0)});
+    (function f(now){var k=Math.min(1,(now-t0)/1100);rs.forEach(function(r,i){var kk=ease(cl(k*1.3-i*.04));r.setAttribute('width',fin[i]*kk)});if(k<1)requestAnimationFrame(f);else rs.forEach(function(r,i){r.setAttribute('width',fin[i])});})(t0);
+  },{threshold:.5});o.observe($('#bars').closest('svg'));})();
+
+GEO.finish(function(){resizeConc();resizeChain();resizeGen();});
+})();
+</script>
+</body>
+</html>

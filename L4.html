@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 4 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L3.html">&larr; Lecture 3</a><a href="L5.html">Lecture 5 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 4 · T3 2026</div>
+  <h1>Learning to see in shades of grey</h1>
+  <p class="lede">Most ore minerals are opaque, so the transmitted-light petrography you learned in second year shows them as black blobs. Bounce light off a polished surface instead and a whole world opens up: subtle colours, brightness, crystal shapes, and the order minerals grew in. This is ore microscopy, also called mineragraphy, and it decides how a deposit is mined and processed. Start with the money.</p>
+
+  <div class="obs" id="heroObs">
+    <div class="ttl"><span>Field task · two gold deposits, same grade</span><span class="srcs">slides 4 and 71</span></div>
+    <div class="mic"><img loading="lazy" decoding="async" data-img="s071" alt="Reflected-light photomicrograph of a bright yellow-orange gold grain in dark grey quartz"></div>
+    <p class="ask">Deposits A and B both grade 3 g/t gold. In A the gold is free grains like this one. In B it's locked inside pyrite as sub-microscopic particles you can't see. Which costs more to process, and why does only the microscope tell you?</p>
+    <div class="cards" id="heroQ" style="grid-template-columns:1fr"></div>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#why">Why ore microscopy matters</a></li>
+      <li><a href="#scope">The reflected-light microscope</a></li>
+      <li><a href="#props">Properties you can see</a></li>
+      <li><a href="#virtual">The virtual microscope</a></li>
+      <li><a href="#key">Identification key</a></li>
+      <li><a href="#pairs">Tricky pairs</a></li>
+      <li><a href="#textures">Micro-textures</a></li>
+      <li><a href="#para">Paragenesis</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="why" data-log="Why"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>Why ore microscopy matters</h2>
+  <p>Assays tell you how much metal is in a rock. They don't tell you where it is, and that turns out to matter just as much. Five questions only the microscope answers well:</p>
+  <div class="mix">
+    <div><b>Which mineral hosts the metal?</b>Free gold can be recovered cheaply by gravity. <button class="term" data-t="refractory gold">Refractory</button> gold locked in pyrite or arsenopyrite needs roasting, pressure oxidation or bacterial leaching first, which can add hundreds of millions of dollars to a plant.</div>
+    <div><b>How big are the grains?</b>Grain size sets how finely you have to grind to liberate the ore mineral, and grinding is one of the biggest costs in processing.</div>
+    <div><b>Any dirty minerals?</b>Arsenic- and tellurium-bearing phases attract smelter penalties and can be environmental hazards. Better to find them before you sell concentrate.</div>
+    <div><b>Which alteration goes with ore?</b>If a particular alteration mineral always sits with the ore, that's an exploration vector.</div>
+    <div><b>In what order did things grow?</b>The relationships between ore, gangue and host record the deposit's history, its <button class="term" data-t="paragenesis">paragenesis</button>.</div>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="scope" data-log="Microscope"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>The reflected-light microscope</h2>
+  <p>It's almost exactly the petrological microscope you already know, with one change. Instead of light coming up through a thin section from below, it comes down through the objective from a side illuminator and <strong>reflects off the polished surface</strong> back up to your eye. Why bother? Ore minerals are opaque in transmitted light because their dense, heavy-element structures absorb it. A reflective surface turns that problem into information. You can use polished thin sections, polished blocks or polished grain mounts. <span class="srcs">slide 11</span></p>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 330" role="img" aria-labelledby="lpT" style="min-width:540px" id="lpSvg">
+      <title id="lpT">Light paths: in transmitted light, light passes up through a thin section and is blocked by an opaque grain; in reflected light, light comes down through the objective and reflects off a polished surface</title>
+      <defs><marker id="arL" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/></marker></defs>
+      <g font-size="13" fill="var(--ink)">
+        <text x="170" y="22" text-anchor="middle" font-weight="700">TRANSMITTED LIGHT</text>
+        <text x="540" y="22" text-anchor="middle" font-weight="700">REFLECTED LIGHT</text>
+        <rect x="140" y="40" width="60" height="40" rx="6" fill="var(--slate)" opacity=".3"/><text x="170" y="64" text-anchor="middle" font-size="11">eyepiece</text>
+        <rect x="150" y="110" width="40" height="40" rx="4" fill="var(--slate)" opacity=".3"/><text x="170" y="134" text-anchor="middle" font-size="11">objective</text>
+        <rect x="70" y="200" width="200" height="14" fill="#DDE8EE" stroke="var(--line)"/>
+        <rect x="120" y="200" width="40" height="14" fill="#202226"/><rect x="190" y="200" width="30" height="14" fill="#E8E2D2"/>
+        <text x="72" y="232" font-size="11" fill="var(--muted)">30 µm thin section</text>
+        <ellipse cx="170" cy="290" rx="40" ry="10" fill="var(--gold-hi)" opacity=".7"/><text x="170" y="316" text-anchor="middle" font-size="11">light from below</text>
+        <path class="beam" d="M205 280 L205 214" stroke="var(--gold)" stroke-width="3" fill="none" marker-end="url(#arL)"/>
+        <path class="beam" d="M205 200 L190 150 L180 82" stroke="var(--gold)" stroke-width="3" fill="none" marker-end="url(#arL)"/>
+        <path class="beam" d="M140 280 L140 216" stroke="var(--gold)" stroke-width="3" fill="none"/>
+        <text x="40" y="196" font-size="11" fill="var(--hem)">opaque grain blocks light: black</text>
+        <rect x="510" y="40" width="60" height="40" rx="6" fill="var(--slate)" opacity=".3"/><text x="540" y="64" text-anchor="middle" font-size="11">eyepiece</text>
+        <rect x="505" y="100" width="70" height="26" rx="4" fill="var(--slate)" opacity=".45"/><text x="540" y="117" text-anchor="middle" font-size="11">illuminator</text>
+        <line x1="515" y1="124" x2="565" y2="102" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="520" y="150" width="40" height="40" rx="4" fill="var(--slate)" opacity=".3"/><text x="540" y="174" text-anchor="middle" font-size="11">objective</text>
+        <rect x="440" y="230" width="200" height="40" fill="#B9BEC4" stroke="var(--line)"/><rect x="490" y="230" width="60" height="6" fill="#F3F1EA"/>
+        <text x="442" y="290" font-size="11" fill="var(--muted)">polished block surface</text>
+        <circle cx="660" cy="113" r="12" fill="var(--gold-hi)" opacity=".8"/><text x="660" y="146" text-anchor="middle" font-size="11">lamp</text>
+        <path class="beam" d="M646 113 L548 113" stroke="var(--gold)" stroke-width="3" fill="none"/>
+        <path class="beam" d="M532 116 L532 228" stroke="var(--gold)" stroke-width="3" fill="none" marker-end="url(#arL)"/>
+        <path class="beam" d="M548 230 L548 84" stroke="var(--gold)" stroke-width="3" fill="none" marker-end="url(#arL)"/>
+        <text x="585" y="210" font-size="11" fill="var(--mal)">reflects off the surface</text>
+      </g>
+    </svg></div>
+    <figcaption>Same microscope body, different light path. The dashed gold lines are light moving. A half-silvered mirror (the angled line) sends lamp light down through the objective and lets the reflected light back up.</figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the UNSW research microscope</span><span class="srcs">slides 12 and 13</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" data-img="s012" alt="Leica research microscope with a camera mounted on top"><div class="cap">A · dual transmitted and reflected light</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s013" alt="Computer screen showing a live grey photomicrograph"><div class="cap">B · live camera view</div></div>
+    </div>
+    <p class="ask">The screen in B looks almost entirely grey. What's the single biggest practical difficulty for beginners in reflected light?</p>
+    <details data-obs="greys"><summary>Show the answer</summary><div class="seen"><p>Everything is a shade of grey, white or pale yellow, and the differences are subtle. You get used to it. Two tips: ideally work in a dark room so your eye adapts (old-school microscopists used a completely blacked-out room), and always compare a grain with its neighbours, because perceived brightness and colour depend on what's next to it. Pyrite looks bright beside sphalerite and noticeably duller beside galena.</p></div></details>
+  </div>
+</div></section>
+
+<section id="props" data-log="Properties"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">24 to 40 m</span></div>
+  <h2>The properties you can see</h2>
+  <p>Identification in reflected light works by combining a handful of properties. None is enough alone; together they narrow things down fast.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Property</th><th>What you do</th><th>What you're looking for</th></tr></thead>
+    <tbody>
+      <tr><td><b>Colour</b></td><td>Plane-polarised light (PPL), one polar in</td><td>Body colour <em>and</em> its intensity: bright white, pale yellow, pinkish brown, blue, grey with a brown tint.</td></tr>
+      <tr><td><b>Reflectance</b></td><td>PPL</td><td>How bright the grain is relative to its neighbours: high, moderate or low. Always judge relative to what's around it.</td></tr>
+      <tr><td><b><button class="term" data-t="bireflectance">Bireflectance</button></b></td><td>Rotate the stage in PPL</td><td>A change in brightness (not colour) as you rotate.</td></tr>
+      <tr><td><b>Bireflectance pleochroism</b></td><td>Rotate the stage in PPL</td><td>A change in colour as you rotate. Covellite is the extreme case.</td></tr>
+      <tr><td><b><button class="term" data-t="anisotropy">Anisotropy</button></b></td><td>Cross the polars, rotate</td><td><button class="term" data-t="isotropic">Isotropic</button> grains stay black at every angle (galena). Anisotropic grains show colours and go dark four times per rotation (covellite). All cubic minerals are isotropic, with pyrite as the famous exception.</td></tr>
+      <tr><td><b><button class="term" data-t="internal reflections">Internal reflections</button></b></td><td>Crossed polars, often high power</td><td>Light passing into the grain and bouncing back off fractures inside it. Sphalerite is the classic; hematite and wolframite give deep red ones.</td></tr>
+      <tr><td><b>Polishing hardness</b></td><td>Look at grain edges</td><td>Hard grains stand proud with crisp edges and take a good polish; soft ones scratch and pit.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · covellite and sphalerite</span><span class="srcs">slides 7 and 8</span></div>
+    <div class="trio">
+      <div class="mic"><img loading="lazy" decoding="async" data-img="s007a" alt="Covellite in PPL at no rotation: patchy pale and deep blue"></div>
+      <div class="mic"><img loading="lazy" decoding="async" data-img="s007b" alt="Covellite rotated 45 degrees: the blues have changed intensity and tone"></div>
+      <div class="mic"><img loading="lazy" decoding="async" data-img="s008" alt="Sphalerite under crossed polars with bright yellow and orange spots inside dark grains"></div>
+    </div>
+    <p class="ask">The first two are the same covellite grains, rotated 45°. Name the property. The third is sphalerite under crossed polars. Where are those coloured spots coming from?</p>
+    <details data-obs="covsph"><summary>Show what I see</summary><div class="seen"><p>Covellite shows extreme <b>bireflectance pleochroism</b>: rotate the stage and the blue changes in both tone and brightness. Nothing else common looks like this, so once you've seen it you won't mistake covellite. The sphalerite shows <b>internal reflections</b>: light refracts into the semi-transparent grain, bounces off fractures and comes back as yellow, orange and red flashes. In sphalerite that's diagnostic.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="virtual" data-log="Virtual scope"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">40 to 62 m</span></div>
+  <h2>The virtual microscope</h2>
+  <p>Here's a microscope loaded with the photomicrographs from the lecture. In <strong>Study</strong> mode, pick a mineral, rotate the stage, cross the polars and try the scratch and magnet tests. In <strong>Unknown</strong> mode, the mineral is hidden: use the same tools, then name it. This is exactly the routine you'll use in the lab.</p>
+  <div class="lab" id="vm">
+    <h4><span>Reflected-light microscope</span><b id="vmScore">0 identified</b></h4>
+    <div class="tabs" role="group" aria-label="Microscope mode"><button type="button" data-mode="study" aria-pressed="true">Study</button><button type="button" data-mode="unk" aria-pressed="false">Unknown</button></div>
+    <div class="scopebox">
+      <div>
+        <div class="scope" id="scope"><div class="stage" id="stage"><img loading="lazy" decoding="async" id="imgA" alt=""><img loading="lazy" decoding="async" id="imgB" alt="" style="opacity:0"></div><div class="xh"></div><span class="lbl" id="scopeLbl">PPL · 0°</span></div>
+        <label for="rot" style="font-size:.8rem;color:var(--muted);display:block;margin-top:1rem">Rotate the stage</label>
+        <input type="range" id="rot" min="0" max="360" value="0">
+        <div class="tools">
+          <button type="button" class="chip" id="tXpl" aria-pressed="false">Cross polars</button>
+          <button type="button" class="chip" id="tScratch">Scratch test</button>
+          <button type="button" class="chip" id="tMag">Magnet</button>
+          <button type="button" class="chip" id="tSpin">Spin 360°</button>
+        </div>
+      </div>
+      <div class="props">
+        <div id="vmStudy">
+          <label for="vmPick" style="font-size:.8rem;color:var(--muted)">Mineral</label>
+          <select id="vmPick" style="width:100%;font:inherit;padding:.4rem;border-radius:6px;border:2px solid var(--line);background:var(--bg);color:var(--ink)"></select>
+          <dl id="vmProps"></dl>
+        </div>
+        <div id="vmUnk" hidden>
+          <p style="margin:0 0 .4rem"><b>Unknown mineral.</b> Rotate, cross the polars, scratch it, try the magnet. Then name it.</p>
+          <div class="mlist" id="vmGuess"></div>
+          <p class="say" id="vmUnkSay"></p>
+          <div class="row"><button class="btn ghost" type="button" id="vmNext">Next unknown</button></div>
+        </div>
+        <p class="say" id="vmSay"></p>
+      </div>
+    </div>
+    <p class="say" style="font-size:.84rem;color:var(--muted)">Where the lecture gave a crossed-polars photo (hematite, marcasite, pyrrhotite, molybdenite, stibnite) you see the real one; for other minerals the crossed-polars view is simulated from the listed properties. The circular field crops off the photo labels so unknowns stay unknown.</p>
+  </div>
+</div></section>
+
+<section id="key" data-log="ID key"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">62 to 76 m</span></div>
+  <h2>Identification key: narrow it down</h2>
+  <p>In practice you don't memorise nineteen descriptions; you eliminate. Start with the easiest observation (colour), then reflectance, anisotropy, hardness and internal reflections, and watch the candidates drop out. Click a remaining mineral to load it into the microscope above. <span class="srcs">slides 27 to 71</span></p>
+  <div class="lab" id="idk">
+    <h4><span>Determinative key</span><b id="idkLeft">19 candidates</b></h4>
+    <div class="keyctl">
+      <div><label for="kCol">Colour (PPL)</label><select id="kCol"><option value="">any</option><option value="white">white / silver</option><option value="yellow">yellow</option><option value="pink">pink or brown</option><option value="blue">blue</option><option value="grey">grey</option><option value="greybrown">grey with brown tint</option></select></div>
+      <div><label for="kRef">Reflectance</label><select id="kRef"><option value="">any</option><option value="high">high</option><option value="mod">moderate</option><option value="low">low</option></select></div>
+      <div><label for="kAni">Anisotropy</label><select id="kAni"><option value="">any</option><option value="iso">isotropic</option><option value="weak">weak</option><option value="strong">strong</option></select></div>
+      <div><label for="kHard">Polishing hardness</label><select id="kHard"><option value="">any</option><option value="soft">soft (under 3)</option><option value="med">medium (3 to 5)</option><option value="hard">hard (over 5)</option></select></div>
+      <div><label for="kIR">Internal reflections</label><select id="kIR"><option value="">any</option><option value="yes">yes</option><option value="no">no</option></select></div>
+    </div>
+    <div class="mlist" id="idkList"></div>
+    <p class="say" id="idkSay">Set one property at a time.</p>
+    <div class="goal" id="g-idk"><i>✓</i><span>Narrow the key to a single mineral.</span></div>
+  </div>
+  <div class="tablewrap"><table id="propTable"></table></div>
+</div></section>
+
+<section id="pairs" data-log="Tricky pairs"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">76 to 88 m</span></div>
+  <h2>Tricky pairs, and how to split them</h2>
+  <p>Most mistakes come from a few look-alike groups. Learn the one property that splits each group.</p>
+  <div class="mix">
+    <div><b>Three yellows</b>Pyrite is pale yellow, hard and takes a perfect polish. Chalcopyrite is a stronger yellow and soft. Gold is yellow-orange and so bright it still glows with the lamp turned right down, and it polishes poorly.</div>
+    <div><b>Pyrite vs marcasite</b>Both FeS<sub>2</sub>. Marcasite is more bronze-yellow and strongly anisotropic in blue and yellow-green. It also breaks down in warm, humid air, even in Sydney.</div>
+    <div><b>Galena vs arsenopyrite</b>Both white. Galena is soft, isotropic and covered in triangular cleavage pits. Arsenopyrite is hard, anisotropic and forms sharp rhomb-shaped crystals.</div>
+    <div><b>Low-reflectance greys</b>Magnetite has a brown tint, is hard, isotropic and magnetic. Sphalerite gives internal reflections. Chromite is brownish black with curved conchoidal fractures, usually with olivine; Al-rich chromite is reddish brown.</div>
+    <div><b>Pentlandite vs chalcopyrite</b>Pentlandite is a paler yellow, isotropic, and almost always sits with pyrrhotite. That association is your best clue.</div>
+    <div><b>The two hardest</b>Chalcocite is featureless grey-white, soft and covered in scratches, with a bluish tarnish. Tetrahedrite is grey with a brownish tint, isotropic and moderately hard; silver-rich ones look bluer. Expect to struggle with both.</div>
+  </div>
+  <div class="lab" id="pairLab"><h4><span>Split the pair</span><b id="pairScore">0 / 6</b></h4><div class="cards" id="pairCards"></div></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="textures" data-log="Micro-textures"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">88 to 106 m</span></div>
+  <h2>Micro-textures: the order things grew</h2>
+  <p>There are dozens of named micro-textures (bladed, botryoidal, colloform, framboidal, skeletal, poikilitic, atoll, and on and on). Don't worry about naming them all; describe what you see. What matters is what a texture says about <strong>timing</strong>. Some are obvious, like a vein cutting another mineral. Many are subtle, and the main mineralising event can be distinct from, and even unrelated to, earlier and later ones. So never build a paragenesis from one sample: look at as many as you can, and link what you see at every scale from mine to microscope. <span class="srcs">slides 9 and 15</span></p>
+
+  <div class="lab" id="car">
+    <h4><span>Watch a caries texture form</span><b id="carStage">ready</b></h4>
+    <canvas id="carCanvas" aria-label="Animation of euhedral pyrite being corroded by later fluid, with sphalerite then galena filling the embayments"></canvas>
+    <div class="row"><button class="btn" type="button" id="carPlay">Play</button></div>
+    <p class="say" id="carSay">Three minerals, three stages. Press play.</p>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · reading timing from texture</span><span class="srcs">slides 16 to 18</span></div>
+    <div class="trio">
+      <div class="mic"><img loading="lazy" decoding="async" data-img="s016" alt="Pale yellow pyrite grains with embayed edges, surrounded by darker grey sphalerite and bright galena"></div>
+      <div class="mic"><img loading="lazy" decoding="async" data-img="s017" alt="A smooth, lobed bright galena inclusion inside grey sphalerite"></div>
+      <div class="mic"><img loading="lazy" decoding="async" data-img="s018" alt="A pyrite grain with ragged, eaten-away margins filled by other sulphides"></div>
+    </div>
+    <p class="ask">For each, which mineral came first? One of them shows two minerals that grew together. Which one, and what gives it away?</p>
+    <details data-obs="timing"><summary>Show what I see</summary><div class="seen"><ul><li><b>Left:</b> pyrite first, its margins eaten away, then sphalerite (darker grey), then galena (bright white). Paragenesis: pyrite, sphalerite, galena, all readable in one field of view.</li><li><b>Middle:</b> a galena inclusion in sphalerite with smooth, rounded, mutually indented (<button class="term" data-t="cuspate-lobate">cuspate-lobate</button>) boundaries. Neither cuts the other, so they co-crystallised: an equilibrium texture.</li><li><b>Right:</b> <button class="term" data-t="caries texture">caries</button> (or atoll) texture: pyrite partly dissolved and replaced by later sulphide, like a tooth with cavities.</li></ul></div></details>
+  </div>
+
+  <div class="lab" id="texLab"><h4><span>Name the texture, read the timing</span><b id="texScore">0 / 6</b></h4><div class="cards" id="texCards"></div></div>
+  <div class="note">
+    <span class="tag"><span>Field note · two textures with surprising histories</span><span class="srcs">lecture recording, 21 Sep</span></span>
+    <p><b>Chalcopyrite disease</b> is a dusting of tiny chalcopyrite blebs inside sphalerite. Older literature (before about 1980) read it as exsolution. Modern work shows it's usually chalcopyrite <em>replacing</em> sphalerite along crystallographic directions when hotter, copper-bearing fluid came through after the sphalerite formed. <b>Framboids</b> (from the French for raspberry) are spherical clusters of tiny pyrite crystals. They were long taken as proof of microbial sulphate reduction, and in black shale they usually are, but framboids also form in hydrothermal systems, and galena can make them too. A texture is a clue, not a verdict.</p>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="para" data-log="Paragenesis"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">108 to 124 m</span></div>
+  <h2>Building a paragenesis</h2>
+  <p>A <button class="term" data-t="paragenesis">paragenesis</button> is the crystallisation order of the minerals in a deposit, usually drawn as a chart of bars against time. You build it by collecting timing clues from many textures and stitching them into one consistent sequence. Here are four clues from one hypothetical Cobar-style deposit. Put the minerals in order, oldest at the top.</p>
+  <div class="lab" id="pg">
+    <h4><span>Paragenesis puzzle</span><b id="pgState">arrange the minerals</b></h4>
+    <ul style="font-family:var(--sans);font-size:.95rem;line-height:1.55;margin:.2rem 0 .6rem;padding-left:1.2rem">
+      <li>Euhedral pyrite cubes have caries embayments filled by sphalerite.</li>
+      <li>Sphalerite contains chalcopyrite disease.</li>
+      <li>Chalcopyrite and sphalerite are both cut by thin galena veinlets.</li>
+      <li>Galena encloses smooth, cuspate-lobate blebs of tetrahedrite with no cross-cutting either way.</li>
+    </ul>
+    <ol class="sortl" id="pgList"></ol>
+    <div class="row"><button class="btn" type="button" id="pgCheck">Check order</button><button class="btn ghost" type="button" id="pgShuffle">Shuffle</button></div>
+    <p class="say" id="pgSay"></p>
+  </div>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 230" id="pgChart" role="img" aria-labelledby="pgT" style="min-width:540px"><title id="pgT">Paragenetic chart showing pyrite first, then sphalerite, then chalcopyrite, then galena and tetrahedrite together</title></svg></div>
+    <figcaption>The answer as a paragenetic chart. Bars that overlap mean minerals grew at the same time. Solve the puzzle to reveal it.</figcaption>
+  </figure>
+  <div class="cp" data-cp="cp5"></div>
+  <h3>Where this goes next</h3>
+  <p>From here on, every deposit lecture assumes you can read these textures. The magmatic lectures (L7, L8) lean on pyrrhotite, pentlandite and chromite; porphyries (L11) on chalcopyrite, bornite, molybdenite and the supergene chalcocite and covellite from Lecture 2; and the gold lectures (L12 to L14) on free versus refractory gold. Your lab skills test is where this all gets assessed.</p>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">124 to 132 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">132 to 138 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">138 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 4 slides (71 slides; every photomicrograph on this page comes from them) and the Echo360 recording of 21 September 2026 (the lecture starts after the end of Lecture 3 in that recording). Mineral properties follow the slide summaries. Simulated crossed-polar views and the paragenesis puzzle are teaching models.</p>
+  <p><a href="L3.html">&larr; Lecture 3</a> &nbsp;·&nbsp; <a href="L5.html">Lecture 5, structural controls &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var IMG={s007a:'img/L4/slide007_1.jpg',s007b:'img/L4/slide007_2.jpg',s008:'img/L4/slide008_1.jpg',s012:'img/L4/slide012_1.jpg',s013:'img/L4/slide013_1.jpg',s016:'img/L4/slide016_1.jpg',s017:'img/L4/slide017_1.jpg',s018:'img/L4/slide018_1.jpg',s019:'img/L4/slide019_1.jpg',s020:'img/L4/slide020_1.jpg',s021:'img/L4/slide021_1.jpg',s022:'img/L4/slide022_1.jpg',s023:'img/L4/slide023_1.jpg',s024:'img/L4/slide024_1.jpg',s025:'img/L4/slide025_1.jpg',
+ s028:'img/L4/slide028_1.jpg',s030:'img/L4/slide030_1.jpg',s031:'img/L4/slide031_1.jpg',s033:'img/L4/slide033_1.jpg',s035:'img/L4/slide035_1.jpg',s036:'img/L4/slide036_1.jpg',s038:'img/L4/slide038_1.jpg',s039:'img/L4/slide039_1.jpg',s041:'img/L4/slide041_1.jpg',s042:'img/L4/slide042_1.jpg',s044:'img/L4/slide044_1.jpg',s046:'img/L4/slide046_1.jpg',s048:'img/L4/slide048_1.jpg',s050:'img/L4/slide050_1.jpg',s052:'img/L4/slide052_1.jpg',s054:'img/L4/slide054_1.jpg',s055:'img/L4/slide055_1.jpg',s057:'img/L4/slide057_1.jpg',s059:'img/L4/slide059_1.jpg',s061:'img/L4/slide061_1.jpg',s062:'img/L4/slide062_1.jpg',s064:'img/L4/slide064_1.jpg',s065:'img/L4/slide065_1.jpg',s067:'img/L4/slide067_1.jpg',s069:'img/L4/slide069_1.jpg',s071:'img/L4/slide071_1.jpg'};
+var RANKS=[[0,'Field assistant','You can find the focus knob.'],[35,'Graduate geologist','Trusted with the polished blocks.'],[100,'Project geologist','Your paragenesis charts hold up.'],[180,'Senior geologist','Metallurgists ask you about grain size.'],[270,'Chief geologist','You can tell chalcocite from tetrahedrite.']];
+var G={
+ "mineragraphy":"Ore microscopy: the study of ore minerals in polished section under reflected light.",
+ "reflected light":"Illumination that comes down through the objective and reflects off a polished surface, used for opaque minerals.",
+ "opaque mineral":"A mineral that absorbs transmitted light, such as most sulphides and oxides.",
+ "PPL":"Plane-polarised light: one polariser in. Used for colour, reflectance and bireflectance.",
+ "crossed polars":"Both polariser and analyser in (XPL or UXP). Used to test anisotropy and see internal reflections.",
+ "reflectance":"How much light a polished surface reflects; judge it relative to neighbouring grains.",
+ "bireflectance":"A change in brightness of a grain as the stage is rotated in PPL.",
+ "bireflectance pleochroism":"A change in colour of a grain as the stage is rotated in PPL. Extreme in covellite.",
+ "anisotropy":"Showing colours and four extinction positions per rotation under crossed polars.",
+ "isotropic":"Staying dark under crossed polars at every rotation. Cubic minerals are isotropic, except pyrite.",
+ "internal reflections":"Coloured light bouncing back from inside a semi-transparent grain via fractures. Classic in sphalerite.",
+ "polishing hardness":"Relative hardness seen in polished section: hard grains stand proud with crisp edges, soft ones scratch.",
+ "polished thin section":"A 30 µm section polished on top, usable in both transmitted and reflected light.",
+ "polished block":"A sample set in resin and polished on one face for reflected light.",
+ "grain mount":"Loose grains (concentrate, crushed ore) set in resin and polished.",
+ "paragenesis":"The order in which minerals crystallised in a deposit, often drawn as a chart.",
+ "caries texture":"Embayed, eaten-away margins of an early mineral replaced by a later one. Also called atoll texture.",
+ "cuspate-lobate":"Smooth, mutually indented grain boundaries indicating two minerals grew together.",
+ "chalcopyrite disease":"Tiny chalcopyrite blebs in sphalerite, usually from later replacement rather than exsolution.",
+ "framboid":"A spherical cluster of tiny pyrite (or galena) crystals; often biogenic, but can be hydrothermal.",
+ "porphyroblast":"A large crystal grown within a finer matrix, often enclosing inclusions of earlier minerals.",
+ "euhedral":"Bounded by its own crystal faces.",
+ "exsolution lamellae":"Thin oriented plates of one mineral unmixed from another on cooling, like chalcopyrite in bornite.",
+ "tarnish":"A surface colour change after polishing: purple on bornite, bluish on chalcocite.",
+ "triangular pits":"Pits left where polishing plucks out cleavage fragments; diagnostic of galena.",
+ "conchoidal fracture":"Curved, shell-like fractures, typical of chromite in polished section.",
+ "refractory gold":"Gold locked inside sulphides such as pyrite or arsenopyrite, needing extra processing to recover.",
+ "free gold":"Gold present as discrete grains that can be recovered by gravity or simple leaching.",
+ "penalty elements":"Elements such as arsenic and tellurium that smelters charge extra to deal with in concentrate.",
+ "gravity separation":"Recovering dense minerals like free gold by their density difference from the rest of the ore."
+};
+var CP={
+ cp1:{q:'Why should you report arsenic- and tellurium-bearing minerals in an ore?',o:['They raise the grade','Smelters penalise them and they can harm the environment','They make the ore easier to grind'],a:1,e:'Dirty minerals cost money at the smelter and can be environmental hazards, so you want to know about them early.'},
+ cp2:{q:'Under crossed polars a grain stays completely black as you rotate the stage. It is...',o:['Isotropic, like galena','Strongly anisotropic','Showing internal reflections'],a:0,e:'Isotropic minerals stay dark at every angle under crossed polars. Cubic minerals are isotropic, with pyrite as the exception.'},
+ cp3:{q:'Pyrite looks bright next to sphalerite but dull next to galena. Which property are you misjudging?',o:['Hardness','Reflectance, which you must judge relative to neighbours','Crystal system'],a:1,e:'Perceived reflectance depends on what’s next to it. Always compare grains with their neighbours.'},
+ cp4:{q:'A galena inclusion in sphalerite has smooth, mutually indented boundaries. What does it mean?',o:['Galena replaced sphalerite much later','They co-crystallised','Weathering'],a:1,e:'Cuspate-lobate boundaries with no cross-cutting are an equilibrium texture: the two grew together.'},
+ cp5:{q:'Bright white mineral, soft, isotropic, with triangular pits. Name it.',o:['Arsenopyrite','Galena','Chalcocite'],a:1,e:'Triangular cleavage pits mean galena; nothing else common does that.'}
+};
+var ST=[
+ ['Why are most ore minerals studied in reflected rather than transmitted light?','Recall','They’re opaque: dense, heavy-element structures absorb transmitted light, so they look black in a thin section. A polished surface reflects light, revealing colour, reflectance and anisotropy.'],
+ ['Give three reasons a mining company pays for ore microscopy.','Recall','Any three of: which mineral hosts the metal (free vs refractory gold); grain size for grinding and liberation; dirty minerals like As and Te that attract penalties; alteration minerals tied to ore for exploration; timing relationships for the deposit’s genesis.'],
+ ['What’s the difference between bireflectance and bireflectance pleochroism?','Recall','Both are seen rotating the stage in PPL. Bireflectance is a change in brightness; bireflectance pleochroism is a change in colour.'],
+ ['Pyrite is cubic. What’s unusual about it under crossed polars?','Think','Cubic minerals should be isotropic, but pyrite is commonly weakly to strongly anisotropic. It’s the classic exception.'],
+ ['How would you tell pyrite, chalcopyrite and gold apart?','Apply','Pyrite: pale yellow, high reflectance, hard, perfect polish. Chalcopyrite: stronger yellow, softer, moderate reflectance. Gold: yellow-orange, extremely bright even with the lamp turned down, soft and poorly polished.'],
+ ['A grain is pink-brown with fine blue and yellow lamellae and a purple tarnish. Identify all three minerals.','Apply','Bornite (pink-brown, purple tarnish) with exsolution or replacement lamellae of chalcocite (blue) and chalcopyrite (yellow).'],
+ ['Why should you never build a paragenesis from one polished section?','Think','A single section may miss key relationships, and the main ore event can be distinct from earlier and later events elsewhere in the deposit. You need many samples and to link observations across scales.'],
+ ['What does a caries texture tell you about timing?','Recall','The embayed mineral (often pyrite) formed first and was partly dissolved and replaced by the mineral filling the embayments.'],
+ ['Why can’t you rely on magnetism to identify pyrrhotite?','Recall','Some pyrrhotite (monoclinic) is magnetic and some (hexagonal) isn’t. Use the bronze colour, strong anisotropy and quick oxidation instead.'],
+ ['A deposit’s gold is all refractory. What process step does the plant need that a free-gold plant doesn’t?','Apply','Something to break down the host sulphide before cyanide leaching or other recovery: roasting, pressure oxidation or bacterial oxidation.']
+];
+GEO.start({key:'geos3141-L4-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:138,goals:{'g-idk':'idk-one'},cpTag:'Checkpoint · polished section',img:IMG,micCards:true,onXP:function(){var n=Object.keys(S.done).filter(function(k){return k.indexOf('unk-')===0}).length;$('#vmScore').textContent=n+' identified';}});
+
+/* hero */
+mcCards($('#heroQ'),[{o:['B: gold locked in pyrite needs extra treatment before it can be recovered','A: free gold is harder to catch','They cost the same because the grade is the same'],a:0,
+  e:'Right. Free gold like this can be caught by gravity separation. Gold locked inside pyrite is <b>refractory</b>: you have to destroy the pyrite first (roasting, pressure oxidation or bacterial leaching). That can add on the order of $300 million to a processing plant. The assay says 3 g/t either way; only the microscope tells you which deposit you have.',hint:'Think about what you’d have to do to the pyrite to get at the gold inside it.',win:'Good call'}],'hero',5);
+
+/* light path animation */
+(function(){if(reduce)return;var bs=$$('#lpSvg .beam');bs.forEach(function(b){b.setAttribute('stroke-dasharray','10 8');});var o=0;(function f(){o-=.6;bs.forEach(function(b){b.setAttribute('stroke-dashoffset',o)});requestAnimationFrame(f);})();})();
+/* ---------- mineral data ---------- */
+var MIN=[
+ {n:'Magnetite',f:'Fe₃O₄',sys:'cubic',ref:'low',col:'grey with a brown tint',cg:['greybrown'],h:'5.5 to 6.5',hc:'hard',ani:'iso',ir:'none',dist:'Magnetic; hard, so takes a fairly poor polish and edges stand proud.',ppl:'s028',mag:true},
+ {n:'Hematite',f:'Fe₂O₃',sys:'hexagonal',ref:'mod',col:'dark steel-grey',cg:['grey'],h:'5.5 to 6.5',hc:'hard',ani:'strong',ir:'deep red',dist:'Moderate reflectance with strong anisotropy under crossed polars.',ppl:'s030',xpl:'s031'},
+ {n:'Chromite',f:'(Fe,Mg)(Cr,Al,Fe)₂O₄',sys:'cubic',ref:'low',col:'brownish black (Al-rich: reddish brown)',cg:['greybrown'],h:'5.5',hc:'hard',ani:'iso',ir:'reddish brown in Al varieties',dist:'Curved conchoidal fractures, low reflectance, usually with olivine.',ppl:'s033'},
+ {n:'Pyrite',f:'FeS₂',sys:'cubic',ref:'high',col:'pale yellow',cg:['yellow'],h:'6 to 6.5',hc:'hard',ani:'weak',ani2:'strong',ir:'none',dist:'Pale yellow, high reflectance and a perfect polish. Unusually for a cubic mineral, weakly to strongly anisotropic.',ppl:'s035'},
+ {n:'Marcasite',f:'FeS₂',sys:'orthorhombic',ref:'high',col:'pale bronze-yellow',cg:['yellow'],h:'6 to 6.5',hc:'hard',ani:'strong',ir:'none',dist:'Strong blue and yellow-green anisotropy. Unstable in humid air, so it oxidises quickly.',ppl:'s038',xpl:'s039'},
+ {n:'Pyrrhotite',f:'Fe₁₋ₓS',sys:'hexagonal, monoclinic',ref:'mod',col:'pale brown, bronze',cg:['pink'],h:'3.5 to 4.5',hc:'med',ani:'strong',ir:'none',dist:'Light bronze-brown colour, strong anisotropy, oxidises along fractures almost as you watch. Some is magnetic, some isn’t.',ppl:'s041',xpl:'s042',mag:'some'},
+ {n:'Arsenopyrite',f:'FeAsS',sys:'monoclinic',ref:'high',col:'silver-white to grey',cg:['white'],h:'5.5 to 6.5',hc:'hard',ani:'strong',ir:'none',dist:'Sharp rhomb-shaped euhedral crystals, silvery white, hard.',ppl:'s044'},
+ {n:'Bornite',f:'Cu₅FeS₄',sys:'tetragonal',ref:'mod',col:'rose-brown to pink-brown, tarnishes purple',cg:['pink'],h:'3',hc:'soft',ani:'weak',ir:'none',dist:'The only common pink ore mineral. Often has lamellae of chalcocite (blue) and chalcopyrite (yellow).',ppl:'s046'},
+ {n:'Chalcocite',f:'Cu₂S',sys:'orthorhombic, hexagonal',ref:'mod',col:'white to grey-white',cg:['white','grey'],h:'2.5 to 3',hc:'soft',ani:'weak',ir:'none',dist:'Featureless, soft, full of scratches, tarnishes bluish. One of the hardest to pick.',ppl:'s048'},
+ {n:'Chalcopyrite',f:'CuFeS₂',sys:'tetragonal',ref:'mod',col:'yellow',cg:['yellow'],h:'3.5 to 4',hc:'med',ani:'weak',ir:'none',dist:'Stronger yellow than pyrite, much softer.',ppl:'s050'},
+ {n:'Covellite',f:'CuS',sys:'hexagonal',ref:'low',ref2:'mod',col:'bluish white to dark blue',cg:['blue'],h:'1.5 to 2',hc:'soft',ani:'strong',ir:'none',dist:'The only common blue ore mineral. Extreme pleochroism and anisotropy (blue to bright orange).',ppl:'s052',pleo:'s007b'},
+ {n:'Galena',f:'PbS',sys:'cubic',ref:'high',col:'bright white',cg:['white'],h:'2.5',hc:'soft',ani:'iso',ir:'none',dist:'Bright white, soft, isotropic, triangular cleavage pits.',ppl:'s054'},
+ {n:'Sphalerite',f:'(Zn,Fe)S',sys:'cubic',ref:'low',col:'grey-brown',cg:['greybrown'],h:'3.5 to 4',hc:'med',ani:'iso',ir:'reddish or yellowish brown',dist:'Low reflectance with internal reflections; otherwise easy to overlook.',ppl:'s057',irimg:'s008'},
+ {n:'Pentlandite',f:'(Fe,Ni)₉S₈',sys:'cubic',ref:'mod',col:'pale yellow',cg:['yellow'],h:'3.5 to 4',hc:'med',ani:'iso',ir:'none',dist:'Always with pyrrhotite (and often magnetite).',ppl:'s059'},
+ {n:'Molybdenite',f:'MoS₂',sys:'hexagonal',ref:'mod',col:'lead-grey',cg:['grey'],h:'1 to 1.5',hc:'soft',ani:'strong',ir:'none',dist:'Very soft, bends and scratches, lamellar blades, strongly pleochroic white to grey.',ppl:'s061',xpl:'s062'},
+ {n:'Stibnite',f:'Sb₂S₃',sys:'orthorhombic',ref:'high',col:'steel-grey',cg:['grey'],h:'2',hc:'soft',ani:'strong',ir:'none',dist:'Prismatic crystals, soft, strongly pleochroic and anisotropic.',ppl:'s064',xpl:'s065'},
+ {n:'Tetrahedrite',f:'Cu₁₂Sb₄S₁₃',sys:'cubic',ref:'mod',col:'grey with a brownish tint',cg:['greybrown'],h:'3.5 to 4.5',hc:'med',ani:'iso',ir:'none',dist:'Moderate reflectance and brownish grey. Silver-rich varieties look bluer. Tricky.',ppl:'s067'},
+ {n:'Wolframite',f:'(Fe,Mn)WO₄',sys:'monoclinic',ref:'low',col:'dark grey (brownish when Fe-rich)',cg:['grey','greybrown'],h:'4 to 4.5',hc:'med',ani:'weak',ir:'deep red, especially Mn-rich',dist:'Tabular, lamellar crystals, low reflectance, red internal reflections.',ppl:'s069'},
+ {n:'Gold',f:'Au',sys:'cubic',ref:'high',col:'yellow-orange',cg:['yellow'],h:'2.5 to 3',hc:'soft',ani:'iso',ir:'none',dist:'Yellow-orange and extremely bright; glows even with the lamp turned down. Takes a poor polish.',ppl:'s071'}];
+var REFN={high:'high',mod:'moderate',low:'low'},ANIN={iso:'isotropic',weak:'weakly anisotropic',strong:'strongly anisotropic'};
+/* ---------- virtual microscope ---------- */
+var vm={mode:'study',m:MIN[0],rot:0,xpl:false,unk:null,tries:0,used:{}},A=$('#imgA'),B=$('#imgB');
+var pick=$('#vmPick');MIN.forEach(function(m,i){var o=document.createElement('option');o.value=i;o.textContent=m.n;pick.appendChild(o);});
+function vmRender(){var m=vm.mode==='unk'?vm.unk:vm.m,t=vm.rot*Math.PI/180;$('#stage').style.transform='rotate('+vm.rot+'deg)';
+  var s2=Math.pow(Math.sin(2*t),2);
+  if(!vm.xpl){A.src=IMG[m.ppl];var bri=1+(m.ani==='strong'?.12:m.ani==='weak'?.04:0)*Math.cos(2*t);A.style.filter='brightness('+bri.toFixed(3)+')';
+    if(m.pleo){B.src=IMG[m.pleo];B.style.opacity=s2.toFixed(3);B.style.filter='none';}else B.style.opacity=0;}
+  else{B.style.opacity=0;
+    if(m.irimg){A.src=IMG[m.irimg];A.style.filter='none';}
+    else if(m.ani==='iso'){A.src=IMG[m.ppl];A.style.filter='brightness(.05) contrast(1.4)';}
+    else if(m.xpl){A.src=IMG[m.xpl];A.style.filter='brightness('+(.45+.75*s2).toFixed(3)+') hue-rotate('+(vm.rot*.6).toFixed(0)+'deg)';}
+    else{A.src=IMG[m.ppl];var k=m.ani==='strong'||m.ani2?.55:.18;A.style.filter='brightness('+(.06+k*s2).toFixed(3)+') saturate(2.2) hue-rotate('+(vm.rot*1.2+150).toFixed(0)+'deg)';}}
+  $('#scopeLbl').textContent=(vm.xpl?'crossed polars':'PPL')+' · '+vm.rot+'°';}
+function vmProps(){var m=vm.m;$('#vmProps').innerHTML='<dt>Formula</dt><dd>'+m.f+'</dd><dt>System</dt><dd>'+m.sys+'</dd><dt>Colour</dt><dd>'+m.col+'</dd><dt>Reflectance</dt><dd>'+REFN[m.ref]+(m.ref2?' to '+REFN[m.ref2]:'')+'</dd><dt>Hardness</dt><dd>'+m.h+'</dd><dt>Anisotropy</dt><dd>'+(m.ani2?'weak to strong':ANIN[m.ani])+'</dd><dt>Internal refl.</dt><dd>'+m.ir+'</dd><dt>Giveaway</dt><dd>'+m.dist+'</dd>';}
+function say(h){$('#vmSay').innerHTML=h;}
+pick.addEventListener('change',function(){vm.m=MIN[+pick.value];vm.rot=0;$('#rot').value=0;vmProps();vmRender();say('');award('study-'+vm.m.n,1,'Studied '+vm.m.n);});
+$('#rot').addEventListener('input',function(){vm.rot=+this.value;vmRender();});
+$('#tXpl').addEventListener('click',function(){vm.xpl=!vm.xpl;this.setAttribute('aria-pressed',vm.xpl?'true':'false');vmRender();var m=vm.mode==='unk'?vm.unk:vm.m;vm.used.xpl=1;
+  if(vm.xpl)say(m.irimg?'Crossed polars: dark, but look at those coloured flashes. Internal reflections.':m.ani==='iso'?'Crossed polars: the grain stays black. Rotate to check it stays black at every angle: isotropic.':'Crossed polars: colours appear. Rotate the stage and watch it go dark four times per turn: anisotropic.');else say('Back to plane-polarised light.');});
+$('#tScratch').addEventListener('click',function(){var m=vm.mode==='unk'?vm.unk:vm.m;vm.used.scratch=1;say({soft:'<b>Soft.</b> Easily scratched, and the surface is probably already full of fine polishing scratches.',med:'<b>Medium.</b> A needle scratches it with some pressure.',hard:'<b>Hard.</b> Won’t scratch; the grain stands proud with crisp edges.'}[m.hc]);});
+$('#tMag').addEventListener('click',function(){var m=vm.mode==='unk'?vm.unk:vm.m;vm.used.mag=1;say(m.mag===true?'<b>Strongly magnetic.</b> The grain jumps to the magnet.':m.mag==='some'?'<b>Weakly magnetic.</b> Some varieties of this mineral are magnetic, some aren’t.':'<b>Not magnetic.</b>');});
+$('#tSpin').addEventListener('click',function(){if(reduce){vm.rot=(vm.rot+90)%360;$('#rot').value=vm.rot;vmRender();return;}var t0=performance.now(),r0=vm.rot;(function f(n){var k=Math.min(1,(n-t0)/3000);vm.rot=Math.round(r0+360*k)%360;$('#rot').value=vm.rot;vmRender();if(k<1)requestAnimationFrame(f);})(t0);});
+$$('#vm .tabs button').forEach(function(b){b.addEventListener('click',function(){vm.mode=b.dataset.mode;$$('#vm .tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});$('#vmStudy').hidden=vm.mode!=='study';$('#vmUnk').hidden=vm.mode!=='unk';if(vm.mode==='unk'&&!vm.unk)newUnk();vm.rot=0;$('#rot').value=0;vmRender();say('');});});
+var gl=$('#vmGuess');MIN.forEach(function(m){var b=document.createElement('button');b.type='button';b.textContent=m.n;b.addEventListener('click',function(){guess(m,b)});gl.appendChild(b);});
+function newUnk(){var pool=MIN.filter(function(m){return !S.done['unk-'+m.n]});if(!pool.length)pool=MIN;var m;do{m=pool[Math.floor(Math.random()*pool.length)];}while(pool.length>1&&vm.unk&&m===vm.unk);vm.unk=m;vm.tries=0;vm.used={};vm.xpl=false;$('#tXpl').setAttribute('aria-pressed','false');
+  $$('button',gl).forEach(function(b){b.classList.remove('on','out')});$('#vmUnkSay').textContent='';vm.rot=0;$('#rot').value=0;vmRender();}
+function guess(m,b){if(!vm.unk||$('#vmUnkSay').dataset.done==='1'&&false)return;vm.tries++;
+  if(m===vm.unk){b.classList.add('on');$('#vmUnkSay').innerHTML='<b>Yes, '+m.n+'.</b> '+m.dist;if(vm.tries===1)award('unk-'+m.n,4,m.n+' identified first go');else award('unk-'+m.n,2,m.n+' identified');}
+  else{b.classList.add('out');var u=vm.unk,clue=[];if(m.cg.join()!==u.cg.join())clue.push('the colour doesn’t match');if(m.ani!==u.ani)clue.push('check the anisotropy');if(m.hc!==u.hc)clue.push('the hardness is different');$('#vmUnkSay').textContent='Not '+m.n+'. Hint: '+(clue[0]||'look again at reflectance')+'.';}}
+$('#vmNext').addEventListener('click',newUnk);
+vmProps();vmRender();
+/* ---------- ID key ---------- */
+var KS=['kCol','kRef','kAni','kHard','kIR'];
+function keyMatch(m){var c=$('#kCol').value,r=$('#kRef').value,a=$('#kAni').value,h=$('#kHard').value,i=$('#kIR').value;
+  if(c&&m.cg.indexOf(c)<0)return false;if(r&&m.ref!==r&&m.ref2!==r)return false;if(a&&m.ani!==a&&m.ani2!==a)return false;if(h&&m.hc!==h)return false;if(i&&((i==='yes')!==(m.ir!=='none')))return false;return true;}
+var kl=$('#idkList');MIN.forEach(function(m,i){var b=document.createElement('button');b.type='button';b.textContent=m.n;b.addEventListener('click',function(){pick.value=i;vm.mode='study';$$('#vm .tabs button')[0].click();pick.dispatchEvent(new Event('change'));$('#vm').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});kl.appendChild(b);});
+function keyRun(){var n=0,last=null;$$('button',kl).forEach(function(b,i){var ok=keyMatch(MIN[i]);b.classList.toggle('out',!ok);b.classList.toggle('on',false);if(ok){n++;last=MIN[i];}});
+  $('#idkLeft').textContent=n+' candidate'+(n===1?'':'s');
+  if(n===1){$$('button',kl).forEach(function(b,i){if(MIN[i]===last)b.classList.add('on')});$('#idkSay').innerHTML='<b>'+last.n+'.</b> '+last.dist;award('idk-one',6,'Key narrowed to one mineral');}
+  else if(n===0)$('#idkSay').textContent='No common ore mineral matches that combination. Relax one property; real grains are rarely textbook.';
+  else $('#idkSay').textContent=n+' still possible. Add another property.';}
+KS.forEach(function(id){$('#'+id).addEventListener('input',keyRun)});keyRun();
+(function(){var t='<thead><tr><th>Mineral</th><th>Colour</th><th>R</th><th>Hardness</th><th>Anisotropy</th><th>Internal refl.</th></tr></thead><tbody>';
+  MIN.forEach(function(m){t+='<tr><td><b>'+m.n+'</b> <span class="srcs">'+m.f+'</span></td><td>'+m.col+'</td><td>'+REFN[m.ref]+'</td><td class="n">'+m.h+'</td><td>'+(m.ani2?'weak to strong':ANIN[m.ani])+'</td><td>'+m.ir+'</td></tr>';});
+  $('#propTable').innerHTML=t+'</tbody>';})();
+/* ---------- tricky pairs ---------- */
+mcCards($('#pairCards'),[
+ {img:'s050',lbl:'Yellow mineral A',q:'Strong yellow, moderate reflectance, scratches fairly easily.',o:['Pyrite','Chalcopyrite','Gold'],a:1,e:'Chalcopyrite: a stronger yellow than pyrite and much softer. Gold would be orange-yellow and blindingly bright.'},
+ {img:'s036',lbl:'Yellow mineral B',q:'Pale yellow euhedral grain, high reflectance, perfect polish, won’t scratch.',o:['Pyrite','Chalcopyrite','Pentlandite'],a:0,e:'Pyrite: pale, bright, hard, often euhedral.'},
+ {img:'s038',lbl:'FeS₂, but which?',q:'Bronze-yellow, high reflectance, strongly anisotropic in blue and yellow-green, rims show early oxidation.',o:['Pyrite','Marcasite'],a:1,e:'Marcasite: same formula as pyrite, orthorhombic, strongly anisotropic, and unstable in humid air.'},
+ {img:'s055',lbl:'White mineral',q:'Bright white, soft, isotropic, triangular pits.',o:['Galena','Arsenopyrite','Chalcocite'],a:0,e:'Galena: triangular cleavage pits are diagnostic. Arsenopyrite would be hard and anisotropic.'},
+ {img:'s033',lbl:'Low-reflectance grey',q:'Brownish black, isotropic, curved conchoidal fractures, next to olivine.',o:['Magnetite','Sphalerite','Chromite'],a:2,e:'Chromite: conchoidal fractures and the olivine association. Magnetite would be magnetic; sphalerite would show internal reflections.'},
+ {img:'s059',lbl:'Pale yellow',q:'Pale yellow, isotropic, intergrown with bronze pyrrhotite.',o:['Chalcopyrite','Pentlandite','Pyrite'],a:1,e:'Pentlandite: the pyrrhotite association is the giveaway.'}
+],'pair',4,function(n,t){$('#pairScore').textContent=n+' / '+t;});
+/* ---------- caries animation ---------- */
+var cc=$('#carCanvas'),cx=cc.getContext('2d'),CW=640,CH=260,ct=0,cRun=false,ck=1;
+var bites=(function(){var r=rng(17),B=[];for(var i=0;i<26;i++){var side=Math.floor(r()*4),u=r();B.push({side:side,u:u,r:6+r()*18,d:r()});}return B;})();
+var cubes=[[150,130,90],[360,110,70],[520,150,60]];
+function bitePos(cb,b){var x=cb[0],y=cb[1],s=cb[2];var hs=s/2;return [[x-hs+b.u*s,y-hs],[x+hs,y-hs+b.u*s],[x-hs+b.u*s,y+hs],[x-hs,y-hs+b.u*s]][b.side];}
+function cDraw(){var c=cx;c.clearRect(0,0,CW,CH);var t=ct;var s1=cl(t/.25),s2=cl((t-.3)/.35),s3=cl((t-.7)/.3);
+  c.fillStyle='#2B2E33';c.fillRect(0,0,CW,CH);
+  if(s3>0){c.fillStyle='rgba(236,238,240,'+s3+')';c.fillRect(0,0,CW,CH);}
+  if(s2>0){c.fillStyle='rgba(124,128,132,'+Math.min(1,s2*1.4)+')';cubes.forEach(function(cb){c.beginPath();c.arc(cb[0],cb[1],cb[2]*.95+s2*14,0,Math.PI*2);c.fill();});}
+  cubes.forEach(function(cb){var s=cb[2]*s1;c.fillStyle='#E9DC8F';c.strokeStyle='#8C7B2E';c.lineWidth=1.5;c.fillRect(cb[0]-s/2,cb[1]-s/2,s,s);c.strokeRect(cb[0]-s/2,cb[1]-s/2,s,s);
+    if(s2>0){bites.forEach(function(b){if(b.d>s2)return;var p=bitePos(cb,b);c.fillStyle='#7C8084';c.beginPath();c.arc(p[0],p[1],b.r*(cb[2]/90)*Math.min(1,s2*1.5),0,Math.PI*2);c.fill();});}});
+  if(s3>0){c.strokeStyle='rgba(236,238,240,'+s3+')';c.lineWidth=3;c.beginPath();c.moveTo(0,40);c.lineTo(CW,220);c.stroke();c.lineWidth=1;}
+  c.fillStyle=s3>.5?'#18212A':'#fff';c.font=fontPx(ck);c.fillText(t<.3?'1 · euhedral pyrite grows':t<.7?'2 · later fluid corrodes pyrite; sphalerite fills the embayments':'3 · galena fills the remaining space and a veinlet',14,22);}
+function cLoop(){if(!cRun)return;ct=Math.min(1,ct+.0035);cDraw();$('#carStage').textContent=ct<.3?'pyrite':ct<.7?'sphalerite':ct<1?'galena':'done';
+  if(ct<1)requestAnimationFrame(cLoop);else{cRun=false;$('#carSay').innerHTML='Paragenesis: <b>pyrite, then sphalerite, then galena</b>. The ragged pyrite edges (caries) prove the pyrite was there first and was partly eaten. Compare the real photomicrograph below.';award('caries',4,'Caries texture formed');}}
+$('#carPlay').addEventListener('click',function(){ct=0;if(reduce){ct=1;cDraw();return;}if(!cRun){cRun=true;requestAnimationFrame(cLoop);}});
+/* ---------- textures cards ---------- */
+mcCards($('#texCards'),[
+ {img:'s019',q:'Fine dusting of tiny bright blebs throughout sphalerite.',o:['Framboids','Chalcopyrite disease','Exsolution of galena'],a:1,e:'Chalcopyrite disease: chalcopyrite replacing sphalerite along crystallographic directions, usually after the sphalerite formed.'},
+ {img:'s020',q:'Tiny spherical clusters of pyrite crystals in black shale.',o:['Framboidal pyrite','Caries texture','Porphyroblasts'],a:0,e:'Framboids. In black shale they usually point to microbial sulphate reduction, but don’t assume that everywhere.'},
+ {img:'s021',q:'Large euhedral pyrite crystals full of sphalerite and galena inclusions, in a galena matrix. Which grew last?',o:['Pyrite','Galena'],a:0,e:'The pyrite grew last, as porphyroblasts that engulfed the minerals around them. Euhedral doesn’t automatically mean early.'},
+ {img:'s023',q:'A pyrite core with a rim of a different FeS₂ mineral. What happened?',o:['Conditions changed, e.g. pH, and marcasite rimmed the pyrite','Weathering made the rim','The rim is gold'],a:0,e:'A marcasite rim on pyrite: same chemistry, different structure, so the fluid conditions (often pH) changed.'},
+ {img:'s024',q:'Bright mineral filling a fracture in quartz, with a tiny yellow grain.',o:['Fracture-fill galena with gold','Banded ore','Framboids'],a:0,e:'Fracture fill: galena and gold deposited in a crack through quartz. The quartz came first.'},
+ {img:'s022',q:'Alternating bands of sulphides parallel to bedding, Mount Isa.',o:['Banded ore deposited with the sediment','Late veins','Chalcopyrite disease'],a:0,e:'Banded ore: sulphides settled on the seafloor with the sediment, primary bedding (Lecture 3).'}
+],'tex',4,function(n,t){$('#texScore').textContent=n+' / '+t;});
+/* ---------- paragenesis puzzle ---------- */
+var PG=['Pyrite','Sphalerite','Chalcopyrite','Galena + tetrahedrite'],pgOrder=[];
+function pgShuffle(){pgOrder=PG.slice();for(var i=pgOrder.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pgOrder[i];pgOrder[i]=pgOrder[j];pgOrder[j]=t;}if(pgOrder.join()===PG.join())pgOrder.reverse();pgDraw();$('#pgSay').textContent='';}
+function pgDraw(){var L=$('#pgList');L.innerHTML='';pgOrder.forEach(function(m,i){var li=document.createElement('li');li.innerHTML='<span>'+(i+1)+'. '+m+'</span>';
+  var up=document.createElement('button');up.type='button';up.textContent='↑';up.setAttribute('aria-label','Move '+m+' up');up.disabled=i===0;up.addEventListener('click',function(){var t=pgOrder[i-1];pgOrder[i-1]=pgOrder[i];pgOrder[i]=t;pgDraw();});
+  var dn=document.createElement('button');dn.type='button';dn.textContent='↓';dn.setAttribute('aria-label','Move '+m+' down');dn.disabled=i===pgOrder.length-1;dn.addEventListener('click',function(){var t=pgOrder[i+1];pgOrder[i+1]=pgOrder[i];pgOrder[i]=t;pgDraw();});
+  li.appendChild(up);li.appendChild(dn);L.appendChild(li);});}
+var pgTries=0;
+$('#pgCheck').addEventListener('click',function(){pgTries++;var ok=0;$$('#pgList li').forEach(function(li,i){var r=pgOrder[i]===PG[i];li.classList.toggle('right',r);li.classList.toggle('wrong',!r);if(r)ok++;});
+  if(ok===4){$('#pgSay').innerHTML='<b>Correct.</b> Caries shows pyrite before sphalerite; chalcopyrite disease puts chalcopyrite after sphalerite; galena veinlets cut both; and the cuspate-lobate galena-tetrahedrite boundary means those two grew together, last.';$('#pgState').textContent='solved';pgChart(true);award('pg',pgTries===1?12:6,pgTries===1?'Paragenesis nailed first go':'Paragenesis solved');}
+  else $('#pgSay').textContent=ok+' of 4 in the right place. Work clue by clue: which mineral is eaten away first?';});
+$('#pgShuffle').addEventListener('click',pgShuffle);
+function pgChart(show){var s=$('#pgChart');s.innerHTML='';var T=s.querySelector('title');txt(s,180,22,'early',{'font-size':11,fill:'var(--muted)'});txt(s,690,22,'late',{'font-size':11,fill:'var(--muted)','text-anchor':'end'});
+  el('path',{d:'M180 30 H690',stroke:'var(--line)','stroke-width':2},s);
+  var rows=[['Pyrite',190,320],['Sphalerite',300,450],['Chalcopyrite',430,540],['Galena',530,680],['Tetrahedrite',540,670]];
+  rows.forEach(function(r,i){var y=50+i*34;txt(s,170,y+15,r[0],{'text-anchor':'end','font-weight':700,'font-size':13});
+    if(show){var b=el('rect',{x:r[1],y:y,width:0,height:20,rx:4,fill:['#D8C66A','#8A8E93','#E0B341','#D9DCDF','#9D8E86'][i],stroke:'var(--ink)','stroke-opacity':.3},s);
+      if(reduce)b.setAttribute('width',r[2]-r[1]);else{var t0=performance.now()+i*200;(function f(n){var k=cl((n-t0)/600);b.setAttribute('width',(r[2]-r[1])*k);if(k<1)requestAnimationFrame(f);})(performance.now());}}
+    else el('rect',{x:180,y:y,width:510,height:20,rx:4,fill:'var(--bg)',stroke:'var(--line)','stroke-dasharray':'4 4'},s);});
+  if(!show)txt(s,435,230,'solve the puzzle to reveal',{'text-anchor':'middle','font-size':12,fill:'var(--muted)'});}
+pgShuffle();pgChart(!!S.done.pg);
+
+GEO.finish(function(){ck=fitCanvas(cc,cx,CW,CH);cDraw();});
+})();
+</script>
+</body>
+</html>

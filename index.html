@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Field Guides</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body class="idx">
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="course">GEOS3141 Mineral and Energy Resources · T3 2026</div>
+  <h1>Field guides, lecture by lecture</h1>
+  <p class="lede">Each lecture is re-taught here from its slides and recording, with the slide photos up front, games and animations for the mechanisms, and checkpoints that pay out in ounces of gold. Work through them in order: each one leans on the last.</p>
+  <p style="font-family:var(--mono);font-size:.85rem;color:var(--muted)">Gold banked across all lectures: <b id="totalOz" style="color:var(--gold)">0 oz</b></p>
+</header>
+
+<main>
+<section><div class="wrap">
+  <div class="kicker">Lectures</div>
+  <ul class="lecs">
+    <li class="lec" id="lec1"><a href="L1.html"><span class="no">Lecture 1</span><span class="t">Ores and ore-forming processes</span><span class="hook">Why a pile of rock is worth billions, or nothing.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+    <li class="lec" id="lec2"><a href="L2.html"><span class="no">Lecture 2</span><span class="t">Weathering, oxidation and alteration</span><span class="hook">The rock you see is rarely the rock that formed.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+    <li class="lec" id="lec3"><a href="L3.html"><span class="no">Lecture 3</span><span class="t">Breccias, veins and ore textures</span><span class="hook">Every texture is a timestamp.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+    <li class="lec" id="lec4"><a href="L4.html"><span class="no">Lecture 4</span><span class="t">Intro to ore petrography</span><span class="hook">Learning to see in shades of grey under reflected light.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+    <li class="lec" id="lec5"><a href="L5.html"><span class="no">Lecture 5</span><span class="t">Structural controls on ore deposits</span><span class="hook">Why broken rock makes rich rock.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 6 · coming</span><span class="t">Present-day ocean floor mineralising systems</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 7 · coming</span><span class="t">Magmatic ore deposits, part 1</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 8 · coming</span><span class="t">Magmatic ore deposits, part 2</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 9 · coming</span><span class="t">SEDEX deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 10 · coming</span><span class="t">VMS deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 11 · coming</span><span class="t">Porphyry Cu-Au-Mo deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 12 · coming</span><span class="t">Introduction to gold deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 13 · coming</span><span class="t">Orogenic gold deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 14 · coming</span><span class="t">Epithermal Au-Ag deposits</span></div></li>
+  </ul>
+</div></section>
+
+<section class="backup"><div class="wrap">
+  <div class="kicker">Moving between devices</div>
+  <h2>Take your gold with you</h2>
+  <p>Your ounces live in this browser only, so your phone and laptop keep separate tallies. To carry progress across, make a backup code here, send it to yourself, then paste it into this box on the other device and press Restore.</p>
+  <textarea id="backupText" spellcheck="false" aria-label="Backup code" placeholder="Your backup code appears here, or paste one in to restore"></textarea>
+  <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="backupMake">Make backup code</button><button class="btn ghost" type="button" id="backupLoad">Restore from code</button></div>
+  <p id="backupMsg" style="font-size:.88rem;color:var(--muted);min-height:1.4em"></p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><strong>Sources.</strong> GEOS3141 2026 lecture slides and the Echo360 recordings. Each page lists exactly which slides and recordings it draws on. Game values are teaching models, not real data, and each page labels them.</p>
+</div></footer>
+
+<script>
+GEO.index([{n:1,top:240},{n:2,top:270},{n:3,top:270},{n:4,top:270},{n:5,top:270}]);
+</script>
+</body>
+</html>

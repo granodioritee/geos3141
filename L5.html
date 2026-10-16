@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 5 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L4.html">&larr; Lecture 4</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 5 · T3 2026</div>
+  <h1>Why broken rock makes rich rock</h1>
+  <p class="lede">Metals are everywhere in the crust, spread too thinly to mine. Structures are one of nature's best tools for gathering them: faults, shears and folds open space, channel fluid and trap it, and later they can slice an orebody in half. Old miners in the 1800s would follow a rich vein until it simply stopped, with no idea where it had gone. You're about to do better than them.</p>
+
+  <div class="lab" id="lv">
+    <h4><span>Find the lost vein</span><b id="lvRound">round 1 of 3</b></h4>
+    <p class="say" style="margin-top:0" id="lvAsk"></p>
+    <svg class="grid-svg" id="lvSvg" viewBox="0 0 640 320" role="img" aria-label="Mine cross-section: a vein followed by a drive stops at a fault; click where the vein continues on the other side"></svg>
+    <p class="say" id="lvSay"></p>
+    <div class="row"><button class="btn" type="button" id="lvNext" hidden>Next round</button></div>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#jobs">What structures do</a></li>
+      <li><a href="#cast">The cast of structures</a></li>
+      <li><a href="#timing">Pre, syn and post</a></li>
+      <li><a href="#scale">From plates to mine</a></li>
+      <li><a href="#styles">Three ways to deform rock</a></li>
+      <li><a href="#traps">Folds as traps</a></li>
+      <li><a href="#yilgarn">Yilgarn gold</a></li>
+      <li><a href="#pilbara">Pilbara: sinking greenstones</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="jobs" data-log="Jobs"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>What structures actually do</h2>
+  <p>An ore deposit is an anomalous concentration of elements, and concentrating anything needs a pathway and a trap. Structures provide both. They also matter for coal, oil and gas. Hold onto four jobs, because every example in this lecture is one of them. <span class="srcs">slide 2</span></p>
+  <div class="mix">
+    <div><b>Make space</b>Faults, fractures and dilational jogs open gaps for fluid to flow through and minerals to grow in.</div>
+    <div><b>Block flow</b>Some structures seal: fault gouge ground to clay, impermeable beds in fold hinges, dykes. Fluid ponds behind them and drops its load.</div>
+    <div><b>Soften rock</b>Deformation plus fluid turns strong, competent rock into weak rock full of chlorite and talc. That's rock softening.</div>
+    <div><b>Move ore</b>A later fault can slice a deposit and shift part of it metres to kilometres away, which is exactly what happened in the game above.</div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s017" alt="Diagram of time against scale from global to deposit, with crustal differentiation, sources, drivers, permeability, the critical window and preservation">
+    <figcaption>The mineral systems view, read left to right from global to deposit scale. Early on you need sources (metal, fluid, ligands, sulphur) and geodynamic drivers. Structures supply the permeability that focuses everything into a deposit during a short <b>critical window</b>. Then the deposit has to be <b>preserved</b>: plenty of world-class porphyries have simply been eroded away. <span class="srcs">slide 17</span></figcaption>
+  </figure>
+  <div class="note">
+    <span class="tag"><span>Field note · dykes as dams</span><span class="srcs">lecture recording, 22 Sep</span></span>
+    <p>In many epithermal and orogenic gold districts you'll find mines called things like "Golden Dyke". Often the dyke itself carries little gold. It intruded before the gold event and then acted as a barrier (an aquitard) to the gold-bearing fluid, which dumped its gold right against the dyke contact. A structure doesn't have to be permeable to control ore; sometimes its job is to stop the fluid.</p>
+  </div>
+</div></section>
+
+<section id="cast" data-log="Cast"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>The cast of structures</h2>
+  <p>Faults, shears, folds, bedding planes and contacts, foliations, veins, diatremes and breccias all matter for ore. One principle ties them together: <strong>any existing surface is a plane of weakness</strong>, and later stress will reactivate it rather than break fresh rock. Even bedding counts, because neighbouring beds differ in composition, texture and grain size, so they fail along the contact and let fluid in. That's also why geological contacts are so hard to find exposed in the field: they weather out first. <span class="srcs">slides 3 and 7</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · two outcrops</span><span class="srcs">slide 1</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" data-img="s001a" alt="Outcrop of dark, finely layered sheared rock with a pale band and a scale card"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s001b" alt="Pale outcrop with tight, closely spaced folds"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">Name the structure in each, and say which would make the better fluid pathway.</p>
+    <details data-obs="cast"><summary>Show what I see</summary><div class="seen"><p><b>A</b> is a shear zone: intensely flattened, foliated rock with a strong fabric. <b>B</b> is very tight, near-isoclinal folding of metasediments. Shear zones are the classic fluid highway, especially at the brittle-ductile transition, because repeated movement keeps reopening permeability. Fold hinges can also trap fluid, as you'll see later. Both matter for orogenic gold.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · breccias at Bowdens, NSW</span><span class="srcs">slide 5</span></div>
+    <div class="quad">
+      <div><img loading="lazy" decoding="async" data-img="s005a" alt="Core with mixed angular and rounded clasts of several rock types"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s005b" alt="Core packed with pale clasts of varied size"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s005c" alt="Core with an orange altered top and a dark fine breccia below"><div class="cap">C</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s005d" alt="Orange core cut by a network of dark filled fractures"><div class="cap">D</div></div>
+    </div>
+    <p class="ask">Bowdens is an epithermal silver deposit. Use what you learned in Lecture 3: which of these is a jig-saw breccia, and which formed from fluid under high pressure?</p>
+    <details data-obs="bowdens"><summary>Show what I see</summary><div class="seen"><p><b>D</b> is the jig-saw breccia: the orange clasts still fit together, separated by dark fill. Only fracturing and dilation. <b>A and B</b> are polymictic breccias with mixed clast types; one of these comes from an epiclastic, avalanche-style deposit off the caldera wall, where gravity did the work. <b>C</b> shows a rock-flour breccia: high-pressure hydrothermal fluid ground the rock so fine that it's turned black. Describe clasts as monomictic (one type) or polymictic (many), angular or rounded, and sorted or not.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Rylstone Volcanics, NSW</span><span class="srcs">slide 8</span></div>
+    <img loading="lazy" decoding="async" data-img="s008" alt="Road cutting with pale and orange layered volcanic ash beds and a person for scale">
+    <p class="ask">These are interbedded ash beds and sandstone. Why are some layers more altered and recessed than others?</p>
+    <details data-obs="rylstone"><summary>Show the reasoning</summary><div class="seen"><p>The fine-grained ash beds are more altered, weathered back and fractured, while the coarser sandstone stands out. Fine ash is more reactive and the bed contacts are planes of weakness, so fluid preferentially went along and into particular layers. Bedding was a pre-existing structure that controlled where alteration went.</p></div></details>
+  </div>
+</div></section>
+
+<section id="timing" data-log="Timing"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">24 to 38 m</span></div>
+  <h2>Pre, syn and post: when did the structure form?</h2>
+  <p>Every structure can be sorted by its timing relative to the ore. This is the most useful framework in the lecture, because it tells you what a structure did to the deposit. <span class="srcs">slides 6 to 10</span></p>
+  <div class="lab" id="tm">
+    <h4><span>Timing animator</span><b id="tmName">pre-mineralisation</b></h4>
+    <div class="tabs" role="group" aria-label="Structure timing" id="tmTabs">
+      <button type="button" data-m="pre" aria-pressed="true">Pre</button>
+      <button type="button" data-m="syn" aria-pressed="false">Syn</button>
+      <button type="button" data-m="post" aria-pressed="false">Post</button>
+    </div>
+    <canvas id="tmCanvas" aria-label="Animated cross-section showing a structure before, during or after mineralisation"></canvas>
+    <div class="row"><button class="btn ghost" type="button" id="tmReplay">Replay</button></div>
+    <p class="say" id="tmSay"></p>
+  </div>
+  <p><strong>Pre-mineralisation</strong> structures include bedding, older faults (such as growth faults around calderas), fractures, folds and earlier foliations. They get reactivated and become the plumbing. <strong>Syn-mineralisation</strong> structures form or move while ore is being deposited. Veins are the commonest, but faults in porphyry systems and sedimentary slump folds in VMS and SEDEX systems can be syn too. <strong>Post-mineralisation</strong> structures cut and offset the ore and weaken the host. Shear zones that carry fluid after the ore grow soft phyllosilicates like talc and chlorite, which miners call <button class="term" data-t="bad ground">bad ground</button>: hard to support underground, and talc also floats with the sulphides during flotation, contaminating the concentrate.</p>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="scale" data-log="Scale"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">38 to 54 m</span></div>
+  <h2>From plates to the mine</h2>
+  <p>Structures work at every scale: plate tectonic, regional, local or mine, hand specimen, microscope. Each scale answers a different exploration question.</p>
+  <h3>Plate scale decides what's possible</h3>
+  <p>Some deposit types only exist in particular tectonic settings. VMS deposits need extension in an ocean basin, at a spreading ridge or a back-arc, because without it there are no black smokers. Porphyry copper-gold-molybdenum deposits need a convergent margin with subducting oceanic crust to make their magmas, and some of the very largest porphyries seem to sit where seamounts were subducted. <span class="srcs">slides 11 and 12</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s012" alt="Cross-section across an oceanic arc, back arc, accreted terranes, continental arc and back-arc extension, labelling epithermal, porphyry, VMS, orogenic gold and Carlin deposits">
+    <figcaption>Deposit types placed by tectonic setting: porphyry and epithermal in oceanic and continental arcs, VMS in back-arcs, orogenic gold in accreted terranes, Carlin gold in back-arc extension. <span class="srcs">slide 12</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a basin's life story</span><span class="srcs">slide 22</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s022" alt="Five block diagrams showing rift, spreading, island arc, closing and collision phases">
+    <p class="ask">Match each phase to the deposits it favours: rift, spreading, island arc, closing.</p>
+    <details data-obs="phases"><summary>Show the answer</summary><div class="seen"><ul><li><b>Rift:</b> little ore from the rift itself, but deep mantle-derived carbonatites can come up through continental rifts (rare earths).</li><li><b>Spreading:</b> thinned crust and decompression melting: VMS and magmatic sulphide deposits.</li><li><b>Island arc:</b> subduction magmas: porphyry and epithermal.</li><li><b>Closing:</b> collision and metamorphism: orogenic gold and many others.</li></ul><p class="so">Pull the crust apart and you thin it, so magma rises by decompression and fluids find easy paths. That's why extension features in so many deposit types.</p></div></details>
+  </div>
+
+  <h3>Regional scale: the highways</h3>
+  <p>The most important regional structures are tens of kilometres long: deep crustal faults (detachments) that reach mid- to lower-crustal levels and carry deep fluids up. They're essential for orogenic gold. But here's the key point: <strong>the deposits almost never sit on the big fault itself</strong>. They sit on smaller second- and third-order faults (splays) branching off it. Other regional structures that matter: large folds, thrust faults, and regional unconformities, which are big for uranium. <span class="srcs">slide 13</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · faults of central NSW</span><span class="srcs">slide 14</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s014" alt="Map of central NSW with many coloured fault lines, mostly trending north-south, with named faults listed">
+    <p class="ask">Most of the major faults run roughly north-south. Why, and how could you use this map to hunt for deposits?</p>
+    <details data-obs="nswfaults"><summary>Show the reasoning</summary><div class="seen"><p>Eastern Australia grew by accretion: terranes were added from the east onto the craton in the west, so the main sutures and faults are oriented roughly north-south. Deposits cluster where major faults intersect minor cross-faults. In the late 1970s and 1980s one Western Mining Corporation geologist, Ed O'Driscoll, built his targeting on intersecting lineaments in satellite images, and that thinking is credited as part of the path to Olympic Dam. A big deposit needs a lot of fluid, and a lot of fluid needs a big structure.</p></div></details>
+  </div>
+  <h3>Mine scale: where exactly</h3>
+  <p>Structures under about 1 km decide exactly where the ore sits: third- and fourth-order faults, favourable bed contacts (carbonate beds against siltstone or mudstone), fold hinges and noses, and shear zones. They focus and cap the fluid. Without that focusing the metal just disseminates everywhere at low grade and you have nothing mineable. <span class="srcs">slide 15</span></p>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="styles" data-log="Deformation"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">54 to 72 m</span></div>
+  <h2>Three ways to deform rock</h2>
+  <p>You can only do three basic things to a block of rock: pull it apart (extension, normal faults), push it together (compression, reverse and thrust faults, folds), or slide it sideways (strike-slip). Each makes different space and moves fluid differently, so each makes different ore geometries. Scrub through each one.</p>
+  <div class="lab" id="df">
+    <h4><span>Deformation lab</span><b id="dfName">extension</b></h4>
+    <div class="tabs" role="group" aria-label="Deformation style" id="dfTabs">
+      <button type="button" data-d="ext" aria-pressed="true">Extension</button>
+      <button type="button" data-d="comp" aria-pressed="false">Compression</button>
+      <button type="button" data-d="ss" aria-pressed="false">Strike-slip</button>
+    </div>
+    <canvas id="dfCanvas" aria-label="Animated block of layered rock deforming by extension, compression or strike-slip"></canvas>
+    <label for="dfS" style="font-size:.8rem;color:var(--muted);display:block;margin-top:.6rem">Amount of strain <b id="dfSv" class="num" style="float:right;color:var(--ink)"></b></label>
+    <input type="range" id="dfS" min="0" max="100" value="40">
+    <p class="say" id="dfSay"></p>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · same rocks, different stress</span><span class="srcs">slides 20 and 21</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s020" alt="Two block diagrams: extension with meteoric water flowing down a fault into a single orebody, and compression with fluid squeezed up into several smaller orebodies">
+    <p class="ask">Compare the top (extension) and bottom (compression) diagrams. How does the ore body change shape, and why?</p>
+    <details data-obs="extcomp"><summary>Show the reasoning</summary><div class="seen"><p>In extension, the fault opens a pathway, meteoric water flows down through limestone and mixes with basinal fluid, and you get one large lens on the fault. In compression the fold and fault act as an aquitard: fluid is squeezed up beneath it and replaces favourable beds, giving a series of smaller lenses. Same rocks, different stress regime, completely different ore geometry. And if there's compression somewhere in an orogen, there's extension somewhere else.</p></div></details>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s021" alt="Numerical model panels showing strain concentrating around a pre-existing fault under increasing extension and compression" style="margin-top:.7rem">
+    <p class="ask">These are numerical models of an old fault under 0.66%, 3.96% and 10% extension (left) and shortening (right). What happens as strain increases?</p>
+    <details data-obs="model"><summary>Show what I see</summary><div class="seen"><p>Strain (hot colours) bunches around the pre-existing fault, so it's reactivated. With more extension, second-order (F2) and then third-order (F3) faults appear and a bigger graben develops; compression produces an almost opposite geometry. More deformation means more fractures and more fluid flow. As the famous Western Australian geologist David Groves put it, the more complex the geology, the better the chance of a world-class deposit.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Carlin-type gold</span><span class="srcs">slide 23</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s023" alt="Diagram of Carlin-type gold: fluid rising up a fault and spreading laterally into silty limestone beds, with jasperoid and decalcification">
+    <p class="ask">Why does the gold spread sideways at certain levels instead of staying on the fault?</p>
+    <details data-obs="carlin"><summary>Show the reasoning</summary><div class="seen"><p>The extensional fault is the pipe; the silty limestone beds are the sponge. Fluid rises up the fault and reacts laterally with favourable, reactive beds, dissolving carbonate (decalcification) and replacing it with silica (jasperoid). The gold is micron-sized and invisible, so you explore for the alteration and the right host beds. Carlin deposits in Nevada have produced tens of millions of ounces, and important ones are now known in southern China. Without extension, there'd be no deposit.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · strike-slip</span><span class="srcs">slide 27</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s027" alt="Block diagram of strike-slip deformation with synthetic en echelon faults">
+    <p class="ask">Strike-slip movement produces stepped, sigmoidal en echelon veins. In the Lachlan Fold Belt goldfields, are those the gold-bearing veins?</p>
+    <details data-obs="enechelon"><summary>Show the answer</summary><div class="seen"><p>Usually not. There, the sigmoidal en echelon veins are early D1 structures, crystallised during movement (syn-deformational, rootless veins), and they're generally barren. The gold-bearing veins are much flatter and formed later. That's the timing framework again: know which vein generation carries the gold.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="traps" data-log="Fold traps"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">72 to 86 m</span></div>
+  <h2>Folds as traps: oil and gold play the same game</h2>
+  <p>A fold hinge is a zone of weakness and, if it's capped by an impermeable layer, a trap. That's true whether the fluid carries hydrocarbons or gold. Run both.</p>
+  <div class="lab" id="tr">
+    <h4><span>Hinge trap</span><b id="trName">Zagros oil</b></h4>
+    <div class="tabs" role="group" aria-label="Fluid type" id="trTabs">
+      <button type="button" data-t="oil" aria-pressed="true">Oil (Zagros)</button>
+      <button type="button" data-t="gold" aria-pressed="false">Gold (saddle reefs)</button>
+    </div>
+    <canvas id="trCanvas" aria-label="Animated anticline: oil collects under a shale seal, or gold-quartz saddle reefs fill gaps opened at the hinge"></canvas>
+    <div class="row"><button class="btn ghost" type="button" id="trReplay">Replay</button></div>
+    <p class="say" id="trSay"></p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Zagros fold belt</span><span class="srcs">slide 26</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s026" alt="Map of the Zagros fold-thrust belt between the Arabian and Iranian plates with oil fields along anticlines">
+    <p class="ask">Arabia pushing into Iran built a fold-thrust belt full of huge anticlines. Why don't the oil fields leak out up the many faults?</p>
+    <details data-obs="zagros"><summary>Show the reasoning</summary><div class="seen"><p>Two seals. Shale horizons in the fold hinges are impermeable, so oil rising into the anticline is trapped beneath them. And fault movement grinds rock to clay gouge, which neither oil nor gas can flow through, so many faults act as barriers rather than leaks. Structures control energy resources exactly as they control metals.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · orogenic gold in folds</span><span class="srcs">slide 25</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s025" alt="Cross-section of orogenic gold formation with metamorphic fluids rising along faults into fold hinges and saddle reefs">
+    <p class="ask">Find the three places gold can be trapped in this compressional system.</p>
+    <details data-obs="orofold"><summary>Show the answer</summary><div class="seen"><p>Metamorphic fluids generated at depth (where pyrrhotite converts to pyrite, releasing arsenic, antimony and H<sub>2</sub>S) rise along faults and collect in: <b>fold hinges</b>, the zones of weakness; <b>saddle reefs</b>, where slight extension during folding opens gaps between beds at the hinge, as at Bendigo and Ballarat; and <b>replacement</b> of reactive units such as limestone or banded iron formation at the top of the fold.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="yilgarn" data-log="Yilgarn"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">86 to 106 m</span></div>
+  <h2>Yilgarn gold: the world's best structural classroom</h2>
+  <p>Western Australia's Yilgarn Craton is arguably the best example on Earth of structurally controlled ore. Archaean greenstone belts (old basalt and sedimentary ocean-floor sequences), intruded by granites, sliced by north-south shear zones, carry gold deposit after deposit. The gold formed in a narrow window: about 300 to 500 °C and 2 to 4 kbar, upper greenschist to lower amphibolite facies, late in the deformation and metamorphic history rather than at peak metamorphism. Most deposits formed at the brittle-ductile transition, very roughly 5 to 15 km down. <span class="srcs">slides 29 to 36 and lecture recording, 22 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Kalgoorlie Superpit</span><span class="srcs">slide 28</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" data-img="s028a" alt="Aerial view of the huge terraced Superpit beside the town of Kalgoorlie"><div class="cap">A · the Superpit, Golden Mile</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s028b" alt="Close-up of a quartz vein in dark rock with visible gold"><div class="cap">B · the target</div></div>
+    </div>
+    <p class="ask">The pit is long and narrow, kilometres in length. What controls that shape, and what does B tell you about why visible gold is rare here?</p>
+    <details data-obs="superpit"><summary>Show the reasoning</summary><div class="seen"><p>The pit follows a structural corridor: a cluster of shear-zone-hosted lodes, so the excavation is elongate along strike. It has been mined since the 1890s, and old underground workings have been swallowed as the pit grew. B is a quartz vein with gold, but on the Golden Mile most gold is fine-grained and invisible, so a sample like B is the exception rather than the rule. Kalgoorlie is one of the richest gold fields on Earth. <span class="srcs">lecture recording</span></p></div></details>
+  </div>
+
+  <p>The rule that makes Yilgarn exploration work: gold sits on <strong>second- and third-order structures</strong>, splays and cross-faults off the big shear zones, and on the margins of granites, not on the first-order shear zone itself. The big structure is the highway; the small ones are the off-ramps where fluid slowed down, mixed or met reactive rock. Larger first-order faults tend to be in compression, so fluid can't move through them easily; the smaller splays are where extension opened space. Test that.</p>
+
+  <div class="lab" id="yp">
+    <h4><span>Yilgarn prospector</span><b id="ypLeft">5 holes left</b></h4>
+    <p class="say" style="margin-top:0">A first-order shear zone runs down this greenstone belt, with splays and two granites. Drill five holes. Each returns an assay.</p>
+    <svg class="grid-svg" id="ypSvg" viewBox="0 0 600 380" role="img" aria-label="Map of a greenstone belt with a shear zone, splays and granites; click to drill"></svg>
+    <div class="legend"><span><i style="background:#5D7A5A"></i>greenstone</span><span><i style="background:#E7B9B0"></i>granite</span><span><i style="background:#2A2C33"></i>first-order shear zone</span><span><i style="background:#7A5C3A"></i>splays</span></div>
+    <p class="say" id="ypSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="ypReset">New belt</button></div>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · Red Lake, Canada</span><span class="srcs">slide 37</span></div>
+    <div class="trio">
+      <div><img loading="lazy" decoding="async" data-img="s037a" alt="Geological map of the Red Lake greenstone belt with the Campbell-Red Lake mine marked (22.1 million ounces)"><div class="cap">A · map</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s037b" alt="3D view of the Red Lake mine zones plunging steeply with depth"><div class="cap">B · mine model</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s037c" alt="Underground face with flat-lying quartz veins and a miner"><div class="cap">C · underground</div></div>
+    </div>
+    <p class="ask">Red Lake in the Superior Craton has produced about 22 million ounces. Compare the overall shape of the orebody in B with the veins in C. What's characteristic?</p>
+    <details data-obs="redlake"><summary>Show what I see</summary><div class="seen"><p>The deposit as a whole plunges steeply to great depth, but the individual quartz veins and lenses in C are close to horizontal. Steep plunging shoots made of flat-lying veins are very characteristic of orogenic gold. These systems go very deep, and high gold prices now make it worth mining levels that were uneconomic a few years ago, even though deep mining is expensive (you have to cool the air).</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Granny Smith, Yilgarn</span><span class="srcs">slides 38 and 39</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s039" alt="Geological map of the Granny Smith area with a granite, porphyry dykes, banded iron formation and mineralised structures along one side of the granite">
+    <p class="ask">The same granite and the same tectonic setting occur elsewhere in the belt with no deposit. Here, the mineralisation is all on one side of the granite margin. Why one side only?</p>
+    <details data-obs="granny"><summary>Show the reasoning</summary><div class="seen"><p>The granite behaved as a rheological barrier: a strong, rigid body that fluid couldn't pass through, so fluid ponded and deposited gold along the structures against its margin on one side. Local structure, not the regional setting, decides whether you get a deposit, which is why two areas that look identical at regional scale can be so different. Porphyry dykes and banded iron formation also localise ore here.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the crustal continuum</span><span class="srcs">slide 33</span></div>
+    <img loading="lazy" decoding="async" class="fig-img" data-img="s033" alt="Schematic crustal profile showing gold deposits from sub-greenschist to granulite facies along one shear system">
+    <p class="ask">One shear system, many depths. What's the idea here?</p>
+    <details data-obs="continuum"><summary>Show the reasoning</summary><div class="seen"><p>The crustal continuum model: the same kind of fluid system can deposit gold anywhere from deep, hot granulite facies up to shallow sub-greenschist facies along one connected plumbing system. The style of the deposit changes with depth (ductile shear-hosted deep, brittle veins and breccias shallow), but it's one system. The biggest Yilgarn deposits, Kalgoorlie included, sit in the upper greenschist part of the profile.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · where did the gold come from?</span><span class="srcs">slide 41</span></div>
+    <img loading="lazy" decoding="async" data-img="s031c" alt="Two people with a very large gold-bearing specimen on a pallet">
+    <p class="ask">A spectacular specimen like this begs the question: where did all this gold come from?</p>
+    <details data-obs="source"><summary>Show the answer</summary><div class="seen"><p>There's no single answer. There were multiple gold events of different ages and probably multiple sources: granites, where gold concentrates in late fractionated melts and fluids; basalts, from which fluid scavenges small amounts over huge volumes and delivers it to shear zones; and an original mantle contribution. One nice proof of timing: at some nickel mines, gold turns up in the same structures but came in during a later orogenic event, long after the nickel ore formed with its host rocks.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="pilbara" data-log="Pilbara"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">106 to 120 m</span></div>
+  <h2>Pilbara: domes rise, greenstones sink</h2>
+  <p>The Pilbara Craton tells a different structural story. Instead of long regional shear zones with splays, huge granite domes rose up like blobs in a lava lamp (<button class="term" data-t="diapir">diapirs</button>), and the dense greenstones between them sank. That sinking stretched the rock vertically, producing <button class="term" data-t="L-tectonite">L-tectonites</button>, and the shear zones on the flanks of the domes, between the granite and the sinking greenstone, are where the gold is. So in the Pilbara you look between the granite domes, and some gold is even granite-hosted. <span class="srcs">slides 44 to 49</span></p>
+  <div class="lab" id="pb">
+    <h4><span>Dome and keel</span><b id="pbStage">ready</b></h4>
+    <canvas id="pbCanvas" aria-label="Animation of granite domes rising and greenstone sinking between them, with vertical stretching and gold in marginal shear zones"></canvas>
+    <div class="row"><button class="btn" type="button" id="pbPlay">Play</button></div>
+    <p class="say" id="pbSay">Two granite domes beneath a greenstone sequence. Press play.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Pilbara outcrops</span><span class="srcs">slides 45, 46 and 49</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" data-img="s046" alt="Geologist standing among tall, vertical, pencil-like rock columns"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s045" alt="Diagram of a diapiric dome with flattening on top and constriction on the sides"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s049a" alt="Old mine adit tunnel cut into pale weathered rock"><div class="cap">C · Warrawoona</div></div>
+      <div><img loading="lazy" decoding="async" data-img="s049b" alt="Quartz veins in sheared rock with a pen for scale"><div class="cap">D</div></div>
+    </div>
+    <p class="ask">What are the "pencils" in A, and how does B explain them?</p>
+    <details data-obs="pilbara"><summary>Show what I see</summary><div class="seen"><p>A shows vertical L-tectonites: rock stretched straight down into rods as the greenstone sank between rising domes. B shows the strain pattern of a rising dome: flattening on top, constriction on the sides, and cascading folds with potential L-tectonites in the hinge zones. The zone of sinking is also where gold turns up. C is an old working at Warrawoona: the old miners literally followed the steep shear zone. D shows the quartz veins in that sheared rock.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+  <h3>Where this goes next</h3>
+  <p>Orogenic gold returns in full in L13, epithermal and porphyry plumbing in L11 and L14, and Carlin-type gold in the gold lectures. From now on, whenever a deposit model shows a fault, ask the four questions: did it make space, block flow, soften rock or move ore? And was it pre, syn or post?</p>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">120 to 128 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">128 to 134 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">134 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 5 slides (49 slides; photos and figures tagged by slide) and the Echo360 recording of 22 September 2026. Some figures in the slides are reproduced from published papers and are shown here only as lecture material. A watermarked stock photo in the slides was left out. Games and animations are teaching models, not to scale. This page replaces an earlier Lecture 5 explainer.</p>
+  <p><a href="L4.html">&larr; Lecture 4</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var IMG={s001a:'img/L5/slide001_1.jpg',s001b:'img/L5/slide001_2.jpg',s005a:'img/L5/slide005_1.jpg',s005b:'img/L5/slide005_2.jpg',s005c:'img/L5/slide005_3.jpg',s005d:'img/L5/slide005_4.jpg',s008:'img/L5/slide008_1.jpg',s012:'img/L5/slide012_1.jpg',s014:'img/L5/slide014_1.jpg',s017:'img/L5/slide017_1.jpg',s020:'img/L5/slide020_1.jpg',s021:'img/L5/slide021_1.jpg',s022:'img/L5/slide022_1.jpg',s023:'img/L5/slide023_1.jpg',s025:'img/L5/slide025_1.jpg',s026:'img/L5/slide026_1.jpg',s027:'img/L5/slide027_1.jpg',s028a:'img/L5/slide028_1.jpg',s028b:'img/L5/slide028_2.jpg',s031c:'img/L5/slide031_3.jpg',s033:'img/L5/slide033_1.jpg',s037a:'img/L5/slide037_1.jpg',s037b:'img/L5/slide037_3.jpg',s037c:'img/L5/slide037_4.jpg',s039:'img/L5/slide039_1.jpg',s045:'img/L5/slide045_1.jpg',s046:'img/L5/slide046_2.jpg',s049a:'img/L5/slide049_1.jpg',s049b:'img/L5/slide049_2.jpg'};
+var RANKS=[[0,'Field assistant','You have a compass-clinometer.'],[35,'Graduate geologist','You can find a lost vein.'],[100,'Project geologist','You pick drill sites on splays.'],[180,'Senior geologist','You think in pre, syn and post.'],[270,'Chief geologist','The board calls you about discoveries.']];
+var G={
+ "plane of weakness":"Any existing surface (bedding, contact, fault, foliation) that later stress will reactivate in preference to breaking fresh rock.",
+ "reactivation":"Renewed movement on an existing structure during a later deformation.",
+ "rock softening":"Weakening of competent rock by deformation plus fluid, often by growth of chlorite and talc.",
+ "bad ground":"Weak, phyllosilicate-rich rock (talc, chlorite) along shear zones that is hard to support underground.",
+ "aquitard":"A layer or structure that greatly slows fluid flow, such as a clay-rich fault gouge, shale or dyke.",
+ "fault gouge":"Rock ground to clay-sized material along a fault; usually impermeable.",
+ "normal fault":"A fault where the hanging wall moves down relative to the footwall; forms under extension.",
+ "reverse fault":"A fault where the hanging wall moves up; forms under compression. A low-angle one is a thrust.",
+ "strike-slip fault":"A fault with mainly horizontal movement parallel to its strike.",
+ "hanging wall":"The block above an inclined fault or orebody.",
+ "footwall":"The block below an inclined fault or orebody.",
+ "horst and graben":"Uplifted (horst) and down-dropped (graben) blocks bounded by normal faults in extension.",
+ "detachment fault":"A large, low-angle normal fault separating extended upper crust from the rocks below.",
+ "splay":"A smaller fault branching off a larger one. Second- and third-order splays often host orogenic gold.",
+ "first-order fault":"A crustal-scale fault tens to hundreds of kilometres long, acting as a fluid highway.",
+ "en echelon":"A stepped array of parallel, overlapping structures such as tension gashes, typical of shear.",
+ "tension gash":"A short vein opened by extension within a shear zone, often sigmoidal.",
+ "anticline":"An upward-arched fold; its hinge can trap rising fluids under an impermeable cap.",
+ "fold hinge":"The zone of maximum curvature in a fold; a zone of weakness and a common trap.",
+ "saddle reef":"A quartz-gold body filling the gap opened between beds at an anticline hinge, as at Bendigo.",
+ "brittle-ductile transition":"The crustal depth where rocks switch from fracturing to flowing; a sweet spot for orogenic gold.",
+ "greenstone belt":"An Archaean belt of metamorphosed volcanic and sedimentary rocks, often gold-rich.",
+ "orogenic gold":"Gold deposits formed by metamorphic fluids along shear zones in deforming mountain belts.",
+ "Carlin-type gold":"Invisible, micron-scale gold replacing silty limestone along extensional faults, as in Nevada.",
+ "jasperoid":"Fine-grained silica that has replaced limestone, typical of Carlin-type alteration.",
+ "decalcification":"Removal of carbonate from limestone by acidic fluid.",
+ "rheological barrier":"A strong, rigid body (such as a granite) that deforms differently from its surroundings and blocks fluid.",
+ "diapir":"A body of buoyant rock (such as granite) that rises and pierces the rocks above.",
+ "L-tectonite":"A rock dominated by a stretching lineation, so it looks like a bundle of rods or pencils.",
+ "crustal continuum":"The model that one orogenic gold system can deposit gold over a wide range of crustal depths.",
+ "lineament":"A linear feature in imagery or geophysics that may mark a fault or structural corridor."
+};
+var CP={
+ cp1:{q:'A fault cuts an ore lens and offsets it 40 m, and the fault zone is full of talc. What kind of structure is it, and what problem does it create?',o:['Pre-mineralisation; it focused the fluid','Post-mineralisation; it offsets ore and makes bad ground','Syn-mineralisation; it carries the gold'],a:1,e:'It cuts and offsets the ore, so it’s younger. Fluid along it grew talc and chlorite: weak ground that’s hard to support and talc that contaminates flotation concentrate.'},
+ cp2:{q:'Where along a crustal-scale shear zone would you expect orogenic gold deposits?',o:['On the main first-order fault itself','On second- and third-order splays and cross-faults','Far from any faults'],a:1,e:'The big fault is the fluid highway, but deposits sit on the smaller off-ramps where fluid slowed, mixed or met reactive rock.'},
+ cp3:{q:'Which deformation style is critical for Carlin-type gold?',o:['Extension','Compression','None: it’s magmatic'],a:0,e:'Extensional faults let fluid rise and spread laterally into reactive silty limestone. Without extension, no deposit.'},
+ cp4:{q:'What makes an anticline hinge an effective trap for both oil and gold?',o:['It’s the lowest point','It’s a zone of weakness and the high point beneath an impermeable cap','It’s always hotter'],a:1,e:'Buoyant fluid rises to the hinge and is held beneath a seal; the hinge also cracks and opens space (saddle reefs).'},
+ cp5:{q:'At Granny Smith, gold sits along only one side of a granite. Best explanation?',o:['The granite acted as a rheological barrier to fluid flow','The granite is the gold source on one side only','Erosion removed the other side'],a:0,e:'A rigid granite deflects and ponds fluid along its margin, so local structure controls where the gold sits.'},
+ cp6:{q:'In the Pilbara, where should you focus gold exploration?',o:['In the centres of granite domes','In shear zones on the flanks of granite domes, where greenstones sank between them','Only on the largest regional faults'],a:1,e:'Dome-and-keel tectonics put the shear zones, and the gold, between the rising domes and the sinking greenstone.'}
+};
+var ST=[
+ ['Name the four jobs structures do in ore systems.','Recall','Make space for fluid and minerals; block fluid flow so it ponds; soften rock (with fluid, forming chlorite and talc); and offset ore after it forms.'],
+ ['Why do pre-existing structures get reactivated rather than new ones forming?','Think','They’re planes of weakness, so stress partitions into them and they fail at lower stress than intact rock.'],
+ ['Give one example each of pre-, syn- and post-mineralisation structures.','Recall','Pre: bedding, an old growth fault. Syn: a vein, a fault active during porphyry emplacement, slump folds in VMS or SEDEX. Post: a fault that offsets a lode, a shear zone that creates bad ground.'],
+ ['Why can VMS deposits only form in extensional ocean settings?','Think','They need thinned crust over a heat source and permeable faults so seawater can convect, leach metals and vent as black smokers. Extension provides both.'],
+ ['You followed a vein in the hanging wall into a normal fault. Up or down the fault to find it again?','Apply','Up. The hanging wall moved down, so relative to it the footwall continuation is up the fault plane.'],
+ ['How does ore geometry differ between extensional and compressional settings in the same rocks?','Recall','Extension gives open faults that host a large single lens; compression makes folds and faults act as aquitards, so fluid replaces favourable beds beneath them in a series of smaller lenses.'],
+ ['Why do faults often seal oil fields instead of letting them leak?','Recall','Fault movement grinds rock to clay gouge, which is impermeable to oil and gas.'],
+ ['Why are the first-order shear zones in the Yilgarn often barren while their splays are rich?','Think','The large faults are mostly in compression and carry fluid through rather than trapping it; the smaller splays experience extension and dilation, so fluid slows, mixes and precipitates gold there.'],
+ ['What’s characteristic about vein orientation in orogenic gold deposits like Red Lake?','Recall','The orebody plunges steeply to great depth, but individual quartz veins and lenses are close to horizontal.'],
+ ['What are L-tectonites, and why are they found between Pilbara granite domes?','Apply','Rocks dominated by a stretching lineation, like bundles of rods. The dense greenstone keels sank between rising granite domes and were stretched vertically.']
+];
+GEO.start({key:'geos3141-L5-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:134,img:IMG});
+
+/* ---------- lost vein ---------- */
+var lv=$('#lvSvg'),FT=[400,0],FB=[280,320],FD=[(FB[0]-FT[0]),(FB[1]-FT[1])],FL=Math.hypot(FD[0],FD[1]);var DIR=[FD[0]/FL,FD[1]/FL];
+var ROUNDS=[
+ {type:'normal',from:'hw',slip:110,ask:'<b>Round 1.</b> Your drive (dashed) followed a rich vein in the <b>hanging wall</b> until it hit a <b>normal fault</b> and stopped. The hanging wall moved <b>down</b>. Click on the far side of the fault where you’d drive to find the vein again.'},
+ {type:'reverse',from:'hw',slip:100,ask:'<b>Round 2.</b> Same vein, but this time the fault is <b>reverse</b>: the hanging wall moved <b>up</b>. You’re in the hanging wall again. Where is the vein on the other side?'},
+ {type:'normal',from:'fw',slip:120,ask:'<b>Round 3.</b> Now you’re driving in the <b>footwall</b> (right side) towards a <b>normal fault</b>. Think about which block moved relative to which. Where does the vein continue in the hanging wall?'}];
+var lvR=0,lvDone=false,lvMiss=0;
+function veinY(x){return 150+.18*(x-320);}
+function faultX(y){return FT[0]+FD[0]*(y/FD[1]);}
+function intersect(off){var x=320,y;for(var i=0;i<60;i++){y=veinY(x-off[0])+off[1];var fx=faultX(y);x=x+(fx-x)*.5;}y=veinY(x-off[0])+off[1];return [x,y];}
+function lvBuild(){var R=ROUNDS[lvR];lv.innerHTML='';lvDone=false;lvMiss=0;$('#lvNext').hidden=true;$('#lvRound').textContent='round '+(lvR+1)+' of 3';$('#lvAsk').innerHTML=R.ask;$('#lvSay').textContent='';
+  var sgn=R.type==='normal'?1:-1;var hwOff=[DIR[0]*R.slip*sgn,DIR[1]*R.slip*sgn];
+  var hw=el('g',{id:'lvHW'},lv),fw=el('g',{id:'lvFW'},lv);
+  el('polygon',{points:'0,0 '+FT[0]+',0 '+FB[0]+',320 0,320',fill:'#A39A8A'},hw);
+  el('polygon',{points:FT[0]+',0 640,0 640,320 '+FB[0]+',320',fill:'#8C8576'},fw);
+  for(var i=0;i<7;i++){el('line',{x1:-200,y1:i*55-20,x2:420,y2:i*55+40,stroke:'rgba(0,0,0,.08)','stroke-width':14},hw);el('line',{x1:380,y1:i*55-20,x2:840,y2:i*55+40,stroke:'rgba(0,0,0,.08)','stroke-width':14},fw);}
+  var pHW=intersect(hwOff),pFW=intersect([0,0]);
+  /* vein pieces */
+  var hwVein=el('path',{d:'M-100 '+(veinY(-100)+hwOff[1]-0)+' L'+pHW[0]+' '+pHW[1],stroke:'#E9C24A','stroke-width':9,fill:'none',transform:'translate('+hwOff[0]+' 0)'},hw);
+  hwVein.setAttribute('d','M'+(-100+hwOff[0])+' '+(veinY(-100)+hwOff[1])+' L'+pHW[0]+' '+pHW[1]);hwVein.removeAttribute('transform');
+  var fwVein=el('path',{d:'M'+pFW[0]+' '+pFW[1]+' L740 '+veinY(740),stroke:'#E9C24A','stroke-width':9,fill:'none'},fw);
+  var known=R.from==='hw'?hwVein:fwVein,hidden=R.from==='hw'?fwVein:hwVein;hidden.style.opacity=0;
+  var start=R.from==='hw'?[20+hwOff[0],veinY(20)+hwOff[1]]:[620,veinY(620)],end=R.from==='hw'?pHW:pFW;
+  el('path',{d:'M'+start[0]+' '+start[1]+' L'+end[0]+' '+end[1],stroke:'#18212A','stroke-width':3,'stroke-dasharray':'8 6',fill:'none'},lv);
+  el('circle',{cx:end[0],cy:end[1],r:7,fill:'#fff',stroke:'#18212A','stroke-width':2},lv);
+  el('line',{x1:FT[0],y1:FT[1],x2:FB[0],y2:FB[1],stroke:'#18212A','stroke-width':3},lv);
+  var ax=340,ay=60;var arr=sgn>0?'↓':'↑';txt(lv,ax-150,ay+50,'hanging wall '+arr,{'font-size':14,'font-weight':700,fill:'#fff'});txt(lv,450,ay+50,'footwall',{'font-size':14,'font-weight':700,fill:'#fff'});
+  txt(lv,FT[0]+8,18,R.type+' fault',{'font-size':13,'font-weight':700,fill:'#fff'});
+  lv._ans=R.from==='hw'?pFW:pHW;lv._hidden=hidden;lv._hwOff=hwOff;lv._hw=hw;lv._from=R.from;}
+lv.addEventListener('click',function(e){if(lvDone)return;var pt=lv.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(lv.getScreenCTM().inverse());
+  var R=ROUNDS[lvR],wrongSide=(R.from==='hw')?(p.x<faultX(p.y)):(p.x>faultX(p.y));
+  el('circle',{cx:p.x,cy:p.y,r:6,fill:'none',stroke:'#C8553A','stroke-width':3},lv);
+  var a0=lv._ans;if(wrongSide&&Math.hypot(p.x-a0[0],p.y-a0[1])>=32){$('#lvSay').textContent='That’s still the side you came from. Cross the fault.';return;}
+  var a=lv._ans,d=Math.hypot(p.x-a[0],p.y-a[1]);
+  if(d<32){lvDone=true;lv._hidden.style.opacity=1;el('circle',{cx:a[0],cy:a[1],r:12,fill:'none',stroke:'#2B7A68','stroke-width':4},lv);
+    var up=a[1]<lv._ans[1]+1&&false;var msg=R.type==='normal'?(R.from==='hw'?'The hanging wall dropped, so relative to you the footwall moved up: the vein is <b>up</b> the fault.':'The hanging wall dropped, so the vein in the hanging wall is <b>down</b> the fault.'):'The hanging wall rose, so the footwall is relatively down: the vein is <b>down</b> the fault.';
+    $('#lvSay').innerHTML='<b>Found it.</b> '+msg+' Watch the fault restored.';award('lv'+lvR,lvMiss===0?8:4,lvMiss===0?'Vein found first go':'Vein found');
+    var hw=lv._hw,o=lv._hwOff,t0=performance.now();if(!reduce)setTimeout(function(){(function f(n){var k=ease(cl((n-t0-900)/1200));hw.setAttribute('transform','translate('+(-o[0]*k)+' '+(-o[1]*k)+')');if(k<1)requestAnimationFrame(f);else setTimeout(function(){hw.setAttribute('transform','');},900);})(performance.now());},50);
+    if(lvR<2)$('#lvNext').hidden=false;else $('#lvAsk').innerHTML='<b>All three found.</b> The rule: work out which block moved, which way, then follow the fault to where the vein must have been carried. Old miners without that idea simply lost their veins.';}
+  else{lvMiss++;$('#lvSay').textContent=d<90?'Close, but not quite. Follow the fault plane in the direction the far block moved relative to yours.':'Not there. Which way did the hanging wall move, up or down? Look along the fault in that direction.';}});
+$('#lvNext').addEventListener('click',function(){lvR++;lvBuild();});
+lvBuild();
+/* ---------- timing animator ---------- */
+var tc=$('#tmCanvas'),tx=tc.getContext('2d'),TW=640,TH=260,tMode='pre',tT=0,tRun=false,tk=1;
+var TMTXT={pre:'<b>Pre-mineralisation.</b> An old fault (dashed) already cuts the beds. When fluid arrives, it reactivates that plane of weakness and uses it as a pipe, then spreads into a favourable bed. The structure was there first; the ore borrowed it.',
+ syn:'<b>Syn-mineralisation.</b> The shear zone is moving while ore forms. As the blocks slide, tension gashes open in an en echelon array and fill with quartz and gold at the same time. Veins are the commonest syn structures.',
+ post:'<b>Post-mineralisation.</b> The ore lens formed first. A later fault cuts it and offsets the far half, and fluid moving along the fault grows soft chlorite and talc: bad ground. Your ore is now in two places and the rock around the fault is weak.'};
+function tDraw(){var c=tx,t=tT;c.clearRect(0,0,TW,TH);var cols=['#B7AC96','#9E9480','#C2B8A2','#8F8674','#B0A690'];
+  if(tMode==='syn'){var sh=t*60;for(var i=0;i<5;i++){c.fillStyle=cols[i];c.fillRect(0,i*52,TW,52);}
+    c.fillStyle='rgba(60,70,60,.25)';c.fillRect(0,95,TW,70);
+    for(var k=0;k<9;k++){var x0=60+k*62+sh*.5,open=cl(t*1.4-k*.06);c.save();c.translate(x0,130);c.rotate(-.7);c.fillStyle='#EEEBE2';c.beginPath();c.ellipse(0,0,6*open+1,26,0,0,Math.PI*2);c.fill();c.restore();
+      if(open>.6){c.fillStyle='#E2B341';c.beginPath();c.arc(x0,130,2.5,0,Math.PI*2);c.fill();}}
+    c.strokeStyle='#18212A';c.lineWidth=2;c.beginPath();c.moveTo(0,95);c.lineTo(TW,95);c.moveTo(0,165);c.lineTo(TW,165);c.stroke();
+    c.fillStyle='#18212A';c.font=fontPx(tk);c.fillText('→ block moves',TW-130,85);c.fillText('← block moves',20,190);}
+  else{var off=tMode==='post'?ease(cl((t-.45)/.4))*46:0;
+    for(var i2=0;i2<5;i2++){c.fillStyle=cols[i2];c.beginPath();c.moveTo(0,i2*52);c.lineTo(330+i2*52*.3,i2*52);c.lineTo(330+(i2+1)*52*.3,(i2+1)*52);c.lineTo(0,(i2+1)*52);c.closePath();c.fill();
+      c.beginPath();c.moveTo(330+i2*52*.3,i2*52+off);c.lineTo(TW,i2*52+off);c.lineTo(TW,(i2+1)*52+off);c.lineTo(330+(i2+1)*52*.3,(i2+1)*52+off);c.closePath();c.fill();}
+    if(tMode==='pre'){c.setLineDash([8,6]);c.strokeStyle='#18212A';c.lineWidth=2.5;c.beginPath();c.moveTo(330,0);c.lineTo(330+260*.3,260);c.stroke();c.setLineDash([]);
+      var f=cl(t/.6);for(var j=0;j<22;j++){var ph=(t*3+j/22)%1;if(ph>f)continue;var y=260-ph*260;c.fillStyle='#E2B341';c.beginPath();c.arc(330+y*.3+((j%3)-1)*3,y,2.6,0,Math.PI*2);c.fill();}
+      var spread=cl((t-.5)/.5);c.fillStyle='rgba(226,179,65,.75)';c.fillRect(330+120*.3-150*spread,112,300*spread,22);c.strokeStyle='#18212A';c.lineWidth=1;c.strokeRect(330+120*.3-150*spread,112,300*spread,22);
+      c.fillStyle='#18212A';c.font=fontPx(tk);c.fillText('old fault, reactivated',360,30);if(spread>.3)c.fillText('ore spreads into favourable bed',20,105);}
+    else{var ore=cl(t/.35);c.fillStyle='rgba(226,179,65,.85)';c.fillRect(140,110,190+20*.3,24*ore);c.fillRect(366,110+off,170,24*ore);
+      if(t>.4){c.strokeStyle='#18212A';c.lineWidth=3;c.beginPath();c.moveTo(330,0);c.lineTo(330+260*.3,260);c.stroke();c.lineWidth=1;}
+      var bad=cl((t-.8)/.2);if(bad>0){c.fillStyle='rgba(95,140,95,'+(.6*bad)+')';c.beginPath();c.moveTo(318,0);c.lineTo(342,0);c.lineTo(342+260*.3,260);c.lineTo(318+260*.3,260);c.closePath();c.fill();}
+      c.fillStyle='#18212A';c.font=fontPx(tk);c.fillText(t<.4?'ore lens forms':'later fault offsets the lens',20,30);if(bad>.3)c.fillText('chlorite + talc: bad ground',360,240);}}}
+function tLoop(){if(!tRun)return;tT=Math.min(1,tT+.006);tDraw();if(tT<1)requestAnimationFrame(tLoop);else{tRun=false;award('tm-'+tMode,3,'Timing understood: '+tMode);}}
+function tPlay(m){tMode=m;$$('#tmTabs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===m?'true':'false')});$('#tmName').textContent=m+'-mineralisation';$('#tmSay').innerHTML=TMTXT[m];tT=0;if(reduce){tT=1;tDraw();award('tm-'+m,3,'Timing understood: '+m);return;}if(!tRun){tRun=true;requestAnimationFrame(tLoop);}}
+$$('#tmTabs button').forEach(function(b){b.addEventListener('click',function(){tPlay(b.dataset.m)})});$('#tmReplay').addEventListener('click',function(){tPlay(tMode)});
+$('#tmSay').innerHTML=TMTXT.pre;tT=1;
+onVisible(tc,function(v){if(v&&!tc.dataset.p){tc.dataset.p=1;tPlay('pre');}});
+/* ---------- deformation lab ---------- */
+var dc=$('#dfCanvas'),dx=dc.getContext('2d'),DW=640,DH=280,dMode='ext',dk=1;
+var DFTXT={ext:'<b>Extension.</b> The crust pulls apart and thins on normal faults. A graben drops between them, and with more strain second- and third-order faults appear. Thinning lets magma rise by decompression, and open faults let fluid move both up and down. Think VMS, Carlin gold and rift-related deposits.',
+ comp:'<b>Compression.</b> The crust shortens on reverse and thrust faults and folds. Fluid gets squeezed upward and trapped in fold hinges and under impermeable layers. Think orogenic gold, saddle reefs and oil in anticlines.',
+ ss:'<b>Strike-slip</b> (map view). The blocks slide past each other sideways. Shear opens short en echelon tension gashes at an angle to the fault, and bends in the fault open pull-apart basins. Think stepped vein arrays and dilational jogs.'};
+function dDraw(){var c=dx,s=+$('#dfS').value/100;c.clearRect(0,0,DW,DH);$('#dfSv').textContent=Math.round(s*(dMode==='ss'?100:10))+(dMode==='ss'?' m slip':'%');
+  var cols=['#C9B79A','#A99476','#D8CAB0','#8F7E66','#BFAF92'];
+  if(dMode==='ext'){var drop=s*60,gap=s*30;c.fillStyle='#DDE4E6';c.fillRect(0,0,DW,DH);
+    function blk(x0,x1,dy,lt,rt){for(var i=0;i<5;i++){var y=60+i*40+dy;c.fillStyle=cols[i];c.beginPath();c.moveTo(x0+(lt?i*40*.35:0),y);c.lineTo(x1-(rt?i*40*.35:0),y);c.lineTo(x1-(rt?(i+1)*40*.35:0),y+40);c.lineTo(x0+(lt?(i+1)*40*.35:0),y+40);c.closePath();c.fill();}}
+    blk(-gap,230-gap,0,false,true);blk(230+gap*.2,410-gap*.2,drop,true,true);blk(410+gap,DW+gap,0,true,false);
+    c.strokeStyle='#18212A';c.lineWidth=2.5;c.beginPath();c.moveTo(230-gap,60);c.lineTo(230-gap-70,260);c.moveTo(410+gap,60);c.lineTo(410+gap+70,260);c.stroke();
+    if(s>.35){c.lineWidth=1.5;c.beginPath();c.moveTo(150-gap,60);c.lineTo(120-gap,260);c.stroke();}if(s>.75){c.beginPath();c.moveTo(500+gap,60);c.lineTo(530+gap,260);c.moveTo(320,60+drop);c.lineTo(300,260);c.stroke();}c.lineWidth=1;
+    c.fillStyle='#2F55A4';c.font=fontPx(dk);for(var k=0;k<6;k++){var ph=(performance.now()/1200+k/6)%1;c.beginPath();c.arc(230-gap-70*ph,60+200*ph,2.5,0,Math.PI*2);c.fill();c.fillStyle='#C8553A';c.beginPath();c.arc(410+gap+70*(1-ph),60+200*(1-ph),2.5,0,Math.PI*2);c.fill();c.fillStyle='#2F55A4';}
+    c.fillStyle='#18212A';c.fillText('← pull',12,30);c.fillText('pull →',DW-60,30);c.fillText('graben',300,50+drop);if(s>.35)c.fillText('2nd-order fault',60,275);
+    c.fillStyle='#2F55A4';c.fillText('meteoric water down',20,48);c.fillStyle='#C8553A';c.fillText('hot fluid up',DW-110,48);}
+  else if(dMode==='comp'){c.fillStyle='#DDE4E6';c.fillRect(0,0,DW,DH);var A=s*70,lift=s*40;
+    for(var i=4;i>=0;i--){c.fillStyle=cols[i];c.beginPath();var y0=80+i*36;c.moveTo(0,y0+36);for(var x=0;x<=DW;x+=8){var f=A*Math.exp(-Math.pow((x-320)/(110-s*30),2));var up=x>330?lift*(x>330?1:0):0;c.lineTo(x,y0-f-up);}
+      for(x=DW;x>=0;x-=8){var f2=A*Math.exp(-Math.pow((x-320)/(110-s*30),2));var up2=x>330?lift:0;c.lineTo(x,y0+36-f2*.9-up2);}c.closePath();c.fill();}
+    c.strokeStyle='#18212A';c.lineWidth=2.5;c.beginPath();c.moveTo(330,280);c.lineTo(420,40);c.stroke();c.lineWidth=1;
+    for(var k2=0;k2<10;k2++){var ph2=(performance.now()/1400+k2/10)%1;var xx=330+90*ph2,yy=280-240*ph2;c.fillStyle='#E2B341';c.beginPath();c.arc(xx-30+((k2%3)*20)*ph2,yy,2.6,0,Math.PI*2);c.fill();}
+    if(s>.4){c.fillStyle='rgba(226,179,65,.8)';c.beginPath();c.ellipse(320,80+36*2-A-6,24*s,7*s,0,0,Math.PI*2);c.fill();}
+    c.fillStyle='#18212A';c.font=fontPx(dk);c.fillText('push →',12,30);c.fillText('← push',DW-70,30);c.fillText('anticline hinge',250,40);c.fillText('reverse fault',430,60);}
+  else{c.fillStyle='#C9B79A';c.fillRect(0,0,DW,140);c.fillStyle='#B4A285';c.fillRect(0,140,DW,140);var sl=s*120;
+    c.save();c.beginPath();c.rect(0,0,DW,140);c.clip();for(var i3=-2;i3<12;i3++){c.fillStyle=i3%2?'#BCA98B':'#D2C2A4';c.fillRect(i3*70+sl/2,0,35,140);}c.restore();
+    c.save();c.beginPath();c.rect(0,140,DW,140);c.clip();for(var i4=-2;i4<12;i4++){c.fillStyle=i4%2?'#A8977A':'#C0AF92';c.fillRect(i4*70-sl/2,140,35,140);}c.restore();
+    c.strokeStyle='#18212A';c.lineWidth=3;c.beginPath();c.moveTo(0,140);c.lineTo(DW,140);c.stroke();c.lineWidth=1;
+    for(var g=0;g<8;g++){var gx=80+g*65,open=cl(s*1.6-g*.05);c.save();c.translate(gx,140+(g%2?-30:30));c.rotate(-.75);c.fillStyle='#F1EEE6';c.strokeStyle='#18212A';c.beginPath();c.ellipse(0,0,7*open+.5,24,0,0,Math.PI*2);c.fill();c.stroke();c.restore();}
+    c.fillStyle='#18212A';c.font=fontPx(dk);c.fillText('→ north block slides east',12,24);c.fillText('← south block slides west',12,270);c.fillText('en echelon tension gashes',DW-200,24);}}
+var dRun=false;function dLoop(){if(!dRun)return;dDraw();requestAnimationFrame(dLoop);}
+$$('#dfTabs button').forEach(function(b){b.addEventListener('click',function(){dMode=b.dataset.d;$$('#dfTabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});$('#dfName').textContent={ext:'extension',comp:'compression',ss:'strike-slip'}[dMode];$('#dfSay').innerHTML=DFTXT[dMode];dDraw();award('df-'+dMode,3,'Deformation style explored');});});
+$('#dfS').addEventListener('input',function(){dDraw();if(+this.value>=90)award('df-max',3,'Pushed the strain to the limit');});
+$('#dfSay').innerHTML=DFTXT.ext;
+onVisible(dc,function(v){if(v&&!dRun&&!reduce){dRun=true;requestAnimationFrame(dLoop);}else if(!v)dRun=false;});
+/* ---------- hinge trap ---------- */
+var trc=$('#trCanvas'),trx=trc.getContext('2d'),RW=640,RH=260,trMode='oil',trT=0,trRun=false,trk=1;
+var TRTXT={oil:'<b>Oil in an anticline.</b> Oil is buoyant, so it migrates up through the porous reservoir bed until a shale seal stops it. The anticline hinge is the highest point under the seal, so that’s where it pools. A fault lined with clay gouge blocks lateral escape. This is the Zagros pattern.',
+ gold:'<b>Saddle reefs.</b> As the beds fold tightly, slight extension at the hinge opens gaps between layers. Gold-bearing metamorphic fluid rising along faults fills them with quartz and gold, stacking reef after reef down the hinge. This is the Bendigo and Ballarat pattern.'};
+function trDraw(){var c=trx,t=trT;c.clearRect(0,0,RW,RH);c.fillStyle='#DDE4E6';c.fillRect(0,0,RW,RH);
+  var amp=trMode==='oil'?70:110,w=trMode==='oil'?170:95;function fy(x,base){return base-amp*Math.exp(-Math.pow((x-320)/w,2));}
+  var layers=trMode==='oil'?[['#C9B79A',100],['#5A5650',130],['#E1CC8F',160],['#A99476',200],['#C2B092',240]]:[['#9E9C94',90],['#B9B6AC',115],['#8E8C84',140],['#B9B6AC',165],['#9E9C94',190],['#B9B6AC',215],['#8E8C84',240]];
+  for(var i=layers.length-1;i>=0;i--){c.fillStyle=layers[i][0];c.beginPath();c.moveTo(0,RH);for(var x=0;x<=RW;x+=6)c.lineTo(x,fy(x,layers[i][1]-(i>0?layers[i][1]-layers[i-1][1]:30)));c.lineTo(RW,RH);c.closePath();c.fill();}
+  if(trMode==='oil'){var res=layers[2][1],f=cl(t/.8);for(var k=0;k<40;k++){var x0=(k*53)%RW,ph=cl(f*1.4-k/60);var xx=x0+(320-x0)*ph,yy=fy(xx,res)-14;c.fillStyle='#1E1A14';c.beginPath();c.arc(xx,yy+6,2.6,0,Math.PI*2);c.fill();}
+    var pool=cl((t-.5)/.5);if(pool>0){c.fillStyle='rgba(30,26,20,.85)';c.beginPath();c.ellipse(320,fy(320,res)-12,90*pool,9*pool,0,0,Math.PI*2);c.fill();}
+    c.strokeStyle='#18212A';c.lineWidth=3;c.beginPath();c.moveTo(500,RH);c.lineTo(560,20);c.stroke();c.lineWidth=1;c.fillStyle='#18212A';c.font=fontPx(trk);c.fillText('shale seal',250,fy(320,130)-30);c.fillText('reservoir sandstone',20,fy(20,160)-6);c.fillText('fault gouge blocks flow',470,40);}
+  else{var g=cl(t/.9);for(var j=0;j<6;j++){var by=fy(320,115+j*25)-8,op=cl(g*1.3-j*.12);if(op<=0)continue;c.fillStyle='#F1EEE6';c.strokeStyle='#5A5650';c.beginPath();c.moveTo(320-38*op,by+6);c.quadraticCurveTo(320,by-14*op,320+38*op,by+6);c.quadraticCurveTo(320,by-2,320-38*op,by+6);c.fill();c.stroke();
+      if(op>.6){c.fillStyle='#E2B341';c.beginPath();c.arc(320+((j%3)-1)*10,by-2,2.6,0,Math.PI*2);c.fill();}}
+    c.strokeStyle='#18212A';c.lineWidth=2.5;c.beginPath();c.moveTo(150,RH);c.lineTo(300,0);c.stroke();c.lineWidth=1;
+    for(var m=0;m<10;m++){var ph3=(t*3+m/10)%1;c.fillStyle='#E2B341';c.beginPath();c.arc(150+150*ph3,RH-RH*ph3,2.2,0,Math.PI*2);c.fill();}
+    c.fillStyle='#18212A';c.font=fontPx(trk);c.fillText('stacked saddle reefs in the hinge',360,30);c.fillText('fluid rises up fault',20,30);}}
+function trLoop(){if(!trRun)return;trT=Math.min(1,trT+.005);trDraw();if(trT<1)requestAnimationFrame(trLoop);else{trRun=false;award('tr-'+trMode,4,trMode==='oil'?'Oil trapped':'Saddle reefs filled');}}
+function trPlay(m){trMode=m;$$('#trTabs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.t===m?'true':'false')});$('#trName').textContent=m==='oil'?'Zagros oil':'saddle reefs';$('#trSay').innerHTML=TRTXT[m];trT=0;if(reduce){trT=1;trDraw();return;}if(!trRun){trRun=true;requestAnimationFrame(trLoop);}}
+$$('#trTabs button').forEach(function(b){b.addEventListener('click',function(){trPlay(b.dataset.t)})});$('#trReplay').addEventListener('click',function(){trPlay(trMode)});
+$('#trSay').innerHTML=TRTXT.oil;trT=1;
+onVisible(trc,function(v){if(v&&!trc.dataset.p){trc.dataset.p=1;trPlay('oil');}});
+/* ---------- Yilgarn prospector ---------- */
+var yp=$('#ypSvg'),Y={};
+function ypNew(){var r=rng(Math.floor(Math.random()*1e6));yp.innerHTML='';Y={holes:5,hits:0,dep:[],done:false};
+  el('rect',{x:0,y:0,width:600,height:380,fill:'#5D7A5A'},yp);
+  var gx1=150+r()*60,gy1=110+r()*60,gx2=420+r()*60,gy2=250+r()*60;el('ellipse',{cx:gx1,cy:gy1,rx:70,ry:50,fill:'#E7B9B0'},yp);el('ellipse',{cx:gx2,cy:gy2,rx:60,ry:45,fill:'#E7B9B0'},yp);
+  var mx=290+r()*30;el('path',{d:'M'+mx+' 0 C'+(mx+20)+' 120 '+(mx-20)+' 260 '+(mx+10)+' 380',stroke:'#2A2C33','stroke-width':10,fill:'none'},yp);
+  var splays=[];for(var i=0;i<4;i++){var sy=50+i*85+r()*30,side=i%2?1:-1,len=90+r()*60,ang=side*(.5+r()*.3);var x0=mx+(sy/380-.5)*0,ex=x0+side*len*Math.cos(.6),ey=sy+len*Math.sin(ang)*.6;splays.push([x0,sy,ex,ey]);el('path',{d:'M'+x0+' '+sy+' Q'+((x0+ex)/2)+' '+(sy+(ey-sy)*.2)+' '+ex+' '+ey,stroke:'#7A5C3A','stroke-width':4,fill:'none'},yp);}
+  splays.forEach(function(s,i){if(i<3)Y.dep.push([s[0]+(s[2]-s[0])*.35,s[1]+(s[3]-s[1])*.35]);});
+  Y.dep.push([gx2+ (gx2<mx?60:-62),gy2-10]);
+  var hitL=el('g',{},yp);Y.layer=hitL;txt(yp,mx+10,14,'first-order shear zone',{fill:'#fff','font-size':12});
+  $('#ypLeft').textContent='5 holes left';$('#ypSay').textContent='Pick your first target.';}
+yp.addEventListener('click',function(e){if(Y.done)return;var pt=yp.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(yp.getScreenCTM().inverse());
+  var d=1e9;Y.dep.forEach(function(q){d=Math.min(d,Math.hypot(q[0]-p.x,q[1]-p.y));});Y.holes--;
+  var res=d<26?['ore','6.8 g/t over 9 m','#E2B341']:d<60?['anom','0.4 g/t (anomalous)','#E9E2C8']:['barren','barren','#18212A'];
+  if(res[0]==='ore')Y.hits++;el('circle',{cx:p.x,cy:p.y,r:7,fill:res[2],stroke:'#fff','stroke-width':2},yp);
+  $('#ypLeft').textContent=Y.holes+' hole'+(Y.holes===1?'':'s')+' left';
+  $('#ypSay').innerHTML='Hole '+(5-Y.holes)+': <b>'+res[1]+'</b>. '+(res[0]==='ore'?'Nice: a second-order structure.':res[0]==='anom'?'You’re near something.':'Nothing here.');
+  if(Y.holes<=0){Y.done=true;Y.dep.forEach(function(q){el('circle',{cx:q[0],cy:q[1],r:12,fill:'none',stroke:'#E2B341','stroke-width':3},yp);});
+    $('#ypSay').innerHTML='<b>'+Y.hits+' ore hit'+(Y.hits===1?'':'s')+'.</b> The hidden deposits (gold rings) sit on the splays a little way off the main shear and against a granite margin, never on the first-order shear itself. That’s the Yilgarn rule.';
+    if(Y.hits>=2)award('yp',12,'Multiple discoveries');else award('yp-try',4,'Drilling program complete');}});
+$('#ypReset').addEventListener('click',ypNew);ypNew();
+/* ---------- Pilbara dome and keel ---------- */
+var pc=$('#pbCanvas'),px=pc.getContext('2d'),PW=640,PH=280,pT=0,pRun=false,pk=1;
+function pDraw(){var c=px,t=pT;c.clearRect(0,0,PW,PH);c.fillStyle='#DDE4E6';c.fillRect(0,0,PW,30);
+  var rise=ease(t)*120,sink=ease(t)*70;
+  for(var i=0;i<6;i++){var base=40+i*40;c.fillStyle=i%2?'#4F6E52':'#6B8C68';c.beginPath();c.moveTo(0,base);
+    for(var x=0;x<=PW;x+=6){var d1=Math.exp(-Math.pow((x-150)/80,2)),d2=Math.exp(-Math.pow((x-490)/80,2)),k=Math.exp(-Math.pow((x-320)/70,2));c.lineTo(x,base-(d1+d2)*rise*(1-i*.08)+k*sink*(.4+i*.15));}
+    for(x=PW;x>=0;x-=6){var e1=Math.exp(-Math.pow((x-150)/80,2)),e2=Math.exp(-Math.pow((x-490)/80,2)),k2=Math.exp(-Math.pow((x-320)/70,2));c.lineTo(x,base+40-(e1+e2)*rise*(1-(i+1)*.08)+k2*sink*(.4+(i+1)*.15));}
+    c.closePath();c.fill();}
+  [150,490].forEach(function(cx){c.fillStyle='#E7B9B0';c.beginPath();c.moveTo(cx-110,PH);c.bezierCurveTo(cx-110,PH-80-rise,cx+110,PH-80-rise,cx+110,PH);c.closePath();c.fill();c.fillStyle='#8C5A50';c.font=fontPx(pk);c.fillText('granite dome',cx-40,PH-30);});
+  if(t>.3){var a=cl((t-.3)/.7);c.strokeStyle='rgba(255,255,255,'+(.8*a)+')';c.lineWidth=2;for(var j=0;j<14;j++){var lx=290+(j%5)*15,ly=110+Math.floor(j/5)*45;c.beginPath();c.moveTo(lx,ly);c.lineTo(lx,ly+16+24*a);c.stroke();}c.lineWidth=1;}
+  if(t>.6){var g=cl((t-.6)/.4);c.fillStyle='rgba(226,179,65,'+g+')';[[245,170],[255,210],[395,175],[385,215],[240,130],[400,135]].forEach(function(q){c.beginPath();c.arc(q[0],q[1],4,0,Math.PI*2);c.fill();});}
+  c.fillStyle='#18212A';c.font=fontPx(pk);c.fillText(t<.35?'granites start to rise':t<.65?'greenstone keel sinks and stretches vertically':'gold in shear zones on the dome flanks',14,20);}
+function pLoop(){if(!pRun)return;pT=Math.min(1,pT+.004);pDraw();$('#pbStage').textContent=pT<.35?'rising':pT<.65?'sinking':pT<1?'gold':'done';if(pT<1)requestAnimationFrame(pLoop);else{pRun=false;$('#pbSay').innerHTML='The domes rose, the dense greenstone keel sank between them and was stretched into vertical <b>L-tectonites</b> (white rods), and gold arrived in the <b>shear zones on the dome flanks</b>. In the Pilbara, look between the domes.';award('pb',5,'Dome and keel built');}}
+$('#pbPlay').addEventListener('click',function(){pT=0;if(reduce){pT=1;pDraw();return;}if(!pRun){pRun=true;requestAnimationFrame(pLoop);}});
+
+GEO.finish(function(){tk=fitCanvas(tc,tx,TW,TH);tDraw();dk=fitCanvas(dc,dx,DW,DH);dDraw();trk=fitCanvas(trc,trx,RW,RH);trDraw();pk=fitCanvas(pc,px,PW,PH);pDraw();});
+})();
+</script>
+</body>
+</html>

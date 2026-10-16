@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 2 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L1.html">&larr; Lecture 1</a><a href="L3.html">Lecture 3 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 2 · T3 2026</div>
+  <h1>The rock you see is rarely the rock that formed</h1>
+  <p class="lede">Rain, oxygen and hot fluids keep working on rock long after it forms. They hide ore, reveal ore, make ore, and sometimes wreck a mine. This lecture is about reading those changes. Start the way you would in a core shed: look first.</p>
+
+  <div class="obs" id="heroObs">
+    <div class="ttl"><span>Field task · core tray, Cobar Basin</span><span class="srcs">slide 3</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide003_2.jpg" alt="Core tray full of broken, soft-looking green rock fragments with one pale block" style="width:100%;border-radius:6px">
+    <p class="ask">You're the mine geologist. Before anyone drives a tunnel through this zone, what's the first thing that should worry you?</p>
+    <div class="cards" id="heroQ" style="grid-template-columns:1fr"></div>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#about">Three processes, one picture</a></li>
+      <li><a href="#weather">Weathering</a></li>
+      <li><a href="#profiles">Reading weathered rock</a></li>
+      <li><a href="#oxid">Oxidation and acid</a></li>
+      <li><a href="#gossans">Gossans</a></li>
+      <li><a href="#supergene">The supergene profile</a></li>
+      <li><a href="#deep">When oxidation goes deep</a></li>
+      <li><a href="#alter">Alteration</a></li>
+      <li><a href="#assemblages">Alteration assemblages</a></li>
+      <li><a href="#zoning">Zoning: porphyry and VMS</a></li>
+      <li><a href="#measure">Measuring alteration</a></li>
+      <li><a href="#vector">Vectoring to ore</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="about" data-log="Three processes"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 10 m</span></div>
+  <h2>Three processes, one picture</h2>
+  <p>Three words run through this whole lecture, and they're easy to blur together, so pin them down now. <button class="term" data-t="weathering">Weathering</button> is the physical and chemical breakdown of rock at or near the surface, usually within a few tens of metres, because it needs air, water and often plants. <button class="term" data-t="oxidation">Oxidation</button> is chemically the loss of electrons; for ore deposits it means sulphide and carbonate minerals turning into oxides and hydroxides when oxygenated water reaches them. <button class="term" data-t="alteration">Alteration</button> is a change in a rock's minerals at low pressure because fluids moved through it, and it can happen anywhere those fluids go, from a microscope slide to kilometres around a porphyry.</p>
+  <p>Why should you care? Because each one changes what you see in the field. Weathered rock covers most of Australia, masks the geology underneath, rarely carries anything economic and has to be stripped before open-cut mining. Oxidised rock can point to buried ore (gossans), record where groundwater moved and pooled, and even form ore on its own (iron and manganese ore, bauxite, the oxide parts of metal deposits). Alteration traces where hydrothermal fluid went, often at the same time metals were dropped, and tells you the temperature, pH and mixing of those fluids. It's the most commonly used vector to ore. It can also turn solid rock into mush.</p>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 300" role="img" aria-labelledby="f0t" style="min-width:540px">
+      <title id="f0t">Cross-section showing weathering near the surface, oxidation down to the water table, and alteration around a hydrothermal system at depth</title>
+      <rect x="0" y="0" width="720" height="40" fill="var(--sky)"/>
+      <rect x="0" y="40" width="720" height="260" fill="var(--crust)"/>
+      <rect x="0" y="40" width="720" height="38" fill="var(--goe)" opacity=".55"/>
+      <rect x="0" y="78" width="720" height="62" fill="var(--kao)" opacity=".7"/>
+      <path d="M0 140 Q180 150 360 136 T720 144" stroke="var(--sea)" stroke-width="3" stroke-dasharray="8 6" fill="none"/>
+      <ellipse cx="470" cy="300" rx="190" ry="140" fill="var(--chl)" opacity=".35"/>
+      <ellipse cx="470" cy="300" rx="120" ry="95" fill="var(--gold-hi)" opacity=".45"/>
+      <ellipse cx="470" cy="300" rx="60" ry="55" fill="var(--magma)" opacity=".8"/>
+      <path d="M150 300 L190 150" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 4"/>
+      <g font-size="13" fill="var(--ink)">
+        <text x="12" y="64" font-weight="700">WEATHERING</text><text x="112" y="64">soil, iron oxides, top few tens of metres</text>
+        <text x="12" y="104" font-weight="700">OXIDATION</text><text x="102" y="104">sulphides and carbonates turn to oxides, above the water table</text>
+        <text x="12" y="132" fill="var(--muted)">water table</text>
+        <text x="480" y="196" font-weight="700">ALTERATION</text><text x="480" y="214">wherever hot fluid flows,</text><text x="480" y="230">metres to kilometres</text>
+        <text x="200" y="230" fill="var(--muted)">a fault can carry oxygenated</text><text x="200" y="246" fill="var(--muted)">water much deeper</text>
+      </g>
+    </svg></div>
+    <figcaption>Where each process works. Weathering and oxidation work from the top down and stop around the water table, unless a structure lets oxygenated water go deeper. Alteration works wherever hot fluid moves, so it can be kilometres down and kilometres wide.</figcaption>
+  </figure>
+</div></section>
+
+<section id="weather" data-log="Weathering"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">10 to 25 m</span></div>
+  <h2>Weathering: breaking rock and dissolving it</h2>
+  <p>There are two ways to destroy a rock at the surface, and they usually work together. <strong>Physical weathering</strong> breaks rock into smaller pieces without changing its chemistry: gravity on steep slopes, wind-blown sand acting like sandpaper, plant roots prying cracks open, and expansion and contraction as temperatures swing. <strong>Chemical weathering</strong> dissolves and reacts the minerals themselves, driven by water, climate and organic acids from decaying vegetation. Dry places lean physical; warm, wet, vegetated places lean chemical.</p>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · two climates</span><span class="srcs">slide 9</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide009_1.jpg" alt="Steep granite peaks with snow and glaciers above a lake, southern Andes"><div class="cap">A · southern Andes</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide009_2.jpg" alt="Bare, eroded, pale badland ridges with no vegetation, Atacama Desert"><div class="cap">B · Atacama Desert</div></div>
+    </div>
+    <p class="ask">Which landscape has more chemical weathering going on, and what's doing most of the work in the other one?</p>
+    <details data-obs="climate"><summary>Show what I see</summary><div class="seen">
+      <ul><li><b>A:</b> glaciers, snow, rain, a lake and some vegetation, all on very steep, actively uplifting mountains.</li><li><b>B:</b> no plants, no water, sharp wind-carved ridges, pale bare rock.</li></ul>
+      <p class="so">So A has far more chemical weathering, because it has water. It also has strong physical weathering from glaciers, gravity and steep relief. B is almost all physical: wind blowing sand around. Parts of the Atacama have seen almost no rain for millions of years, which is why minerals that should dissolve in rain, like nitrates, sit there perfectly stable. The opposite extreme is Antarctica: everything is frozen, there's no free water, so there's almost no chemical weathering at all.</p>
+    </div></details>
+  </div>
+
+  <h3>What chemical weathering actually removes</h3>
+  <p>This is the key idea, so take it slowly. Chemical weathering dissolves the <button class="term" data-t="mobile elements">mobile elements</button> first: sodium, potassium, calcium, magnesium, iron, metals, and often strontium. What's left behind is relatively enriched in the <button class="term" data-t="immobile elements">immobile elements</button>: silicon, aluminium and titanium. Nothing is added; the stayers just make up a bigger share of a smaller pile. Two things follow. Dark rocks go pale, because iron (the main colouring element) has been carried away. That's <button class="term" data-t="bleaching">bleaching</button>. And in the most intense tropical weathering, even silica goes, leaving aluminium hydroxide behind. That's how <button class="term" data-t="bauxite">bauxite</button> forms: mostly white <button class="term" data-t="gibbsite">gibbsite</button>, often stained pink or red by very fine hematite.</p>
+
+  <div class="lab" id="wm">
+    <h4><span>Weathering machine</span><b id="wmVerdictTag">set the conditions</b></h4>
+    <div class="ctl">
+      <div><label for="wmRock">Protolith</label><select id="wmRock"><option value="granite">Granite</option><option value="basalt" selected>Basalt</option><option value="limestone">Limestone</option><option value="sulphide">Pyrite-rich rock</option><option value="sandstone">Quartz sandstone</option></select></div>
+      <div><label for="wmT">Mean temperature <b id="wmTv"></b></label><input type="range" id="wmT" min="-20" max="32" step="1" value="26"></div>
+      <div><label for="wmR">Rainfall <b id="wmRv"></b></label><input type="range" id="wmR" min="0" max="3000" step="50" value="1800"></div>
+      <div><label for="wmV">Vegetation cover <b id="wmVv"></b></label><input type="range" id="wmV" min="0" max="100" step="5" value="80"></div>
+      <div><label for="wmRel">Topographic relief <b id="wmRelv"></b></label><input type="range" id="wmRel" min="0" max="100" step="5" value="15"></div>
+      <div><label for="wmF">Joints and fractures <b id="wmFv"></b></label><input type="range" id="wmF" min="0" max="100" step="5" value="50"></div>
+    </div>
+    <canvas id="wmCanvas" aria-label="Animated block of rock breaking up and losing mobile elements depending on the conditions"></canvas>
+    <div class="bars2">
+      <div class="r"><span>Physical</span><div class="t"><div class="f" id="wmPhys" style="background:var(--slate)"></div></div><span class="v" id="wmPhysV"></span></div>
+      <div class="r"><span>Chemical</span><div class="t"><div class="f" id="wmChem" style="background:var(--goe)"></div></div><span class="v" id="wmChemV"></span></div>
+    </div>
+    <p class="say" id="wmSay"></p>
+    <div class="tablewrap"><table id="wmComp"></table></div>
+    <div class="goal" id="g-baux"><i>✓</i><span>Make bauxite.</span></div>
+    <div class="goal" id="g-frozen"><i>✓</i><span>Shut chemical weathering down completely.</span></div>
+    <div class="goal" id="g-desert"><i>✓</i><span>Recreate the Atacama.</span></div>
+    <div class="goal" id="g-karst"><i>✓</i><span>Grow a cave system.</span></div>
+    <p class="say" style="font-size:.84rem;color:var(--muted)">A teaching model, not a real geochemical code. The composition table shows how the rock's make-up shifts as mobile elements leave.</p>
+  </div>
+
+  <div class="example">
+    <span class="tag"><span>Worked example · residual enrichment links straight back to L1</span></span>
+    <p>Say a basalt starts with 15 wt% Al<sub>2</sub>O<sub>3</sub>, and chemical weathering removes 60 per cent of the rock's mass as dissolved mobile elements while keeping all the aluminium.</p>
+    <div class="calc">Start: 100 g rock contains 15 g Al2O3
+After: 40 g rock still contains 15 g Al2O3
+Grade = 15 / 40 = 37.5 wt% Al2O3   (concentration factor 2.5)</div>
+    <p>You've concentrated aluminium two and a half times without adding a single atom. Go further, strip the silica too, and you reach bauxite grades. This is the same concentration-factor logic from Lecture 1, achieved by subtraction instead of addition.</p>
+  </div>
+
+  <h3>What controls how fast and how deep</h3>
+  <p>Five things, and you can feel every one in the machine above. <strong>Composition and grain size:</strong> soluble minerals (halides, carbonates, sulphates, sulphides) go fastest, and coarse-grained rocks weather faster than fine-grained ones because each big grain exposes more surface along its boundaries. <strong>Structure:</strong> bedding, joints, fractures, foliation, faults, shears and rock contacts all let water in. That's also why you rarely see a clean geological contact in the field; contacts are planes of weakness and weather out first. <strong>Topography:</strong> high relief means more physical weathering. <strong>Climate:</strong> heat speeds reactions, liquid water is essential, big day-night swings crack rock (in the desert you can sometimes hear it), and wind abrades. <strong>Vegetation:</strong> dense cover holds moisture and pumps out organic acids, so warm, humid, forested places weather deepest. Different plants produce different acids, which is still an active research area.</p>
+  <div class="note">
+    <span class="tag"><span>Field note · acid rain and caves</span><span class="srcs">slide 11 and lecture recording, 15 Sep</span></span>
+    <p>Karst (caves and sinkholes in limestone) is the classic chemical weathering landscape: weakly acidic rain and groundwater dissolve calcite. Rain has become more acidic since the industrial revolution, so karst dissolution has probably sped up. In one north Queensland groundwater study, smoke from land-clearing fires in Indonesia and Malaysia pushed rainwater pH below 3. Below the water table, by contrast, almost nothing happens; the trick is that water tables move up and down all the time.</p>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="profiles" data-log="Profiles"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">25 to 35 m</span></div>
+  <h2>Reading weathered rock</h2>
+  <p>Weathered rock looks unfamiliar until you know what to look for. Work through these the way you would on a field trip: describe first, interpret second.</p>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · Manuka open cut, south of Cobar</span><span class="srcs">slides 16 and 17</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide016_1.jpg" alt="A geologist beside a quarry face of pale, heavily jointed granite with orange-red iron staining along the joints">
+    <p class="ask">This used to be a hard granite. List three things in the photo that tell you it's deeply weathered.</p>
+    <details data-obs="granite"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Abundant joints and fractures cutting the whole face, now the paths water followed.</li><li>A pale, bleached colour overall: iron has been leached out of the rock.</li><li>Red-orange hematite staining concentrated along the fractures, where that iron reprecipitated.</li></ul>
+      <p class="so">Up close (slide 17) only small cores of fresh granite survive; the rest is quartz plus clay, soft enough to dig. Weathering attacks from every fracture inward, so the last fresh rock is always in the middle of the blocks.</p>
+    </div></details>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · Boundary South pit, Manuka mine</span><span class="srcs">slide 19</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide019_1.jpg" alt="Open pit wall showing a reddish-brown upper layer, a pale bleached band, and darker iron-stained rock below, with water ponded in the pit floor">
+    <p class="ask">Log this pit wall from top to bottom. What are the layers, and what did water do to make them?</p>
+    <details data-obs="profile"><summary>Show what I see</summary><div class="seen">
+      <ul><li><b>Top:</b> iron-rich, red-brown soil and weathered rock.</li><li><b>Middle:</b> a pale, bleached zone where you can still see bedding, but the iron is gone.</li><li><b>Bottom:</b> brown, iron-altered limestone, then fresh rock.</li></ul>
+      <p class="so">The water table moved up and down through this profile many times. Each time it carried dissolved iron with it, stripping the bleached zone and redepositing iron above and below. Iron is the element groundwater moves most visibly. Notice also that the iron isn't evenly spread: a fault through the pit controls where the high-iron bands sit.</p>
+    </div></details>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · diamond core at 18 m, Copper Deeps, Drake Goldfield</span><span class="srcs">slide 20</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide020_1.jpg" alt="Drill core that is crumbly, pale orange and white, with no visible rock texture">
+    <p class="ask">This is 18 m down a drill hole. What rock was it?</p>
+    <details data-obs="core18"><summary>Show what I see</summary><div class="seen">
+      <p>Honestly, you can't tell. There's no structure left at all, just kaolinite and hematite. That's the point: in Western Australia you can drill through more than 100 m of intensely weathered material before you hit anything that looks like rock, because the profile has been soaking in groundwater for millions of years. Immobile-element chemistry (later in this lecture) is how you work out what the parent rock was.</p>
+    </div></details>
+  </div>
+
+  <h3>The minerals you'll keep finding in weathered rock</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Mineral</th><th>What it is</th><th>Why it's there</th></tr></thead>
+    <tbody>
+      <tr><td><span class="swatch" style="background:#E9E6DD"></span>Quartz</td><td>SiO<sub>2</sub></td><td>Barely reacts, so it survives</td></tr>
+      <tr><td><span class="swatch" style="background:#D8D4C2"></span>Chalcedonic silica</td><td>microcrystalline SiO<sub>2</sub></td><td>Left when ultramafic rocks lose their Mg and Fe</td></tr>
+      <tr><td><span class="swatch" style="background:#F1EEE6"></span>Kaolinite (kaolin)</td><td>Al clay</td><td>By far the most common weathering clay, from feldspars</td></tr>
+      <tr><td><span class="swatch" style="background:#9E3B2A"></span>Hematite</td><td>Fe<sub>2</sub>O<sub>3</sub></td><td>Iron oxide where oxygen is freely available</td></tr>
+      <tr><td><span class="swatch" style="background:#B9792E"></span>Goethite</td><td>FeO(OH)</td><td>Iron oxyhydroxide; contains hydrogen, so it forms where water pools</td></tr>
+      <tr><td><span class="swatch" style="background:#D6B84A"></span>Jarosite group</td><td>K-Fe sulphates</td><td>Acidic, sulphate-rich weathering of sulphides</td></tr>
+      <tr><td><span class="swatch" style="background:#C9C2B0"></span>Montmorillonite</td><td>smectite clay</td><td>Swelling clay in less leached profiles</td></tr>
+      <tr><td><span class="swatch" style="background:#F2F0EA"></span>Gibbsite, boehmite</td><td>Al hydroxides</td><td>Extreme leaching: bauxite</td></tr>
+      <tr><td><span class="swatch" style="background:#7A6E62"></span>Anatase, rutile</td><td>TiO<sub>2</sub></td><td>Titanium is immobile, so it stays behind</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.95rem">Every mineral on this list is an end product: resistant to any further breakdown. That's the logic to remember. <span class="srcs">slide 21</span></p>
+</div></section>
+
+<section id="oxid" data-log="Oxidation"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">35 to 50 m</span></div>
+  <h2>Oxidation: why sulphides rust and make acid</h2>
+  <p>Oxidation is losing electrons; reduction is gaining them. In ore deposits that boils down to this: sulphides form in reduced environments deep underground where there's no free oxygen. Bring them near the surface, add oxygenated water, and they're no longer stable. They react, iron ends up as oxides and hydroxides, and sulphur ends up as sulphate. The minerals that oxidise most often are the iron ones: pyrite (FeS<sub>2</sub>), pyrrhotite (Fe<sub>1-x</sub>S) and the carbonate siderite (FeCO<sub>3</sub>).</p>
+  <p>A handy rule of thumb: <strong>hematite</strong> means flowing water and plenty of free oxygen; <strong>goethite</strong> contains hydrogen, so it needs water sitting around, and it marks where water pooled, like at a water table. So the iron oxides in a profile are a map of old groundwater. <span class="srcs">slide 23 and lecture recording</span></p>
+
+  <div class="lab" id="acid">
+    <h4><span>Pyrite to acid, one step at a time</span><b id="acidStep">step 0 of 3</b></h4>
+    <p class="say" style="margin-top:0">Oxidise one mole of pyrite (about 120 g, a small fistful) into 1000 litres of unbuffered water and watch what happens.</p>
+    <div class="eqs" id="eqs">
+      <div>FeS<sub>2</sub> + 3½ O<sub>2</sub> + H<sub>2</sub>O &rarr; Fe<sup>2+</sup> + 2 SO<sub>4</sub><sup>2&minus;</sup> + 2 H<sup>+</sup></div>
+      <div>Fe<sup>2+</sup> + &frac14; O<sub>2</sub> + H<sup>+</sup> &rarr; Fe<sup>3+</sup> + &frac12; H<sub>2</sub>O</div>
+      <div>Fe<sup>3+</sup> + 3 H<sub>2</sub>O &rarr; Fe(OH)<sub>3</sub> + 3 H<sup>+</sup></div>
+    </div>
+    <div class="acid">
+      <svg id="beaker" viewBox="0 0 140 170" role="img" aria-label="Beaker of water changing colour and filling with hydrogen ions as pyrite oxidises" style="max-width:9rem;margin:0 auto;display:block"></svg>
+      <div>
+        <div class="readout">
+          <div><small>H⁺ released</small><b id="acidH">0 mol</b></div>
+          <div><small>pH</small><b id="acidPH">7.0</b></div>
+        </div>
+        <p class="say" id="acidSay">Start with clean, neutral water and a pyrite crystal.</p>
+      </div>
+    </div>
+    <div class="row"><button class="btn" type="button" id="acidNext">Next step</button><button class="btn ghost" type="button" id="acidReset">Reset</button></div>
+  </div>
+  <p>Net result: every mole of pyrite releases four moles of H<sup>+</sup> and leaves an orange-brown iron hydroxide that ages into goethite. That's <button class="term" data-t="acid mine drainage">acid mine drainage</button>, one of the biggest environmental problems in mining, and it's the same chemistry that builds a gossan. Rock rich in carbonate can neutralise the acid; quartz-rich rock can't.</p>
+  <h3>What controls oxidation</h3>
+  <p>Four things: a supply of oxygenated water (water with dissolved oxygen; without it, nothing happens); the right minerals to oxidise (sulphides and carbonates); structure, porosity and permeability (fractures, bedding, joints, foliation, faults); and climate (rainfall, temperature and especially a water table that rises and falls). <span class="srcs">slide 26</span></p>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="gossans" data-log="Gossans"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">50 to 60 m</span></div>
+  <h2>Gossans: the rusty cap on a sulphide body</h2>
+  <p>A <button class="term" data-t="gossan">gossan</button> is the oxidised, iron-rich remains of a sulphide body exposed at the surface: mostly goethite, hematite and ferrihydrite, plus whatever secondary minerals the oxidation produced, and only a little of any economic sulphide (galena, sphalerite, chalcopyrite). Gossans sit in the oxidised zone above the water table. They were the first ores humans ever mined, because they're right at the surface and easy to spot. They can point to a deposit below, but not always.</p>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · an unknown gossan, southern Cobar field</span><span class="srcs">slide 28</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide028_2.jpg" alt="Geologist standing in a shallow pit dug into red-brown gossan among scrubby trees"></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide028_1.jpg" alt="Close-up of hard, dark red-brown gossan blocks next to a geological hammer"></div>
+    </div>
+    <p class="ask">No prospector or miner ever recorded this outcrop. It turned out to carry visible gold all through it, yet there's no sulphide left at all. Why did the gold survive when everything else rusted?</p>
+    <details data-obs="gossanAu"><summary>Show the reasoning</summary><div class="seen">
+      <p>Gold doesn't oxidise. The pyrite or pyrrhotite that once hosted it reacted completely to goethite, but the gold grains just sat there, and if anything got relatively richer as the rock around them lost mass. Two lessons: undiscovered gossans are still out there to find, even in well-explored districts like Cobar; and a gossan sample is assayed for metals, not judged by its looks.</p>
+    </div></details>
+  </div>
+
+  <p>A gossan is a promising sign, not a guarantee. Plenty of big gossans in central NSW turned out to be goethite replacing massive pyrite or pyrrhotite with no metals at all. Experienced explorers look at the texture. A classic <button class="term" data-t="boxwork">boxwork</button> texture, where goethite has filled the space left by dissolved sulphide crystals and the cell shapes copy the original crystals, tells you what the sulphide was. Some boxworks point to pyrite; others to the copper, lead or zinc sulphides you actually want.</p>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="supergene" data-log="Supergene"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">60 to 75 m</span></div>
+  <h2>The supergene profile: where copper gets richer</h2>
+  <p>Now put it together into the most important picture in this lecture. Take a primary copper sulphide body (chalcopyrite) and let rain soak into it for a long time. Above the water table everything is oxidising. Below it, conditions are reducing. Copper dissolved in the oxidising zone travels down with the water, hits the water table, finds reducing conditions and reprecipitates as copper-rich sulphides. The water table is the boundary between oxidation and reduction, so it's where metals pile up. That richest layer is the <button class="term" data-t="supergene enrichment">supergene enrichment</button> zone.</p>
+  <p>From top to bottom you get: a <strong>gossan</strong>; a <strong>leached zone</strong> stripped of metal; an <strong>oxide zone</strong> with the brightly coloured copper minerals (malachite, azurite, cuprite, chrysocolla, native copper); then at the water table the <strong>enrichment blanket</strong> of chalcocite, covellite and bornite; and below that the unaltered <strong>primary</strong> chalcopyrite. Run the simulator and watch it build.</p>
+
+  <div class="lab" id="sg">
+    <h4><span>Supergene simulator</span><b id="sgCycle">cycle 1</b></h4>
+    <canvas id="sgCanvas" aria-label="Animated cross-section of a copper sulphide body weathering, with rain, a water table and an enrichment blanket"></canvas>
+    <div class="row">
+      <button class="btn" type="button" id="sgRun">Pause</button>
+      <button class="btn ghost" type="button" id="sgDrop">Drop the water table</button>
+      <button class="btn ghost" type="button" id="sgReset">Reset</button>
+    </div>
+    <div class="readout">
+      <div><small>Leached zone</small><b id="sgL">0.05% Cu</b></div>
+      <div><small>Oxide zone</small><b id="sgO">0.8% Cu</b></div>
+      <div><small>Enrichment blanket</small><b id="sgB">0.6% Cu</b></div>
+      <div><small>Primary ore</small><b>0.6% Cu</b></div>
+    </div>
+    <p class="say" id="sgSay">Tap a zone in the picture to see its minerals.</p>
+    <div class="goal" id="g-sg"><i>✓</i><span>Drop the water table twice and grow a blanket above 2% Cu.</span></div>
+    <p class="say" style="font-size:.84rem;color:var(--muted)">Grades are illustrative, chosen to show the pattern rather than any real deposit.</p>
+  </div>
+
+  <h3>Why the blanket is so rich</h3>
+  <p>Look at how much copper each mineral carries. The enrichment minerals simply pack more copper into each crystal than primary chalcopyrite does. <span class="srcs">calculated from formulae</span></p>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 300" role="img" aria-labelledby="cuT" id="cuBars" style="min-width:520px"><title id="cuT">Weight per cent copper in common copper minerals: chalcopyrite 34.6, azurite 55.3, malachite 57.5, bornite 63.3, covellite 66.5, chalcocite 79.8, cuprite 88.8, native copper 100</title></svg></div>
+    <figcaption>Colours mark the zone each mineral belongs to: grey for primary, blue-green for the oxide zone, gold for the enrichment blanket.</figcaption>
+  </figure>
+
+  <div class="example">
+    <span class="tag"><span>Real deposit · Girilambone, NSW</span><span class="srcs">slide 29</span></span>
+    <p>At Girilambone the only thing worth mining was the supergene chalcocite (Cu<sub>2</sub>S) blanket. The oxide zone above and the primary sulphide below were both too low grade. Supergene zones are usually only a few metres thick and can be anything from absent to around ten metres, so a blanket can make or break a project.</p>
+  </div>
+  <div class="note">
+    <span class="tag"><span>Field note · why nobody wants native copper any more</span><span class="srcs">lecture recording, 15 Sep</span></span>
+    <p>Native copper sounds like a jackpot, but in a modern mine it's a headache. It's soft and malleable, so instead of breaking in the crusher it smears and jams it. Mines stockpile it instead, and heap leaching doesn't love it either, because pure copper eats up the acid. The usual fix is to blend it slowly with lower-grade ore.</p>
+  </div>
+  <div class="example">
+    <span class="tag"><span>Real deposit · Broken Hill, NSW</span><span class="srcs">slide 31</span></span>
+    <p>Most oxide zones are only a few metres thick. But stack several weathering episodes millions of years apart and you can build an oxide zone over a hundred metres thick. Broken Hill went through at least three, and its oxide zone was spectacularly rich, with masses of native silver and chlorargyrite (AgCl) weighing over a tonne. That's what the "Drop the water table" button is imitating.</p>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="deep" data-log="Deep oxidation"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">75 to 90 m</span></div>
+  <h2>When oxidation goes deep: faults and fresh surprises</h2>
+  <p>Oxidation normally stops at the water table. A fault changes that. Oxygenated groundwater can run down a fault plane for millions of years and oxidise rock hundreds of metres below the "normal" oxide zone, so you can drill through fresh sulphide and then hit oxidised ore again.</p>
+
+  <div class="lab" id="drake">
+    <h4><span>Core tray · Gladstone Hill, Drake Goldfield</span><b id="drakeScore">log all four</b></h4>
+    <p class="say" style="margin-top:0">Four pieces of core from one hole, in depth order. Assign each to a zone. One of them is a trap.</p>
+    <div class="cards" id="drakeCards"></div>
+  </div>
+
+  <div class="example">
+    <span class="tag"><span>Real deposit · Tsumeb, Namibia</span><span class="srcs">slides 32 to 36</span></span>
+    <p>Tsumeb is a pipe-like orebody in limestone and dolostone. It had a normal oxide zone from surface to Level 11, then fresh sulphide, then a second oxide zone from Level 24 to Level 35, hundreds of metres down, because a fault zone let oxygenated water percolate down for millions of years. That deep oxidation made Tsumeb the source of tens of thousands of world-class secondary mineral specimens.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" src="img/L2/slide034_1.jpg" alt="Cross-section of the Tsumeb pipe showing the orebody in red cutting down through dolomite units, with the fault zone and level plans">
+    <figcaption>The orebody (red) dives down the pipe, crossed by the fault zone (labelled NBZ). Find Level 24 to 35 on the section: that's the second oxide zone. <span class="srcs">slide 34</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Tsumeb specimens</span><span class="srcs">slides 35 and 36</span></div>
+    <div class="trio">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide035_2.jpg" alt="Deep blue azurite crystals with pale green malachite"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide036_1.jpg" alt="Emerald-green crystals on white matrix"><div class="cap">B</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide036_2.jpg" alt="Pink rhombohedral crystals in a cluster"><div class="cap">C</div></div>
+    </div>
+    <p class="ask">All three are secondary minerals from the oxide zone. Which metal does each carry, and why is C pink?</p>
+    <details data-obs="tsumeb"><summary>Show what I see</summary><div class="seen">
+      <ul><li><b>A:</b> azurite (deep blue) with malachite (green): copper hydroxyl carbonates.</li><li><b>B:</b> dioptase: copper silicate, famously vivid green. Tsumeb's are among the best in the world.</li><li><b>C:</b> smithsonite, zinc carbonate. Zinc has no colour of its own; the pink comes from a trace of cobalt.</li></ul>
+      <p class="so">Bright colours in an oxide zone mostly mean copper (blue, green). Colourless or white usually means lead or zinc carbonates and sulphates (cerussite, smithsonite, anglesite) unless a trace element tints them.</p>
+    </div></details>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · Mount Kelly, north of Mount Isa</span><span class="srcs">slides 37 to 39</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide039_1.jpg" alt="Open pit wall with labelled bands: acid-leached zone, goethite halo, and enriched band">
+    <p class="ask">Mount Kelly was mined for its oxide zone only. Which labelled band was the ore, and how do you think it was processed?</p>
+    <details data-obs="kelly"><summary>Show the answer</summary><div class="seen">
+      <p>The darker <b>enriched band</b> on the right, rich in hematite and copper oxides and carbonates (malachite, azurite). The acid-leached zone has been stripped of metal, and the goethite halo marks iron moved by groundwater around it. The ore was crushed, stacked on a pad and sprayed with acid for a few months, then the copper-bearing solution was pumped off: <button class="term" data-t="heap leaching">heap leaching</button>, about as simple as metallurgy gets. The deposit sits where the Mount Kelly Fault meets the regional McNamara Fault, and the mineralised band runs for about 500 m along strike.</p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="alter" data-log="Alteration"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">90 to 100 m</span></div>
+  <h2>Alteration: fluids rewriting the rock</h2>
+  <p>Alteration is a mineralogical change at low pressure caused by fluids moving through rock, or by oxygen. Hot, often acidic hydrothermal fluid reacts with the minerals it passes, swapping elements in and out. Feldspars turn to clays or micas, ferromagnesian minerals turn to chlorite and epidote, and the rock can gain silica, potassium or sulphur while losing sodium, calcium or iron. It works on every scale from microns to kilometres, and around ore deposits from a metre beside a vein to about two kilometres around a porphyry. That's exactly why alteration is the most common vector to ore: the halo is far bigger than the ore.</p>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · two altered rocks</span><span class="srcs">slide 42</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide042_2.jpg" alt="Pale, soft-looking drill core with a chalky texture"><div class="cap">A · altered volcanic tuff, core</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide042_1.jpg" alt="Thin section under the microscope with bright high-coloured grains"><div class="cap">B · thin section, Woodlark Island, PNG</div></div>
+    </div>
+    <p class="ask">In A, what happened to the feldspars? In B, the bright, high-interference-colour mineral is a classic alteration mineral. Which one, and is it a hotter or cooler alteration than A?</p>
+    <details data-obs="altered"><summary>Show what I see</summary><div class="seen">
+      <p>A: the feldspars have all gone to clay, because acidic hydrothermal fluid attacked them. The core is pale, chalky and soft. B: the bright mineral is epidote, which forms at higher temperatures than clay (argillic) alteration. Two rocks, two very different fluid temperatures, and you can read that from the minerals alone.</p>
+    </div></details>
+  </div>
+
+  <h3>Four kinds of alteration</h3>
+  <div class="mix">
+    <div><b>Mineralogical</b>New minerals you can see: phyllic, propylitic, argillic, kaolinisation, hematisation.</div>
+    <div><b>Mineral structural</b>The same mineral, but its crystal structure changes, like illite or muscovite crystallinity.</div>
+    <div><b>Geochemical (cryptic)</b>No visible change, only chemistry: barium around VHMS systems, rare earths in some sediment-hosted deposits.</div>
+    <div><b>Isotopic</b>Shifted isotope ratios in carbonates and sulphides, important around Carlin-type gold.</div>
+  </div>
+
+  <div class="note">
+    <span class="tag"><span>Field note · the lode nobody can mine</span><span class="srcs">lecture recording, 15 Sep</span></span>
+    <p>At the Hera mine in the Cobar Basin there's a gold lode worth several tens of millions of dollars that will probably never be mined. Nobody checked the mineralogy before driving a tunnel towards it. The host rock was intensely chlorite and talc altered, far too weak to support underground workings. Alteration doesn't just guide you to ore; it decides whether you can safely dig it out. Do your mineralogy first.</p>
+  </div>
+
+  <h3>Why alteration matters</h3>
+  <p>Alteration tells you hydrothermal fluid moved through the rock. It's often coeval with metal deposition. It records the temperature, pH and pressure of the fluid. It can show where different waters mixed, for example cool, neutral rainwater meeting hot, acidic hydrothermal fluid, which in epithermal systems often triggers gold and silver precipitation. And it can greatly weaken the host rock, as Hera shows.</p>
+</div></section>
+
+<section id="assemblages" data-log="Assemblages"><div class="wrap">
+  <div class="kicker">Concept 8 <span class="depth">100 to 112 m</span></div>
+  <h2>Alteration assemblages: names that encode temperature and pH</h2>
+  <p>Alteration types are named by their mineral assemblage. Learn them as groups that tell a story about the fluid, rather than as a list.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Assemblage</th><th>Key minerals (low temperature)</th><th>What it tells you</th></tr></thead>
+    <tbody>
+      <tr><td><span class="swatch" style="background:var(--chl)"></span><b>Propylitic</b></td><td>chlorite, epidote group, albite, carbonate, pyrite</td><td>Distal, cooler, near-neutral fluid. Rocks go green. Gains Ca, Na, Fe. Pyrite here is early and usually nothing to do with ore.</td></tr>
+      <tr><td><span class="swatch" style="background:var(--gold-hi)"></span><b>Phyllic</b> (sericitic)</td><td>quartz, muscovite/sericite, pyrite, chlorite</td><td>Acidic fluid destroying feldspar. Pale, often pyrite-rich. Also called sericitisation.</td></tr>
+      <tr><td><span class="swatch" style="background:#C98A8A"></span><b>Potassic</b></td><td>K-feldspar, biotite, muscovite, sericite, quartz (+ magnetite at higher T)</td><td>Hot, near-magmatic fluid adding potassium; the core of porphyry systems.</td></tr>
+      <tr><td><span class="swatch" style="background:var(--kao)"></span><b>Argillic</b></td><td>kaolinite, dickite, muscovite, sericite, montmorillonite</td><td>Clay alteration from acidic, cooler fluid.</td></tr>
+      <tr><td><span class="swatch" style="background:#B8A2C8"></span><b>Advanced argillic</b></td><td>quartz, alunite, pyrophyllite, dickite, diaspore, zunyite, opaline silica</td><td>Very acidic, often near the top of epithermal and porphyry systems.</td></tr>
+    </tbody>
+  </table></div>
+  <p>A few traps. <strong>Quartz</strong> is in almost every assemblage, so it tells you nothing on its own. <button class="term" data-t="sericite">Sericite</button> isn't a mineral; it's a field name for fine-grained white mica (muscovite) with quartz. You'll also see <strong>phengite</strong>, a muscovite variety, and <strong>dickite</strong>, which is the higher-temperature polymorph of kaolinite. At high temperature each assemblage has an equivalent made of garnet, pyroxene, amphibole, sillimanite, kyanite, cordierite and so on, and those rocks look much more like metamorphic rocks than hydrothermally altered ones. <span class="srcs">slides 45 and 48</span></p>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · green rock and pale rock</span><span class="srcs">slides 46 and 47</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide046_1.jpg" alt="Drill core of green rock with scattered pale and dark fragments"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide047_1.jpg" alt="Close-up of a pale grey-white rock with orange iron spots"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">Name the alteration in each, using only colour and what you'd expect to find in it.</p>
+    <details data-obs="propphyl"><summary>Show what I see</summary><div class="seen">
+      <p>A is <b>propylitic</b>: the green comes from chlorite and epidote, and you'd expect scattered pyrite. B is <b>phyllic</b>: pale because feldspar and ferromagnesian minerals have gone to fine white mica and quartz, with orange spots where pyrite has weathered to iron oxide. If green rock, think propylitic, and look for pyrite.</p>
+    </div></details>
+  </div>
+
+  <div class="lab" id="nameAlt">
+    <h4><span>Name that alteration</span><b id="naScore">0 / 6</b></h4>
+    <div class="cards" id="naCards"></div>
+  </div>
+
+  <h3>What controls where and how strongly a rock alters</h3>
+  <p><strong>Distribution</strong> depends on primary controls (host rock composition, structure, porosity and permeability, how reactive the rock is, how complex the geology is), secondary controls (later faults and fractures, secondary porosity), the fluid itself (pH, composition, volume), and overprinting by later fluids. <strong>Intensity</strong> mostly comes down to three things: how reactive the host is (carbonate-bearing rock reacts far more than quartz-rich rock), permeability (especially secondary, from fracturing), and the volume and type of fluid. A low-pH fluid is far more aggressive. <span class="srcs">slides 49 and 50</span></p>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="zoning" data-log="Zoning"><div class="wrap">
+  <div class="kicker">Concept 9 <span class="depth">112 to 125 m</span></div>
+  <h2>Zoning: how alteration maps a hydrothermal system</h2>
+  <p>Around a hydrothermal system, alteration forms zones, because temperature and fluid chemistry change with distance from the source. If you can recognise the zones, you can tell which way the heart of the system lies. Two classic models are worth knowing in detail.</p>
+  <h3>Porphyry copper-gold</h3>
+  <p>Press play to watch the zones develop as the intrusion releases fluid, then tap any zone to read it.</p>
+  <div class="lab" id="por">
+    <h4><span>Porphyry alteration zoning</span><b>classic model</b></h4>
+    <div class="zonebox">
+      <svg id="porSvg" viewBox="0 0 600 420" role="img" aria-label="Cross-section of a porphyry system with nested alteration zones"></svg>
+      <div class="zinfo" id="porInfo"><b class="n">Tap a zone</b>Start from the pink porphyry and work outward.</div>
+    </div>
+    <div class="row"><button class="btn" type="button" id="porPlay">Play: cool the intrusion</button></div>
+  </div>
+  <p>The pattern to remember: <strong>potassic</strong> core (quartz, K-feldspar, biotite) capping the unaltered porphyry, with a <strong>low-grade core</strong> inside it that usually isn't mined; the <strong>ore shell</strong> (1 to 3 per cent chalcopyrite, with the gold) around the cupola at the edge of the potassic zone; a <strong>phyllic</strong> zone (quartz, sericite, pyrite) with a pyrite shell of around 10 per cent pyrite and no ore; a much wider <strong>propylitic</strong> halo (chlorite, epidote, carbonate, adularia, albite) with about 2 per cent pyrite; <strong>advanced argillic</strong> alteration up top; and distal copper-lead-zinc-silver-gold veins out in the propylitic zone. That last point matters: in a porphyry district, don't only look for the porphyry. <span class="srcs">slide 57 and lecture recording, 18 Sep</span></p>
+
+  <div class="lab" id="hunt">
+    <h4><span>Vector hunt · find the ore shell</span><b id="huntLeft">8 samples left</b></h4>
+    <p class="say" style="margin-top:0">A porphyry is buried somewhere under this map. Each tap is a surface sample that tells you the alteration. Use the zoning to walk inward and hit the ore shell before you run out.</p>
+    <svg class="grid-svg" id="huntSvg" viewBox="0 0 640 400" role="img" aria-label="Map grid; tap to take samples that reveal alteration"></svg>
+    <div class="legend" id="huntLegend"></div>
+    <p class="say" id="huntSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="huntNew">New prospect</button></div>
+  </div>
+
+  <h3>VMS (VHMS)</h3>
+  <p>On the seafloor, the alteration sits mostly in the <strong>footwall</strong>, because the hanging wall is deposited after the ore. Under the massive sulphide is a feeder pipe: a core of very iron-rich chlorite and sericite with sulphide stringers (usually chalcopyrite, not lead or zinc, and sometimes rich enough to mine), then quartz with iron-rich chlorite under the massive sulphide, and around the outside, magnesium-rich chlorite. So chlorite composition is a vector you can see: iron-rich chlorite is a deep green, magnesium-rich chlorite is nearly colourless. Carbonates do the same thing, going from Mg-rich far out to Fe-rich near the ore. Barium is enriched highest above the ore, and manganese and iron oxide deposits and barite form on the seafloor away from the vents, so finding barite can tell you you're in the right system but still distal. <span class="srcs">slides 58 and 61, lecture recording 18 Sep</span></p>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 300" role="img" aria-labelledby="vmsT" style="min-width:540px">
+      <title id="vmsT">VMS cross-section with massive sulphide lens on the seafloor, a footwall alteration pipe zoned from iron-rich chlorite in the core to magnesium-rich chlorite outside, barite above and distal iron and manganese deposits</title>
+      <rect x="0" y="0" width="720" height="130" fill="var(--sea)" opacity=".7"/>
+      <rect x="0" y="130" width="720" height="170" fill="var(--crust)"/>
+      <path d="M190 300 Q240 190 300 136 L420 136 Q480 190 530 300 Z" fill="#CFE3D0" opacity=".9"/>
+      <path d="M260 300 Q300 200 330 140 L390 140 Q420 200 460 300 Z" fill="var(--chl)" opacity=".75"/>
+      <path d="M320 300 Q340 210 352 146 L368 146 Q380 210 400 300 Z" fill="#2F5A33"/>
+      <path d="M290 130 Q360 96 430 130 Z" fill="var(--slate)"/>
+      <path d="M300 120 Q360 104 420 120" stroke="var(--gold-hi)" stroke-width="5" fill="none"/>
+      <g stroke="var(--gold)" stroke-width="2"><path d="M350 290 l6 -40 l-4 -30 l6 -40"/><path d="M368 290 l-5 -50 l6 -40 l-3 -40"/></g>
+      <rect x="320" y="70" width="80" height="12" rx="3" fill="#E4E0EA" stroke="var(--ink)"/>
+      <ellipse cx="110" cy="128" rx="60" ry="6" fill="var(--hem)" opacity=".7"/>
+      <ellipse cx="620" cy="128" rx="60" ry="6" fill="#4B3A52" opacity=".8"/>
+      <g font-size="13" fill="var(--ink)">
+        <text x="440" y="110">massive sulphide lens</text>
+        <text x="410" y="80">barite, Ba highest above ore</text>
+        <text x="60" y="114">distal Fe oxides</text>
+        <text x="570" y="114">distal Mn oxides</text>
+        <text x="410" y="290" fill="#E9F2E9">Fe-chlorite + stringers</text>
+        <text x="480" y="250">Mg-chlorite</text>
+        <text x="40" y="200">footwall volcanics</text>
+        <text x="40" y="40">seawater</text>
+      </g>
+    </svg></div>
+    <figcaption>Walking inward through the footwall, chlorite gets darker green (more iron), carbonate gets more iron-rich, and sodium is stripped. The scales are large: a VMS alteration system can be detectable 3 to 5 km out.</figcaption>
+  </figure>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · Jaguar VMS deposit, Western Australia</span><span class="srcs">slides 62 and 63</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide063_1.jpg" alt="Underground face of dark green basalt pillows with paler bleached margins and sulphide along the pillow rims">
+    <p class="ask">These are Archaean pillow basalts, over 3 billion years old. Where did the sulphide go in first, and why there?</p>
+    <details data-obs="jaguar"><summary>Show what I see</summary><div class="seen">
+      <p>Sulphide first replaced the margins between the pillows and filled joint cracks, because those are planes of weakness that fluid can get into. Strong chlorite forms around pillow boundaries where flow was weaker. Closer to the vent, flow was intense enough to bleach the basalt and replace whole pillows with chalcopyrite and pyrite. It's a replacement deposit: you can watch it eat the rock from the outside in.</p>
+    </div></details>
+  </div>
+
+  <div class="note">
+    <span class="tag"><span>Field note · why the classic models break</span><span class="srcs">slide 60</span></span>
+    <p>Real systems are messier than these diagrams. Multiple intrusions or eruptions over a long time, several fluid events, overprinting alteration, metamorphism, deformation, faulting, and then weathering and erosion all scramble the neat shells. Use the models to make predictions, then let the rocks tell you where you're wrong.</p>
+  </div>
+</div></section>
+
+<section id="measure" data-log="Measuring"><div class="wrap">
+  <div class="kicker">Concept 10 <span class="depth">125 to 140 m</span></div>
+  <h2>Measuring alteration: from core to numbers</h2>
+  <p>Your eyes are the first tool, but they're not enough. A proper alteration study works at every scale from deposit to microscope. Thin sections show mineral groups and, crucially, overprinting relationships (which alteration came first). <button class="term" data-t="XRD">XRD</button> identifies the fine-grained clays and micas you can't resolve optically, and quantitative XRD can even tell you how much illite versus muscovite you have and how crystalline the illite is. Spectroscopy identifies clays and chlorites quickly. For cryptic alteration, chemistry is everything: ICP-MS and XRF, and in the field, <button class="term" data-t="pXRF">portable XRF</button>.</p>
+  <div class="note">
+    <span class="tag"><span>Field note · what pXRF can and can't do</span><span class="srcs">lecture recording, 18 Sep</span></span>
+    <p>Mining companies use pXRF constantly. It's excellent for copper, lead and zinc. It's poor for rare earths, not great for silver unless there's a lot of it, and no good for gold. Know your instrument's blind spots before you trust a number.</p>
+  </div>
+  <p>You can also date alteration directly: K-Ar or Ar-Ar on illite, muscovite or adularia, and now U-Pb on epidote-group minerals. If the alteration is tied to mineralisation, that dates the ore-forming event as well as the host rock.</p>
+
+  <h3>The alteration box plot</h3>
+  <p>For VMS systems there's a neat way to measure alteration intensity using only whole-rock data. The <button class="term" data-t="alteration index">alteration index</button> (AI) tracks feldspar and glass being destroyed and replaced by sericite and chlorite:</p>
+  <div class="calc">AI   = 100 × (K2O + MgO) / (K2O + MgO + Na2O + CaO)        Ishikawa et al. 1976
+CCPI = 100 × (MgO + FeO) / (MgO + FeO + Na2O + K2O)         Large et al. 2001</div>
+  <p>The <button class="term" data-t="CCPI">chlorite-carbonate-pyrite index</button> (CCPI) tracks chlorite, Fe-Mg carbonate and pyrite growing. Plot them against each other and altered rocks move up and to the right. Load the real Cowley Hills samples, then play with the oxides yourself.</p>
+
+  <div class="lab" id="ai">
+    <h4><span>AI vs CCPI plotter</span><b id="aiState">load the three samples</b></h4>
+    <div class="chips" role="group" aria-label="Sample presets" id="aiPresets"></div>
+    <div class="plot">
+      <svg id="aiSvg" viewBox="0 0 320 320" role="img" aria-label="Box plot of alteration index against chlorite-carbonate-pyrite index"></svg>
+      <div>
+        <div class="ctl" id="aiCtl" style="grid-template-columns:1fr"></div>
+        <div class="readout"><div><small>AI</small><b id="aiAI"></b></div><div><small>CCPI</small><b id="aiCC"></b></div></div>
+      </div>
+    </div>
+    <p class="say" id="aiSay"></p>
+    <p class="say" style="font-size:.84rem;color:var(--muted)">The diagonal is a schematic boundary between background and altered rock; real least-altered boxes depend on rock type. Preset oxide values were chosen to reproduce the AI and CCPI quoted for each sample.</p>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · Cowley Hills VMS, near Woodlawn</span><span class="srcs">slides 65 to 67</span></div>
+    <img loading="lazy" decoding="async" src="img/L2/slide065_1.jpg" alt="Geological cross-section with drill holes through zones of epidote plus albite, quartz plus pyrite, quartz plus sericite and quartz plus sericite plus chlorite">
+    <div class="trio" style="margin-top:.6rem">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide065_2.jpg" alt="Dark green drill core with pale green epidote patches"><div class="cap">1 · distal</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide066_2.jpg" alt="Drill core streaked with white quartz and dark pyrite stringers"><div class="cap">2 · ore zone</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide067_1.jpg" alt="Pale grey, fine-grained siliceous drill core"><div class="cap">3 · above the ore</div></div>
+    </div>
+    <p class="ask">Describe each core in one line, then predict what happens to AI, sodium and barium as you go from 1 to 2 to 3.</p>
+    <details data-obs="cowley"><summary>Show what I see</summary><div class="seen">
+      <ul><li><b>1:</b> dark basalt with patchy epidote, chlorite and albite. The primary basalt texture survives in thin section; pyroxene has gone to epidote and chlorite, Ca-plagioclase to albite. AI about 50, CCPI about 90. Epidote plus chlorite tells you you're too hot and too far away.</li><li><b>2:</b> intense stringer quartz and pyrite, more than chlorite, with chalcopyrite. It's no longer recognisably basalt. AI jumps to about 85, CCPI about 95, and Na<sub>2</sub>O drops to 0.14% because sodium is mobile in hot fluid and gets stripped.</li><li><b>3:</b> intense quartz plus sericite, just above the ore: mostly quartz with lots of muscovite. Barium (754 ppm) and copper (687 ppm) are high even though it isn't ore, because in VMS systems barium precipitates after the sulphides, higher in the sequence.</li></ul>
+      <p class="so">Down the drill hole, AI and CCPI dip and then jump straight up at the mineralisation and fall away after it. Sodium does the opposite. And if a supposedly distal unit plots in the "favourable" footwall field, go back and look: you may have misinterpreted it, and there may be mineralisation nearby nobody has found.</p>
+    </div></details>
+  </div>
+
+  <h3>Immobile elements: seeing through alteration</h3>
+  <p>When a rock is so altered you can't tell what it was, use the elements fluids can't move: zirconium, titanium, yttrium, chromium and aluminium. Their ratios survive alteration, so plots like TiO<sub>2</sub> against Zr, or immobile against mobile elements (TiO<sub>2</sub> vs SiO<sub>2</sub>, Zr vs K<sub>2</sub>O), reveal the original rock. At Cowley Hills, dolerites had been mapped as much younger than the volcanic pile. On Ti-Zr and Y-Zr plots they overlap the basalts perfectly, so they're the same magma: coeval, no dating needed. <span class="srcs">slide 72 and lecture recording, 18 Sep</span></p>
+  <p>A related trick, <button class="term" data-t="Pearce element ratios">Pearce element ratios</button>, converts mobile oxides (Na, K, Ca) to molar ratios and plots them against a conserved element, usually aluminium. Unaltered rocks plot on the feldspar lines; as alteration strips Na, K and Ca, samples slide toward kaolinite. In one Indonesian epithermal system, the barren footwall plotted right on plagioclase, while the mineralised hanging wall units had dropped well toward kaolinite. <span class="srcs">slide 55</span></p>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="vector" data-log="Vectoring"><div class="wrap">
+  <div class="kicker">Concept 11 <span class="depth">140 to 150 m</span></div>
+  <h2>Vectoring to ore: Hera, veins and isotopes</h2>
+  <p>The big question for any explorer is how far away the ore is. At the Hera deposit in the Cobar Basin, the company drilled a 1.5 km hole just to see what the stratigraphy would tell them, starting well away from the orebody and finishing at the mineralisation. Analysing the core showed that the chemistry and mineralogy start changing hundreds of metres before you hit ore. Drag the drill bit along the hole.</p>
+
+  <div class="lab" id="hera">
+    <h4><span>Drilling towards Hera</span><b id="heraD">1500 m from ore</b></h4>
+    <svg class="grid-svg" id="heraSvg" viewBox="0 0 640 280" role="img" aria-label="Chart of strontium over titanium, manganese over titanium and albite over quartz against distance from ore"></svg>
+    <label for="heraR" style="font-size:.8rem;color:var(--muted);display:block;margin-top:.4rem">Drill bit position</label>
+    <input type="range" id="heraR" min="0" max="1500" step="10" value="1500" style="direction:rtl">
+    <div class="readout">
+      <div><small>Sr / Ti</small><b id="hSr"></b></div>
+      <div><small>Mn / Ti</small><b id="hMn"></b></div>
+      <div><small>Albite / quartz</small><b id="hAb"></b></div>
+    </div>
+    <p class="say" id="heraSay"></p>
+    <h4 style="margin-top:1rem"><span>Where's the bit? Three mystery samples</span></h4>
+    <div class="cards" id="heraQuiz"></div>
+    <p class="say" style="font-size:.84rem;color:var(--muted)">Curves are sketched to the shape and distances reported in the case study, normalised to 1 in background rock. They are not the real assay values.</p>
+  </div>
+  <p>Why does it work? Strontium is highly mobile in hydrothermal fluid, so the fluid strips it out; dividing by immobile titanium cancels out changes in rock type. Sr/Ti starts dropping almost 500 m from the ore. Albite is destroyed during phyllic alteration (a sodium-depletion halo), so albite/quartz falls over the last 400 to 600 m. Mn/Ti picks up over the last couple of hundred metres. Combine them and a single drill hole can tell you you're getting warm. <span class="srcs">slides 74 to 79, lecture recording 18 Sep</span></p>
+
+  <h3>Vein deposits: almost no halo</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · narrow alteration around veins</span><span class="srcs">slides 69 and 70</span></div>
+    <div class="trio">
+      <div><img loading="lazy" decoding="async" src="img/L2/slide069_1.jpg" alt="Dark rock cut by a thin pale vein with only a narrow pale margin"><div class="cap">A · Sn-W vein</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide070_1.jpg" alt="Dark purple-brown rock with pale bleached halos along fractures"><div class="cap">B · bleaching</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L2/slide070_2.jpg" alt="Dark sulphide-rich core with angular pale bleached host rock fragments"><div class="cap">C · silver ore</div></div>
+    </div>
+    <p class="ask">Why can't you use a big alteration halo to find veins like A, and what does the pale rock in B and C tell you?</p>
+    <details data-obs="veins"><summary>Show what I see</summary><div class="seen">
+      <p>Vein A carries significant tin and tungsten, but its alteration is only a few centimetres wide. Hydrothermal vein deposits usually have very narrow, discrete alteration zones, a metre at most, so alteration isn't a long-range vector for them. What you do get is <b>bleaching</b>: acidic fluid strips iron and magnesium, and the silicon and aluminium left behind make the rock pale. Nothing was added, so the rock looks white because the colouring elements are gone. When you start seeing bleaching like B, you're close. In C, the dark ore carries about 2000 ppm silver, and the host fragments inside it are completely bleached.</p>
+    </div></details>
+  </div>
+  <p>Isotopes can vector too. In one regional study in northern NSW, sulphur isotopes in sphalerite, arsenopyrite, galena and pyrite fell systematically towards the more magmatic, tin-bearing part of the system: values around zero in the silver veins, negative values towards the tin. So the isotopes told you which way the heat source was, and which metal you were likely to find. <span class="srcs">lecture recording, 18 Sep</span></p>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">150 to 156 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">156 to 160 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Breccias, veins and replacement textures (L3) are the plumbing these fluids used. Ore petrography (L4) is how you identify the oxide, supergene and primary minerals from this lecture under the microscope. Structural controls (L5) explain why faults keep turning up as the thing that focused fluid or let oxygen go deep. And the VMS and porphyry zoning models return in full in L10 and L11.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">160 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 2 slides (79 slides; photos from slides 3, 9, 16, 19, 20, 28, 34 to 39, 42, 46, 47, 63, 65 to 67, 69 and 70) and the Echo360 recordings of 15 and 18 September 2026 (the lecture finishes at the start of the 18 Sep recording). Small tags next to facts show where they came from. Transcripts are machine-generated, so spoken details were cross-checked against the slides where possible. Game values (weathering model, supergene grades, porphyry map, Hera curves) are teaching models and not real data.</p>
+  <p><a href="L1.html">&larr; Lecture 1</a> &nbsp;·&nbsp; <a href="L3.html">Lecture 3, breccias, veins and ore textures &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You have a hat and a hammer.'],[35,'Graduate geologist','Trusted with the core shed.'],[100,'Project geologist','Running a drill program.'],[180,'Senior geologist','Signing off on alteration models.'],[270,'Chief geologist','The board calls you about discoveries.']];
+var G={
+ "weathering":"Physical and chemical breakdown of rock at or near the Earth's surface, usually within a few tens of metres.",
+ "oxidation":"Loss of electrons. In ore deposits, the conversion of sulphides and carbonates to oxides and hydroxides by oxygenated water.",
+ "reduction":"Gain of electrons. Sulphides form and stay stable in reduced conditions, below the water table.",
+ "alteration":"A mineralogical change at low pressure caused by fluids moving through a rock, or by oxygen.",
+ "protolith":"The original rock before weathering, alteration or metamorphism.",
+ "mobile elements":"Elements easily dissolved and carried away by water or hydrothermal fluid: Na, K, Ca, Mg, Fe, Sr and many metals.",
+ "immobile elements":"Elements that stay put during weathering and alteration: Si (mostly), Al, Ti, Zr, Y, Cr. Used to identify the original rock.",
+ "bleaching":"Loss of colour as iron and other colouring elements are removed, leaving pale rock enriched in Si and Al.",
+ "residual enrichment":"An element becoming more concentrated simply because other components were removed around it.",
+ "laterite":"A deeply weathered, iron- and aluminium-rich profile formed under hot, wet tropical conditions.",
+ "bauxite":"Aluminium ore formed by intense tropical weathering; mostly gibbsite.",
+ "gibbsite":"Aluminium hydroxide, Al(OH)₃, the main mineral in bauxite.",
+ "kaolinite":"The most common clay formed by weathering of feldspar; also called kaolin.",
+ "karst":"Landscape of caves and sinkholes formed by dissolution of limestone.",
+ "hematite":"Iron oxide, Fe₂O₃. Red. Rule of thumb: forms where water flows and oxygen is plentiful.",
+ "goethite":"Iron oxyhydroxide, FeO(OH). Brown-orange. Contains hydrogen, so it marks where water pooled, such as a water table.",
+ "jarosite":"Potassium iron sulphate group minerals from acidic weathering of sulphides.",
+ "acid mine drainage":"Acidic, metal-rich water produced when pyrite and other sulphides oxidise; each mole of pyrite releases four moles of H⁺.",
+ "gossan":"The oxidised, iron-rich cap on a sulphide body, mostly goethite and hematite. May or may not overlie ore.",
+ "boxwork":"Gossan texture where goethite fills cells left by dissolved sulphide crystals, preserving their shapes.",
+ "leached zone":"The part of a weathered profile from which metals have been dissolved and removed.",
+ "oxide zone":"The zone above the water table where metals sit in oxide, carbonate and silicate minerals such as malachite and azurite.",
+ "supergene enrichment":"Metals leached from above reprecipitating at the water table, where conditions change from oxidising to reducing.",
+ "water table":"The top of the groundwater-saturated zone; the boundary between oxidising and reducing conditions.",
+ "chalcocite":"Cu₂S, about 80% copper. The classic supergene enrichment mineral.",
+ "heap leaching":"Crushing ore, stacking it on a pad and percolating acid through it to dissolve and recover metal.",
+ "propylitic":"Green, distal alteration: chlorite, epidote, albite, carbonate, pyrite.",
+ "phyllic":"Alteration to quartz, sericite (fine muscovite) and pyrite; also called sericitic.",
+ "sericite":"Not a mineral: a field term for fine-grained white mica (muscovite) with quartz.",
+ "potassic":"Alteration adding potassium: K-feldspar, biotite, quartz, often magnetite. The hot core of porphyries.",
+ "argillic":"Clay alteration: kaolinite, dickite, illite, montmorillonite.",
+ "advanced argillic":"Very acidic alteration: quartz, alunite, pyrophyllite, dickite, diaspore, opaline silica.",
+ "cryptic alteration":"Alteration you can only detect chemically or isotopically, with no visible mineral change.",
+ "XRD":"X-ray diffraction: identifies minerals, especially fine-grained clays and micas, by their crystal structure.",
+ "pXRF":"Portable X-ray fluorescence. Great for Cu, Pb, Zn; poor for REE, weak for Ag, useless for Au.",
+ "alteration index":"AI = 100(K₂O+MgO)/(K₂O+MgO+Na₂O+CaO). Higher means more altered.",
+ "CCPI":"Chlorite-carbonate-pyrite index = 100(MgO+FeO)/(MgO+FeO+Na₂O+K₂O).",
+ "Pearce element ratios":"Molar ratios of mobile elements divided by a conserved element (usually Al) to track mass gain and loss.",
+ "footwall":"The rock below an orebody. In VMS systems, where most of the alteration sits.",
+ "vector":"Any measurable change (mineral, chemical, isotopic) that points the way towards ore."
+};
+var CP={
+ cp1:{q:'All else equal, which rock weathers fastest?',o:['A fine-grained quartzite','A coarse-grained limestone','A fine-grained quartz sandstone'],a:1,e:'Calcite is soluble and coarse grains expose more surface along their boundaries. Quartz barely reacts at all.'},
+ cp2:{q:'You find goethite rather than hematite in an oxidised zone. The best interpretation is...',o:['Water pooled there, likely at an old water table','It was extremely dry','The rock was never oxidised'],a:0,e:'Goethite contains hydrogen, so it needs water sitting around. Hematite points to flowing water and free oxygen.'},
+ cp3:{q:'A huge gossan in central NSW is drilled, and the sulphides underneath are just massive pyrite with no metals. What went wrong?',o:['The drill missed the water table','Nothing: gossans often form over barren pyrite or pyrrhotite','Gold was eroded from the gossan'],a:1,e:'A gossan only tells you sulphides were there. Many big gossans are goethite replacing barren iron sulphides. Assays and boxwork textures tell you whether it’s worth chasing.'},
+ cp4:{q:'In a weathered copper deposit, where is copper usually most concentrated?',o:['The leached zone','The supergene blanket at the water table','The gossan at the surface'],a:1,e:'The water table is the oxidation-reduction boundary. Copper leached from above reprecipitates there as chalcocite, covellite and bornite.'},
+ cp5:{q:'You drill through fresh chalcopyrite at 80 m, then hit native copper at 108 m. The most likely cause is...',o:['A second, deeper oxide zone along a fault','The rock got hotter with depth','A drilling contamination error'],a:0,e:'Oxygenated water travelling down a fault can oxidise rock far below the normal oxide zone, as at Drake and Tsumeb.'},
+ cp6:{q:'A quartz-sericite rock contains 10% pyrite. That pyrite is probably...',o:['The ore, so drill it out','Part of the phyllic pyrite shell, not necessarily ore','A weathering product'],a:1,e:'Around porphyries, phyllic alteration carries a pyrite shell of about 10% pyrite with no copper. The ore shell is further in.'},
+ cp7:{q:'A sample has AI 88 and CCPI 94 with only 0.1% Na2O. What does that suggest?',o:['Fresh basalt','Intense chlorite-pyrite alteration close to ore','Weak distal propylitic alteration'],a:1,e:'High AI and CCPI with sodium stripped out is exactly the Cowley Hills ore-zone signature.'},
+ cp8:{q:'Why is alteration a poor long-range vector for most hydrothermal vein deposits?',o:['Veins never have alteration','The alteration is narrow, usually under a metre wide','Veins are always too deep'],a:1,e:'Vein deposits typically have narrow, discrete bleached zones a few centimetres to a metre wide, so there’s no big halo to follow.'}
+};
+var ST=[
+ ['Why does chemical weathering make dark rocks pale?','Recall','It removes iron, the main colouring element, along with other mobile elements. What’s left is enriched in silicon and aluminium, which make pale minerals like kaolinite and quartz. That’s bleaching.'],
+ ['A basalt with 15 wt% Al2O3 loses half its mass to weathering but keeps all its aluminium. What’s the new Al2O3 grade?','Calculate','15 g of Al2O3 now sits in 50 g of rock, so 30 wt%. A concentration factor of 2 from subtraction alone.'],
+ ['Give three reasons weathered rock matters to a mining company, one good and two bad.','Recall','Good: it can form ore (bauxite, supergene enrichment, oxide zones) and gossans can point to ore. Bad: it masks the geology underneath, usually carries nothing economic and must be stripped before open-cut mining, and it’s weak, causing engineering problems.'],
+ ['Write the overall effect of oxidising one mole of pyrite in terms of acid, and explain why carbonate host rocks reduce the problem.','Apply','Four moles of H⁺ are released per mole of FeS2, plus iron hydroxide. Carbonate minerals react with and neutralise H⁺, so carbonate-rich rock buffers the acid; quartz-rich rock can’t.'],
+ ['Explain why the supergene blanket forms exactly at the water table.','Think','Above the water table, oxygenated water dissolves copper from sulphides. Below it, conditions are reducing. When copper-bearing water reaches the reducing zone, copper reprecipitates as Cu-rich sulphides like chalcocite. The water table is that redox boundary.'],
+ ['Why might a mine stockpile native copper instead of feeding it to the crusher?','Recall','Native copper is soft and malleable. It smears and jams crushers rather than breaking. It also consumes acid in heap leaching. Mines often stockpile it and blend it slowly with lower-grade ore.'],
+ ['A porphyry explorer finds green rock with 2% pyrite, then pale rock with 10% pyrite. Which way should they go next, and what are they hoping to find?','Apply','Further in the direction that took them from propylitic to phyllic, but carefully: just inside the phyllic pyrite shell is the ore shell with 1 to 3% chalcopyrite. Overshoot and you’re in the potassic, low-grade core.'],
+ ['In a VMS footwall, how does chlorite change as you approach the ore, and how could you see that in core?','Recall','It goes from magnesium-rich (nearly colourless) far out to iron-rich (deep green) near the ore and feeder zone. The colour change is visible in hand specimen.'],
+ ['Why divide strontium by titanium rather than just using Sr?','Think','Titanium is immobile, so it stays constant through alteration. Dividing by it cancels out changes in rock type or mass, so a falling Sr/Ti really means strontium was stripped by fluid, not that you drilled into a different rock.'],
+ ['Your pXRF shows no gold in a gossan sample with visible gold. What happened?','Apply','Nothing is wrong with the gossan. pXRF is no good for gold. Send samples for proper laboratory assay (fire assay) when gold is the target.']
+];
+GEO.start({key:'geos3141-L2-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:160,goals:{'g-baux':'wm-baux','g-frozen':'wm-frozen','g-desert':'wm-desert','g-karst':'wm-karst','g-sg':'sg-rich'}});
+
+/* hero: Hera core tray */
+mcCards($('#heroQ'),[{q:'',o:['It’s broken into soft fragments: the rock is very weak','It looks too hard to drill economically','There’s obviously too much gold to process'],a:0,
+  e:'Exactly. The core has fallen apart into fragments because intense chlorite alteration has destroyed its strength. At Hera, a lode worth tens of millions of dollars sits unmined because nobody checked the mineralogy before driving towards it. This lecture is about learning to read these changes before they cost you.',hint:'Look at the state of the core itself, not what might be in it.',win:'Good instinct'}],'hero',5);
+/* ---------- weathering machine ---------- */
+var ROCK={granite:{sol:.5,al:1,start:{SiO2:72,Al2O3:14,'Fe oxides':3,'Na2O+K2O':8,'CaO+MgO':3}},
+ basalt:{sol:.65,al:1,start:{SiO2:49,Al2O3:15,'Fe oxides':11,'Na2O+K2O':3,'CaO+MgO':17}},
+ limestone:{sol:1,start:{SiO2:4,Al2O3:1,'Fe oxides':1,'Na2O+K2O':.5,'CaO+MgO':54}},
+ sulphide:{sol:1,start:{SiO2:40,Al2O3:8,'Fe oxides':30,'Na2O+K2O':2,'CaO+MgO':3}},
+ sandstone:{sol:.08,start:{SiO2:95,Al2O3:2,'Fe oxides':1,'Na2O+K2O':1,'CaO+MgO':1}}};
+var MOB={SiO2:.12,Al2O3:0,'Fe oxides':.55,'Na2O+K2O':1,'CaO+MgO':1};
+var wm={phys:0,chem:0,verdict:'',rock:'basalt'};
+function wmModel(){var rock=$('#wmRock').value,T=+$('#wmT').value,R=+$('#wmR').value,V=+$('#wmV').value,Rel=+$('#wmRel').value,F=+$('#wmF').value;
+  $('#wmTv').textContent=T+' °C';$('#wmRv').textContent=fmt(R,0)+' mm/yr';$('#wmVv').textContent=V+'%';$('#wmRelv').textContent=Rel+'%';$('#wmFv').textContent=F+'%';
+  var water=T<=0?0:cl(R/2000);var chem=water*cl((T+5)/35)*(.45+.55*V/100)*ROCK[rock].sol*(.6+.4*F/100)*1.25;chem=cl(chem);
+  var dry=R<300&&T>0;var phys=cl(.55*Rel/100+(dry?.3:0)+(T>-12&&T<10?.2:0)+.2*F/100+(R>0&&T>0?.05:0));
+  var v,goal=null;
+  if(T<=0){v='<b>Frozen.</b> No liquid water, so chemical weathering has all but stopped, like Antarctica. Only frost and wind are doing anything.';goal='wm-frozen';chem=0;}
+  else if(dry){v='<b>Desert.</b> Wind-blown sand and big day-night temperature swings break the rock up physically. There’s too little water to dissolve much, so soluble salts survive; in the Atacama even nitrates are stable.';if(T>=10)goal='wm-desert';}
+  else if(rock==='limestone'&&chem>.4){v='<b>Karst.</b> Weakly acidic water is dissolving the calcite: caves, sinkholes and solution collapse.';goal='wm-karst';}
+  else if(rock==='sulphide'&&chem>.25){v='<b>Gossan forming.</b> Sulphides aren’t stable with oxygen and water. They oxidise to iron oxides and sulphuric acid, leaving a rusty cap and acidic runoff.';}
+  else if((rock==='granite'||rock==='basalt')&&chem>.6&&T>=22&&V>=60){v='<b>Lateritic profile, bauxite possible.</b> Everything mobile is leaching out, and in this heat even silica goes. Aluminium stays behind as gibbsite. Think Weipa in Cape York or Gove in the Northern Territory.';goal='wm-baux';}
+  else if(rock==='sandstone'){v='<b>Quartz barely reacts.</b> Even with plenty of water this rock weathers slowly. You get loose sand, not clay.';}
+  else if(chem>phys){v='<b>Chemical weathering dominates.</b> Feldspars go to kaolinite, iron moves around as oxides, and the rock bleaches where iron leaves.';}
+  else{v='<b>Physical weathering dominates.</b> Steep relief, gravity and temperature swings are breaking the rock into smaller pieces faster than water can dissolve it.';}
+  wm.phys=phys;wm.chem=chem;wm.rock=rock;
+  $('#wmPhys').style.width=(phys*100)+'%';$('#wmChem').style.width=(chem*100)+'%';$('#wmPhysV').textContent=Math.round(phys*100)+'%';$('#wmChemV').textContent=Math.round(chem*100)+'%';
+  $('#wmSay').innerHTML=v;$('#wmVerdictTag').textContent=v.replace(/<[^>]+>/g,'').split('.')[0].toLowerCase();
+  var st=ROCK[rock].start,after={},tot=0,baux=goal==='wm-baux';
+  for(var k in st){var m=MOB[k];if(k==='SiO2'&&baux)m=.85;var keep=1-m*chem*.95;after[k]=st[k]*keep;tot+=after[k];}
+  var sumS=0;for(k in st)sumS+=st[k];
+  var rows='<thead><tr><th>Component</th><th>Fresh (wt%)</th><th>Weathered (wt%)</th></tr></thead><tbody>';
+  for(k in st){var a0=st[k]/sumS*100,a1=after[k]/tot*100;var dir=a1>a0+.5?' ▲':a1<a0-.5?' ▼':'';rows+='<tr><td>'+k.replace(/(\d)/g,'<sub>$1</sub>')+(MOB[k]>=.9?' <span class="srcs">mobile</span>':MOB[k]===0?' <span class="srcs">immobile</span>':MOB[k]>=.5?' <span class="srcs">partly mobile</span>':' <span class="srcs">mostly stays</span>')+'</td><td class="n">'+a0.toFixed(1)+'</td><td class="n">'+a1.toFixed(1)+dir+'</td></tr>';}
+  $('#wmComp').innerHTML=rows+'</tbody>';
+  if(goal)award(goal,8,{'wm-baux':'Bauxite made','wm-frozen':'Chemistry frozen','wm-desert':'Atacama recreated','wm-karst':'Caves grown'}[goal]);
+  wmReset();}
+['wmRock','wmT','wmR','wmV','wmRel','wmF'].forEach(function(id){$('#'+id).addEventListener('input',wmModel)});
+var wc=$('#wmCanvas'),wx=wc.getContext('2d'),WW=640,WH=220,cells=[],ions=[],wt=0,wRun=false,wCol={};
+function wColors(){wCol={sky:css('--sky'),crust:css('--crust'),kao:css('--kao'),goe:css('--goe'),hem:css('--hem'),ink:css('--ink'),muted:css('--muted'),slate:css('--slate'),paper:css('--paper')};}
+wColors();onTheme(function(){wColors()});
+function rockBase(){return {granite:'#C9B8AE',basalt:'#4A4E50',limestone:'#BFBBA8',sulphide:'#8F8A62',sandstone:'#E1D2A6'}[wm.rock];}
+function wmReset(){var r=rng(5);cells=[];for(var y=0;y<8;y++)for(var x=0;x<16;x++){cells.push({x:200+x*15,y:50+y*15,dx:0,dy:0,vy:0,fall:false,bleach:0,crack:r(),hit:r()});}ions=[];wt=0;}
+function wmStep(){wt++;var P=wm.phys,C=wm.chem;
+  cells.forEach(function(c){var depth=(c.y-50)/120;if(!c.fall&&P>0&&c.hit<P*.004*wt/60*(1-depth*.6)&&wt>30)c.fall=true;
+    if(c.fall){c.vy+=.25;c.dy+=c.vy;c.dx+=(c.crack-.5)*.6;if(c.y+c.dy>200){c.dy=200-c.y;c.vy=0;}}
+    var front=C*wt/400-depth;c.bleach=cl(front*1.6);
+    if(C>0&&Math.random()<C*.025*(1-depth)&&!c.fall&&ions.length<80){var lb=['Na⁺','K⁺','Ca²⁺','Mg²⁺','Fe²⁺'][Math.floor(Math.random()*5)];ions.push({x:c.x+7,y:c.y+7,l:lb,life:0,vx:(Math.random()-.5)*.6});}});
+  ions.forEach(function(i){i.life++;i.y+=.6;i.x+=i.vx;});ions=ions.filter(function(i){return i.life<130;});}
+function wmDraw(){var c=wx;c.clearRect(0,0,WW,WH);c.fillStyle=wCol.sky;c.fillRect(0,0,WW,WH);c.fillStyle=rgba(wCol.crust,.6);c.fillRect(0,200,WW,20);
+  var base=rockBase();
+  cells.forEach(function(k){var col=wm.rock==='sulphide'?mix(base,wCol.goe,k.bleach):wm.rock==='basalt'&&wm.chem>.6?mix(mix(base,wCol.hem,k.bleach*.6),wCol.kao,k.bleach*.5):mix(base,wCol.kao,k.bleach*.85);
+    c.fillStyle=col;var s=k.fall?9:14;c.fillRect(k.x+k.dx+(14-s)/2,k.y+k.dy+(14-s)/2,s,s);});
+  if(wm.phys>.1){c.strokeStyle=rgba(wCol.ink,.5);c.lineWidth=1;cells.forEach(function(k){if(!k.fall&&k.crack<wm.phys*.5){c.beginPath();c.moveTo(k.x,k.y);c.lineTo(k.x+14,k.y+14*k.crack);c.stroke();}});}
+  c.font='600 11px system-ui,sans-serif';ions.forEach(function(i){c.fillStyle=rgba(css('--azu'),1-i.life/130);c.fillText(i.l,i.x,i.y);});
+  c.fillStyle=wCol.ink;c.font=Math.round(12*Math.max(1,WW/(wc.clientWidth||WW)*.75))+'px system-ui,sans-serif';c.fillText('mobile ions leave in solution ↓',440,212);c.fillText('fresh block of '+$('#wmRock').selectedOptions[0].textContent.toLowerCase(),200,40);
+  if(wm.chem>0){c.fillStyle=wCol.muted;c.fillText('Al, Si, Ti stay behind',440,60);}}
+function wmLoop(){if(!wRun)return;if(wt<900)wmStep();wmDraw();requestAnimationFrame(wmLoop);}
+function wmResize(){var w=wc.clientWidth||640,h=Math.round(w*WH/WW);var dpr=sizeCanvas(wc,w,h);wx.setTransform(dpr*w/WW,0,0,dpr*w/WW,0,0);wmDraw();}
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!wRun){wRun=true;requestAnimationFrame(wmLoop);}else if(!e.isIntersecting)wRun=false;})},{threshold:.05}).observe(wc);
+wmModel();
+/* ---------- pyrite to acid ---------- */
+var bk=$('#beaker');var AS=0,H=[0,2,1,4];
+(function(){el('path',{d:'M20 20 L20 150 Q20 160 30 160 L110 160 Q120 160 120 150 L120 20',fill:'none',stroke:'var(--ink)','stroke-width':3},bk);
+  el('rect',{id:'bkW',x:22,y:50,width:96,height:108,fill:'var(--sea)',opacity:.55},bk);el('g',{id:'bkH'},bk);
+  el('polygon',{id:'bkPy',points:'62,140 78,140 84,150 56,150',fill:'#C9B34A',stroke:'var(--ink)'},bk);el('g',{id:'bkPpt'},bk);})();
+var STEPSAY=['Start with clean, neutral water and a pyrite crystal.',
+ 'Step 1: oxygen and water attack the pyrite. Iron goes into solution as Fe²⁺ and the sulphur becomes sulphate. Two H⁺ are released: the water is already acidic.',
+ 'Step 2: dissolved oxygen oxidises Fe²⁺ to Fe³⁺. This step actually uses up one H⁺, so acidity dips slightly.',
+ 'Step 3: Fe³⁺ reacts with water and precipitates orange-brown Fe(OH)₃, which ages to goethite. Three more H⁺ are released. Total: 4 H⁺ per pyrite. That orange sludge and acid is acid mine drainage, and the same reaction builds a gossan.'];
+function acidDraw(){var hplus=0;for(var i=1;i<=AS;i++)hplus+=[0,2,-1,3][i];
+  $('#acidH').textContent=hplus+' mol';var conc=hplus/1000;$('#acidPH').textContent=hplus>0?(-Math.log10(conc)).toFixed(1):'7.0';$('#acidStep').textContent='step '+AS+' of 3';$('#acidSay').textContent=STEPSAY[AS];
+  $$('#eqs div').forEach(function(d,i){d.classList.toggle('on',i===AS-1);d.classList.toggle('done',i<AS-1);});
+  var g=$('#bkH');g.innerHTML='';var r=rng(9);for(var j=0;j<hplus*4;j++){var t=el('text',{x:30+r()*78,y:60+r()*80,'font-size':10,'font-weight':700,fill:'var(--hem)'},g);t.textContent='H⁺';
+    if(!reduce){t.style.opacity=0;t.style.transition='opacity .4s '+(j*.04)+'s';requestAnimationFrame(function(tt){return function(){tt.style.opacity=1}}(t));}}
+  $('#bkW').setAttribute('fill',AS>=3?'var(--goe)':AS>=1?mix(css('--sea'),'#C9B34A',.3):'var(--sea)');$('#bkPy').style.opacity=AS>=1?.35:1;
+  var pp=$('#bkPpt');pp.innerHTML='';if(AS>=3){for(var k=0;k<14;k++)el('circle',{cx:30+k*6,cy:154-((k*7)%5),r:3,fill:'var(--goe)'},pp);}
+  $('#acidNext').disabled=AS>=3;if(AS>=3)award('acid',6,'Acid mine drainage, explained');}
+$('#acidNext').addEventListener('click',function(){if(AS<3){AS++;acidDraw();}});
+$('#acidReset').addEventListener('click',function(){AS=0;acidDraw();});acidDraw();
+/* ---------- supergene simulator ---------- */
+var sc=$('#sgCanvas'),sx=sc.getContext('2d'),SW=640,SH=320,sg={c:0,t:0,run:true,drops:[],ions:[],sel:null},sgCol={};
+var SURF=36,BODY={x0:250,x1:410};
+function sgColors(){sgCol={sky:css('--sky'),crust:css('--crust'),ink:css('--ink'),muted:css('--muted'),gold:css('--gold-hi'),hem:css('--hem'),goe:css('--goe'),sea:css('--sea'),mal:css('--mal'),azu:css('--azu'),slate:css('--slate'),paper:css('--paper')};}
+sgColors();onTheme(sgColors);
+function zones(){var c=sg.c,t=cl(sg.t);var wt=130+c*48;var g=SURF+6+10*Math.min(1,c+t);var oxT=wt-22-6*c;var leachB=g+(oxT-g)*Math.min(1,.3+ .7*(c+t)/1.5);
+  var b=8+12*(c+t);var grade=.6*(1+1.6*(c+t));return {wt:wt,g:g,leachB:Math.min(leachB,oxT),oxT:oxT,bT:wt,bB:wt+b,grade:grade};}
+var ZDATA={gossan:['Gossan','Goethite, hematite, limonite. Iron oxides left after the sulphides oxidised. Often barren, sometimes with gold.'],
+ leached:['Leached zone','Metals dissolved and carried down by acidic water. Low grade, often bleached or stained by iron oxides.'],
+ oxide:['Oxide zone','Malachite, azurite, cuprite, chrysocolla, native copper. The brightly coloured zone, above the water table.'],
+ blanket:['Enrichment blanket','Chalcocite, covellite, bornite. Copper reprecipitated at the water table where conditions turn reducing. The richest zone.'],
+ primary:['Primary (protore)','Chalcopyrite with pyrite. Untouched by weathering. Lower grade than the blanket.']};
+function sgStep(){if(!sg.run)return;sg.t+=0.0018;if(sg.t>1)sg.t=1;var z=zones();
+  if(sg.drops.length<70&&Math.random()<.7)sg.drops.push({x:20+Math.random()*600,y:0,v:2+Math.random()*1.5});
+  sg.drops.forEach(function(d){d.y+=d.v;});sg.drops=sg.drops.filter(function(d){return d.y<(d.x>BODY.x0&&d.x<BODY.x1?z.wt:z.wt-10)});
+  if(sg.t<1&&Math.random()<.5)sg.ions.push({x:BODY.x0+10+Math.random()*(BODY.x1-BODY.x0-20),y:z.g+4+Math.random()*(z.leachB-z.g),life:0});
+  sg.ions.forEach(function(i){i.y+=1.1;i.life++;});sg.ions=sg.ions.filter(function(i){return i.y<z.wt+2;});
+  var gr=z.grade;$('#sgB').textContent=gr.toFixed(1)+'% Cu';$('#sgCycle').textContent='cycle '+(sg.c+1)+(sg.c>0?' (water table dropped '+sg.c+'×)':'');
+  if(sg.c>=2&&gr>2)award('sg-rich',10,'Rich supergene blanket grown');}
+function sgDraw(){var c=sx,z=zones();c.clearRect(0,0,SW,SH);c.fillStyle=sgCol.sky;c.fillRect(0,0,SW,SURF);c.fillStyle=sgCol.crust;c.fillRect(0,SURF,SW,SH-SURF);
+  c.strokeStyle=sgCol.ink;c.lineWidth=1.5;c.beginPath();c.moveTo(0,SURF);c.lineTo(SW,SURF);c.stroke();
+  var w=BODY.x1-BODY.x0;
+  c.fillStyle=mix(sgCol.slate,'#C9B34A',.45);c.fillRect(BODY.x0,z.bB,w,SH-z.bB);
+  c.fillStyle=sgCol.gold;c.fillRect(BODY.x0,z.bT,w,z.bB-z.bT);
+  c.fillStyle=mix(sgCol.mal,sgCol.azu,.35);c.fillRect(BODY.x0,z.oxT,w,z.bT-z.oxT);
+  c.fillStyle=mix(sgCol.crust,sgCol.paper,.45);c.fillRect(BODY.x0,z.g,w,z.oxT-z.g);
+  c.fillStyle=mix(sgCol.goe,sgCol.hem,.4);c.fillRect(BODY.x0,SURF,w,z.g-SURF);
+  if(sg.sel){var r=sgZoneRect(sg.sel,z);c.strokeStyle=sgCol.ink;c.lineWidth=3;c.strokeRect(BODY.x0+1.5,r[0]+1.5,w-3,Math.max(2,r[1]-r[0]-3));}
+  c.strokeStyle=sgCol.sea;c.setLineDash([8,6]);c.lineWidth=2.5;c.beginPath();c.moveTo(0,z.wt);c.lineTo(SW,z.wt);c.stroke();c.setLineDash([]);
+  sg.drops.forEach(function(d){c.fillStyle=rgba(sgCol.sea,.9);c.fillRect(d.x,d.y,1.6,6);});
+  sg.ions.forEach(function(i){c.fillStyle=sgCol.azu;c.beginPath();c.arc(i.x,i.y,2.4,0,Math.PI*2);c.fill();});
+  c.font=Math.round(12*Math.max(1,SW/(sc.clientWidth||SW)*.75))+'px system-ui,sans-serif';c.fillStyle=sgCol.ink;var lx=BODY.x1+12;
+  c.fillText('gossan',lx,(SURF+z.g)/2+4);c.fillText('leached zone',lx,(z.g+z.oxT)/2+4);c.fillText('oxide zone',lx,(z.oxT+z.bT)/2+4);c.fillText('enrichment blanket',lx,(z.bT+z.bB)/2+4);c.fillText('primary chalcopyrite',lx,(z.bB+SH)/2+4);
+  c.fillText('water table',12,z.wt-6);c.fillText('rain',12,SURF-12);c.fillStyle=sgCol.azu;c.fillText('Cu²⁺ carried down',12,z.wt-24);}
+function sgZoneRect(n,z){return {gossan:[SURF,z.g],leached:[z.g,z.oxT],oxide:[z.oxT,z.bT],blanket:[z.bT,z.bB],primary:[z.bB,SH]}[n];}
+sc.addEventListener('click',function(e){var r=sc.getBoundingClientRect();var y=(e.clientY-r.top)/r.height*SH,x=(e.clientX-r.left)/r.width*SW;if(x<BODY.x0-30||x>BODY.x1+150)return;var z=zones();var n=y<z.g?'gossan':y<z.oxT?'leached':y<z.bT?'oxide':y<z.bB?'blanket':'primary';sg.sel=n;$('#sgSay').innerHTML='<b>'+ZDATA[n][0]+'.</b> '+ZDATA[n][1];sgDraw();});
+var sgOn=false;function sgLoop(){if(!sgOn)return;sgStep();sgDraw();requestAnimationFrame(sgLoop);}
+function sgResize(){var w=sc.clientWidth||640,h=Math.round(w*SH/SW);var dpr=sizeCanvas(sc,w,h);sx.setTransform(dpr*w/SW,0,0,dpr*w/SW,0,0);sgDraw();}
+$('#sgRun').addEventListener('click',function(){sg.run=!sg.run;this.textContent=sg.run?'Pause':'Resume';});
+$('#sgDrop').addEventListener('click',function(){if(sg.c>=3){$('#sgSay').textContent='The water table can’t drop much further in this section. Reset to start again.';return;}sg.c+=sg.t>=.5?1:0;if(sg.t<.5){$('#sgSay').textContent='Let this weathering cycle develop a bit more first.';return;}sg.t=0;
+  $('#sgSay').innerHTML='Uplift or a drier climate drops the water table. The old blanket is now above it, gets re-oxidised and leached, and its copper moves down to build a new, richer blanket. That’s how stacked weathering episodes make zones like Broken Hill.';});
+$('#sgReset').addEventListener('click',function(){sg.c=0;sg.t=0;sg.drops=[];sg.ions=[];sg.sel=null;$('#sgSay').textContent='Tap a zone in the picture to see its minerals.';});
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!sgOn){sgOn=true;requestAnimationFrame(sgLoop);}else if(!e.isIntersecting)sgOn=false;})},{threshold:.05}).observe(sc);
+if(reduce)sg.t=1;
+/* copper % bars */
+(function(){var svg=$('#cuBars');var D=[['Chalcopyrite','CuFeS₂',34.6,'p'],['Azurite','Cu₃(CO₃)₂(OH)₂',55.3,'o'],['Malachite','Cu₂CO₃(OH)₂',57.5,'o'],['Bornite','Cu₅FeS₄',63.3,'b'],['Covellite','CuS',66.5,'b'],['Chalcocite','Cu₂S',79.8,'b'],['Cuprite','Cu₂O',88.8,'o'],['Native copper','Cu',100,'o']];
+  D.forEach(function(d,i){var y=14+i*34,w=d[2]/100*400;txt(svg,180,y+18,d[0],{'text-anchor':'end','font-weight':700,'font-size':13});txt(svg,186,y+18,'',{});
+    el('rect',{x:190,y:y,width:w,height:24,rx:3,fill:d[3]==='p'?'var(--slate)':d[3]==='b'?'var(--gold-hi)':'var(--mal)',opacity:.9},svg);
+    txt(svg,196+w,y+17,d[2].toFixed(1)+'%',{'font-weight':700,'font-size':12});txt(svg,660,y+17,d[1],{'text-anchor':'end','font-size':11,fill:'var(--muted)'});});})();
+/* ---------- Drake core tray ---------- */
+var DRAKE_OPTS=['Oxidised: hematite + kaolinite','Leached and bleached','Primary sulphides','Oxidised again along a fault'];
+mcCards($('#drakeCards'),[
+ {img:'img/L2/slide040_1.jpg',alt:'Red hematite-stained core with pale kaolinite',lbl:'2.6 m',q:'Red-brown with pale clay patches.',o:DRAKE_OPTS,a:0,e:'Near-surface oxidised rock: hematite and kaolinite. Oxygen is plentiful this high up.'},
+ {img:'img/L2/slide040_2.jpg',alt:'Very pale core with thin rusty fractures',lbl:'40 m',q:'Pale, almost white, with thin rust lines on fractures.',o:DRAKE_OPTS,a:1,e:'Intensely bleached: iron has been stripped out by acidic water. Only thin iron oxide films remain on fractures.'},
+ {img:'img/L2/slide041_1.jpg',alt:'Grey-green core with quartz veins and brassy sulphide',lbl:'80 m',q:'Grey-green rock with quartz and brassy sulphide.',o:DRAKE_OPTS,a:2,e:'Fresh primary sulphides below the oxidised zone. So far, a normal profile.'},
+ {img:'img/L2/slide041_2.jpg',alt:'Core with a dark coppery mass and green staining',lbl:'108 m',q:'Dark coppery metal with green staining, deeper than the sulphides.',o:DRAKE_OPTS,a:3,e:'Native copper, below fresh sulphide. A fault between 80 and 108 m let oxygenated water reach this depth and oxidise the chalcopyrite. That’s the trap: depth alone doesn’t tell you the zone.',win:'Spotted the fault trap'}
+],'drake',5,function(n,t){$('#drakeScore').textContent=n+' / '+t+' logged';});
+/* ---------- name that alteration ---------- */
+var AOPTS=['Propylitic','Phyllic','Potassic','Argillic','Advanced argillic'];
+mcCards($('#naCards'),[
+ {q:'Green rock. Chlorite, epidote, albite, calcite, about 2% pyrite. Far from the intrusion.',o:AOPTS,a:0,e:'Propylitic: the green comes from chlorite and epidote, and the pyrite is early, not ore.'},
+ {q:'Pale rock. Quartz, fine white mica, 10% pyrite. Feldspars destroyed.',o:AOPTS,a:1,e:'Phyllic (sericitic). The pyrite shell around a porphyry: lots of pyrite, no ore.'},
+ {q:'Pink K-feldspar, shreddy brown biotite, quartz veins, disseminated magnetite.',o:AOPTS,a:2,e:'Potassic: hot, near-magmatic fluid adding potassium. The core of a porphyry.'},
+ {q:'Soft white clay replacing feldspar: kaolinite with some montmorillonite.',o:AOPTS,a:3,e:'Argillic: clay alteration from moderately acidic, cooler fluid.'},
+ {q:'Vuggy quartz, alunite, pyrophyllite, dickite, opaline silica. Near the top of the system.',o:AOPTS,a:4,e:'Advanced argillic: very acidic fluid, typically in the lithocap above porphyries and in high-sulphidation epithermal systems.'},
+ {q:'Quartz is the most abundant mineral. Nothing else is recorded.',o:AOPTS.concat(['Can’t tell']),a:5,e:'Can’t tell. Quartz turns up in almost every assemblage, so on its own it tells you nothing about alteration type.',hint:'Is quartz diagnostic of anything?',win:'Not fooled by quartz'}
+],'na',4,function(n,t){$('#naScore').textContent=n+' / '+t;});
+/* ---------- porphyry zoning animation ---------- */
+var por=$('#porSvg');var CX=300,BY=420;
+var PZ=[
+ {id:'prop',name:'Propylitic',rx:290,ry:390,fill:'var(--chl)',op:.45,t:'Chlorite, epidote, carbonate, adularia, albite, about 2% pyrite. The widest halo, cooler and near-neutral. Distal Cu-Pb-Zn-Ag-Au veins can sit out here, so don’t ignore it.'},
+ {id:'phyl',name:'Phyllic',rx:205,ry:300,fill:'var(--gold-hi)',op:.75,t:'Quartz, sericite and pyrite, with a pyrite shell of around 10% pyrite but no ore. Acidic fluid has destroyed the feldspars.'},
+ {id:'ore',name:'Ore shell',rx:140,ry:232,fill:'var(--hem)',op:.85,t:'1 to 3% chalcopyrite, with the gold, wrapped around the cupola at the edge of the potassic zone. This is what you’re mining.'},
+ {id:'pot',name:'Potassic',rx:118,ry:208,fill:'#B98585',op:.9,t:'Quartz, K-feldspar and biotite: the hottest alteration, capping the porphyry. Its centre is a low-grade core that usually isn’t mined.'},
+ {id:'stock',name:'Unaltered porphyry',rx:62,ry:130,fill:'#F0B8C8',op:1,t:'The intrusion itself. Wet, oxidised calc-alkaline magma that released the fluid.'}];
+var porG={};
+(function(){var defs=el('defs',{},por);var pat=el('pattern',{id:'plus',width:14,height:14,patternUnits:'userSpaceOnUse'},defs);el('path',{d:'M7 3 V11 M3 7 H11',stroke:'#7A4A5A','stroke-width':1.3},pat);
+  el('rect',{x:0,y:0,width:600,height:420,fill:'var(--crust)'},por);
+  PZ.forEach(function(z){var g=el('g',{'class':'z','data-z':z.id,tabindex:0,role:'button','aria-label':z.name},por);el('ellipse',{cx:CX,cy:BY,rx:z.rx,ry:z.ry,fill:z.fill,opacity:z.op,stroke:'var(--ink)','stroke-opacity':.35},g);
+    if(z.id==='stock')el('ellipse',{cx:CX,cy:BY,rx:z.rx,ry:z.ry,fill:'url(#plus)'},g);porG[z.id]=g;});
+  var aa=el('g',{'class':'z','data-z':'aa',tabindex:0,role:'button','aria-label':'Advanced argillic'},por);el('path',{d:'M150 70 Q300 20 450 70 L430 92 Q300 54 170 92 Z',fill:'#B8A2C8',opacity:.9,stroke:'var(--ink)','stroke-opacity':.35},aa);porG.aa=aa;
+  var lab=el('g',{id:'porLab'},por);[['propylitic',40,250],['phyllic',140,175],['ore shell',200,305],['potassic',262,255],['porphyry',268,385],['advanced argillic',238,52]].forEach(function(l){txt(lab,l[1],l[2],l[0],{'font-size':16,'font-weight':700});});})();
+PZ.push({id:'aa',name:'Advanced argillic',t:'Quartz, alunite, pyrophyllite, dickite, kaolinite. Very acidic fluid near the top of the system, the lithocap. Can host high-sulphidation epithermal gold above a porphyry.'});
+var seenZ={};
+function porInfo(id){var z=PZ.filter(function(q){return q.id===id})[0];$('#porInfo').innerHTML='<b class="n">'+z.name+'</b>'+z.t;seenZ[id]=1;if(Object.keys(seenZ).length>=6)award('porzones',6,'Every porphyry zone read');}
+$$('#porSvg g.z').forEach(function(g){g.addEventListener('click',function(){porInfo(g.dataset.z)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();porInfo(g.dataset.z)}});});
+function setScale(g,s){g.setAttribute('transform','translate('+CX+' '+BY+') scale('+s+') translate('+(-CX)+' '+(-BY)+')');}
+$('#porPlay').addEventListener('click',function(){if(reduce)return;var order=['stock','pot','ore','phyl','prop'];var t0=performance.now();$('#porLab').style.opacity=0;porG.aa.style.opacity=0;
+  order.forEach(function(id){setScale(porG[id],0.001)});var msgs=['The porphyry stock intrudes.','Hot magmatic fluid makes the potassic core.','Copper and gold drop out around the cupola.','Cooler, acidic fluid overprints outward: phyllic.','The widest, coolest halo: propylitic.','Acidic vapour reaches the top: advanced argillic.'];
+  (function f(now){var t=(now-t0)/1000;order.forEach(function(id,i){var k=cl((t-i*1.1)/1.2);setScale(porG[id],Math.max(.001,1-Math.pow(1-k,3)));});
+    var stage=Math.min(5,Math.floor(t/1.1));$('#porInfo').innerHTML='<b class="n">Stage '+(stage+1)+'</b>'+msgs[stage];
+    if(t>6)porG.aa.style.opacity=cl((t-6)/.8);
+    if(t<7.2)requestAnimationFrame(f);else{order.forEach(function(id){setScale(porG[id],1)});$('#porLab').style.opacity=1;porG.aa.style.opacity=1;$('#porInfo').innerHTML='<b class="n">Fully zoned</b>Hot in the middle, cooler outward, acidic at the top. Tap any zone to read it.';award('porplay',4,'Watched a porphyry grow');}})(t0);});
+/* ---------- vector hunt ---------- */
+var HW_=16,HH_=10,HC=40,hunt={};var HZ=[['fresh','Fresh rock','var(--paper)','no alteration, no pyrite'],['prop','Propylitic','var(--chl)','chlorite-epidote, about 2% pyrite'],['phyl','Phyllic','var(--gold-hi)','quartz-sericite, about 10% pyrite'],['ore','Ore shell','var(--hem)','1 to 3% chalcopyrite'],['pot','Potassic','#B98585','K-feldspar-biotite, low grade core']];
+$('#huntLegend').innerHTML=HZ.map(function(z){return '<span><i style="background:'+z[2]+'"></i>'+z[1]+'</span>'}).join('');
+function huntZone(x,y){var d=Math.hypot(x-hunt.cx,(y-hunt.cy)*1.25);return d<1.3?4:d<2.3?3:d<3.6?2:d<6.2?1:0;}
+var hSvg=$('#huntSvg');
+function huntNew(){var r=rng(Math.floor(Math.random()*1e6));hunt={cx:3+r()*10,cy:2.5+r()*5,left:8,done:false,picks:[]};hSvg.innerHTML='';
+  for(var y=0;y<HH_;y++)for(var x=0;x<HW_;x++){(function(x,y){var c=el('rect',{x:x*HC+1,y:y*HC+1,width:HC-2,height:HC-2,rx:3,fill:'var(--bg)',stroke:'var(--line)'},hSvg);c.style.cursor='crosshair';c.addEventListener('click',function(){huntPick(x,y,c)});})(x,y);}
+  $('#huntLeft').textContent='8 samples left';$('#huntSay').textContent='Take your first sample anywhere. A wide spacing first is a good idea.';}
+function huntPick(x,y,c){if(hunt.done||hunt.picks.indexOf(x+','+y)>=0)return;hunt.picks.push(x+','+y);hunt.left--;var z=huntZone(x,y);var zz=HZ[z];c.setAttribute('fill',zz[2]);c.setAttribute('stroke','var(--ink)');
+  txt(hSvg,x*HC+HC/2,y*HC+HC/2+4,['·','P','S','★','K'][z],{'text-anchor':'middle','font-weight':700,'font-size':13,fill:z===3||z===4?'#fff':'var(--ink)'}).style.pointerEvents='none';
+  var hint={0:'Fresh rock. You’re outside the system; move a long way.',1:'Propylitic: you’re in the outer halo. Pyrite is low. The heart is still some way off.',2:'Phyllic: lots of pyrite. You’re close, but this pyrite shell isn’t ore. The ore shell sits just inside it.',4:'Potassic: you overshot into the hot core. The ore shell wraps around this, a little further out.'}[z];
+  $('#huntLeft').textContent=hunt.left+' sample'+(hunt.left===1?'':'s')+' left';
+  if(z===3){hunt.done=true;var used=8-hunt.left;$('#huntSay').innerHTML='<b>Ore shell hit in '+used+' sample'+(used===1?'':'s')+'.</b> You used the zoning exactly as an explorer would: green outer halo, then the pyrite shell, then just inside it the chalcopyrite.';award('hunt',used<=5?15:8,used<=5?'Ore shell found fast':'Ore shell found');huntReveal();return;}
+  $('#huntSay').innerHTML=zz[1]+' ('+zz[3]+'). '+hint;if(hunt.left<=0){hunt.done=true;$('#huntSay').innerHTML+=' <b>Out of samples.</b> Here’s where it was.';huntReveal();}}
+function huntReveal(){$$('rect',hSvg).forEach(function(c,i){var x=i%HW_,y=Math.floor(i/HW_);if(c.getAttribute('fill')==='var(--bg)'){c.setAttribute('fill',HZ[huntZone(x,y)][2]);c.setAttribute('opacity','.45');}});}
+$('#huntNew').addEventListener('click',huntNew);huntNew();
+/* ---------- AI vs CCPI plotter ---------- */
+var OX=['K2O','MgO','Na2O','CaO','FeO'];var aiv={K2O:.3,MgO:7,Na2O:2.6,CaO:10.5,FeO:9.5};
+var PRE=[['Fresh basalt',{K2O:.3,MgO:7,Na2O:2.6,CaO:10.5,FeO:9.5},'Reference: unaltered basalt sits low on AI.'],
+ ['1 · distal epidote-albite',{K2O:.2,MgO:6,Na2O:1.8,CaO:4.4,FeO:12},'Cowley Hills distal sample: AI about 50, CCPI about 90. Right on the edge of background.'],
+ ['2 · ore-zone stringer',{K2O:.4,MgO:4,Na2O:.14,CaO:.64,FeO:6.3},'Cowley Hills ore zone: AI about 85, CCPI about 95, Na₂O only 0.14%. Intense chlorite-pyrite alteration.'],
+ ['3 · quartz-sericite',{K2O:2.8,MgO:.8,Na2O:.2,CaO:.2,FeO:3},'Quartz-sericite above the ore: AI high, CCPI moderate, because sericite adds K₂O rather than Fe-Mg. (AI and CCPI estimated from the mineralogy.)']];
+var ai=$('#aiSvg'),P0=40,PW=260;function ax(v){return P0+v/100*PW}function ay(v){return P0+PW-v/100*PW-20}
+(function(){el('rect',{x:P0,y:P0-20,width:PW,height:PW,fill:'var(--bg)',stroke:'var(--line)'},ai);
+  el('path',{d:'M'+ax(40)+' '+ay(100)+' L'+ax(100)+' '+ay(40),stroke:'var(--muted)','stroke-dasharray':'5 4','stroke-width':1.5},ai);
+  el('path',{d:'M'+ax(42)+' '+ay(100)+' L'+ax(100)+' '+ay(100)+' L'+ax(100)+' '+ay(42)+' Z',fill:'var(--hem)',opacity:.08},ai);
+  txt(ai,ax(80),ay(72),'altered',{'text-anchor':'middle','font-size':11,fill:'var(--hem)','font-weight':700});txt(ai,ax(18),ay(8),'background',{'text-anchor':'middle','font-size':11,fill:'var(--muted)'});
+  [0,50,100].forEach(function(v){txt(ai,ax(v),P0+PW-2,v,{'text-anchor':'middle','font-size':10,fill:'var(--muted)'});txt(ai,P0-6,ay(v)+4,v,{'text-anchor':'end','font-size':10,fill:'var(--muted)'});});
+  txt(ai,P0+PW/2,P0+PW+14,'Alteration index (AI)',{'text-anchor':'middle','font-size':11});var yl=txt(ai,12,P0+PW/2-20,'CCPI',{'text-anchor':'middle','font-size':11});yl.setAttribute('transform','rotate(-90 12 '+(P0+PW/2-20)+')');
+  [['albite',0,0],['K-feldspar',100,0],['sericite',100,10],['chlorite',100,100],['epidote',0,100]].forEach(function(m){el('rect',{x:ax(m[1])-3,y:ay(m[2])-3,width:6,height:6,fill:'var(--ink)'},ai);txt(ai,ax(m[1])+(m[1]>50?-6:6),ay(m[2])+(m[2]>50?14:-6),m[0],{'font-size':10,'text-anchor':m[1]>50?'end':'start',fill:'var(--muted)'});});
+  el('g',{id:'aiTrail'},ai);el('circle',{id:'aiPt',cx:ax(36),cy:ay(85),r:7,fill:'var(--gold-hi)',stroke:'var(--ink)','stroke-width':2},ai);})();
+var ctl=$('#aiCtl');OX.forEach(function(o){var d=document.createElement('div');d.innerHTML='<label for="ox'+o+'">'+o.replace(/(\d)/,'<sub>$1</sub>')+' <b id="ox'+o+'v"></b></label><input type="range" id="ox'+o+'" min="0" max="'+(o==='FeO'||o==='CaO'?20:o==='MgO'?12:6)+'" step="0.05">';ctl.appendChild(d);
+  $('input',d).addEventListener('input',function(){aiv[o]=+this.value;aiCalc(null);award('ai-play',3,'Oxides adjusted');});});
+var aiSeen={};
+function aiCalc(note){var A=100*(aiv.K2O+aiv.MgO)/Math.max(.01,aiv.K2O+aiv.MgO+aiv.Na2O+aiv.CaO),C=100*(aiv.MgO+aiv.FeO)/Math.max(.01,aiv.MgO+aiv.FeO+aiv.Na2O+aiv.K2O);
+  OX.forEach(function(o){$('#ox'+o).value=aiv[o];$('#ox'+o+'v').textContent=aiv[o].toFixed(2)+'%';});
+  $('#aiAI').textContent=A.toFixed(0);$('#aiCC').textContent=C.toFixed(0);var p=$('#aiPt');p.style.cx=ax(A)+'px';p.style.cy=ay(C)+'px';p.setAttribute('cx',ax(A));p.setAttribute('cy',ay(C));
+  $('#aiSay').innerHTML=note||(A+C>140?'This sample plots in the altered field: feldspar and Na have been lost, chlorite, sericite or pyrite gained.':'This sample plots with background rocks.');}
+var pr=$('#aiPresets');PRE.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=p[0];
+  b.addEventListener('click',function(){$$('.chip',pr).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});for(var k in p[1])aiv[k]=p[1][k];aiCalc('<b>'+p[0]+'.</b> '+p[2]);
+    var A=100*(aiv.K2O+aiv.MgO)/(aiv.K2O+aiv.MgO+aiv.Na2O+aiv.CaO),C=100*(aiv.MgO+aiv.FeO)/(aiv.MgO+aiv.FeO+aiv.Na2O+aiv.K2O);el('circle',{cx:ax(A),cy:ay(C),r:3.5,fill:'var(--muted)'},$('#aiTrail'));
+    if(i>0){aiSeen[i]=1;var n=Object.keys(aiSeen).length;$('#aiState').textContent=n+' of 3 samples loaded';if(n===3)award('ai-3',6,'Cowley Hills samples plotted');}});pr.appendChild(b);});
+aiCalc('Load a sample, or drag the oxide sliders and watch the point move.');
+/* ---------- Hera vectoring ---------- */
+var hs=$('#heraSvg');var HX0=50,HXW=560,HY0=20,HYH=200;function hx(d){return HX0+(1500-d)/1500*HXW}function hy(v){return HY0+HYH-v/3*HYH}
+function sr(d){return d>500?1:.2+.8*Math.pow(d/500,1.4)}function mn(d){return d>200?1:1+2*Math.pow(1-d/200,1.6)}function ab(d){return d>500?1:.3+.7*Math.pow(d/500,1.1)}
+(function(){el('rect',{x:HX0,y:HY0,width:HXW,height:HYH,fill:'var(--bg)',stroke:'var(--line)'},hs);
+  [0,1,2,3].forEach(function(v){el('line',{x1:HX0,x2:HX0+HXW,y1:hy(v),y2:hy(v),stroke:'var(--line)','stroke-dasharray':'3 4'},hs);txt(hs,HX0-6,hy(v)+4,v,{'text-anchor':'end','font-size':10,fill:'var(--muted)'});});
+  [1500,1000,500,200,0].forEach(function(d){txt(hs,hx(d),HY0+HYH+16,d+' m',{'text-anchor':'middle','font-size':10,fill:'var(--muted)'});});
+  txt(hs,HX0+HXW/2,HY0+HYH+34,'distance from ore along the hole → ore',{'text-anchor':'middle','font-size':11});
+  el('rect',{x:hx(30),y:HY0,width:hx(0)-hx(30),height:HYH,fill:'var(--hem)',opacity:.25},hs);txt(hs,hx(0)-4,HY0+14,'ore',{'text-anchor':'end','font-size':11,fill:'var(--hem)','font-weight':700});
+  [[sr,'var(--azu)','Sr/Ti'],[mn,'var(--goe)','Mn/Ti'],[ab,'var(--mal)','albite/quartz']].forEach(function(s,i){var d='';for(var x=1500;x>=0;x-=10)d+=(x===1500?'M':'L')+hx(x)+' '+hy(s[0](x));el('path',{d:d,fill:'none',stroke:s[1],'stroke-width':2.5},hs);
+    txt(hs,HX0+8,HY0+16+i*15,s[2],{'font-size':11,fill:s[1],'font-weight':700});});
+  el('line',{id:'hBit',x1:hx(1500),x2:hx(1500),y1:HY0,y2:HY0+HYH,stroke:'var(--ink)','stroke-width':2},hs);})();
+function heraSet(d){$('#hBit').setAttribute('x1',hx(d));$('#hBit').setAttribute('x2',hx(d));$('#heraD').textContent=d+' m from ore';
+  $('#hSr').textContent=sr(d).toFixed(2);$('#hMn').textContent=mn(d).toFixed(2);$('#hAb').textContent=ab(d).toFixed(2);
+  var s=d>500?'Background. Every ratio is flat. Nothing in this core says ore is near.':d>200?'Sr/Ti and albite/quartz are falling: the fluid has been stripping strontium and destroying albite. You’re within about 500 m.':d>30?'Mn/Ti is now climbing too, and Sr/Ti is near its minimum. Ore is within a couple of hundred metres.':'You’re in the mineralisation.';
+  $('#heraSay').textContent=s;if(d<=200)award('hera',6,'Drilled into the halo');}
+$('#heraR').addEventListener('input',function(){heraSet(+this.value)});heraSet(1500);
+var HB=['More than 500 m','About 200 to 500 m','Under 200 m'];
+mcCards($('#heraQuiz'),[
+ {lbl:'Sample A',q:'Sr/Ti 0.55 · Mn/Ti 1.00 · albite/quartz 0.62',o:HB,a:1,e:'Sr/Ti and albite/quartz have dropped but Mn/Ti hasn’t moved yet: inside the outer halo, a few hundred metres out.'},
+ {lbl:'Sample B',q:'Sr/Ti 1.00 · Mn/Ti 1.00 · albite/quartz 1.00',o:HB,a:0,e:'All ratios at background: you’re well outside the halo.'},
+ {lbl:'Sample C',q:'Sr/Ti 0.27 · Mn/Ti 2.10 · albite/quartz 0.36',o:HB,a:2,e:'Strong Sr depletion, albite almost gone, and manganese up: you’re close.'}],'heraq',4);
+
+GEO.finish(function(){wmResize();sgResize();});
+})();
+</script>
+</body>
+</html>

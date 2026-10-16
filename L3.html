@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 3 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L2.html">&larr; Lecture 2</a><a href="L4.html">Lecture 4 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 3 · T3 2026</div>
+  <h1>Every texture is a timestamp</h1>
+  <p class="lede">Ore doesn't arrive quietly. Rock gets smashed, cracks open and fill, layers settle, and later deformation smears it all around. Each of those events leaves a texture, and if you can read textures you can say how, and in what order, an ore body formed. That's most of what you'll do in the ore suite labs. Start with your hands on a sample.</p>
+
+  <div class="obs" id="heroObs">
+    <div class="ttl"><span>Field task · Mount Gunson copper mine, South Australia</span><span class="srcs">slide 14</span></div>
+    <img loading="lazy" decoding="async" src="img/L3/slide014_1.jpg" alt="Hand specimen of pale pink sandstone fragments separated by thin black veinlets of copper sulphide">
+    <p class="ask">Pink sandstone, black filling. Could you put the pink pieces back together? And what does that tell you about how this breccia formed?</p>
+    <div class="cards" id="heroQ" style="grid-template-columns:1fr"></div>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#about">Three families of texture</a></li>
+      <li><a href="#breccia">Breccias: broken rock</a></li>
+      <li><a href="#sed">Sedimentary breccias</a></li>
+      <li><a href="#fault">Fault breccias</a></li>
+      <li><a href="#magvol">Magmatic and volcanic</a></li>
+      <li><a href="#hydro">Hydrothermal and impact</a></li>
+      <li><a href="#idkey">Breccia ID challenge</a></li>
+      <li><a href="#abund">Massive, semi-massive, disseminated</a></li>
+      <li><a href="#banded">Banded ores</a></li>
+      <li><a href="#veins">Veins</a></li>
+      <li><a href="#timing">Reading cross-cutting order</a></li>
+      <li><a href="#meta">Metamorphism and durchbewegung</a></li>
+      <li><a href="#cobar">Core from the Cobar Basin</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="about" data-log="Big picture"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 8 m</span></div>
+  <h2>Three families of texture</h2>
+  <p>This lecture is a field guide to the shapes ore takes, and there are three families to keep separate in your head. <strong>Breccias</strong> are broken rock, and the way the pieces are broken, moved and cemented tells you what broke them. <strong>Ore classifications</strong> by abundance and layering (massive, semi-massive, disseminated, banded) tell you how much ore there is and whether it formed with its host rock. <strong>Veins</strong> are cracks that opened and filled, and their internal structure and cross-cutting relationships record a sequence of events. On top of all that, <strong>metamorphism</strong> can recrystallise and smear sulphides into new textures.</p>
+  <p>Why does this matter so much? Because textures carry timing. In the Tuena goldfield, an honours project identified five generations of veins, and only the last one carried the gold. If you can't tell which vein is which, you can't tell which one to follow. Every description you write in an ore suite is practice at this. <span class="srcs">slide 37 and lecture recording, 18 Sep</span></p>
+  <figure>
+    <div class="figscroll"><svg viewBox="0 0 720 200" role="img" aria-labelledby="f0t" style="min-width:540px">
+      <title id="f0t">Three families of ore texture: breccias, ore abundance and banding, and veins, with metamorphism overprinting all three</title>
+      <g font-size="14">
+        <rect x="10" y="14" width="220" height="140" rx="10" fill="var(--bg)" stroke="var(--hem)" stroke-width="2.5"/>
+        <text x="120" y="44" text-anchor="middle" font-weight="700" fill="var(--ink)" font-size="16">Breccias</text>
+        <text x="120" y="70" text-anchor="middle" fill="var(--muted)">what broke the rock?</text>
+        <text x="120" y="92" text-anchor="middle" fill="var(--muted)">how far did pieces move?</text>
+        <text x="120" y="114" text-anchor="middle" fill="var(--muted)">what cemented them?</text>
+        <rect x="250" y="14" width="220" height="140" rx="10" fill="var(--bg)" stroke="var(--gold)" stroke-width="2.5"/>
+        <text x="360" y="44" text-anchor="middle" font-weight="700" fill="var(--ink)" font-size="16">Abundance and bands</text>
+        <text x="360" y="70" text-anchor="middle" fill="var(--muted)">how much ore mineral?</text>
+        <text x="360" y="92" text-anchor="middle" fill="var(--muted)">layered with the host?</text>
+        <text x="360" y="114" text-anchor="middle" fill="var(--muted)">syngenetic or not?</text>
+        <rect x="490" y="14" width="220" height="140" rx="10" fill="var(--bg)" stroke="var(--mal)" stroke-width="2.5"/>
+        <text x="600" y="44" text-anchor="middle" font-weight="700" fill="var(--ink)" font-size="16">Veins</text>
+        <text x="600" y="70" text-anchor="middle" fill="var(--muted)">how did the crack open?</text>
+        <text x="600" y="92" text-anchor="middle" fill="var(--muted)">what filled it, in what order?</text>
+        <text x="600" y="114" text-anchor="middle" fill="var(--muted)">which generation carries ore?</text>
+        <rect x="10" y="164" width="700" height="28" rx="6" fill="var(--slate)" opacity=".18"/>
+        <text x="360" y="183" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="700">metamorphism and deformation can recrystallise, remobilise and smear all three</text>
+      </g>
+    </svg></div>
+  </figure>
+</div></section>
+
+<section id="breccia" data-log="Breccias"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">8 to 16 m</span></div>
+  <h2>Breccias: broken rock, and who broke it</h2>
+  <p><button class="term" data-t="breccia">Breccia</button> just means broken rock: fragments, usually angular, of rock or mineral grains (the <button class="term" data-t="clast">clasts</button>) set in a finer-grained <button class="term" data-t="matrix">matrix</button> or <button class="term" data-t="cement">cement</button> that may or may not resemble the clasts. In impact breccias it can even be glass. Breccias matter to us because they're everywhere in ore systems: some deposits sit entirely inside breccias, including solution-collapse deposits, some sediment-hosted uranium, many epithermal and porphyry deposits, and supergene iron and manganese ores. Broken rock is permeable rock, and fluids go where the permeability is.</p>
+  <p>The first-order split is by <em>what did the breaking</em>, and there are six options: <strong>sedimentary</strong>, <strong>structural</strong> (fault), <strong>magmatic</strong>, <strong>volcanic</strong>, <strong>hydrothermal</strong> and <strong>impact</strong>. Your job with any breccia is to work backwards from three observations: the shape and sorting of the clasts, how far they've moved and rotated, and what the matrix is made of. <span class="srcs">slides 2 and 3</span></p>
+</div></section>
+
+<section id="sed" data-log="Sedimentary"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">16 to 26 m</span></div>
+  <h2>Sedimentary breccias: chert and collapse</h2>
+  <p>The simplest sedimentary breccias contain <button class="term" data-t="rip-up clasts">rip-up clasts</button>: half-lithified sediment torn up by a later current and dumped in the next layer. But the two that matter most by volume are chert breccias and solution-collapse breccias.</p>
+  <p><strong>Chert breccias</strong> form during diagenesis, when quartz replaces carbonate. Both the clasts and the matrix are microcrystalline quartz and formed at the same time, so they're tied to dolomitic sequences, with brecciation driven by partial dissolution of underlying carbonate or by tectonics. In chert-dolomite sequences dolomite takes over from chert with depth, at around 1000 m. They form most readily in impure limestones. <span class="srcs">slides 5 to 7</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · chert breccia, outcrop and slab</span><span class="srcs">slides 6 and 7</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide006_1.jpg" alt="Outcrop of pale angular chert fragments packed together"><div class="cap">A · outcrop</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide007_1.jpg" alt="Sliced slab with pale, grey and red chert clasts of different textures in a red matrix"><div class="cap">B · sawn slab</div></div>
+    </div>
+    <p class="ask">The slab has clasts of several colours and textures, and a red matrix. Is the red colour part of the breccia-forming process?</p>
+    <details data-obs="chert"><summary>Show what I see</summary><div class="seen"><p>The different clast colours are different generations or textures of chert, all replacing carbonate. The red is almost certainly hematite from later weathering and oxidation, not part of the original brecciation. Always separate the event that made the texture from the events that stained it afterwards (Lecture 2).</p></div></details>
+  </div>
+
+  <p><strong>Solution-collapse (karst) breccias</strong> form when groundwater dissolves a soluble layer underneath: evaporites (gypsum, anhydrite, halite, sylvite) or carbonates (dolomite, calcite). The insoluble rocks above lose their support and collapse. Look for three diagnostic features: <strong>V-shaped sags</strong> from cave-roof collapse, <strong>breccia pipes with inward-dipping beds</strong>, and <strong>sharp, flat bases</strong> where the dissolved layer used to be. They're the classic host for Mississippi Valley type (MVT) lead-zinc, because the collapse creates exactly the open, permeable plumbing that later ore fluids fill. Watch one form.</p>
+
+  <div class="lab" id="karst">
+    <h4><span>Dissolve the evaporite</span><b id="karstStage">ready</b></h4>
+    <canvas id="karstCanvas" aria-label="Animated cross-section of an evaporite layer dissolving and the overlying beds collapsing into a breccia pipe"></canvas>
+    <div class="row"><button class="btn" type="button" id="karstGo">Send in groundwater</button><button class="btn ghost" type="button" id="karstOre">Add MVT ore fluid</button><button class="btn ghost" type="button" id="karstReset">Reset</button></div>
+    <p class="say" id="karstSay">A layer of gypsum sits under insoluble sandstone and shale. Press the button.</p>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · limestone quarry wall</span><span class="srcs">slide 9</span></div>
+    <img loading="lazy" decoding="async" src="img/L3/slide009_2.jpg" alt="Quarry face with labelled collapse breccia, in situ breccia pipe, collapse breccia pipe and stratiform breccia zones">
+    <p class="ask">Find the features from the animation in this real quarry face. Which labelled body shows inward-dipping, collapsed beds, and where would you expect the flat base?</p>
+    <details data-obs="quarry"><summary>Show what I see</summary><div class="seen"><p>The collapse breccia pipes on the right are the V-shaped, chaotic bodies where roof rock fell in. The in situ breccia pipe has broken but barely moved. At the base, the stratiform breccia marks the level of the dissolved layer: a flat, sharp floor. Compare the animation: same geometry, real rock.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="fault" data-log="Fault breccias"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">26 to 38 m</span></div>
+  <h2>Fault breccias: crackle, mosaic, chaotic</h2>
+  <p>Fault (structural) breccias form in the upper crust by grinding between two fault blocks. They're classified by how much the clasts have moved, which you can measure: the proportion of large clasts (over 2 mm) and how well they still fit together. A <strong>crackle breccia</strong> has barely rotated and is 75 to 100 per cent large clasts. A <strong>mosaic breccia</strong> has more separation and rotation, 60 to 75 per cent. A <strong>chaotic breccia</strong> has lost all geometric fit, 30 to 60 per cent. Crackle breccias can be split further by how they cracked: <strong>attrition</strong> (progressive frictional wear), <strong>distributed crush</strong> (progressive microfracturing) and <strong>implosion</strong> (high pore-fluid pressure). <span class="srcs">slides 10 and 13</span></p>
+  <p>A <button class="term" data-t="jig-saw breccia">jig-saw breccia</button> is the special case where the process is almost pure dilation: the pieces moved apart but didn't rotate, so they fit back like a puzzle, and the gaps fill with minerals later. That was the Mount Gunson sample at the top. Push the strain up and watch the classification change.</p>
+
+  <div class="lab" id="brx">
+    <h4><span>Breccia strain machine</span><b id="brxClass">crackle</b></h4>
+    <div class="chips" role="group" aria-label="Breccia process" id="brxMode">
+      <button type="button" class="chip" data-m="fault" aria-pressed="true">Fault grinding</button>
+      <button type="button" class="chip" data-m="jig" aria-pressed="false">Jig-saw dilation</button>
+    </div>
+    <svg class="grid-svg" id="brxSvg" viewBox="0 0 600 300" role="img" aria-label="Rock broken into fragments that move apart and rotate as strain increases"></svg>
+    <div class="ctl" style="margin-top:.6rem">
+      <div><label for="brxS">Strain <b id="brxSv"></b></label><input type="range" id="brxS" min="0" max="100" value="12"></div>
+      <div><label for="brxFill">Matrix or cement</label><select id="brxFill"><option value="flour">Rock flour</option><option value="qtz">Quartz</option><option value="cc">Chalcocite (ore)</option></select></div>
+    </div>
+    <div class="readout"><div><small>Large clasts</small><b id="brxPct">0%</b></div><div><small>Rotation</small><b id="brxRot">0°</b></div></div>
+    <p class="say" id="brxSay"></p>
+    <div class="goal" id="g-brx"><i>✓</i><span>Make a crackle, a mosaic and a chaotic breccia.</span></div>
+    <div class="goal" id="g-jig"><i>✓</i><span>Make an ore-filled jig-saw breccia.</span></div>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · two fault breccias</span><span class="srcs">slides 11 and 12</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide011_1.jpg" alt="Banded grey shale and sandstone cut by a vertical zone of broken rock"><div class="cap">A · bedded sequence</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide012_1.jpg" alt="Pale green angular blocks separated by thin dark seams"><div class="cap">B · close-up</div></div>
+    </div>
+    <p class="ask">In A, how do you know the broken zone is a fault and not a sedimentary breccia? Classify B.</p>
+    <details data-obs="faultbx"><summary>Show what I see</summary><div class="seen"><p>A: the broken zone cuts straight across the shale-sandstone bedding as a narrow, steep band, and the beds either side are intact. That geometry says fault movement. B: the pale blocks are large, angular and still nearly fit together, with only thin seams of matrix between them: a crackle breccia, very little rotation.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="magvol" data-log="Magmatic, volcanic"><div class="wrap">
+  <div class="kicker">Concept 4 <span class="depth">38 to 52 m</span></div>
+  <h2>Magmatic and volcanic breccias</h2>
+  <p><strong>Magmatic breccias</strong> form inside a magma that's crystallising but not yet solid. It fractures in a plastic state, either because volatiles are exsolving as it rises or because the chamber is being moved by tectonics. The escaping fluids can drop ore minerals as they depressurise and react with wall rock, so these are common in epithermal and porphyry systems. <span class="srcs">slide 15</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · three magmatic breccias</span><span class="srcs">slide 16</span></div>
+    <div class="trio">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide016_1.jpg" alt="Grey rock with pale subrounded andesite clasts"><div class="cap">A · Payandayan volcano, West Java</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide016_2.jpg" alt="Brown sulphide matrix with dark rounded clasts"><div class="cap">B · Sudbury, Canada</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide016_3.jpg" alt="Black chromitite fragments in bright green and white cement"><div class="cap">C · Coolac, NSW</div></div>
+    </div>
+    <p class="ask">Two of these have a matrix that was itself molten. Which two, and what's the green cement in C?</p>
+    <details data-obs="magbx"><summary>Show what I see</summary><div class="seen"><ul><li><b>A:</b> subrounded andesite clasts, some with reaction rims: they were broken while the magma was still partly liquid and reacted with it.</li><li><b>B:</b> well-rounded clasts of the host norite in a matrix of sulphide. The sulphide was a melt too, a separate sulphide liquid, so the matrix was molten.</li><li><b>C:</b> chromitite broken while still in a magmatic state, then cemented by later fluids that grew green uvarovite (chromium garnet) and grossular.</li></ul><p class="so">So A and B had molten matrices. C's cement came later, from fluids. Rounded clasts and reaction rims are your clue to a hot, magmatic setting.</p></div></details>
+  </div>
+
+  <p><strong>Volcanic breccias</strong> are mostly angular volcanic fragments over 2 mm in a finer matrix (or non-volcanic fragments in a volcanic matrix). They come in three groups, and you can sort them by the energy source.</p>
+  <div class="mix">
+    <div><b>Autoclastic</b>The lava breaks itself. Flow breccias (aa and block lava) fragment as the flow keeps moving while the skin solidifies. Volcanic intrusive breccias include peperite (magma mixed into wet, unconsolidated sediment), frictional breccias at intrusion margins, and hyaloclastite (basalt at around 1000 °C hitting water at 0 to 20 °C and shattering to glass; pillow basalts are hyaloclastite stacked on hyaloclastite).</div>
+    <div><b>Pyroclastic</b>Explosions. Vulcanian breccias (angular blocks over 32 mm), pyroclastic flow breccias from dome explosions and collapses, hydrovolcanic breccias (lava meets water or ice) and phreatovolcanic breccias (hot lava meets groundwater).</div>
+    <div><b>Epiclastic</b>Gravity and water. Volcanic fragments carried downslope as lahars, water-transported deposits or debris avalanches. Very poorly sorted, no magmatic component and no hot water involved.</div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · volcanic breccias</span><span class="srcs">slides 19, 21 to 23</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide019_1.jpg" alt="Large dark boulder made of packed angular lava blocks"><div class="cap">A · block breccia</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide022_1.jpg" alt="Drill core of angular mixed rock fragments of many types"><div class="cap">B · Kulnura Quarry, NSW</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide021_1.jpg" alt="Boulder of pale and grey fragments in a fine ashy matrix"><div class="cap">C · pyroclastic breccia</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide023_1.jpg" alt="Outcrop with large rounded and angular boulders in a fine matrix, very poorly sorted"><div class="cap">D · debris flow</div></div>
+    </div>
+    <p class="ask">Which one was driven by gravity rather than heat, and what's odd about the clasts in B?</p>
+    <details data-obs="volbx"><summary>Show what I see</summary><div class="seen"><p><b>D</b> is the gravity one: huge range of clast sizes, very poorly sorted, a debris flow (epiclastic). <b>B</b> is a phreatic breccia: lava hit groundwater, the steam blast shattered the country rock, and the mix was injected upwards as a breccia dyke. That's why most of B's clasts are country rock, not volcanic. A is a block breccia from a lava flow breaking itself up, and C is pyroclastic: many rock types in an ash matrix.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="hydro" data-log="Hydrothermal"><div class="wrap">
+  <div class="kicker">Concept 5 <span class="depth">52 to 66 m</span></div>
+  <h2>Hydrothermal breccias: rock blown apart by its own fluid</h2>
+  <p>Hydrothermal breccias form by <button class="term" data-t="hydrofracturing">hydrofracturing</button>. Highly pressurised fluid exsolves and builds pressure inside fractures. Rock is held together by the confining stress around it, but what actually matters is the <button class="term" data-t="effective stress">effective stress</button>: confining stress minus fluid pressure. As fluid pressure climbs, effective stress drops towards zero, and once fluid pressure beats the confining stress plus the rock's small tensile strength, fractures propagate, often explosively. Near the surface the confining stress is low, so it takes less pressure; and if the system suddenly depressurises (boiling, a fault opening), the expanding fluid blasts the rock apart. The matrix is typically quartz, carbonate or <button class="term" data-t="rock flour">rock flour</button>, and the clasts are usually altered, because the same fluid that broke them reacts with them. <span class="srcs">slide 24 and lecture recording, 18 Sep</span></p>
+
+  <div class="lab" id="hb">
+    <h4><span>Pressure cooker</span><b id="hbState">intact</b></h4>
+    <div class="ctl"><div><label for="hbDepth">Depth <b id="hbDv"></b></label><input type="range" id="hbDepth" min="0.5" max="5" step="0.1" value="1.5"></div></div>
+    <canvas id="hbCanvas" aria-label="Rock block above a pressurising fluid reservoir; when fluid pressure exceeds confining stress the rock shatters into a breccia that is then cemented"></canvas>
+    <div class="readout"><div><small>Fluid pressure</small><b id="hbPf">0 MPa</b></div><div><small>Confining + strength</small><b id="hbS3">0 MPa</b></div><div><small>Effective stress</small><b id="hbEff">0 MPa</b></div></div>
+    <div class="row"><button class="btn" type="button" id="hbPump">Build pressure</button><button class="btn ghost" type="button" id="hbReset">Reset</button></div>
+    <p class="say" id="hbSay">Pick a depth, then build fluid pressure.</p>
+    <div class="goal" id="g-hb"><i>✓</i><span>Blow a breccia apart at shallow depth, then try again deep and compare.</span></div>
+    <p class="say" style="font-size:.84rem;color:var(--muted)">Teaching model: confining stress taken as lithostatic, about 27 MPa per km, plus 10 MPa tensile strength.</p>
+  </div>
+
+  <div class="obs">
+    <div class="ttl"><span>Field task · hydrothermal breccias from Queensland and NSW</span><span class="srcs">slides 25 and 26</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide025_1.jpg" alt="Pink granite fragments in white silica with purple fluorite"><div class="cap">A · Mount Surprise, QLD</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide025_2.jpg" alt="Grey granite clasts separated by brown sphalerite"><div class="cap">B · Aspasia mine, Georgetown</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide026_1.jpg" alt="Rounded dark clasts in white quartz with grey stibnite"><div class="cap">C · Hillgrove, NE NSW</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide026_2.jpg" alt="Pale altered granite clasts in a crushed granite matrix stained brown"><div class="cap">D · Mount Turner porphyry</div></div>
+    </div>
+    <p class="ask">In which of these is the cement itself ore? And in D, what is the matrix made of?</p>
+    <details data-obs="hydbx"><summary>Show what I see</summary><div class="seen"><ul><li><b>A:</b> granite blasted apart, cemented by fine silica (chalcedony) and purple fluorite carried by the escaping volatiles.</li><li><b>B:</b> granite clasts cemented by sphalerite: the cement is the ore. The clasts are visibly altered.</li><li><b>C:</b> quartz crystals nucleated around the clasts, then stibnite (antimony sulphide, the ore) filled the gaps.</li><li><b>D:</b> a milled-matrix breccia: highly altered granite clasts in granite that was itself crushed to powder by the fluid, with former sulphides now oxidised to goethite.</li></ul><p class="so">B and C have ore as cement. Some epithermal deposits are hosted entirely in breccia rather than veins; Kelian in Kalimantan is the classic example.</p></div></details>
+  </div>
+
+  <h3>Impact breccias</h3>
+  <p>When an extraterrestrial body hits, it can melt the surface into a glassy impact breccia, and its shock wave can melt rock deep in the crust almost instantly, freezing it as <button class="term" data-t="pseudotachylite">pseudotachylite</button> ("false glass"), dark veins injected through shattered rock. The Vredefort Dome in South Africa is the best example: granite that crystallised around 10 km down was partly melted by the shock. Impact breccias are almost never ore-related, with one famous Canadian exception you'll meet in the magmatic deposits lectures. <span class="srcs">slide 27 and lecture recording</span></p>
+</div></section>
+
+<section id="idkey" data-log="ID challenge"><div class="wrap">
+  <div class="kicker">Practice <span class="depth">66 to 72 m</span></div>
+  <h2>Breccia ID challenge</h2>
+  <p>Nine real samples from the lecture. Use clast shape and sorting, rotation, and matrix to classify each. Read the hint if you're stuck; it'll tell you what to look at, not the answer.</p>
+  <div class="lab" id="bid"><h4><span>What broke this rock?</span><b id="bidScore">0 / 9</b></h4><div class="cards" id="bidCards"></div></div>
+</div></section>
+
+<section id="abund" data-log="Abundance"><div class="wrap">
+  <div class="kicker">Concept 6 <span class="depth">72 to 84 m</span></div>
+  <h2>Massive, semi-massive, disseminated</h2>
+  <p>The simplest ore classification is how much of the rock is ore mineral, applied at deposit, lens and hand-specimen scale. <strong>Massive</strong> ore is over 50 per cent ore minerals, <strong>semi-massive</strong> is 10 to 50 per cent, and <strong>disseminated</strong> is under 10 per cent. Most mines take massive and semi-massive ore; disseminated material is usually treated as waste like the host rock. The big exceptions depend on the commodity. Gold is almost always disseminated because you can't see it, and at Thackaringa disseminated pyrite is the target because it carries a few per cent cobalt. <span class="srcs">slides 28 to 32</span></p>
+  <p>Estimating percentages by eye is a real field skill, and most people overestimate. Calibrate your eye here first.</p>
+  <div class="lab" id="estLab">
+    <h4><span>Visual estimation chart</span><b id="estClass">semi-massive</b></h4>
+    <div class="est">
+      <svg id="estSvg" viewBox="0 0 300 200" role="img" aria-label="Square of host rock with a chosen percentage of dark ore mineral grains" style="width:100%;border-radius:6px"></svg>
+      <div>
+        <div class="big num" id="estPct">25%</div>
+        <label for="estR" style="font-size:.8rem;color:var(--muted);display:block;margin-top:.6rem">Ore mineral area</label>
+        <input type="range" id="estR" min="1" max="90" value="25">
+        <div class="row"><button class="btn ghost" type="button" id="estQuiz">Test my eye</button></div>
+        <p class="say" id="estSay">Drag to see what each percentage looks like.</p>
+      </div>
+    </div>
+  </div>
+  <div class="lab" id="abLab"><h4><span>Classify the ore</span><b id="abScore">0 / 6</b></h4><div class="cards" id="abCards"></div></div>
+</div></section>
+
+<section id="banded" data-log="Banded ores"><div class="wrap">
+  <div class="kicker">Concept 7 <span class="depth">84 to 94 m</span></div>
+  <h2>Banded ores: the strongest clue to syngenetic ore</h2>
+  <p>Banded or layered ores have relatively continuous bands of a single ore mineral, or bands dominated by one. When you see them, think <button class="term" data-t="syngenetic">syngenetic</button>: the sulphide settled at the same time as the host sediment. They're most common in SEDEX deposits like Mount Isa and Lady Loretta, where sulphides accumulated in a confined basin with the muds, and in VMS deposits, where fine sulphide grains rained down from black smokers onto the seafloor. <span class="srcs">slide 33</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · four banded ores</span><span class="srcs">slides 34 and 35</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide034_1.jpg" alt="Brassy chalcopyrite with thin bronze pyrrhotite layers"><div class="cap">A · Jaguar, WA (VMS)</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide034_2.jpg" alt="Pale pyrite with darker sphalerite bands"><div class="cap">B · Scuddles, WA (VMS)</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide035_1.jpg" alt="Grey slab with dark and light sulphide bands that are gently folded"><div class="cap">C · Mount Isa, QLD (SEDEX)</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide035_2.jpg" alt="Dark slab with fine wavy pale bands"><div class="cap">D · Lady Loretta, QLD (SEDEX)</div></div>
+    </div>
+    <p class="ask">The bands in C are folded. Does that mean the ore was deformed by later tectonics?</p>
+    <details data-obs="banded"><summary>Show the reasoning</summary><div class="seen"><p>Not necessarily. At Mount Isa the galena-sphalerite bands and the shale between them are folded together in small, soft-sediment folds caused by compaction while the mud was still wet. The sulphide and the shale were behaving as one wet sediment, which is more evidence that they formed together. Tectonic folds would also deform later veins and would have a consistent axial plane across the outcrop.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="veins" data-log="Veins"><div class="wrap">
+  <div class="kicker">Concept 8 <span class="depth">94 to 110 m</span></div>
+  <h2>Veins: cracks that opened and filled</h2>
+  <p>A <button class="term" data-t="vein">vein</button> is a fracture that was dilated (pulled apart) and then filled with minerals. Vein geometry is controlled by the regional and local stress field at the time it formed, and multiple generations are normal in orogenic gold, epithermal and porphyry systems. Only one or two generations may carry ore, so describe every vein properly: <strong>geometry</strong> (planar, sinuous), <strong>width and spacing</strong>, <strong>continuity</strong> (continuous, semi-continuous, discontinuous), <strong>orientation</strong> relative to bedding or structure, and <strong>mineralogy</strong>. <span class="srcs">slide 37</span></p>
+  <p>One rule underpins all vein textures: the walls crystallise first and the centre last, because the centre is always the weakest part and keeps reopening. Watch three different vein types grow.</p>
+
+  <div class="lab" id="vg">
+    <h4><span>Vein growth</span><b id="vgName">crack-seal</b></h4>
+    <div class="chips" role="group" aria-label="Vein type" id="vgModes">
+      <button type="button" class="chip" data-v="crack" aria-pressed="true">Crack-seal (laminated)</button>
+      <button type="button" class="chip" data-v="ext" aria-pressed="false">Extensional</button>
+      <button type="button" class="chip" data-v="space" aria-pressed="false">Space-fill</button>
+    </div>
+    <canvas id="vgCanvas" aria-label="Animated cross-section of a vein opening and filling with minerals"></canvas>
+    <div class="row"><button class="btn ghost" type="button" id="vgReplay">Replay</button></div>
+    <p class="say" id="vgSay"></p>
+  </div>
+
+  <h3>The vein types, with real samples</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · laminated and extensional veins</span><span class="srcs">slides 40 and 41</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide040_1.jpg" alt="White quartz with many fine dark grey laminations"><div class="cap">A · Mount Turner porphyry, QLD</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide040_2.jpg" alt="Pale banded quartz and carbonate vein with fine dark bands"><div class="cap">B · Masuparia, Kalimantan</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide041_1.jpg" alt="Vein with quartz crystals grown straight across from wall to wall, with brassy sulphide"><div class="cap">C · Bingham, USA</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide041_2.jpg" alt="Sandstone with thin parallel rusty quartz veins"><div class="cap">D · Budgery mine, NSW</div></div>
+    </div>
+    <p class="ask">Which two are crack-seal veins, and which way are the crystals pointing in C?</p>
+    <details data-obs="lamext"><summary>Show what I see</summary><div class="seen"><p><b>A and B</b> are laminated crack-seal veins: open, seal, open, seal, many times over. In A the dark laminae are molybdenite. B is a classic <button class="term" data-t="ginguro">ginguro</button> vein from an epithermal system: colourless quartz, off-white ankerite and sooty black sulphide bands. That sample ran around 1500 g/t silver and 150 g/t gold. Find ginguro banding while exploring an epithermal system and you get very excited. <b>C and D</b> are extensional: planar, with crystals grown perpendicular to the vein walls because the rock simply pulled apart. In C, chalcopyrite, bornite and gold filled in later.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · space-fill and stockwork</span><span class="srcs">slides 43 and 45</span></div>
+    <div class="trio">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide043_1.jpg" alt="Grey rock with a vein whose centre is filled with dark grey molybdenite"><div class="cap">A · Bingham, molybdenite infill</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide043_2.jpg" alt="Dark euhedral sphalerite crystals with pale quartz filling around them"><div class="cap">B · Strauss open cut, Drake</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide045_1.jpg" alt="Pink altered monzonite cut by many crossing grey and black veinlets"><div class="cap">C · Goonumbla, NSW</div></div>
+    </div>
+    <p class="ask">A and B are both space-fill veins, but their order is opposite. Explain, then say why companies love C.</p>
+    <details data-obs="space"><summary>Show what I see</summary><div class="seen"><p><b>A</b> follows the usual order: quartz lined the walls first and molybdenite filled the open centre later. <b>B</b> is reversed: euhedral sphalerite crystals grew first into open space, and quartz filled around them afterwards. You can tell because the sphalerite has crystal faces, which only grow into open space. <b>C</b> is a stockwork: many crossing veins of early quartz and later quartz-chalcocite in brecciated, altered monzonite. Lots of veins means lots of separate mineralising pulses, which is exactly what makes porphyries and epithermal systems big. They form by intense hydrofracturing as overpressured fluid exsolves close to the surface.</p></div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · magmatic and complex veins</span><span class="srcs">slides 38 and 46</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide038_1.jpg" alt="Olive-green dunite with a single black sinuous chromitite vein"><div class="cap">A · Kondyor Massif, Russia</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide046_1.jpg" alt="Grey phyllite with a large pale quartz vein on the left and a cross-cutting shear vein"><div class="cap">B · Tallebung Sn-W, NSW</div></div>
+    </div>
+    <p class="ask">A isn't hydrothermal at all. How did a chromitite vein form in dunite? And what's the sequence in B?</p>
+    <details data-obs="magvein"><summary>Show what I see</summary><div class="seen"><p><b>A</b> is a magmatic vein: dense chromite crystals segregated and aggregated into a monomineralic vein within the silicate host. Magmatic veins are rare; chromitite in dunite and pyrrhotite-pentlandite in ultramafic rock are the usual cases. <b>B</b> records two events: extension opened a large quartz-cassiterite vein, then later shearing cut a shear vein across it.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="timing" data-log="Timing"><div class="wrap">
+  <div class="kicker">Concept 9 <span class="depth">110 to 120 m</span></div>
+  <h2>Reading cross-cutting order</h2>
+  <p>Relative timing uses two rules you already know from first year. A feature that <strong>cuts</strong> another is younger. A feature that <strong>offsets</strong> another moved after it formed. Add a third for ore textures: clasts are older than the matrix that surrounds them. With those three rules you can line up a vein history. Try it on this slab.</p>
+  <div class="lab" id="xc">
+    <h4><span>Oldest to youngest</span><b id="xcState">click the features in order</b></h4>
+    <svg class="grid-svg" id="xcSvg" viewBox="0 0 600 320" role="img" aria-label="Slab of bedded siltstone cut by three veins; click features from oldest to youngest"></svg>
+    <div class="order" id="xcOrder"></div>
+    <p class="say" id="xcSay">Start with the oldest thing in the slab.</p>
+    <div class="row"><button class="btn ghost" type="button" id="xcReset">Start again</button></div>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="meta" data-log="Metamorphism"><div class="wrap">
+  <div class="kicker">Concept 10 <span class="depth">120 to 132 m</span></div>
+  <h2>Metamorphism and durchbewegung</h2>
+  <p>Heat and pressure don't just leave sulphide ores alone. During metamorphism they're remobilised both physically (dislocation flow along grain boundaries) and chemically (dissolving and reprecipitating in fluid). The sweet spot is 350 to 500 °C, upper greenschist to lower amphibolite facies. Remobilised ores are usually <strong>much coarser grained</strong> than the original sulphides, which is the easiest way to spot them, and remobilisation can make spectacular high-grade offshoots. The Consols mine at Broken Hill was a completely remobilised orebody, with masses of pure silver over a tonne in weight. <span class="srcs">slide 47 and lecture recording, 21 Sep</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · metamorphosed ores</span><span class="srcs">slides 48 and 49</span></div>
+    <div class="trio">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide048_1.jpg" alt="Coarse, shiny grey galena and sphalerite crystals"><div class="cap">A · Hera, level 615</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide048_2.jpg" alt="Galena with long, ribbon-like stretched crystals"><div class="cap">B · Woodcutters, NT</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide049_1.jpg" alt="Banded rock of dark pyrrhotite-rich bands and pale quartz bands"><div class="cap">C · Mount Windarra, WA</div></div>
+    </div>
+    <p class="ask">What does each tell you about what metamorphism did?</p>
+    <details data-obs="meta"><summary>Show what I see</summary><div class="seen"><ul><li><b>A:</b> very coarse, recrystallised galena-sphalerite. Coarse grain size is the giveaway for remobilisation.</li><li><b>B:</b> highly strained, ribbon-like galena stretched during deformation: galena flows ductilely.</li><li><b>C:</b> this was a banded iron formation of hematite and chert. Metamorphism, with sulphur introduced, converted the hematite to pyrrhotite and recrystallised the chert to coarse quartz. The banding survived; the minerals didn't.</li></ul></div></details>
+  </div>
+
+  <p>Most sulphides behave <strong>ductilely</strong> under greenschist conditions and flow like toothpaste; pyrite is the stubborn exception and stays brittle. When the host rock or old quartz veins are brittle and the sulphide matrix is ductile, deformation snaps off fragments of the brittle material and rolls them around inside flowing sulphide. That's <button class="term" data-t="durchbewegung">durchbewegung</button> texture, first described by Frank Vokes in 1969 from metamorphosed VMS deposits in northern Norway: rigid, rotated clasts (usually siliceous host rock or vein quartz) in a matrix of ductile sphalerite and galena. Compare the two behaviours.</p>
+  <div class="lab" id="sh">
+    <h4><span>Shear the ore</span><b id="shName">galena matrix</b></h4>
+    <div class="chips" role="group" aria-label="Matrix mineral" id="shModes">
+      <button type="button" class="chip" data-s="duct" aria-pressed="true">Galena-sphalerite matrix (ductile)</button>
+      <button type="button" class="chip" data-s="brit" aria-pressed="false">Pyrite matrix (brittle)</button>
+    </div>
+    <canvas id="shCanvas" aria-label="Animated simple shear of an ore with rigid clasts in a ductile or brittle matrix"></canvas>
+    <p class="say" id="shSay"></p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · durchbewegung at Hera</span><span class="srcs">slides 51 and 55</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L3/slide051_1.jpg" alt="Underground face with pale angular siltstone clasts in grey fine-grained sulphide"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L3/slide055_1.jpg" alt="Underground face with clasts of quartz and orange garnet in fine grey galena"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">B contains orange garnet in quartz clasts, inside fine galena. Why is garnet a surprise in a sulphide vein, and what does it tell you?</p>
+    <details data-obs="durch"><summary>Show the reasoning</summary><div class="seen"><p>Garnet needs high temperature. These quartz-garnet clasts formed deeper in the deposit, in hotter skarn conditions, then were broken off and carried up a shear vein inside ductile, fine-grained galena. So one sample records an early hot event, a later deformation, and the galena flowing around the debris. A shows the same texture with bleached siltstone clasts in sphalerite-galena.</p></div></details>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="cobar" data-log="Cobar core"><div class="wrap">
+  <div class="kicker">Concept 11 <span class="depth">132 to 146 m</span></div>
+  <h2>Core from the Cobar Basin: putting it together</h2>
+  <p>Time to read real core the way you will in the labs. <strong>Hera</strong>, near Nymagee in central NSW, is a Devonian zinc-lead-silver-gold deposit in a turbidite sequence (alternating siltstone and fine sandstone), structurally controlled and deformed four times (D1 to D4). It also has localised high-temperature skarn (garnet, wollastonite, diopside, above 600 °C) overprinted by pervasive low-temperature skarn (tremolite). <strong>Federation</strong>, 6 km south, is similar but simpler: no skarn, and much of the ore is massive. <span class="srcs">slides 53 and 60</span></p>
+  <div class="note">
+    <span class="tag"><span>Field note · sphalerite colour is an iron gauge</span><span class="srcs">slides 62, 70 and 71</span></span>
+    <p>Sphalerite (ZnS) takes iron into its structure, and the more iron, the darker it gets. Honey-yellow sphalerite is low-iron, red is moderate-iron, and dark brown to black is high-iron. Iron content in sphalerite tracks the conditions it formed under, so the colour you see in core is real data. Note it every time.</p>
+  </div>
+  <div class="lab" id="core"><h4><span>Log the core</span><b id="coreScore">0 / 8</b></h4><div class="cards" id="coreCards"></div></div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · find the gold</span><span class="srcs">slide 62</span></div>
+    <img loading="lazy" decoding="async" src="img/L3/slide062_1.jpg" alt="Close-up of honey-coloured sphalerite with a red marker circle around a tiny gold grain">
+    <p class="ask">The red circle marks visible gold at Federation. What's it sitting in, and why is that useful to know when logging?</p>
+    <details data-obs="gold"><summary>Show what I see</summary><div class="seen"><p>Very low-iron, honey-coloured sphalerite with almost no sign of deformation. Gold at Federation tends to sit with this honey sphalerite and with quartz-sphalerite-galena veins, so when you're logging, honey sphalerite is a cue to look harder with a hand lens. Deposits often have localised zones of high strain or of a particular assemblage, which is why you look at every scale.</p></div></details>
+  </div>
+  <h3>Where this goes next</h3>
+  <p>Lecture 4 takes these same textures under the microscope in reflected light, where you'll identify the ore minerals and their intergrowths properly. Lecture 5 explains the stress fields that open veins and drive fault breccias. And the SEDEX and VMS lectures (L9, L10) come back to banded ore in detail.</p>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">146 to 152 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">152 to 156 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">156 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 3 slides (73 slides; most photos on this page come from them, tagged by slide) and the Echo360 recordings of 18 and 21 September 2026 (the lecture starts partway through the 18 Sep recording and finishes at the start of the 21 Sep one). Transcripts are machine-generated, so spoken details were cross-checked against the slides where possible. The animations are teaching models, not to scale.</p>
+  <p><a href="L2.html">&larr; Lecture 2</a> &nbsp;·&nbsp; <a href="L4.html">Lecture 4, ore petrography &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You have a hat and a hammer.'],[35,'Graduate geologist','Trusted with the core shed.'],[100,'Project geologist','Running a drill program.'],[180,'Senior geologist','Your core logs get quoted.'],[270,'Chief geologist','The board calls you about discoveries.']];
+var G={
+ "breccia":"Broken rock: angular fragments (clasts) in a finer-grained matrix or cement.",
+ "clast":"A fragment of rock or mineral within a breccia or sediment.",
+ "matrix":"The finer-grained material between clasts. Can be fragmental (rock flour) or crystalline.",
+ "cement":"Minerals that precipitated from fluid in the spaces between clasts, binding them together.",
+ "rock flour":"Rock ground to fine powder by fault movement or explosive fluid release.",
+ "rip-up clasts":"Fragments of partly lithified sediment torn up by a later current and deposited in a younger layer.",
+ "chert breccia":"Breccia where both clasts and matrix are microcrystalline quartz, formed as quartz replaced carbonate during diagenesis.",
+ "solution-collapse breccia":"Breccia formed when overlying rock collapses into space left by dissolved evaporite or carbonate. Hosts many MVT deposits.",
+ "MVT":"Mississippi Valley type: carbonate-hosted lead-zinc deposits, often in solution-collapse breccias.",
+ "crackle breccia":"Fault breccia with minimal clast rotation; 75 to 100% large clasts.",
+ "mosaic breccia":"Fault breccia with more separation and rotation; 60 to 75% large clasts.",
+ "chaotic breccia":"Fault breccia with strongly rotated clasts that no longer fit; 30 to 60% large clasts.",
+ "jig-saw breccia":"Breccia formed by dilation with almost no rotation, so the clasts fit back together.",
+ "magmatic breccia":"Breccia formed when a crystallising, still-plastic magma fractures, often from volatile exsolution.",
+ "peperite":"Breccia of magma mixed with wet, unconsolidated sediment it intruded.",
+ "hyaloclastite":"Glassy breccia formed when lava quenches and shatters against water.",
+ "phreatic breccia":"Breccia formed by steam explosions when magma heats groundwater; mostly country rock clasts.",
+ "epiclastic":"Volcanic fragments transported by water or gravity, such as lahars and debris flows.",
+ "hydrofracturing":"Fracturing caused when fluid pressure exceeds the confining stress plus the rock's tensile strength.",
+ "effective stress":"Confining stress minus fluid pressure. When it approaches zero, rock fractures easily.",
+ "pseudotachylite":"Glassy rock formed by near-instant frictional or shock melting, as in impact structures. Literally 'false glass'.",
+ "massive ore":"Ore with more than 50% ore minerals.",
+ "semi-massive ore":"Ore with 10 to 50% ore minerals.",
+ "disseminated ore":"Ore with less than 10% ore minerals, scattered through the host.",
+ "net-textured":"Sulphide forming a connected network between silicate grains, typical of magmatic nickel ores.",
+ "syngenetic":"Formed at the same time as the host rock, as in banded SEDEX and VMS ores.",
+ "vein":"A fracture that was dilated and filled with minerals.",
+ "crack-seal":"Repeated cracking and sealing of a vein, building many thin laminations.",
+ "ginguro":"Japanese term for laminated epithermal veins with sooty black sulphide bands rich in gold and silver.",
+ "extensional vein":"Planar vein formed by simple pulling apart, with crystals grown perpendicular to the walls.",
+ "space-fill vein":"Zoned vein that only partly filled at first, leaving open space for later minerals.",
+ "comb quartz":"Quartz crystals grown from vein walls into open space, with euhedral terminations pointing inwards.",
+ "stockwork":"A network of many crossing and subparallel veins in a small volume of rock.",
+ "remobilisation":"Physical and chemical movement and recrystallisation of ore minerals during metamorphism and deformation.",
+ "durchbewegung":"Texture of rigid, rotated clasts in a ductile sulphide matrix, formed by deformation of sulphide ore.",
+ "slickenlines":"Lineations on a fault surface showing the direction of movement.",
+ "skarn":"Calc-silicate rock (garnet, pyroxene, wollastonite) formed by hot fluids reacting with carbonate-bearing rock."
+};
+var CP={
+ cp1:{q:'A carbonate-evaporite sequence shows V-shaped sags, a pipe of rubble with inward-dipping beds, and a sharp flat base. Which breccia is it?',o:['Solution-collapse','Impact','Phreatic'],a:0,e:'All three are diagnostic of collapse into space left by dissolved evaporite or carbonate.'},
+ cp2:{q:'A fault breccia is 65% large clasts with some rotation, but you can still roughly fit pieces together. Classify it.',o:['Crackle','Mosaic','Chaotic'],a:1,e:'Mosaic breccias are 60 to 75% large clasts with moderate rotation.'},
+ cp3:{q:'Rounded host-rock clasts sit in a sulphide matrix that was itself a melt. Which breccia type?',o:['Hydrothermal','Magmatic','Epiclastic'],a:1,e:'A molten sulphide matrix with rounded clasts is magmatic, as at Sudbury.'},
+ cp4:{q:'A hand specimen is about 25% sphalerite and galena. How do you classify it?',o:['Massive','Semi-massive','Disseminated'],a:1,e:'10 to 50% ore minerals is semi-massive.'},
+ cp5:{q:'In a laminated crack-seal vein, where is the youngest material?',o:['At the walls','At the centre','Randomly spread'],a:1,e:'The centre is the weakest plane and keeps reopening, so the walls crystallise first and the centre last.'},
+ cp6:{q:'Vein A is offset by vein B, and both are cut, without offset, by vein C. What’s the order?',o:['A, B, C','C, B, A','B, A, C'],a:0,e:'Offset features are older than what offsets them, and the unbroken cross-cutter is youngest.'},
+ cp7:{q:'Rigid quartz clasts rotated inside fine-grained galena in a deformed ore. What is this texture?',o:['Jig-saw breccia','Durchbewegung','Crackle breccia'],a:1,e:'Durchbewegung: brittle clasts rolled in a ductile sulphide matrix during deformation.'}
+};
+var ST=[
+ ['What three observations let you work out what broke a breccia?','Recall','Clast shape and sorting (angular or rounded, sorted or not), how much the clasts moved and rotated (do they still fit?), and what the matrix or cement is (rock flour, quartz, sulphide, melt, glass).'],
+ ['Why are solution-collapse breccias good hosts for MVT ore?','Think','Collapse creates a pipe of permeable rubble with lots of open space. Later basin brines can flow through it and precipitate galena and sphalerite between the blocks.'],
+ ['Explain hydrofracturing in terms of effective stress, and why it’s easier near the surface.','Apply','Effective stress is confining stress minus fluid pressure. As fluid pressure rises, effective stress falls; once fluid pressure exceeds confining stress plus tensile strength, the rock fractures. Near the surface the confining stress is much lower, so less fluid pressure is needed, and sudden depressurisation can make it explosive.'],
+ ['How would you tell a debris flow breccia from a hydrothermal breccia in the field?','Think','A debris flow is extremely poorly sorted, has a surface, gravity-driven origin and no hydrothermal cement or alteration. A hydrothermal breccia has altered clasts and a precipitated cement (quartz, carbonate, sulphide) or milled rock flour from fluid action.'],
+ ['Why are banded ores strong evidence for syngenetic deposition?','Recall','Continuous ore-mineral bands parallel to bedding mean the sulphide accumulated layer by layer with the host sediment, as on the floor of a SEDEX basin or around VMS vents.'],
+ ['List the five things you should record when describing a vein.','Recall','Geometry (planar, sinuous), width and spacing, continuity, orientation relative to bedding or structures, and mineralogy.'],
+ ['A vein has comb quartz along both walls and molybdenite in the centre. What type is it, and what’s the sequence?','Apply','A space-fill vein. Quartz grew first from the walls into open space (euhedral points inward), then molybdenite filled the remaining cavity.'],
+ ['Why do companies get excited about stockwork veins in a porphyry?','Think','A stockwork means intense, repeated hydrofracturing and many mineralising pulses through a large volume of rock: the bulk, low-grade but enormous tonnage that porphyries are mined for.'],
+ ['What’s the easiest field clue that an ore has been remobilised by metamorphism?','Recall','Coarse grain size compared with the original fine sulphides, often with strained or ribbon-like galena.'],
+ ['Why does durchbewegung texture need both brittle and ductile materials?','Think','The brittle material (siliceous host or quartz) breaks into clasts, and the ductile sulphide (galena, sphalerite) flows around them, letting the clasts rotate. If everything were ductile you’d get smearing; if everything were brittle you’d get cataclasis.']
+];
+GEO.start({key:'geos3141-L3-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:156,goals:{'g-brx':'brx-all','g-jig':'brx-jig','g-hb':'hb-both'}});
+
+/* hero */
+mcCards($('#heroQ'),[{o:['Yes: the pieces barely rotated, so they were just pulled apart and the gaps filled with ore','No: the pieces were rounded by transport in a river','No: they were rotated and ground down in a fault'],a:0,
+  e:'Exactly. The sandstone fragments still fit together with almost no rotation: that’s a <b>jig-saw breccia</b>, formed by dilation. The black filling is chalcocite, copper sulphide, deposited by fluid that flowed into the gaps. The breccia made the space; the fluid made the ore. That logic runs through this whole lecture.',hint:'Look at the edges of neighbouring pink pieces. Do they match?',win:'Good eye'}],'hero',5);
+/* ---------- fragments shared by breccia machine and pressure cooker ---------- */
+function makeFragments(W,H,nx,ny,jit,seed){var r=rng(seed),V=[];for(var j=0;j<=ny;j++){V.push([]);for(var i=0;i<=nx;i++){var x=i*W/nx,y=j*H/ny;if(i>0&&i<nx)x+=(r()-.5)*jit;if(j>0&&j<ny)y+=(r()-.5)*jit;V[j].push([x,y]);}}
+  var F=[];for(j=0;j<ny;j++)for(i=0;i<nx;i++){var p=[V[j][i],V[j][i+1],V[j+1][i+1],V[j+1][i]];var cx=0,cy=0;p.forEach(function(q){cx+=q[0];cy+=q[1]});cx/=4;cy/=4;
+    var a=0;for(var k=0;k<4;k++){var q1=p[k],q2=p[(k+1)%4];a+=q1[0]*q2[1]-q2[0]*q1[1];}F.push({p:p,cx:cx,cy:cy,area:Math.abs(a)/2,rot:(r()-.5)*2,dir:r()*Math.PI*2,sh:r(),chips:[[r(),r()],[r(),r()],[r(),r()]]});}
+  return F;}
+/* ---------- breccia strain machine ---------- */
+var bx=$('#brxSvg'),BW=600,BH=300,frags=makeFragments(BW,BH,10,5,26,4),brxMode='fault',seenCls={};
+var bxBg=el('rect',{x:0,y:0,width:BW,height:BH},bx),bxChips=el('g',{},bx),bxG=el('g',{},bx),bxPolys=frags.map(function(f){return el('polygon',{stroke:'var(--ink)','stroke-opacity':.35,'stroke-width':1},bxG)});
+var fillCol={flour:'#9C968C',qtz:'#ECEAE4',cc:'#2A2C33'};
+function brx(){var s=+$('#brxS').value/100,jig=brxMode==='jig';$('#brxSv').textContent=Math.round(s*100)+'%';
+  var fill=$('#brxFill').value;bxBg.setAttribute('fill',fillCol[fill]);var clastArea=0,maxRot=0;var rockA=css('--crust'),rockB=mix(css('--crust'),'#B08A70',.5);
+  frags.forEach(function(f,i){var tx,ty,rot,sc;
+    if(jig){var k=.16*s;tx=(f.cx-BW/2)*k;ty=(f.cy-BH/2)*k;rot=0;sc=1-.12*s;}
+    else{var k2=.12*s;tx=(f.cx-BW/2)*k2+Math.cos(f.dir)*18*s;ty=(f.cy-BH/2)*k2+Math.sin(f.dir)*18*s;rot=f.rot*75*Math.pow(s,1.3);sc=1-.62*Math.pow(s,1.25)*(.7+.6*f.sh);}
+    sc=Math.max(.2,sc);maxRot=Math.max(maxRot,Math.abs(rot));clastArea+=f.area*sc*sc;
+    var pts=f.p.map(function(q){var x=(q[0]-f.cx)*sc,y=(q[1]-f.cy)*sc;var a=rot*Math.PI/180;return [(f.cx+tx+x*Math.cos(a)-y*Math.sin(a)).toFixed(1),(f.cy+ty+x*Math.sin(a)+y*Math.cos(a)).toFixed(1)].join(',')}).join(' ');
+    bxPolys[i].setAttribute('points',pts);bxPolys[i].setAttribute('fill',i%3?rockA:rockB);});
+  bxChips.innerHTML='';if(!jig&&s>.25){var n=Math.round(140*Math.pow(s,1.4));var r=rng(9);for(var c=0;c<n;c++)el('rect',{x:r()*BW,y:r()*BH,width:2+r()*5,height:2+r()*5,fill:rockA,opacity:.85},bxChips);}
+  var pct=Math.min(100,Math.round(clastArea/(BW*BH)*100*1.05));$('#brxPct').textContent=pct+'%';$('#brxRot').textContent=Math.round(maxRot)+'°';
+  var cls=jig?'jig-saw':pct>=75?'crackle':pct>=60?'mosaic':pct>=30?'chaotic':'matrix-supported';$('#brxClass').textContent=cls;
+  var say={'crackle':'<b>Crackle breccia.</b> Clasts are large and still almost fit; very little rotation. Typical of the margins of a fault zone or implosion by high pore-fluid pressure.',
+   'mosaic':'<b>Mosaic breccia.</b> Clasts have separated and rotated a bit; you can still roughly see how they fitted.',
+   'chaotic':'<b>Chaotic breccia.</b> Clasts are rotated, rounded off and mixed with ground-up rock flour. Geometric fit is gone: lots of fault movement.',
+   'matrix-supported':'<b>Matrix-supported.</b> So much grinding that clasts float in rock flour. You’re heading towards fault gouge.',
+   'jig-saw':'<b>Jig-saw breccia.</b> Pure dilation: the pieces pulled apart without rotating, and the space filled with cement. '+(fill==='cc'?'Here the cement is chalcocite, so the breccia is ore, just like Mount Gunson.':'Try filling it with chalcocite.')}[cls];
+  $('#brxSay').innerHTML=say;
+  if(['crackle','mosaic','chaotic'].indexOf(cls)>=0){seenCls[cls]=1;if(Object.keys(seenCls).length===3)award('brx-all',8,'Three fault breccias made');}
+  if(cls==='jig-saw'&&fill==='cc'&&s>.3)award('brx-jig',6,'Ore-filled jig-saw breccia');}
+$('#brxS').addEventListener('input',brx);$('#brxFill').addEventListener('input',brx);
+$$('#brxMode .chip').forEach(function(b){b.addEventListener('click',function(){brxMode=b.dataset.m;$$('#brxMode .chip').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});brx();});});
+onTheme(brx);brx();
+/* ---------- solution collapse ---------- */
+var kc=$('#karstCanvas'),kx=kc.getContext('2d'),KW=640,KH=300,kt=0,kRun=false,kOre=0,kCol={},kk=1;
+function kColors(){kCol={sky:css('--sky'),ink:css('--ink'),muted:css('--muted'),crust:css('--crust'),sea:css('--sea'),gold:css('--gold-hi'),hem:css('--hem'),slate:css('--slate'),paper:css('--paper')};}kColors();onTheme(function(){kColors();kDraw()});
+var KL=[{y:40,h:28,c:'#C9B48A'},{y:68,h:24,c:'#8F8A80'},{y:92,h:30,c:'#D2BE92'},{y:122,h:22,c:'#7E7A72'},{y:144,h:36,c:'#C4AE84'}],EVY=180,EVH=46,LSY=226;
+var kBlocks=(function(){var r=rng(3),B=[];for(var i=0;i<70;i++){var L=KL[Math.floor(r()*KL.length)];B.push({x:250+r()*140,y:L.y+r()*L.h,w:10+r()*18,h:6+r()*10,c:L.c,rot:(r()-.5)*1.4,fall:r()});}return B;})();
+function sag(x,A){var w=95;var d=(x-320)/w;return A*Math.exp(-d*d);}
+function kDraw(){var c=kx;c.clearRect(0,0,KW,KH);c.fillStyle=kCol.sky;c.fillRect(0,0,KW,40);
+  var dis=cl(kt/.5),col=cl((kt-.45)/.55),A=col*44;
+  c.fillStyle='#9AA6A0';c.fillRect(0,LSY,KW,KH-LSY);c.fillStyle=kCol.ink;c.font=fontPx(kk);c.fillText('limestone',12,LSY+24);
+  c.fillStyle='#E7C9C4';c.fillRect(0,EVY,KW,EVH);
+  var cavW=40+200*dis;c.fillStyle=kCol.sky;c.beginPath();c.ellipse(320,EVY+EVH/2,cavW/2,EVH/2*Math.min(1,dis*1.6),0,0,Math.PI*2);c.fill();
+  if(col<1){c.fillStyle=rgba(kCol.sea,.9);for(var i=0;i<22;i++){var ph=((kt*3)+i/22)%1;c.beginPath();c.arc(ph*KW,EVY+8+(i%5)*7,2.2,0,Math.PI*2);c.fill();}}
+  KL.forEach(function(L){c.fillStyle=L.c;c.beginPath();c.moveTo(0,L.y);for(var x=0;x<=KW;x+=8)c.lineTo(x,L.y+sag(x,A*(.4+.6*(L.y-40)/140)));for(x=KW;x>=0;x-=8)c.lineTo(x,L.y+L.h+sag(x,A*(.4+.6*(L.y+L.h-40)/140)));c.closePath();c.fill();
+    c.strokeStyle=rgba(kCol.ink,.25);c.stroke();});
+  if(col>.15){c.fillStyle='#7C6E66';c.fillRect(320-cavW/2+10,EVY,cavW-20,EVH);
+    kBlocks.forEach(function(b){var k=cl((col-.15-b.fall*.3)/.6);var y=b.y+(EVY+EVH-12-b.y)*k*(.4+.6*b.fall);c.save();c.translate(b.x+b.w/2,y);c.rotate(b.rot*k);c.fillStyle=b.c;c.fillRect(-b.w/2,-b.h/2,b.w,b.h);c.strokeStyle=rgba(kCol.ink,.3);c.strokeRect(-b.w/2,-b.h/2,b.w,b.h);c.restore();});
+    c.strokeStyle=rgba(kCol.ink,.55);c.lineWidth=1.5;c.beginPath();c.moveTo(250,40+sag(250,A*.4));c.lineTo(290,EVY+EVH);c.moveTo(390,40+sag(390,A*.4));c.lineTo(350,EVY+EVH);c.stroke();c.lineWidth=1;}
+  if(kOre>0){c.fillStyle=rgba('#6C6F78',.9*kOre);var r=rng(7);for(var j=0;j<90;j++){var x=270+r()*100,y=120+r()*100;if(y<EVY+EVH){c.beginPath();c.arc(x,y,2.6,0,Math.PI*2);c.fill();}}}
+  c.fillStyle=kCol.ink;c.font=fontPx(kk);c.fillText(dis>0?(col>0?'':'cavity growing'):'evaporite (gypsum)',12,EVY+26);
+  if(col>.6){c.fillText('V-shaped sag',420,70);c.fillText('inward-dipping beds',420,110);c.fillText('breccia pipe',420,150);c.fillText('sharp, flat base',420,EVY+EVH+16);
+    c.strokeStyle=rgba(kCol.ink,.6);c.beginPath();c.moveTo(270,EVY+EVH+1);c.lineTo(370,EVY+EVH+1);c.stroke();}}
+function kLoop(){if(!kRun)return;kt=Math.min(1,kt+.0045);kDraw();
+  $('#karstStage').textContent=kt<.45?'dissolving':kt<1?'collapsing':'collapsed';
+  if(kt<1)requestAnimationFrame(kLoop);else{kRun=false;$('#karstSay').innerHTML='The roof has failed. Beds sag in a <b>V</b>, dip inward around a <b>breccia pipe</b>, and the rubble sits on a <b>sharp, flat base</b> where the gypsum used to be. Now add ore fluid.';award('karst',5,'Karst breccia collapsed');}}
+$('#karstGo').addEventListener('click',function(){if(kRun)return;if(kt>=1)kt=0;kRun=true;kOre=0;$('#karstSay').textContent='Groundwater flows along the gypsum and dissolves it. Overlying insoluble beds lose their support...';if(reduce){kt=1;kDraw();kRun=false;}else requestAnimationFrame(kLoop);});
+$('#karstOre').addEventListener('click',function(){if(kt<1){$('#karstSay').textContent='Let the collapse finish first. Ore fluid needs the open breccia to flow through.';return;}var t0=performance.now();(function f(n){kOre=cl((n-t0)/1500);kDraw();if(kOre<1)requestAnimationFrame(f);})(t0);
+  $('#karstSay').innerHTML='Later basin brines flow through the permeable rubble and drop galena and sphalerite between the blocks. That’s why <b>MVT</b> lead-zinc deposits love solution-collapse breccias.';award('karst-ore',4,'Breccia pipe mineralised');});
+$('#karstReset').addEventListener('click',function(){kt=0;kOre=0;kRun=false;$('#karstStage').textContent='ready';$('#karstSay').textContent='A layer of gypsum sits under insoluble sandstone and shale. Press the button.';kDraw();});
+/* ---------- pressure cooker ---------- */
+var hc=$('#hbCanvas'),hx=hc.getContext('2d'),HW=640,HH=260,hb={pf:0,broke:false,bt:0,cement:0,run:false,deepDone:false,shallowDone:false},hk=1;
+var hFr=makeFragments(320,140,8,4,22,12);
+function hbStrength(){return 27*+$('#hbDepth').value+10;}
+function hbUI(){var d=+$('#hbDepth').value;$('#hbDv').textContent=d.toFixed(1)+' km';var s3=hbStrength();$('#hbPf').textContent=Math.round(hb.pf)+' MPa';$('#hbS3').textContent=Math.round(s3)+' MPa';$('#hbEff').textContent=Math.round(Math.max(0,s3-10-hb.pf))+' MPa';}
+function hbDraw(){var c=hx;c.clearRect(0,0,HW,HH);c.fillStyle=css('--crust');c.fillRect(0,0,HW,HH);
+  var ox=130,oy=30;var frac=cl(hb.pf/hbStrength());
+  c.fillStyle=mix(css('--sea'),css('--magma'),frac);c.fillRect(ox,oy+150,320,40);c.fillStyle=css('--ink');c.font=fontPx(hk);c.fillText('pressurised fluid',ox+8,oy+175);
+  var e=hb.broke?Math.min(1,hb.bt):0;
+  c.fillStyle=hb.broke?mix('#9C968C','#ECEAE4',hb.cement>0?Math.min(1,hb.cement*2):0):'#B08A70';c.fillRect(ox,oy,320,150);
+  if(hb.cement>.5){c.fillStyle=rgba('#4A4F5A',Math.min(1,(hb.cement-.5)*2)*.8);var r=rng(5);for(var i=0;i<120;i++){c.fillRect(ox+r()*320,oy+r()*150,3,3);}}
+  hFr.forEach(function(f,i){var tx=(f.cx-160)*.1*e+Math.cos(f.dir)*7*e,ty=(f.cy-70)*.12*e-10*e*f.sh,rot=f.rot*.9*e,sc=1-.3*e*f.sh;c.save();c.translate(ox+f.cx+tx,oy+f.cy+ty);c.rotate(rot);c.scale(sc,sc);c.beginPath();f.p.forEach(function(q,k){var x=q[0]-f.cx,y=q[1]-f.cy;k?c.lineTo(x,y):c.moveTo(x,y)});c.closePath();
+    c.fillStyle=i%3?'#D9A88E':'#C69580';c.fill();c.strokeStyle=rgba(css('--ink'),hb.broke?.5:.15);c.stroke();c.restore();});
+  if(!hb.broke&&frac>.6){c.strokeStyle=rgba(css('--ink'),(frac-.6)*2);c.beginPath();for(var j=0;j<5;j++){c.moveTo(ox+60+j*50,oy+150);c.lineTo(ox+70+j*50+(j%2?10:-10),oy+150-frac*80);}c.stroke();}
+  var gx=588,gy=60;c.fillStyle=css('--paper');c.beginPath();c.arc(gx,gy+50,46,Math.PI,0);c.fill();c.strokeStyle=css('--ink');c.stroke();
+  var a=Math.PI+Math.PI*cl(hb.pf/(hbStrength()*1.15));c.strokeStyle=css('--hem');c.lineWidth=3;c.beginPath();c.moveTo(gx,gy+50);c.lineTo(gx+Math.cos(a)*40,gy+50+Math.sin(a)*40);c.stroke();c.lineWidth=1;
+  var b=Math.PI+Math.PI/1.15;c.strokeStyle=css('--ink');c.setLineDash([3,3]);c.beginPath();c.moveTo(gx,gy+50);c.lineTo(gx+Math.cos(b)*46,gy+50+Math.sin(b)*46);c.stroke();c.setLineDash([]);
+  c.fillStyle=css('--ink');c.textAlign='center';c.fillText('fluid pressure',gx,gy+70);c.fillText('dashed = breaking point',gx,gy+86);c.textAlign='left';
+  c.fillText(+$('#hbDepth').value<1.2?'near surface: low confining stress':'deep: high confining stress',20,22);}
+function hbLoop(){if(!hb.run)return;if(!hb.broke){hb.pf+=hbStrength()/160;if(hb.pf>=hbStrength()){hb.broke=true;hb.bt=0;
+    $('#hbSay').innerHTML='<b>Hydrofracture!</b> Fluid pressure beat the confining stress plus tensile strength. Effective stress hit zero and the rock blew apart. Now watch the cement grow from the escaping fluid.';$('#hbState').textContent='brecciated';}}
+  else{hb.bt+=.03;hb.pf=Math.max(hbStrength()*.3,hb.pf*.97);if(hb.bt>1)hb.cement+=.012;
+    if(hb.cement>=1){hb.run=false;var d=+$('#hbDepth').value;if(d<=1.5)hb.shallowDone=true;if(d>=3.5)hb.deepDone=true;
+      $('#hbSay').innerHTML='Cemented: quartz first, then dark sulphide in the gaps. '+(d<=1.5?'At shallow depth that took little pressure. Try 4 km and compare how long it takes.':'At depth it took far more pressure to break, which is why explosive hydrothermal breccias are mostly a shallow, upper-crustal feature.');
+      if(hb.shallowDone&&hb.deepDone)award('hb-both',8,'Hydrofracturing understood');else award('hb-one',3,'First hydrothermal breccia');}}
+  hbUI();hbDraw();if(hb.run)requestAnimationFrame(hbLoop);}
+$('#hbPump').addEventListener('click',function(){if(hb.run)return;if(hb.broke){hb.pf=0;hb.broke=false;hb.bt=0;hb.cement=0;}hb.run=true;$('#hbState').textContent='pressurising';$('#hbSay').textContent='Fluid exsolving from a cooling intrusion builds pressure in the fractures...';requestAnimationFrame(hbLoop);});
+$('#hbReset').addEventListener('click',function(){hb.pf=0;hb.broke=false;hb.bt=0;hb.cement=0;hb.run=false;$('#hbState').textContent='intact';hbUI();hbDraw();});
+$('#hbDepth').addEventListener('input',function(){if(!hb.run){hb.pf=0;hb.broke=false;hb.bt=0;hb.cement=0;}hbUI();hbDraw();});
+onTheme(hbDraw);hbUI();
+/* ---------- breccia ID ---------- */
+var BOPTS=['Sedimentary','Fault','Magmatic','Volcanic','Hydrothermal'];
+mcCards($('#bidCards'),[
+ {img:'img/L3/slide007_1.jpg',lbl:'Sample 1',o:BOPTS,a:0,e:'Chert breccia: clasts and matrix are both microcrystalline quartz, formed together as quartz replaced carbonate in diagenesis.',hint:'Are the clasts and matrix made of different stuff, or the same stuff?'},
+ {img:'img/L3/slide011_1.jpg',lbl:'Sample 2',o:BOPTS,a:1,e:'Fault breccia: a narrow broken zone cutting straight across intact bedding.',hint:'Look at the bedding either side of the broken zone.'},
+ {img:'img/L3/slide016_2.jpg',lbl:'Sample 3',o:BOPTS,a:2,e:'Magmatic: rounded norite clasts in a sulphide matrix that was itself a melt (Sudbury).',hint:'The clasts are well rounded and the matrix is a metallic sulphide.'},
+ {img:'img/L3/slide019_2.jpg',lbl:'Sample 4',o:BOPTS,a:3,e:'Volcanic: a block breccia of dark lava fragments, the flow breaking itself up as it moved.',hint:'What are the clasts made of?'},
+ {img:'img/L3/slide025_1.jpg',lbl:'Sample 5',o:BOPTS,a:4,e:'Hydrothermal: granite blasted apart and cemented by silica and fluorite from exsolving volatiles (Mount Surprise).',hint:'What would deposit purple fluorite between the clasts?'},
+ {img:'img/L3/slide016_3.jpg',lbl:'Sample 6',o:BOPTS,a:2,e:'Magmatic: chromitite broken in a magmatic state (Coolac), later cemented by green uvarovite garnet.',hint:'Black chromitite is a magmatic mineral.'},
+ {img:'img/L3/slide022_1.jpg',lbl:'Sample 7',o:BOPTS,a:3,e:'Volcanic (phreatic): magma met groundwater and the steam blast shattered the country rock, injected upwards as a breccia dyke.',hint:'Mixed angular clasts of many rock types, from a quarry near a volcanic neck.'},
+ {img:'img/L3/slide023_1.jpg',lbl:'Sample 8',o:BOPTS,a:3,e:'Volcanic (epiclastic): a debris flow. Gravity did the work, so it’s extremely poorly sorted, with no hot fluid involved. It sits in the volcanic group because its clasts are volcanic.',hint:'Huge range of clast sizes, chaotic, on a slope.'},
+ {img:'img/L3/slide026_1.jpg',lbl:'Sample 9',o:BOPTS,a:4,e:'Hydrothermal: quartz nucleated on the clasts, then stibnite filled the gaps (Hillgrove antimony).',hint:'Quartz crystals grew around the clasts. Where did the quartz come from?'}
+],'bid',4,function(n,t){$('#bidScore').textContent=n+' / '+t;if(n===t)award('bid-all',6,'Breccia ID complete');});
+/* ---------- estimation chart ---------- */
+var es=$('#estSvg'),estQuizV=null;
+function estDraw(p){es.innerHTML='';el('rect',{x:0,y:0,width:300,height:200,fill:'#D8D2C4'},es);var r=rng(Math.round(p*7)+3);var target=300*200*p/100,area=0,guard=0;
+  while(area<target&&guard<4000){guard++;var w=4+r()*16,h=3+r()*12;el('rect',{x:r()*296,y:r()*196,width:w,height:h,rx:2,fill:'#2C2E36',transform:'rotate('+(r()*60-30)+')'},es);area+=w*h*.92;}}
+function estSet(p){$('#estPct').textContent=p+'%';var c=p>50?'massive':p>=10?'semi-massive':'disseminated';$('#estClass').textContent=c;estDraw(p);}
+$('#estR').addEventListener('input',function(){if(estQuizV!==null){var g=+this.value;$('#estPct').textContent=g+'%';return;}estSet(+this.value);award('est-play',2,'Eye calibrated');});
+$('#estQuiz').addEventListener('click',function(){if(estQuizV===null){estQuizV=[5,15,30,45,60,80][Math.floor(Math.random()*6)];estDraw(estQuizV);$('#estPct').textContent='?';$('#estSay').textContent='Set the slider to your estimate, then press Check.';this.textContent='Check';}
+  else{var g=+$('#estR').value,d=Math.abs(g-estQuizV);$('#estSay').innerHTML='Actual: <b>'+estQuizV+'%</b>. You said '+g+'%. '+(d<=7?'Spot on.':d<=15?'Close.':'Way off. Most people overestimate dark grains on a pale background.');if(d<=7)award('est-good',5,'Accurate visual estimate');
+    estSet(estQuizV);$('#estR').value=estQuizV;estQuizV=null;this.textContent='Test my eye';}});
+estSet(25);
+var AOP=['Massive (>50%)','Semi-massive (10 to 50%)','Disseminated (<10%)'];
+mcCards($('#abCards'),[
+ {img:'img/L3/slide029_1.jpg',lbl:'Sudbury, Canada',q:'Pyrrhotite-pentlandite.',o:AOP,a:0,e:'Massive: essentially all sulphide. You’d mine the whole lot.'},
+ {img:'img/L3/slide030_1.jpg',lbl:'Lady Loretta, QLD',q:'Banded galena-sphalerite in sediment.',o:AOP,a:1,e:'Semi-massive: obvious ore bands, but plenty of sediment between them. Still easily economic for Pb, Zn and Ag.'},
+ {img:'img/L3/slide030_2.jpg',lbl:'Sudbury, Canada',q:'Net-textured nickel sulphide.',o:AOP,a:1,e:'Semi-massive: sulphide forms a connected net between silicate grains. Enough nickel to mine.'},
+ {img:'img/L3/slide031_1.jpg',lbl:'Tallebung, NSW',q:'Cassiterite in a quartz vein.',o:AOP,a:2,e:'Disseminated: scattered dark cassiterite grains in quartz. Note that what counts as economic depends on the commodity.'},
+ {img:'img/L3/slide031_2.jpg',lbl:'Coolac, NSW',q:'Chromite in serpentinised dunite.',o:AOP,a:2,e:'Disseminated chromite grains in the host. Compare with massive chromitite from the same area.'},
+ {img:'img/L3/slide029_2.jpg',lbl:'Coolac, NSW',q:'Black chromitite.',o:AOP,a:0,e:'Massive chromitite: nearly all chromite.'}
+],'ab',3,function(n,t){$('#abScore').textContent=n+' / '+t;});
+/* ---------- vein growth ---------- */
+var vc=$('#vgCanvas'),vx=vc.getContext('2d'),VW=640,VH=260,vMode='crack',vt=0,vRun=false,vk=1;
+var VTXT={crack:'<b>Crack-seal (laminated).</b> The vein cracks open a little, fluid seals the crack with a thin band, then it cracks again, many times over. Each new crack opens at the centre, the weakest point, so the oldest bands are at the walls and the youngest in the middle. Sooty sulphide bands make <b>ginguro</b> veins, which can run over 1000 g/t gold or silver.',
+ ext:'<b>Extensional.</b> The rock simply pulls apart, perpendicular to the minimum stress. Fibrous crystals grow straight across from wall to wall, perpendicular to the vein, and meet in the middle. Later fluid can add ore along the centre line.',
+ space:'<b>Space-fill.</b> The crack opens faster than minerals can fill it, leaving open space. Quartz grows in from both walls as <b>comb quartz</b>, with euhedral crystal points aimed at the centre. Later ore minerals fill the leftover cavity. Crystal faces always mean open space.'};
+function vDraw(){var c=vx;c.clearRect(0,0,VW,VH);var cy=VH/2,t=cl(vt);var wallCol='#8A8478',wallCol2='#7A7468';
+  var open;var maxOpen=120;
+  if(vMode==='crack')open=maxOpen*t;else if(vMode==='ext')open=maxOpen*.9*Math.min(1,t*1.1);else open=maxOpen*Math.min(1,t*2.2);
+  c.fillStyle=wallCol;c.fillRect(0,0,VW,cy-open/2);c.fillRect(0,cy+open/2,VW,VH-cy-open/2);
+  c.strokeStyle=rgba('#000',.15);for(var i=0;i<VW;i+=26){c.beginPath();c.moveTo(i,0);c.lineTo(i+20,cy-open/2);c.stroke();c.beginPath();c.moveTo(i,cy+open/2);c.lineTo(i+20,VH);c.stroke();}
+  if(vMode==='crack'){var n=Math.floor(t*14),bw=maxOpen/14;for(var k=0;k<n;k++){var col=(k%4===3)?'#2A2C33':'#ECEAE4';var off=(n-k-.5)*bw/2;
+      c.fillStyle=col;c.fillRect(0,cy-off-bw/4,VW,bw/2);c.fillRect(0,cy+off-bw/4,VW,bw/2);c.strokeStyle=rgba('#000',.12);c.strokeRect(-1,cy-off-bw/4,VW+2,bw/2);c.strokeRect(-1,cy+off-bw/4,VW+2,bw/2);}
+    if(t<1){c.fillStyle=css('--sea');c.fillRect(0,cy-1.5,VW,3);}}
+  else if(vMode==='ext'){var g=cl((t-.05)/.8);for(var x=6;x<VW;x+=9){var L=open/2*g;c.strokeStyle='#E6E3DA';c.lineWidth=6;c.beginPath();c.moveTo(x,cy-open/2);c.lineTo(x,cy-open/2+L);c.moveTo(x,cy+open/2);c.lineTo(x,cy+open/2-L);c.stroke();}c.lineWidth=1;
+    if(g<1){c.fillStyle=rgba(css('--sea'),.7);c.fillRect(0,cy-open/2+open/2*g,VW,Math.max(0,open*(1-g)));}
+    if(t>.9){c.fillStyle='#C9A13A';var r=rng(4);for(var j=0;j<30;j++)c.fillRect(r()*VW,cy-3,8,6);}}
+  else{var q=cl((t-.3)/.45),f2=cl((t-.75)/.25);c.fillStyle=rgba(css('--sea'),.7);c.fillRect(0,cy-open/2,VW,open);
+    if(f2>0){c.fillStyle=rgba('#3E4250',f2);c.fillRect(0,cy-open/2+4,VW,open-8);}
+    var L2=open*.38*q;for(var x2=0;x2<VW;x2+=22){c.fillStyle='#ECEAE4';c.strokeStyle=rgba('#000',.2);
+      c.beginPath();c.moveTo(x2,cy-open/2);c.lineTo(x2+22,cy-open/2);c.lineTo(x2+16,cy-open/2+L2*.75);c.lineTo(x2+11,cy-open/2+L2);c.lineTo(x2+6,cy-open/2+L2*.75);c.closePath();c.fill();c.stroke();
+      c.beginPath();c.moveTo(x2+11,cy+open/2);c.lineTo(x2+33,cy+open/2);c.lineTo(x2+27,cy+open/2-L2*.75);c.lineTo(x2+22,cy+open/2-L2);c.lineTo(x2+17,cy+open/2-L2*.75);c.closePath();c.fill();c.stroke();}}
+  c.fillStyle='#fff';c.font=fontPx(vk);c.fillText('wall rock',10,18);c.fillText('wall rock',10,VH-8);
+  if(t>.95){c.fillStyle=css('--ink');c.fillStyle='#fff';c.fillText(vMode==='space'?'ore fills the last space':'youngest at centre',VW-170,cy+4);}}
+function vLoop(){if(!vRun)return;vt+=.006;vDraw();if(vt<1)requestAnimationFrame(vLoop);else{vRun=false;award('vg-'+vMode,3,'Vein grown');}}
+function vPlay(m){vMode=m;$$('#vgModes .chip').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===m?'true':'false')});$('#vgName').textContent={crack:'crack-seal',ext:'extensional',space:'space-fill'}[m];$('#vgSay').innerHTML=VTXT[m];
+  vt=0;if(reduce){vt=1;vDraw();return;}if(!vRun){vRun=true;requestAnimationFrame(vLoop);}}
+$$('#vgModes .chip').forEach(function(b){b.addEventListener('click',function(){vPlay(b.dataset.v)})});$('#vgReplay').addEventListener('click',function(){vPlay(vMode)});
+$('#vgSay').innerHTML=VTXT.crack;vt=1;
+onVisible(vc,function(v){if(v&&!vRun&&!vc.dataset.played){vc.dataset.played=1;vPlay('crack');}});
+/* ---------- cross-cutting order ---------- */
+var xs=$('#xcSvg'),XORDER=['bed','qtz','sph','carb'],XNAME={bed:'Bedded siltstone',qtz:'Milky quartz vein',sph:'Sphalerite vein with gold',carb:'Thin carbonate vein'},xStep=0,xMiss=0;
+var XWHY={bed:'The host rock came first: everything else cuts it.',qtz:'The quartz vein cuts bedding but is itself cut and offset by the sphalerite vein.',sph:'The sphalerite vein offsets the quartz vein, so it moved after the quartz formed. The gold came in with it.',carb:'The thin carbonate vein cuts straight across everything without being offset: it’s the youngest.'};
+function xcBuild(){xs.innerHTML='';xStep=0;xMiss=0;$('#xcOrder').innerHTML='';$('#xcState').textContent='click the features in order';$('#xcSay').textContent='Start with the oldest thing in the slab.';
+  var bed=el('g',{},xs);for(var i=0;i<8;i++)el('rect',{x:0,y:i*40,width:600,height:40,fill:i%2?'#6F7468':'#858A7C'},bed);
+  var hb_=el('rect',{x:0,y:0,width:600,height:320,fill:'transparent','class':'hit',tabindex:0,'data-f':'bed'},xs);
+  var q1='M40 320 L250 0',q2='M330 320 L470 0';
+  var qv=el('g',{'class':'vis'},xs);el('path',{d:'M60 320 L200 108',stroke:'#F1EFE8','stroke-width':16,fill:'none'},qv);el('path',{d:'M252 94 L314 0',stroke:'#F1EFE8','stroke-width':16,fill:'none'},qv);
+  var qhit=el('path',{d:'M60 320 L200 108 M252 94 L314 0',stroke:'transparent','stroke-width':30,fill:'none','class':'hit',tabindex:0,'data-f':'qtz'},xs);xs.insertBefore(qhit,qv);
+  var sv=el('g',{'class':'vis'},xs);el('path',{d:'M0 130 C150 96 300 92 600 52',stroke:'#7A3B22','stroke-width':12,fill:'none'},sv);var r=rng(2);for(var k=0;k<7;k++)el('circle',{cx:60+k*80,cy:118-k*9,r:3,fill:'#F2CD72'},sv);
+  var shit=el('path',{d:'M0 130 C150 96 300 92 600 52',stroke:'transparent','stroke-width':28,fill:'none','class':'hit',tabindex:0,'data-f':'sph'},xs);xs.insertBefore(shit,sv);
+  var cv=el('g',{'class':'vis'},xs);el('path',{d:'M470 320 L380 0',stroke:'#E9E1C8','stroke-width':4,fill:'none'},cv);
+  var chit=el('path',{d:'M470 320 L380 0',stroke:'transparent','stroke-width':24,fill:'none','class':'hit',tabindex:0,'data-f':'carb'},xs);xs.insertBefore(chit,cv);
+  txt(xs,10,312,'siltstone',{fill:'#fff','font-size':12});
+  $$('.hit',xs).forEach(function(h){var f=h.getAttribute('data-f');var go=function(ev){ev.stopPropagation();xcPick(f)};h.addEventListener('click',go);h.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(e)}});});}
+function xcPick(f){if(xStep>=4)return;var want=XORDER[xStep];if(f===want){var s=document.createElement('span');s.className='ok';s.textContent=(xStep+1)+'. '+XNAME[f];$('#xcOrder').appendChild(s);$('#xcSay').textContent=XWHY[f];xStep++;
+    if(xStep===4){$('#xcState').textContent='sequence complete';$('#xcSay').textContent='Bedding, then quartz, then the gold-bearing sphalerite that offsets it, then late carbonate. So the gold arrived in the third event, and only one of three vein sets carries it. That’s exactly the kind of call you make in real core.';award('xc',xMiss===0?12:6,xMiss===0?'Perfect sequence':'Sequence worked out');}}
+  else if(XORDER.indexOf(f)<xStep){$('#xcSay').textContent='Already placed. What comes next?';}
+  else{xMiss++;$('#xcSay').textContent='Not yet. '+XNAME[f]+' cuts or offsets something you haven’t placed. Look for what it crosses.';}}
+$('#xcReset').addEventListener('click',xcBuild);xcBuild();
+/* ---------- shear: ductile vs brittle ---------- */
+var shc=$('#shCanvas'),shx=shc.getContext('2d'),SHW=640,SHH=240,shMode='duct',shT=0,shOn=false,shk=1;
+var shMarks=(function(){var r=rng(8),M=[];for(var i=0;i<380;i++)M.push({x:r()*SHW,y:10+r()*(SHH-20),c:r()});return M;})();
+var shClasts=(function(){var r=rng(21),C=[];for(var i=0;i<7;i++){var n=5+Math.floor(r()*3),pts=[];for(var k=0;k<n;k++){var a=k/n*Math.PI*2,rr=14+r()*12;pts.push([Math.cos(a)*rr,Math.sin(a)*rr*.75]);}C.push({x:50+i*85+r()*20,y:50+r()*140,pts:pts,a:r()*3});}return C;})();
+var SHTXT={duct:'<b>Ductile matrix.</b> Galena and sphalerite flow around the clasts in simple shear. The rigid siliceous clasts can’t flow, so they rotate and get carried along: rounded, rotated fragments in a smeared sulphide matrix. That’s durchbewegung.',
+ brit:'<b>Brittle matrix.</b> Pyrite doesn’t flow at these conditions. Instead it fractures into blocks that slip past each other along discrete shears. No rolled clasts, just broken, offset pyrite. That’s why pyrite in deformed ores is often cataclastic while galena around it is smooth.'};
+function shDraw(){var c=shx;c.clearRect(0,0,SHW,SHH);var k=.45;
+  if(shMode==='duct'){c.fillStyle='#8C929A';c.fillRect(0,0,SHW,SHH);
+    shMarks.forEach(function(m){var v=k*(m.y-SHH/2)*.03;var x=((m.x+shT*v*4)%SHW+SHW)%SHW;c.fillStyle=m.c<.5?'rgba(255,255,255,.35)':'rgba(20,24,30,.35)';c.fillRect(x,m.y,10+Math.abs(v)*8,1.5);});
+    shClasts.forEach(function(cl_){var v=k*(cl_.y-SHH/2)*.03;var x=((cl_.x+shT*v*4)%(SHW+60)+SHW+60)%(SHW+60)-30;var ang=cl_.a-shT*.006;c.save();c.translate(x,cl_.y);c.rotate(ang);c.beginPath();cl_.pts.forEach(function(p,i){i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1])});c.closePath();c.fillStyle='#E4DFD2';c.fill();c.strokeStyle='#333';c.stroke();c.restore();});}
+  else{var off=(shT*.25)%60;c.fillStyle='#C9B34A';c.fillRect(0,0,SHW,SHH);c.strokeStyle='#5A4E1E';c.lineWidth=1.5;
+    for(var row=0;row<6;row++){var y0=row*40,dx=(row-2.5)*off*.6;for(var col=-1;col<12;col++){var x0=col*60+dx%60;c.strokeRect(x0,y0,60,40);c.beginPath();c.moveTo(x0+10,y0+5);c.lineTo(x0+30,y0+35);c.stroke();}}
+    c.lineWidth=1;shClasts.forEach(function(cl_,i){c.save();c.translate(cl_.x,cl_.y);c.beginPath();cl_.pts.forEach(function(p,j){j?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1])});c.closePath();c.fillStyle='#E4DFD2';c.fill();c.strokeStyle='#333';c.stroke();c.beginPath();c.moveTo(-14,-6);c.lineTo(12,8);c.stroke();c.restore();});}
+  c.fillStyle='#fff';c.font=fontPx(shk);c.fillText('→ top moves right',SHW-150,16);c.fillText('← base moves left',10,SHH-8);}
+function shLoop(){if(!shOn)return;shT+=1;shDraw();requestAnimationFrame(shLoop);}
+$$('#shModes .chip').forEach(function(b){b.addEventListener('click',function(){shMode=b.dataset.s;$$('#shModes .chip').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});$('#shName').textContent=shMode==='duct'?'galena matrix':'pyrite matrix';$('#shSay').innerHTML=SHTXT[shMode];award('sh-'+shMode,3,shMode==='duct'?'Ductile flow seen':'Brittle failure seen');shDraw();});});
+$('#shSay').innerHTML=SHTXT.duct;
+onVisible(shc,function(v){if(v&&!shOn&&!reduce){shOn=true;requestAnimationFrame(shLoop);}else if(!v)shOn=false;});
+/* ---------- core logging ---------- */
+mcCards($('#coreCards'),[
+ {img:'img/L3/slide054_1.jpg',lbl:'Hera',q:'Pyrrhotite smeared along slickenlines, stretched parallel to the movement direction. Is this the ore stage?',o:['Yes, main ore','No: early D1 pyrrhotite, unrelated to ore','It’s supergene'],a:1,e:'Early pyrrhotite that grew along slickenlines during the first deformation (D1). It has nothing to do with the mineralisation. Not every sulphide is ore.'},
+ {img:'img/L3/slide056_1.jpg',lbl:'Hera',q:'Grey D2 quartz veins are offset by Fe-rich sphalerite veins with abundant visible gold. When did the gold come in?',o:['Before D2','With the sphalerite, after D2','During weathering'],a:1,e:'The sphalerite veins offset the D2 quartz, so they’re younger. The gold came in with them, during D3, the main sulphide event.'},
+ {img:'img/L3/slide057_1.jpg',lbl:'Hera',q:'An arsenopyrite vein is offset by a shear quartz vein along a little micro-fault. Which is older?',o:['The arsenopyrite vein','The quartz vein','Same age'],a:0,e:'The offset feature is older. The quartz vein and its micro-fault displaced the earlier arsenopyrite vein.'},
+ {img:'img/L3/slide059_1.jpg',lbl:'Hera',q:'A late quartz vein with very coarse chalcopyrite and pyrrhotite. Why so coarse?',o:['Remobilised and recrystallised in a late event (D4)','Fast cooling','Supergene enrichment'],a:0,e:'Very coarse sulphides in a late vein are the remobilisation signature: copper and iron sulphide moved and recrystallised during D4.'},
+ {img:'img/L3/slide068_1.jpg',lbl:'Federation',q:'Sphalerite-galena-chalcopyrite veins lie in the same direction as a shear fabric. Before, during or after shearing?',o:['Before shearing','During shearing','Long after shearing'],a:1,e:'Sulphide aligned with the shear direction crystallised while shearing was happening: syn-deformational veins.'},
+ {img:'img/L3/slide072_1.jpg',lbl:'Federation',q:'Folded sphalerite veins in siltstone. Did the veins form before or after the folding?',o:['Before the folding','After the folding'],a:0,e:'A vein can only be folded if it already existed. These formed first, then deformation folded them.'},
+ {img:'img/L3/slide071_1.jpg',lbl:'Federation',q:'Honey-coloured sphalerite grading into red sphalerite. What does the colour change record?',o:['Grain size','Iron content: honey is low-Fe, red is moderate-Fe','Weathering'],a:1,e:'Sphalerite colour tracks iron. Honey = low Fe, red = moderate, dark brown to black = high Fe.'},
+ {img:'img/L3/slide070_1.jpg',lbl:'Federation',q:'Dark sphalerite grains scattered through siltstone, with no veins. Classify by abundance.',o:['Massive','Semi-massive','Disseminated'],a:2,e:'Disseminated high-Fe sphalerite: under 10% ore mineral, no veins. Deposits vary hugely from place to place, so log every scale.'}
+],'core',4,function(n,t){$('#coreScore').textContent=n+' / '+t;if(n===t)award('core-all',8,'Core logged like a pro');});
+
+GEO.finish(function(){kk=fitCanvas(kc,kx,KW,KH);kDraw();hk=fitCanvas(hc,hx,HW,HH);hbDraw();vk=fitCanvas(vc,vx,VW,VH);vDraw();shk=fitCanvas(shc,shx,SHW,SHH);shDraw();});
+})();
+</script>
+</body>
+</html>
