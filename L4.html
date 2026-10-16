@@ -107,6 +107,7 @@
     <p class="ask">The screen in B looks almost entirely grey. What's the single biggest practical difficulty for beginners in reflected light?</p>
     <details data-obs="greys"><summary>Show the answer</summary><div class="seen"><p>Everything is a shade of grey, white or pale yellow, and the differences are subtle. You get used to it. Two tips: ideally work in a dark room so your eye adapts (old-school microscopists used a completely blacked-out room), and always compare a grain with its neighbours, because perceived brightness and colour depend on what's next to it. Pyrite looks bright beside sphalerite and noticeably duller beside galena.</p></div></details>
   </div>
+  <div class="cp" data-cp="cp6"></div>
 </div></section>
 
 <section id="props" data-log="Properties"><div class="wrap">
@@ -135,7 +136,8 @@
     <p class="ask">The first two are the same covellite grains, rotated 45°. Name the property. The third is sphalerite under crossed polars. Where are those coloured spots coming from?</p>
     <details data-obs="covsph"><summary>Show what I see</summary><div class="seen"><p>Covellite shows extreme <b>bireflectance pleochroism</b>: rotate the stage and the blue changes in both tone and brightness. Nothing else common looks like this, so once you've seen it you won't mistake covellite. The sphalerite shows <b>internal reflections</b>: light refracts into the semi-transparent grain, bounces off fractures and comes back as yellow, orange and red flashes. In sphalerite that's diagnostic.</p></div></details>
   </div>
-  <div class="cp" data-cp="cp2"></div>
+    <div class="keybox"><b>Memorise</b><ul><li>Work in order: colour, reflectance, anisotropy, polishing hardness, internal reflections.</li><li>Isotropic stays dark under crossed polars; anisotropic changes on rotation.</li></ul> <span class="srcs">slides 7 and 8</span></div>
+<div class="cp" data-cp="cp2"></div>
 </div></section>
 
 <section id="virtual" data-log="Virtual scope"><div class="wrap">
@@ -174,6 +176,7 @@
     </div>
     <p class="say" style="font-size:.84rem;color:var(--muted)">Where the lecture gave a crossed-polars photo (hematite, marcasite, pyrrhotite, molybdenite, stibnite) you see the real one; for other minerals the crossed-polars view is simulated from the listed properties. The circular field crops off the photo labels so unknowns stay unknown.</p>
   </div>
+  <div class="cp" data-cp="cp7"></div>
 </div></section>
 
 <section id="key" data-log="ID key"><div class="wrap">
@@ -194,6 +197,8 @@
     <div class="goal" id="g-idk"><i>✓</i><span>Narrow the key to a single mineral.</span></div>
   </div>
   <div class="tablewrap"><table id="propTable"></table></div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Galena: bright white, soft, triangular cleavage pits.</li><li>Covellite: the only common blue mineral, extreme anisotropy. Bornite: the only common pink one.</li><li>Pyrite: pale yellow, hard, perfect polish. Chalcopyrite: stronger yellow, much softer. Gold: yellow-orange and blindingly bright.</li><li>Pentlandite: always with pyrrhotite. Sphalerite: low reflectance with internal reflections. Magnetite: magnetic.</li></ul> <span class="srcs">slides 27 to 71</span></div>
+  <div class="cp" data-cp="cp8"></div>
 </div></section>
 
 <section id="pairs" data-log="Tricky pairs"><div class="wrap">
@@ -240,7 +245,8 @@
     <span class="tag"><span>Field note · two textures with surprising histories</span><span class="srcs">lecture recording, 21 Sep</span></span>
     <p><b>Chalcopyrite disease</b> is a dusting of tiny chalcopyrite blebs inside sphalerite. Older literature (before about 1980) read it as exsolution. Modern work shows it's usually chalcopyrite <em>replacing</em> sphalerite along crystallographic directions when hotter, copper-bearing fluid came through after the sphalerite formed. <b>Framboids</b> (from the French for raspberry) are spherical clusters of tiny pyrite crystals. They were long taken as proof of microbial sulphate reduction, and in black shale they usually are, but framboids also form in hydrothermal systems, and galena can make them too. A texture is a clue, not a verdict.</p>
   </div>
-  <div class="cp" data-cp="cp4"></div>
+    <div class="labbox"><b>At the lab test</b><ul><li>Chalcopyrite disease: tiny chalcopyrite blebs replacing sphalerite.</li><li>Framboids: spherical clusters of tiny pyrite, typical of black shale.</li><li>Euhedral doesn’t mean early: porphyroblasts can grow last and engulf their neighbours.</li><li>A fracture fill is younger than the mineral it cuts.</li></ul> <span class="srcs">slides 16 to 18</span></div>
+<div class="cp" data-cp="cp4"></div>
 </div></section>
 
 <section id="para" data-log="Paragenesis"><div class="wrap">
@@ -352,7 +358,10 @@ var CP={
  cp2:{q:'Under crossed polars a grain stays completely black as you rotate the stage. It is...',o:['Isotropic, like galena','Strongly anisotropic','Showing internal reflections'],a:0,e:'Isotropic minerals stay dark at every angle under crossed polars. Cubic minerals are isotropic, with pyrite as the exception.'},
  cp3:{q:'Pyrite looks bright next to sphalerite but dull next to galena. Which property are you misjudging?',o:['Hardness','Reflectance, which you must judge relative to neighbours','Crystal system'],a:1,e:'Perceived reflectance depends on what’s next to it. Always compare grains with their neighbours.'},
  cp4:{q:'A galena inclusion in sphalerite has smooth, mutually indented boundaries. What does it mean?',o:['Galena replaced sphalerite much later','They co-crystallised','Weathering'],a:1,e:'Cuspate-lobate boundaries with no cross-cutting are an equilibrium texture: the two grew together.'},
- cp5:{q:'Bright white mineral, soft, isotropic, with triangular pits. Name it.',o:['Arsenopyrite','Galena','Chalcocite'],a:1,e:'Triangular cleavage pits mean galena; nothing else common does that.'}
+ cp5:{q:'Bright white mineral, soft, isotropic, with triangular pits. Name it.',o:['Arsenopyrite','Galena','Chalcocite'],a:1,e:'Triangular cleavage pits mean galena; nothing else common does that.'},
+ cp6:{q:"Why do ore minerals need reflected light rather than transmitted light?",o:["They’re too soft to make thin sections", "They’re opaque: dense, heavy-element structures absorb the light, so you read the polished surface instead", "They’re colourless"],a:1,e:"A reflective surface turns the opacity problem into information."},
+ cp7:{q:"A grain stays dark as you rotate it under crossed polars. What does that tell you?",o:["It’s strongly anisotropic", "It’s isotropic, like galena or pentlandite", "It’s magnetic"],a:1,e:"Isotropic minerals stay dark on rotation; anisotropic ones change colour and brightness."},
+ cp8:{q:"Where should you start when narrowing the identification key?",o:["Hardness", "Colour, the easiest observation, then reflectance, anisotropy, hardness and internal reflections", "Internal reflections"],a:1,e:"You don’t memorise nineteen descriptions; you eliminate."}
 };
 var ST=[
  ['Why are most ore minerals studied in reflected rather than transmitted light?','Recall','They’re opaque: dense, heavy-element structures absorb transmitted light, so they look black in a thin section. A polished surface reflects light, revealing colour, reflectance and anisotropy.'],
