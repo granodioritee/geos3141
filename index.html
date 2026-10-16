@@ -6,6 +6,7 @@
 <title>GEOS3141 Field Guides</title>
 <link rel="stylesheet" href="style.css">
 <script src="app.js"></script>
+<script src="cards.js"></script>
 </head>
 <body class="idx">
 <button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
@@ -14,27 +15,47 @@
   <div class="course">GEOS3141 Mineral and Energy Resources · T3 2026</div>
   <h1>Field guides, lecture by lecture</h1>
   <p class="lede">Each lecture is re-taught here from its slides and recording, with the slide photos up front, games and animations for the mechanisms, and checkpoints that pay out in ounces of gold. Work through them in order: each one leans on the last.</p>
-  <p style="font-family:var(--mono);font-size:.85rem;color:var(--muted)">Gold banked across all lectures: <b id="totalOz" style="color:var(--gold)">0 oz</b></p>
+  <div class="idxstats"><div>Gold banked<b id="totalOz">0 oz</b></div><div>Study streak<b id="streakN">0 days</b></div><div>Best streak<b id="streakBest">0 days</b></div></div>
 </header>
 
 <main>
 <section><div class="wrap">
-  <div class="kicker">Lectures</div>
+  <div class="kicker">Every day</div>
+  <ul class="lecs">
+    <li class="lec" id="lecReview"><a href="review.html"><span class="no">Spaced repetition</span><span class="t">Daily review</span><span class="hook">Terms and questions from every finished lecture, brought back just before you forget them.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">start reviewing</span></span></a></li>
+    <li class="lec" id="lecLab"><a href="labtest.html"><span class="no">Lab test practice</span><span class="t">Station by station</span><span class="hook">Timed stations from the slide photos: polished-section unknowns, textures, hand specimens and drill core.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+  </ul>
+  <div class="theme"><div class="kicker">Foundations</div><p>How ore forms, and how to read it in the field, in core and under the microscope.</p></div>
   <ul class="lecs">
     <li class="lec" id="lec1"><a href="L1.html"><span class="no">Lecture 1</span><span class="t">Ores and ore-forming processes</span><span class="hook">Why a pile of rock is worth billions, or nothing.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
     <li class="lec" id="lec2"><a href="L2.html"><span class="no">Lecture 2</span><span class="t">Weathering, oxidation and alteration</span><span class="hook">The rock you see is rarely the rock that formed.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
     <li class="lec" id="lec3"><a href="L3.html"><span class="no">Lecture 3</span><span class="t">Breccias, veins and ore textures</span><span class="hook">Every texture is a timestamp.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
     <li class="lec" id="lec4"><a href="L4.html"><span class="no">Lecture 4</span><span class="t">Intro to ore petrography</span><span class="hook">Learning to see in shades of grey under reflected light.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
     <li class="lec" id="lec5"><a href="L5.html"><span class="no">Lecture 5</span><span class="t">Structural controls on ore deposits</span><span class="hook">Why broken rock makes rich rock.</span><span class="meter"><span class="track"><span class="fill"></span></span><span class="oz">not started</span></span></a></li>
+  </ul>
+  <div class="theme"><div class="kicker">Seafloor and magmatic systems</div><p>Ore forming today on the ocean floor, and ore that settles straight out of magma.</p></div>
+  <ul class="lecs">
     <li class="lec"><div class="soon"><span class="no">Lecture 6 · coming</span><span class="t">Present-day ocean floor mineralising systems</span></div></li>
     <li class="lec"><div class="soon"><span class="no">Lecture 7 · coming</span><span class="t">Magmatic ore deposits, part 1</span></div></li>
     <li class="lec"><div class="soon"><span class="no">Lecture 8 · coming</span><span class="t">Magmatic ore deposits, part 2</span></div></li>
+  </ul>
+  <div class="theme"><div class="kicker">Sediment-hosted and VMS</div><p>Basin brines and seafloor vents that built the big base-metal deposits.</p></div>
+  <ul class="lecs">
     <li class="lec"><div class="soon"><span class="no">Lecture 9 · coming</span><span class="t">SEDEX deposits</span></div></li>
     <li class="lec"><div class="soon"><span class="no">Lecture 10 · coming</span><span class="t">VMS deposits</span></div></li>
+  </ul>
+  <div class="theme"><div class="kicker">Porphyry and gold</div><p>Arc magmas, their copper systems, and the many ways gold gets concentrated.</p></div>
+  <ul class="lecs">
     <li class="lec"><div class="soon"><span class="no">Lecture 11 · coming</span><span class="t">Porphyry Cu-Au-Mo deposits</span></div></li>
     <li class="lec"><div class="soon"><span class="no">Lecture 12 · coming</span><span class="t">Introduction to gold deposits</span></div></li>
     <li class="lec"><div class="soon"><span class="no">Lecture 13 · coming</span><span class="t">Orogenic gold deposits</span></div></li>
     <li class="lec"><div class="soon"><span class="no">Lecture 14 · coming</span><span class="t">Epithermal Au-Ag deposits</span></div></li>
+  </ul>
+  <div class="theme"><div class="kicker">More deposit types</div><p>The remaining deposit families on the course schedule.</p></div>
+  <ul class="lecs">
+    <li class="lec"><div class="soon"><span class="no">Lecture 15 · coming</span><span class="t">Hydrothermal Sn-W-Mo-F deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 16 · coming</span><span class="t">MVT and CMPV deposits</span></div></li>
+    <li class="lec"><div class="soon"><span class="no">Lecture 17 · coming</span><span class="t">Uranium deposits</span></div></li>
   </ul>
 </div></section>
 

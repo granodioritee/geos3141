@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Daily Review</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+<script src="cards.js"></script>
+</head>
+<body class="rv">
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Review · T3 2026</div>
+  <h1>Daily review</h1>
+  <p class="lede">A few minutes a day beats a night of cramming. This deck pulls the glossary, checkpoints and self-test questions from every finished lecture, and brings each card back just before you'd forget it.</p>
+</header>
+
+<main>
+<section style="padding-top:0;border-top:0"><div class="wrap">
+
+  <div class="lab">
+    <h4><span>Today</span></h4>
+    <div class="rv-stats">
+      <div>Due<b id="rvDue">0</b></div>
+      <div>New<b id="rvNew">0</b></div>
+      <div class="gold">Review gold<b id="rvOz">0 oz</b></div>
+    </div>
+    <div class="chips" id="rvChips" role="group" aria-label="Lectures to review" style="margin:.8rem 0 .4rem"></div>
+    <div class="rv-set"><label for="rvNewMax">New cards a day</label>
+      <select id="rvNewMax"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="50">50</option></select>
+    </div>
+  </div>
+
+  <div class="lab" id="rvSession">
+    <h4><span>Recall it, then check</span><b id="rvLeft"></b></h4>
+    <div class="flash"><div class="card" id="rvCard" tabindex="0" role="button" aria-label="Question side. Press to show the answer.">
+      <div class="face front" id="rvFront"></div>
+      <div class="face back" id="rvBack"></div>
+    </div></div>
+    <div class="row" id="rvShow"><button class="btn" type="button" id="rvShowBtn">Show answer</button></div>
+    <div class="rv-grades" id="rvGrades" hidden>
+      <button class="btn ghost again" type="button" data-g="0">Again<small></small></button>
+      <button class="btn ghost" type="button" data-g="1">Hard<small></small></button>
+      <button class="btn" type="button" data-g="2">Good<small></small></button>
+      <button class="btn easy" type="button" data-g="3">Easy<small></small></button>
+    </div>
+  </div>
+
+  <div class="lab rv-done" id="rvDone" hidden>
+    <b>All caught up</b>
+    <p id="rvDoneMsg"></p>
+    <div class="row" style="justify-content:center"><button class="btn ghost" type="button" id="rvMore">Learn 10 more new cards</button><a class="btn ghost" href="index.html" style="text-decoration:none">Back to the lectures</a></div>
+  </div>
+
+  <h3>How this works</h3>
+  <p>Say the answer to yourself, or scribble it down, before you flip the card. Then be honest with the buttons. <b>Again</b> means you didn't have it, and the card comes back in a few cards' time. <b>Hard</b>, <b>Good</b> and <b>Easy</b> push it further into the future each time you get it, so cards you know well drift out to weeks and months while shaky ones keep turning up. The small text under each button shows when you'll see the card next.</p>
+  <p>Pick lectures with the chips above (the number on a chip is how many of its cards are due). New cards are capped each day so the reviews don't snowball. On a keyboard, press <span class="kbd">Space</span> to flip and <span class="kbd">1</span> to <span class="kbd">4</span> to grade.</p>
+  <p>Each card you remember pays 1 oz of gold once a day, a card that reaches a three-week interval pays 2 oz, and clearing a session of five or more cards pays a 5 oz bonus once a day. Review gold is kept separately from each lecture's score and is added to your total on the lectures page. Your schedule is saved in this browser, and the backup code on the lectures page carries it to your other devices.</p>
+  <div class="row"><button class="btn ghost" type="button" id="rvReset">Reset review schedule</button><span id="rvResetMsg" style="font-family:var(--sans);font-size:.9rem;color:var(--muted)"></span></div>
+
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> Every card comes from a lecture page on this site (its glossary, checkpoints and self-test), plus a few short-answer cards drawn from the same pages. Those pages list exactly which slides and recordings they use.</p>
+</div></footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+GEO.review();
+</script>
+</body>
+</html>
