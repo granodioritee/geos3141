@@ -644,7 +644,8 @@ var GEO = {
   /* ---------- lab test practice: timed stations over LAB (labdata.js) ---------- */
   labLoad: function () {
     var s = null; try { s = JSON.parse(localStorage.getItem('geos3141-lab') || 'null'); } catch (e) {}
-    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['suite', 'min', 'micro', 'hand', 'core'] };
+    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'suite', 'min', 'alter', 'micro', 'hand', 'core'], v: 2 };
+    if (!s.opt.v) { ['mineral', 'alter'].forEach(function (k) { if (s.opt.k.indexOf(k) < 0) s.opt.k.push(k); }); s.opt.v = 2; }
     return s;
   },
   lab: function () {
@@ -653,7 +654,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Hand specimen', core: 'Drill core' };
+    var KIND = { mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -676,6 +677,27 @@ var GEO = {
           q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
           e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '. Look at which sulphides and oxides are there and how they sit together, then ask what kind of system makes that assemblage.',
           link: type === 'Regolith' ? 'L2.html#supergene' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+      });
+      /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
+      var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {});
+      (LAB.hs || []).forEach(function (x) {
+        var g = LAB.minGroup[x.m], ok = function (m) { return m !== x.m && !(PYX.indexOf(m) >= 0 && PYX.indexOf(x.m) >= 0); };
+        var same = shuffle(MINS.filter(function (m) { return ok(m) && LAB.minGroup[m] === g; })).slice(0, 2);
+        var other = shuffle(MINS.filter(function (m) { return ok(m) && same.indexOf(m) < 0; })).slice(0, 3 - same.length);
+        var opts = shuffle(same.concat(other, [x.m])), url = 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/';
+        out.push({ id: 'hs-' + x.src, kind: 'mineral', img: 'img/lab/hs/' + x.src + '.jpg', mic: false, lbl: 'Lab mineral set · hand specimen',
+          q: x.k === 'streak' ? 'Streak test: which mineral left this streak?' : 'Name the mineral.', o: opts, a: opts.indexOf(x.m),
+          e: x.m + (x.n ? ' (' + x.n + ')' : '') + ', a ' + g.toLowerCase() + ' mineral from the lab hand-specimen set.', credit: url });
+      });
+      /* alteration examples: never offer two names for overlapping assemblages as rivals */
+      var OVER = [['Sericite alteration', 'Phyllic alteration', 'Massive illite'], ['Propylitic alteration', 'Epidote alteration', 'Chlorite alteration', 'Garnet-chlorite alteration', 'Chlorite-talc-pyrite'], ['Goethite gossan', 'Crystalline goethite']];
+      var clash = function (a, b) { return OVER.some(function (g) { return g.indexOf(a) >= 0 && g.indexOf(b) >= 0; }); };
+      var SEC = function (c) { return /gossan|goethite|jarosite/i.test(c) ? 'gossans' : /Texas|Jasper|Metasomatism|Pyrite and/.test(c) ? 'alter' : 'assemblages'; };
+      (LAB.alt || []).forEach(function (x) {
+        var others = shuffle(LAB.altCats.filter(function (c) { return c !== x.c && !clash(c, x.c); })).slice(0, 3), opts = shuffle(others.concat([x.c]));
+        out.push({ id: 'alt-' + x.src, kind: 'alter', lec: 2, sec: SEC(x.c), img: 'img/lab/alt/' + x.src + '.jpg', mic: false, lbl: 'Lab alteration examples · hand specimen',
+          q: 'What does this specimen show?', o: opts, a: opts.indexOf(x.c),
+          e: x.c + ', from the lab’s alteration examples' + (x.d ? ' (' + x.d.replace(/\s+$/, '') + ')' : '') + '.', credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       return out;
     }
