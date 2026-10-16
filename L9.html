@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 9 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L8.html">&larr; Lecture 8</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 9 · T3 2026</div>
+  <h1>Boring rocks, giant deposits</h1>
+  <p class="lede">Lecture 6 showed metal-rich fluid venting onto today’s seafloor. SEDEX deposits are its cooler, saltier, sediment-hosted cousins: salty basin brines leak up faults into a stagnant, sulphide-rich sea and drop zinc and lead as hair-thin layers in black mud. The rock looks dull, but these are the biggest zinc and lead deposits on Earth, and northern Australia has more of them than anywhere else. Start with the one property that decides what kind of deposit a brine builds: whether it floats or sinks.</p>
+
+  <div class="lab" id="brLab">
+    <h4><span>Vent a brine</span><b id="brTag"></b></h4>
+    <canvas id="brCan" aria-label="Cross-section of a stratified sea over a faulted basin floor; brine from a vent either rises as a plume or flows downslope into a depression and pools, and sulphide grains settle out"></canvas>
+    <div class="ctl" style="margin-top:.6rem">
+      <div><label for="brSal">Salinity <b id="brSalV">20 wt%</b></label><input type="range" id="brSal" min="10" max="30" step="1" value="20"></div>
+      <div><label for="brTem">Temperature <b id="brTemV">150 °C</b></label><input type="range" id="brTem" min="80" max="250" step="5" value="150"></div>
+    </div>
+    <div class="readout">
+      <div><small>Brine density</small><b id="brRho">?</b></div>
+      <div><small>What it does</small><b id="brBeh">?</b></div>
+      <div><small>Deposit style</small><b id="brDep">?</b></div>
+    </div>
+    <p class="say" id="brSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model. The salinity and temperature ranges come from slides 7, 19 and 45; the density formula uses rounded, invented coefficients and cold bottom seawater is taken as about 1.03 g/cm³, so read the trend, not the numbers.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#what">What a SEDEX deposit is</a></li>
+      <li><a href="#zinc">Why zinc and lead matter</a></li>
+      <li><a href="#recipe">The recipe: what a basin needs</a></li>
+      <li><a href="#mcarthur">Building the McArthur Basin</a></li>
+      <li><a href="#pump">Charging and breaking the aquifer</a></li>
+      <li><a href="#brines">Vent-proximal or vent-distal</a></li>
+      <li><a href="#chem">Fluids, metals and sulphur</a></li>
+      <li><a href="#layers">Making the layers</a></li>
+      <li><a href="#anatomy">Anatomy of a deposit</a></li>
+      <li><a href="#halo">North Australian SEDEX and their halos</a></li>
+      <li><a href="#world">Where they are, how big, how found</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="what" data-log="SEDEX"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>What a SEDEX deposit is</h2>
+  <p><button class="term" data-t="SEDEX">SEDEX</button> stands for sedimentary exhalative. Metal-rich fluid vents (exhales) into a reduced sedimentary basin inside or on the edge of a continent, and the metals precipitate as sulphides on and just under the basin floor. The fluids are salty brines at warm, not hot, temperatures: above about 80 °C and mostly below 200 °C. The ore bodies are tabular, with zinc greater than lead (<button class="term" data-t="sphalerite">sphalerite</button> and <button class="term" data-t="galena">galena</button>) plus some silver, often with <button class="term" data-t="barite">barite</button> as gangue. The ore is interbedded with iron sulphides (pyrite and pyrrhotite) and with the basin’s own sedimentary rocks, which is why most geologists read these deposits as <button class="term" data-t="syngenetic">syngenetic</button>: formed at the same time as the sediment. <span class="srcs">slide 7</span></p>
+  <p>They belong to a family of hydrothermal exhalative deposits. <button class="term" data-t="VMS">VMS</button> deposits are tied to volcanic rocks (Lecture 10). SEDEX deposits, also called sediment-hosted massive sulphide (SHMS) deposits, sit in sedimentary basins. <button class="term" data-t="MVT">Mississippi Valley-type</button> and Irish-type deposits come later in the course. <span class="srcs">slide 6</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/century.jpg" alt="Aerial view of a large open pit with dark waste dumps, tailings and a processing plant in dry, flat country">
+    <figcaption>The Century mine in northwest Queensland, once the world’s largest zinc deposit. <span class="srcs">slide 1</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a slab of SEDEX ore</span><span class="srcs">slide 8</span></div>
+    <img loading="lazy" decoding="async" src="img/L9/bedded.jpg" alt="Cut slab of finely layered green-grey rock with pale and dark bands, one thicker speckled grey band across the middle, 2 cm scale bar">
+    <p class="ask">Before you read anything: describe the layering. How thick are the layers, how continuous, and are they all the same kind of material?</p>
+    <details data-obs="slab"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Millimetre-scale layers, very flat and continuous across the 10 cm slab, with only gentle wavy disruption.</li><li>Three kinds of band: thin pale layers, thin dark layers, and one thicker, speckled grey band with a sharp base that fines upward.</li><li>No veins cutting the layers, no breccia, no massive sulphide lump.</li></ul>
+      <p class="so">So this is sediment that was laid down layer by layer. The thick graded band is a <button class="term" data-t="turbidite">turbidite</button>, the dark layers are black shale, and the thin layers between them are sphalerite and galena. The sulphides were deposited along with the mud, layer by layer, which is the core observation behind the syngenetic model.</p>
+    </div></details>
+  </div>
+  <p>That’s the surprise of SEDEX: “massive sulphide” is a bit of a misnomer. Most of the ore is fine sulphide in thin laminae between shale and siltstone layers, not a solid lump of sulphide. A piece of Century ore is just a black carbonaceous siltstone with a little sphalerite and galena along the layers and fractures. Dull to look at, but these are world-class deposits. <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/hycface.jpg" alt="Underground rock face of thin, flat grey and dark bands, cut by blocky joints">
+    <figcaption>High-grade ore face at McArthur River (HYC), about 2 m across. Look for the massive sulphide: there isn’t any. The sulphides sit in thin laminae between shale layers. HYC was known for decades before it could be mined, because its sulphides are so fine (some under 20 µm) that they couldn’t be separated economically until fine-grinding technology caught up. <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 2 Oct</span></figcaption>
+  </figure>
+  <p style="font-size:.88rem;color:var(--muted)">Check this one: the recording says HYC only started producing in about the last five years. The McArthur River mine has actually been operating since the mid 1990s, when ultra-fine grinding first made the ore treatable. The point that matters, that the fine grain size held it back for decades, holds either way.</p>
+  <div class="keybox"><b>Memorise</b><ul><li>SEDEX: venting of saline brine (about 80 to 200 °C) into a reduced intracratonic or epicratonic sedimentary basin.</li><li>Tabular, Zn &gt; Pb (sphalerite, galena) plus Ag, barite gangue, interbedded with pyrite, pyrrhotite and basin sediment.</li><li>Fine laminated ore, mostly syngenetic; HYC is the classic example.</li></ul><span class="srcs">slides 6 to 9</span></div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="zinc" data-log="Zinc"><div class="wrap">
+  <div class="kicker">Context <span class="depth">13 to 26 m</span></div>
+  <h2>Why zinc and lead matter</h2>
+  <p>Zinc has a long history. The Charaka Samhita, an Indian text from around 500 BC, mentions zinc that oxidised to “philosopher’s wool” (zinc oxide), used as an ointment for the eyes and for open wounds. Zinc smelting moved from India to China in the 17th century, and the first European zinc smelter opened in Bristol in 1743. Zinc oxide is still in calamine cream, antiseptic ointments and sunscreen. <span class="srcs">slide 2</span></p>
+  <p>Today most zinc goes into <button class="term" data-t="galvanising">galvanising</button> steel (about 60%), then die-cast alloys (about 13%), brass (about 11%) and oxides and chemicals (about 8%). Galvanised steel is what EV makers prefer for car bodies, zinc coatings stop solar panel frames and wind turbines rusting, and zinc-ion batteries are considered safer than lithium-ion. Zinc is 100% recyclable without losing quality, but only about 30% of the zinc produced comes from recycled or secondary sources. <span class="srcs">slides 2 and 3</span></p>
+  <div class="lab" id="prLab">
+    <h4><span>Who mines it, who holds it</span><b id="prTag"></b></h4>
+    <div class="chips" role="group" aria-label="Metal"><button class="chip" type="button" id="prZn" aria-pressed="true">Zinc</button><button class="chip" type="button" id="prPb" aria-pressed="false">Lead</button></div>
+    <div class="chips" role="group" aria-label="Measure" style="margin-top:.4rem"><button class="chip" type="button" id="prP" aria-pressed="true">Production 2025</button><button class="chip" type="button" id="prR" aria-pressed="false">Reserves</button></div>
+    <svg class="grid-svg" id="prSvg" viewBox="0 0 640 390" role="img" aria-label="Bar chart of zinc or lead production or reserves by country" style="margin-top:.6rem"></svg>
+    <p class="say" id="prSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Thousand tonnes of metal, USGS figures from slides 4 and 5. No reserve figure is given for Bolivia.</p>
+  </div>
+  <p>Australia is the world’s third zinc producer and second lead producer, but holds the largest reserves of both. A lot of that comes from SEDEX deposits. Sweden, the only big European producer, mines VMS deposits instead. <span class="srcs">slides 4 and 5</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="recipe" data-log="Recipe"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">26 to 39 m</span></div>
+  <h2>The recipe: what a basin needs</h2>
+  <p>Five things have to come together: an extensional setting; structures that control the basin shape and the fluid flow; a thick basin fill; large-scale hydrothermal fluid flow; and a water column that is stagnant and contains H₂S. <span class="srcs">slide 10</span></p>
+  <p>The basin is a continental rift with 2 to 5 km of permeable <button class="term" data-t="syn-rift">syn-rift</button> clastic sediments, often with volcanics or volcaniclastics. Those coarse sediments are the <button class="term" data-t="aquifer">aquifer</button> that holds the brine. Above them sit impermeable post-rift shales or carbonates, the <button class="term" data-t="aquitard">aquitard</button>. Without that lid, the fluid simply leaks away up the faults and you get slightly elevated metal everywhere and an ore deposit nowhere. <span class="srcs">slide 11</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <p>Something must heat the basin. SEDEX deposits sit close in time and space to basaltic volcanics, dykes and sills, which raise the geothermal gradient and drive convection. Mafic sills help but aren’t essential; any heat source that keeps brine convecting will do. Discharge is focused where extensional faults meet transform faults, at only a few vent sites, and the basin must last a long time: 100 to 200 million years. <span class="srcs">slides 11 and 12</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <p>The sea above needs to be <button class="term" data-t="anoxic">anoxic</button>: an enclosed basin with no fresh, oxygenated seawater flowing in. Evaporation carries on, so a restricted basin also becomes very salty. The deep water fills with H₂S, and that H₂S supplies the sulphur that will trap the metals. These are not black-smoker deposits: a SEDEX basin has one or two long-lived vent sites, not fields of chimneys. <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/model.jpg" alt="Cross-section of a first-order rift basin with local sub-basins, an oxygenated water column over anoxic H2S water, a hydrological cap, sills and evaporites at depth, and brine convection arrows rising up faults">
+    <figcaption>The Goodfellow and Lydon (2007) model: a long-lived rift basin with local sub-basins, an oxygenated surface layer over anoxic H₂S-rich water, a hydrological cap, and brine convecting from the basin fill up the faults. <span class="srcs">slides 10 to 12</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>What’s missing from this basin?</span><b id="rcScore">0 / 5</b></h4>
+    <div class="cards" id="rcCards"></div>
+  </div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="mcarthur" data-log="McArthur Basin"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">39 to 52 m</span></div>
+  <h2>Building the McArthur Basin</h2>
+  <p>Northern Australia’s SEDEX basins formed in a far-field <button class="term" data-t="back-arc">back-arc</button> setting in the Proterozoic. Subduction lay off to the south, under what is now the Arunta region, with an arc above it. About 500 km behind the arc, upwelling hot asthenosphere heated and thinned the crust, opening rift and sag basins and supplying the heat to keep brines convecting. The McArthur Basin and the Mount Isa Inlier both formed this way, and both host many SEDEX deposits. <span class="srcs">slide 13</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/backarc.jpg" alt="Cross-section with a subducting slab on the left under an arc, and upwelling asthenosphere under the McArthur Basin and Mount Isa Inlier about 500 km away">
+    <figcaption>Far-field back-arc rift environment (after Betts et al., 2003): upwelling asthenosphere under the McArthur Basin and Mount Isa Inlier, far from the arc. <span class="srcs">slide 13</span></figcaption>
+  </figure>
+  <div class="lab" id="bsLab">
+    <h4><span>Build the basin, step by step</span><b id="bsStep">step 1 of 4</b></h4>
+    <svg class="grid-svg" id="bsSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of the McArthur Basin developing through four steps from rift to cap"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="bsBack">Back</button><button class="btn" type="button" id="bsNext">Next step</button></div>
+    <p class="say" id="bsSay"></p>
+  </div>
+  <p>The faults are deep and long-lived. HYC sits beside the Emu Fault Zone; the Hot Springs Fault nearby earns its name from the hot springs still on it, and the Calvert and Tawallah faults bound the Batten Trough. <button class="term" data-t="growth fault">Growth faults</button> matter because they dilate as they move, letting fluid through, and where two faults intersect the dilation is bigger again. That’s where you look. <span class="srcs">slide 15</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · drill core of the host rock</span><span class="srcs">slide 16</span></div>
+    <img loading="lazy" decoding="async" src="img/L9/core.jpg" alt="Rows of shiny dark grey to black drill core with fine, slightly wavy laminations, a few broken intervals and one pale buff section">
+    <p class="ask">What colour is the rock, what’s its grain size, and what does that tell you about the water it was deposited in?</p>
+    <details data-obs="core"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Black to dark grey, very fine grained, finely and continuously laminated, with no sign of burrows churning the layers.</li><li>One short pale interval, probably a carbonate-richer bed.</li></ul>
+      <p class="so">So this is the classic host: organic-rich dolomitic siltstone. Black means organic carbon survived, fine laminae that no animal disturbed (non-bioturbated) mean the bottom water had no oxygen. That’s the anoxic, H₂S-bearing basin floor the recipe demands. Almost every SEDEX deposit sits in rock like this. <span class="srcs">slide 45</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="pump" data-log="Aquifer"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">52 to 65 m</span></div>
+  <h2>Charging and breaking the aquifer</h2>
+  <p>Down in the coarse syn-rift sediments, compaction and metamorphic reactions generate hot, salty, metal-rich brine. The impermeable cap holds it in, so pressure builds until the aquifer becomes <button class="term" data-t="overpressured">overpressured</button> (geopressured) and ruptures the cap rock. The brine is then focused up active faults. Focus is everything: for any ore deposit, unfocused flow just raises background metal levels. <span class="srcs">slides 17 and 45</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <p>Brine doesn’t flow steadily. Each small earthquake releases stress on the fault, opens it, and lets a pulse of fluid through, and then minerals precipitate and seal it again. Pulse after pulse gives you layer after layer of sulphide. Because the basin passes through different anoxic cycles, the ore lenses in one basin can have different ages. <span class="srcs">slides 17 and 26</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="lab" id="pmLab">
+    <h4><span>Load the aquifer</span><b id="pmTag">0 pulses</b></h4>
+    <svg class="grid-svg" id="pmSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section with sea, a shale cap, a sandstone aquifer and a fault; pressure builds in the aquifer until the cap ruptures and a fluid pulse rises up the fault"></svg>
+    <div class="readout"><div><small>Aquifer pressure</small><b id="pmP">25%</b></div><div><small>Fault</small><b id="pmF">sealed</b></div><div><small>Sulphide laminae</small><b id="pmL">0</b></div></div>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="pmGo">Bury and heat</button></div>
+    <p class="say" id="pmSay">Pile on sediment and heat the basin. Watch the pressure.</p>
+  </div>
+  <div class="lab">
+    <h4><span>Put the Goodfellow and Lydon model in order</span><b id="odTag">0 / 7</b></h4>
+    <div class="cards" id="odBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="odSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="odReset">Shuffle again</button></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/model2.jpg" alt="The basin model with numbered stages 5 to 8: aquifer rupturing the cap, fluids rising up faults, mixing with H2S in the water column, and proximal and distal deposits">
+    <figcaption>Stages 5 to 8 of the model: the aquifer ruptures its cap, fluid rises up active faults, mixes with H₂S in the water column, and vent-proximal and vent-distal deposits form. <span class="srcs">slide 17</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="brines" data-log="Proximal or distal"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">65 to 78 m</span></div>
+  <h2>Vent-proximal or vent-distal: the brine decides</h2>
+  <p>The architecture of a SEDEX deposit depends on how close the sulphides form to the vent, and that depends on the brine’s density. <span class="srcs">slide 18</span></p>
+  <p><b><button class="term" data-t="vent-proximal">Vent-proximal</button></b> deposits form from <b>buoyant</b> fluids that rise from the vent. You get alteration in the footwall, breccia pipes where overpressured fluid shattered the rock, and coarser sulphide close to the vent. <b><button class="term" data-t="vent-distal">Vent-distal</button></b> deposits form from brine <b>denser than seawater</b>, which flows away from the vent and pools in depressions on the basin floor. The sulphides are interbedded with sediment and well laminated, with no footwall alteration, no breccia zones, and related barite. One basin can have both. <span class="srcs">slide 18</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Ore fluid</th><th>Range</th></tr>
+    <tr><td>Salinity</td><td>10 to 30 wt% total dissolved solids</td></tr>
+    <tr><td>Redox</td><td>reduced or oxidised</td></tr>
+    <tr><td>pH</td><td>acidic to near neutral</td></tr>
+    <tr><td>Temperature</td><td>100 to 200 °C, nearer the low end</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 19; lecture recording, 2 Oct</p>
+  <p>Salinity makes brine heavy, heat makes it light. A vent-distal brine is <b>more saline, cooler and oxidised</b>, a dense brine that hugs the floor, as at HYC. A vent-proximal brine is <b>less saline, hotter and reduced</b>, an intermediate brine that rises a little but isn’t strongly buoyant, as at Sullivan in Canada. Go back to the brine at the top of the page and make each one. <span class="srcs">slide 20</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/plumepool.jpg" alt="Two cross-sections: A with a buoyant plume rising from a vent over bedded sulphides, a feeder zone and hydrothermal alteration; B with brine flowing from the vent along the floor into a brine pool over bedded sulphides">
+    <figcaption>A: a buoyant plume, with a vent complex, feeder zone and footwall alteration. B: a dense brine pool away from the vent, with bedded sulphides and metals dispersing from the pool. <span class="srcs">slide 35</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Proximal or distal?</span><b id="pdScore">0 / 6</b></h4>
+    <div class="cards" id="pdCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Vent-proximal: buoyant fluid, footwall alteration, breccia pipe, coarser sulphide; lower salinity, higher T, reduced (Sullivan).</li><li>Vent-distal: dense brine pooled in depressions, laminated sulphide, no footwall alteration, barite; higher salinity, lower T, oxidised (HYC).</li><li>Fluids: 10 to 30 wt% TDS, 100 to 200 °C (maximum about 250 °C).</li></ul><span class="srcs">slides 18 to 20, 45</span></div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="chem" data-log="Fluid chemistry"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">78 to 91 m</span></div>
+  <h2>Fluids, metals and sulphur</h2>
+  <p>Where does the brine come from? Seawater, evaporated at the surface. As seawater evaporates in shallow, restricted parts of the basin, the residual brine sinks and percolates down through the sediments, and water dissolving evaporite minerals (mainly halite) in the subsurface adds more salt. <span class="srcs">slide 21</span></p>
+  <p>Brines come in two flavours. In basins dominated by shales and turbidites, like the Selwyn Basin and Sullivan in Canada, they are <b>reduced</b> (H₂S greater than SO₄²⁻) and acidic. In basins dominated by sandstones and carbonates, like most of northern Australia, they are <b>oxidised</b> (SO₄²⁻ greater than H₂S) and near neutral. <span class="srcs">slide 22</span> (Cooke et al., 2000)</p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the aquifer in the McArthur Basin</span><span class="srcs">slide 23</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L9/redbed.jpg" alt="Outcrop of red-brown, finely bedded sandstone with a geological hammer for scale"><div class="cap">A · outcrop, hammer for scale</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L9/hemqtz.jpg" alt="Thin section of rounded clear quartz grains, each outlined by a thin dark rim, with dark material between grains"><div class="cap">B · thin section of the same rock</div></div>
+    </div>
+    <p class="ask">What gives the sandstone its colour, and what does that tell you about the brine that moved through it?</p>
+    <details data-obs="redbed"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: red-brown, well-bedded sandstone.</li><li>B: rounded quartz grains, each with a thin dark coating; the coating is hematite.</li></ul>
+      <p class="so">So the colour is hematite, oxidised iron, coating every grain. Brine that moved through this aquifer was oxidised, which fits the north Australian pattern. In a reduced basin like Sullivan’s, the grains would be coated with pyrite instead.</p>
+    </div></details>
+  </div>
+  <p>Why does redox matter so much? Because of how much metal the brine can carry. Zinc and lead travel as <button class="term" data-t="chloride complex">chloride complexes</button>, and they stay in solution only while there is little reduced sulphur around. Slide the oxidation state below. <span class="srcs">slide 22</span></p>
+  <div class="lab" id="slLab">
+    <h4><span>How much metal can the brine carry?</span><b id="slTag"></b></h4>
+    <svg class="grid-svg" id="slSvg" viewBox="0 0 640 280" role="img" aria-label="Plot of Zn, Pb and Cu solubility against oxygen fugacity, with a movable cursor"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="slX">Oxidation state, log fO₂ <b id="slXV">-41</b></label><input type="range" id="slX" min="-42" max="-37.8" step="0.1" value="-41"></div></div>
+    <div class="readout"><div><small>Zn</small><b id="slZn">?</b></div><div><small>Pb</small><b id="slPb">?</b></div><div><small>Cu</small><b id="slCu">?</b></div></div>
+    <p class="say" id="slSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Curves read approximately off the slide 22 plot (200 °C, pH 5, total sulphur 0.0005 molal, 30 wt% NaCl).</p>
+  </div>
+  <p>Oxidised, sulphur-poor brines carry far more metal, and that’s also why barium can travel with them: barite is barium sulphate and drops out as soon as the fluid meets sulphate, so barium only moves in a chloride brine with little sulphur. The fluids stay below about 300 °C, and that is what keeps copper low in most of these deposits. <span class="srcs">slide 3, notes</span></p>
+  <p>So where does everything come from? The <b>metals</b> come from the basin fill itself, leached by brine convecting through the aquifer, driven by the heat source. The <b>sulphur</b> comes from the seawater: H₂S in the anoxic bottom water. When the two meet, the metal chloride reacts with H₂S and sphalerite precipitates:</p>
+  <p style="text-align:center;font-family:var(--mono)">ZnCl₂ + H₂S → ZnS + 2H⁺ + 2Cl⁻</p>
+  <p>Notice the chloride goes back into the water, so precipitating sulphide makes the bottom water even saltier. <span class="srcs">slides 24 and 25</span> <span class="srcs">lecture recording, 2 Oct</span> The isotopes agree. Sulphur isotopes range widely, δ³⁴S from about -10 to +30‰, because sulphur came from seawater sulphate reduced in different ways. Lead isotopes are uniform with high μ values, pointing to upper-crustal rocks inside the basin as the lead source. <span class="srcs">slide 47</span></p>
+  <div class="lab">
+    <h4><span>Where does each ingredient come from?</span><b id="soScore">0 / 4</b></h4>
+    <div class="cards" id="soCards"></div>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="layers" data-log="Layers"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">91 to 104 m</span></div>
+  <h2>Making the layers: a stratified sea</h2>
+  <p>A SEDEX basin’s water column is layered like a cocktail. At the top is an <b>oxic</b> layer where Fe³⁺ is insoluble. Below it is a <b>mixing</b> layer where H₂S meets dissolved Fe²⁺ and pyrite precipitates. At the bottom is the <b>anoxic</b> layer, with more H₂S than sulphate. Brine entering this bottom layer meets H₂S and drops sphalerite and galena, and pyrite and silt rain down from above. Sphalerite aggregates grow and sink to the floor under gravity. <span class="srcs">slide 28</span> (Ireland et al., 2004)</p>
+  <p>Three things build the layered ore: organic-rich mud settling slowly from the water column (pelagic), carbonate-rich silt sliding in from the shelf as mass flows, and pulses of zinc-lead brine set off by tectonism. Build some. <span class="srcs">slide 26</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="lab" id="lyLab">
+    <h4><span>Lay down the ore</span><b id="lyTag">0 layers</b></h4>
+    <canvas id="lyCan" aria-label="Stratified sea over a basin floor; you add organic mud, carbonate mass flows or brine pulses and each builds a layer"></canvas>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="lyMud">Quiet time: mud</button><button class="btn ghost" type="button" id="lyCarb">Carbonate mass flow</button><button class="btn" type="button" id="lyOre">Brine pulse</button></div>
+    <p class="say" id="lySay">Pick an event. Each one adds a layer to the basin floor.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/entry.jpg" alt="Diagram of a basin with an oxic sulphate layer over an anoxic H2S layer; numbered inputs show pelagic organic mud, carbonate mass flows from the shelf and a Zn-Pb brine pulse rising along the basin margin">
+    <figcaption>How material enters the basin: (1) pelagic organic mud, (2) carbonate mass flows off the shelf, (3) Zn-Pb brine pulses, set off by tectonism. <span class="srcs">slide 26</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · under the microscope</span><span class="srcs">slide 30</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L9/sphlayer.jpg" alt="Thin section with a pale vertical band of fine grains between dark fine-grained bands, and rounded pale clusters scattered in the dark band to its right"><div class="cap">A · thin section</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L9/micro830.jpg" alt="Thin section with dark fine matrix and wavy pale bands, one band thickened over a lump, 830 micrometre scale bar"><div class="cap">B · thin section, scale bar 830 µm</div></div>
+    </div>
+    <p class="ask">At this scale, does the ore look like veins cutting the rock, or layers in it? How thick are the pale bands?</p>
+    <details data-obs="micro"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: a band of fine sphalerite grains parallel to the layering, with rounded sphalerite aggregates scattered in the darker sediment beside it.</li><li>B: pale sulphide bands a fraction of a millimetre thick between dark carbonaceous mud layers, gently draped over a lump.</li></ul>
+      <p class="so">So the sulphide is layered with the sediment, not cutting it: microlaminae of sulphide interbedded with carbonaceous mudstone. The rounded aggregates match sphalerite clumps that grew in the water or brine and sank. Look at how fine everything is, and you can see why these ores are hard to process.</p>
+    </div></details>
+  </div>
+  <p>Not everyone accepts that all the sulphide was exhaled onto the seafloor. Other models put it <b>under</b> the seafloor: <button class="term" data-t="diagenetic">diagenetic</button> replacement of permeable layers soon after burial, or later tectonic replacement during deformation. At MacMillan Pass in the Yukon, Magnall and others proposed that barite formed first in the sediment and was then replaced by sulphide: barite is barium sulphate, so incoming metals can react with it, make sulphides, and release barium to be redeposited further away. Cross-cutting sulphide veinlets and sphalerite replacing barite support it there. But that is one small deposit. Most SEDEX deposits, and all the large ones, are best explained as exhalative and syngenetic. <span class="srcs">slides 27, 32 and 33</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/macpass.jpg" alt="Four panels of samples from MacMillan Pass: grey carbonaceous mudstone, weakly layered mineralisation, a layered section with barite, pyrite, galena and sphalerite bands, and orange ankerite veins in mudstone">
+    <figcaption>MacMillan Pass samples: A, carbonaceous mudstone host; B, weak layered mineralisation crossed by an irregular sulphide veinlet; C, layers of barite (Brt), barite-sphalerite, pyrite (Py) and galena (Gn); D, ankerite (Ank) alteration and veining in mudstone (Mst) of the vent complex. <span class="srcs">slide 33</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="anatomy" data-log="Anatomy"><div class="wrap">
+  <div class="kicker">Deposit scale <span class="depth">104 to 117 m</span></div>
+  <h2>Anatomy of a deposit</h2>
+  <p>SEDEX ore bodies vary in shape: mounds, lenses and sheets. The exhalative parts have a high aspect ratio, about 20:1, much longer than they are thick. Their internal layout is controlled by distance from the vent and by fluid chemistry. <span class="srcs">slide 35</span> Walk one from the feeder fault outward.</p>
+  <div class="lab" id="wkLab">
+    <h4><span>Walk away from the vent</span><b id="wkTag"></b></h4>
+    <svg class="grid-svg" id="wkSvg" viewBox="0 0 640 270" role="img" aria-label="Cross-section of a SEDEX deposit from a feeder fault through the vent complex and bedded ore to distal hydrothermal sediments, with a movable marker"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="wkX">Distance from the vent <b id="wkXV">0</b></label><input type="range" id="wkX" min="0" max="100" step="1" value="0"></div></div>
+    <div class="readout"><div><small>Zone</small><b id="wkZ">?</b></div><div><small>Ore grade</small><b id="wkG">?</b></div><div><small>Pb:Zn</small><b id="wkPZ">?</b></div><div><small>Ba:Zn</small><b id="wkBZ">?</b></div></div>
+    <p class="say" id="wkSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Zones and trends from the GSC summary figure on slide 34; the distances and the high, moderate and low levels are schematic.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/features.jpg" alt="Schematic section of a SEDEX deposit: a synsedimentary fault zone with feeder veins, a vent complex, bedded ores thinning outward and distal hydrothermal products, with arrows showing ore grade, Pb:Zn and thickness decreasing and Ba:Zn increasing away from the vent">
+    <figcaption>Main features of a SEDEX deposit. Away from the vent, ore grade, Pb:Zn and thickness decrease and Ba:Zn increases; upward, Pb:Zn decreases and Ba:Zn increases. <span class="srcs">slide 34</span></figcaption>
+  </figure>
+  <p>That outward rise in barium is useful. If you find bedded barite, there is a very good chance sulphide lies somewhere in the same system, so barite beds are a classic exploration indicator. <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a slab from near a vent</span><span class="srcs">slide 31</span></div>
+    <img loading="lazy" decoding="async" src="img/L9/breccia.jpg" alt="Cut slab: the lower third is finely laminated grey and pale ore, the upper part is a breccia of angular to rounded clasts of many colours in a dark matrix, fining up into dark sand; a thin white vein cuts both; 2 cm scale">
+    <p class="ask">Describe the two parts of this slab and the contact between them. What happened, in order?</p>
+    <details data-obs="breccia"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Bottom: finely laminated ore, the layers gently wavy, with an irregular, slightly scoured top.</li><li>Top: a sedimentary breccia of angular to rounded clasts of different rocks, fining upward into dark sand.</li><li>A thin white vein cuts both, so it came last.</li></ul>
+      <p class="so">So laminated Zn-Pb ore formed first, then a debris flow, probably shed off an active fault scarp, dumped breccia on top of it, and later a vein cut through everything. Breccia over banded sulphide is unusual, and breccias like this mark the vent area, where fault movement keeps shedding debris. Mineralising fluid passing through a breccia near a vent will mineralise it too.</p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/textures.jpg" alt="Six photos A to F of SEDEX textures: folded green laminae, mottled blue-grey and orange rock, pale bedded rock with speckled layers, black rock with thin bright veins, dark veined rock, and a bedded outcrop with a ruler">
+    <figcaption>Typical SEDEX textures (Goodfellow and Lydon, figure 9). The slide lists four of the panels: bedded sphalerite and galena with pyrite, hydrothermal carbonate and carbonaceous chert at Howards Pass, Yukon; distal hydrothermal sediments of pyrrhotite and pyrite with disseminated sphalerite in fine turbidites at Sullivan; a vent complex of pyrite, sphalerite, galena and Fe-carbonate replacing bedded sulphide at Tom, Yukon; and a vent complex of tourmalinised breccia infilled with pyrrhotite, sphalerite and chalcopyrite at Sullivan. Seawater carries a lot of boron, so <button class="term" data-t="tourmaline">tourmaline</button> is common near SEDEX vents. <span class="srcs">slide 37</span> <span class="srcs">lecture recording, 2 Oct</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="halo" data-log="Halos"><div class="wrap">
+  <div class="kicker">Exploration <span class="depth">117 to 130 m</span></div>
+  <h2>North Australian SEDEX and their halos</h2>
+  <p>The north Australian deposits share a recognisable look. They sit next to major, deep-seated faults that moved during sedimentation, in dolomitic black shales. They are mostly <b>distal</b>, with no feeder zones or vent complexes. Multiple ore lenses are common, and Pb/Zn varies both laterally and vertically, because each new brine pulse arrives with a slightly different chemistry. Most are zinc-rich. <span class="srcs">slides 38 and 39</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <p>Around them are large, stratabound halos you can’t see by eye. Ross Large and colleagues mapped iron-manganese carbonate halos at HYC, Century, Mount Isa and Lady Loretta. Carbonate in the host gets more iron-rich toward ore: <b>dolomite → ferroan dolomite → <button class="term" data-t="ankerite">ankerite</button> → <button class="term" data-t="siderite">siderite</button></b>. Siderite shows up as brown carbonate spots right around the ore body, ankerite as pale orange or yellow carbonate further out. There are also Mn and thallium halos, a SEDEX alteration index, and carbon, oxygen and strontium isotope halos. Thallium might be a few ppm against a background of one, so you only see it with ICP-MS assays. <span class="srcs">slide 40</span> (Large et al., 1998) <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/halo.jpg" alt="Cross-section of Zn-Pb-Ag ore lenses inside pyritic shale with Fe-Mn-Zn enrichment, wrapped by an Fe-Mn dolomite halo with thallium, under black shale and over dolomite; scale bars 500 m and 1 km">
+    <figcaption>Ore lenses sit in pyritic shale with Fe-Mn-Zn enrichment, wrapped in an Fe-Mn dolomite halo with thallium, kilometres across. <span class="srcs">slides 38 and 39</span></figcaption>
+  </figure>
+  <div class="lab" id="vgLab">
+    <h4><span>Vector in on the ore</span><b id="vgTag">0 holes</b></h4>
+    <svg class="grid-svg" id="vgSvg" viewBox="0 0 640 270" role="img" aria-label="Cross-section of black shale over dolomitic host rock with ten drill collars; tap a collar to drill and log the carbonate"></svg>
+    <div class="readout"><div><small>Last hole logged</small><b id="vgC">?</b></div><div><small>Tl in host</small><b id="vgT">?</b></div><div><small>Best so far</small><b id="vgB">?</b></div></div>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="vgNew">New prospect</button></div>
+    <p class="say" id="vgSay">Tap a drill collar. Each hole logs the carbonate in the favourable horizon (sid siderite, ank ankerite, Fe-dol ferroan dolomite, dol dolomite) and its thallium. Find the ore lens in as few holes as you can.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented game data. The carbonate sequence follows slide 40; the distances and thallium values are made up for teaching.</p>
+  </div>
+  <p>The deposits differ in their pyrite and siderite: Century has little pyrite and lots of siderite, HYC lots of pyrite and little siderite. <span class="srcs">slide 47</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Mount Isa ore in reflected light</span><span class="srcs">slide 36</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L9/rl1.jpg" alt="Reflected light view of wavy, very fine dark and white laminae with a white band and grey patches below, 1 mm scale bar"><div class="cap">A · reflected light, scale bar 1 mm</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L9/rl2.jpg" alt="Reflected light view of a row of pale cream euhedral grains in a pale bluish-grey matrix between dark fine-grained laminae, 1 mm scale bar"><div class="cap">B · reflected light, scale bar 1 mm</div></div>
+    </div>
+    <p class="ask">In B, the pale cream grains have straight edges and look pitted. Which mineral are they, and what about A tells you this is SEDEX ore?</p>
+    <details data-obs="isa"><summary>Show what I see</summary><div class="seen">
+      <ul><li>B: pale cream, high reflectance, hard (they stand out and are pitted from polishing), with crystal faces: <b>pyrite</b> euhedra, in a paler bluish-grey sulphide that is most likely galena.</li><li>A: very fine, wavy laminae of sulphide and dark carbonaceous sediment at the millimetre scale, gently folded.</li></ul>
+      <p class="so">So you have fine-grained laminated sulphide with pyrite in carbonaceous sediment, the SEDEX signature. The galena call in B is from colour and reflectance only, so treat it as likely rather than certain. The gentle folds in A could be soft-sediment folds or compaction rather than later deformation.</p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a second north Australian ore</span><span class="srcs">slide 36</span></div>
+    <img loading="lazy" decoding="async" src="img/L9/rl4.jpg" alt="Reflected light view of a bright white mineral with sharp black triangular pits, enclosing a cream-coloured grain, set in grey material, 200 micrometre scale bar">
+    <p class="ask">Look at the bright white mineral. What are the black triangles, and what does that identify?</p>
+    <details data-obs="galena"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Bright white, high reflectance, soft-looking surface.</li><li>Sharp black triangular pits.</li></ul>
+      <p class="so">So it’s <b>galena</b>: the triangles are cleavage pits, where cubic cleavage fragments plucked out during polishing. The grey around it, with lower reflectance, is most likely sphalerite and carbonate gangue. The cream grain inside isn’t identified on the slide; from colour alone it could be pyrite.</p>
+    </div></details>
+  </div>
+  <p>Sphalerite can carry tiny inclusions of chalcopyrite, called <button class="term" data-t="chalcopyrite disease">chalcopyrite disease</button>, and it’s used as a sign of higher formation temperature. <span class="srcs">lecture recording, 2 Oct</span> <span style="color:var(--muted)">Check the threshold in your own notes: the recording gives both 140 °C and 240 °C here, and the auto-transcript is unclear.</span></p>
+  <div class="labbox"><b>At the lab test</b><ul><li>The lab ore suites include Mount Isa and Lady Loretta polished blocks and hand specimens. Expect fine-grained, laminated sphalerite, galena and pyrite in dark carbonaceous, dolomitic siltstone.</li><li>A Mount Isa hand specimen feels heavy for a dull black rock because it is full of fine galena.</li><li>In reflected light: galena white with triangular pits; pyrite pale cream, hard and often euhedral; sphalerite grey with low reflectance.</li></ul><span class="srcs">slide 36; lecture recording, 2 Oct; lab ore suites</span></div>
+  <div class="keybox"><b>Memorise</b><ul><li>North Australian SEDEX: next to deep syn-sedimentary faults, in dolomitic black shale, mostly distal, multiple lenses, Pb/Zn zoning.</li><li>Carbonate halo toward ore: dolomite → ferroan dolomite → ankerite → siderite; plus Mn, Tl, C/O and Sr isotope halos.</li><li>δ³⁴S -10 to +30‰; uniform, high-μ Pb isotopes from intrabasinal crust.</li></ul><span class="srcs">slides 38 to 40, 47</span></div>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="world" data-log="Where and how big"><div class="wrap">
+  <div class="kicker">The big picture <span class="depth">130 to 144 m</span></div>
+  <h2>Where they are, how big, how found</h2>
+  <p>SEDEX deposits are restricted to a few regions because they need an unusual combination: a continental rift, an enclosed, anoxic sea, and a change from permeable clastics to impermeable shale and carbonate on top. Where you find one, you usually find several in the same basin. Northern Australia dominates the world list. Others are in South Africa (Gamsberg, Broken Hill, Rosh Pinah, mostly highly metamorphosed), Alaska (Red Dog), the Yukon (Howards Pass), British Columbia (Sullivan), Germany (Rammelsberg, mined since medieval times), Rajasthan in India, and western China. New South Wales has none: it never had the right tectonic setting. <span class="srcs">slide 41</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/worldmap.jpg" alt="World map of SEDEX deposits with insets for the Yukon, British Columbia, Rajasthan and northern Australia">
+    <figcaption>World distribution of SEDEX deposits, with insets for the main districts. <span class="srcs">slide 41</span></figcaption>
+  </figure>
+  <p>Around Mount Isa and the Gulf you’ll find HYC (McArthur River) in the Northern Territory, then Century, Mount Isa and Hilton-George Fisher, Dugald River, Lady Loretta and Cannington in Queensland, with smaller ones like Walford Creek and Bluebush. Cannington, which the lecture groups with these, is Australia’s biggest silver mine. <span class="srcs">slide 42</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/centurymap.jpg" alt="Regional map of northwest Queensland showing Century and other mines, a slurry pipeline running from Century north to the export port at Karumba on the Gulf of Carpentaria, and Mount Isa to the south">
+    <figcaption>Century sent its concentrate by slurry pipeline north to Karumba on the Gulf of Carpentaria. <span class="srcs">slide 42</span></figcaption>
+  </figure>
+  <p>Size brings its own problems. Century was so big that its owners spent hundreds of millions of dollars on a slurry pipeline to the Gulf. A railway would have cost far more, and the far northwest floods in the wet season, which would stop a railway, and a mine this size has to run 24 hours a day. Mount Isa, by contrast, already had a railway. <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L9/gt.jpg" alt="Log-log plot of percent zinc plus lead against ore tonnage for Proterozoic and Phanerozoic SEDEX deposits, with diagonal lines of contained metal" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Grade-tonnage, slide 43</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L9/age.jpg" alt="Histograms of SEDEX deposits through time: number, tonnes, zinc, lead, silver and gold, with many in the mid Proterozoic and Phanerozoic and few in the late Proterozoic" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Through time, slide 44</div></div>
+  </div>
+  <p>Grades are typically 5 to 20% Zn + Pb and deposits are mostly under 300 Mt, though some are much bigger, like Red Dog. Some carry up to 2 wt% Cu, which matters at today’s copper prices. By contained Zn + Pb, Hilton-George Fisher and Mount Isa together top the world, followed by Red Dog and HYC; Century was almost pure zinc with hardly any lead. Through time there are lots in the mid Proterozoic (mostly Australian), a gap in the late Proterozoic, then many in the Phanerozoic (Europe and China). Very few carry gold. <span class="srcs">slides 43 and 44</span> <span class="srcs">lecture recording, 2 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the HYC discovery outcrop</span><span class="srcs">slide 46</span></div>
+    <img loading="lazy" decoding="async" src="img/L9/hemimorphite.jpg" alt="Close-up of brown, weathered, cavernous outcrop with white crusts of bladed crystals, and a dark lizard on the right">
+    <p class="ask">This weathered outcrop was the only surface sign of HYC. What is the white mineral, and why does it matter?</p>
+    <details data-obs="hemi"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Brown, iron-stained, cavernous rock: a small gossan.</li><li>White crusts of fine bladed crystals.</li></ul>
+      <p class="so">So the white mineral is <button class="term" data-t="hemimorphite">hemimorphite</button>, Zn₄Si₂O₇(OH)₂·H₂O, a zinc silicate that forms when zinc sulphide weathers (the supergene story of Lecture 2). A tiny gossan with a little hemimorphite was all that showed at surface of what became Australia’s biggest SEDEX deposit. Syd Carter and Ron Beresford recognised it. <span class="srcs">slide 46</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L9/discovery.jpg" alt="Geologists standing and crouching on a small, low, rubbly outcrop among spinifex and scrub">
+    <figcaption>The discovery outcrop at McArthur River. Small and unremarkable. <span class="srcs">slide 46</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Exploration manager’s desk</span><b id="exScore">0 / 3</b></h4>
+    <div class="cards" id="exCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Grades 5 to 20% Zn + Pb, mostly under 300 Mt (Red Dog much larger); up to 2 wt% Cu.</li><li>Biggest by Zn + Pb: Hilton-George Fisher and Mount Isa, then Red Dog, HYC; Century almost all zinc.</li><li>Mid Proterozoic (Australia) and Phanerozoic (Europe, China); a late Proterozoic gap.</li><li>HYC was found from a tiny hemimorphite gossan.</li></ul><span class="srcs">slides 43, 44, 46</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 10 turns to VMS deposits, the volcanic-hosted relatives, where the vents are hotter and the sulphide really is massive. Keep the proximal and distal ideas from here: the same density logic decides whether a vent builds a mound or a brine pool. The modern vents of Lecture 6 are the live version of both.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 9 slides (Sedimentary exhalative deposits, 47 slides; photos and figures tagged by slide) and the Echo360 recording of 2 October 2026. Figures in the slides come from published sources (Goodfellow and Lydon 2007, Emsbo et al. 2016, Large et al. 1998, Betts et al. 2003, Cooke et al. 2000, Sangster 2002, Ireland et al. 2004, Magnall et al., USGS and others) and are shown only as lecture material. Production figures are USGS via slides 4 and 5. The brine simulator, the basin builder, the aquifer pump, the layer builder, the vent walk and the drilling game are teaching models; the drilling game’s numbers are invented.</p>
+  <p><a href="L8.html">&larr; Lecture 8</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You can spot a laminated sulphide.'],[35,'Graduate geologist','You know an aquifer from an aquitard.'],[100,'Project geologist','You can tell a brine pool from a plume.'],[180,'Senior geologist','You can vector in on a siderite halo.'],[270,'Chief geologist','Mount Isa calls you first.']];
+var G={
+ "SEDEX":"Sedimentary exhalative: a Zn-Pb-Ag deposit formed where basin brine vents into a reduced sedimentary basin; also called sediment-hosted massive sulphide (SHMS).",
+ "VMS":"Volcanogenic (volcanic-hosted) massive sulphide: a Cu-Zn-Pb deposit formed by seafloor venting in a volcanic setting (Lecture 10).",
+ "MVT":"Mississippi Valley-type: Zn-Pb deposits that replace carbonate rocks, from basin brines, with no exhalation onto the seafloor.",
+ "Irish-type":"Zn-Pb deposits in Carboniferous carbonates in Ireland, sharing features with both SEDEX and MVT.",
+ "syngenetic":"Formed at the same time as the host rock, here sulphide laid down with the sediment.",
+ "epigenetic":"Formed after the host rock, for example by later replacement or veining.",
+ "diagenetic":"Formed in the sediment soon after burial, while it is still being compacted and cemented.",
+ "exhalative":"Deposited from fluid vented (exhaled) onto the seafloor.",
+ "sphalerite":"ZnS, the main zinc ore mineral; grey with low reflectance in reflected light.",
+ "galena":"PbS, the main lead ore mineral; white with triangular cleavage pits in reflected light; very dense.",
+ "barite":"BaSO₄, a common, dense gangue mineral in SEDEX deposits, more abundant away from the vent.",
+ "turbidite":"A graded bed laid down by a turbidity current or mass flow sliding off a slope.",
+ "galvanising":"Coating steel with zinc to stop it rusting; about 60% of zinc use.",
+ "syn-rift":"Deposited while the rift was actively extending; here coarse, permeable clastics.",
+ "aquifer":"A permeable rock layer that holds and transmits fluid; in SEDEX, the coarse syn-rift clastics.",
+ "aquitard":"An impermeable layer that holds fluid in, here post-rift shale, chert or carbonate.",
+ "anoxic":"Without oxygen; an anoxic basin floor holds H₂S and preserves organic matter.",
+ "back-arc":"The region behind a volcanic arc, on the side away from the trench, often under extension.",
+ "growth fault":"A normal fault that moves while sediment is deposited, so beds thicken across it.",
+ "overpressured":"Holding fluid at more than the normal hydrostatic pressure for its depth; also called geopressured.",
+ "vent-proximal":"Formed at or near the vent from buoyant fluid: footwall alteration, breccia pipes, coarser sulphide.",
+ "vent-distal":"Formed away from the vent from dense brine pooled in depressions: laminated sulphide, barite, no footwall alteration.",
+ "brine pool":"A body of dense, salty fluid lying in a depression on the seafloor.",
+ "chloride complex":"A dissolved metal bonded to chloride, like ZnCl₂, the way zinc and lead travel in saline brine.",
+ "hematite-pyrite buffer":"The redox boundary where hematite gives way to pyrite; above it, brines can carry far more Zn and Pb.",
+ "Barney Creek Formation":"The organic-rich dolomitic siltstone of the McArthur Group that hosts HYC.",
+ "ankerite":"Ca(Fe,Mg)(CO₃)₂, an iron-bearing carbonate; pale orange to yellow, part of the halo around SEDEX ore.",
+ "siderite":"FeCO₃, iron carbonate; brown spots closest to the ore in north Australian halos.",
+ "ferroan dolomite":"Dolomite with some iron, between ankerite and plain dolomite in the halo sequence.",
+ "thallium halo":"A subtle enrichment of thallium (a few ppm) in the host rocks around SEDEX ore, found by assay.",
+ "tourmaline":"A boron silicate; common near SEDEX vents because seawater supplies boron.",
+ "chalcopyrite disease":"Tiny chalcopyrite inclusions in sphalerite, used as a sign of higher formation temperature.",
+ "hemimorphite":"Zn₄Si₂O₇(OH)₂·H₂O, a white zinc silicate formed by weathering of zinc sulphide.",
+ "μ value":"The ²³⁸U/²⁰⁴Pb ratio of a lead source; high μ points to upper continental crust."
+};
+var CP={
+ cp1:{q:'What does most SEDEX ore look like?',o:['Massive chalcopyrite lenses','Fine laminae of sphalerite and galena interbedded with shale or siltstone','Coarse gold in quartz veins'],a:1,e:'The sulphides sit in thin laminae between shale and siltstone layers, often so fine that they are hard to process, as at HYC.'},
+ cp2:{q:'How does Australia rank for zinc?',o:['Third-largest producer, but the largest reserves','Largest producer, with small reserves','A minor producer with no reserves'],a:0,e:'About 1100 kt a year, behind China and Peru, but 64 000 kt of reserves, ahead of China. For lead it is second producer and first in reserves.'},
+ cp3:{q:'Why does a SEDEX basin need an impermeable cap above the aquifer?',o:['To make the fluid hotter','To supply sulphur','To hold the brine in so it builds pressure and then discharges in a focused way'],a:2,e:'Without the aquitard, brine leaks away up the faults and you get elevated background metal, not a deposit.'},
+ cp4:{q:'Which unit hosts HYC in the McArthur Basin?',o:['Tawallah Group rift volcanics','Barney Creek Formation organic-rich dolomitic siltstone, in the sag phase','The platform carbonates at the top'],a:1,e:'Rift-phase Tawallah Group below is the aquifer; the sag-phase Barney Creek Formation hosts HYC; platform carbonates on top sealed it.'},
+ cp5:{q:'Why does brine leave the aquifer in pulses?',o:['Overpressure builds until the cap ruptures and the fault opens, often in a small earthquake, then the fault seals again','Tides pump it out twice a day','Rain pushes it down and out'],a:0,e:'Each rupture releases a pulse; mineral precipitation reseals the fault, and pressure builds again.'},
+ cp6:{q:'A brine denser than seawater flows out of a vent. What do you get?',o:['A buoyant plume and a mound over the vent','No deposit at all','A brine pool in a depression, laying down laminated sulphide with no footwall alteration'],a:2,e:'That is the vent-distal style, like HYC: more saline, cooler, oxidised brine.'},
+ cp7:{q:'Where do the zinc and the sulphur mostly come from?',o:['Zinc from the basin sediments, leached by brine; sulphur from H₂S in the anoxic seawater','Both from a granite','Both from the mantle'],a:0,e:'Metals from the basin fill, mobilised by convecting brine; sulphur from the water column.'},
+ cp8:{q:'In a stratified SEDEX basin, where does sphalerite precipitate?',o:['In the oxygenated surface water','In the aquifer, deep in the basin','Where metal-bearing brine meets H₂S in the anoxic bottom water'],a:2,e:'Chloride-complexed zinc meets H₂S, ZnS precipitates, and aggregates sink to the floor.'},
+ cp9:{q:'Walking away from the vent along the ore horizon, what changes?',o:['Grade rises and Pb:Zn rises','Grade, Pb:Zn and thickness decrease; Ba:Zn increases','Copper increases'],a:1,e:'Distal ore is thinner, lower grade, more zinc-rich and more barite-rich, grading into chert and barite.'},
+ cp10:{q:'Drilling through dolomitic host rock toward a north Australian SEDEX ore body, which carbonates do you log as you get closer?',o:['Siderite → ankerite → ferroan dolomite → dolomite','Dolomite → ferroan dolomite → ankerite → siderite','Calcite only, all the way'],a:1,e:'The carbonate gets more iron-rich toward ore, with siderite closest.'},
+ cp11:{q:'Why do SEDEX deposits cluster in a few regions?',o:['They form anywhere there is shale','They need a rare combination: an enclosed, anoxic rift basin with aquifer, cap and focused faults, and where one basin has it, several deposits form','They only formed in the last 100 million years'],a:1,e:'Find the right basin and you usually find more than one deposit, as around Mount Isa and McArthur River.'}
+};
+var ST=[
+ ['What is a SEDEX deposit? Give its main ore and gangue minerals and its typical host rock.','Recall','Zn-Pb-Ag deposits formed by venting of saline brine (about 80 to 200 °C) into a reduced sedimentary basin. Sphalerite and galena (Zn greater than Pb) with some silver; pyrite and pyrrhotite; barite gangue. Hosted by laminated, organic-rich black shale or dolomitic siltstone, with the sulphide in fine laminae.'],
+ ['List the five essentials a basin needs to make SEDEX deposits.','Recall','An extensional setting; structures that control basin architecture and fluid flow; thick basin fill (2 to 5 km of syn-rift clastics as aquifer, with a post-rift shale or carbonate aquitard); large-scale hydrothermal fluid flow (with a heat source); a stagnant water column containing H₂S.'],
+ ['Explain the Goodfellow and Lydon model from rifting to ore.','Apply','A long-lived rift basin fills with permeable clastics (the aquifer), capped by reduced shale and chert (the aquitard). Heat drives brine convection, which leaches metals. The aquifer becomes overpressured and ruptures the cap; brine rises up active faults, mixes with H₂S in the anoxic water column, and forms vent-proximal and vent-distal deposits.'],
+ ['Compare vent-proximal and vent-distal SEDEX deposits: fluid, features and an example of each.','Apply','Proximal: buoyant (or intermediate) brine, lower salinity, higher T, reduced; footwall alteration, breccia pipes, coarser sulphide; Sullivan. Distal: dense brine, higher salinity, lower T, oxidised, pooling in depressions; laminated sulphide, no footwall alteration, barite; HYC.'],
+ ['Why are north Australian SEDEX deposits zinc- and lead-rich but copper-poor?','Think','Their brines were oxidised and near neutral (hematitic sandstone aquifers), so they carried thousands of ppm Zn and Pb as chloride complexes. Copper solubility stays low, and the fluids stayed below about 300 °C, which limits copper.'],
+ ['Where do the fluid, the metals, the sulphur and the heat come from, and what do the isotopes say?','Recall','Fluid: evaporated seawater and dissolved halite. Metals: basin sediments, leached by convecting brine. Sulphur: H₂S in the anoxic seawater. Heat: mafic sills and dykes or another source. δ³⁴S ranges from -10 to +30‰; uniform, high-μ Pb isotopes point to upper-crustal rocks within the basin.'],
+ ['Describe the stratified water column and how laminated ore builds up.','Apply','An oxic top layer (Fe³⁺ insoluble), a mixing layer where pyrite precipitates, and an anoxic, H₂S-rich bottom layer. Brine pulses, triggered by tectonism, meet H₂S and precipitate sphalerite and galena, which sink; between pulses, pelagic organic mud and carbonate mass flows add sediment layers.'],
+ ['Contrast exhalative and replacement models for SEDEX. Which is favoured and why?','Think','Exhalative: sulphide precipitates at the seafloor from vented brine. Replacement: sulphide replaces permeable layers below the seafloor, during diagenesis or later deformation; at MacMillan Pass, sulphide replaced earlier barite. Most deposits, especially the big ones, have sulphide laminae interbedded with sediment, favouring an exhalative, syngenetic origin.'],
+ ['What would you use to vector toward a hidden SEDEX ore body?','Apply','The Fe-Mn carbonate halo (dolomite to ferroan dolomite to ankerite to siderite toward ore); Mn and Tl halos found by assay; C, O and Sr isotope halos; pyritic shale with Fe-Mn-Zn enrichment; bedded barite and Ba:Zn rising away from the vent; Pb/Zn zoning; and deep syn-sedimentary faults.'],
+ ['Use HYC and Century to explain why a big SEDEX deposit can still be hard to turn into a mine.','Synthesise','HYC’s sulphides are extremely fine grained (some under 20 µm), intergrown with carbonaceous mud and silica, so fine-grinding technology was needed before it could be processed economically. Century is remote and floods in the wet season, so it needed a slurry pipeline to the Gulf to keep running around the clock. Grade and tonnage aren’t enough without processing and infrastructure.']
+];
+GEO.start({key:'geos3141-L9-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- brine vent simulator ---------- */
+var bc=$('#brCan'),bx=bc.getContext('2d'),BW=640,BH=300,bk=1;
+var br={S:20,T:150,cls:'',p:[],hist:[],pool:0,bed:0,run:false,last:0,seen:{}},brR=rng(9);
+var VX=330,VY=226;
+function fl(x){return x<40||x>300?226:226+46*Math.sin(Math.PI*(x-40)/260);}
+function brRho(){return 1+0.0072*br.S-0.0006*(br.T-20);}
+function brCls(r){return r<1.01?'b':r<1.05?'i':'d';}
+function brReset(){br.p=[];br.hist=[];for(var i=0;i<64;i++)br.hist.push(0);br.pool=0;br.bed=0;}
+function brH(x){var i=Math.max(0,Math.min(63,Math.floor(x/10)));return br.hist[i];}
+function brStep(){var c=br.cls;
+  for(var k=0;k<2;k++)br.p.push({x:VX+(brR()-.5)*6,y:VY-3,ty:c==='b'?40+brR()*70:c==='i'?165+brR()*35:0,sp:(brR()<.5?-1:1)*(.4+brR()*.9),s:0,life:0,vx:0});
+  for(var i=br.p.length-1;i>=0;i--){var p=br.p[i];p.life++;
+    if(p.s){p.y+=1.1;p.x+=p.vx;var floorY=(c==='d'&&p.x>60&&p.x<290)?fl(p.x)-br.bed:fl(p.x)-brH(p.x);
+      if(p.y>=floorY){if(c==='d'&&p.x>60&&p.x<290)br.bed=Math.min(16,br.bed+.03);else{var j=Math.max(0,Math.min(63,Math.floor(p.x/10)));br.hist[j]=Math.min(40,br.hist[j]+.5);if(j>0)br.hist[j-1]=Math.min(40,br.hist[j-1]+.15);if(j<63)br.hist[j+1]=Math.min(40,br.hist[j+1]+.15);}br.p.splice(i,1);}
+      continue;}
+    if(c==='d'){p.x+=-1.1+(brR()-.5)*.4;var fy=fl(p.x)-3-brR()*5;p.y+=(fy-p.y)*.35;
+      if(p.x<235&&brR()<.04){br.pool=Math.min(34,br.pool+.03);if(brR()<.6){p.s=1;p.vx=0;}else{br.p.splice(i,1);continue;}}
+      if(p.x<50){br.p.splice(i,1);continue;}}
+    else{if(p.y>p.ty){p.y-=c==='b'?1.7:.8;p.x+=(brR()-.5)*.9;}else{p.x+=p.sp;p.y+=(brR()-.5)*.6;}
+      if(p.y>92&&brR()<(c==='b'?.012:.025)){p.s=1;p.vx=p.sp*.15;}
+      if(p.life>420||p.x<0||p.x>BW){br.p.splice(i,1);continue;}}}
+  if(br.p.length>1100)br.p.splice(0,br.p.length-1100);}
+function brDraw(){var g=bx;g.clearRect(0,0,BW,BH);
+  var gr=g.createLinearGradient(0,0,0,226);gr.addColorStop(0,'#D3E6EF');gr.addColorStop(.36,'#9EC3CC');gr.addColorStop(.42,'#4F6F76');gr.addColorStop(1,'#3B565C');g.fillStyle=gr;g.fillRect(0,0,BW,BH);
+  g.strokeStyle='rgba(255,255,255,.5)';g.setLineDash([6,4]);g.beginPath();g.moveTo(0,92);g.lineTo(BW,92);g.stroke();g.setLineDash([]);
+  g.font=fontPx(bk);g.fillStyle='#163245';g.fillText('oxygenated water',10,22);g.fillStyle='#E4F1F2';g.fillText('anoxic water, H₂S',10,110);
+  if(br.pool>0){var lvl=272-br.pool;g.fillStyle='rgba(150,80,160,.55)';g.beginPath();var st=false;for(var x=40;x<=300;x+=3){var y=fl(x);if(y>lvl){if(!st){g.moveTo(x,lvl);st=true;}g.lineTo(x,y);}}if(st){g.lineTo(Math.min(300,280),lvl);g.closePath();g.fill();g.fillStyle='#F3DDF5';g.fillText('brine pool',140,lvl-6);}}
+  g.fillStyle='#2F2B29';g.beginPath();g.moveTo(0,BH);for(var x=0;x<=BW;x+=4)g.lineTo(x,fl(x));g.lineTo(BW,BH);g.closePath();g.fill();
+  g.strokeStyle='rgba(255,255,255,.12)';for(var k=1;k<5;k++){g.beginPath();for(var x=0;x<=BW;x+=8){var y=fl(x)+k*14;x?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();}
+  if(br.bed>.3){for(var b=0;b<br.bed;b+=2){g.strokeStyle=b%4<2?'#D8B23A':'#8F7A3C';g.lineWidth=1.6;g.beginPath();for(var x=62;x<=288;x+=4){var y=fl(x)-b-1;x>62?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();}g.lineWidth=1;}
+  g.fillStyle='#B8902E';g.beginPath();g.moveTo(0,fl(0));for(var x=0;x<=BW;x+=5){g.lineTo(x,fl(x)-brH(x));}for(var x=BW;x>=0;x-=5){g.lineTo(x,fl(x)+.5);}g.closePath();g.fill();
+  g.strokeStyle='#E07A3F';g.lineWidth=3;g.setLineDash([8,5]);g.beginPath();g.moveTo(300,BH);g.lineTo(VX,VY);g.stroke();g.setLineDash([]);g.lineWidth=1;
+  var col=br.cls==='b'?'#F0904F':br.cls==='i'?'#D46FA8':'#B07CC6';
+  br.p.forEach(function(p){if(p.s){g.fillStyle='#F2D06B';g.fillRect(p.x-1,p.y-1,2.2,2.2);}else{g.fillStyle=col;g.globalAlpha=.75;g.beginPath();g.arc(p.x,p.y,2.4,0,6.3);g.fill();g.globalAlpha=1;}});
+  g.fillStyle='#FFE3D6';g.fillText('vent',VX+8,VY+16);g.fillText('fault',306,288);g.fillStyle='#E4F1F2';g.fillText('depression',140,292);}
+function brUI(){var r=brRho(),c=brCls(r);$('#brSalV').textContent=br.S+' wt%';$('#brTemV').textContent=br.T+' °C';$('#brRho').textContent=r.toFixed(3)+' g/cm³';
+  if(c!==br.cls){br.cls=c;brReset();}
+  $('#brBeh').textContent=c==='b'?'rises as a buoyant plume':c==='i'?'rises a little, spreads low':'sinks and pools';
+  $('#brDep').textContent=c==='d'?'vent-distal, bedded':'vent-proximal, mound';$('#brTag').textContent=c==='b'?'buoyant brine':c==='i'?'intermediate brine':'dense brine';
+  $('#brSay').innerHTML=c==='b'?'Lighter than the seawater around it (bottom water about 1.03), so it rises. Sulphide drops out only near the vent where the plume is still in the H₂S layer; whatever reaches the oxygenated water above is lost to the ocean.':c==='i'?'Hot enough to offset most of its salt: it rises a short way and spreads close to the floor. Sulphide builds around the vent with footwall alteration below. That’s the Sullivan style: <b>lower salinity, higher temperature, reduced</b>.':'Salty and cool enough to be denser than seawater, so it hugs the floor, flows downslope and pools in the depression. Sulphide settles from the pool as flat, laminated layers far from the vent. That’s the HYC style: <b>higher salinity, lower temperature, oxidised</b>.';
+  br.seen[c]=1;if(br.seen.d&&(br.seen.b||br.seen.i))award('br',5,'Vented a buoyant and a dense brine');}
+function brWarm(){for(var i=0;i<500;i++)brStep();brDraw();}
+$('#brSal').addEventListener('input',function(){br.S=+this.value;brUI();if(reduce||!br.run)brWarm();});
+$('#brTem').addEventListener('input',function(){br.T=+this.value;brUI();if(reduce||!br.run)brWarm();});
+function brLoop(ts){if(!br.run)return;var n=br.last?Math.min(30,Math.max(1,Math.round((ts-br.last)/16))):1;br.last=ts;for(var i=0;i<n;i++)brStep();brDraw();requestAnimationFrame(brLoop);}
+bk=fitCanvas(bc,bx,BW,BH);brReset();brUI();brWarm();
+onVisible(bc,function(v){if(reduce)return;if(v&&!br.run){br.run=true;br.last=0;requestAnimationFrame(brLoop);}else if(!v)br.run=false;});
+
+/* ---------- production and reserves ---------- */
+var PRD={Zn:[['China',4100,60000],['Peru',1500,18000],['Australia',1100,64000],['India',870,10000],['Mexico',780,14000],['USA',670,9300],['Bolivia',500,null],['Kazakhstan',360,7400],['Russia',430,29000],['Sweden',230,4100]],
+ Pb:[['China',1900,22000],['Australia',480,34000],['USA',280,4600],['Peru',290,5000],['Russia',260,8900],['Mexico',200,5600],['Bolivia',100,1600],['Sweden',70,1700],['Iran',70,2000]]};
+var pr={m:'Zn',k:1,seen:{}};
+function prDraw(){var s=$('#prSvg');s.innerHTML='';var d=PRD[pr.m].filter(function(r){return r[pr.k]!==null;}).slice().sort(function(a,b){return b[pr.k]-a[pr.k];});var max=d[0][pr.k];
+  d.forEach(function(r,i){var y=8+i*38,w=r[pr.k]/max*380;txt(s,8,y+21,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:120,y:y+6,width:Math.max(2,w),height:22,rx:3,fill:r[0]==='Australia'?'var(--gold)':r[0]==='China'?'var(--slate)':'var(--line)'},s);txt(s,126+w,y+22,r[pr.k].toLocaleString('en-AU')+' kt',{'font-size':13,fill:'var(--ink)'});});
+  var rk=d.map(function(r){return r[0];}).indexOf('Australia')+1;
+  $('#prTag').textContent=(pr.m==='Zn'?'Zinc':'Lead')+' · '+(pr.k===1?'production 2025':'reserves');
+  $('#prSay').innerHTML='Australia ranks <b>'+['','first','second','third','fourth'][rk]+'</b> for '+(pr.m==='Zn'?'zinc':'lead')+' '+(pr.k===1?'production':'reserves')+'. '+(pr.k===2?'Production is only a snapshot; reserves tell you where the metal will come from later.':pr.m==='Zn'?'China mines almost four times as much as anyone else.':'China again leads, by a long way.');
+  pr.seen[pr.m+pr.k]=1;if(pr.seen.Zn2&&pr.seen.Pb2)award('pr',4,'Compared production and reserves');}
+function prSet(btn,group,v){$$(group).forEach(function(b){b.setAttribute('aria-pressed','false');});btn.setAttribute('aria-pressed','true');}
+$('#prZn').addEventListener('click',function(){pr.m='Zn';prSet(this,'#prZn,#prPb');prDraw();});
+$('#prPb').addEventListener('click',function(){pr.m='Pb';prSet(this,'#prZn,#prPb');prDraw();});
+$('#prP').addEventListener('click',function(){pr.k=1;prSet(this,'#prP,#prR');prDraw();});
+$('#prR').addEventListener('click',function(){pr.k=2;prSet(this,'#prP,#prR');prDraw();});
+prDraw();
+
+/* ---------- recipe cards ---------- */
+mcCards($('#rcCards'),[
+ {lbl:'Basin A',q:'A rift with 4 km of sandstone and conglomerate full of hot brine, a good fault system, an anoxic sea, but nothing impermeable on top.',o:['Nothing is missing','No cap: the brine leaks away and spreads metal thinly','Not enough heat'],a:1,e:'Without an aquitard the fluid escapes up the faults: elevated background, no deposit.'},
+ {lbl:'Basin B',q:'Aquifer, cap, faults and heat are all there, but the sea above is open to the ocean, well mixed and oxygenated.',o:['No H₂S at the floor to trap the metals','Too much barite','The brine would be too cold'],a:0,e:'The H₂S-bearing stagnant water column supplies the sulphur; without it, metals disperse into the ocean.'},
+ {lbl:'Basin C',q:'Everything is present, but the brine seeps slowly and evenly through the whole cap, with no active faults.',o:['A bigger deposit','A porphyry deposit','Unfocused flow: no deposit'],a:2,e:'Discharge must be focused, ideally where extensional and transform faults intersect.'},
+ {lbl:'Basin D',q:'A rift that opened and filled in a few million years, then was inverted.',o:['Too short-lived: SEDEX basins last 100 to 200 million years','Perfect timing','Too much sediment'],a:0,e:'Long-lived extension keeps faults active and brine flowing through repeated pulses.'},
+ {lbl:'Basin E',q:'A thin basin fill, a few hundred metres of mud only, over basement.',o:['Ideal, mud makes the best aquifer','No thick permeable aquifer to store brine and leach metal','Too much heat'],a:1,e:'You want 2 to 5 km of permeable syn-rift clastics as the aquifer.'}
+],'rc',2,function(r,n){$('#rcScore').textContent=r+' / '+n;});
+
+/* ---------- McArthur Basin builder ---------- */
+var bs=$('#bsSvg'),bsS=1;
+var BSS=['','<b>1. Rift phase.</b> The crust stretches on normal faults, opening half-grabens. They fill with the Tawallah Group: sandstone, conglomerate, volcanics and some carbonate. This coarse, permeable package becomes the <b>aquifer</b>.','<b>2. Heat and brine.</b> Mafic sills and the hot, thinned lithosphere raise the geothermal gradient. Saline brine convects through the aquifer, leaching zinc and lead from the sediments.','<b>3. Sag phase.</b> Extension slows and the basin sags. The McArthur Group lays down carbonate, shale and siltstone. In a fault-bounded sub-basin beside the Emu Fault, the organic-rich, dolomitic <b>Barney Creek Formation</b> accumulates under anoxic water: the host of HYC.','<b>4. Cap.</b> The basin shallows and platform carbonates (Reward Dolomite and above) spread across it, sealing the system so fluid can’t flow through. That seal also preserves the deposit.'];
+function bsDraw(){bs.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'#9EC3CC'},bs);
+  el('rect',{x:0,y:250,width:640,height:50,fill:'#B9A9A0'},bs);for(var i=0;i<16;i++)txt(bs,20+i*40,282,'+',{'font-size':14,fill:'#7D6E66'});
+  el('path',{d:'M0 250 L0 150 L640 150 L640 250 Z',fill:'#D9B76A'},bs);
+  for(var d=0;d<40;d++)el('circle',{cx:(d*67)%640,cy:158+(d*29)%86,r:1.6,fill:'#A8873E'},bs);
+  [[150,250,170,150],[370,250,390,150],[590,250,610,150]].forEach(function(f){el('line',{x1:f[0],y1:f[1],x2:f[2]+(bsS>=3?10:0),y2:bsS>=3?95:f[3],stroke:'#8E3424','stroke-width':3,'stroke-dasharray':'6 4'},bs);});
+  txt(bs,10,172,'Tawallah Group: rift fill, the aquifer',{'font-size':13,fill:'#3E2E12'});
+  if(bsS>=2){el('rect',{x:190,y:232,width:170,height:7,fill:'#B5472E'},bs);txt(bs,200,226,'mafic sill',{'font-size':12,fill:'#8E3424'});
+    [[90,205],[280,200],[480,205]].forEach(function(c){el('ellipse',{cx:c[0],cy:c[1],rx:46,ry:20,fill:'none',stroke:'#C8553A','stroke-width':2.5,'stroke-dasharray':'5 4'},bs);});
+    txt(bs,430,244,'brine convects',{'font-size':12,fill:'#8E3424'});}
+  if(bsS>=3){el('path',{d:'M0 150 L0 95 L640 95 L640 150 Z',fill:'#8F8676'},bs);el('path',{d:'M392 150 L396 112 Q480 120 590 112 L596 150 Z',fill:'#2F2B29'},bs);
+    txt(bs,10,124,'McArthur Group: carbonate, shale, siltstone',{'font-size':13,fill:'#FFF'});txt(bs,404,142,'Barney Creek Fm',{'font-size':12,fill:'#EEE'});
+    el('ellipse',{cx:540,cy:128,rx:22,ry:5,fill:'#D8B23A'},bs);txt(bs,528,146,'HYC',{'font-size':12,fill:'#F2D06B','font-weight':700});txt(bs,350,52,'Emu Fault',{'font-size':12,fill:'#8E3424'});}
+  if(bsS>=4){el('rect',{x:0,y:60,width:640,height:35,fill:'#E4DCC8'},bs);for(var j=0;j<20;j++)el('line',{x1:j*34,y1:60,x2:j*34,y2:95,stroke:'#BDB29A'},bs);txt(bs,10,82,'platform carbonate cap (Reward Dolomite and above)',{'font-size':13,fill:'#3E2E12'});}
+  txt(bs,10,20,bsS<4?'sea':'shallow sea',{'font-size':12,fill:'#163245'});
+  $('#bsStep').textContent='step '+bsS+' of 4';$('#bsSay').innerHTML=BSS[bsS]+' <span class="srcs">slides 13 to 15</span>';$('#bsBack').disabled=bsS===1;$('#bsNext').disabled=bsS===4;}
+$('#bsNext').addEventListener('click',function(){if(bsS<4){bsS++;bsDraw();SND.play('flip');if(bsS===4)award('bs',4,'Built the McArthur Basin');}});
+$('#bsBack').addEventListener('click',function(){if(bsS>1){bsS--;bsDraw();}});
+bsDraw();
+
+/* ---------- aquifer pump ---------- */
+var pms=$('#pmSvg'),pm={p:25,n:0,busy:false,t0:0};
+function pmDraw(f){pms.innerHTML='';el('rect',{x:0,y:0,width:640,height:70,fill:'#8FB7D6'},pms);txt(pms,10,20,'anoxic sea',{'font-size':12,fill:'#163245'});
+  el('rect',{x:0,y:70,width:640,height:80,fill:'#3B3836'},pms);txt(pms,10,96,'cap: reduced shale and chert (aquitard)',{'font-size':13,fill:'#EEE'});
+  el('rect',{x:0,y:150,width:640,height:100,fill:mix('#D9B76A','#D2573A',(pm.p-25)/75)},pms);txt(pms,10,176,'syn-rift sandstone (aquifer)',{'font-size':13,fill:'#3E2E12'});
+  for(var d=0;d<50;d++)el('circle',{cx:(d*53)%640,cy:158+(d*37)%86,r:1.6,fill:'rgba(80,50,20,.45)'},pms);
+  el('rect',{x:0,y:250,width:640,height:50,fill:'#B9A9A0'},pms);
+  el('line',{x1:430,y1:300,x2:470,y2:70,stroke:pm.busy?'#F2B34B':'#8E3424','stroke-width':pm.busy?5:3,'stroke-dasharray':pm.busy?'':'7 4'},pms);
+  if(pm.p>70&&!pm.busy){for(var c=0;c<Math.floor((pm.p-70)/6);c++){var x=120+c*55;el('path',{d:'M'+x+' 150 l6 -14 l-5 -10 l7 -12',fill:'none',stroke:'#F2B34B','stroke-width':2},pms);}}
+  for(var l=0;l<Math.min(pm.n,14);l++){el('path',{d:'M'+(400-l*4)+' '+(70-l*3)+' Q470 '+(64-l*3)+' '+(560+l*4)+' '+(70-l*3),fill:'none',stroke:l%2?'#D8B23A':'#9B7B2A','stroke-width':3},pms);}
+  if(pm.busy&&f!==undefined){for(var k=0;k<10;k++){var t=cl(f*1.4-k*.05,0,1),y=300-t*235,x=430+(300-y)/230*40;if(t>0&&t<1)el('circle',{cx:x+(k%2?4:-4),cy:y,r:4,fill:'#F2B34B'},pms);}}
+  $('#pmP').textContent=Math.round(pm.p)+'%';$('#pmF').textContent=pm.busy?'open':'sealed';$('#pmL').textContent=pm.n;$('#pmTag').textContent=pm.n+(pm.n===1?' pulse':' pulses');}
+function pmPulse(){pm.busy=true;pm.t0=0;SND.play('alarm');FX.shake(pms);
+  function step(ts){if(!pm.t0)pm.t0=ts||1;var f=Math.min(1,((ts||pm.t0)-pm.t0)/1300);pmDraw(f);
+    if(f<1&&!reduce)requestAnimationFrame(step);else{pm.busy=false;pm.p=25;pm.n++;pmDraw();SND.play('ok');
+      $('#pmSay').innerHTML=pm.n===1?'The cap ruptured, the fault opened and a pulse of brine shot up it to the seafloor, where it met H₂S and laid down a sulphide lamina. Minerals then precipitated in the fault and sealed it. Load it again.':pm.n<3?'Another rupture, another pulse, another lamina. Pressure starts over each time.':'That’s the cycle: overpressure, rupture, pulse, seal. Repeat it thousands of times and you get thousands of laminae, each a little different in chemistry. <span class="srcs">slides 17 and 26</span>';
+      if(pm.n>=3)award('pm',4,'Pumped three brine pulses');}}
+  requestAnimationFrame(step);}
+$('#pmGo').addEventListener('click',function(){if(pm.busy)return;pm.p=Math.min(100,pm.p+12+Math.random()*14);SND.play('tick');pmDraw();
+  if(pm.p>=100)pmPulse();else $('#pmSay').textContent=pm.p>70?'The cap is starting to crack. The fluid is overpressured.':'Compaction and heating push pore pressure up. The cap holds, for now.';});
+pmDraw();
+
+/* ---------- order game ---------- */
+var OD=['A long-lived continental rift basin opens along extensional faults','Thick, permeable syn-rift clastics accumulate: the aquifer','Reduced shale and chert are deposited on top: the aquitard','Heat drives brine convection, which leaches metals; the aquifer becomes overpressured','The overpressured aquifer ruptures its cap','Brine is focused up active faults','Brine mixes with H₂S in the anoxic water column; proximal and distal deposits form'];
+var odNext=0;
+function odBuild(){var b=$('#odBox');b.innerHTML='';odNext=0;$('#odTag').textContent='0 / 7';$('#odSay').textContent='Tap the steps in the order they happen.';
+  var order=OD.map(function(s,i){return i;});for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=OD[i];
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===odNext){odNext++;c.disabled=true;c.textContent=odNext+'. '+OD[i];c.style.borderColor='var(--mal)';SND.play('ok');$('#odTag').textContent=odNext+' / 7';
+      if(odNext===7){COMBO.hit();award('od',COMBO.pts(5),'SEDEX model in order'+COMBO.tag());FX.burst(c);$('#odSay').innerHTML='That’s the Goodfellow and Lydon sequence: basin, aquifer, cap, charge, rupture, focus, mix. <span class="srcs">slides 12 and 17</span>';}}
+      else{FX.shake(c);COMBO.miss();$('#odSay').textContent='Not yet: what has to happen before that?';}});b.appendChild(c);});}
+$('#odReset').addEventListener('click',odBuild);odBuild();
+
+/* ---------- proximal or distal ---------- */
+var PDO=['Vent-proximal','Vent-distal'];
+mcCards($('#pdCards'),[
+ {lbl:'Feature',q:'A breccia pipe with altered footwall rock under it',o:PDO,a:0,e:'Overpressured fluid at the vent shatters rock and alters the footwall.'},
+ {lbl:'Feature',q:'Well-laminated sulphide interbedded with sediment, no footwall alteration',o:PDO,a:1,e:'Sulphide settled from a brine pool away from the vent.'},
+ {lbl:'Fluid',q:'Brine denser than seawater, pooling in a depression',o:PDO,a:1,e:'Dense brine hugs the floor and pools, giving bedded ore.'},
+ {lbl:'Fluid',q:'Lower salinity, higher temperature, reduced (Sullivan)',o:PDO,a:0,e:'A lighter, intermediate brine that doesn’t travel far from the vent.'},
+ {lbl:'Feature',q:'Related bedded barite',o:PDO,a:1,e:'Barium travels further and drops out away from the vent.'},
+ {lbl:'Feature',q:'Tourmalinised breccia infilled with pyrrhotite, sphalerite and chalcopyrite',o:PDO,a:0,e:'A vent complex: boron from seawater makes tourmaline near the vent, as at Sullivan.'}
+],'pd',2,function(r,n){$('#pdScore').textContent=r+' / '+n;});
+
+/* ---------- solubility slider ---------- */
+var SLD={Zn:[[-42,60],[-41,50],[-40.5,50],[-40,90],[-39.5,400],[-39,2500],[-38.5,10000],[-38,20000],[-37.8,40000]],Pb:[[-42,20],[-41,18],[-40.5,18],[-40,35],[-39.5,150],[-39,900],[-38.5,4500],[-38,8000],[-37.8,13000]],Cu:[[-42,.5],[-41,.8],[-40.5,1.1],[-40,1.6],[-39.5,2],[-39.1,3],[-39,12],[-38.5,30],[-38,38],[-37.8,40]]};
+function slAt(k,x){var d=SLD[k];if(x<=d[0][0])return d[0][1];for(var i=1;i<d.length;i++){if(x<=d[i][0]){var a=d[i-1],b=d[i],t=(x-a[0])/(b[0]-a[0]);return Math.pow(10,Math.log10(a[1])+t*(Math.log10(b[1])-Math.log10(a[1])));}}return d[d.length-1][1];}
+function sx(x){return 70+(x+42)/4.2*540;}function sy(v){return 240-(Math.log10(v)+1)/6*220;}
+var slSeen={};
+function slDraw(){var s=$('#slSvg'),x=+$('#slX').value;s.innerHTML='';el('rect',{x:70,y:20,width:540,height:220,fill:'var(--paper)',stroke:'var(--line)'},s);
+  [-1,1,3,5].forEach(function(e){txt(s,22,sy(Math.pow(10,e))+4,e<0?'0.1':Math.pow(10,e).toLocaleString('en-AU'),{'font-size':11,fill:'var(--muted)'});});
+  [-42,-41,-40,-39,-38].forEach(function(v){txt(s,sx(v)-10,258,String(v),{'font-size':11,fill:'var(--muted)'});});
+  txt(s,250,276,'log fO₂ (more oxidised →)',{'font-size':12,fill:'var(--ink)'});txt(s,74,14,'solubility, ppm (log)',{'font-size':12,fill:'var(--ink)'});
+  el('line',{x1:sx(-40.1),y1:20,x2:sx(-40.1),y2:240,stroke:'var(--muted)','stroke-dasharray':'4 3'},s);txt(s,sx(-40.1)-44,34,'H₂S | SO₄²⁻',{'font-size':11,fill:'var(--muted)'});
+  el('line',{x1:sx(-39.1),y1:20,x2:sx(-39.1),y2:240,stroke:'var(--muted)','stroke-dasharray':'4 3'},s);txt(s,sx(-39.1)+4,230,'pyrite | hematite',{'font-size':11,fill:'var(--muted)'});
+  [['Zn','var(--gold)'],['Pb','var(--slate)'],['Cu','#C9783D']].forEach(function(k){var p='';for(var v=-42;v<=-37.8;v+=.1){p+=(v===-42?'M':' L')+sx(v).toFixed(1)+' '+sy(slAt(k[0],v)).toFixed(1);}el('path',{d:p,fill:'none',stroke:k[1],'stroke-width':3},s);txt(s,sx(-37.8)-22,sy(slAt(k[0],-37.8))-6,k[0],{'font-size':13,fill:k[1],'font-weight':700});});
+  el('line',{x1:sx(x),y1:20,x2:sx(x),y2:240,stroke:'var(--ink)','stroke-width':2},s);
+  var f=function(v){return v<10?v.toFixed(1):Math.round(v).toLocaleString('en-AU');};
+  $('#slXV').textContent=x.toFixed(1);$('#slZn').textContent=f(slAt('Zn',x))+' ppm';$('#slPb').textContent=f(slAt('Pb',x))+' ppm';$('#slCu').textContent=f(slAt('Cu',x))+' ppm';
+  var z=x<-40.1?'r':x<-39.1?'m':'o';slSeen[z]=1;$('#slTag').textContent=z==='r'?'reduced brine':z==='m'?'in between':'oxidised brine';
+  $('#slSay').innerHTML=z==='r'?'Reduced, H₂S-dominant brine: only tens of ppm Zn and Pb, because any metal meets sulphide and drops out. That’s the Sullivan and Selwyn Basin type.':z==='m'?'Sulphate now outweighs H₂S and solubility climbs steeply.':'Past the pyrite to hematite boundary: thousands of ppm Zn and Pb, but copper still only tens of ppm. Oxidised, near-neutral brines like those of northern Australia carry plenty of zinc and lead and very little copper.';
+  if(slSeen.r&&slSeen.o)award('sl',4,'Compared reduced and oxidised brines');}
+$('#slX').addEventListener('input',slDraw);slDraw();
+
+/* ---------- sources cards ---------- */
+var SOO=['Seawater: H₂S in the anoxic bottom water','The basin fill, leached by convecting brine','Evaporated seawater and dissolved halite','Mafic sills and dykes, or another heat source'];
+mcCards($('#soCards'),[
+ {lbl:'Ingredient',q:'The sulphur in the sphalerite',o:SOO,a:0,e:'The H₂S-rich, stagnant water column supplies the sulphur.'},
+ {lbl:'Ingredient',q:'The zinc and lead',o:SOO,a:1,e:'Metals come from the basin’s own sediments; uniform, high-μ lead isotopes back this up.'},
+ {lbl:'Ingredient',q:'The salt that makes the brine',o:SOO,a:2,e:'Surface evaporation of seawater and subsurface dissolution of halite.'},
+ {lbl:'Ingredient',q:'The energy that keeps brine convecting',o:SOO,a:3,e:'A raised geothermal gradient from sills, dykes or thinned lithosphere.'}
+],'so',2,function(r,n){$('#soScore').textContent=r+' / '+n;});
+
+/* ---------- layer builder ---------- */
+var lyc=$('#lyCan'),lyx=lyc.getContext('2d'),LW=640,LH=320,lk=1;
+var LT={mud:{c:'#2E2A28',h:7,n:'organic mud'},carb:{c:'#C9BC9E',h:14,n:'carbonate mass flow'},ore:{c:'#D2A936',h:6,n:'sphalerite-galena'}};
+var ly={L:[],act:null,t0:0,seen:{}},lyR=rng(3);
+function lyTop(){var h=0;ly.L.forEach(function(l){h+=LT[l].h;});return 292-h;}
+function lyDraw(f){var g=lyx;g.clearRect(0,0,LW,LH);var top=lyTop();
+  var gr=g.createLinearGradient(0,0,0,top);gr.addColorStop(0,'#D3E6EF');gr.addColorStop(Math.min(.99,66/top),'#B9D6DC');gr.addColorStop(Math.min(.995,100/top),'#6F9096');gr.addColorStop(1,'#3B565C');g.fillStyle=gr;g.fillRect(0,0,LW,top);
+  g.font=fontPx(lk);g.fillStyle='#163245';g.fillText('oxic: Fe³⁺ insoluble',10,22);g.fillStyle='#163245';g.fillText('mixing: pyrite forms',10,86);g.fillStyle='#E4F1F2';g.fillText('anoxic: H₂S',10,120);
+  var y=292;ly.L.forEach(function(l){var t=LT[l];g.fillStyle=t.c;g.fillRect(0,y-t.h,540,t.h);y-=t.h;});
+  g.fillStyle='#4A4440';g.fillRect(0,292,540,LH-292);g.fillStyle='#3B3836';g.fillRect(540,150,LW-540,LH-150);
+  g.strokeStyle='#E07A3F';g.lineWidth=3;g.setLineDash([7,4]);g.beginPath();g.moveTo(545,LH);g.lineTo(545,150);g.stroke();g.setLineDash([]);g.lineWidth=1;
+  g.fillStyle='#EEE';g.fillText('fault scarp',560,170);
+  if(ly.act&&f!==undefined){var a=ly.act,r=rng(a.seed);
+    if(a.k==='mud'){for(var i=0;i<140;i++){var x=r()*530,y0=r()*60,yy=y0+(top-y0)*cl(f*1.2-r()*.2,0,1);g.fillStyle='rgba(40,34,30,.85)';g.fillRect(x,yy,2,2);}}
+    if(a.k==='carb'){var fx=f*560;for(var i=0;i<220;i++){var x=fx-r()*160,yy=top-2-r()*26*(1-f*.6);if(x>0&&x<540){g.fillStyle='rgba(215,200,165,.8)';g.beginPath();g.arc(x,yy,2.2,0,6.3);g.fill();}}}
+    if(a.k==='ore'){var fx=f*1.25;for(var i=0;i<200;i++){var d=r(),t=cl(fx-d*.3,0,1),x,yy;if(t<.25){x=545-4;yy=150+(top-150)*(t/.25);}else{x=545-(t-.25)/.75*540*(.6+r()*.4);yy=top-3-r()*8;}g.fillStyle='rgba(176,124,198,.75)';g.beginPath();g.arc(x,yy,2.4,0,6.3);g.fill();
+        if(t>.35&&r()<.5){g.fillStyle='#F2D06B';g.fillRect(x+r()*6,yy+4+f*6,2.2,2.2);}}}}
+  g.fillStyle='#EEE';g.fillText(ly.L.length+' layers',548,300);}
+function lyGo(k){if(ly.act)return;if(lyTop()<160){ly.L.splice(0,4);}ly.act={k:k,seed:Math.floor(Math.random()*1e5)};ly.t0=0;SND.play('flip');
+  function step(ts){if(!ly.t0)ly.t0=ts||1;var f=Math.min(1,((ts||ly.t0)-ly.t0)/1500);lyDraw(f);
+    if(f<1&&!reduce)requestAnimationFrame(step);else{ly.L.push(k);ly.act=null;lyDraw();SND.play('tick');ly.seen[k]=1;
+      $('#lyTag').textContent=ly.L.length+' layers';
+      $('#lySay').innerHTML=k==='mud'?'Quiet time: organic matter and fine silt rain down from the water column and settle as a thin black layer. Nothing disturbs it, because nothing lives on this anoxic floor.':k==='carb'?'A slump off the carbonate shelf sends a mass flow across the floor, dropping a thicker, graded layer of carbonate silt: a turbidite.':'An earthquake opens the fault; dense brine pours down the scarp and spreads across the floor. Where it meets H₂S, sphalerite and galena precipitate (ZnCl₂ + H₂S → ZnS + 2H⁺ + 2Cl⁻) and settle as a thin ore lamina.';
+      if(ly.L.length>=6&&ly.seen.mud&&ly.seen.carb&&ly.seen.ore)award('ly',5,'Built a laminated ore sequence');}}
+  requestAnimationFrame(step);}
+$('#lyMud').addEventListener('click',function(){lyGo('mud');});$('#lyCarb').addEventListener('click',function(){lyGo('carb');});$('#lyOre').addEventListener('click',function(){lyGo('ore');});
+lk=fitCanvas(lyc,lyx,LW,LH);lyDraw();
+
+/* ---------- walk from the vent ---------- */
+var wks=$('#wkSvg'),wkSeen={};
+var WKZ=[['Feeder zone','Veins and replacement: galena, sphalerite, Fe-carbonates, pyrite, pyrrhotite, minor chalcopyrite, in the synsedimentary fault zone.'],['Vent complex','Massive, brecciated, crudely bedded pyrite, galena, sphalerite and Fe-carbonates, barite at the top, with pyrrhotite and sulphosalts.'],['Bedded ores','Laminated, sometimes fragmented pyrite, sphalerite and galena with chert, barite and Fe-Mg carbonates, interbedded with host sediment.'],['Distal hydrothermal products','Chert and barite with minor sphalerite and pyrite, Ca-Mg carbonates, magnetite, hematite, and manganese enrichment.']];
+function wkDraw(){var v=+$('#wkX').value,x=40+v*5.6,s=wks;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:270,fill:'var(--paper)'},s);
+  el('rect',{x:0,y:90,width:640,height:60,fill:'#C7C2B8'},s);el('rect',{x:0,y:150,width:640,height:120,fill:'#6E6760'},s);txt(s,500,110,'later sediment',{'font-size':12,fill:'#3E3A36'});txt(s,500,262,'footwall shale',{'font-size':12,fill:'#EEE'});
+  el('line',{x1:60,y1:270,x2:80,y2:90,stroke:'#C8553A','stroke-width':3,'stroke-dasharray':'7 4'},s);
+  for(var i=0;i<7;i++)el('line',{x1:60+i*6,y1:260-i*12,x2:95-i*4,y2:160+i*6,stroke:'#D8B23A','stroke-width':2},s);
+  el('path',{d:'M78 150 L82 98 Q150 92 220 120 L430 140 L430 150 Z',fill:'#B07A2A'},s);el('path',{d:'M220 120 L430 140 L430 150 L220 150 Z',fill:'#D2A936'},s);
+  el('path',{d:'M430 140 L630 148 L630 151 L430 151 Z',fill:'#EDE6F0',stroke:'#B07CC6'},s);
+  txt(s,96,86,'vent complex',{'font-size':12,fill:'var(--ink)'});txt(s,260,114,'bedded ores',{'font-size':12,fill:'var(--ink)'});txt(s,450,134,'chert, barite',{'font-size':12,fill:'var(--ink)'});txt(s,96,240,'feeder zone',{'font-size':12,fill:'#F2D06B'});
+  el('line',{x1:x,y1:30,x2:x,y2:265,stroke:'var(--gold-hi)','stroke-width':3},s);el('path',{d:'M'+(x-9)+' 30 L'+(x+9)+' 30 L'+x+' 46 Z',fill:'var(--gold-hi)'},s);
+  var z=v<6?0:v<30?1:v<70?2:3,d=cl((x-80)/550,0,1),lvl=function(q){return q>.66?'high':q>.33?'moderate':'low';};
+  wkSeen[z]=1;$('#wkXV').textContent=v<6?'at the fault':Math.round(v*10)+' m (schematic)';$('#wkZ').textContent=WKZ[z][0];$('#wkTag').textContent=Object.keys(wkSeen).length+' / 4 zones';
+  $('#wkG').textContent=z===3?'very low':lvl(1-d);$('#wkPZ').textContent=lvl(1-d*.9);$('#wkBZ').textContent=lvl(d);
+  $('#wkSay').innerHTML='<b>'+WKZ[z][0]+'.</b> '+WKZ[z][1]+' <span class="srcs">slide 34</span>';
+  if(Object.keys(wkSeen).length===4)award('wk',4,'Walked from vent to distal sediments');}
+$('#wkX').addEventListener('input',wkDraw);wkDraw();
+
+/* ---------- vectoring game ---------- */
+var vgs=$('#vgSvg'),vg={xc:0,holes:[],found:false,best:null};
+function vgCarb(d){return d<=40?'ORE: Zn-Pb-Ag lens':d<110?'siderite':d<190?'ankerite':d<280?'ferroan dolomite':'dolomite';}
+function vgCol(d){return d<=40?'#D2A936':d<110?'#8C5A3C':d<190?'#D9A066':d<280?'#C9C0A8':'#E8E4DA';}
+function vgNew(){vg.xc=130+Math.random()*380;vg.holes=[];vg.found=false;vgDraw();$('#vgC').textContent='?';$('#vgT').textContent='?';$('#vgSay').textContent='New ground. Tap a drill collar to start.';}
+function vgDraw(){var s=vgs;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:270,fill:'var(--paper)'},s);
+  el('rect',{x:0,y:50,width:640,height:60,fill:'#3B3836'},s);txt(s,10,72,'black shale',{'font-size':12,fill:'#EEE'});
+  el('rect',{x:0,y:110,width:640,height:80,fill:'#9A9283'},s);txt(s,10,130,'dolomitic siltstone (favourable horizon)',{'font-size':12,fill:'#2B2724'});
+  el('rect',{x:0,y:190,width:640,height:80,fill:'#D8D1C2'},s);txt(s,10,206,'dolomite',{'font-size':12,fill:'#5A5248'});
+  if(vg.found){[[280,'#C9C0A8'],[190,'#D9A066'],[110,'#8C5A3C']].forEach(function(h){el('ellipse',{cx:vg.xc,cy:152,rx:h[0],ry:34,fill:h[1],opacity:.55},s);});el('ellipse',{cx:vg.xc,cy:152,rx:40,ry:9,fill:'#D2A936',stroke:'#2B2724'},s);}
+  for(var i=0;i<10;i++){(function(i){var x=40+i*62,h=vg.holes.filter(function(q){return q===i;}).length>0,g=el('g',{style:'cursor:pointer'},s);
+    el('rect',{x:x-26,y:0,width:52,height:270,fill:'transparent'},g);
+    if(h){var d=Math.abs(x-vg.xc);el('line',{x1:x,y1:44,x2:x,y2:215,stroke:'#2B2724','stroke-width':3},g);el('rect',{x:x-7,y:138,width:14,height:28,fill:vgCol(d),stroke:'#2B2724'},g);var ab=d<=40?'ORE':d<110?'sid':d<190?'ank':d<280?'Fe-dol':'dol';txt(g,x,234,ab,{'font-size':12,fill:'#2B2724','text-anchor':'middle','font-weight':700});txt(g,x,250,Math.round(1+13*Math.exp(-d/110))+' ppm',{'font-size':11,fill:'#5A5248','text-anchor':'middle'});}
+    el('path',{d:'M'+(x-9)+' 44 L'+(x+9)+' 44 L'+x+' 26 Z',fill:h?'var(--muted)':'var(--gold)'},g);
+    g.addEventListener('click',function(){vgDrill(i);});})(i);}
+  $('#vgTag').textContent=vg.holes.length+(vg.holes.length===1?' hole':' holes');}
+function vgDrill(i){if(vg.found||vg.holes.indexOf(i)>=0)return;vg.holes.push(i);var x=40+i*62,d=Math.abs(x-vg.xc),c=vgCarb(d),tl=Math.round(1+13*Math.exp(-d/110));
+  $('#vgC').textContent=c;$('#vgT').textContent=tl+' ppm';SND.play('tick');
+  if(d<=40){vg.found=true;var n=vg.holes.length;vg.best=vg.best===null?n:Math.min(vg.best,n);$('#vgB').textContent=vg.best+(vg.best===1?' hole':' holes');
+    COMBO.hit();var pts=n<=3?6:n<=5?4:2;award('vg',COMBO.pts(pts),'Found the ore in '+n+' holes'+COMBO.tag());FX.burst(vgs);
+    $('#vgSay').innerHTML='Ore in hole '+n+'. Notice the halo now drawn around the lens: siderite closest, then ankerite, ferroan dolomite and plain dolomite outward. Try a new prospect and beat your score.';}
+  else{$('#vgSay').innerHTML=c==='dolomite'?'Plain dolomite and background thallium. You’re outside the halo: step out a long way.':c==='ferroan dolomite'?'Ferroan dolomite: you’re on the edge of the halo. Compare thallium with your other holes to pick a direction.':c==='ankerite'?'Ankerite: getting warm. The ore is within a couple of hundred metres.':'Siderite: very close. The lens is right next to this hole.';}
+  vgDraw();}
+$('#vgNew').addEventListener('click',vgNew);vgNew();
+
+/* ---------- exploration desk ---------- */
+mcCards($('#exCards'),[
+ {lbl:'Question',q:'Your company wants to explore for SEDEX in New South Wales. What do you say?',o:['Great idea, it is all sedimentary rock','NSW lacks the right setting: no long-lived continental rift with an anoxic, enclosed basin','Only if you drill deeper'],a:1,e:'SEDEX needs a very specific basin. Northern Australia has it, NSW doesn’t.'},
+ {lbl:'Question',q:'You have just found one SEDEX deposit in a basin. What next?',o:['Look for more in the same basin: they come in groups','Leave the basin, one is all there is','Switch to looking for porphyries'],a:0,e:'Same basin, same plumbing: more than one deposit is normal, as around Mount Isa.'},
+ {lbl:'Question',q:'A huge, remote zinc deposit floods every wet season. How do you get concentrate out?',o:['Truck it in the dry season only','Build a railway','A slurry pipeline to the coast, as Century did to Karumba'],a:2,e:'Century’s pipeline ran year-round to the Gulf; rail would have cost more and flooded.'}
+],'ex',2,function(r,n){$('#exScore').textContent=r+' / '+n;});
+
+GEO.finish(function(){bk=fitCanvas(bc,bx,BW,BH);brDraw();lk=fitCanvas(lyc,lyx,LW,LH);lyDraw();});
+})();
+</script>
+</body>
+</html>

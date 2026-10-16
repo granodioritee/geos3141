@@ -677,7 +677,7 @@ var GEO = {
         out.push({ id: 'suite-' + x.img, kind: 'suite', img: x.img, mic: false, lbl: 'Lab ore suite · polished block, reflected light',
           q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
           e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '. Look at which sulphides and oxides are there and how they sit together, then ask what kind of system makes that assemblage.',
-          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? 'L6.html#chimney' : type === 'Magmatic' ? magLink(x.dep || x.d) : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* ore suite hand specimens: which kind of deposit, with the lab sheet's description once answered */
       (LAB.dhs || []).forEach(function (x) {
@@ -686,7 +686,7 @@ var GEO = {
         out.push({ id: 'dhs-' + x.src, kind: 'dhs', img: 'img/lab/dhs/' + x.src + '.jpg', mic: false, lbl: 'Lab ore suite · hand specimen',
           q: 'Which kind of deposit does this hand specimen come from?', o: opts, a: opts.indexOf(type),
           e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' Lab specimen sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''),
-          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? 'L6.html#chimney' : type === 'Magmatic' ? magLink(x.dep || x.d) : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
       var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {});
@@ -711,6 +711,7 @@ var GEO = {
       });
       return out;
     }
+    function sedexLink(dep) { return /Isa|Loretta|McArthur|Century/.test(dep || '') ? 'L9.html#halo' : 'L6.html#chimney'; }
     function magLink(dep) { return /Coolac/.test(dep) ? 'L8.html#podiform' : /Sudbury/.test(dep) ? 'L8.html#sudbury' : 'L7.html#kambalda'; }
     function rate(id) { var r = L.seen[id]; return r ? r[0] / r[1] : .5; }
 
