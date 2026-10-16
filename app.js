@@ -644,8 +644,9 @@ var GEO = {
   /* ---------- lab test practice: timed stations over LAB (labdata.js) ---------- */
   labLoad: function () {
     var s = null; try { s = JSON.parse(localStorage.getItem('geos3141-lab') || 'null'); } catch (e) {}
-    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'suite', 'min', 'alter', 'micro', 'hand', 'core'], v: 2 };
+    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'dhs', 'suite', 'min', 'alter', 'micro', 'hand', 'core'], v: 3 };
     if (!s.opt.v) { ['mineral', 'alter'].forEach(function (k) { if (s.opt.k.indexOf(k) < 0) s.opt.k.push(k); }); s.opt.v = 2; }
+    if (s.opt.v < 3) { if (s.opt.k.indexOf('dhs') < 0) s.opt.k.push('dhs'); s.opt.v = 3; }
     return s;
   },
   lab: function () {
@@ -654,7 +655,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core' };
+    var KIND = { dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -676,6 +677,15 @@ var GEO = {
         out.push({ id: 'suite-' + x.img, kind: 'suite', img: x.img, mic: false, lbl: 'Lab ore suite · polished block, reflected light',
           q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
           e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '. Look at which sulphides and oxides are there and how they sit together, then ask what kind of system makes that assemblage.',
+          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? 'L6.html#chimney' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+      });
+      /* ore suite hand specimens: which kind of deposit, with the lab sheet's description once answered */
+      (LAB.dhs || []).forEach(function (x) {
+        var type = LAB.suiteType[x.d]; if (!type) return;
+        var opts = shuffle(shuffle(LAB.suiteTypes.filter(function (t) { return t !== type; })).slice(0, 3).concat([type]));
+        out.push({ id: 'dhs-' + x.src, kind: 'dhs', img: 'img/lab/dhs/' + x.src + '.jpg', mic: false, lbl: 'Lab ore suite · hand specimen',
+          q: 'Which kind of deposit does this hand specimen come from?', o: opts, a: opts.indexOf(type),
+          e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' Lab specimen sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''),
           link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? 'L6.html#chimney' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
