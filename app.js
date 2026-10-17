@@ -711,7 +711,7 @@ var GEO = {
       });
       return out;
     }
-    function sedexLink(dep) { return /Isa|Loretta|McArthur|Century/.test(dep || '') ? 'L9.html#halo' : 'L6.html#chimney'; }
+    function sedexLink(dep) { return /Isa|Loretta|McArthur|Century/.test(dep || '') ? 'L9.html#halo' : 'L10.html#mound'; }
     function magLink(dep) { return /Coolac/.test(dep) ? 'L8.html#podiform' : /Sudbury/.test(dep) ? 'L8.html#sudbury' : 'L7.html#kambalda'; }
     function rate(id) { var r = L.seen[id]; return r ? r[0] / r[1] : .5; }
 

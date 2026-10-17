@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 10 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L9.html">&larr; Lecture 9</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 10 · T3 2026</div>
+  <h1>Black smokers, fossilised</h1>
+  <p class="lede">In Lecture 6 you watched black smokers build sulphide chimneys on today’s seafloor. VMS deposits are what those systems leave behind when they get buried and preserved: lenses of almost pure sulphide sitting on volcanic rocks, from 3.4 billion years old to forming right now. This time the sulphide really is massive, and it’s zoned by temperature like a thermometer you can read with a hand lens. Start by growing one.</p>
+
+  <div class="lab" id="mdLab">
+    <h4><span>Grow a VMS mound</span><b id="mdTag">0 pulses</b></h4>
+    <svg class="grid-svg" id="mdSvg" viewBox="0 0 640 330" role="img" aria-label="Cross-section of the seafloor with a sulphide mound above a stringer zone; hot and cool hydrothermal pulses add copper-rich or zinc-rich sulphide"></svg>
+    <div class="readout">
+      <div><small>Cu / (Cu + Zn) × 100</small><b id="mdRat">?</b></div>
+      <div><small>Last pulse</small><b id="mdT">none</b></div>
+      <div><small>State</small><b id="mdState">on the seafloor</b></div>
+    </div>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="mdHot">Hot pulse, ~350 °C</button><button class="btn ghost" type="button" id="mdCool">Cool pulse, ~200 °C</button><button class="btn ghost" type="button" id="mdBury" disabled>Bury it</button><button class="btn ghost" type="button" id="mdReset" style="margin-left:auto">Start again</button></div>
+    <p class="say" id="mdSay">Send hydrothermal fluid up through the seafloor. Try both kinds of pulse.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model. The zoning (chalcopyrite and pyrrhotite core near 350 °C, sphalerite, pyrite and galena margin below about 250 °C, barite on top) follows slides 16 and 17; the amounts each pulse adds are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#what">What a VMS deposit is</a></li>
+      <li><a href="#settings">Tectonic settings and host rocks</a></li>
+      <li><a href="#caldera">Calderas and fluid pathways</a></li>
+      <li><a href="#engine">The hydrothermal engine</a></li>
+      <li><a href="#mound">Anatomy of a mound</a></li>
+      <li><a href="#zoning">Temperature, pulses and remobilisation</a></li>
+      <li><a href="#alteration">Alteration around the ore</a></li>
+      <li><a href="#grades">Grades, tonnages and metals</a></li>
+      <li><a href="#classes">The lithotectonic classification</a></li>
+      <li><a href="#styles">Cyprus, Kuroko and Besshi</a></li>
+      <li><a href="#jaguar">Jaguar: walking the decline</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="what" data-log="VMS"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>What a VMS deposit is</h2>
+  <p><button class="term" data-t="VMS">VMS</button> means volcanogenic massive sulphide. You’ll also see VHMS (volcanic-hosted) and VAMS (volcanic-associated): different names for the same thing. Where the host is a mix of volcanic and sedimentary rock, some people say VSHMS. They belong to the same <button class="term" data-t="exhalative">exhalative</button> family as SEDEX: both form from submarine hydrothermal systems, seawater heated in the crust. The difference is the host. SEDEX ore sits in sediment, with brine rising up basin faults; VMS ore sits in volcanic rock, with fluid rising through volcanic vents. <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <p>Between them, VMS and SEDEX hold most of the world’s zinc and lead, plus a lot of copper and significant silver and gold. VMS deposits are lenses of polymetallic massive sulphide formed on or near the seafloor from a focused discharge of hot, metal-rich fluid. Besides Zn, Pb, Cu, Ag and Au, they can carry Co, Sn, Se, Mn, Cd, In, Bi, Te, Ga and Ge. They span 3.4 billion years to the present day. <span class="srcs">slides 4 to 6</span></p>
+  <p>Metals drop out because conditions change suddenly: temperature, pressure and pH. For VMS the pressure drop is a big one. Fluid comes from deep in the oceanic crust and arrives at the seafloor, a huge fall in pressure. <span class="srcs">slide 4</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/smoker.jpg" alt="A black smoker venting dark plumes from a rough, orange-stained sulphide chimney on the seafloor">
+    <figcaption>A black smoker: very fine sulphide particles billowing out of a vent. Most VMS deposits probably formed from systems like this. <span class="srcs">slide 1</span> <span class="srcs">lecture recording, 6 Oct</span></figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/chimney.jpg" alt="A broken piece of sulphide chimney with labelled chalcopyrite on the inside, sphalerite and pyrite in the wall, and white anhydrite on the outside">
+    <figcaption>A piece of chimney: chalcopyrite lines the hot inner conduit, sphalerite and pyrite build the wall, and white anhydrite forms on the cold outside. The same hot-inside, cool-outside zoning shows up in a whole deposit. <span class="srcs">slide 5</span></figcaption>
+  </figure>
+  <p>In Australia, major VMS deposits are in the Palaeozoic Tasmanides of the east (Rosebery in Tasmania, Woodlawn in New South Wales, Mount Morgan in Queensland) and in the Archean of Western Australia (Scuddles, Jaguar, Teutonic Bore). They form <b>linear clusters</b>, called fields. Find one and you’ll almost always find more, often at a fairly regular spacing. <span class="srcs">slide 4</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>VMS = VHMS = VAMS: polymetallic massive sulphide lenses on or near the seafloor, in volcanic hosts.</li><li>Zn, Pb, Cu, Ag, Au (plus Co, Sn, Se, Mn, Cd, In, Bi, Te, Ga, Ge); 3.4 Ga to present.</li><li>Metals drop out on a change in temperature, pressure and pH; deposits cluster in fields.</li></ul><span class="srcs">slides 3 to 6</span></div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="settings" data-log="Settings"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">13 to 26 m</span></div>
+  <h2>Tectonic settings and host rocks</h2>
+  <p>Every VMS setting is <b>extensional</b>. Where plates spread apart, at mid-ocean ridges and continental rifts, the ore is in basalt-dominated volcanic rocks. Where plates collide, in island arcs above subduction zones and the back-arc basins behind them, the ore is in felsic volcanic rocks, mainly rhyolite and tuff. The largest VMS deposits are in felsic pyroclastic rocks in arcs and back arcs, because arc magmas bring more metal. Ridge deposits are the classic picture, but not the biggest. <span class="srcs">slide 7</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/settings.jpg" alt="Block diagram of a back-arc basin, island arc, mid-ocean ridge and continental rift, with red marks where VMS deposits form">
+    <figcaption>Settings where VMS deposits form: back-arc basins, island arcs, mid-ocean ridges and continental rifts or back arcs. <span class="srcs">slide 7</span> (Kathleen Cantner, AGI)</figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · two host rocks</span><span class="srcs">slide 7</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L10/basalt.jpg" alt="Dark, very fine-grained rock with a few small white spots"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L10/rhyolite.jpg" alt="Pale cream, porous, fine-grained rock with many small holes"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">Describe colour, grain size and texture. Which one would host VMS ore at a mid-ocean ridge, and which in an island arc?</p>
+    <details data-obs="hosts"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: dark, very fine grained, a few small amygdales or phenocrysts. A mafic volcanic: <b>basalt</b>.</li><li>B: pale, fine grained, full of small vesicles. A felsic volcanic: <b>rhyolite</b>, here pumiceous.</li></ul>
+      <p class="so">So A is the host at spreading ridges and rifts, B the host in arcs and back arcs, where the biggest deposits are. In Australia most VMS deposits have rhyolites in the footwall and basalts in the hanging wall. <span class="srcs">lecture recording, 6 Oct</span></p>
+    </div></details>
+  </div>
+  <p>Worldwide, about 50% of VMS deposits are hosted by felsic volcanics, about 30% by mafic volcanics, and about 20% by a bimodal volcanic and sedimentary mix. Working out the setting of an ancient deposit is hard, because deformation and alteration have scrambled the volcanic structure, the deposit architecture and the chemistry. Modern seafloor mapping lets you study today’s settings and apply them back to the ancient ones. <span class="srcs">slides 8 and 9</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="lab">
+    <h4><span>Which host, which setting?</span><b id="stScore">0 / 4</b></h4>
+    <div class="cards" id="stCards"></div>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="caldera" data-log="Calderas"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">26 to 39 m</span></div>
+  <h2>Calderas and fluid pathways</h2>
+  <p>In arcs, many VMS deposits are tied to submarine <button class="term" data-t="caldera">calderas</button>: circular volcanic depressions left when magma erupts from a chamber below and the roof collapses. Collapse instantly depressurises the system, and the ring faults it makes become pathways for ore-forming fluid. Without those faults, the fluid has no focused route to the seafloor. <span class="srcs">slide 10</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="lab" id="cdLab">
+    <h4><span>Collapse a caldera</span><b id="cdStep">step 1 of 4</b></h4>
+    <svg class="grid-svg" id="cdSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of a submarine volcano that erupts, collapses into a caldera, develops hydrothermal cells along its faults and then is reactivated"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="cdBack">Back</button><button class="btn" type="button" id="cdNext">Next step</button></div>
+    <p class="say" id="cdSay"></p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/stix.jpg" alt="Three stacked cross-sections: seawater entering a magma chamber along a primary fault, hydrothermal cells developing along caldera faults, and a shallow resurgent hydrothermal system" style="max-width:420px;margin:0 auto">
+    <figcaption>Caldera evolution (Stix et al., 2003): A, seawater influx into the magma chamber along a primary fault; B, hydrothermal cells develop along the caldera faults, with deep Cu- and Zn-rich VMS deposits; C, a shallow resurgent hydrothermal system. <span class="srcs">slide 11</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="engine" data-log="Engine"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">39 to 52 m</span></div>
+  <h2>The hydrothermal engine</h2>
+  <p>Cold seawater, near neutral to slightly alkaline, sinks through cracks in the crust. Near the magma chamber it heats up and reacts with the rock, becoming acidic and leaching metals, which the oceanic crust has plenty of. The hot fluid rises, vents at up to about 350 °C into 2 °C seawater, and the sulphides precipitate as fine particles that fall back under gravity. Further from the vent, at lower temperature, the same system makes manganese and iron oxides and barite instead. <span class="srcs">slides 5 and 12</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/ventdiagram.jpg" alt="Diagram of seawater entering cracks, heating over a magma chamber at 1000 °C, rising as mineral-rich fluid at 350 °C to a black smoker in 2 °C seawater, with particle fallout and metal-rich sediments">
+    <figcaption>The convection cell under a black smoker: seawater in, heated near the magma, out at about 350 °C, particles falling back as metal-rich sediment. <span class="srcs">slide 5</span> (GNS Science)</figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/formation.jpg" alt="Numbered diagram: cold seawater seeps into cracks, heats near a magma chamber, leaches metals, precipitates sulphides in cracks as it rises, and vents at the seafloor" style="max-width:520px;margin:0 auto">
+    <figcaption>Formation of a seafloor massive sulphide deposit in five steps. <span class="srcs">slide 12</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Put the VMS engine in order</span><b id="odTag">0 / 5</b></h4>
+    <div class="cards" id="odBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="odSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="odReset">Shuffle again</button></div>
+  </div>
+  <p>In arcs, the magma itself adds more base metal than the surrounding rock. Sulphur in vapour form is the main carrier there: vapour bubbles with attached sulphide droplets rise through the magma, separate at shallower depth as pressure falls, and are picked up by the circulating hydrothermal fluid (Mungall, 2015). The volatiles (hydrogen, sulphur, carbon, chlorine) come from seawater, from sediments on the subducting plate, and from hydrated minerals in the slab such as chlorite, serpentine and amphibole. Wetter, more oxidised magmas carry more gold, a theme that comes back with porphyries. <span class="srcs">slides 12 to 14</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/vapour.jpg" alt="Diagram of an arc volcano with vapour bubbles and compound vapour-sulphide drops rising from mafic and felsic intrusions, and a graph of pressure against log mole fraction" style="max-width:520px;margin:0 auto">
+    <figcaption>Vapour transport of metals: compound vapour-sulphide drops rise and separate as pressure falls (after Mungall, 2015). <span class="srcs">slide 13</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="mound" data-log="Mound"><div class="wrap">
+  <div class="kicker">Deposit scale <span class="depth">52 to 65 m</span></div>
+  <h2>Anatomy of a mound</h2>
+  <p>A VMS deposit is a lens or mound of massive sulphide on top of a pipe of altered, veined rock. The hottest fluid comes straight up the middle, so the <b>core</b> holds chalcopyrite ± pyrrhotite at about 350 °C. Out at the <b>margin</b>, below about 250 °C and down to 150 °C, you get sphalerite ± pyrite ± galena. Further out and on top, barite. Below the mound is the <button class="term" data-t="stringer zone">stringer zone</button> (or <button class="term" data-t="stockwork">stockwork</button>): a network of veins in altered footwall rock, often with enough chalcopyrite to mine as copper ore. So the Zn:Cu ratio increases upward and outward from the core as the fluid cools. <span class="srcs">slides 16 and 17</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/mound.jpg" alt="Massive sulphide mound above an alteration pipe, with a key showing pyrrhotite and chalcopyrite in the inner zones, sphalerite and galena further out, and pyrite and barite throughout" style="max-width:520px;margin:0 auto">
+    <figcaption>Ideal mound mineralogy: Po and Cp in the core, Sp and Gn toward the margin, Py throughout and Ba on the outside, over an alteration pipe about 100 m across. <span class="srcs">slide 16</span></figcaption>
+  </figure>
+  <div class="lab" id="mlLab">
+    <h4><span>Log the mound</span><b id="mlCount">0 / 5 zones</b></h4>
+    <svg class="grid-svg" id="mlSvg" viewBox="0 0 640 340" role="img" aria-label="Cross-section of a VMS mound with clickable zones: cap, margin, core, stringer zone and alteration pipe"></svg>
+    <p class="say" id="mlSay">Tap each zone of the mound and its feeder.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/zoning.jpg" alt="Cross-section of a massive sulphide lens above an alteration pipe with a stockwork zone, with numbers showing Cu/(Cu+Zn) ratio falling from 90 in the stockwork and 85 in the core to 10 at the edges">
+    <figcaption>Metal zoning in a VMS lens, with Cu/(Cu+Zn) × 100 marked: about 90 in the stockwork and 85 in the core, falling to 10 to 14 at the edges, with a thin “exhalite” or tuff unit on top. <span class="srcs">slide 17</span> (Gibson et al., 2007)</figcaption>
+  </figure>
+  <p>That thin layer on top is worth knowing. The contact between massive sulphide and the overlying rock is often a very thin bed of fine-grained silica. It was long taken for a rhyolite, but it seems to be hydrothermal silica: the last gasp of the system before it shut down. <span class="srcs">lecture recording, 6 Oct</span> The other must-know is preservation. A sulphide mound is a pile of loose, fine sulphide that collapses on itself and oxidises in seawater. To survive, it has to be buried quickly under lava or sediment, and building a real deposit takes many vents and many pulses. <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/tag.jpg" alt="Cross-section of a modern sulphide mound with a black smoker complex, anhydrite cone, pyrite and quartz core, Zn-rich margins, a silicified pyritic stockwork and a chloritised and hematised basalt alteration pipe">
+    <figcaption>A modern mound in section: black smoker complex, anhydrite and pyrite in the core, Zn-rich margins, a silicified pyritic stockwork, and a chloritised and hematised basalt alteration pipe below. <span class="srcs">slide 6</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="zoning" data-log="Zoning"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">65 to 78 m</span></div>
+  <h2>Temperature, pulses and remobilisation</h2>
+  <p>Why does temperature sort the metals? Because each metal’s solubility in the chloride-rich fluid depends on temperature. As the fluid cools, copper drops out first, then zinc, lead and some gold. Slide the fluid temperature and watch which zone you’re in. <span class="srcs">slide 18</span></p>
+  <div class="lab" id="tzLab">
+    <h4><span>Cool the fluid</span><b id="tzTag"></b></h4>
+    <svg class="grid-svg" id="tzSvg" viewBox="0 0 640 170" role="img" aria-label="Temperature scale from 150 to 400 °C divided into Zn-Pb-Au, Cu, Cu-Au and pyrite zones, with a movable marker"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="tzT">Fluid temperature <b id="tzTV">380 °C</b></label><input type="range" id="tzT" min="150" max="400" step="5" value="380"></div></div>
+    <p class="say" id="tzSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Zone boundaries read approximately off the slide 18 solubility plot.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/solubility.jpg" alt="A VMS mound cross-section beside a plot of Cu, Pb, Zn and Au solubility against temperature from 150 to 400 °C, divided into Zn-Pb-Au, Cu, Cu-Au and pyrite zones">
+    <figcaption>Metal solubility against temperature. Zinc and copper solubility climb steeply with temperature; gold falls to a low near 300 °C, then rises again. <span class="srcs">slide 18</span> <span class="srcs">lecture recording, 6 Oct</span></figcaption>
+  </figure>
+  <p>Real deposits are messier than the ideal mound, for two reasons. <b>Remobilisation</b>: the mound is fractured, so later hot fluid can redissolve metal and carry it up and out, some of it into the sea through the vents. That leaves deposits with a pyrite-rich core and thin metal-rich margins (often called zone refining). <b>Pulses</b>: the system doesn’t discharge once. A hot pulse makes high-temperature sulphides, a cooler one overprints them with low-temperature ones, so mineral suites overlap. Sulphides equilibrate quickly at these temperatures: Cu and Cu-Fe sulphides in about a year, argentite almost instantly, so each pulse leaves its own mineral signature. <span class="srcs">slides 18 and 19</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="lab">
+    <h4><span>What made this?</span><b id="puScore">0 / 4</b></h4>
+    <div class="cards" id="puCards"></div>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="alteration" data-log="Alteration"><div class="wrap">
+  <div class="kicker">Exploration <span class="depth">78 to 91 m</span></div>
+  <h2>Alteration around the ore</h2>
+  <p>Hot fluid moving through fractured volcanic rock alters it pervasively, and the alteration is zoned around the ore, which makes it your guide. Four styles matter. <span class="srcs">slide 21</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Style</th><th>What happens</th><th>Vector</th></tr>
+    <tr><td><button class="term" data-t="silicification">Silicification</button></td><td>Patchy to pervasive; lose Fe, Mg and K, gain Si and Na; quartz-albite-epidote</td><td>Most intense near the vent</td></tr>
+    <tr><td><button class="term" data-t="spilitisation">Spilitisation</button></td><td>Regional; gain Na, lose Ca; chlorite-sericite-albite-epidote-quartz</td><td>Chlorite gets more Fe-rich and black toward ore</td></tr>
+    <tr><td><button class="term" data-t="carbonatisation">Carbonatisation</button></td><td>Patchy to semi-pervasive, regional</td><td>Siderite near the deposit, calcite far away</td></tr>
+    <tr><td>Epidote-quartz</td><td>Regional, in mafic volcanics; marks high-temperature reaction zones</td><td>Epidote-quartz (lower T) to epidote-quartz-amphibole (higher T); Al-rich epidote = hotter</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 21; lecture recording, 6 Oct</p>
+  <p>At Jaguar in Western Australia you can watch alteration consume pillow basalts as you walk toward the ore. Put these three faces in order, furthest from the ore first. <span class="srcs">slides 47 to 49</span></p>
+  <div class="lab" id="rpLab">
+    <h4><span>Order the pillows</span><b id="rpTag">0 / 3</b></h4>
+    <div class="cards" id="rpBox"></div>
+    <p class="say" id="rpSay">Tap the photos from furthest from ore to closest.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a copper-rich lode in the decline</span><span class="srcs">slide 46</span></div>
+    <img loading="lazy" decoding="async" src="img/L10/ug-culode.jpg" alt="Underground wall with rounded, dark green pillow shapes, some pale and bleached, with sulphide between them, under mesh">
+    <p class="ask">The pillow shapes are still there. What has happened to them, and why is that more intense in some places than others?</p>
+    <details data-obs="culode"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pillow outlines are preserved, but some pillows are bleached pale and others are dark green.</li><li>Sulphide fills between and replaces parts of the pillows.</li></ul>
+      <p class="so">So hydrothermal fluid has replaced the basalt. Where fluid flow was most intense, the pillows are bleached and replaced by chalcopyrite and pyrite; where less fluid passed, you just get strong chlorite around the pillow rims. The intensity maps the old fluid pathways. <span class="srcs">slide 46</span></p>
+    </div></details>
+  </div>
+  <div class="lab">
+    <h4><span>Name the alteration</span><b id="alScore">0 / 4</b></h4>
+    <div class="cards" id="alCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Silicification: lose Fe, Mg, K; gain Si, Na.</li><li>Spilitisation: gain Na, lose Ca; chlorite more Fe-rich toward ore.</li><li>Carbonatisation: siderite proximal, calcite distal.</li><li>Epidote-quartz: Al-rich epidote and amphibole mean higher temperature.</li></ul><span class="srcs">slide 21</span></div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="grades" data-log="Grades"><div class="wrap">
+  <div class="kicker">The numbers <span class="depth">91 to 104 m</span></div>
+  <h2>Grades, tonnages and metals</h2>
+  <p>About 850 VMS deposits are known, 350 of them in Canada. The oldest is 3.4 billion years old, in the Archean Pilbara of Western Australia; the youngest, about 5000 years old, are Cu-Au deposits in ophiolites of the eastern Mediterranean and Oman. Most individual deposits are small, 0.1 to 10 Mt, but they cluster in fields, and the grades are rich. <span class="srcs">slide 23</span></p>
+  <p>VMS deposits supply about 22% of the world’s zinc, 6% of its copper, 9.7% of its lead, 8.7% of its silver and 2.2% of its gold. Zinc is in sphalerite; copper in chalcopyrite and cubanite, with minor bornite; silver as native silver, argentite and tetrahedrite. Gold is about 75% native gold, 20% tellurides like calaverite and 5% “invisible” gold locked in the pyrite structure. Most VMS gold comes from the Abitibi greenstone belt in Canada, where some VMS deposits are actually gold mines. Australian VMS deposits carry much less. <span class="srcs">slide 24</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="lab" id="dpLab">
+    <h4><span>Compare the deposits</span><b id="dpTag"></b></h4>
+    <div class="chips" id="dpC" role="group" aria-label="Measure"></div>
+    <div class="chips" role="group" aria-label="Grade or contained metal" style="margin-top:.4rem"><button class="chip" type="button" id="dpG" aria-pressed="true">Grade</button><button class="chip" type="button" id="dpM" aria-pressed="false">Contained metal</button></div>
+    <svg class="grid-svg" id="dpSvg" viewBox="0 0 640 500" role="img" aria-label="Bar chart of VMS deposits for the chosen metal" style="margin-top:.6rem"></svg>
+    <p class="say" id="dpSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Tonnages and grades from slide 25. Contained metal = tonnage × grade. A missing bar means no grade is given for that metal.</p>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="classes" data-log="Classification"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">104 to 117 m</span></div>
+  <h2>The lithotectonic classification</h2>
+  <p>VMS deposits used to be classified by metal content, metal ratios (Cu:Zn+Pb), setting or host rock. The scheme now most recognised is the <button class="term" data-t="lithotectonic setting">lithotectonic setting</button>: the main volcanic and sedimentary units that formed with the deposits in a district. It gives five types. <span class="srcs">slide 26</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Type</th><th>Setting</th><th>Succession</th><th>Examples</th></tr>
+    <tr><td>Bimodal-mafic</td><td>Rifted bimodal arcs above intra-oceanic subduction</td><td>Basalt-dominated, up to 25% felsic; pillows, rhyolite domes, greywacke; cherts in hangingwall</td><td>Abitibi, east Yilgarn, Flin Flon, Urals</td></tr>
+    <tr><td>Mafic</td><td>Mature intra-oceanic back arcs, ophiolites</td><td>MORB and boninite pillows; dykes and sills up to 50%; minor sediment</td><td>Troodos, Semail (Oman), Norway</td></tr>
+    <tr><td>Pelitic-mafic</td><td>Mature basalt-pelite back arcs</td><td>Basalt and pelite equal, or pelite dominant; sills up to 25%</td><td>Outokumpu, Windy Craggy, Besshi</td></tr>
+    <tr><td>Bimodal-felsic</td><td>Continental margin arcs and back arcs</td><td>35 to 70% felsic volcanics, 20 to 50% basalt, ~10% sediment</td><td>Pilbara, Skellefte, Tasman Orogen, Kuroko</td></tr>
+    <tr><td>Siliciclastic-felsic</td><td>Mature continental back arcs</td><td>~80% siliciclastic, mostly felsic volcaniclastic; Fe-Mn-Ca-Ba chemical sediments</td><td>Teutonic Bore, Iberian Belt, Bathurst</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 28 to 32</p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/classify.jpg" alt="Six small schematic cross-sections of VMS deposit types, each with average size and grade boxes and alteration legends">
+    <figcaption>Schematic sections for each type, with average size and grade (Galley et al., 2007). Mafic types average about 1.3 Mt; bimodal-felsic about 5.5 Mt with lots of silver; siliciclastic-mafic about 34 Mt. <span class="srcs">slide 27</span> <span class="srcs">lecture recording, 6 Oct</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Classify the district</span><b id="clScore">0 / 5</b></h4>
+    <div class="cards" id="clCards"></div>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="styles" data-log="Styles"><div class="wrap">
+  <div class="kicker">Case studies <span class="depth">117 to 130 m</span></div>
+  <h2>Cyprus, Kuroko and Besshi</h2>
+  <p>Older literature uses three styles named after classic districts. You’ll still meet them everywhere. <span class="srcs">slide 33</span></p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Cyprus</th><th>Kuroko</th><th>Besshi</th></tr>
+    <tr><td>Setting</td><td>Mid-ocean ridge, now in ophiolites</td><td>Volcanic arc</td><td>Ridges near continental margins, back-arc spreading</td></tr>
+    <tr><td>Host</td><td>Submarine mafic volcanics, pillow basalt</td><td>Felsic (rhyolite) to mafic; volcaniclastics common</td><td>Greywacke with basalt sills and flows</td></tr>
+    <tr><td>Size, grade</td><td>Small (&lt;15 Mt), medium grade</td><td>Small to large, commonly high grade</td><td>Fairly small (except Windy Craggy &gt;300 Mt), low grade</td></tr>
+    <tr><td>Metals</td><td>Cu, Zn</td><td>Zn, Pb, Ag, Sb (richer than Cyprus)</td><td>Cu, Zn ± Co</td></tr>
+    <tr><td>Shape</td><td>Massive pyrite lens or mound over a Cu-rich stringer zone in chloritised basalt</td><td>Mound; coarse clastic sulphide; Zn, Pb, Ag increase up and away from vents; Cu-rich stringer below</td><td>Lateral sheets of pyrrhotite- and pyrite-rich massive sulphide</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 34 to 39</p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · an ophiolite outcrop</span><span class="srcs">slide 34</span></div>
+    <img loading="lazy" decoding="async" src="img/L10/pillows.jpg" alt="A person standing on a hillside made entirely of stacked rounded and tube-shaped lava bodies">
+    <p class="ask">What are these rounded shapes, and what do they tell you about where this rock formed?</p>
+    <details data-obs="pillows"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Stacked, rounded to tube-shaped bodies about a metre across, each with a smooth skin, packed together with the gaps between them filled.</li></ul>
+      <p class="so">So these are <b>pillow lavas</b>: basalt erupted underwater, where each blob quenches a skin and the next one buds off. They tell you this was the seafloor. These are in Oman, part of an <button class="term" data-t="ophiolite">ophiolite</button>, oceanic crust shoved up onto the continent. That’s the home of Cyprus-type deposits. <span class="srcs">slide 34</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+    </div></details>
+  </div>
+  <p>Ophiolites are rare because <button class="term" data-t="obduction">obduction</button>, oceanic crust being thrust up onto continental crust rather than going down a subduction zone, is rare. In the Troodos Mountains of Cyprus the ophiolite sits in the middle of the island, and most deposits are on its northern side, in the extrusive volcanics. Skouriotissa is the classic. Japan, by contrast, is covered with Kuroko deposits in its submarine volcanics and shallow marine sediments, and the coarse clastic sulphide in many of them points to a fairly high-energy seafloor. <span class="srcs">slides 35 to 38</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L10/troodos.jpg" alt="Map of Cyprus showing the Troodos ophiolite with extrusives, sheeted dykes and plutonics, and massive sulphide deposits around its northern edge" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Troodos ophiolite, slide 35</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L10/japan.jpg" alt="Map of Japan with green areas of submarine volcanics and shallow marine sedimentary rocks and named Kuroko deposits" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Kuroko deposits of Japan, slide 37</div></div>
+  </div>
+  <div class="lab">
+    <h4><span>Which style?</span><b id="syScore">0 / 4</b></h4>
+    <div class="cards" id="syCards"></div>
+  </div>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="jaguar" data-log="Jaguar"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">130 to 144 m</span></div>
+  <h2>Jaguar: walking the decline</h2>
+  <p>Australia’s biggest current VMS producers are in the Teutonic Bore field (Jaguar, Bentley) and Golden Grove in Western Australia, DeGrussa in the northern Yilgarn, Woodlawn in New South Wales (reopened) and Rosebery in Tasmania, still mined after more than 100 years. <span class="srcs">slide 40</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <p>Jaguar is an Archean Zn-Cu-Ag deposit about 250 km NNW of Kalgoorlie. The ore is in a mix of basaltic pillow flows and sedimentary rocks; the minerals are pyrite, pyrrhotite, sphalerite and chalcopyrite. The field shows the clustering perfectly: Teutonic Bore (mined in the 1970s), Jaguar and Bentley sit along the same stratigraphy and structure a few kilometres apart, and the prospects along strike, Triumph and Daimler, are named after classic cars. Felsic volcanics form the footwall, mafic volcanics the hanging wall, and the ore sits at the contact. <span class="srcs">slides 42 and 43</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/jagmap.jpg" alt="Geological map of the Teutonic Bore area with Teutonic Bore, Jaguar and Bentley along a belt of felsic volcanics and prospective stratigraphy">
+    <figcaption>The Teutonic Bore field: Teutonic Bore, Jaguar and Bentley on the same prospective stratigraphy. <span class="srcs">slide 42</span> (IGO, 2016)</figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L10/jag3d.jpg" alt="3D long section of the Bentley deposit: steep red and orange massive sulphide lenses below a decline, with current and planned development levels">
+    <figcaption>Bentley in long section: steep massive sulphide lenses reached by a decline. <span class="srcs">slide 43</span> (IGO, 2016)</figcaption>
+  </figure>
+  <p>The lenses are about 99% sulphide, far denser than the host, and steep: they formed flat on the seafloor and were tilted to vertical. That makes the ore easy to see (you step from pillow basalt straight into massive sulphide) and easy to find, because massive sulphide conducts electricity very well. These deposits were found with <button class="term" data-t="EM survey">EM surveys</button>. The hanging wall is graphitic black shale, soft and full of pyrite that oxidises once exposed, so the drives need rock bolts and mesh everywhere. <span class="srcs">slide 43</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+  <div class="lab">
+    <h4><span>Walk the decline: what are you looking at?</span><b id="dcScore">0 / 5</b></h4>
+    <div class="cards" id="dcCards"></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the main lode</span><span class="srcs">slide 61</span></div>
+    <img loading="lazy" decoding="async" src="img/L10/ug-banded.jpg" alt="Close view of a wall of grey sulphide with wavy pale and darker bands, a lens cap for scale">
+    <p class="ask">From a distance this face looks like one massive block. Up close, what do you see, and what might the bands record?</p>
+    <details data-obs="banded"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Wavy, contorted bands of slightly different colour and texture through the sulphide.</li><li>Very little galena: this ore is mostly pyrite, sphalerite and chalcopyrite.</li></ul>
+      <p class="so">So the “massive” sulphide is banded: layers richer in chalcopyrite, sphalerite or pyrite. Bands like these fit pulses of hotter and cooler fluid overprinting each other, later deformed. <span class="srcs">slides 58 and 61</span> <span class="srcs">lecture recording, 6 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>The lab ore suites include Rosebery and Woodlawn, plus Cowley Hills near Woodlawn. Expect banded massive sulphide of pyrite, sphalerite, galena and chalcopyrite, and stringer ore of chalcopyrite and pyrite veins through chlorite-altered volcanic rock.</li><li>Copper-rich (chalcopyrite, pyrrhotite) specimens come from the core and stringer zone; zinc-lead-barite-rich ones from the margin and top.</li><li>Footwall alteration: dark Fe-rich chlorite, sericite and silica.</li></ul><span class="srcs">slides 16, 21, 57 to 61; lab ore suites</span></div>
+  <div class="keybox"><b>Memorise</b><ul><li>Fields of deposits a few kilometres apart along one stratigraphic horizon.</li><li>At Jaguar: felsic footwall, mafic hanging wall, ore at the contact; graphitic black shale hanging wall.</li><li>Massive sulphide is dense and conductive: EM surveys find it.</li></ul><span class="srcs">slides 42 to 61</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 11 moves from the seafloor to the roots of arc volcanoes: porphyry copper-gold-molybdenum deposits. Keep the oxidised, water-rich arc magmas from this lecture in mind; they’re the ones that carry the gold.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 10 slides (Volcanogenic massive sulfide deposits, 62 slides; photos and figures tagged by slide) and the Echo360 recording of 6 October 2026. Figures in the slides come from published sources (GNS Science, Kathleen Cantner/AGI, USGS, Stix et al. 2003, Mungall 2015, Gibson et al. 2007, Galley et al. 2007, IGO 2016 and others) and are shown only as lecture material; the Jaguar underground photos are from the lecture. The mound simulator, caldera steps, mound log and temperature slider are teaching models.</p>
+  <p><a href="L9.html">&larr; Lecture 9</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know a black smoker when you see one.'],[35,'Graduate geologist','You can find the stringer zone.'],[100,'Project geologist','You can read Zn:Cu like a thermometer.'],[180,'Senior geologist','You can name a VMS by its volcanic pile.'],[270,'Chief geologist','Every EM conductor in the Yilgarn is yours.']];
+var G={
+ "VMS":"Volcanogenic massive sulphide: a polymetallic sulphide lens formed on or near the seafloor from hot fluid venting in a volcanic setting. Also VHMS or VAMS.",
+ "exhalative":"Deposited from fluid vented (exhaled) onto the seafloor.",
+ "black smoker":"A seafloor vent discharging fluid at around 350 °C, black with fine sulphide particles.",
+ "white smoker":"A cooler vent whose plume is pale with barite, silica or anhydrite rather than metal sulphide.",
+ "mound":"The pile of massive sulphide built on the seafloor around a vent field.",
+ "stringer zone":"The network of sulphide-bearing veins in altered footwall rock below a VMS lens; often copper-rich. Also called stockwork.",
+ "stockwork":"A dense, criss-crossing network of veins; here the feeder below a VMS lens.",
+ "alteration pipe":"The pipe-shaped zone of altered footwall rock (chlorite, silica, sericite) that fed fluid up to the mound.",
+ "chalcopyrite":"CuFeS₂, the main copper mineral; brassy yellow; in the hot core and stringer zone.",
+ "pyrrhotite":"Fe₁₋ₓS, a magnetic iron sulphide; with chalcopyrite in the hot core.",
+ "sphalerite":"(Zn,Fe)S, the zinc mineral; at the cooler margins.",
+ "galena":"PbS, the lead mineral; lead grey, very dense; at the cooler margins.",
+ "barite":"BaSO₄; forms on top of and away from the mound at low temperature.",
+ "anhydrite":"CaSO₄; forms where hot fluid heats seawater, on the outside of chimneys.",
+ "exhalite":"A thin chemical sediment (often silica) on top of a VMS lens, deposited as the system wanes.",
+ "zone refining":"Hot later fluid redissolving low-temperature sulphide in a mound’s core and reprecipitating it at the margins.",
+ "remobilisation":"Later movement of metals within or out of a deposit by hydrothermal fluid.",
+ "silicification":"Alteration adding silica: loss of Fe, Mg, K and gain of Si, Na; quartz-albite-epidote.",
+ "spilitisation":"Regional sodium alteration of basalt: gain Na, lose Ca; chlorite-sericite-albite-epidote-quartz.",
+ "carbonatisation":"Alteration adding carbonate; siderite near VMS ore, calcite further away.",
+ "chlorite":"A green sheet silicate; becomes Fe-rich and darker toward VMS ore.",
+ "caldera":"A circular depression formed when a volcano’s roof collapses into an emptied magma chamber.",
+ "ophiolite":"A slice of oceanic crust and upper mantle thrust onto land.",
+ "obduction":"Thrusting of oceanic crust up onto continental crust instead of down a subduction zone.",
+ "pillow lava":"Rounded lava bodies formed by underwater eruption; a sign of a seafloor setting.",
+ "bimodal":"A volcanic succession with two compositions, mafic and felsic, and little in between.",
+ "lithotectonic setting":"Classification by the volcanic and sedimentary units formed with the deposits in a district.",
+ "Cyprus-type":"Small Cu-Zn VMS in ophiolitic pillow basalts, like Troodos.",
+ "Kuroko-type":"Zn-Pb-Ag-rich VMS in felsic arc volcanics, like the Kuroko district of Japan.",
+ "Besshi-type":"Cu-Zn ± Co VMS in mixed basalt and greywacke successions, between VMS and SEDEX.",
+ "EM survey":"Electromagnetic geophysical survey; detects conductive bodies such as massive sulphide.",
+ "tetrahedrite":"A Cu-Fe-Ag-Sb sulphosalt, an important silver carrier.",
+ "invisible gold":"Gold locked inside the crystal structure of pyrite or arsenopyrite, too fine to see."
+};
+var CP={
+ cp1:{q:'What separates VMS from SEDEX?',o:['VMS is in volcanic rock, with fluid venting from volcanic hydrothermal systems; SEDEX is in sediment, with brine rising up basin faults','VMS has no zinc','VMS forms on land'],a:0,e:'Both are exhalative and submarine; the host rock and the fluid pathway differ.'},
+ cp2:{q:'Where are the largest VMS deposits?',o:['Mid-ocean ridges in basalt','Island arcs and back arcs, in felsic pyroclastic rocks','Stable continental shields'],a:1,e:'Arc settings bring more metal from the magma. All VMS settings are extensional.'},
+ cp3:{q:'Why does caldera collapse matter for VMS?',o:['It cools the magma','It suddenly depressurises the system and opens faults that focus fluid','It buries the deposit too deep to mine'],a:1,e:'Collapse faults are the pathways; the pressure drop drives venting.'},
+ cp4:{q:'Where do most of the metals come from?',o:['Leached from the volcanic pile by heated seawater, with extra magmatic metal in arcs','Seawater alone','Meteorites'],a:0,e:'Oceanic crust has plenty of metal; arc magmas add more, partly by vapour transport.'},
+ cp5:{q:'In an ideal mound, where is the chalcopyrite?',o:['At the margin and top','In the hot core and the stringer zone below','Only in the barite cap'],a:1,e:'Cu at about 350 °C in the core and stringer; Zn-Pb at the cooler margin; barite on top.'},
+ cp6:{q:'Why does Zn:Cu rise upward and outward?',o:['The fluid cools away from the vent, dropping Cu first and Zn later','Zinc is heavier','Seawater adds zinc'],a:0,e:'Progressive cooling: Cu-dominant to Zn-dominant zones.'},
+ cp7:{q:'Approaching VMS ore, chlorite becomes...',o:['More Mg-rich and paler','More Fe-rich and darker','Absent'],a:1,e:'Fe-rich, black chlorite is a vector toward mineralisation.'},
+ cp8:{q:'Which metal does VMS supply the biggest share of?',o:['Gold, about 2%','Copper, about 6%','Zinc, about 22%'],a:2,e:'VMS gives about 22% of world zinc.'},
+ cp9:{q:'The most recognised VMS classification is based on...',o:['metal ratios only','the volcanic and sedimentary units formed with the deposits (lithotectonic setting)','age'],a:1,e:'Five types: bimodal-mafic, mafic, pelitic-mafic, bimodal-felsic, siliciclastic-felsic.'},
+ cp10:{q:'Pillow basalt in an ophiolite, a massive pyrite lens over a Cu-rich stringer zone in chloritised basalt. Which style?',o:['Kuroko','Besshi','Cyprus'],a:2,e:'Cyprus-type: small, Cu-Zn, in ophiolitic mafic volcanics like Troodos.'},
+ cp11:{q:'Why are lenses like Jaguar’s easy to find with geophysics?',o:['They are magnetic','They are almost pure sulphide and conduct electricity, so EM surveys pick them up','They are radioactive'],a:1,e:'About 99% sulphide: a strong conductor.'}
+};
+var ST=[
+ ['Define a VMS deposit and list its main metals and minerals.','Recall','A lens of polymetallic massive sulphide formed on or near the seafloor from focused discharge of hot, metal-rich hydrothermal fluid in a volcanic setting. Zn, Pb, Cu, Ag, Au (and Co, Sn, Se, Mn, Cd, In, Bi, Te, Ga, Ge). Pyrite, pyrrhotite, chalcopyrite, sphalerite, galena, barite.'],
+ ['Compare VMS and SEDEX deposits.','Apply','Both are submarine exhalative deposits that hold most of the world’s Zn and Pb. VMS: volcanic hosts, hotter fluid (about 350 °C) venting from volcanic hydrothermal cells, Cu-rich cores, genuinely massive sulphide. SEDEX: sedimentary hosts, cooler brines (100 to 200 °C) up basin faults, fine laminated Zn-Pb ore.'],
+ ['Which tectonic settings host VMS deposits, and which host the largest?','Recall','All extensional: mid-ocean ridges and continental rifts (mafic hosts), island arcs and back arcs (felsic hosts). The largest are in felsic pyroclastic rocks in arcs and back arcs.'],
+ ['Explain how a caldera helps form an arc VMS deposit.','Apply','Eruption empties the chamber, the roof collapses, the system depressurises instantly and ring faults open. Those faults channel seawater down and hot fluid up to vent sites; reactivation by new magma can drive further hydrothermal cycles.'],
+ ['Draw or describe an ideal VMS mound and its feeder.','Recall','A massive sulphide lens with a chalcopyrite ± pyrrhotite core (~350 °C), a sphalerite ± pyrite ± galena margin (250 to 150 °C), barite on top and often a thin silica exhalite; below it a Cu-rich stringer or stockwork zone in a chloritised, silicified alteration pipe.'],
+ ['Why are real VMS deposits often not ideally zoned?','Think','Remobilisation: later hot fluid redissolves metals and carries them to the margins or out into the sea, leaving pyrite-rich cores and thin metal-rich margins. Pulses: hot and cool pulses overprint, so high- and low-temperature mineral suites overlap.'],
+ ['Describe the four alteration styles around VMS ore and how each vectors toward ore.','Apply','Silicification (loss Fe, Mg, K; gain Si, Na), spilitisation (gain Na, lose Ca; chlorite more Fe-rich toward ore), carbonatisation (siderite proximal, calcite distal), epidote-quartz (amphibole and Al-rich epidote at higher T).'],
+ ['Name the five lithotectonic VMS types and give one example of each.','Recall','Bimodal-mafic (Abitibi), mafic (Troodos), pelitic-mafic (Besshi, Windy Craggy), bimodal-felsic (Kuroko, Pilbara), siliciclastic-felsic (Iberian Belt, Teutonic Bore).'],
+ ['Contrast Cyprus-, Kuroko- and Besshi-type deposits.','Apply','Cyprus: small Cu-Zn in ophiolitic pillow basalts at ridges. Kuroko: small to large, high-grade Zn-Pb-Ag-Sb in felsic arc volcanics, mound-shaped with coarse clastic sulphide. Besshi: mostly small, low-grade Cu-Zn ± Co sheets in greywacke with basalt, transitional to SEDEX.'],
+ ['Using Jaguar, explain how you would explore for and recognise a VMS deposit in an Archean greenstone belt.','Synthesise','Follow the prospective felsic-mafic contact along strike, since deposits cluster a few kilometres apart. Use EM surveys to find conductive massive sulphide. Underground or in core, look for increasing Fe-chlorite, bleaching and sulphide replacement of pillows, hematite flooding, and a chalcopyrite stringer zone below banded massive sulphide.']
+];
+GEO.start({key:'geos3141-L10-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- grow a mound ---------- */
+var mds=$('#mdSvg'),md={cu:0,zn:0,ba:0,py:0,hot:0,cool:0,n:0,buried:false,busy:false};
+function mdDraw(f,kind){var s=mds;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:220,fill:'#2E4A57'},s);txt(s,10,20,'seawater, about 2 °C',{'font-size':12,fill:'#CFE3EE'});
+  el('rect',{x:0,y:220,width:640,height:110,fill:'#55606A'},s);txt(s,10,318,'basalt footwall',{'font-size':12,fill:'#DDE'});
+  var tot=md.cu+md.zn+md.ba+md.py,h=tot?Math.min(140,24+tot*6):0,w=h*2.3,cx=320;
+  if(md.hot){var sh=Math.min(95,md.hot*14),sw=Math.min(90,30+md.hot*9);el('path',{d:'M'+(cx-sw)+' 220 L'+(cx+sw)+' 220 L'+(cx+12)+' '+(220+sh)+' L'+(cx-12)+' '+(220+sh)+' Z',fill:'#5C7A55'},s);
+    for(var i=0;i<Math.min(14,md.hot*3);i++){var x0=cx-sw*.8+(i*37)%(sw*1.6),y0=222+(i*23)%Math.max(6,sh-6);el('path',{d:'M'+x0+' '+y0+' l'+(8-(i%3)*6)+' 9 l'+(-4+(i%2)*8)+' 8',fill:'none',stroke:'#E3C14B','stroke-width':2},s);}
+    txt(s,cx+sw+8,240,'stringer zone',{'font-size':12,fill:'#E3C14B'});}
+  if(h>2){el('path',{d:'M'+(cx-w/2)+' 220 Q'+cx+' '+(220-h*2)+' '+(cx+w/2)+' 220 Z',fill:'#A0703F'},s);
+    var cf=md.cu/Math.max(1,md.cu+md.zn),ch=h*Math.sqrt(cf)*.85,cw=w*Math.sqrt(cf)*.7;
+    if(md.py>0){var ph=h*.55,pw=w*.5;el('path',{d:'M'+(cx-pw/2)+' 220 Q'+cx+' '+(220-ph*2)+' '+(cx+pw/2)+' 220 Z',fill:'#B9A26A'},s);}
+    if(ch>2)el('path',{d:'M'+(cx-cw/2)+' 220 Q'+cx+' '+(220-ch*2)+' '+(cx+cw/2)+' 220 Z',fill:'#D9A43A'},s);
+    if(md.ba>0)el('path',{d:'M'+(cx-w*.32)+' '+(220-h*.62)+' Q'+cx+' '+(220-h*1.04)+' '+(cx+w*.32)+' '+(220-h*.62)+' Q'+cx+' '+(220-h*.95)+' '+(cx-w*.32)+' '+(220-h*.62),fill:'none',stroke:'#F2F0EA','stroke-width':Math.min(7,1+md.ba)},s);
+    txt(s,cx+w/2-10,212,'sphalerite margin',{'font-size':12,fill:'#F0E6D2'});if(ch>14)txt(s,cx-36,214,'Cu core',{'font-size':12,fill:'#3E2E12'});}
+  if(md.buried){el('path',{d:'M0 '+(200-h)+' L640 '+(200-h)+' L640 220 L'+(cx+w/2)+' 220 Q'+cx+' '+(220-h*2)+' '+(cx-w/2)+' 220 L0 220 Z',fill:'#5F6670'},s);el('path',{d:'M'+(cx-w/2)+' 218 Q'+cx+' '+(218-h*2)+' '+(cx+w/2)+' 218',fill:'none',stroke:'#EDE8DA','stroke-width':3},s);txt(s,10,195-h,'lava and sediment cover',{'font-size':12,fill:'#EEE'});txt(s,cx+w/2+6,206-h*.4,'silica exhalite',{'font-size':12,fill:'#EDE8DA'});}
+  if(f!==undefined&&!md.buried){var col=kind==='hot'?'#151515':'#E8E6E0',r=rng(md.n*7+3);for(var i=0;i<70;i++){var t=cl(f*1.5-r()*.5,0,1),y=320-t*300,x=cx+(r()-.5)*(10+t*160);if(t>0&&t<1){el('circle',{cx:x,cy:y,r:2.5+t*3,fill:col,opacity:(1-t)*.85},s);}}
+    el('rect',{x:cx-5,y:220-h*1.9-30,width:10,height:30,fill:'#4A3C30'},s);}
+  $('#mdRat').textContent=md.cu+md.zn?Math.round(100*md.cu/(md.cu+md.zn)):'?';$('#mdTag').textContent=md.n+(md.n===1?' pulse':' pulses');
+  $('#mdState').textContent=md.buried?'buried, preserved':md.n?'exposed on the seafloor':'on the seafloor';$('#mdBury').disabled=md.buried||md.n<3;$('#mdHot').disabled=md.buried||md.busy;$('#mdCool').disabled=md.buried||md.busy;}
+function mdPulse(kind){if(md.busy||md.buried)return;md.busy=true;md.n++;var t0=0;SND.play('flip');
+  if(kind==='hot'){md.cu+=3;md.py+=1;md.hot++;if(md.zn>2)md.zn-=1;}else{md.zn+=3;md.ba+=1;md.cool++;}
+  $('#mdT').textContent=kind==='hot'?'~350 °C':'~200 °C';
+  function step(ts){if(!t0)t0=ts||1;var f=Math.min(1,((ts||t0)-t0)/1300);mdDraw(f,kind);if(f<1&&!reduce)requestAnimationFrame(step);else{md.busy=false;mdDraw();SND.play('tick');
+    $('#mdSay').innerHTML=kind==='hot'?'A <b>black smoker</b> pulse: hot fluid drops chalcopyrite and pyrrhotite in the core and in veins of the stringer zone below. Some earlier sphalerite in the core is redissolved and carried outward (zone refining).':'A cooler <b>white smoker</b> pulse: copper stays in solution only when it’s hot, so this one adds sphalerite and galena at the margin and barite on top.';
+    if(md.n>=3&&!md.buried)$('#mdSay').innerHTML+=' The mound is still loose sulphide on the seafloor. Bury it before it collapses and oxidises.';}}
+  requestAnimationFrame(step);}
+$('#mdHot').addEventListener('click',function(){mdPulse('hot');});$('#mdCool').addEventListener('click',function(){mdPulse('cool');});
+$('#mdBury').addEventListener('click',function(){if(md.buried||md.n<3)return;md.buried=true;mdDraw();SND.play('ok');
+  var r=Math.round(100*md.cu/(md.cu+md.zn));
+  $('#mdSay').innerHTML='Preserved: lava and sediment seal the mound, with a thin silica exhalite from the last gasp of the system. Its Cu/(Cu + Zn) × 100 is <b>'+r+'</b>, '+(r>60?'a copper-rich, hot system.':r<35?'a zinc-rich, cooler system.':'a mixed system.')+' Real deposits need many pulses and many vents, and quick burial.';
+  if(md.hot&&md.cool){COMBO.hit();award('md',COMBO.pts(5),'Grew and preserved a zoned mound'+COMBO.tag());FX.burst(mds);}});
+$('#mdReset').addEventListener('click',function(){md={cu:0,zn:0,ba:0,py:0,hot:0,cool:0,n:0,buried:false,busy:false};$('#mdT').textContent='none';$('#mdSay').textContent='Send hydrothermal fluid up through the seafloor. Try both kinds of pulse.';mdDraw();});
+mdDraw();
+
+/* ---------- settings cards ---------- */
+var STO=['Basalt-dominated volcanics','Felsic volcanics (rhyolite, tuff)'];
+mcCards($('#stCards'),[
+ {lbl:'Setting',q:'A mid-ocean ridge, plates spreading apart',o:STO,a:0,e:'Spreading settings: ore hosted in mafic, basalt-dominated rocks.'},
+ {lbl:'Setting',q:'An island arc above a subduction zone',o:STO,a:1,e:'Colliding plates: ore in felsic volcanics, mainly rhyolite.'},
+ {lbl:'Setting',q:'A continental rift',o:STO,a:0,e:'Grouped with spreading settings on slide 7: basalt-dominated.'},
+ {lbl:'Setting',q:'Where the largest VMS deposits are',o:STO,a:1,e:'Felsic pyroclastic rocks in arcs and back arcs.'}
+],'st',2,function(r,n){$('#stScore').textContent=r+' / '+n;});
+
+/* ---------- caldera steps ---------- */
+var cds=$('#cdSvg'),cdS=1;
+var CDS=['','<b>1. A submarine volcano.</b> A magma chamber feeds a roughly circular, mound-shaped volcano on the seafloor.','<b>2. Eruption and collapse.</b> Magma erupts as pyroclastic deposits and the emptied chamber can’t hold up its roof, which collapses into a <b>caldera</b>. The system depressurises instantly, and ring faults open.','<b>3. Hydrothermal cells.</b> Seawater pours down the caldera faults, heats over the chamber, leaches metals and rises back up them to vents on the caldera floor. Cu- and Zn-rich sulphide builds at the vents.','<b>4. Reactivation.</b> A new batch of magma rises and reactivates the system: a new cone, renewed faulting and another hydrothermal cycle. Repeated cycles are how a deposit grows.'];
+function cdDraw(){var s=cds;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'#2E4A57'},s);
+  var col=cdS>=2?'M0 150 L180 150 L230 120 L250 175 L390 175 L410 120 L460 150 L640 150 L640 300 L0 300 Z':'M0 150 L200 150 Q320 40 440 150 L640 150 L640 300 L0 300 Z';
+  el('path',{d:col,fill:'#8A7C70'},s);el('ellipse',{cx:320,cy:255,rx:cdS>=2?110:120,ry:cdS>=2?18:30,fill:'#C8553A'},s);txt(s,280,262,'magma',{'font-size':12,fill:'#FFE3D6'});
+  if(cdS===1){el('rect',{x:312,y:80,width:16,height:150,fill:'#C8553A'},s);txt(s,460,110,'volcano',{'font-size':12,fill:'#CFE3EE'});}
+  if(cdS>=2){[[250,175,230,250],[390,175,410,250]].forEach(function(f){el('line',{x1:f[0],y1:f[1],x2:f[2],y2:f[3],stroke:'#F2B34B','stroke-width':3,'stroke-dasharray':'7 4'},s);});txt(s,460,200,'ring faults',{'font-size':12,fill:'#F2B34B'});
+    el('path',{d:'M250 175 L390 175 L390 168 L250 168 Z',fill:'#B9AE98'},s);txt(s,262,165,'pyroclastic fill',{'font-size':11,fill:'#EEE'});}
+  if(cdS>=3){[[160,240],[480,240]].forEach(function(c,i){el('path',{d:'M'+(i?520:120)+' 150 Q'+c[0]+' '+(c[1]-20)+' '+(i?410:230)+' 240 L'+(i?400:240)+' 180',fill:'none',stroke:'#7FC3E0','stroke-width':2.5,'stroke-dasharray':'5 4'},s);});
+    [[255,168],[385,168]].forEach(function(v){el('path',{d:'M'+(v[0]-14)+' '+(v[1]+2)+' Q'+v[0]+' '+(v[1]-22)+' '+(v[0]+14)+' '+(v[1]+2)+' Z',fill:'#D9A43A'},s);el('circle',{cx:v[0],cy:v[1]-34,r:9,fill:'#151515',opacity:.6},s);});
+    txt(s,40,135,'seawater in',{'font-size':12,fill:'#7FC3E0'});txt(s,270,120,'VMS at vents',{'font-size':12,fill:'#F2D06B'});}
+  if(cdS>=4){el('path',{d:'M290 168 Q320 120 350 168 Z',fill:'#A4664F'},s);el('rect',{x:314,y:170,width:12,height:75,fill:'#C8553A'},s);txt(s,350,140,'new cone',{'font-size':12,fill:'#FFE3D6'});}
+  $('#cdStep').textContent='step '+cdS+' of 4';$('#cdSay').innerHTML=CDS[cdS]+' <span class="srcs">slides 10 and 11</span>';$('#cdBack').disabled=cdS===1;$('#cdNext').disabled=cdS===4;}
+$('#cdNext').addEventListener('click',function(){if(cdS<4){cdS++;cdDraw();SND.play('flip');if(cdS===4)award('cd',4,'Collapsed a caldera');}});
+$('#cdBack').addEventListener('click',function(){if(cdS>1){cdS--;cdDraw();}});
+cdDraw();
+
+/* ---------- engine order ---------- */
+var OD=['Cold seawater seeps into cracks in the seafloor','Water heats up as it circulates near a magma chamber','Metals leach from the surrounding rocks into the hot fluid','Sulphides precipitate in cracks within the pipe and seafloor sediment as the fluid rises and cools','The remaining fluid vents and is rapidly cooled, precipitating sulphides at the seafloor'];
+var odNext=0;
+function odBuild(){var b=$('#odBox');b.innerHTML='';odNext=0;$('#odTag').textContent='0 / 5';$('#odSay').textContent='Tap the steps in the order they happen.';
+  var order=OD.map(function(s,i){return i;});for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=OD[i];
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===odNext){odNext++;c.disabled=true;c.textContent=odNext+'. '+OD[i];c.style.borderColor='var(--mal)';SND.play('ok');$('#odTag').textContent=odNext+' / 5';
+      if(odNext===5){COMBO.hit();award('od',COMBO.pts(5),'VMS engine in order'+COMBO.tag());FX.burst(c);$('#odSay').innerHTML='Seawater in, heat, leach, rise, vent. <span class="srcs">slide 12</span>';}}
+      else{FX.shake(c);COMBO.miss();$('#odSay').textContent='Not yet: what has to happen before that?';}});b.appendChild(c);});}
+$('#odReset').addEventListener('click',odBuild);odBuild();
+
+/* ---------- mound log ---------- */
+var mls=$('#mlSvg'),mlSeen={};
+var MLZ=[
+ {k:'cap',n:'Barite and silica cap',t:'Below about 150 °C',d:'Barite on top and around the mound, and a thin hydrothermal silica “exhalite” as the system wanes. Further out still: Fe and Mn oxides.',c:'#EDE8DA'},
+ {k:'margin',n:'Margin',t:'About 250 to 150 °C',d:'Sphalerite ± pyrite ± galena: the zinc-lead zone. Zn:Cu is highest here.',c:'#8A7A62'},
+ {k:'core',n:'Core',t:'About 350 °C',d:'Chalcopyrite ± pyrrhotite, where the hottest fluid rises straight up the middle.',c:'#D9A43A'},
+ {k:'stringer',n:'Stringer zone (stockwork)',t:'Hot, below the seafloor',d:'A network of chalcopyrite and pyrite veins in silicified, chloritised footwall. Sometimes rich enough to mine as copper ore.',c:'#5C7A55'},
+ {k:'pipe',n:'Alteration pipe',t:'The whole feeder',d:'Footwall rock altered by the rising fluid: Fe-rich chlorite, silica and sericite, hematite at the edges in basalt.',c:'#7E8C76'}];
+function mlDraw(sel){var s=mls;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:150,fill:'#2E4A57'},s);el('rect',{x:0,y:150,width:640,height:190,fill:'#55606A'},s);
+  var shapes={pipe:'M200 150 L440 150 L380 335 L260 335 Z',stringer:'M250 150 L390 150 L345 300 L295 300 Z',margin:'M150 150 Q320 -10 490 150 Z',core:'M240 150 Q320 40 400 150 Z',cap:'M175 120 Q320 10 465 120 Q320 30 175 120 Z'};
+  ['pipe','stringer','margin','core','cap'].forEach(function(k){var z=MLZ.filter(function(q){return q.k===k;})[0],i=MLZ.indexOf(z);
+    var p=el('path',{d:shapes[k],fill:z.c,stroke:sel===i?'var(--gold-hi)':'rgba(0,0,0,.25)','stroke-width':sel===i?5:1,style:'cursor:pointer'},s);
+    if(k==='cap')p.setAttribute('stroke-width',sel===i?8:6),p.setAttribute('stroke',sel===i?'var(--gold-hi)':z.c);
+    p.addEventListener('click',function(){mlPick(i);});});
+  if(Object.keys(mlSeen).length){}
+  [['seafloor',10,145,'#CFE3EE']].forEach(function(t){txt(s,t[1],t[2],t[0],{'font-size':12,fill:t[3]});});
+  MLZ.forEach(function(z,i){if(mlSeen[i]){var pos={cap:[470,60],margin:[480,140],core:[300,120],stringer:[300,270],pipe:[400,320]}[z.k];txt(s,pos[0],pos[1],z.n.split(' ')[0]+' ✓',{'font-size':12,fill:z.k==='core'||z.k==='stringer'?'#1A1A1A':'#F2F0EA'});}});}
+function mlPick(i){mlSeen[i]=1;mlDraw(i);var z=MLZ[i];$('#mlSay').innerHTML='<b>'+z.n+'</b> · '+z.t+'. '+z.d+' <span class="srcs">slides 16 and 17</span>';SND.play('tick');
+  var k=Object.keys(mlSeen).length;$('#mlCount').textContent=k+' / 5 zones';if(k===5)award('ml',5,'Logged the whole mound');}
+mlDraw(-1);
+
+/* ---------- temperature zones ---------- */
+var tzSeen={};
+var TZ=[[150,245,'Zn-Pb-Au zone','#8A7A62','Sphalerite, galena and some gold drop out: the cool margin. Below this, copper is long gone.'],[245,300,'Cu zone','#D9A43A','Chalcopyrite precipitates: copper solubility has fallen sharply.'],[300,350,'Cu-Au zone','#C9783D','Chalcopyrite with gold: the hot core.'],[350,400,'Pyrite zone','#B9A26A','Hottest: pyrite drops out while copper and zinc stay dissolved and travel on.']];
+function tzDraw(){var s=$('#tzSvg'),T=+$('#tzT').value;s.innerHTML='';var X=function(t){return 30+(t-150)/250*580;};
+  TZ.forEach(function(z,i){el('rect',{x:X(z[0]),y:40,width:X(z[1])-X(z[0]),height:60,fill:z[3],opacity:T>=z[0]&&T<z[1]+(i===3?1:0)?1:.4},s);txt(s,X(z[0])+6,76,z[2],{'font-size':12,fill:'#1A1A1A'});});
+  [150,200,250,300,350,400].forEach(function(t){txt(s,X(t)-12,122,t+' °C',{'font-size':11,fill:'var(--muted)'});});
+  txt(s,30,24,'← cooler, further from the vent',{'font-size':12,fill:'var(--ink)'});txt(s,440,24,'hotter, vent core →',{'font-size':12,fill:'var(--ink)'});
+  el('line',{x1:X(T),y1:32,x2:X(T),y2:108,stroke:'var(--ink)','stroke-width':3},s);
+  var i=TZ.findIndex(function(z,k){return T>=z[0]&&(T<z[1]||k===3);});tzSeen[i]=1;$('#tzTV').textContent=T+' °C';$('#tzTag').textContent=TZ[i][2];
+  $('#tzSay').innerHTML='<b>'+TZ[i][2]+'.</b> '+TZ[i][4]+' <span class="srcs">slide 18</span>';
+  if(Object.keys(tzSeen).length===4)award('tz',4,'Cooled through every zone');}
+$('#tzT').addEventListener('input',tzDraw);tzDraw();
+
+/* ---------- pulses cards ---------- */
+var PUO=['One hot pulse','One cool pulse','A hot pulse overprinted by a cool one','Remobilisation of an older mound'];
+mcCards($('#puCards'),[
+ {lbl:'Ore',q:'A lens of chalcopyrite and pyrrhotite, no sphalerite at all',o:PUO,a:0,e:'Only high-temperature sulphide: a hot pulse.'},
+ {lbl:'Ore',q:'Sphalerite, galena and barite with no copper minerals',o:PUO,a:1,e:'Low-temperature minerals only.'},
+ {lbl:'Ore',q:'Chalcopyrite cut and replaced by later sphalerite',o:PUO,a:2,e:'Overlapping suites: a cooler pulse overprinting a hotter one.'},
+ {lbl:'Ore',q:'A big pyrite-rich core with only thin metal-rich margins',o:PUO,a:3,e:'Later fluid carried metals out of the core to the margins and into the sea.'}
+],'pu',2,function(r,n){$('#puScore').textContent=r+' / '+n;});
+
+/* ---------- pillow replacement order ---------- */
+var RP=[['img/L10/ug-rep1.jpg','Pillows with chlorite on their boundaries and minor pyrite','Furthest: chlorite develops on pillow boundaries, with a little pyrite. (slide 47)'],['img/L10/ug-rep2.jpg','Pillows with pyrite along margins and joint cracks, bleached rims','Closer: pyrite replaces margins and joint cracks; basalt rims are bleached. (slide 48)'],['img/L10/ug-rep3.jpg','Pillow shapes almost completely replaced by pyrite','Closest: the pillows are almost completely replaced by pyrite. (slide 49)']];
+var rpNext=0;
+function rpBuild(){var b=$('#rpBox');b.innerHTML='';rpNext=0;$('#rpTag').textContent='0 / 3';
+  var order=[0,1,2];for(var i=2;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='qc';c.style.cssText='text-align:left;cursor:pointer;padding:.5rem';c.innerHTML='<img src="'+RP[i][0]+'" alt="'+RP[i][1]+'" style="width:100%;border-radius:6px;display:block"><div class="lbl" style="margin-top:.4rem">tap if this is next</div>';
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===rpNext){rpNext++;c.disabled=true;$('.lbl',c).textContent=rpNext+'. '+RP[i][2];c.style.borderColor='var(--mal)';SND.play('ok');$('#rpTag').textContent=rpNext+' / 3';
+      if(rpNext===3){COMBO.hit();award('rp',COMBO.pts(5),'Ordered the pillow replacement'+COMBO.tag());FX.burst(c);$('#rpSay').innerHTML='Chlorite rims, then pyrite in margins and cracks with bleaching, then near-total replacement: you’re walking into the ore.';}}
+      else{FX.shake(c);COMBO.miss();$('#rpSay').textContent='Not that one yet. Which shows the least sulphide?';}});b.appendChild(c);});}
+rpBuild();
+
+/* ---------- alteration cards ---------- */
+var ALO=['Silicification','Spilitisation','Carbonatisation','Epidote-quartz'];
+mcCards($('#alCards'),[
+ {lbl:'Assay or log',q:'Na up, Ca down, regional; chlorite-sericite-albite, with chlorite turning black near ore',o:ALO,a:1,e:'Spilitisation, with Fe-rich chlorite as the vector.'},
+ {lbl:'Assay or log',q:'Fe, Mg and K lost, Si and Na gained; quartz-albite-epidote',o:ALO,a:0,e:'Silicification, patchy to pervasive.'},
+ {lbl:'Assay or log',q:'Siderite near the lens, calcite further out',o:ALO,a:2,e:'Carbonatisation, zoned from Fe-rich to Ca-rich.'},
+ {lbl:'Assay or log',q:'Al-rich epidote with amphibole in mafic volcanics',o:ALO,a:3,e:'High-temperature epidote-quartz-amphibole reaction zone.'}
+],'al',2,function(r,n){$('#alScore').textContent=r+' / '+n;});
+
+/* ---------- deposit comparison ---------- */
+var DP=[['Kidd Creek, Ontario',155.4,2.46,6.0,0.2,63,null],['Rio Tinto, Spain',500,1.6,2.0,1,null,null],['Neves-Corvo, Portugal',30.3,7.81,1.33,null,null,null],['Rosebery, Tas',19,0.8,15.7,4.9,132,3],['Hercules, Tas',2.3,0.4,17.8,5.7,179,2.9],['Hellyer, Tas',16,0.4,13,7,160,2.3],['Mount Morgan, Qld',50,0.7,0.1,null,6,4.7],['Thalanga, Qld',6.4,2.2,12.3,3.9,99,0.6],['Scuddles, WA',26.1,1.2,6.9,0.5,59,0.9],['Teutonic Bore, WA',2.2,3.5,11.1,0.9,148,0.2],['Woodlawn, NSW',17.7,1.7,9.9,3.8,80,1.4],['Captains Flat, NSW',4.2,0.7,10,6,55,1.7]];
+var DM=[['Size',1,'Mt'],['Cu',2,'%'],['Zn',3,'%'],['Pb',4,'%'],['Ag',5,'g/t'],['Au',6,'g/t']],dp={m:1,c:false,seen:{}};
+DM.forEach(function(m,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed',i===1);b.addEventListener('click',function(){dp.m=i;$$('#dpC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');dpDraw();});$('#dpC').appendChild(b);});
+function dpVal(r){var m=DM[dp.m],g=r[m[1]];if(g===null)return null;if(dp.m===0||!dp.c)return g;return dp.m<=4?r[1]*g*10:r[1]*g;}
+function dpUnit(){var m=DM[dp.m];if(dp.m===0)return 'Mt';if(!dp.c)return m[2];return dp.m<=4?'kt':'t';}
+function dpDraw(){var s=$('#dpSvg');s.innerHTML='';var d=DP.map(function(r){return [r[0],dpVal(r),r];}).sort(function(a,b){return (b[1]===null?-1:b[1])-(a[1]===null?-1:a[1]);});var max=Math.max.apply(null,d.map(function(x){return x[1]||0;}));
+  d.forEach(function(x,i){var y=6+i*41,w=x[1]===null?0:x[1]/max*300;txt(s,8,y+22,x[0],{'font-size':13,fill:'var(--ink)'});if(x[1]!==null){el('rect',{x:200,y:y+6,width:Math.max(2,w),height:22,rx:3,fill:/Tas|Qld|WA|NSW/.test(x[0])?'var(--gold)':'var(--slate)'},s);txt(s,206+w,y+22,fmt(x[1],x[1]<10?1:0)+' '+dpUnit(),{'font-size':12,fill:'var(--ink)'});}else txt(s,206,y+22,'not given',{'font-size':12,fill:'var(--muted)'});});
+  var m=DM[dp.m][0];$('#dpTag').textContent=m+(dp.m===0?' (Mt)':dp.c?' contained':' grade');
+  var top=d[0][0];$('#dpSay').innerHTML=(dp.m===0?'Rio Tinto is the giant at 500 Mt, but low grade. Most deposits are under 30 Mt.':'Top for '+m+(dp.c?' contained metal':' grade')+': <b>'+top+'</b>. ')+(dp.m===2&&!dp.c?' Neves-Corvo’s almost 8% Cu is exceptional.':dp.m===6?' Mount Morgan was really a gold mine; it took years to recognise it as VMS.':dp.m===5&&!dp.c?' Silver grades in Tasmania and Teutonic Bore are rich.':dp.c&&dp.m===3?' Tonnage wins: big low-grade deposits can out-contain small rich ones.':'')+' Gold bars are Australian deposits.';
+  dp.seen[dp.m+(dp.c?'c':'g')]=1;if(Object.keys(dp.seen).length>=4&&Object.keys(dp.seen).some(function(k){return /c$/.test(k);}))award('dp',4,'Compared VMS grades and contained metal');}
+$('#dpG').addEventListener('click',function(){dp.c=false;this.setAttribute('aria-pressed','true');$('#dpM').setAttribute('aria-pressed','false');dpDraw();});
+$('#dpM').addEventListener('click',function(){dp.c=true;this.setAttribute('aria-pressed','true');$('#dpG').setAttribute('aria-pressed','false');dpDraw();});
+dpDraw();
+
+/* ---------- classification cards ---------- */
+var CLO=['Bimodal-mafic','Mafic','Pelitic-mafic','Bimodal-felsic','Siliciclastic-felsic'];
+mcCards($('#clCards'),[
+ {lbl:'District',q:'Pillowed MORB and boninite basalts, synvolcanic dykes and sills making up half the pile, almost no sediment; an ophiolite',o:CLO,a:1,e:'Mafic type: Troodos, Semail.'},
+ {lbl:'District',q:'About 80% felsic volcaniclastic and other siliciclastic rocks in a mature continental back arc, with Fe-Mn-Ba chemical sediments',o:CLO,a:4,e:'Siliciclastic-felsic: Iberian Belt, Bathurst, Teutonic Bore.'},
+ {lbl:'District',q:'Basalt and carbonaceous pelite in equal amounts, mafic sills up to 25%, felsic volcanics rare',o:CLO,a:2,e:'Pelitic-mafic: Besshi, Windy Craggy, Outokumpu.'},
+ {lbl:'District',q:'Basalt-dominated with up to 25% rhyolite domes and flows, in a rifted arc above intra-oceanic subduction',o:CLO,a:0,e:'Bimodal-mafic: Abitibi, east Yilgarn.'},
+ {lbl:'District',q:'35 to 70% submarine felsic volcaniclastics with basalt sills, in a continental margin arc',o:CLO,a:3,e:'Bimodal-felsic: Kuroko, Skellefte, Tasman Orogen.'}
+],'cl',2,function(r,n){$('#clScore').textContent=r+' / '+n;});
+
+/* ---------- style cards ---------- */
+var SYO=['Cyprus','Kuroko','Besshi'];
+mcCards($('#syCards'),[
+ {lbl:'Deposit',q:'High-grade Zn-Pb-Ag mound in rhyolite volcaniclastics, coarse clastic sulphide, Japan',o:SYO,a:1,e:'Kuroko: arc, felsic, metal-rich.'},
+ {lbl:'Deposit',q:'Long, low-grade pyrrhotite-pyrite sheets with Cu, Zn and Co in greywacke with basalt sills',o:SYO,a:2,e:'Besshi: transitional between VMS and SEDEX.'},
+ {lbl:'Deposit',q:'Skouriotissa: massive pyrite over a Cu-rich stringer zone in chloritised pillow basalt',o:SYO,a:0,e:'Cyprus: ophiolite, mafic, Cu-Zn.'},
+ {lbl:'Deposit',q:'Windy Craggy, British Columbia, over 300 Mt',o:SYO,a:2,e:'The one big exception among small Besshi deposits.'}
+],'sy',2,function(r,n){$('#syScore').textContent=r+' / '+n;});
+
+/* ---------- decline photo cards ---------- */
+var DCO=['Footwall felsic volcanics','Hematite-flooded felsic clasts','Chalcopyrite stringer zone','Hanging-wall graphitic black shale','Black shale over pillow basalt'];
+mcCards($('#dcCards'),[
+ {img:'img/L10/ug-felsic.jpg',alt:'Underground face of dark rock with flattened pale lenses aligned in one direction, torch for scale',lbl:'Decline face',q:'What is this?',o:DCO,a:0,e:'Flattened felsic clasts in the footwall. (slide 50)'},
+ {img:'img/L10/ug-hematite.jpg',alt:'Dark rock with bright red-orange patches and streaks, torch for scale',lbl:'Decline face',q:'What is this?',o:DCO,a:1,e:'Hydrothermal hematite flooding felsic clasts near ore: oxidised fluid, not weathering. (slide 51)'},
+ {img:'img/L10/ug-stringer.jpg',alt:'Dark angular blocks cut by a network of brassy yellow veins, lens cap for scale',lbl:'Decline face',q:'What is this?',o:DCO,a:2,e:'Chalcopyrite-rich stringer ore in basalt, below the main lode. (slide 57)'},
+ {img:'img/L10/ug-shale.jpg',alt:'Crumpled, very dark, shiny rock with fine pale streaks, a finger for scale',lbl:'Decline face',q:'What is this?',o:DCO,a:3,e:'Graphitic black shale with pyrite: soft and unstable to mine through. (slide 55)'},
+ {img:'img/L10/ug-shalepillow.jpg',alt:'Underground face with a dark arched band across grey-green rock with rounded shapes, under mesh',lbl:'Decline face',q:'What is this?',o:DCO,a:4,e:'Black shale overlying pillowed basalts. (slide 52)'}
+],'dc',3,function(r,n){$('#dcScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
