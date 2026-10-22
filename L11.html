@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 11 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L10.html">&larr; Lecture 10</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 11 · T3 2026</div>
+  <h1>A billion tonnes of almost nothing</h1>
+  <p class="lede">Porphyry deposits are the world’s main source of copper and molybdenum and a big source of gold, yet their ore averages well under 1% copper. They work because they’re enormous: a few intrusions in the root of an arc volcano, fractured and soaked by their own hot fluid, zoned in shells you can map from the surface. Learn the shells and you can find the ore. Try it now.</p>
+
+  <div class="lab" id="dhLab">
+    <h4><span>Find the ore shell</span><b id="dhTag">0 holes</b></h4>
+    <svg class="grid-svg" id="dhSvg" viewBox="0 0 640 330" role="img" aria-label="Cross-section of a prospect with drill collars along the surface; each hole logs alteration and copper grade"></svg>
+    <div class="readout">
+      <div><small>Last hole logged</small><b id="dhZ">?</b></div>
+      <div><small>Best Cu in hole</small><b id="dhCu">?</b></div>
+      <div><small>Pyrite</small><b id="dhPy">?</b></div>
+    </div>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="dhNew">New prospect</button></div>
+    <p class="say" id="dhSay">Tap a drill collar. Each hole logs the alteration it passes through, its best copper grade and its pyrite. Hit ore (0.5% Cu or better) in as few holes as you can.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented game data. The order of shells (barren potassic core, ore shell, pyrite shell, propylitic halo, argillic cap) follows the Lowell and Guilbert model on slides 50 and 51; the grades and widths are made up.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#intro">What a porphyry deposit is</a></li>
+      <li><a href="#size">Size, grade and the giants</a></li>
+      <li><a href="#arc">Arcs, slabs and oxidised magma</a></li>
+      <li><a href="#host">The host intrusions</a></li>
+      <li><a href="#zoning">The Lowell and Guilbert shells</a></li>
+      <li><a href="#veins">Reading the veins</a></li>
+      <li><a href="#alteration">Alteration in the hand</a></li>
+      <li><a href="#vectors">UST textures, Sr/Y and magnetics</a></li>
+      <li><a href="#fluids">Carapace, hydrofracturing and fluids</a></li>
+      <li><a href="#moly">Porphyry Mo and Climax</a></li>
+      <li><a href="#andes">Why the Andes</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="intro" data-log="Porphyry"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>What a porphyry deposit is</h2>
+  <p>A <button class="term" data-t="porphyry">porphyry</button> deposit is a <button class="term" data-t="magmatic-hydrothermal">magmatic-hydrothermal</button> deposit: metals carried out of a cooling intrusion by its own fluid and dumped in and around it. Like any deposit it needs five things: a source of metals, a way to transport them, a way to concentrate them, a way to deposit them, and a post-depositional history that preserves them. <span class="srcs">slide 2</span></p>
+  <p>The porphyry sits at the centre of a much bigger system. A few kilometres up are epithermal veins (Lecture 14); in limestone next to the intrusion you get Cu-Au-Fe skarns, and further out Pb-Zn-Ag skarns and veins, sometimes tens of kilometres away, all from the same magma. <span class="srcs">slide 3</span> (after Corbett, 2008) <span class="srcs">lecture recording, 9 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/escondida.jpg" alt="Aerial view of a huge terraced open pit in a pale desert">
+    <figcaption>La Escondida, Chile, one of the world’s largest porphyry copper deposits. <span class="srcs">slide 1</span></figcaption>
+  </figure>
+  <p>Porphyry Cu-Au deposits are by far the world’s largest producer and resource of copper and a significant one for gold, and porphyry Mo deposits are the world’s largest source of molybdenum. Many are over 500 Mt, some over 1000 Mt, but the grades are low: generally 0.1 to 0.5% Cu, about 0.3 g/t Au and up to about 0.5% Mo. All of them have distinctive, regional-scale alteration zones, which makes them easier to explore for than you might think. <span class="srcs">slide 5</span></p>
+  <p>Low grade only works at enormous scale. A new porphyry mine on the Argentina-Chile border is costing about $10 billion before any rock is mined, including a 150 km railway. Companies like BHP and Rio Tinto accept that because a porphyry runs for decades, long enough that metal price swings average out. <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>Porphyry Cu-Au: the world’s largest source of Cu, significant Au. Porphyry Mo: the largest source of Mo.</li><li>Huge (many &gt;500 Mt, some &gt;1000 Mt) and low grade (0.1 to 0.5% Cu, ~0.3 g/t Au).</li><li>Distinctive regional-scale alteration zoning.</li></ul><span class="srcs">slides 2 and 5</span></div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="size" data-log="Size"><div class="wrap">
+  <div class="kicker">The numbers <span class="depth">13 to 26 m</span></div>
+  <h2>Size, grade and the giants</h2>
+  <p>Many super-giants are actually several closely spaced mineralised stocks: Rio Blanco-Los Bronces and Escondida are clusters. Bingham (30 Mt Cu) and Resolution (24 Mt Cu) are exceptions, single zoned porphyries. There is <b>no relationship</b> between the volume of a porphyry and its copper. What matters is the <b>earliest porphyry phase</b>, which carries most of the metal; later phases and fluids just dilute it. <span class="srcs">slide 8</span></p>
+  <p>Grade can go higher in places. Magmatic-hydrothermal breccias focus Cu-rich fluid and can carry over 1% Cu: half of the mineralisation at Rio Blanco-Los Bronces is breccia-hosted. Ideally the copper arrives early, with high-temperature potassic alteration; later sericite or chlorite-sericite fluids can strip it out again. Skarns next to porphyries can be big too: Antamina in Peru has 17 Mt Cu. <span class="srcs">slide 9</span></p>
+  <div class="lab" id="szLab">
+    <h4><span>Where the copper is</span><b id="szTag"></b></h4>
+    <div class="chips" id="szC" role="group" aria-label="Data set"></div>
+    <svg class="grid-svg" id="szSvg" viewBox="0 0 640 470" role="img" aria-label="Bar chart of copper by region, deposit or country" style="margin-top:.6rem"></svg>
+    <p class="say" id="szSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Contained Cu from slides 6 and 7; producers and reserves (USGS, thousand tonnes) from slide 14.</p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/gt-cu.jpg" alt="Log-log plot of copper grade against tonnage for porphyry deposits, coloured by type (Cu, Cu-Mo, Cu-Au, Au, Mo, Sn), with diagonal lines of contained copper">
+    <figcaption>Grade against tonnage for porphyry deposits. The super-giants (Grasberg, Escondida, Los Bronces-Rio Blanco, Chuquicamata, Bingham, El Teniente) sit top right; pure gold porphyries are few and small. <span class="srcs">slide 13</span> <span class="srcs">lecture recording, 9 Oct</span></figcaption>
+  </figure>
+  <p>Porphyries were found in the 19th century but were too low grade to mine. Mass mining at Bingham Canyon began in 1906, first on the rich supergene blanket (chalcocite and covellite, up to four times the primary grade); primary ore came decades later. Today more than 50% of the world’s copper comes from about 100 porphyry mines, by huge open pits or underground block caving, as at Oyu Tolgoi in Mongolia. <span class="srcs">slides 11, 12 and 23</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/bingham.jpg" alt="Aerial view of a vast terraced open pit cut into a mountainside">
+    <figcaption>Bingham Canyon, Utah: over 1000 Mt at about 0.71% Cu. <span class="srcs">slides 11 and 12</span></figcaption>
+  </figure>
+  <p>Australia produced about 730 kt of copper in 2025, far behind Chile’s 5300 kt, but holds the second-largest reserves (100 000 kt). Most of the big producers mine porphyries; the Congo and Zambia are the exception, with sediment-hosted copper. <span class="srcs">slide 14</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="arc" data-log="Arcs"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">26 to 39 m</span></div>
+  <h2>Arcs, slabs and oxidised magma</h2>
+  <p>Porphyries form in magmatic arcs above subduction zones, in lines parallel to the volcanoes and slightly older than them. The subducting oceanic crust is hydrated, and as it heats, amphibole and serpentine break down and release fluid into the mantle wedge above. That fluid is rich in Cl, S, large-ion lithophile elements (Rb, K, Cs, Ba, Sr), Li, B, Pb, As, Sb, Cu and Au, and it is <b>oxidising</b> (2FeO + H₂O = Fe₂O₃ + H₂). It lowers the melting point of the wedge, which partially melts. <span class="srcs">slides 17 and 18</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/subduction.jpg" alt="Cross-section of a subduction zone: dehydration of the oceanic crust, partial melting of hydrated mantle, basaltic underplating, a lower crustal MASH zone and an upper crustal batholith under a volcanic arc">
+    <figcaption>From slab to batholith: dehydration, melting of hydrated mantle, basaltic underplating, a lower-crustal MASH zone and an upper-crustal batholith. <span class="srcs">slide 17</span> (adapted from Winter, 2001)</figcaption>
+  </figure>
+  <p>The basalt melt ponds at the base of the crust in a <button class="term" data-t="MASH zone">MASH zone</button>: Melting of crustal rocks, Assimilation, Storage and Homogenisation into a hybrid calc-alkaline magma. The porphyry magmas come from there. And the key property is oxidation: porphyry Cu-Au magmas sit near the hematite-magnetite buffer, at 400 to 800 °C or more, whereas porphyry Sn-W magmas are reduced (pyrrhotite field) at about 400 to 550 °C. Oxidised magmas keep sulphur as sulphate rather than sulphide, so Cu and Au aren’t trapped in early sulphide and stay in the melt to be carried off by fluid. <span class="srcs">slides 19 and 49</span> (Hedenquist and Richards, 1998) <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="lab" id="bvLab">
+    <h4><span>Which porphyry will this magma make?</span><b id="bvTag"></b></h4>
+    <svg class="grid-svg" id="bvSvg" viewBox="0 0 640 300" role="img" aria-label="Plot of oxidation state against fractionation with fields for Cu-Au, Mo, W and Sn porphyries and a movable magma"></svg>
+    <div class="ctl" style="margin-top:.6rem">
+      <div><label for="bvO">Oxidation, Fe₂O₃/FeO <b id="bvOV"></b></label><input type="range" id="bvO" min="0" max="100" step="1" value="75"></div>
+      <div><label for="bvF">Fractionation, Rb/Sr <b id="bvFV"></b></label><input type="range" id="bvF" min="0" max="100" step="1" value="20"></div>
+    </div>
+    <p class="say" id="bvSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Schematic fields after the Blevin diagram on slide 41 and the oxidation plot on slide 19; boundaries are approximate.</p>
+  </div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="host" data-log="Intrusions"><div class="wrap">
+  <div class="kicker">The rocks <span class="depth">39 to 52 m</span></div>
+  <h2>The host intrusions</h2>
+  <p>Porphyry hosts are intermediate to felsic I-type intrusions: granodiorite, tonalite, quartz monzodiorite and diorite, not true granites. I-type means they came from igneous source rock, not melted sediment. In island arcs they come from the upper mantle or recycled oceanic crust; in continental arcs they show crustal contamination. Multiple intrusions are the rule, and the mineralising one is usually late in the suite. <span class="srcs">slide 22</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · what makes it a porphyry?</span><span class="srcs">slide 22</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L11/granodiorite.jpg" alt="Cut slab of an evenly speckled pink, white and black coarse-grained rock"><div class="cap">A · hand specimen</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L11/porphyry.jpg" alt="Close-up of a rock with larger pale pink rectangular crystals scattered through a fine-grained red, grey and black groundmass, one crystal labelled phenocryst"><div class="cap">B · hand specimen</div></div>
+    </div>
+    <p class="ask">Compare the grain size in A and B. Which texture gives porphyry deposits their name, and what does it tell you about how that magma cooled?</p>
+    <details data-obs="porph"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: evenly coarse grained, all crystals about the same size: pink K-feldspar, white plagioclase and quartz, black biotite or hornblende. An equigranular granitoid such as granodiorite.</li><li>B: large, well-formed feldspar crystals (phenocrysts) in a much finer groundmass.</li></ul>
+      <p class="so">So B shows <b>porphyritic</b> texture, which gives the deposits their name. Two cooling rates: crystals grew slowly at depth, then the magma rose to a shallow level and the rest crystallised fast. That shallow, high-level emplacement is exactly where porphyry deposits form.</p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/xpl.jpg" alt="Thin section in cross-polarised light with grey striped plagioclase laths and brightly coloured crystals" style="max-width:420px;margin:0 auto">
+    <figcaption>A porphyry host in thin section, cross-polarised light: twinned plagioclase among brightly coloured mafic minerals. <span class="srcs">slide 22</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="zoning" data-log="Zoning"><div class="wrap">
+  <div class="kicker">Deposit scale <span class="depth">52 to 65 m</span></div>
+  <h2>The Lowell and Guilbert shells</h2>
+  <p>An orebody is an inverted cup or cylinder, 0.5 to 2 km tall and 0.1 to 2 km across: a large permeable zone of fracturing, often near the margin of the intrusion and along a prominent fault. The ore sits as disseminations, as a <button class="term" data-t="stockwork">stockwork</button> of irregular quartz-sulphide veinlets (the main ore in most deposits), as larger linear veins and as breccias. <span class="srcs">slide 24</span></p>
+  <p>Lowell and Guilbert’s classic model zones it in shells. In the middle is a <b>barren or low-grade core</b> with magnetite and little sulphide. Around it is the <b>ore shell</b>: 1 to 3% sulphide, more chalcopyrite than pyrite, with molybdenite. Outside that is the <b>pyrite shell</b>, about 10% pyrite and almost no chalcopyrite. Furthest out are sparse <b>peripheral veins</b> of Pb, Zn, Ag and Au. So the centre of the porphyry is not where you mine; the ore is on its margins. <span class="srcs">slides 24 and 50</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Alteration</th><th>Present?</th><th>Assemblage</th><th>Where</th></tr>
+    <tr><td><button class="term" data-t="potassic alteration">Potassic</button></td><td>Always</td><td>K-feldspar, biotite, rutile, pyrite or magnetite</td><td>The core, with the ore shell</td></tr>
+    <tr><td><button class="term" data-t="phyllic alteration">Phyllic</button></td><td>Not always</td><td>Silica, sericite, chlorite, rutile, pyrite</td><td>The flanks: the pyrite shell</td></tr>
+    <tr><td>Argillic</td><td>Not always</td><td>Clay, sericite, chlorite, pyrite; plagioclase destroyed, K-feldspar intact</td><td>Above, can overprint potassic</td></tr>
+    <tr><td><button class="term" data-t="propylitic alteration">Propylitic</button></td><td>Always</td><td>Albite or oligoclase, epidote or calcite, chlorite, magnetite or pyrite</td><td>The outer halo</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 50 and 51; lecture recording, 9 Oct</p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/lowell.jpg" alt="Two inverted-cup diagrams: mineral zoning with a low-grade core, ore shell, low pyrite shell, pyrite shell and peripheral zone; and vein zoning from disseminated in the core to veinlets and veins outward">
+    <figcaption>The Lowell and Guilbert model: low-grade core, ore shell, pyrite shell and peripheral zone, with disseminated ore inside and veinlets and veins outward. <span class="srcs">slide 50</span></figcaption>
+  </figure>
+  <p>Go back to the drilling game at the top and use the shells: lots of pyrite means you’re outside the ore; K-feldspar and magnetite with little copper means you’ve gone through the middle. Real deposits don’t always show every shell, because phyllic and argillic zones aren’t always present. <span class="srcs">slide 51</span></p>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="veins" data-log="Veins"><div class="wrap">
+  <div class="kicker">Core logging <span class="depth">65 to 78 m</span></div>
+  <h2>Reading the veins</h2>
+  <p>Gustafson and Hunt (1975) named porphyry vein types at El Salvador in Chile. Industry still uses the scheme, even though it came from one deposit. Learn the four. <span class="srcs">slides 25 to 30</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Vein</th><th>Look</th><th>Contents</th><th>Halo</th></tr>
+    <tr><td><b>EB</b> (early biotite)</td><td>Deep, earliest, with or before A</td><td>Mostly biotite, some quartz, K-feldspar, anhydrite, actinolite; ± magnetite, sulphide</td><td>Can go with biotite breccias</td></tr>
+    <tr><td><b>A</b></td><td>Earliest quartz veins: irregular, discontinuous, 1 to 25 mm</td><td>Fine, even-grained (“sugary”) quartz-K-feldspar-anhydrite; minor chalcopyrite, bornite</td><td>K-feldspar</td></tr>
+    <tr><td><b>B</b></td><td>Regular, continuous, planar, 5 to 50 mm</td><td>Coarse quartz grown perpendicular to the walls, often with a centre line; coarse molybdenite, chalcopyrite, bornite</td><td>None. <b>Carry the bulk of the ore</b>, often as sheeted veins</td></tr>
+    <tr><td><b>D</b></td><td>Cut everything, continuous, 1 to 75 mm</td><td>Mostly sulphide (pyrite) and anhydrite, little quartz; chalcopyrite, bornite, enargite, tennantite, sphalerite, galena</td><td>Sericite or sericite-chlorite; feldspar destroyed</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 26 to 29</p>
+  <div class="lab">
+    <h4><span>Name the vein</span><b id="vnScore">0 / 4</b></h4>
+    <div class="cards" id="vnCards"></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/abd.jpg" alt="Sketch of porphyry phases cut by A, B and D veinlets, showing D veinlets cutting B and A, with a chilled contact and flow-aligned phenocrysts" style="max-width:480px;margin:0 auto">
+    <figcaption>Crosscutting relationships between A, B and D veinlets at El Salvador: D cuts B cuts A. <span class="srcs">slide 30</span></figcaption>
+  </figure>
+  <p>Because the scheme came from one deposit and B veins aren’t everywhere, many academics prefer Seedorff and others (2005), who classify veins by their mineralogy and alteration halo, from oldest to youngest: potassic veins (magnetite, biotite, then sugary quartz A veins), sodic or calcic veins, quartz veins with no halo (including banded quartz-molybdenite), veins with strong hydrolytic (sericitic or greisen) halos, and finally late, low-temperature or distal veins. <span class="srcs">slides 31 and 32</span></p>
+  <div class="labbox"><b>At the lab test</b><ul><li>The lab ore suites include Bingham Canyon, Ok Tedi and Goonumbla (Endeavour) in NSW. Bingham has good B veins with molybdenite and EB (biotite) veins.</li><li>A vein: sugary quartz with a K-feldspar halo. B vein: planar quartz with a centre line, no halo, coarse molybdenite and chalcopyrite. D vein: pyrite-rich with a bleached sericite halo.</li><li>Primary ore minerals: pyrite, chalcopyrite, bornite, enargite, magnetite, molybdenite; supergene chalcocite and covellite; oxide malachite and cuprite.</li></ul><span class="srcs">slides 23, 26 to 29</span> <span class="srcs">lecture recording, 9 Oct</span> <span class="srcs">lab ore suites</span></div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="alteration" data-log="Alteration"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">78 to 91 m</span></div>
+  <h2>Alteration in the hand</h2>
+  <div class="obs">
+    <div class="ttl"><span>Field task · potassic alteration</span><span class="srcs">slide 52</span></div>
+    <img loading="lazy" decoding="async" src="img/L11/potassic.jpg" alt="Four photos A to D: a dark rock cut by quartz veins with K-feldspar labelled along their margins; a pink rock with dark green patches labelled biotite; a green rock with dark veins; a purple-grey rock with a network of thin veins">
+    <p class="ask">In A and B, what colour is the K-feldspar, and what dark mineral is growing in B? Why does that colour hint at an oxidised magma?</p>
+    <details data-obs="potassic"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: K-feldspar (Kfs) alteration along the margins of quartz veins, at Bethsaida, British Columbia.</li><li>B: pervasive pink K-feldspar with patches of fine hydrothermal biotite (Bt), with quartz-molybdenite veinlets, at Red Mountain, Yukon.</li></ul>
+      <p class="so">So this is potassic alteration, always present in the core. The K-feldspar is strongly pink because it holds iron, a sign of an oxidised system. In many porphyries you won’t see much K-feldspar; secondary biotite is the commoner sign of potassic alteration. <span class="srcs">slide 52</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the outer halo</span><span class="srcs">slide 53</span></div>
+    <img loading="lazy" decoding="async" src="img/L11/propylitic.jpg" alt="Six photos: four green-grey drill cores, one with crosscutting veins and one with brassy grains, an outcrop of green-grey andesite with a hammer, and a close-up of a yellow-green radiating mineral in a clast">
+    <p class="ask">Look at f, the yellow-green radiating mineral. What is it, and which alteration zone has it put you in?</p>
+    <details data-obs="propylitic"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Cores and outcrop are green-grey: chlorite.</li><li>f: a coarse, radiating, pistachio-green mass forming a nodule in an altered volcanic clast: epidote.</li></ul>
+      <p class="so">So you’re in the <b>propylitic</b> zone: chlorite, epidote, albite, calcite, with magnetite or pyrite. It is always present and marks the outer halo; the first epidote marks the start of the propylitic zone. These are from Schaft Creek, BC. <span class="srcs">slide 53</span> (Scott et al., 2008)</p>
+    </div></details>
+  </div>
+  <p>Phyllic and argillic alteration matter for grade as much as for vectoring: the sericite and chlorite-sericite fluids that come late can leach copper back out, because copper becomes mobile under those acidic conditions. <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="lab">
+    <h4><span>Which alteration?</span><b id="alScore">0 / 4</b></h4>
+    <div class="cards" id="alCards"></div>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="vectors" data-log="Vectors"><div class="wrap">
+  <div class="kicker">Exploration <span class="depth">91 to 104 m</span></div>
+  <h2>UST textures, Sr/Y and magnetics</h2>
+  <p><button class="term" data-t="UST">Unidirectional solidification textures</button> (USTs) are banded, comb-like layers in the cupola, the domed top of an intrusion. Oriented quartz, feldspar, mica, amphibole, tourmaline and apatite crystals grow <b>downward</b> into the intrusion, often coarse or pegmatitic. They act as chemical and physical barriers to circulating fluid, so finding them is a vector: porphyry Cu-Au ore can sit 100 to 200 m above the UST zone. They form in open systems (fluid released by fracturing after each layer) or closed ones (fluid trapped as they crystallise), and not every porphyry has them. <span class="srcs">slides 33 to 35</span> (Müller et al., 2023)</p>
+  <p style="font-size:.88rem;color:var(--muted)">Check this one: the slide says ore may lie 100 to 200 m above the UST zone, the recording says about 1000 m. The page follows the slide.</p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/ust.jpg" alt="Nine sketches of UST types: straight, wavy and contorted, each equigranular or heterogranular, plus incomplete growth, fragmented and brecciated" style="max-width:520px;margin:0 auto">
+    <figcaption>UST types: straight, wavy and contorted; equigranular or heterogranular; incomplete, fragmented and brecciated. Crystals (black) always grow downward. <span class="srcs">slide 34</span> (Müller et al., 2023)</figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · which way is up?</span><span class="srcs">slide 35</span></div>
+    <img loading="lazy" decoding="async" src="img/L11/ust-hs.jpg" alt="Six cut slabs: wavy pink-orange and grey bands; contorted black tourmaline and white quartz bands; green and lilac patches with arrows; orange zigzag bands in grey; stacked pale bands with grey comb crystals growing from one side; and a finely mottled pale rock">
+    <p class="ask">In e (Umnu Hutul), the grey quartz crystals grow from one side of each band. Which way was the top of the intrusion?</p>
+    <details data-obs="ust"><summary>Show what I see</summary><div class="seen">
+      <ul><li>e: repeated pale bands, each with a flat side and grey quartz combs whose points all face the same way.</li><li>a, b, d: wavy to contorted banding; b is tourmalinised.</li></ul>
+      <p class="so">So USTs grow <b>downward</b> into the magma from the roof: the flat side each layer grows from is up, toward the cupola, and the crystal tips point down. The straight and wavy types make that easy to read; contorted or brecciated ones are much harder. <span class="srcs">slides 33 to 35</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+    </div></details>
+  </div>
+  <p>Geochemistry helps too, cheaply, with XRF. Fertile porphyry magmas are hydrous, rich in H₂O, SO₃ and Cl. Extra water suppresses plagioclase, which holds Sr, in favour of hornblende, which takes Y. So fertile magmas have <b>high Sr/Y</b> at a given SiO₂ compared with barren arc rocks. <span class="srcs">slide 36</span> (Rohrlach and Loucks, 2005)</p>
+  <div class="lab">
+    <h4><span>Fertile or barren?</span><b id="syScore">0 / 4</b></h4>
+    <div class="cards" id="syCards"></div>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented sample values for practice; the principle (high Sr/Y = fertile) is from slide 36.</p>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · an aeromagnetic map</span><span class="srcs">slide 21</span></div>
+    <img loading="lazy" decoding="async" src="img/L11/aeromag.jpg" alt="Colourful aeromagnetic map with red highs and blue-purple lows, a north-south fault line and small circles marking deposits">
+    <p class="ask">Chuquicamata and El Abra both sit on magnetic lows. Porphyry magmas are oxidised and rich in magnetite, so why a low?</p>
+    <details data-obs="aeromag"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Reds are magnetic highs, blues and purples lows; the deposits (circles) sit along a fault on lows.</li></ul>
+      <p class="so">So hydrothermal fluid passing through destroyed the primary magnetite and demagnetised the rock. You want a porphyry that started magnetite-rich and was then flushed by lots of fluid, because the fluid brought the metal. A magnetic low inside a magnetic intrusion is a target. <span class="srcs">slide 21</span> (Behn et al., 2001) <span class="srcs">lecture recording, 9 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="fluids" data-log="Fluids"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">104 to 117 m</span></div>
+  <h2>Carapace, hydrofracturing and fluids</h2>
+  <p>A porphyry magma starts at about 1000 °C with 3 to 5% water. As it crystallises, the water can’t stay in the crystals, so it concentrates in the last melt at the top and margins: a water-saturated <button class="term" data-t="carapace">carapace</button>. Pressure builds until the brittle rock above fails: hydrofracturing makes the stockwork, and breccia pipes and dykes punch upward. Step through it. <span class="srcs">slides 46 to 48</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="lab" id="cpLab">
+    <h4><span>Crystallise the stock</span><b id="cpStep">step 1 of 4</b></h4>
+    <svg class="grid-svg" id="cpSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of a cooling porphyry stock developing a water-saturated carapace, hydrofractures, and meteoric water invasion"></svg>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="cpBack">Back</button><button class="btn" type="button" id="cpNext">Next step</button></div>
+    <p class="say" id="cpSay"></p>
+  </div>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L11/carapace1.jpg" alt="Cross-section of a granodiorite porphyry stock with a water-saturated carapace below the 1000 °C isotherm and a dike, depth 0 to 8 km" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Stage 1: water-saturated carapace, slide 46</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L11/carapace2.jpg" alt="The same section later, with a dense fracture network and a breccia pipe above the retreating water-saturated carapace" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Stage 2: fractures and breccia pipe, slide 47</div></div>
+  </div>
+  <p>The fluids are metal- and salt-rich brines, between about 250 and 750 °C, with very variable mixtures of magmatic and meteoric water. Sulphur isotopes in pyrite and chalcopyrite are often magmatic, while later sulphate is often meteoric. The evidence that the metals are magmatic is indirect. Meteoric water drawn in around the stock mixes with magmatic fluid and drives the pervasive sericitic alteration with disseminated sulphide; above the system you can get acid-sulphate alteration and alkaline hot springs. <span class="srcs">slides 43 and 45</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="moly" data-log="Molybdenum"><div class="wrap">
+  <div class="kicker">Variation <span class="depth">117 to 130 m</span></div>
+  <h2>Porphyry Mo and Climax</h2>
+  <p>Porphyry Mo deposits share most features with Cu-Au porphyries but come from <b>more reduced</b>, more fractionated magmas. There are three subclasses by host: granitic (biotite granite and granodiorite, Cu-poor, like Endako in BC), trondhjemite (unusual, not very silicic, like Trout Lake in BC), and rhyolitic porphyry (subvolcanic rhyolite dykes and sills, like Climax in Colorado). <span class="srcs">slide 38</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Climax ore</span><span class="srcs">slide 40</span></div>
+    <img loading="lazy" decoding="async" src="img/L11/climaxore.jpg" alt="Small pale grey rock with dark grey streaks and patches and a thin grey vein cutting it" style="max-width:360px;margin:0 auto">
+    <p class="ask">This is ore. What would you look for to see the molybdenum?</p>
+    <details data-obs="climax"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A pale, quartz-rich rock (silicified rhyolite porphyry) with dark grey streaks and a thin quartz vein.</li></ul>
+      <p class="so">So look for soft, lead-grey to bluish, platy <b>molybdenite</b> in the veinlets and disseminated through the rock. Ore is mostly stockwork veins with minor disseminations, at only 0.1 to 0.45% MoS₂, so you won’t see much. Tonnages run from 50 to 1500 Mt, mined by open cut, stoping and block caving, mostly in western North America (and now Tibet). <span class="srcs">slide 40</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L11/climax.jpg" alt="Snow-covered terraced open pit high in rugged mountains">
+    <figcaption>Climax, high in the Colorado Rockies, long America’s biggest molybdenum producer. <span class="srcs">slide 39</span> <span class="srcs">lecture recording, 9 Oct</span></figcaption>
+  </figure>
+  <p>A plot of oxidation (Fe₂O₃/FeO) against fractionation (Rb/Sr) separates the porphyry types: Cu-Au from oxidised, little-fractionated magmas; Mo from more fractionated ones; Sn-W from reduced, highly fractionated ones. Phil Blevin applied it to New South Wales: every NSW porphyry plots as oxidised and little fractionated, so in NSW you’re exploring for Cu-Au, not Mo or Sn. That’s the slider back in section 3. <span class="srcs">slide 41</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="andes" data-log="Andes"><div class="wrap">
+  <div class="kicker">The big picture <span class="depth">130 to 144 m</span></div>
+  <h2>Why the Andes</h2>
+  <p>Stress decides how magma behaves. Tension lets primitive magma rise fast up extensional faults and erupt. Compression stops it rising, which builds a big MASH zone and lower-crustal reservoir. <b>Shear</b> is ideal: local extensional faults and pull-apart basins focus magma and fluid into high-level stocks. <span class="srcs">slide 49</span> (Richards, 2004)</p>
+  <div class="lab">
+    <h4><span>Which stress regime?</span><b id="srScore">0 / 3</b></h4>
+    <div class="cards" id="srCards"></div>
+  </div>
+  <p>The largest porphyries form in contractional settings of three kinds: flat-slab subduction from fast plate motion; subduction of young, buoyant seamounts, ridges or oceanic plateaus, which also flattens the slab; and accretion of exotic terranes. The central Andes are the biggest copper region on Earth (985 Mt contained Cu) for four reasons: they sit in the middle of the orogen where shortening and oroclinal bending peak; the Juan Fernandez ridge was subducted; copper-forming episodes repeated from the Late Carboniferous to the Pliocene, suggesting copper-rich crust to start with; and they are young (Cenozoic), so not yet eroded. <span class="srcs">slides 54 to 57</span></p>
+  <p>Preservation is the catch. Porphyries form high in rising mountain belts, so they erode fast. Palaeozoic porphyries are uncommon worldwide, which makes the Lachlan Orogen porphyries of central NSW unusual, and a few Proterozoic deposits have been interpreted as porphyries. <span class="srcs">slide 37</span> <span class="srcs">lecture recording, 9 Oct</span></p>
+  <p>Put it together. Slab fluids hydrate and oxidise the mantle wedge, adding S, Cl and C. Hydrous basalt rises and modifies the lower crust. Copper comes mainly from the subducted oceanic crust, which holds more than continental crust (plus subducted VMS deposits, manganese nodules and pelagic sediment). Translithospheric faults focus magma upward. Flat subduction can enrich the lower crust and lithospheric mantle, which later melts. And fresh mafic melt injected into mid-crustal chambers makes the hybrid magma that forms the deposit. <span class="srcs">slides 58 to 60</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>Oxidised, hydrous, I-type intermediate magma from a MASH zone; shear (pull-apart) is the ideal stress regime.</li><li>Giants form in contractional settings: flat slab, ridge or seamount subduction, terrane accretion.</li><li>Central Andes: maximum shortening, Juan Fernandez ridge, repeated episodes, young and preserved.</li></ul><span class="srcs">slides 49, 54 to 60</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 12 starts gold week. The epithermal veins sitting above porphyries come in Lecture 14, and the supergene blanket that made the first porphyry mines pay is the weathering story from Lecture 2.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 11 slides (Porphyry Cu-Au-Mo deposits, 61 slides; photos and figures tagged by slide) and the Echo360 recording of 9 October 2026. Figures in the slides come from published sources (Corbett 2008, Natural Resources Canada, Winter 2001, Richards 2004, Hedenquist and Richards 1998, Behn et al. 2001, Gustafson and Hunt 1975, Müller et al. 2023, Rohrlach and Loucks 2005, Burnham, Fournier 1999, Lowell and Guilbert, Scott et al. 2008, USGS and others) and are shown only as lecture material. The drilling game, the magma classifier and the carapace steps are teaching models; the drilling and Sr/Y sample numbers are invented.</p>
+  <p><a href="L10.html">&larr; Lecture 10</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know a phenocryst when you see one.'],[35,'Graduate geologist','You can log an A vein from a B vein.'],[100,'Project geologist','You can find the ore shell.'],[180,'Senior geologist','You can read a magnetic low.'],[270,'Chief geologist','The Andes call you first.']];
+var G={
+ "porphyry":"An igneous rock with large crystals (phenocrysts) in a fine groundmass; also short for a porphyry ore deposit.",
+ "magmatic-hydrothermal":"Formed by hot fluid released from a crystallising magma.",
+ "phenocryst":"A large crystal in a finer-grained groundmass.",
+ "I-type":"A granitoid derived from igneous source rock rather than melted sediment.",
+ "MASH zone":"Melting, Assimilation, Storage, Homogenisation: the lower-crustal zone where arc basalt mixes with crust to make hybrid magma.",
+ "mantle wedge":"The wedge of mantle above a subducting slab, where hydrous melting makes arc magma.",
+ "oxidised magma":"A magma with high Fe³⁺/Fe²⁺ (near the hematite-magnetite buffer); carries Cu and Au to porphyry deposits.",
+ "stockwork":"A dense, criss-crossing network of veinlets; the main ore style in porphyries.",
+ "ore shell":"The zone around the barren core with 1 to 3% sulphide, more chalcopyrite than pyrite: the ore.",
+ "pyrite shell":"The zone outside the ore shell with about 10% pyrite and little chalcopyrite.",
+ "potassic alteration":"K-feldspar and biotite (± magnetite) alteration in the porphyry core; always present.",
+ "phyllic alteration":"Quartz-sericite-pyrite alteration on the flanks; not always present.",
+ "argillic alteration":"Clay-rich alteration that destroys plagioclase; above the system, not always present.",
+ "propylitic alteration":"Chlorite-epidote-albite-calcite alteration in the outer halo; always present.",
+ "sericite":"Fine white mica made by hydrolytic alteration of feldspar.",
+ "A vein":"An early, irregular sugary quartz-K-feldspar vein with a K-feldspar halo.",
+ "B vein":"A planar quartz vein with coarse crystals perpendicular to the walls and coarse molybdenite and chalcopyrite; no halo; carries most of the ore.",
+ "D vein":"A late pyrite-anhydrite vein with a sericite halo; cuts everything.",
+ "EB vein":"An early biotite vein, deep in the system.",
+ "UST":"Unidirectional solidification texture: comb-like crystal layers growing down from an intrusion’s roof; a vector to ore above.",
+ "cupola":"The domed top of an intrusion.",
+ "carapace":"The water-saturated outer shell of a crystallising intrusion.",
+ "hydrofracturing":"Rock breaking under fluid pressure; makes porphyry stockworks and breccias.",
+ "breccia pipe":"A pipe of broken rock made by explosive fluid release; can host high-grade ore.",
+ "Sr/Y":"Strontium to yttrium ratio; high in hydrous, fertile porphyry magmas.",
+ "supergene blanket":"The enriched chalcocite-covellite zone formed by weathering; up to four times primary grade.",
+ "enargite":"Cu₃AsS₄, a copper arsenic sulphide common in porphyry systems.",
+ "bornite":"Cu₅FeS₄, a purple-iridescent copper sulphide.",
+ "molybdenite":"MoS₂, soft, platy, lead-grey: the ore of molybdenum.",
+ "block caving":"Underground mining that undercuts a huge block so it caves under its own weight.",
+ "flat-slab subduction":"Shallow-angle subduction, linked to the largest porphyry deposits.",
+ "skarn":"A calc-silicate rock formed where intrusion-related fluid reacts with carbonate; can host Cu-Au-Fe or Pb-Zn-Ag ore."
+};
+var CP={
+ cp1:{q:'Why can porphyry deposits be mined at 0.1 to 0.5% Cu?',o:['Because they are enormous (hundreds to over a thousand Mt) and mined at huge scale for decades','Because copper is rare','Because the ore is at the surface only'],a:0,e:'Economies of scale over a long mine life make low grade pay.'},
+ cp2:{q:'Which porphyry phase carries most of the copper?',o:['The largest intrusion','The earliest phase; later phases dilute it','The last phase'],a:1,e:'Volume doesn’t predict copper; the earliest phase does.'},
+ cp3:{q:'What kind of magma makes a porphyry Cu-Au deposit?',o:['Reduced and highly fractionated','Oxidised, hydrous and little fractionated','Dry basalt'],a:1,e:'Oxidised (near hematite-magnetite) magma keeps Cu and Au out of early sulphide. Sn-W porphyries come from reduced magma.'},
+ cp4:{q:'Porphyritic texture means...',o:['all crystals the same size','large phenocrysts in a fine groundmass: slow growth at depth, then fast cooling at a high level','glassy with no crystals'],a:1,e:'The two-stage cooling of a shallow intrusion gives the deposits their name.'},
+ cp5:{q:'Drilling out from the centre of a porphyry, what order do you meet?',o:['Ore shell, barren core, pyrite shell','Barren or low-grade core, ore shell, pyrite shell, propylitic halo','Pyrite shell, ore shell, propylitic halo'],a:1,e:'The ore is on the margins of the intrusion, not in its middle.'},
+ cp6:{q:'Which veins carry the bulk of porphyry ore?',o:['A veins','B veins','D veins'],a:1,e:'Planar, halo-free B veins with coarse molybdenite, chalcopyrite and bornite, often sheeted.'},
+ cp7:{q:'Pink K-feldspar and hydrothermal biotite mean...',o:['propylitic alteration, outer halo','potassic alteration, the core','argillic alteration'],a:1,e:'Potassic is always present in the core; pink K-feldspar reflects iron in an oxidised system.'},
+ cp8:{q:'Why do Chuquicamata and El Abra sit on magnetic lows?',o:['They are hosted in limestone','Hydrothermal fluid destroyed the primary magnetite','They are buried too deep'],a:1,e:'Fluid flushing demagnetised the rock; a low in a magnetic intrusion is a target.'},
+ cp9:{q:'What makes the porphyry stockwork?',o:['Tectonic folding','Hydrofracturing when water exsolved into the carapace builds enough pressure to break the rock','Weathering'],a:1,e:'3 to 5% water concentrates in the carapace, pressure builds, the brittle roof fails.'},
+ cp10:{q:'Compared with Cu-Au porphyries, porphyry Mo deposits come from...',o:['more oxidised, less fractionated magma','more reduced, more fractionated magma','mantle peridotite'],a:1,e:'Climax is in rhyolitic porphyry; NSW porphyries are all oxidised Cu-Au types.'},
+ cp11:{q:'Which stress regime is ideal for porphyry Cu formation?',o:['Pure tension','Pure compression','Shear, with pull-apart extensional conduits'],a:2,e:'Shear focuses magma and fluid along local extensional faults.'}
+};
+var ST=[
+ ['What are the five factors needed for any magmatic-hydrothermal deposit?','Recall','A source of metals, a transport mechanism, a concentration mechanism, a depositional mechanism, and a post-depositional history that preserves it.'],
+ ['Give the size and grade of typical porphyry deposits and explain why they are economic.','Recall','Many >500 Mt, some >1000 Mt, at 0.1 to 0.5% Cu, ~0.3 g/t Au, up to ~0.5% Mo. Economic through enormous scale and long mine life (open pit or block caving), which also smooths out metal price swings.'],
+ ['Explain how subduction produces an oxidised, metal-bearing porphyry magma.','Apply','Hydrated oceanic crust dehydrates (amphibole, serpentine), releasing oxidising fluid rich in Cl, S, LILE, Cu and Au into the mantle wedge, which melts. Basalt ponds in a lower-crustal MASH zone, mixing with crust into hybrid calc-alkaline magma that rises to high-level stocks.'],
+ ['Describe the Lowell and Guilbert zoning model.','Recall','Barren or low-grade potassic core with magnetite; ore shell (1 to 3% sulphide, cpy > py, molybdenite); pyrite shell (~10% py) with phyllic alteration; outer propylitic halo with peripheral Pb-Zn-Ag-Au veins; argillic alteration above. Potassic and propylitic always present; phyllic and argillic not always.'],
+ ['Distinguish EB, A, B and D veins.','Apply','EB: early biotite veins, deep. A: early, irregular, sugary quartz-K-feldspar with K-feldspar halos. B: planar quartz with crystals perpendicular to walls, coarse molybdenite-chalcopyrite-bornite, no halo, most of the ore. D: late pyrite-anhydrite with sericite halos, cut everything.'],
+ ['Why might a big porphyry stock have little copper?','Think','Volume doesn’t control copper. Later intrusive phases dilute the earliest, metal-bearing phase, and late sericite or chlorite-sericite fluids can remove copper introduced during potassic alteration.'],
+ ['List three exploration vectors toward porphyry ore and explain each.','Apply','Alteration zoning (pyrite shell outside, barren potassic core inside); UST textures (ore 100 to 200 m above, per slide 33); high Sr/Y fertile magmas (water suppresses plagioclase); magnetic lows where fluid destroyed magnetite in a magnetic intrusion; B-vein density.'],
+ ['Explain how a porphyry stockwork and breccia form.','Apply','A magma with 3 to 5% water at ~1000 °C crystallises; water concentrates in a saturated carapace; pressure builds until the brittle roof hydrofractures, making stockwork veins and breccia pipes; meteoric water then mixes in and drives sericitic alteration.'],
+ ['How do porphyry Mo deposits differ from porphyry Cu-Au deposits?','Recall','More reduced and more fractionated magmas; three host subclasses (granitic, trondhjemite, rhyolitic like Climax); ore mostly stockwork molybdenite at 0.1 to 0.45% MoS₂, 50 to 1500 Mt, mainly western North America.'],
+ ['Why are the central Andes the world’s largest copper province, and why are old porphyries rare?','Synthesise','Maximum shortening and oroclinal bending, Juan Fernandez ridge subduction (flat slab), repeated metallogenic episodes over a Cu-rich crust, and young Cenozoic age so they’re preserved. Porphyries form high in uplifting arcs and erode quickly, so Palaeozoic and older ones are rare.']
+];
+GEO.start({key:'geos3141-L11-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- drilling game ---------- */
+var dhs=$('#dhSvg'),dh={xc:320,holes:[],found:false,best:null};
+var DZ=[[0,45,'Potassic, low-grade core','#E7A1A0',0.12,1],[45,95,'Potassic, ore shell','#D9A43A',0.85,2],[95,140,'Phyllic, pyrite shell','#E9DFA5',0.1,10],[140,230,'Propylitic halo','#9DBB8E',0.02,2],[230,999,'Propylitic, peripheral veins','#B7C9A8',0.01,1]];
+function dzOf(d){for(var i=0;i<DZ.length;i++)if(d<DZ[i][1])return i;return 4;}
+function dhNew(){dh.xc=170+Math.random()*300;dh.holes=[];dh.found=false;$('#dhZ').textContent='?';$('#dhCu').textContent='?';$('#dhPy').textContent='?';$('#dhSay').textContent='New ground. Tap a drill collar to start.';dhDraw();}
+function dhDraw(){var s=dhs;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:40,fill:'#BFD7E6'},s);el('rect',{x:0,y:40,width:640,height:290,fill:'#B8AE9E'},s);txt(s,10,26,'surface',{'font-size':12,fill:'#163245'});
+  if(dh.found){for(var i=DZ.length-1;i>=0;i--){var w=Math.min(700,DZ[i][1]);el('path',{d:'M'+(dh.xc-w)+' 330 L'+(dh.xc-w*.8)+' 120 Q'+dh.xc+' '+(60-(4-i)*6)+' '+(dh.xc+w*.8)+' 120 L'+(dh.xc+w)+' 330 Z',fill:DZ[i][3],opacity:.85},s);}
+    el('path',{d:'M'+(dh.xc-170)+' 110 Q'+dh.xc+' 50 '+(dh.xc+170)+' 110 L'+(dh.xc+150)+' 90 Q'+dh.xc+' 44 '+(dh.xc-150)+' 90 Z',fill:'#F1EFE8',opacity:.9},s);txt(s,dh.xc-30,82,'argillic',{'font-size':11,fill:'#3E3A36'});
+    el('path',{d:'M'+(dh.xc-40)+' 330 L'+(dh.xc-30)+' 170 Q'+dh.xc+' 140 '+(dh.xc+30)+' 170 L'+(dh.xc+40)+' 330 Z',fill:'none',stroke:'#7A2E1F','stroke-width':2,'stroke-dasharray':'5 4'},s);txt(s,dh.xc-24,320,'stock',{'font-size':11,fill:'#7A2E1F'});}
+  for(var i=0;i<11;i++){(function(i){var x=40+i*56,h=dh.holes.indexOf(i)>=0,g=el('g',{style:'cursor:pointer'},s);el('rect',{x:x-27,y:0,width:54,height:330,fill:'transparent'},g);
+    if(h){var d=Math.abs(x-dh.xc),z=dzOf(d);el('rect',{x:x-6,y:44,width:12,height:46,fill:d<160?'#F1EFE8':DZ[z][3],stroke:'#3E3A36'},g);el('rect',{x:x-6,y:90,width:12,height:220,fill:DZ[z][3],stroke:'#3E3A36'},g);
+      txt(g,x,326,DZ[z][4].toFixed(2)+'%',{'font-size':11,fill:'#1A1A1A','text-anchor':'middle','font-weight':700});}
+    el('path',{d:'M'+(x-9)+' 40 L'+(x+9)+' 40 L'+x+' 24 Z',fill:h?'var(--muted)':'var(--gold)'},g);g.addEventListener('click',function(){dhDrill(i);});})(i);}
+  $('#dhTag').textContent=dh.holes.length+(dh.holes.length===1?' hole':' holes');}
+function dhDrill(i){if(dh.found||dh.holes.indexOf(i)>=0)return;dh.holes.push(i);var x=40+i*56,d=Math.abs(x-dh.xc),z=dzOf(d),Z=DZ[z];
+  $('#dhZ').textContent=Z[2]+(d<160?' (argillic near surface)':'');$('#dhCu').textContent=Z[4].toFixed(2)+'% Cu';$('#dhPy').textContent=Z[5]+'% pyrite';SND.play('tick');
+  if(z===1){dh.found=true;var n=dh.holes.length;dh.best=dh.best===null?n:Math.min(dh.best,n);COMBO.hit();award('dh',COMBO.pts(n<=3?6:n<=5?4:2),'Hit the ore shell in '+n+' holes'+COMBO.tag());FX.burst(dhs);
+    $('#dhSay').innerHTML='Ore in hole '+n+' (best so far: '+dh.best+'). The shells are now drawn: low-grade potassic core in the middle, the ore shell around it, the pyrite shell, then the propylitic halo, with an argillic cap above. New prospect?';}
+  else $('#dhSay').innerHTML=z===0?'K-feldspar, biotite and magnetite, but little copper: you’re in the <b>low-grade core</b>. The ore is just outside this, on the margins.':z===2?'Quartz-sericite with about 10% pyrite and hardly any chalcopyrite: the <b>pyrite shell</b>. The ore shell is just inside it, toward the stock.':z===3?'Chlorite and epidote: the <b>propylitic halo</b>. You’re on the outside of the system; step in.':'Weak propylitic alteration and a few Pb-Zn-Ag veins: the <b>periphery</b>, a long way out.';
+  dhDraw();}
+$('#dhNew').addEventListener('click',dhNew);dhNew();
+
+/* ---------- size chart ---------- */
+var SZ={reg:{n:'Regions, contained Cu (Mt)',d:[['Central Andes',985],['SW North America',270],['Northern Peru',115],['New Guinea',82],['British Columbia',70],['Philippines',50],['SE Iran',36]],u:'Mt',s:'The central Andes hold almost a billion tonnes of contained copper, more than three times the next region. Tibet is likely to join the list. Australia isn’t on it.'},
+ dep:{n:'Deposits, contained Cu (Mt)',d:[['Rio Blanco-Los Bronces',220],['Escondida',144],['Chuquicamata',135],['El Teniente',94],['Collahuasi',85],['Grasberg',56],['Los Pelambres-El Pachon',44],['Morenci',42],['Oyu Tolgoi',39],['Pebble',37]],u:'Mt',s:'Five of the top ten are in Chile. Rio Blanco-Los Bronces and Escondida are clusters of several stocks.'},
+ prod:{n:'Cu production 2025 (kt)',d:[['Chile',5300],['Congo',3200],['Peru',2700],['China',1800],['Russia',1300],['USA',1000],['Zambia',940],['Australia',730],['Indonesia',710],['Kazakhstan',710],['Mexico',690],['Canada',500]],u:'kt',s:'Chile mines more than any two others. The Congo and Zambia are sediment-hosted copper, not porphyry.'},
+ res:{n:'Cu reserves (kt)',d:[['Chile',180000],['Australia',100000],['Peru',85000],['Congo',80000],['Russia',80000],['Mexico',53000],['USA',47000],['China',41000],['Indonesia',21000],['Zambia',21000],['Kazakhstan',20000],['Canada',7000]],u:'kt',s:'Australia is eighth in production but second in reserves: lots of copper still to mine.'}},szK='reg',szSeen={};
+Object.keys(SZ).forEach(function(k){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=SZ[k].n.replace(/ \(.*\)/,'');b.setAttribute('aria-pressed',k===szK);b.addEventListener('click',function(){szK=k;$$('#szC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');szDraw();});$('#szC').appendChild(b);});
+function szDraw(){var s=$('#szSvg'),Z=SZ[szK],max=Z.d[0][1];s.innerHTML='';Z.d.forEach(function(r,i){var y=6+i*38,w=r[1]/max*290;txt(s,8,y+21,r[0],{'font-size':13,fill:'var(--ink)'});el('rect',{x:230,y:y+6,width:Math.max(2,w),height:22,rx:3,fill:r[0]==='Australia'?'var(--gold)':/Chile|Andes|Escondida|Chuqui|Teniente|Rio Blanco|Collahuasi|Pelambres/.test(r[0])?'var(--slate)':'var(--line)'},s);txt(s,236+w,y+22,r[1].toLocaleString('en-AU')+' '+Z.u,{'font-size':12,fill:'var(--ink)'});});
+  $('#szTag').textContent=Z.n;$('#szSay').textContent=Z.s;szSeen[szK]=1;if(Object.keys(szSeen).length>=3)award('sz',4,'Compared copper by region and country');}
+szDraw();
+
+/* ---------- magma classifier ---------- */
+var bvSeen={};
+function bvCls(o,f){return o>=55&&f<50?'cu':o>=40&&f>=50?'mo':o<35&&f>=55?'sn':o<35?'w':'mix';}
+function bvDraw(){var s=$('#bvSvg'),o=+$('#bvO').value,f=+$('#bvF').value;s.innerHTML='';var X=function(v){return 60+v*5.6;},Y=function(v){return 260-v*2.4;};
+  el('rect',{x:60,y:20,width:560,height:240,fill:'var(--paper)',stroke:'var(--line)'},s);
+  el('rect',{x:X(0),y:Y(100),width:X(50)-X(0),height:Y(55)-Y(100),fill:'#D9A43A',opacity:.35},s);txt(s,X(4),Y(90),'Cu-Au',{'font-size':14,fill:'var(--ink)','font-weight':700});
+  el('rect',{x:X(50),y:Y(100),width:X(100)-X(50),height:Y(40)-Y(100),fill:'#8FA3C7',opacity:.35},s);txt(s,X(54),Y(90),'Mo (and W-Mo)',{'font-size':14,fill:'var(--ink)','font-weight':700});
+  el('rect',{x:X(55),y:Y(35),width:X(100)-X(55),height:Y(0)-Y(35),fill:'#9DBB8E',opacity:.4},s);txt(s,X(60),Y(12),'Sn-W',{'font-size':14,fill:'var(--ink)','font-weight':700});
+  el('rect',{x:X(0),y:Y(35),width:X(55)-X(0),height:Y(0)-Y(35),fill:'#C9C0A8',opacity:.35},s);txt(s,X(4),Y(12),'W, or barren',{'font-size':13,fill:'var(--ink)'});
+  txt(s,250,290,'fractionation, Rb/Sr →',{'font-size':12,fill:'var(--ink)'});txt(s,4,16,'↑ oxidation, Fe₂O₃/FeO',{'font-size':12,fill:'var(--ink)'});
+  el('circle',{cx:X(f),cy:Y(o),r:10,fill:'#C8553A',stroke:'#FFF','stroke-width':2},s);
+  var c=bvCls(o,f);bvSeen[c]=1;$('#bvOV').textContent=o>66?'high':o>33?'moderate':'low';$('#bvFV').textContent=f>66?'high':f>33?'moderate':'low';
+  $('#bvTag').textContent={cu:'porphyry Cu-Au',mo:'porphyry Mo',sn:'Sn-W',w:'W or barren',mix:'in between'}[c];
+  $('#bvSay').innerHTML={cu:'Oxidised and little fractionated: <b>porphyry Cu-Au</b>. Sulphur stays as sulphate, so Cu and Au aren’t locked into early sulphide. Every NSW porphyry plots here.',mo:'Strongly fractionated, still fairly oxidised: <b>porphyry Mo</b>, like Climax.',sn:'Reduced and highly fractionated: <b>Sn-W</b> systems, at lower temperatures (about 400 to 550 °C).',w:'Reduced but not very fractionated: tungsten at best, often barren.',mix:'Between the fields: hard to call. Push oxidation or fractionation further.'}[c]+' <span class="srcs">slides 19 and 41</span>';
+  if(bvSeen.cu&&bvSeen.mo&&bvSeen.sn)award('bv',4,'Found the Cu-Au, Mo and Sn-W fields');}
+$('#bvO').addEventListener('input',bvDraw);$('#bvF').addEventListener('input',bvDraw);bvDraw();
+
+/* ---------- vein photo cards ---------- */
+var VNO=['EB vein','A vein','B vein','D vein'];
+mcCards($('#vnCards'),[
+ {img:'img/L11/avein.jpg',alt:'Drill core of dark rock cut by irregular grey quartz veins with orange-pink margins',lbl:'Drill core',q:'Irregular grey quartz veins with pink-orange margins. Which vein type?',o:VNO,a:1,e:'A vein: sugary quartz with K-feldspar on its margins. (slide 26)'},
+ {img:'img/L11/bvein.jpg',alt:'Split grey rock with a straight vein along the split showing a central line',lbl:'Hand specimen',q:'A straight, continuous vein with a centre line and no halo. Which type?',o:VNO,a:2,e:'B vein: planar, with quartz grown in from both walls to a centre line; these carry most of the ore. (slide 27)'},
+ {img:'img/L11/dvein.jpg',alt:'Pale yellow-cream bleached rock with dark sulphide-rich bands',lbl:'Hand specimen',q:'Dark sulphide-rich veins in pale, bleached rock where the feldspar is gone. Which type?',o:VNO,a:3,e:'D vein: pyrite-rich with a sericite halo that destroys feldspar. (slide 28)'},
+ {img:'img/L11/ebvein.jpg',alt:'Pale granular rock cut by thin dark brown-black veinlets, UNSW scale card',lbl:'Hand specimen',q:'Thin dark veinlets of a black mica with almost no quartz or sulphide. Which type?',o:VNO,a:0,e:'EB vein: early biotite, formed deep. (slide 29)'}
+],'vn',3,function(r,n){$('#vnScore').textContent=r+' / '+n;});
+
+/* ---------- alteration cards ---------- */
+var ALO=['Potassic','Phyllic','Argillic','Propylitic'];
+mcCards($('#alCards'),[
+ {lbl:'Core log',q:'Green rock with chlorite and epidote, calcite and a little pyrite, far from the stock',o:ALO,a:3,e:'Propylitic: always present, the outer halo.'},
+ {lbl:'Core log',q:'Bleached silica-sericite with abundant pyrite on the flank of the deposit',o:ALO,a:1,e:'Phyllic: the pyrite shell.'},
+ {lbl:'Core log',q:'Pink K-feldspar and fine secondary biotite with magnetite',o:ALO,a:0,e:'Potassic: the core.'},
+ {lbl:'Core log',q:'Soft clay replacing plagioclase while K-feldspar is untouched, near the top',o:ALO,a:2,e:'Argillic: not always present, can overprint potassic.'}
+],'al',2,function(r,n){$('#alScore').textContent=r+' / '+n;});
+
+/* ---------- Sr/Y cards ---------- */
+var SYO=['Fertile: worth following up','Barren: typical arc rock'];
+mcCards($('#syCards'),[
+ {lbl:'Sample A',q:'Hornblende-rich quartz diorite, SiO₂ 62 wt%, Sr/Y 85',o:SYO,a:0,e:'High Sr/Y: water suppressed plagioclase (Sr stays in melt) and hornblende took Y.'},
+ {lbl:'Sample B',q:'Andesite, SiO₂ 60 wt%, Sr/Y 15',o:SYO,a:1,e:'Low Sr/Y: plagioclase crystallised freely, a drier magma.'},
+ {lbl:'Sample C',q:'Tonalite porphyry, SiO₂ 66 wt%, Sr/Y 60, abundant hornblende phenocrysts',o:SYO,a:0,e:'Elevated Sr/Y in a hydrous magma.'},
+ {lbl:'Sample D',q:'Plagioclase-rich dacite, SiO₂ 68 wt%, Sr/Y 8',o:SYO,a:1,e:'Plagioclase took the Sr: low Sr/Y.'}
+],'sy',2,function(r,n){$('#syScore').textContent=r+' / '+n;});
+
+/* ---------- carapace steps ---------- */
+var cps=$('#cpSvg'),cpS=1;
+var CPS=['','<b>1. Emplacement.</b> A granodiorite porphyry stock rises into the upper crust at about 1000 °C carrying 3 to 5% water.','<b>2. Carapace.</b> The outer shell crystallises first. Water can’t fit into the crystals, so it concentrates in the remaining melt under the roof: a water-saturated carapace.','<b>3. Hydrofracturing.</b> Pressure builds until the brittle roof fails. Fluid escapes through a dense fracture network, the stockwork, and blasts out breccia pipes and dykes. Potassic alteration and the ore shell form here.','<b>4. Collapse inward and meteoric water.</b> As the stock cools, the carapace retreats deeper and meteoric water is drawn in around the sides. It mixes with magmatic fluid and drives sericitic (phyllic) alteration, which can overprint the potassic zone and strip some copper.'];
+function cpDraw(){var s=cps;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'#C9C0A8'},s);el('rect',{x:0,y:0,width:640,height:20,fill:'#BFD7E6'},s);
+  el('path',{d:'M180 300 L200 140 Q320 '+(cpS>=4?110:80)+' 440 140 L460 300 Z',fill:'#E7A1A0'},s);txt(s,280,280,'porphyry stock',{'font-size':12,fill:'#3E2E12'});
+  if(cpS>=2){var top=cpS>=4?150:110;el('path',{d:'M230 '+(top+60)+' Q320 '+top+' 410 '+(top+60)+' Q320 '+(top+30)+' 230 '+(top+60)+' Z',fill:'#7FC3E0'},s);txt(s,280,top+50,'H₂O-saturated',{'font-size':11,fill:'#163245'});}
+  if(cpS>=3){var r=rng(5);for(var i=0;i<60;i++){var x=210+r()*220,y=40+r()*130,a=r()*3.1;el('line',{x1:x,y1:y,x2:x+Math.cos(a)*22,y2:y+Math.sin(a)*22,stroke:'#3E3A36','stroke-width':1.5},s);}el('path',{d:'M340 100 L350 20 L370 20 L360 100 Z',fill:'#8C7B68',stroke:'#3E3A36'},s);txt(s,374,40,'breccia pipe',{'font-size':12,fill:'#3E2E12'});txt(s,450,90,'stockwork',{'font-size':12,fill:'#3E2E12'});}
+  if(cpS>=4){[[120,40,180,200],[520,40,460,200]].forEach(function(p){el('path',{d:'M'+p[0]+' '+p[1]+' Q'+((p[0]+p[2])/2)+' 140 '+p[2]+' '+p[3],fill:'none',stroke:'#2F6FA3','stroke-width':3,'stroke-dasharray':'6 4'},s);});txt(s,30,60,'meteoric water',{'font-size':12,fill:'#2F6FA3'});
+    el('path',{d:'M200 140 Q320 70 440 140 L430 200 Q320 140 210 200 Z',fill:'#E9DFA5',opacity:.7},s);txt(s,250,120,'sericitic overprint',{'font-size':11,fill:'#3E2E12'});}
+  $('#cpStep').textContent='step '+cpS+' of 4';$('#cpSay').innerHTML=CPS[cpS]+' <span class="srcs">slides 43, 46 to 48</span>';$('#cpBack').disabled=cpS===1;$('#cpNext').disabled=cpS===4;}
+$('#cpNext').addEventListener('click',function(){if(cpS<4){cpS++;cpDraw();SND.play('flip');if(cpS===4)award('cp',4,'Crystallised a porphyry stock');}});
+$('#cpBack').addEventListener('click',function(){if(cpS>1){cpS--;cpDraw();}});
+cpDraw();
+
+/* ---------- stress regime cards ---------- */
+var SRO=['Tension','Compression','Shear'];
+mcCards($('#srCards'),[
+ {img:'img/L11/tension.jpg',alt:'Block diagram with plates pulling apart, mafic magma leaking up faults to basaltic flows and cinder cones',lbl:'Block diagram',q:'Mafic magma leaks straight up extensional faults and erupts. Which regime?',o:SRO,a:0,e:'Tension: rapid ascent of primitive magma, so not much stored at a high level.'},
+ {img:'img/L11/compression.jpg',alt:'Block diagram with plates pushing together, faults compressed, magma stored in a MASH zone at the base of the crust',lbl:'Block diagram',q:'Faults are squeezed shut and magma is stored deep in a MASH zone. Which regime?',o:SRO,a:1,e:'Compression: builds the lower-crustal reservoir but hinders ascent.'},
+ {img:'img/L11/shear.jpg',alt:'Block diagram with a strike-slip fault and a pull-apart basin above a MASH zone, with a porphyry copper deposit below a composite volcano',lbl:'Block diagram',q:'Magma rises into a pull-apart along a strike-slip fault. Which regime?',o:SRO,a:2,e:'Shear: ideal for porphyry Cu, focusing magma and fluid. (slide 49)'}
+],'sr',3,function(r,n){$('#srScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
