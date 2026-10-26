@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 14 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L13.html">&larr; Lecture 13</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 14 · T3 2026</div>
+  <h1>Gold at the boiling point</h1>
+  <p class="lede">Epithermal deposits are the shallow end of the gold world: from hot springs at the surface down to about 3 km, above the porphyries of Lecture 11. They’re usually small but can be outrageously rich, with bonanza grades over a kilogram of gold per tonne. Everything about them, from the banded veins to the alteration, records fluid boiling and mixing near the surface. Start by walking across a volcanic arc.</p>
+
+  <div class="lab" id="arLab">
+    <h4><span>From porphyry to hot spring</span><b id="arCount">0 / 6 zones</b></h4>
+    <svg class="grid-svg" id="arSvg" viewBox="0 0 640 330" role="img" aria-label="Cross-section of a volcanic arc with a porphyry intrusion at depth, a high sulphidation lithocap near the volcano, intermediate and low sulphidation veins further away, a steam-heated blanket and a hot spring"></svg>
+    <p class="say" id="arSay">Tap each labelled zone, from the porphyry at depth to the hot spring at the surface.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Schematic section after the Corbett and Leach style diagrams on slides 14 to 17; positions are idealised, and real systems rarely show every zone.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#what">What an epithermal deposit is</a></li>
+      <li><a href="#surface">Hot springs and geysers</a></li>
+      <li><a href="#controls">What focuses the ore</a></li>
+      <li><a href="#breccias">Breccias</a></li>
+      <li><a href="#sulph">High, intermediate and low sulphidation</a></li>
+      <li><a href="#hs">High sulphidation in the hand</a></li>
+      <li><a href="#ls">Low sulphidation and bonanza veins</a></li>
+      <li><a href="#grade">What makes high grade</a></li>
+      <li><a href="#alteration">Reading the alteration</a></li>
+      <li><a href="#lihir">Lihir: a volcano that lost its head</a></li>
+      <li><a href="#examples">Epithermal deposits close to home</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="what" data-log="Epithermal"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>What an epithermal deposit is</h2>
+  <p><button class="term" data-t="epithermal">Epithermal</button> deposits form in volcanic arc and back-arc terranes, mostly hosted by rhyolite, rhyodacite and dacite. Mineralisation can be syngenetic or epigenetic, and gold-only, gold-silver or silver-only. It forms anywhere from the surface (geysers, hot springs, mud pools) down to about 3 km, from hydrothermal fluid that ultimately comes from a magma below. Ages run from the Archean (at least 3 billion years) to today, in active volcanic regions such as White Island in New Zealand. <span class="srcs">slides 3 and 4</span></p>
+  <p>They’re generally small, under 50 Mt, but high grade, and <button class="term" data-t="bonanza">bonanza</button> ore (over 1 kg of gold or silver per tonne) is relatively common. Deposits cluster around volcanic calderas, often along the caldera margins. Gold comes as free-milling native gold and as micro-particles locked in sulphides. Common companions: sphalerite (a honey-yellow colour is a good sign of gold and silver), galena, tetrahedrite-group minerals and chalcopyrite, early euhedral pyrite, quartz veins and carbonates (ankerite goes with the ore), and alteration of illite-muscovite and adularia. <span class="srcs">slides 3 and 4</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a vein specimen</span><span class="srcs">slide 1</span></div>
+    <img loading="lazy" decoding="async" src="img/L14/banded.jpg" alt="Cut slab of a vein made of many thin, parallel bands of white, grey and pale blue quartz and chalcedony">
+    <p class="ask">Describe the banding. What does it tell you about how this vein filled?</p>
+    <details data-obs="banded"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Many thin, roughly parallel bands of white quartz, grey and translucent blue-grey chalcedony, repeated across the slab.</li><li>No wall-rock fragments, no single coarse fill.</li></ul>
+      <p class="so">So the vein filled bit by bit, band after band, each layer growing on the last in open space: <button class="term" data-t="crustiform">crustiform</button> (colloform) banding. Each band records a pulse of fluid, and fine chalcedony means rapid, low-temperature deposition. This is the signature texture of low sulphidation epithermal veins, and gold often sits in particular bands. <span class="srcs">slides 1, 27 to 29</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/goldxl.jpg" alt="A spray of crystalline gold leaves on a black background" style="max-width:360px;margin:0 auto">
+    <figcaption>Crystalline gold, the kind of specimen bonanza epithermal veins can produce. <span class="srcs">slide 1</span></figcaption>
+  </figure>
+  <div class="keybox"><b>Memorise</b><ul><li>Arc and back-arc volcanic hosts (rhyolite to dacite); surface to ~3 km; Archean to active today.</li><li>Small (&lt;50 Mt) but high grade; bonanza (&gt;1 kg/t) ores common; clustered around calderas.</li><li>Deposited mainly by boiling and by mixing with meteoric water; permeability focuses the fluid.</li></ul><span class="srcs">slides 3 and 4</span></div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="surface" data-log="Hot springs"><div class="wrap">
+  <div class="kicker">The live version <span class="depth">13 to 26 m</span></div>
+  <h2>Hot springs and geysers</h2>
+  <p>Epithermal Au, Au-Ag and Ag deposits are widespread around the Pacific Rim, in the arcs and back arcs above its subduction zones. Their modern surface expression is geothermal: geysers like El Tatio in Chile and Old Faithful at Yellowstone, and hot pools. <span class="srcs">slides 5 and 6</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L14/eltatio.jpg" alt="A geyser jetting steam on a high, barren plain below a mountain" style="aspect-ratio:auto;object-fit:contain"><div class="cap">El Tatio, Chile, slide 6</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L14/oldfaithful.jpg" alt="A tall white plume of steam and water against a blue sky" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Old Faithful, Yellowstone, slide 6</div></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Champagne Pool</span><span class="srcs">slide 7</span></div>
+    <img loading="lazy" decoding="async" src="img/L14/champagne.jpg" alt="A steaming pale green-blue pool with a bright orange rim of precipitate">
+    <p class="ask">The orange rim of this pool at Waiotapu assays about 80 ppm gold. Why isn’t anyone mining it?</p>
+    <details data-obs="champagne"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A steaming pool with a bright orange rim: precipitated sulphides of arsenic, antimony and mercury, carrying gold and silver.</li></ul>
+      <p class="so">So 80 ppm (80 g/t) is a high grade, but there’s no <b>volume</b> to exploit: a thin crust on one pool. It’s a live epithermal system depositing gold right now, the surface end of what, buried and preserved, could become an ore deposit. <span class="srcs">slide 7</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/pacific.jpg" alt="Map of the Pacific Rim with subduction zones, magmatic arcs in red and back arcs in purple">
+    <figcaption>Magmatic arcs and back arcs around the Pacific Rim, home of most young epithermal deposits. <span class="srcs">slide 5</span> (Corbett)</figcaption>
+  </figure>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="controls" data-log="Controls"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">26 to 39 m</span></div>
+  <h2>What focuses the ore</h2>
+  <p>Ore needs focus, and <b>permeability</b> is the key. At Round Mountain in Nevada, for example, impermeable tuff beds lie above permeable tuff beds, so fluid spreads through the permeable layer under the cap. The controls fall into two groups. <b>Chemical</b>: replacement of reactive rock (lithological control) and fluid mixing. <b>Physical</b>: breccias and structures. <span class="srcs">slides 4 and 8</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L14/chemcontrols.jpg" alt="Diagram of an epithermal system: magmatic fluid rising from a buried source, boiling, mixing with oxygenated groundwater and bicarbonate waters, under an acid sulphate cap with kaolin and a hot spring" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Chemical controls: boiling and mixing, slide 8</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L14/structcontrols.jpg" alt="Block diagram of structural settings for ore shoots: extension, oblique and compressional faults, flexures, pull-apart basins, splays and jogs, with letters marking ore shoots" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Structural controls on ore shoots, slide 8</div></div>
+  </div>
+  <p>Structurally, ore shoots form where a fault opens up: dilational jogs, flexures and bends, splays, pull-apart basins and the intersections of structures. In the chemical model, deep magmatic fluid rises and boils, and near the top meets oxygenated groundwater, bicarbonate (CO₂-rich) water and acid sulphate water. Each mixing front is a place to drop metal. <span class="srcs">slide 8</span> (Corbett)</p>
+  <div class="lab">
+    <h4><span>Chemical or physical control?</span><b id="ctScore">0 / 4</b></h4>
+    <div class="cards" id="ctCards"></div>
+  </div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="breccias" data-log="Breccias"><div class="wrap">
+  <div class="kicker">Textures <span class="depth">39 to 52 m</span></div>
+  <h2>Breccias</h2>
+  <p>Epithermal gold and silver are commonly tied to <button class="term" data-t="breccia">breccias</button>, because breaking rock creates permeability and, often, a sudden pressure drop. Four kinds: <b>magmatic</b>, <b>hydrothermal</b>, <b>milled matrix</b> and <b>volcanic</b> breccias. <span class="srcs">slide 9</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/breccia-env.jpg" alt="Sketches of breccia settings: phreatic and phreatomagmatic diatreme breccias, magmatic hydrothermal breccias, dilational breccias, dissolution breccias, hydrothermal collapse breccias and magmatic injection breccias">
+    <figcaption>Environments of breccia formation, from deep magmatic-hydrothermal pipes to shallow phreatic eruption breccias. <span class="srcs">slide 10</span> (Corbett and Leach)</figcaption>
+  </figure>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Magmatic</th><th>Phreatomagmatic</th><th>Phreatic</th></tr>
+    <tr><td>Common name</td><td>Sub-volcanic breccia pipes, magmatic hydrothermal breccias</td><td>Diatreme breccias, milled matrix fluidised breccias</td><td>Eruption breccias</td></tr>
+    <tr><td>Origin</td><td>Violent exsolution of volatiles from an intrusion</td><td>Magma meets groundwater: venting and rapid heating</td><td>Depressurisation of a geothermal system</td></tr>
+    <tr><td>Level</td><td>Deep, at porphyry level; need not vent</td><td>Intermediate to deep; vent at surface</td><td>Surface: sinter and outflows</td></tr>
+    <tr><td>Examples</td><td>Kidston</td><td>Wau, Kelian, Acupan, Lepanto</td><td>Champagne Pool, Puhipuhi, Toka Tindung, McLaughlin</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 11 to 13</p>
+  <div class="lab">
+    <h4><span>Name the breccia</span><b id="brScore">0 / 4</b></h4>
+    <div class="cards" id="brCards"></div>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="sulph" data-log="Sulphidation"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">52 to 65 m</span></div>
+  <h2>High, intermediate and low sulphidation</h2>
+  <p>Epithermal systems split by the state of sulphur in the fluid. <button class="term" data-t="high sulphidation">High sulphidation</button> fluid is saline and acid, with sulphur as SO₂: magmatic vapour that comes up close to the volcano and its porphyry. <button class="term" data-t="low sulphidation">Low sulphidation</button> fluid is dilute and near neutral, with sulphur as H₂S: magmatic fluid that has been diluted, cooled and neutralised by deep-circulating meteoric water, usually further from the intrusion. <b>Intermediate sulphidation</b> sits between, with more base metals. The labels come from the sulphur’s oxidation state, which shows in the sulphide minerals (enargite in HS, sphalerite with low Fe and pyrite in LS). <span class="srcs">slides 14 to 18</span></p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>High sulphidation</th><th>Low sulphidation</th></tr>
+    <tr><td>Fluid</td><td>Saline, S as SO₂</td><td>Dilute, S as H₂S</td></tr>
+    <tr><td>Wall rock alteration</td><td>Zoned advanced argillic to argillic: vughy silica &gt; alunite group &gt; kaolinite group &gt; illite group; abundant pyrite</td><td>Local early propylitic, then zoned argillic (illite group) with quartz, carbonate, pyrite</td></tr>
+    <tr><td>Ore minerals</td><td>Enargite-pyrite, low-T luzonite; covellite, chalcocite, bornite, chalcopyrite at depth</td><td>Low sulphide (&lt;2%, locally &lt;5%): pyrite, sphalerite (variable Fe:Zn), galena, chalcopyrite, Ag sulphosalts</td></tr>
+    <tr><td>Metals</td><td>Au &gt; Ag + Cu</td><td>Au &gt; Ag; less common Cu, Zn, Bi, Te</td></tr>
+    <tr><td>Gold metallurgy</td><td>Good in oxide ore; enargite hosts refractory Au; good Cu ores at depth uncommon</td><td>Generally good; poor where Au is encapsulated in fine arsenopyrite</td></tr>
+    <tr><td>Ag:Au</td><td>SW Pacific Ag-poor; Latin America Ag-bearing, locally Ag ≫ Au</td><td>Variable, both high- and low-fineness gold</td></tr>
+    <tr><td>Controls</td><td>Permeability from host rock structure, domes and breccias</td><td>Ore shoots controlled by lithology, structure and the mechanism of gold deposition</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 18</p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/his-ls.jpg" alt="Cross-section of an arc and back arc showing a porphyry Cu-Au system, high sulphidation Au near the volcano, and low sulphidation Au-Ag veins further away with hot springs and sinter">
+    <figcaption>High sulphidation deposits sit close to the volcano and its porphyry; low sulphidation deposits form further away, in arc and back-arc settings. <span class="srcs">slide 14</span> (Corbett and Leach)</figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/fluids.jpg" alt="Diagram contrasting high sulphidation fluid (oxidised acidic SO2-rich magmatic volatiles near the intrusion forming vuggy silica and advanced argillic alteration) with low sulphidation fluid (reduced near-neutral H2S fluid diluted by groundwater, forming epithermal quartz Au and carbonate-base metal Au)">
+    <figcaption>High versus low sulphidation fluids: acidic, oxidised magmatic vapour (SO₂, HCl) near the intrusion; reduced, near-neutral, diluted fluid further out. <span class="srcs">slide 17</span> (Corbett and Leach)</figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>High or low sulphidation?</span><b id="slScore">0 / 6</b></h4>
+    <div class="cards" id="slCards"></div>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="hs" data-log="High sulphidation"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">65 to 78 m</span></div>
+  <h2>High sulphidation in the hand</h2>
+  <p>Acid magmatic vapour condenses into groundwater and makes it so acidic that it strips almost everything but silica out of the rock. What’s left is <button class="term" data-t="vughy silica">vughy silica</button>, a porous silica skeleton, surrounded by zones of alunite, then kaolinite and dickite, then illite and finally propylitic alteration as the acid is neutralised outward. Gold and enargite come later, in a second, liquid-rich stage, into the porous vughy silica and breccias. <span class="srcs">slides 19 to 24</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a strange porous rock</span><span class="srcs">slide 22</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L14/vughy1.jpg" alt="Pale brownish rock full of irregular holes and cavities, a pen for scale"><div class="cap">A · Veladero, Argentina</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L14/vughy2.jpg" alt="Pale grey rock riddled with small angular holes where crystals used to be, a pen for scale"><div class="cap">B · El Indio district, Chile</div></div>
+    </div>
+    <p class="ask">The holes in B have the shape of crystals. What was in them, what took it away, and what’s left?</p>
+    <details data-obs="vughy"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pale, light, porous rock; the holes in B are blocky and rectangular, the shape of feldspar phenocrysts in a porphyry.</li><li>A: holes through a fine-grained breccia matrix and fragments.</li></ul>
+      <p class="so">So this is <b>vughy silica</b>. Extremely acid fluid (pH below 2) dissolved the feldspar phenocrysts and everything else except silica, leaving a residual silica skeleton with crystal-shaped holes. It’s the core of high sulphidation alteration, and its porosity makes it a great trap for later gold-enargite fluid. A is a diatreme breccia at Veladero, B a vughy silica-altered porphyry in the El Indio district. <span class="srcs">slide 22</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/hs-model.jpg" alt="Two-stage model for high sulphidation Cu-Au systems: a volatile-rich first stage forming zoned acid alteration, then a liquid-rich second stage depositing pyrite, enargite and gold in the vughy silica">
+    <figcaption>Two-stage model: (1) a volatile-rich event builds the zoned acid alteration; (2) a later liquid-rich event deposits pyrite, enargite and gold in the porous vughy silica and breccias. <span class="srcs">slide 23</span> (Corbett and Leach)</figcaption>
+  </figure>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="ls" data-log="Low sulphidation"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">78 to 91 m</span></div>
+  <h2>Low sulphidation and bonanza veins</h2>
+  <p>Low sulphidation systems make the classic epithermal veins: banded quartz, chalcedony and adularia with little sulphide, sometimes stunningly rich. Above them, at the old surface, siliceous <button class="term" data-t="sinter">sinter</button> forms around hot springs, as at McLaughlin in California. <span class="srcs">slides 25 to 29</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · bonanza</span><span class="srcs">slide 26</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L14/ediecreek.jpg" alt="Fingers holding a piece of grey quartz vein with a central band of yellow gold filling the vein centre"><div class="cap">A · Edie Creek, PNG</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L14/porgera.jpg" alt="Grey rock with a mass of fine, wiry, branching gold and pale quartz, a pen for scale"><div class="cap">B · Porgera Zone VII, PNG</div></div>
+    </div>
+    <p class="ask">Where exactly is the gold in A, and what texture does the gold have in B?</p>
+    <details data-obs="bonanza"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: gold fills the centre line of an open quartz vein, the last space to close.</li><li>B: fine, branching wire gold with quartz and a green vanadium mica, roscoelite.</li></ul>
+      <p class="so">So both are <b>bonanza</b> ore. In A the gold was the last thing deposited, in the open centre of the vein; in B it grew as free wires into open space. Open space plus a sudden change in the fluid (boiling or mixing) gives these spectacular grades. <span class="srcs">slide 26</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Hishikari</span><span class="srcs">slides 28 and 29</span></div>
+    <img loading="lazy" decoding="async" src="img/L14/hishikari.jpg" alt="Two geologists in hard hats beside a wall of contorted white and grey banded quartz with darker fragments">
+    <p class="ask">Look at the vein margins. Besides the banding, what else is in the vein?</p>
+    <details data-obs="hishikari"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Thick, banded, white and grey quartz-adularia, contorted in places.</li><li>Angular dark fragments of wall rock suspended in the vein near its margins.</li></ul>
+      <p class="so">So this is a banded adularia-sericite fissure vein with <b>floating clast breccias</b>: wall-rock fragments that broke off and were caught up as the vein grew, a sign of repeated fracturing and fluid surges. Hishikari, Japan, is one of the world’s richest gold mines and the classic low sulphidation example. <span class="srcs">slides 28 and 29</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/mclaughlin.jpg" alt="Cut slab of banded epithermal vein with grey, white and pale blue bands and a crosscutting younger vein">
+    <figcaption>Banded epithermal vein from the McLaughlin mine, California, where veins pass up into siliceous sinter. <span class="srcs">slide 27</span></figcaption>
+  </figure>
+  <div class="labbox"><b>At the lab test</b><ul><li>The lab’s epithermal suites include Woodlark Island (PNG) and Vatukoula (Fiji). Expect banded quartz-chalcedony-adularia veins, low sulphide, with pyrite, sphalerite, galena and possibly visible gold or Ag sulphosalts.</li><li>Honey-yellow, low-iron sphalerite is a good sign of gold and silver.</li><li>Vatukoula is an alkalic epithermal system rich in gold tellurides (Lecture 12).</li></ul><span class="srcs">slides 3, 26 to 29</span> <span class="srcs">lab ore suites</span></div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="grade" data-log="Grade"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">91 to 104 m</span></div>
+  <h2>What makes high grade</h2>
+  <p>Boiling is the classic epithermal mechanism, but Corbett argues it deposits mostly gangue: adularia, quartz pseudomorphing platy calcite, and local chalcedony. The grade comes from other things, and each leaves a clue. <span class="srcs">slide 32</span> (Corbett, 2007)</p>
+  <div class="tablewrap"><table>
+    <tr><th>Mechanism</th><th>Clue in the rock</th><th>Grade</th></tr>
+    <tr><td>Slow cooling</td><td>Coarse sulphides</td><td>Low Au</td></tr>
+    <tr><td>Rapid cooling or quenching</td><td>Fine sulphides; low-T quartz (opal) against high-T sulphides</td><td>High precious metals in polymetallic veins</td></tr>
+    <tr><td>Boiling</td><td>Adularia, quartz after platy (bladed) calcite, chalcedony</td><td>Mostly gangue</td></tr>
+    <tr><td>Mixing with oxygenated groundwater</td><td>Hypogene hematite in the ore</td><td>Elevated Au</td></tr>
+    <tr><td>Mixing with bicarbonate (CO₂) water</td><td>Carbonate with base metals</td><td>Higher Au: the carbonate-base metal group</td></tr>
+    <tr><td>Mixing with low-pH acid sulphate water</td><td>Hypogene kaolin and halloysite in the ore</td><td>The highest Au grades</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 32</p>
+  <div class="lab" id="mxLab">
+    <h4><span>Read the clue, call the grade</span><b id="mxTag"></b></h4>
+    <div class="chips" id="mxC" role="group" aria-label="What you see in the ore"></div>
+    <svg class="grid-svg" id="mxSvg" viewBox="0 0 640 160" role="img" aria-label="Gauge of relative gold grade for the chosen mechanism" style="margin-top:.6rem"></svg>
+    <p class="say" id="mxSay">Pick what you see in the ore.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">The ranking follows slide 32; the gauge positions are schematic, not grades.</p>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="alteration" data-log="Alteration"><div class="wrap">
+  <div class="kicker">Exploration <span class="depth">104 to 117 m</span></div>
+  <h2>Reading the alteration</h2>
+  <p>Alteration minerals record temperature and pH, so you can map where you are in a system. In high sulphidation systems the acid alteration zones outward from vughy silica through alunite and kaolinite to illite and chlorite. In low sulphidation systems you see quartz, adularia, illite and carbonate, with propylitic chlorite-epidote further out. Above the water table, H₂S boiled off from either kind condenses and oxidises to sulphuric acid, building a <button class="term" data-t="steam-heated alteration">steam-heated</button> acid sulphate blanket of kaolin, powdery alunite, cristobalite and opal. It looks like high sulphidation alteration but is barren, so don’t be fooled. <span class="srcs">slides 19, 24 and 31</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L14/hs-alt.jpg" alt="Chart of alteration mineral groups against pH and temperature with an arrow tracing high sulphidation fluid from low pH silica and alunite groups toward kaolin and illite" style="aspect-ratio:auto;object-fit:contain"><div class="cap">High sulphidation alteration path, slide 24</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L14/ls-alt.jpg" alt="Chart of alteration mineral groups against pH and temperature with arrows for low sulphidation systems: acid sulphate waters, CO2-rich waters, oxidising groundwaters and meteoric waters" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Low sulphidation alteration paths, slide 31</div></div>
+  </div>
+  <div class="lab">
+    <h4><span>Where does this alteration put you?</span><b id="atScore">0 / 5</b></h4>
+    <div class="cards" id="atCards"></div>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="lihir" data-log="Lihir"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">117 to 130 m</span></div>
+  <h2>Lihir: a volcano that lost its head</h2>
+  <p>Lihir Island, in PNG’s New Ireland Province, is about 20 × 13 km, built of Pliocene-Pleistocene volcanoes. The Lihir gold mine sits inside the Luise caldera (5.5 × 3.5 km). Gold was found in 1969, modern exploration began in 1985 and mining in 1997. Reserves are 649 Mt at 2.25 g/t Au. The hosts are andesitic to latitic lavas, tuffs and breccias intruded by quartz-poor monzonite and monzodiorite porphyries, and mineralisation extends below sea level. The geothermal system is still active, at 120 °C at the surface. Newcrest owned it until Newmont took over. <span class="srcs">slides 33 to 35</span> <span class="srcs">slide notes</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/lihir-pit.jpg" alt="Aerial view of a large open pit inside a green, forested caldera opening to the sea, with steam rising">
+    <figcaption>The Lihir open pits inside the Luise caldera, right at the sea. <span class="srcs">slide 33</span></figcaption>
+  </figure>
+  <div class="lab" id="lhLab">
+    <h4><span>Collapse the volcano</span><b id="lhStep">step 1 of 4</b></h4>
+    <svg class="grid-svg" id="lhSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of the Luise volcano growing, failing, collapsing and its hydrothermal system boiling to the surface"></svg>
+    <div class="readout"><div><small>Confining pressure</small><b id="lhP">?</b></div><div><small>Fluid</small><b id="lhF">?</b></div><div><small>Timing</small><b id="lhT">?</b></div></div>
+    <div class="row" style="margin-top:.6rem"><button class="btn ghost" type="button" id="lhBack">Back</button><button class="btn" type="button" id="lhNext">Next step</button></div>
+    <p class="say" id="lhSay"></p>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/lihir-collapse.jpg" alt="Four sketches: accretion of the volcanic cone, failure of the volcano, post-collapse caldera with phreatic eruptions, and a reactivated system following collapse structures to the surface">
+    <figcaption>The four stages behind the stepper above: accretion, failure, collapse, and reactivation along collapse structures. <span class="srcs">slide 38</span></figcaption>
+  </figure>
+  <p>The timing is the story. Potassic, porphyry-style alteration formed between 0.917 and 0.342 Ma. At 0.34 Ma the Luise volcano collapsed sideways to the east, removing at least 1 km of rock. That sudden unloading dropped the confining pressure, releasing fluid and setting it boiling, and epithermal gold has been deposited from 0.336 Ma to the present, overprinting the porphyry. <span class="srcs">slide 37</span> (Müller et al., 2002)</p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L14/lihir-geol.jpg" alt="Simplified geological map of Lihir Island showing the Huniho, Kinami and Luise volcanoes and older blocks" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Simplified geology of Lihir Island, slide 34</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L14/lihir-zones.jpg" alt="Map of ore zones in the Luise caldera: Lienitz, Minifie, Kapit and others, with feeder zones" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Ore zones in the Luise caldera, slide 36</div></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/lihir-controls.jpg" alt="Section of mineralisation controls: feeder zones rising through competent rock, brecciated contacts with high permeability and strong mixing, and clay-altered zones with poor permeability">
+    <figcaption>Mineralisation controls at Lihir: best grades and thickness where feeder structures meet permeable brecciated contacts; clay alteration and competent rock limit fluid flow. <span class="srcs">slide 36</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="examples" data-log="Examples"><div class="wrap">
+  <div class="kicker">Close to home <span class="depth">130 to 144 m</span></div>
+  <h2>Epithermal deposits close to home</h2>
+  <p>UNSW honours and PhD projects have studied several epithermal systems: Woodlark Island in PNG, the Drake goldfield in north-eastern NSW, the Jambi and Tambang deposits in southern Sumatra, and the Bowdens silver deposit near Mudgee in NSW. Eastern Australia has Palaeozoic epithermal deposits too, not only young Pacific ones. <span class="srcs">slide 2</span></p>
+  <p>The closing message from this lecture is a warning worth remembering: epithermal deposits are highly complex, with multiple mineralisation and alteration episodes, and often you may not understand them until mining has finished. <span class="srcs">slide 39</span></p>
+  <div class="lab">
+    <h4><span>Exploration decisions</span><b id="exScore">0 / 3</b></h4>
+    <div class="cards" id="exCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>HS: saline, acid, SO₂; vughy silica, alunite, kaolinite; enargite-luzonite; Au &gt; Ag + Cu.</li><li>LS: dilute, near-neutral, H₂S; adularia-sericite, illite, banded quartz; &lt;2% sulphide; Au &gt; Ag.</li><li>Grade: mixing with low-pH waters gives the highest Au (hypogene kaolin); boiling makes mostly gangue.</li><li>Lihir: collapse at 0.34 Ma unloaded ~1 km, causing boiling and gold.</li></ul><span class="srcs">slides 18, 32, 37</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>That closes gold week. Put Lectures 11 to 14 side by side and you have the whole magmatic-hydrothermal column: porphyry at depth, high sulphidation lithocaps above it, low sulphidation veins and hot springs further out, and orogenic gold in the deeper, metamorphic crust.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 14 slides (Epithermal Au-Ag deposits, 39 slides, with speaker notes; photos and figures tagged by slide). The lecture recording wasn’t available when this page was built, so everything here comes from the slides. Figures in the slides come from published sources (Corbett and Leach 1997, Corbett 2007, Müller et al. 2002 and others) and are shown only as lecture material. The arc section, the grade gauge and the Lihir collapse steps are teaching models.</p>
+  <p><a href="L13.html">&larr; Lecture 13</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know a hot spring is an ore deposit in the making.'],[35,'Graduate geologist','You can tell crustiform banding from breccia.'],[100,'Project geologist','You can tell high from low sulphidation.'],[180,'Senior geologist','You can read grade from kaolin and hematite.'],[240,'Chief geologist','Bonanza veins call you first.']];
+var G={
+ "epithermal":"Formed at shallow depth (surface to about 3 km) and low temperature, in volcanic settings.",
+ "bonanza":"Exceptionally rich ore, over about 1 kg of gold or silver per tonne.",
+ "free-milling gold":"Native gold that is released by grinding and recovered easily.",
+ "refractory gold":"Gold locked in sulphides such as enargite or arsenopyrite that needs extra processing.",
+ "crustiform":"Banding in a vein where layers grow one on another in open space; also colloform.",
+ "chalcedony":"Microcrystalline quartz deposited quickly at low temperature.",
+ "adularia":"A low-temperature K-feldspar typical of low sulphidation veins.",
+ "platy calcite":"Bladed calcite formed during boiling; often replaced by quartz, a boiling indicator.",
+ "sinter":"Siliceous deposit formed around hot springs at the surface.",
+ "high sulphidation":"Epithermal style from saline, acid, SO₂-rich magmatic fluid; vughy silica, alunite, enargite.",
+ "low sulphidation":"Epithermal style from dilute, near-neutral, H₂S fluid; adularia-sericite, banded quartz.",
+ "intermediate sulphidation":"Between high and low; more base metals (sphalerite, galena, tetrahedrite).",
+ "vughy silica":"Porous residual silica left when extremely acid fluid dissolves everything else; HS core.",
+ "advanced argillic":"Acid alteration with alunite, kaolinite, dickite, pyrophyllite.",
+ "alunite":"KAl₃(SO₄)₂(OH)₆; always low pH.",
+ "enargite":"Cu₃AsS₄; the hallmark copper mineral of high sulphidation systems.",
+ "luzonite":"Low-temperature polymorph of enargite.",
+ "lithocap":"A large blanket of advanced argillic alteration above a porphyry.",
+ "steam-heated alteration":"Barren acid sulphate blanket (kaolin, alunite, opal) formed above the water table by condensed H₂S.",
+ "hypogene":"Formed by rising hydrothermal fluid, not by weathering.",
+ "halloysite":"A kaolin-group clay; hypogene halloysite in ore suggests acid water mixing and high grade.",
+ "roscoelite":"A green vanadium mica found with bonanza gold at Porgera.",
+ "caldera":"A collapsed volcanic depression; epithermal deposits cluster along caldera margins.",
+ "breccia":"Rock made of broken angular fragments.",
+ "phreatic":"Steam-driven, from heating of groundwater without new magma reaching the surface.",
+ "phreatomagmatic":"Explosive interaction of magma with groundwater; forms diatremes.",
+ "diatreme":"A breccia-filled volcanic pipe formed by phreatomagmatic eruption.",
+ "milled matrix breccia":"Breccia with rounded fragments in a finely ground (milled) matrix, typical of diatremes.",
+ "floating clast breccia":"Vein breccia with wall-rock fragments suspended in vein fill.",
+ "geyser":"A hot spring that periodically erupts water and steam."
+};
+var CP={
+ cp1:{q:'Which is typical of epithermal deposits?',o:['Large tonnage (>500 Mt) at low grade','Small tonnage (<50 Mt) but high grade, with bonanza ore common','Formed at 15 km depth'],a:1,e:'Small and rich, surface to ~3 km.'},
+ cp2:{q:'Why isn’t Champagne Pool’s 80 ppm gold crust mined?',o:['The gold is fake','There is no volume to exploit','It is all silver'],a:1,e:'High grade, tiny volume: a live system, not a deposit.'},
+ cp3:{q:'At Round Mountain, what focused the ore?',o:['Impermeable tuff above permeable tuff','A dolerite dyke','Seafloor venting'],a:0,e:'Permeability contrast is the key control.'},
+ cp4:{q:'Which breccia forms by depressurisation of a geothermal system at the surface?',o:['Magmatic','Phreatomagmatic','Phreatic'],a:2,e:'Phreatic eruption breccias, as at Champagne Pool and McLaughlin.'},
+ cp5:{q:'High sulphidation fluid is...',o:['dilute, near neutral, H₂S','saline, acid, SO₂','pure seawater'],a:1,e:'Magmatic vapour close to the intrusion; LS is dilute, near neutral, H₂S.'},
+ cp6:{q:'What is vughy silica?',o:['Quartz grown into open veins','Porous residual silica left after acid leached everything else','A hot spring sinter'],a:1,e:'Core of high sulphidation alteration; a trap for later gold-enargite.'},
+ cp7:{q:'Banded quartz-adularia veins with less than 2% sulphide point to...',o:['high sulphidation','low sulphidation','porphyry'],a:1,e:'Classic LS, as at Hishikari.'},
+ cp8:{q:'According to Corbett, which mechanism gives the highest gold grades?',o:['Boiling','Slow cooling','Mixing with low-pH acid sulphate waters'],a:2,e:'Evidenced by hypogene kaolin and halloysite in the ore.'},
+ cp9:{q:'A blanket of powdery alunite, kaolin and opal above the water table, with no gold, is most likely...',o:['steam-heated acid sulphate alteration','the core of a HS deposit','propylitic alteration'],a:0,e:'Barren steam-heated alteration that mimics HS.'},
+ cp10:{q:'What triggered epithermal gold at Lihir?',o:['Burial under lava','Sector collapse at 0.34 Ma removed ~1 km of rock, dropping pressure and causing boiling','Glaciation'],a:1,e:'Gold from 0.336 Ma to today, overprinting the earlier porphyry.'},
+ cp11:{q:'Epithermal deposits are often hard to understand because...',o:['they are always deeply buried','they record multiple mineralisation and alteration episodes','they contain no gold'],a:1,e:'Often understood only after mining.'}
+};
+var ST=[
+ ['List five characteristics of epithermal deposits.','Recall','Arc and back-arc volcanic hosts (rhyolite to dacite); surface to ~3 km; small (<50 Mt) but high grade with common bonanza ore; clustered around calderas; deposited by boiling and fluid mixing; Au, Au-Ag or Ag; alteration illite-muscovite and adularia; Archean to active today.'],
+ ['Explain why permeability is so important in epithermal systems, with an example.','Apply','Fluid must be focused to concentrate metal. Permeable horizons, breccias and dilational structures channel fluid, while impermeable caps hold it in; at Round Mountain impermeable tuff over permeable tuff focused the ore.'],
+ ['Compare magmatic, phreatomagmatic and phreatic breccias.','Apply','Magmatic: violent volatile exsolution from an intrusion, deep, need not vent (Kidston). Phreatomagmatic: magma meets groundwater, diatremes with milled matrix, vent to surface (Wau, Kelian). Phreatic: depressurisation of a geothermal system, eruption breccias at surface (Champagne Pool, McLaughlin).'],
+ ['Contrast high and low sulphidation systems in fluid, alteration and ore minerals.','Recall','HS: saline acid SO₂ fluid; vughy silica, alunite, kaolinite, illite, abundant pyrite; enargite-luzonite, Au > Ag + Cu. LS: dilute near-neutral H₂S fluid; adularia-sericite, illite, quartz, carbonate; <2% sulphide (pyrite, sphalerite, galena, Ag sulphosalts), Au > Ag.'],
+ ['How does vughy silica form, and why does it matter for gold?','Apply','Condensed magmatic SO₂ and HCl make extremely acid water that leaches everything except silica, leaving porous residual silica. Its porosity traps later liquid-rich gold-enargite fluid (two-stage model).'],
+ ['Describe the textures of a low sulphidation vein and what they record.','Apply','Crustiform-colloform banding of quartz, chalcedony and adularia (repeated pulses in open space), quartz pseudomorphs after platy calcite (boiling), floating clast breccias (repeated fracturing), and gold in particular bands or the vein centre.'],
+ ['Rank Corbett’s deposition mechanisms by gold grade and give the evidence for each.','Think','Slow cooling (coarse sulphides, low Au) < boiling (mostly gangue: adularia, bladed calcite pseudomorphs) < rapid cooling (fine sulphides, opal on sulphides) ≈ oxygenated groundwater mixing (hypogene hematite) < bicarbonate water mixing (carbonate-base metal) < low-pH water mixing (hypogene kaolin, halloysite, highest grades).'],
+ ['Why must you be careful with an acid sulphate alteration blanket?','Think','Steam-heated alteration above the water table (kaolin, powdery alunite, opal) looks like high sulphidation advanced argillic alteration but is barren; it can sit above a low sulphidation system and mislead you.'],
+ ['Summarise the Lihir deposit and the trigger for its gold.','Recall','Luise caldera, Lihir Island, PNG; 649 Mt at 2.25 g/t Au; monzonite porphyries in andesitic-latitic volcanics; active geothermal system. Potassic alteration 0.917 to 0.342 Ma; sector collapse at 0.34 Ma removed ~1 km, dropping pressure and causing boiling; epithermal gold since 0.336 Ma.'],
+ ['Place porphyry, high sulphidation, low sulphidation and steam-heated alteration in one volcanic system.','Synthesise','Porphyry stock at depth (1 to 5 km); HS lithocap and vughy silica above and near it, fed by magmatic vapour; LS veins further out where fluid is diluted by meteoric water; intermediate sulphidation between; steam-heated acid sulphate blanket above the water table; hot springs and sinter at the surface.']
+];
+GEO.start({key:'geos3141-L14-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- arc cross-section ---------- */
+var ars=$('#arSvg'),arSeen={};
+var AZ=[
+ {k:'por',n:'Porphyry Cu-Au',x:170,y:275,d:'At 1 to 5 km, the intrusion and its potassic core (Lecture 11). The source of the magmatic fluid for everything above.'},
+ {k:'hs',n:'High sulphidation',x:170,y:120,d:'Magmatic SO₂ vapour rises straight from the intrusion into the volcano: vughy silica, alunite and kaolinite lithocap; enargite-luzonite with Au > Ag + Cu. El Indio, Veladero, Lepanto.'},
+ {k:'is',n:'Intermediate sulphidation',x:330,y:175,d:'Partly neutralised fluid: quartz-carbonate-base metal veins with sphalerite, galena, tetrahedrite and gold.'},
+ {k:'ls',n:'Low sulphidation',x:470,y:155,d:'Dilute, near-neutral H₂S fluid mixed with meteoric water: banded quartz-adularia-sericite veins, <2% sulphide, bonanza ore shoots. Hishikari, McLaughlin, Edie Creek.'},
+ {k:'sh',n:'Steam-heated blanket',x:470,y:68,d:'H₂S boiled off below condenses above the water table into sulphuric acid: powdery alunite, kaolin, opal. Looks like HS alteration but is barren.'},
+ {k:'spr',n:'Hot spring and sinter',x:580,y:46,d:'The surface: geysers and hot pools, siliceous sinter and As-Sb-Hg sulphide crusts carrying gold, as at Champagne Pool.'}];
+function arDraw(sel){var s=ars;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:330,fill:'#CFE3EE'},s);
+  el('path',{d:'M0 80 L90 80 L170 20 L250 80 L640 60 L640 330 L0 330 Z',fill:'#C9BC9E'},s);
+  el('path',{d:'M0 100 Q320 95 640 95',fill:'none',stroke:'#2F6FA3','stroke-width':2,'stroke-dasharray':'6 4'},s);txt(s,600,90,'water table',{'font-size':11,fill:'#2F6FA3','text-anchor':'end'});
+  el('path',{d:'M110 330 L120 260 Q170 225 220 260 L230 330 Z',fill:'#E7A1A0'},s);
+  el('path',{d:'M120 140 Q170 70 220 140 L205 170 Q170 150 135 170 Z',fill:'#F1EFE8',stroke:'#B9A26A'},s);
+  el('path',{d:'M300 120 L320 230',stroke:'#8C7B68','stroke-width':4},s);el('path',{d:'M450 100 L465 230 M490 100 L480 230',stroke:'#F2F0EA','stroke-width':5},s);
+  el('path',{d:'M410 75 Q470 60 530 75 L525 95 Q470 82 415 95 Z',fill:'#EDE8DA',opacity:.9},s);
+  el('ellipse',{cx:580,cy:62,rx:28,ry:7,fill:'#7FC3E0',stroke:'#E07A3F','stroke-width':3},s);
+  [[200,250,420,120],[230,290,470,150]].forEach(function(p){el('path',{d:'M'+p[0]+' '+p[1]+' Q'+((p[0]+p[2])/2)+' '+(p[1]-20)+' '+p[2]+' '+p[3],fill:'none',stroke:'#C8553A','stroke-width':2,'stroke-dasharray':'5 4'},s);});
+  [[600,140,520,220],[630,220,520,250]].forEach(function(p){el('path',{d:'M'+p[0]+' '+p[1]+' Q'+((p[0]+p[2])/2)+' '+(p[1]+30)+' '+p[2]+' '+p[3],fill:'none',stroke:'#2F6FA3','stroke-width':2,'stroke-dasharray':'5 4'},s);});
+  txt(s,560,290,'meteoric water',{'font-size':11,fill:'#2F6FA3'});txt(s,250,300,'magmatic fluid',{'font-size':11,fill:'#C8553A'});
+  AZ.forEach(function(z,i){var g=el('g',{style:'cursor:pointer'},s);el('circle',{cx:z.x,cy:z.y,r:24,fill:'transparent'},g);
+    el('circle',{cx:z.x,cy:z.y,r:12,fill:sel===i?'var(--gold-hi)':arSeen[i]?'var(--mal)':'var(--gold)',stroke:'#3E3A36','stroke-width':2},g);txt(g,z.x,z.y+4,String(i+1),{'font-size':12,fill:'#1A1A1A','text-anchor':'middle','font-weight':700});
+    g.addEventListener('click',function(){arPick(i);});});}
+function arPick(i){arSeen[i]=1;arDraw(i);var z=AZ[i];$('#arSay').innerHTML='<b>'+(i+1)+'. '+z.n+'.</b> '+z.d+' <span class="srcs">slides 14 to 19, 25</span>';SND.play('tick');
+  var k=Object.keys(arSeen).length;$('#arCount').textContent=k+' / 6 zones';if(k===6)award('ar',5,'Walked across the epithermal system');}
+arDraw(-1);
+
+/* ---------- control cards ---------- */
+var CTO=['Chemical control','Physical control'];
+mcCards($('#ctCards'),[
+ {lbl:'Ore shoot',q:'Gold where deep ore fluid met descending oxygenated groundwater',o:CTO,a:0,e:'Fluid mixing: a chemical control.'},
+ {lbl:'Ore shoot',q:'Ore in a dilational jog where the fault bends',o:CTO,a:1,e:'Structural: a physical control.'},
+ {lbl:'Ore shoot',q:'Gold replacing a reactive limestone bed',o:CTO,a:0,e:'Lithological replacement: chemical.'},
+ {lbl:'Ore shoot',q:'High grade in the matrix of an eruption breccia pipe',o:CTO,a:1,e:'Breccia permeability: physical.'}
+],'ct',2,function(r,n){$('#ctScore').textContent=r+' / '+n;});
+
+/* ---------- breccia cards ---------- */
+var BRO=['Magmatic hydrothermal','Phreatomagmatic (diatreme)','Phreatic (eruption)','Floating clast vein breccia'];
+mcCards($('#brCards'),[
+ {lbl:'Breccia',q:'A deep sub-volcanic pipe of angular intrusion fragments cemented by quartz-sulphide, at porphyry level, like Kidston',o:BRO,a:0,e:'Violent volatile exsolution from an intrusion.'},
+ {lbl:'Breccia',q:'Rounded fragments in a finely milled rock-flour matrix, in a pipe that vented to the surface',o:BRO,a:1,e:'Magma met groundwater: a diatreme.'},
+ {lbl:'Breccia',q:'Locally derived angular clasts at the surface next to siliceous sinter terraces',o:BRO,a:2,e:'A geothermal system depressurised: phreatic eruption breccia.'},
+ {lbl:'Breccia',q:'Wall-rock fragments suspended in banded quartz-adularia inside a fissure vein',o:BRO,a:3,e:'As at Hishikari.'}
+],'br',2,function(r,n){$('#brScore').textContent=r+' / '+n;});
+
+/* ---------- HS or LS cards ---------- */
+var SLO=['High sulphidation','Low sulphidation'];
+mcCards($('#slCards'),[
+ {lbl:'Observation',q:'Enargite and luzonite with pyrite in vughy silica',o:SLO,a:0,e:'Hallmark HS ore minerals.'},
+ {lbl:'Observation',q:'Banded quartz-adularia vein with 1% pyrite and a little Ag sulphosalt',o:SLO,a:1,e:'Low sulphide, adularia: LS.'},
+ {lbl:'Observation',q:'Fluid inclusions: saline, with SO₂',o:SLO,a:0,e:'Magmatic vapour-derived acid fluid.'},
+ {lbl:'Observation',q:'Dilute fluid, sulphur as H₂S, near-neutral pH',o:SLO,a:1,e:'Meteoric-dominated LS fluid.'},
+ {lbl:'Observation',q:'Zoned alteration: vughy silica, then alunite, then kaolinite, then illite',o:SLO,a:0,e:'Advanced argillic zoning of HS.'},
+ {lbl:'Observation',q:'Gold is refractory, locked in enargite',o:SLO,a:0,e:'HS metallurgy problem; oxide ores treat well.'}
+],'sl',2,function(r,n){$('#slScore').textContent=r+' / '+n;});
+
+/* ---------- grade gauge ---------- */
+var MX=[['Coarse sulphides','Slow cooling',.12,'Slow cooling grows coarse sulphides but leaves little gold.'],['Quartz after platy calcite','Boiling',.3,'Boiling: deposits mostly gangue (adularia, quartz after bladed calcite, chalcedony). It marks the boiling level, not necessarily the grade.'],['Opal on fine sulphides','Rapid cooling',.55,'Quenching or mixing with cool meteoric water: fine sulphides and low-T opal against high-T sulphides, with high precious metal grades.'],['Hypogene hematite','Oxygenated groundwater mixing',.6,'Oxidising groundwater mixed with the ore fluid at high levels: elevated gold.'],['Carbonate with base metals','Bicarbonate water mixing',.72,'CO₂ from a cooling intrusion condensed into bicarbonate water: the carbonate-base metal group, with higher gold.'],['Hypogene kaolin and halloysite','Low-pH water mixing',.95,'Acid water from H₂S condensing above the water table mixed back down: the highest gold grades.']],mxSeen={};
+MX.forEach(function(m,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){$$('#mxC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');mxDraw(i);});$('#mxC').appendChild(b);});
+function mxDraw(i){var s=$('#mxSvg');s.innerHTML='';var gr=el('linearGradient',{id:'mxg'},s);el('stop',{offset:'0','stop-color':'#C9C0A8'},gr);el('stop',{offset:'1','stop-color':'#E8B923'},gr);
+  el('rect',{x:30,y:60,width:580,height:30,rx:15,fill:'url(#mxg)'},s);txt(s,30,50,'low Au',{'font-size':12,fill:'var(--muted)'});txt(s,610,50,'highest Au',{'font-size':12,fill:'var(--muted)','text-anchor':'end'});
+  if(i===undefined)return;var m=MX[i],x=30+m[2]*580;el('path',{d:'M'+x+' 98 l-10 18 l20 0 z',fill:'var(--ink)'},s);el('line',{x1:x,y1:56,x2:x,y2:96,stroke:'var(--ink)','stroke-width':3},s);txt(s,Math.min(560,Math.max(80,x)),140,m[1],{'font-size':14,fill:'var(--ink)','text-anchor':'middle','font-weight':700});
+  $('#mxTag').textContent=m[1];$('#mxSay').innerHTML=m[3]+' <span class="srcs">slide 32</span>';mxSeen[i]=1;SND.play('tick');if(Object.keys(mxSeen).length===6)award('mx',4,'Read every grade clue');}
+mxDraw();
+
+/* ---------- alteration cards ---------- */
+var ATO=['Core of a high sulphidation system','Low sulphidation vein zone','Barren steam-heated blanket','Outer propylitic halo'];
+mcCards($('#atCards'),[
+ {lbl:'Alteration',q:'Massive porous silica with crystal-shaped holes, rimmed by alunite',o:ATO,a:0,e:'Vughy silica: HS core.'},
+ {lbl:'Alteration',q:'Adularia and illite next to banded quartz veins',o:ATO,a:1,e:'LS vein selvage.'},
+ {lbl:'Alteration',q:'Soft, powdery alunite, kaolin and opal in a flat blanket at the old water table',o:ATO,a:2,e:'Steam-heated acid sulphate: barren, mimics HS.'},
+ {lbl:'Alteration',q:'Chlorite, epidote and calcite with a little pyrite, far from the veins',o:ATO,a:3,e:'Propylitic: the outer halo.'},
+ {lbl:'Alteration',q:'Pyrophyllite and dickite with abundant pyrite beneath vughy silica',o:ATO,a:0,e:'Higher-temperature advanced argillic, deeper in a HS lithocap.'}
+],'at',2,function(r,n){$('#atScore').textContent=r+' / '+n;});
+
+/* ---------- Lihir collapse ---------- */
+var lhs=$('#lhSvg'),lhS=1;
+var LH=[null,['Accretion of the volcanic cone','high','magmatic fluid held at depth','before 0.917 Ma','The Luise stratovolcano grows; a magma body beneath it drives a hydrothermal system, held under the weight of the cone.'],['Porphyry-stage alteration','high','hot, magmatic','0.917 to 0.342 Ma','Potassic, porphyry-style alteration develops at depth around monzonite porphyries. Increasing hydrothermal pressure and altered, weakened rock make the seaward slope unstable.'],['Sector collapse','drops sharply','depressurised','0.34 Ma','The volcano fails sideways to the east, removing at least 1 km of rock. The confining pressure on the hydrothermal system drops suddenly.'],['Boiling and epithermal gold','low','boiling to the surface','0.336 Ma to today','Fluid boils, flashes and breaks out (phreatic eruptions, breccias). Epithermal gold overprints the porphyry, and the system is still active at 120 °C at the surface.']];
+function lhDraw(){var s=lhs;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'#CFE3EE'},s);el('rect',{x:420,y:200,width:220,height:100,fill:'#7FB3D5'},s);txt(s,560,230,'sea',{'font-size':12,fill:'#163245'});
+  var cone=lhS<3?'M40 300 L40 210 L250 40 L460 210 L460 300 Z':'M40 300 L40 210 L250 40 L290 70 Q300 160 380 200 L460 230 L460 300 Z';el('path',{d:cone,fill:'#8C7B68'},s);
+  if(lhS>=3){el('path',{d:'M460 230 L520 250 L600 270 L600 300 L460 300 Z',fill:'#A89A86'},s);txt(s,500,265,'debris',{'font-size':11,fill:'#3E2E12'});el('path',{d:'M290 70 Q300 160 380 200',fill:'none',stroke:'#3E3A36','stroke-width':2,'stroke-dasharray':'6 4'},s);txt(s,320,110,'collapse scar',{'font-size':11,fill:'#FFF'});}
+  el('ellipse',{cx:250,cy:265,rx:70,ry:26,fill:'#C8553A'},s);txt(s,215,270,'magma',{'font-size':12,fill:'#FFE3D6'});
+  if(lhS>=2){el('ellipse',{cx:250,cy:205,rx:55,ry:30,fill:'#E7A1A0',opacity:.9},s);txt(s,212,208,'potassic',{'font-size':11,fill:'#3E2E12'});}
+  if(lhS===1){txt(s,180,140,'growing cone',{'font-size':12,fill:'#FFF'});}
+  if(lhS>=4){var r=rng(4);for(var i=0;i<30;i++){var x=280+r()*120,y=90+r()*110;el('circle',{cx:x,cy:y,r:2+r()*4,fill:'#FFF',opacity:.85},s);}
+    el('path',{d:'M300 150 Q340 120 360 80',stroke:'#E8B923','stroke-width':6,fill:'none'},s);txt(s,365,85,'epithermal Au',{'font-size':12,fill:'#E8B923','font-weight':700});
+    for(var j=0;j<3;j++)el('path',{d:'M'+(330+j*20)+' 70 q-6 -16 4 -30',stroke:'#FFF','stroke-width':3,fill:'none',opacity:.8},s);}
+  var L=LH[lhS];$('#lhStep').textContent='step '+lhS+' of 4';$('#lhP').textContent=L[1];$('#lhF').textContent=L[2];$('#lhT').textContent=L[3];$('#lhSay').innerHTML='<b>'+L[0]+'.</b> '+L[4]+' <span class="srcs">slides 37 and 38</span>';$('#lhBack').disabled=lhS===1;$('#lhNext').disabled=lhS===4;}
+$('#lhNext').addEventListener('click',function(){if(lhS<4){lhS++;lhDraw();SND.play(lhS===3?'alarm':'flip');if(lhS===3)FX.shake(lhs);if(lhS===4)award('lh',4,'Collapsed Lihir and set it boiling');}});
+$('#lhBack').addEventListener('click',function(){if(lhS>1){lhS--;lhDraw();}});
+lhDraw();
+
+/* ---------- exploration cards ---------- */
+mcCards($('#exCards'),[
+ {lbl:'Decision',q:'You map a flat blanket of powdery alunite and opal with no veins. Drill straight down?',o:['Yes, it is a HS orebody','Not straight away: it may be barren steam-heated alteration; look for feeder structures and LS veins below','Abandon the area'],a:1,e:'Steam-heated blankets sit above the water table and mimic HS alteration.'},
+ {lbl:'Decision',q:'You find one epithermal deposit on a caldera margin. Where next?',o:['Along the rest of the caldera margin','Only below this deposit','Nowhere, they are single'],a:0,e:'Deposits cluster along caldera margins.'},
+ {lbl:'Decision',q:'Your LS vein assays show high Au wherever hypogene kaolin and halloysite appear. What does that tell you?',o:['The kaolin is weathering','Low-pH water mixing deposited the highest grades: map those zones','Nothing useful'],a:1,e:'Corbett’s highest-grade mechanism.'}
+],'ex',2,function(r,n){$('#exScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
