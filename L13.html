@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 13 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L12.html">&larr; Lecture 12</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 13 · T3 2026</div>
+  <h1>Gold from the roots of mountains</h1>
+  <p class="lede">Orogenic gold built Kalgoorlie, Bendigo, Ballarat and Hill End, and it has supplied most of the gold humans have ever dug up. It forms in quartz veins along faults in deformed, metamorphosed rock, late in mountain building, at almost any depth from 2 to 20 km. That last point, the crustal continuum, is the key to the whole style. Slide down through the crust and see how one fluid makes different deposits.</p>
+
+  <div class="lab" id="ccLab">
+    <h4><span>The crustal continuum</span><b id="ccTag"></b></h4>
+    <svg class="grid-svg" id="ccSvg" viewBox="0 0 640 320" role="img" aria-label="Crustal section from 2 to 20 km with metamorphic facies bands, a fault zone with veins and a movable depth marker"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="ccD">Depth of formation <b id="ccDV"></b></label><input type="range" id="ccD" min="2" max="20" step="0.5" value="4"></div></div>
+    <div class="readout"><div><small>Host metamorphic grade</small><b id="ccF">?</b></div><div><small>Structural style</small><b id="ccS">?</b></div><div><small>Yilgarn examples</small><b id="ccE">?</b></div></div>
+    <p class="say" id="ccSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Facies and example deposits from Witt and Vanderhor (1998) on slide 20; the depth boundaries are schematic. The 2 to 20 km and 200 to 700 °C ranges are from slide 11.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#what">What orogenic gold is</a></li>
+      <li><a href="#recipe">The recipe</a></li>
+      <li><a href="#where">Where and when</a></li>
+      <li><a href="#hillend">Hill End and Holtermann’s nugget</a></li>
+      <li><a href="#yilgarn">The Yilgarn Craton</a></li>
+      <li><a href="#victoria">The Victorian goldfields</a></li>
+      <li><a href="#stawell">Stawell: gold around a basalt dome</a></li>
+      <li><a href="#muruntau">Muruntau and the gold league table</a></li>
+      <li><a href="#source">Where the fluid and gold come from</a></li>
+      <li><a href="#carlin">Carlin-type gold</a></li>
+      <li><a href="#tuena">Tuena: reading vein generations</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="what" data-log="Orogenic gold"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>What orogenic gold is</h2>
+  <p><button class="term" data-t="orogenic gold">Orogenic gold</button> deposits are structurally controlled gold deposits formed during regional-scale metamorphism and the deformation that goes with it, during orogenesis: mountain building, in compressional to transpressional regimes. Böhlke used the term first in a 1982 USGS report on metamorphic-hosted gold-quartz veins, but it took off when David Groves at UWA used it from 1993, in his “crustal continuum” model for the Yilgarn’s lode gold deposits. <span class="srcs">slides 3 and 4</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <p>Notice the older names packed into that history: <b>metamorphic-hosted</b> (the host rocks are metamorphosed), <b>crustal continuum</b> (they form at every level of the crust) and <b>lode gold</b> (the gold is in veins, or lodes). Historically about 75% of all gold ever mined has come from orogenic deposits, if you count the Witwatersrand with them as some do, and today they supply about a third of world production. <span class="srcs">slides 4 and 5</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a quartz vein underground</span><span class="srcs">slide 1</span></div>
+    <img loading="lazy" decoding="async" src="img/L13/stives.jpg" alt="Underground face of white and grey quartz vein with a broad patch of yellow metallic grains, a hand holding a hammer for scale">
+    <p class="ask">Everything yellow here is gold. What is it sitting in, and how would an orogenic gold geologist describe this ore?</p>
+    <details data-obs="stives"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Milky white quartz with dark, sheared wall rock on either side.</li><li>A dense swarm of free, visible gold grains in the quartz.</li></ul>
+      <p class="so">So this is the classic orogenic ore: <b>free gold in a quartz vein</b> along a structure, here at St Ives, Western Australia. Extremely rich, and very unusual: most orogenic ore is low grade, with gold invisible in the vein and the altered wall rock. <span class="srcs">slide 1</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/betahunt.jpg" alt="Large white quartz boulders crusted with gold on a pallet beside a vehicle">
+    <figcaption>Gold in vein quartz from the Beta Hunt mine near Kambalda, a nickel mine. A later orogenic gold event overprinted the komatiite-hosted nickel ore, and the gold was a huge bonus. <span class="srcs">slide 1</span> <span class="srcs">lecture recording, 13 Oct</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="recipe" data-log="Recipe"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">13 to 26 m</span></div>
+  <h2>The recipe</h2>
+  <p>Orogenic gold is “structurally controlled vein systems or lodes” (Groves et al., 1998), now widened to include the disseminated gold in the alteration envelope that old prospectors ignored. It forms at continental margins under compression to transpression, mostly in metamorphic rocks (greenstones, granites, metasediments) on the seaward side of the arc, at <b>200 to 700 °C</b> and <b>2 to 20 km</b>, from dilute fluids rich in CO₂ ± CH₄ and N₂. Quartz veins come with carbonate, sericite and reduced minerals such as arsenopyrite. Ages range from Archean through Proterozoic and Palaeozoic to Mesozoic. <span class="srcs">slide 11</span></p>
+  <p>Four points to hold on to. Most gold arrives during the <b>retrograde</b> change from amphibolite to greenschist facies, as the rocks cool. The type of fault doesn’t matter, so long as a structure was active when the fluid came through. Despite the name, most mineralisation comes up to <b>100 million years after</b> the main mountain building, late in the orogenic cycle. And <b>high fluid pressure</b> is critical: it drives fluid up through the crust and triggers the earthquakes of the fault-valve pump in Lecture 12. <span class="srcs">slide 14</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <p>Alteration is quartz, sericite, iron carbonates (ankerite, siderite), arsenopyrite and pyrite, and sometimes a green chromium mica, <button class="term" data-t="fuchsite">fuchsite</button>. Find fuchsite in an altered zone and gold is a good bet; vanadium micas show up in the Kalgoorlie fields too. Deposits are zoned vertically, Au-Sb higher in the crust and Au-As deeper. Because they sit in big, deep, steep faults and shears they have a great vertical extent but small lateral extent: long, vertical, planar orebodies, which is why some Kalgoorlie mines go below 2 km. Hosts vary from slate and schist to amphibolite, dolerite, banded iron formation and granite, and orogenic gold can overprint earlier ores such as Ni-Cu, VMS or SEDEX. <span class="srcs">slides 14 and 15</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="labbox"><b>At the lab test</b><ul><li>The lab’s mesothermal gold suites include Kalgoorlie and Lancefield (Western Australia). Expect quartz-carbonate veins with pyrite and arsenopyrite in sericite-carbonate altered rock.</li><li>Bright green fuchsite (chrome mica) in carbonate-altered rock is a strong hint of an orogenic gold system.</li><li>Gold may be free in quartz or locked in pyrite and arsenopyrite; Kalgoorlie ores carry gold tellurides.</li></ul><span class="srcs">slides 11, 14 and 15</span> <span class="srcs">lecture recording, 13 Oct</span> <span class="srcs">lab ore suites</span></div>
+  <div class="keybox"><b>Memorise</b><ul><li>Structurally controlled lodes; compression to transpression; 200 to 700 °C, 2 to 20 km; dilute H₂O-CO₂ ± CH₄, N₂ fluid.</li><li>Gold late: retrograde amphibolite to greenschist, up to 100 Myr after orogeny.</li><li>Alteration: quartz, sericite, ankerite or siderite, arsenopyrite, pyrite, ± fuchsite.</li><li>Au-Sb shallow, Au-As deep; great vertical, small lateral extent.</li></ul><span class="srcs">slides 11, 14, 15</span></div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="where" data-log="Where and when"><div class="wrap">
+  <div class="kicker">The big picture <span class="depth">26 to 39 m</span></div>
+  <h2>Where and when</h2>
+  <p>The great historic orogenic goldfields were California’s Mother Lode, central Victoria (Bendigo, Ballarat, Castlemaine) and Bathurst-Hill End-Sofala in NSW. Their deposits line up along structures: the Mother Lode follows the Sierra Nevada in one long belt. <span class="srcs">slide 5</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L13/age-precambrian.jpg" alt="Bar chart of gold production and reserves against age for Precambrian orogenic gold provinces, with tall bars for the Yilgarn, Superior Province and others" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Precambrian provinces, slide 12</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L13/age-phanerozoic.jpg" alt="Bar chart of gold production and reserves against age for Phanerozoic orogenic gold provinces, including the Lachlan Fold Belt, Central Asia and East North China" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Phanerozoic provinces, slide 13</div></div>
+  </div>
+  <p>Through time, the big Precambrian provinces are the Superior Province of Canada, the Yilgarn Craton and the West African Craton; the Yilgarn alone has produced over 50 million ounces. In the Phanerozoic the giants are the Lachlan Fold Belt (mainly the Victorian goldfields), Central Asia (Uzbekistan, Kazakhstan), the East North China Craton, the Sierra Nevada and the Russian Far East. Smaller but still economic belts include the New England Fold Belt and Hodgkinson in Queensland. <span class="srcs">slides 12 and 13</span> (Goldfarb et al., 2001) <span class="srcs">slide notes</span></p>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="hillend" data-log="Hill End"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">39 to 52 m</span></div>
+  <h2>Hill End and Holtermann’s nugget</h2>
+  <p>Central NSW’s orogenic goldfields cluster around Wattle Flat, Sofala, Hill End and Stuart Town, with Ophir, where payable gold was first found in NSW (the credit for that is still disputed). Hill End is still mined today, a small underground operation that has run for over a century; Sofala is a ghost town where you can still pan for gold. <span class="srcs">slide 7</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the biggest “nugget”</span><span class="srcs">slide 9</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L13/holtermann.jpg" alt="Old photograph of a bearded man in a waistcoat standing beside a tall, slab-like specimen almost as high as his chest"><div class="cap">A · 1872</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L13/holtermann-cast.jpg" alt="A man beside a life-size gold-coloured cast of a large, lumpy specimen"><div class="cap">B · a life-size cast</div></div>
+    </div>
+    <p class="ask">Holtermann’s “nugget” held 3000 oz of gold. Why do geologists insist it wasn’t really a nugget?</p>
+    <details data-obs="holtermann"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A slab about as tall as a man, irregular and blocky, not rounded or water-worn.</li></ul>
+      <p class="so">So it’s not a <b>nugget</b> (a detrital lump from a placer) but a piece of <b>quartz vein riddled with pure gold</b>, found on 19 October 1872 at Hawkins Hill, Hill End. At 3000 oz (93.31 kg) it’s the largest single mass of gold ever recorded, and would be worth at least US$15 million today. Bernhardt Holtermann was a storekeeper; on the goldfields the storekeepers made the money, and his fortune paid for a photographic record of the NSW goldfields that still survives. <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L13/hawkins-b.jpg" alt="Old black and white photograph of a steep, cleared hillside with mine workings" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Hawkins Hill, early 1880s, slide 10</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L13/hawkins-a.jpg" alt="Colour photograph of the same steep, now wooded valley side" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Hawkins Hill today, slide 10</div></div>
+  </div>
+  <p>Some definitions you’ll need, because they get used loosely. A <b>prospect</b> is mineralised rock not yet proven economic. A <b>deposit</b> has been mined, or holds a proven economic resource not yet mined. <b>Workings</b> are excavations made only to find or extract ore. A <b>mine</b> is where ore was or is being extracted. A <b>field</b> is a group of deposits or mines with a similar geological setting. <span class="srcs">slide 8</span></p>
+  <div class="lab">
+    <h4><span>Prospect, deposit, mine or field?</span><b id="dfScore">0 / 4</b></h4>
+    <div class="cards" id="dfCards"></div>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="yilgarn" data-log="Yilgarn"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">52 to 65 m</span></div>
+  <h2>The Yilgarn Craton</h2>
+  <p>The Yilgarn is an Archean granite-greenstone terrain of three superterranes: from west to east the West Yilgarn, Southern Cross and the Eastern Goldfields. All are 3.0 to 2.6 Ga; most of the gold is in the Eastern Goldfields, in greenstones of 2.71 to 2.67 Ga. Gold is hosted by greenstones, granites, granitic gneiss and banded iron formation, in orogenic, intrusion-related and porphyry systems formed over a wide range of temperature and pressure. Boddington, in the west, is the big Au-Cu exception, so far a deposit without neighbours. <span class="srcs">slides 16 to 19</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/superpit.jpg" alt="Aerial view of a huge elongate open pit beside a town in flat country">
+    <figcaption>The Kalgoorlie Super Pit, beside Kalgoorlie-Boulder: one operating mine, but really a string of deposits along the same strike. Orogenic gold rarely comes as a single deposit. <span class="srcs">slide 2</span> <span class="srcs">lecture recording, 13 Oct</span></figcaption>
+  </figure>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/yilgarn-hosts.jpg" alt="Map of the Yilgarn superterranes with pie charts of gold production by host rock for each, the Eastern Goldfields by far the largest">
+    <figcaption>Relative gold production and host rocks for each part of the Yilgarn: the Eastern Goldfields dominate, mostly mafic-hosted. <span class="srcs">slide 18</span> (Witt and Vanderhor, 1998)</figcaption>
+  </figure>
+  <p>Two things make Yilgarn exploration hard. A very long weathering history has left deep regolith, in places weathered to 200 m, so you drill through it to reach fresh rock. And the gold isn’t on the big crustal faults themselves but on the <b>subsidiary structures</b> branching off them, often where structures intersect. Host rock matters less than structure and timing: at Kalgoorlie it’s mafic volcanics, elsewhere BIF or granite, as at Granny Smith. <span class="srcs">slides 16 to 19</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/yilgarn-depth.jpg" alt="Idealised section of Yilgarn gold deposits by metamorphic grade, from sub-greenschist at the top to amphibolite at the base, listing greenstone-hosted and granitoid-hosted deposits at each level">
+    <figcaption>The crustal continuum in the Yilgarn: deposits from sub-greenschist (Racetrack) through greenschist (Golden Mile, Mt Charlotte, Sons of Gwalia) to amphibolite facies (Marvel Loch, Griffins Find). This is the slider at the top of the page. <span class="srcs">slide 20</span> (Witt and Vanderhor, 1998)</figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Which crustal level?</span><b id="lvScore">0 / 4</b></h4>
+    <div class="cards" id="lvCards"></div>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="victoria" data-log="Victoria"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">65 to 78 m</span></div>
+  <h2>The Victorian goldfields</h2>
+  <p>Victoria’s gold sits in the Palaeozoic Lachlan Orogen, mostly in greenschist-facies turbidites: monotonous sandstone, siltstone and shale, with little visible alteration. The province divides into nine zones bounded by major faults (Moyston, Avoca, Heathcote, Wellington); the biggest deposits are in the Stawell to Ballarat zones. As in the Yilgarn, deposits sit on structures branching off the big faults. At Walhalla (Woods Point) the gold crystallised along the contacts of a dolerite dyke that had arrived earlier and acted as an <b>aquitard</b>, damming the rising fluid. <span class="srcs">slide 21</span> <span class="srcs">slide notes</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/vic-zones.jpg" alt="Map of Victoria divided into nine gold zones A to I by major faults, with major gold deposits marked, many in zones C to E">
+    <figcaption>Victoria’s nine gold zones, A (Glenelg) to I (Mallacoota), bounded by major faults. <span class="srcs">slide 21</span> (Ramsay et al., 1998)</figcaption>
+  </figure>
+  <p>The numbers are staggering: Ballarat produced an estimated 200 000 kg (6.43 Moz; the slide values it at about US$33 billion today) and Bendigo about 700 000 kg (22.5 Moz; about US$120 billion on the slide, or about US$90 billion at US$4000 an ounce), much of it alluvial before the deep reefs. Gold ages run from late Ordovician to Devonian, different in each zone, because each zone was deformed at a different time. Today’s exploration focuses on the west, around Stawell, where the gold-bearing rocks continue under younger cover. <span class="srcs">slides 22 and 24</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/vic-styles.jpg" alt="Four sketches of Victorian reef styles: Bendigo saddle reefs in anticline hinges, Ballarat reefs along faults, Tarnagulla spurs, and Fosterville fault-controlled stockwork">
+    <figcaption>Quartz-gold styles: (a) Bendigo saddle reefs, neck reefs and spurs in the hinges of folds; (b) Ballarat, controlled by bedding and cleavage, with “leatherjacket” veins; (c) Tarnagulla, one big vein system offset by later faults, with spurs; (d) Fosterville, stockworks and veining along a fault. <span class="srcs">slide 23</span> (Ramsay et al., 1998) <span class="srcs">slide notes</span></figcaption>
+  </figure>
+  <div class="lab" id="srLab">
+    <h4><span>Where does Bendigo’s gold sit?</span><b id="srTag">tap a target</b></h4>
+    <svg class="grid-svg" id="srSvg" viewBox="0 0 640 260" role="img" aria-label="Folded turbidite beds with targets in anticline hinges, syncline hinges and fold limbs"></svg>
+    <p class="say" id="srSay">These are folded sandstone and shale beds cut by a reverse fault. Tap where you’d expect Bendigo-style saddle reefs.</p>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="stawell" data-log="Stawell"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">78 to 91 m</span></div>
+  <h2>Stawell: gold around a basalt dome</h2>
+  <p>Stawell, at the western edge of the Victorian goldfields, dates from the 1850s. Its largest mine, Magdala (about 4 Moz), has produced gold from more than 1600 m below the surface. The gold sits around the margins of a large dome of Ordovician basalt. Basalt is rigid and barely deforms while the sediments around it fold and shear, so voids open where the contrast in rock strength is greatest, and quartz veins and gold fill them. The extension of the Stawell corridor south, under cover, is a prime target. <span class="srcs">slide 25</span> <span class="srcs">slide notes</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · two generations of quartz</span><span class="srcs">slide 25</span></div>
+    <img loading="lazy" decoding="async" src="img/L13/stawell-vein.jpg" alt="Underground face of black carbonaceous shale with many thin white quartz veins, cut by a thick white quartz vein">
+    <p class="ask">There are at least two sets of quartz here. Which came first, and which is likely to carry the gold?</p>
+    <details data-obs="stawell"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Many thin, irregular, deformed white quartz veins in black carbonaceous shale.</li><li>A thicker quartz vein cutting straight through them.</li></ul>
+      <p class="so">So the thin, deformed veins are earlier and the thick vein that cuts them is later: crosscutting relationships. This is the mineralised vein of the Hanging Wall lode cutting earlier barren quartz. In orogenic gold the payable vein is usually a late one, so knowing which generation you’re looking at matters. <span class="srcs">slide 25</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="muruntau" data-log="Muruntau"><div class="wrap">
+  <div class="kicker">The giants <span class="depth">91 to 104 m</span></div>
+  <h2>Muruntau and the gold league table</h2>
+  <p>Muruntau, in the desert of Uzbekistan, is the world’s largest open-cut gold mine (about 3.5 × 2.5 km and 560 m deep) and the largest orogenic gold deposit, with an estimated 150 million ounces in total. It is 100% government owned. Locals had mined turquoise there on a small scale for thousands of years; a soil geochemical survey picked up arsenic and gold anomalies in 1958, and mining began in 1967. The host is Ordovician to early Silurian marine clastics, siltstone and mudstone, much like Victoria’s; alteration is fine-grained and largely argillic. It produces over 2 million ounces a year. <span class="srcs">slides 26 and 27</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L13/muruntau-sat.jpg" alt="Satellite view of a large dark open pit and dumps in pale desert" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Muruntau from above, slide 26</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L13/muruntau-pit.jpg" alt="View into a deep terraced open pit" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Inside the pit, slide 27</div></div>
+  </div>
+  <div class="lab" id="lgLab">
+    <h4><span>The gold league table</span><b id="lgTag"></b></h4>
+    <div class="chips" role="group" aria-label="Measure"><button class="chip" type="button" id="lgOz" aria-pressed="true">Ounces</button><button class="chip" type="button" id="lgUS" aria-pressed="false">Value at US$4000</button></div>
+    <svg class="grid-svg" id="lgSvg" viewBox="0 0 640 230" role="img" aria-label="Log-scale bar chart comparing Holtermann's nugget, Ballarat, Bendigo, Muruntau and the Witwatersrand" style="margin-top:.6rem"></svg>
+    <p class="say" id="lgSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Log scale. Ounces from slides 9, 22, 26 and 28 (Witwatersrand 44 000 t); values recalculated here at US$4000 an ounce.</p>
+  </div>
+  <p style="font-size:.88rem;color:var(--muted)">Check the Witwatersrand figures. Slide 28 says it supplied more than 60% of all gold ever mined and would be worth US$240 000 trillion; Lecture 12 (slide 44) gave about 40%. At 44 000 t, the value works out at about US$5.7 trillion at US$4000 an ounce (44 000 × 32 150.7 × 4000), so the slide’s figure looks like a slip. The share depends on what total you divide by, so quote it with its source.</p>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="source" data-log="Sources"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">104 to 117 m</span></div>
+  <h2>Where the fluid and gold come from</h2>
+  <p>For a long time orogenic gold fluid was taken to be metamorphic water, released as rocks heat and dehydrate (that’s how Lecture 12 framed it). This lecture puts the other side. Many experimental and isotope studies over the last 20 years point to <b>granites</b> as the source of the gold-transporting fluid: the sulphur isotopes look magmatic, and the trace elements that travel with the gold (Bi, Te, As, Mo, Sb, Sn, W) are classic granite elements. The granites themselves are usually buried, not exposed. <span class="srcs">slide 29</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <p>The <b>gold</b> itself seems to come from the country rock. The current consensus is that it starts as micro-inclusions in pyrite in regionally extensive carbonaceous mudstones and shales, and is released during metamorphism and moved by convection. One study in northern Finland sampled every 50 m across 10 km either side of a deposit and found gold rising steadily toward it, a sign the gold was gathered from the surrounding rock. <span class="srcs">slide 29</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <p>Faults and shear zones focus the fluid and then provide impermeable or reactive barriers that make gold precipitate; dolerite dykes and sills are favourite traps. Fluid moves by seismic pumping (Richard Sibson’s model, developed further by Stephen Cox), and a whole deposit may form in just 10 000 to 100 000 years. <span class="srcs">slide 30</span></p>
+  <div class="lab">
+    <h4><span>Fluid source or gold source?</span><b id="soScore">0 / 4</b></h4>
+    <div class="cards" id="soCards"></div>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="carlin" data-log="Carlin"><div class="wrap">
+  <div class="kicker">Variation <span class="depth">117 to 130 m</span></div>
+  <h2>Carlin-type gold</h2>
+  <p>This lecture treats <button class="term" data-t="Carlin-type">Carlin-type</button> deposits as a subtype of orogenic gold. In Nevada the gold is in sub-greenschist argillites and limestones, with intense silicification and lesser kaolinisation, formed 2 to 3 km down at 200 to 300 °C from dilute fluid during Cenozoic back-arc extension (Basin and Range). The deposits line up along trends: Carlin, Getchell, Battle Mountain-Eureka, Independence and Alligator Ridge. Southern China has them too; none has been found in Australia. Mining them built two of the biggest gold companies, Barrick and Newmont. <span class="srcs">slides 31 and 32</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L13/nevada.jpg" alt="Map of Nevada with sedimentary-rock-hosted gold deposits along the Carlin, Getchell, Battle Mountain-Eureka, Independence and Alligator Ridge trends" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Nevada gold trends, slide 32</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L13/carlin-model.jpg" alt="Sketch of meteoric and metamorphic fluids in folded strata with stratabound replacement, quartz reefs and fold-hinge ore, and pyrite overgrowths with Au-As rims" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Carlin ore traps: stratabound replacement, fold hinges, Au-As pyrite rims, slide 33</div></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Carlin ore</span><span class="srcs">slide 33</span></div>
+    <img loading="lazy" decoding="async" src="img/L13/carlin-ore.jpg" alt="Dark grey, fine-grained rock with a rough surface and a few tiny glints">
+    <p class="ask">This is gold ore. Find the gold.</p>
+    <details data-obs="carlin"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A dark, fine-grained carbonaceous sedimentary rock with a little fine pyrite. No visible gold at all.</li></ul>
+      <p class="so">You can’t, and that’s the point. Carlin gold is so fine it’s essentially invisible, locked in arsenian pyrite. What you can see are the arsenic and antimony minerals that come with it. Because the ore looks like waste, Carlin mines have to assay constantly to know they’re still in ore. <span class="srcs">slides 31 and 33</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · where is the gold in the pyrite?</span><span class="srcs">slide 34</span></div>
+    <img loading="lazy" decoding="async" src="img/L13/carlin-pyrite.jpg" alt="Electron image of a cluster of fine pyrite among quartz crystals; a zoned pyrite grain with a speckled rim around a cleaner core and an arrow across it; and a graph of element counts along the arrow, higher in the rim">
+    <p class="ask">The laser traced across the zoned pyrite from rim to core. Where are gold and arsenic highest?</p>
+    <details data-obs="pyrite"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A clean core and a speckled, inclusion-rich rim.</li><li>On the trace, gold, arsenic and the other trace elements jump up as the beam enters the rim and are higher across the rim than in the core.</li></ul>
+      <p class="so">So the gold sits in the <b>rim</b>: thin, arsenic-rich ore-stage pyrite grown over earlier gold-poor pyrite, when the ore fluid cooled and mixed with heated meteoric water. <span class="srcs">slide 34</span> (Muntean et al., 2011) <span class="srcs">slide notes</span> <span style="color:var(--muted)">The recording describes the gold as being in the core; the figure and the slide notes put it in the rim, so the page follows the slide.</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/cline.jpg" alt="Model section: deep metamorphic and mantle-derived fluids carrying H2O, CO2, S and Au rise from the ductile crust into the brittle crust, where deeply convecting meteoric water circulates, to Carlin-type deposits near the surface">
+    <figcaption>Cline et al.’s (2005) model: metamorphic dehydration makes H₂O-CO₂ fluid that leaches gold from the lower crust, rises, and mixes with deeply convecting heated meteoric water along crustal-scale faults, dropping gold in favourable beds. Several parts of the crust may contribute. <span class="srcs">slide 35</span> <span class="srcs">slide notes</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="tuena" data-log="Tuena"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">130 to 144 m</span></div>
+  <h2>Tuena: reading vein generations</h2>
+  <p>Tuena, between Bathurst and Goulburn in NSW, is a historic goldfield (about 100 000 oz) studied in an honours project in 2020. It sits along the Godolphin-Copperhannia fault corridor, with numerous small deposits along subsidiary faults. A mysterious adit, over 100 m long and on no geological record, gave a rare continuous 3D view through the geology, which was mapped and logged in detail. <span class="srcs">slides 36 to 38</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L13/tuena-adit.jpg" alt="Two people silhouetted in a narrow rock tunnel lit from behind" style="max-width:480px;margin:0 auto">
+    <figcaption>Inside the Tuena adit. <span class="srcs">slide 38</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · veins in the adit</span><span class="srcs">slide 39</span></div>
+    <img loading="lazy" decoding="async" src="img/L13/tuena-veins.jpg" alt="Underground wall of grey-green schistose rock with pale, folded and broken quartz veins along the foliation">
+    <p class="ask">These pale quartz veins lie along the foliation and are folded. Were they there before or after the main deformation?</p>
+    <details data-obs="tuena"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pale quartz in pods and lenses, folded and dragged into the foliation, some rootless.</li></ul>
+      <p class="so">So these veins were there <b>before</b> or during deformation: early, refolded veins and syn-kinematic veins. They’re not the gold veins. At Tuena, as across the Lachlan, the gold is in late, <b>post-kinematic</b>, planar, carbonate-rich veins that cut the foliation. <span class="srcs">slides 39 and 40</span> <span class="srcs">lecture recording, 13 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="lab">
+    <h4><span>Put Tuena’s history in order</span><b id="odTag">0 / 7</b></h4>
+    <div class="cards" id="odBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="odSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="odReset">Shuffle again</button></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Tuena under the microscope</span><span class="srcs">slide 40</span></div>
+    <img loading="lazy" decoding="async" src="img/L13/tuena-gold.jpg" alt="Reflected light view of grey matrix with thin dark fractures, along which small bright yellow grains sit, 200 micrometre scale bar">
+    <p class="ask">What are the bright yellow grains, and where are they sitting?</p>
+    <details data-obs="tuenagold"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Bright yellow, high-reflectance grains, irregular and elongate.</li><li>Strung along thin fractures, plus a few isolated specks.</li></ul>
+      <p class="so">So it’s <b>gold</b> in micro-veinlets and disseminated grains, filling late fractures: the gold came in after the rock was already deformed and fractured, as the vein history says. <span class="srcs">slide 40</span></p>
+    </div></details>
+  </div>
+  <p>The lesson repeats from Hill End to Kalgoorlie: deposits vary, but they sit in the same structural corridors, and if you find one you should find more. <span class="srcs">lecture recording, 13 Oct</span></p>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 14 moves to the shallow end of the gold world, epithermal gold-silver deposits, where boiling and mixing near the surface do the work that earthquakes and effervescence do here.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 13 slides (Orogenic gold deposits, 40 slides, with speaker notes; photos and figures tagged by slide) and the Echo360 recording of 13 October 2026. Figures in the slides come from published sources (Goldfarb et al. 2001, Witt and Vanderhor 1998, Cassidy et al. 1998, Ramsay et al. 1998, Miller and Wilson 2002, Muntean et al. 2011, Cline et al. 2005 and others) and are shown only as lecture material; the Tuena material is from a 2020 UNSW honours project. The crustal continuum slider and the saddle-reef targets are teaching models.</p>
+  <p><a href="L12.html">&larr; Lecture 12</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know a lode from a nugget.'],[35,'Graduate geologist','You can spot fuchsite.'],[100,'Project geologist','You can log a late gold vein.'],[180,'Senior geologist','You can read the crustal continuum.'],[240,'Chief geologist','The Golden Mile calls you first.']];
+var G={
+ "orogenic gold":"Structurally controlled gold deposits formed during regional metamorphism and deformation in mountain building, 2 to 20 km deep.",
+ "crustal continuum":"Groves’ idea that orogenic gold forms at every crustal level, from sub-greenschist to amphibolite facies.",
+ "lode gold":"Gold in veins or lodes rather than in placer gravels.",
+ "metamorphic-hosted":"Hosted by metamorphosed rocks; an older name for orogenic gold.",
+ "retrograde metamorphism":"Mineral changes as metamorphic rocks cool; most orogenic gold arrives during retrograde amphibolite to greenschist conditions.",
+ "greenschist facies":"Low-grade metamorphism (chlorite, epidote, actinolite, albite), roughly 300 to 450 °C.",
+ "amphibolite facies":"Medium to high-grade metamorphism (hornblende, plagioclase, garnet), above greenschist.",
+ "transpression":"Compression combined with strike-slip movement.",
+ "fuchsite":"A bright green chromium mica; in carbonate-altered rock it is a strong sign of orogenic gold.",
+ "ankerite":"Ca(Fe,Mg)(CO₃)₂, an iron carbonate common in orogenic gold alteration.",
+ "arsenopyrite":"FeAsS, a silver-white arsenic sulphide; a carrier of gold in orogenic and Carlin deposits.",
+ "sericite":"Fine white mica from feldspar breakdown; common in gold alteration.",
+ "subsidiary structure":"A smaller fault or shear branching off a major crustal fault; where most orogenic gold sits.",
+ "saddle reef":"A quartz-gold reef in the hinge of an anticline, as at Bendigo.",
+ "leatherjacket":"A thin, flat quartz vein in the Ballarat style.",
+ "aquitard":"An impermeable layer or body that holds fluid back, such as the Walhalla dolerite dyke.",
+ "prospect":"Mineralised rock not yet proven economic.",
+ "deposit":"Rock that has been mined or holds a proven economic resource not yet mined.",
+ "workings":"Excavations made only to find or extract ore.",
+ "mine":"An area from which ore was or is being extracted.",
+ "field":"A group of deposits or mines with a similar geological setting.",
+ "nugget":"A detrital lump of gold from a placer; Holtermann’s was really a gold-rich quartz vein.",
+ "regolith":"The weathered and transported material above fresh bedrock; very thick in the Yilgarn.",
+ "Carlin-type":"Very fine, invisible gold in arsenian pyrite in silicified sedimentary rock; treated here as a subtype of orogenic gold.",
+ "arsenian pyrite":"Pyrite with arsenic in its structure, which can hold invisible gold.",
+ "silicification":"Replacement of rock by silica; intense in Carlin-type deposits.",
+ "kink fold":"A sharp, angular fold in foliated rock.",
+ "pre-kinematic":"Formed before a deformation event.",
+ "syn-kinematic":"Formed during a deformation event.",
+ "post-kinematic":"Formed after a deformation event; the Lachlan gold veins are post-kinematic.",
+ "seismic pumping":"Fluid surging up a fault each time an earthquake opens it.",
+ "Muruntau":"Uzbekistan; the largest orogenic gold deposit, about 150 Moz."
+};
+var CP={
+ cp1:{q:'What makes a deposit “orogenic” gold?',o:['Gold in river gravels','Structurally controlled gold formed during regional metamorphism and deformation in mountain building','Gold in a porphyry stock'],a:1,e:'Veins and lodes along structures, 2 to 20 km deep, in compressional to transpressional settings.'},
+ cp2:{q:'When does most orogenic gold arrive?',o:['During peak amphibolite metamorphism','During retrograde amphibolite-to-greenschist conditions, often up to 100 Myr after the main orogeny','Before any deformation'],a:1,e:'Gold is late in the orogenic cycle.'},
+ cp3:{q:'Which Precambrian craton has produced over 50 Moz of orogenic gold?',o:['Yilgarn','Kaapvaal','Pilbara'],a:0,e:'With the Superior and West African cratons, it’s one of the big three.'},
+ cp4:{q:'Why wasn’t Holtermann’s “nugget” a true nugget?',o:['It was gold-plated','It was a slab of quartz vein riddled with gold, not a detrital placer lump','It was found at sea'],a:1,e:'A 3000 oz piece of vein from Hawkins Hill, 1872.'},
+ cp5:{q:'Where does Yilgarn gold usually sit?',o:['On the main crustal faults','On subsidiary structures branching off them, often at intersections','Only in granite'],a:1,e:'Structure and timing matter more than host rock.'},
+ cp6:{q:'At Bendigo, where are the saddle reefs?',o:['In the hinges of anticlines','In syncline troughs only','In the granite'],a:0,e:'Anticline hinges close off and trap the fluid.'},
+ cp7:{q:'At Stawell, why is gold concentrated around the basalt dome?',o:['Basalt holds the most gold','Rigid basalt barely deforms while sediments fold around it, opening voids that fill with veins','The basalt is younger'],a:1,e:'Strength contrast creates dilation.'},
+ cp8:{q:'Muruntau is famous as...',o:['the largest orogenic gold deposit (~150 Moz) and largest open-cut gold mine','a Carlin-type deposit','a paleoplacer'],a:0,e:'Found from soil As-Au anomalies in 1958; mined since 1967.'},
+ cp9:{q:'According to this lecture, where does orogenic gold itself come from?',o:['Meteorites','Pyrite micro-inclusions in carbonaceous mudstones and shales, released during metamorphism','Seawater'],a:1,e:'Fluids may be granite-derived; the gold is gathered from the country rocks.'},
+ cp10:{q:'Why can’t you see the gold in Carlin ore?',o:['It is in tellurides','It is invisible, locked in arsenian pyrite rims','It weathered away'],a:1,e:'You see the arsenic and antimony minerals, not the gold.'},
+ cp11:{q:'At Tuena, which vein generation carries the gold?',o:['Early, pre-kinematic, rootless veins','Folded syn-kinematic veins','Late, post-kinematic, planar carbonate-rich veins'],a:2,e:'Typical across the Lachlan: gold is late.'}
+};
+var ST=[
+ ['Define orogenic gold and give its key characteristics.','Recall','Structurally controlled vein (lode) gold formed during regional metamorphism and deformation in orogenesis; compressional to transpressional margins; 200 to 700 °C, 2 to 20 km; dilute H₂O-CO₂ ± CH₄, N₂ fluids; quartz veins with carbonate, sericite, arsenopyrite, pyrite, ± fuchsite; Archean to Mesozoic.'],
+ ['Explain the “crustal continuum”.','Apply','Orogenic gold forms at every crustal level, from sub-greenschist to amphibolite facies, with brittle veins and breccias at shallow levels, brittle-ductile shears in the middle and ductile shear zones deep; Au-Sb shallow, Au-As (-W) deep.'],
+ ['Why do orogenic orebodies have great vertical but small lateral extent?','Think','They form in large, deep, steep faults and shear zones, so the ore follows the structure down for kilometres while staying narrow; some Kalgoorlie mines go below 2 km.'],
+ ['Compare the Yilgarn and Victorian goldfields.','Apply','Yilgarn: Archean (2.7 Ga) granite-greenstone, gold in mafic volcanics, BIF and granite on subsidiary structures, deep regolith. Victoria: Palaeozoic Lachlan turbidites, greenschist facies, little visible alteration, fault-bounded zones, saddle reefs (Bendigo), bedding-cleavage control (Ballarat); gold Ordovician to Devonian.'],
+ ['Why does Bendigo’s gold sit in anticline hinges?','Apply','Folding opens dilatant zones in anticline hinges, which also act as traps that close off rising fluid; crosscutting shears feed fluid into them, forming saddle reefs.'],
+ ['What controls gold around dolerite dykes and basalt domes?','Apply','They are rigid and impermeable: fluid is dammed against them (aquitard), and strength contrast with deforming sediments opens voids along their margins, as at Walhalla and Stawell.'],
+ ['Summarise the evidence for fluid and gold sources in orogenic deposits.','Think','Fluids: magmatic sulphur isotopes and granite trace elements (Bi, Te, As, Mo, Sb, Sn, W) suggest buried granites, though metamorphic fluids are the older view. Gold: pyrite micro-inclusions in carbonaceous mudstones released during metamorphism; Finnish transects show gold rising toward deposits.'],
+ ['How do Carlin-type deposits differ from typical orogenic deposits?','Apply','Hosted in sub-greenschist argillites and limestones, 2 to 3 km, 200 to 300 °C, Cenozoic back-arc extension; intense silicification, some kaolinisation; invisible gold in arsenian pyrite rims; mined in bulk by open cut.'],
+ ['Calculate the value of Bendigo’s 700 000 kg of gold at US$4000 an ounce.','Apply','700 000 kg = 700 t × 32 150.7 oz/t = about 22.5 Moz × US$4000 = about US$90 billion (the slide gives about US$120 billion at a higher assumed price).'],
+ ['Using Tuena, explain how you would decide which veins to target in an orogenic goldfield.','Synthesise','Map vein generations by crosscutting and deformation: early pre-kinematic rootless veins, syn-kinematic folded veins, and late post-kinematic planar carbonate veins that cut the foliation. In the Lachlan the gold is in the late set, so target late, undeformed veins along subsidiary faults in the main structural corridor.']
+];
+GEO.start({key:'geos3141-L13-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- crustal continuum ---------- */
+var CC=[[2,5,'sub-greenschist','#D9CFB8','Brittle veins and breccias','Racetrack · Lady Bountiful','Shallow and brittle: open-space veins and breccias, Au-Sb (± Hg) associations, and the lowest temperatures, roughly 200 to 300 °C.'],
+ [5,9,'lower greenschist','#B8C9A0','Brittle-ductile: vein sets and stockworks','Golden Mile · Mt Charlotte · Lancefield · Granny Smith','The Kalgoorlie level: brittle-ductile faults with stockworks and vein sets. Most Yilgarn gold forms in greenschist conditions.'],
+ [9,13,'upper greenschist','#94B48A','Brittle-ductile shears, laminated veins','Sons of Gwalia · Harbour Lights · Victory-Defiance · Porphyry','Deeper shear zones with laminated (crack-seal) veins. Au-As-Te associations; arsenopyrite is common.'],
+ [13,20.1,'amphibolite','#7E9A86','Ductile shear zones','Norseman · Coolgardie · Marvel Loch · Griffins Find · Westonia','Hot and ductile: gold in shear zones in amphibolite facies rock, Au-As (± W), toward 700 °C at the deep end.']];
+var ccSeen={};
+function ccDraw(){var d=+$('#ccD').value,s=$('#ccSvg');s.innerHTML='';var Y=function(z){return 20+(z-2)/18*280;};
+  CC.forEach(function(c){el('rect',{x:0,y:Y(c[0]),width:640,height:Y(Math.min(20,c[1]))-Y(c[0]),fill:c[3]},s);txt(s,10,Y(c[0])+18,c[2],{'font-size':13,fill:'#22301E','font-weight':700});});
+  el('rect',{x:0,y:0,width:640,height:20,fill:'#BFD7E6'},s);txt(s,520,14,'surface',{'font-size':11,fill:'#163245'});
+  el('path',{d:'M300 20 L360 300',stroke:'#3E3A36','stroke-width':6,fill:'none'},s);
+  for(var z=2.5;z<20;z+=1.2){var y=Y(z),x=300+(y-20)/280*60,sh=z<5?0:z<9?.3:z<13?.6:1;
+    if(sh<.2){el('path',{d:'M'+(x+6)+' '+y+' l26 -10 m-20 18 l22 -4',stroke:'#F2F0EA','stroke-width':3,fill:'none'},s);}
+    else if(sh<.5){el('path',{d:'M'+(x+6)+' '+y+' l30 -6 m-30 10 l26 -2',stroke:'#F2F0EA','stroke-width':3,fill:'none'},s);}
+    else{el('path',{d:'M'+(x+4)+' '+(y-4)+' q16 4 34 0 m-34 8 q16 4 34 0',stroke:'#F2F0EA','stroke-width':2.5,fill:'none'},s);}}
+  el('line',{x1:0,y1:Y(d),x2:640,y2:Y(d),stroke:'var(--gold-hi)','stroke-width':3},s);el('circle',{cx:330,cy:Y(d),r:9,fill:'var(--gold-hi)',stroke:'#3E3A36'},s);
+  [5,10,15,20].forEach(function(z){txt(s,600,Y(z)-3,z+' km',{'font-size':11,fill:'#22301E'});});
+  var c=CC.filter(function(c){return d>=c[0]&&d<c[1];})[0];ccSeen[c[2]]=1;
+  $('#ccDV').textContent=d+' km';$('#ccF').textContent=c[2];$('#ccS').textContent=c[4];$('#ccE').textContent=c[5];$('#ccTag').textContent=c[2];$('#ccSay').innerHTML=c[6]+' <span class="srcs">slides 11, 15 and 20</span>';
+  if(Object.keys(ccSeen).length===4)award('cc',5,'Travelled the crustal continuum');}
+$('#ccD').addEventListener('input',ccDraw);ccDraw();
+
+/* ---------- crustal level cards ---------- */
+var LVO=['Sub-greenschist, shallow','Greenschist, middle','Amphibolite, deep'];
+mcCards($('#lvCards'),[
+ {lbl:'Ore',q:'Open-space quartz veins and breccias with stibnite (Sb) and gold, in barely metamorphosed rock',o:LVO,a:0,e:'Au-Sb, brittle: epizonal, sub-greenschist.'},
+ {lbl:'Ore',q:'Ductile shear zone in hornblende-garnet rock with gold and arsenopyrite',o:LVO,a:2,e:'Amphibolite facies, deep in the continuum, like Marvel Loch.'},
+ {lbl:'Ore',q:'Stockwork and vein sets in chlorite-carbonate altered dolerite, as at Mt Charlotte',o:LVO,a:1,e:'Lower greenschist, the Kalgoorlie level.'},
+ {lbl:'Ore',q:'Laminated crack-seal quartz veins in a brittle-ductile shear with arsenopyrite and tellurides',o:LVO,a:1,e:'Greenschist, Au-As-Te: middle of the continuum.'}
+],'lv',3,function(r,n){$('#lvScore').textContent=r+' / '+n;});
+
+/* ---------- definitions cards ---------- */
+var DFO=['Prospect','Deposit','Mine','Field'];
+mcCards($('#dfCards'),[
+ {lbl:'Which term?',q:'A soil gold anomaly with a few encouraging drill holes, not yet shown to be economic',o:DFO,a:0,e:'Prospect: mineralised but not proven economic.'},
+ {lbl:'Which term?',q:'Bendigo, Ballarat, Castlemaine and their neighbours, all in the same geological setting',o:DFO,a:3,e:'A field: a group of deposits or mines with a similar setting.'},
+ {lbl:'Which term?',q:'Hawkins Hill, where ore is being extracted underground today',o:DFO,a:2,e:'A mine: ore was or is being extracted.'},
+ {lbl:'Which term?',q:'A drilled-out body with a proven economic resource, but no mining has started',o:DFO,a:1,e:'A deposit: proven economic, or mined in the past.'}
+],'df',2,function(r,n){$('#dfScore').textContent=r+' / '+n;});
+
+/* ---------- saddle reef targets ---------- */
+var srs=$('#srSvg'),srSeen={};
+var ST2=[[140,95,'anticline hinge','yes'],[320,185,'syncline hinge','no'],[500,95,'anticline hinge','yes'],[230,140,'fold limb','no'],[410,140,'fold limb','no']];
+function srDraw(sel){var s=srs;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:260,fill:'var(--paper)'},s);
+  for(var k=0;k<7;k++){var o=k*18,d='M0 '+(150+o);for(var x=0;x<=640;x+=10){d+=' L'+x+' '+(150+o-55*Math.cos((x-140)/360*2*Math.PI));}el('path',{d:d,fill:'none',stroke:k%2?'#8C8478':'#C9BC9E','stroke-width':12},s);}
+  el('line',{x1:60,y1:250,x2:600,y2:20,stroke:'#8E3424','stroke-width':3,'stroke-dasharray':'7 4'},s);txt(s,560,40,'reverse fault',{'font-size':12,fill:'#8E3424'});
+  ST2.forEach(function(t,i){var g=el('g',{style:'cursor:pointer'},s);el('circle',{cx:t[0],cy:t[1],r:22,fill:'transparent'},g);
+    el('circle',{cx:t[0],cy:t[1],r:11,fill:srSeen[i]?(t[3]==='yes'?'#E8B923':'var(--line)'):'var(--gold)',stroke:'#3E3A36','stroke-width':2},g);
+    if(srSeen[i]&&t[3]==='yes')el('path',{d:'M'+(t[0]-26)+' '+(t[1]+8)+' Q'+t[0]+' '+(t[1]-14)+' '+(t[0]+26)+' '+(t[1]+8),fill:'none',stroke:'#F2F0EA','stroke-width':5},g);
+    g.addEventListener('click',function(){srPick(i);});});}
+function srPick(i){var t=ST2[i];var first=!srSeen[i];srSeen[i]=1;srDraw(i);
+  if(t[3]==='yes'){SND.play('ok');if(first)FX.burst(srs);$('#srSay').innerHTML='Yes: an <b>anticline hinge</b>. Folding opens dilatant space in the hinge and the closed-off arch traps rising fluid, so quartz-gold saddle reefs form here, stacked one above another down the fold. <span class="srcs">slide 23</span> <span class="srcs">lecture recording, 13 Oct</span>';}
+  else{FX.shake(srs);COMBO.miss();$('#srSay').innerHTML=t[2]==='syncline hinge'?'A <b>syncline hinge</b>. It opens downward and doesn’t trap rising fluid the same way; Bendigo’s main reefs are in the anticlines.':'A <b>fold limb</b>: no hinge dilation here. Look at the crests.';}
+  var hits=[0,2].filter(function(k){return srSeen[k];}).length;$('#srTag').textContent=hits+' / 2 saddle reefs';if(hits===2)award('sr',4,'Found Bendigo’s saddle reefs');}
+srDraw(-1);
+
+/* ---------- league table ---------- */
+var LG=[['Holtermann’s nugget',3000],['Ballarat',6430000],['Bendigo',22505000],['Muruntau',150000000],['Witwatersrand',44000*32150.7]],lg={v:false,seen:{}};
+function lgDraw(){var s=$('#lgSvg');s.innerHTML='';var mx=Math.log10(LG[4][1]*(lg.v?4000:1)),mn=Math.log10(1000*(lg.v?4000:1));
+  LG.forEach(function(r,i){var val=r[1]*(lg.v?4000:1),w=(Math.log10(val)-mn)/(mx-mn)*330,y=6+i*44;txt(s,8,y+24,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:180,y:y+8,width:Math.max(4,w),height:24,rx:3,fill:r[0]==='Muruntau'?'var(--gold)':'var(--slate)'},s);
+    var lab=lg.v?(val>=1e12?'US$'+(val/1e12).toFixed(1)+' trillion':val>=1e9?'US$'+Math.round(val/1e9)+' billion':'US$'+Math.round(val/1e6)+' million'):(r[1]>=1e6?(r[1]/1e6).toFixed(1)+' Moz':r[1].toLocaleString('en-AU')+' oz');txt(s,186+w,y+25,lab,{'font-size':12,fill:'var(--ink)'});});
+  $('#lgTag').textContent=lg.v?'value':'ounces';
+  $('#lgSay').textContent=lg.v?'At US$4000 an ounce, Muruntau’s 150 Moz is about US$600 billion; the slide’s US$800 billion assumes a higher price. The Witwatersrand is in a league of its own.':'Each bar is ten times longer per step on this log scale: Muruntau holds about 50 000 Holtermann’s nuggets, and the Witwatersrand about nine Muruntaus.';
+  lg.seen[lg.v?'v':'o']=1;if(lg.seen.v&&lg.seen.o)award('lg',3,'Compared the giants');}
+$('#lgOz').addEventListener('click',function(){lg.v=false;this.setAttribute('aria-pressed','true');$('#lgUS').setAttribute('aria-pressed','false');lgDraw();});
+$('#lgUS').addEventListener('click',function(){lg.v=true;this.setAttribute('aria-pressed','true');$('#lgOz').setAttribute('aria-pressed','false');lgDraw();});
+lgDraw();
+
+/* ---------- source cards ---------- */
+var SOO=['Evidence about the fluid source','Evidence about the gold source'];
+mcCards($('#soCards'),[
+ {lbl:'Evidence',q:'Sulphur isotopes in the ore look magmatic',o:SOO,a:0,e:'Points to granite-derived fluid.'},
+ {lbl:'Evidence',q:'Gold content of the country rock rises steadily over 10 km toward a deposit in Finland',o:SOO,a:1,e:'The gold was gathered from the surrounding rocks.'},
+ {lbl:'Evidence',q:'The ore carries Bi, Te, Mo, Sn and W',o:SOO,a:0,e:'Granite-associated trace elements travel with the fluid.'},
+ {lbl:'Evidence',q:'Regional carbonaceous shales contain gold-bearing pyrite micro-inclusions',o:SOO,a:1,e:'The likely original host of the gold, released in metamorphism.'}
+],'so',2,function(r,n){$('#soScore').textContent=r+' / '+n;});
+
+/* ---------- Tuena order ---------- */
+var OD=['S1: Goulburn basin extensional faults (Siluro-Devonian), later reactivated as thrusts','V1: early pre-kinematic veins, highly sheared, with early silica alteration','S2: large north-south structures and the regional foliation (Devonian)','V2: syn-kinematic veins, sheared and folded','S3: reactivation and kink folding (Carboniferous)','S4: pervasive chlorite, illite and muscovite alteration','V3: late, planar, post-kinematic carbonate veins with the gold'];
+var odNext=0;
+function odBuild(){var b=$('#odBox');b.innerHTML='';odNext=0;$('#odTag').textContent='0 / 7';$('#odSay').textContent='Tap the events from oldest to youngest.';
+  var order=OD.map(function(s,i){return i;});for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=OD[i].replace(/^[SV]\d: /,'');
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===odNext){odNext++;c.disabled=true;c.textContent=odNext+'. '+OD[i];c.style.borderColor='var(--mal)';SND.play('ok');$('#odTag').textContent=odNext+' / 7';
+      if(odNext===7){COMBO.hit();award('od',COMBO.pts(5),'Ordered Tuena’s history'+COMBO.tag());FX.burst(c);$('#odSay').innerHTML='Gold comes last, after all the folding and fabric-forming. <span class="srcs">slide 40</span>';}}
+      else{FX.shake(c);COMBO.miss();$('#odSay').textContent='Not yet: what had to be there before that?';}});b.appendChild(c);});}
+$('#odReset').addEventListener('click',odBuild);odBuild();
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
