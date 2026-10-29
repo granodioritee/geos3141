@@ -479,6 +479,13 @@ var GEO = {
       $('.fill', rv).style.width = Math.min(100, (CARDS.length - k.unseen) / CARDS.length * 100) + '%';
       $('.hook', rv).textContent = k.due + ' due for review and ' + k.fresh + ' new today, from ' + CARDS.length + ' cards across every finished lecture.' + (s.xp ? ' ' + s.xp + ' oz earned reviewing.' : '');
     }
+    var sk = $('#lecSudoku');
+    if (sk && window.SUDOKU) {
+      var Ts = null; try { Ts = JSON.parse(localStorage.getItem('geos3141-sudoku') || 'null'); } catch (e) {}
+      var nb = SUDOKU.min.reduce(function (n, m) { return n + SUDOKU.cols.filter(function (c) { return m.p[c[0]][1] !== 'S'; }).length; }, 0), got = Ts && Ts.done ? Object.keys(Ts.done).length : 0;
+      if (Ts && Ts.xp) total += Ts.xp;
+      $('.oz', sk).textContent = got ? got + ' / ' + nb + ' blanks' : 'not started'; $('.fill', sk).style.width = Math.min(100, got / nb * 100) + '%';
+    }
     var lb = $('#lecLab');
     if (lb) { var Lr = GEO.labLoad(); total += Lr.xp; $('.oz', lb).textContent = Lr.runs ? 'best ' + Lr.best + '%' : 'not started'; $('.fill', lb).style.width = Lr.best + '%'; }
     $('#totalOz').textContent = total + ' oz';
@@ -690,7 +697,8 @@ var GEO = {
           link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
-      var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {});
+      var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {}), SKID = {};
+      ((window.SUDOKU || {}).min || []).forEach(function (m) { if (m.hs) SKID[m.hs] = m.id; });
       (LAB.hs || []).forEach(function (x) {
         var g = LAB.minGroup[x.m], ok = function (m) { return m !== x.m && !(PYX.indexOf(m) >= 0 && PYX.indexOf(x.m) >= 0); };
         var same = shuffle(MINS.filter(function (m) { return ok(m) && LAB.minGroup[m] === g; })).slice(0, 2);
@@ -699,7 +707,7 @@ var GEO = {
         out.push({ id: 'hs-' + x.src, kind: 'mineral', img: 'img/lab/hs/' + x.src + '.jpg', mic: false, lbl: 'Lab mineral set · hand specimen',
           q: x.k === 'streak' ? 'Streak test: which mineral left this streak?' : 'Name the mineral.', o: opts, a: opts.indexOf(x.m),
           e: x.m + (x.n ? ' (' + x.n + ')' : '') + ', a ' + g.toLowerCase() + ' mineral from the lab hand-specimen set.', credit: url,
-          link: /^(Cassiterite|Wolframite|Scheelite|Molybdenite|Beryl|Topaz|Tourmaline|Stannite|Bismuthinite)$/.test(x.m) ? 'L15.html#drill' : null });
+          link: /^(Cassiterite|Wolframite|Scheelite|Molybdenite|Beryl|Topaz|Tourmaline|Stannite|Bismuthinite)$/.test(x.m) ? 'L15.html#drill' : SKID[x.m] ? 'sudoku.html#m-' + SKID[x.m] : null });
       });
       /* alteration examples: never offer two names for overlapping assemblages as rivals */
       var OVER = [['Sericite alteration', 'Phyllic alteration', 'Massive illite'], ['Propylitic alteration', 'Epidote alteration', 'Chlorite alteration', 'Garnet-chlorite alteration', 'Chlorite-talc-pyrite'], ['Goethite gossan', 'Crystalline goethite']];
@@ -862,7 +870,7 @@ var GEO = {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
           var t = node('div', '', null, row); node('b', '', st.kind === 'obs' ? st.lbl : st.o[st.a], t); if (st.kind === 'obs') node('p', '', st.q, t); node('p', '', st.e, t);
           if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
-          else if (st.link) { var a2 = node('a', '', 'Review in Lecture ' + st.link.match(/L(\d+)/)[1] + ' →', t); a2.href = st.link; }
+          else if (st.link) { var a2 = node('a', '', /^sudoku/.test(st.link) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + st.link.match(/L(\d+)/)[1] + ' →', t); a2.href = st.link; }
           else if (st.credit) { var a3 = node('a', '', 'See the original photo →', t); a3.href = st.credit; a3.target = '_blank'; a3.rel = 'noopener'; }
         });
       }

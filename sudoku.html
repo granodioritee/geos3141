@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Mineral Sudoku</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+<script src="labdata.js"></script>
+<script src="sudokudata.js"></script>
+</head>
+<body class="lt">
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lab revision · T3 2026</div>
+  <h1>Mineral Sudoku</h1>
+  <p class="lede">The lab test asks you to name economic minerals in hand specimen. You don’t do that from memory of a photo. You run a few quick tests and eliminate. This page is the lab’s Minerals Sudoku sheet turned into a game: fill in the blanks for 46 minerals, then play detective with the lab’s own specimen photos.</p>
+  <div class="sk-score" id="skScore"></div>
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#tests">Reading a hand specimen</a></li>
+      <li><a href="#grid">The Sudoku</a></li>
+      <li><a href="#detective">Name that mineral</a></li>
+      <li><a href="#about">Where the values come from</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="tests"><div class="wrap">
+  <div class="kicker">Start here</div>
+  <h2>Reading a hand specimen</h2>
+  <p>You need three things: a hand lens (10 to 20 times is fine), a hardness kit and a streak plate. Then use your eyes before anything else. <span class="srcs">hand specimen identification notes, page 1</span></p>
+  <p><b>Lustre first.</b> Is it metallic or not? That one call halves the list. Non-metallic lustres have names worth learning by example: vitreous (quartz), sub-vitreous (plagioclase), pearly (calcite), dull (kaolinite), resinous (sulphur) and adamantine (sphalerite). <span class="srcs">GEOS2181 Labs 1-2, slides 12 and 13</span></p>
+  <p><b>Then streak, not colour.</b> Colour lies: fluorite and calcite come in every colour, but the powder is always colourless or white. Most silicates streak white. Streak earns its keep with the iron oxides: goethite streaks yellow-brown, hematite red-brown, magnetite brown-black. The plate has to be harder than the mineral, or you just scratch the plate. <span class="srcs">GEOS2181 Labs 1-2, slides 8 and 9</span></p>
+  <p><b>Then hardness, with what’s in your pocket.</b> Mohs is relative: diamond (10) is about five times harder than corundum (9). In the lab you bracket a mineral between tools. <span class="srcs">GEOS2181 Labs 1-2, slides 28 and 29</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Mohs</th><th>Mineral</th><th>Everyday tool</th></tr>
+    <tr><td>1</td><td>Talc</td><td></td></tr>
+    <tr><td>2</td><td>Gypsum</td><td>fingernail (2)</td></tr>
+    <tr><td>3</td><td>Calcite</td><td>copper (3 to 3.75)</td></tr>
+    <tr><td>4</td><td>Fluorite</td><td>cast iron (4 to 5)</td></tr>
+    <tr><td>5</td><td>Apatite</td><td>teeth (5), steel (5.5)</td></tr>
+    <tr><td>6</td><td>Orthoclase</td><td>glass (6 to 7)</td></tr>
+    <tr><td>7</td><td>Quartz</td><td>hardened steel (6.5 to 7.5)</td></tr>
+    <tr><td>8</td><td>Topaz</td><td></td></tr>
+    <tr><td>9</td><td>Corundum</td><td>tungsten carbide (9)</td></tr>
+    <tr><td>10</td><td>Diamond</td><td></td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">GEOS2181 Labs 1-2, slide 29</p>
+  <p><b>Then cleavage, heft and the odd tests.</b> Count the cleavage planes and the angle between them: micas have one perfect basal cleavage, feldspars and pyroxenes two at about 90°, amphiboles two at 60° and 120°, calcite three at 60°. Quartz, olivine and garnet have none, just fracture (conchoidal in quartz). Heft the specimen: quartz is 2.7, galena 7.6, gold 15 to 19. Finally the specials: magnetite is strongly magnetic and pyrrhotite moderately; talc feels soapy; clays smell earthy; struck sulphides smell of rotten eggs; heated arsenic minerals smell of garlic; molybdenite bends and stays bent; mica bends and springs back. <span class="srcs">GEOS2181 Labs 1-2, slides 22 to 33</span> <span class="srcs">hand specimen identification notes, pages 4 to 6</span></p>
+  <div class="lab">
+    <h4><span>Quick bench calls</span><b id="bqScore">0 / 6</b></h4>
+    <div class="cards" id="bqCards"></div>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Work in the same order every time: lustre, streak, hardness, cleavage, heft, then any special test. Write each result down before you name the mineral.</li><li>Use streak to split the iron oxides (yellow-brown goethite, red-brown hematite, black magnetite) and a magnet to confirm magnetite.</li><li>Use hardness to split the brassy sulphides: pyrite is harder than steel, chalcopyrite is not.</li></ul><span class="srcs">GEOS2181 Labs 1-2, slides 8 to 33</span></div>
+</div></section>
+
+<section id="grid"><div class="wrap">
+  <div class="kicker">The game</div>
+  <h2>The Sudoku</h2>
+  <p>Each card is one row of the lab’s sheet, with the lab’s own hand specimens of that mineral: flick through them and look for the colour, lustre, cleavage and habit before you answer. Plain values are given on the sheet. Tap a <b>?</b> to fill it: four choices, one right. First try pays an ounce and builds the combo; finishing a card pays a bonus.</p>
+  <p class="sk-legend"><span class="sk-tag d">notes</span> from the course’s hand-specimen notes · <span class="sk-tag x">added</span> standard value added for this site, check it against your lab notes · <span class="sk-flag-k">check</span> the sheet’s value looks off: tap it for why</p>
+  <div class="lt-opt"><span>Show</span><div class="chips" id="skF" role="group" aria-label="Which minerals"><button class="chip" type="button" data-v="1">Part 1</button><button class="chip" type="button" data-v="2">Part 2</button><button class="chip" type="button" data-v="0">Everything</button></div></div>
+  <div class="lt-opt"><span>Hide</span><div class="chips" id="skH" role="group" aria-label="Hide finished cards"><button class="chip" type="button" data-v="done">Finished cards</button></div></div>
+  <div class="sk-grid" id="skGrid"></div>
+</div></section>
+
+<section id="detective"><div class="wrap">
+  <div class="kicker">The payoff</div>
+  <h2>Name that mineral</h2>
+  <p>Like a lab station: you see the specimen and one test result (two when there’s no photo). Name the mineral, or ask for another clue (each costs an ounce). Colour comes last, because it’s the least reliable clue you have. Ten minerals per game.</p>
+  <div class="lab" id="dtLab">
+    <h4><span id="dtHead">Detective game</span><b id="dtTag"></b></h4>
+    <div id="dtBody"><div class="row"><button class="btn" type="button" id="dtStart">Start a game</button></div></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <div class="kicker">Reference</div>
+  <h2>Where the values come from</h2>
+  <p>The minerals, specimen codes and every plain value are exactly what the GEOS3141 Minerals Sudoku 2024 fill-in sheet gives. Blanks marked <span class="sk-tag d">notes</span> come from the course’s own notes: the GEOS2181 Labs 1-2 deck and the hand specimen identification notes. Blanks marked <span class="sk-tag x">added</span> are standard mineralogy values added for this site, not from the course, so treat them as a guide and trust the real specimens. Where a sheet value disagrees with the course notes or standard references (quartz’s density, chalcocite’s formula and a few others), the card keeps the sheet’s value and flags it.</p>
+  <p>Photos are from the lab’s hand-specimen set (Moodle book “Lab Material - minerals in hand specimen”, photos by Ian Graham on the course Flickr account). Fill in your own paper sheet too: this page is practice for the bench, not a copy to hand in.</p>
+  <div class="row"><button class="btn ghost" type="button" id="skReset">Reset Sudoku progress</button><span id="skResetMsg" style="font-family:var(--sans);font-size:.9rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a> &nbsp;·&nbsp; <a href="labtest.html">Lab test practice</a></p>
+  <p><strong>Sources.</strong> GEOS3141 Minerals Sudoku 2024 fill-in sheet; GEOS2181 Labs 1-2 2020 deck (identification of minerals in hand specimen, slides tagged); Hand specimen identification of minerals notes (Ian Graham, UNSW); lab hand-specimen photos by Ian Graham (course Flickr account). Values marked “added” are standard mineralogy values, not course material.</p>
+</div></footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+GEO.themeButton(); PAGE={key:'sudoku'};
+var K='geos3141-sudoku',M=SUDOKU.min,COLS=SUDOKU.cols,CN={};COLS.forEach(function(c){CN[c[0]]=c[1];});
+var T=null;try{T=JSON.parse(localStorage.getItem(K)||'null');}catch(e){}
+T=T&&typeof T==='object'?T:{};T.xp=T.xp||0;T.done=T.done||{};T.rows=T.rows||{};T.games=T.games||0;T.best=T.best||0;T.f=T.f||'1';T.hide=!!T.hide;
+function keep(){try{localStorage.setItem(K,JSON.stringify(T));}catch(e){}}
+function node(tag,cls,text,parent){var e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function gain(p,el,why){T.xp+=p;keep();GEO.dayMark();FX.float('+'+p+' oz');if(el)FX.burst(el);paintScore();}
+var HS={};(LAB.hs||[]).forEach(function(x){if(x.k==='hs')(HS[x.m]=HS[x.m]||[]).push(x.src);});
+/* every photo of a mineral: lecture photos first, then up to 12 lab hand specimens */
+function pics(m){var out=(m.pics||[]).map(function(p){return {src:p[0],cap:p[1],href:p[2]};});
+  ((m.hs&&HS[m.hs])||[]).slice(0,12).forEach(function(id){out.push({src:'img/lab/hs/'+id+'.jpg',cap:'Lab hand specimen · photo Ian Graham',href:'https://www.flickr.com/photos/188270557@N07/'+id+'/',ext:1});});return out;}
+function showPic(box,list,i,alt){box.innerHTML='';if(!list.length){node('div','sk-nopic','No photo of this one in the lab set yet',box);return;}
+  var p=list[i],im=node('img','',null,box);im.src=p.src;im.alt=alt;im.loading='lazy';var bar=node('div','sk-pbar',null,box);
+  if(list.length>1){var pv=node('button','sk-pb','‹',bar);pv.type='button';pv.setAttribute('aria-label','Previous photo');node('span','sk-pn',(i+1)+' / '+list.length,bar);var nx=node('button','sk-pb','›',bar);nx.type='button';nx.setAttribute('aria-label','Next photo');
+    pv.addEventListener('click',function(){showPic(box,list,(i+list.length-1)%list.length,alt);SND.play('tick');});nx.addEventListener('click',function(){showPic(box,list,(i+1)%list.length,alt);SND.play('tick');});}
+  var a=node('a','sk-cr',p.cap,bar);a.href=p.href;if(p.ext){a.target='_blank';a.rel='noopener';}}
+function blanks(m){return COLS.filter(function(c){return m.p[c[0]][1]!=='S';}).map(function(c){return c[0];});}
+var TOTAL=M.reduce(function(n,m){return n+blanks(m).length;},0);
+function filled(){return Object.keys(T.done).length;}
+function paintScore(){var b=$('#skScore');b.innerHTML='<b>'+filled()+' / '+TOTAL+'</b> blanks filled · <b>'+Object.keys(T.rows).length+' / '+M.length+'</b> cards · <b>'+T.xp+' oz</b>'+(T.best?' · detective best '+T.best+'/10':'');}
+
+/* ---------- quick bench calls ---------- */
+var BQ=[
+ ['It leaves a mark on glass but quartz scratches it. Hardness?',['about 6 to 7, below quartz','below 2','exactly 9'],0,'Glass is 6 to 7 and quartz 7, so it sits between them, like orthoclase.'],
+ ['Your fingernail scratches it. Which of these could it be?',['Quartz','Gypsum','Pyrite'],1,'A fingernail is about 2, so only very soft minerals like gypsum, talc or graphite.'],
+ ['A shiny grey iron oxide leaves a red-brown streak. Name it.',['Magnetite','Hematite','Goethite'],1,'Hematite always streaks red-brown, even the shiny specular kind.'],
+ ['A green mineral, any shade, gives a white streak. Is that odd?',['Yes, the streak should be green','No, most silicates streak white whatever their colour','Only if it is magnetic'],1,'Streak reflects the main chemistry, not trace-element colouring.'],
+ ['A brassy cube is harder than your steel knife. Pyrite or chalcopyrite?',['Pyrite','Chalcopyrite'],0,'Pyrite is 6 to 6.5; chalcopyrite (3.5) scratches easily.'],
+ ['A platy grey mineral bends and stays bent. Mica or molybdenite?',['Mica','Molybdenite'],1,'Molybdenite is flexible; micas are elastic and spring back.']
+];
+(function(){var box=$('#bqCards'),right=0;BQ.forEach(function(q){var c=node('div','qc',null,box),tries=0;node('div','',q[0],c);var o=node('div','opts',null,c),w=node('div','why',null,c);
+  q[1].forEach(function(t,j){var b=node('button','',t,o);b.type='button';b.addEventListener('click',function(){if(c.dataset.done)return;tries++;
+    if(j===q[2]){b.classList.add('right');c.dataset.done=1;right++;w.textContent=q[3];var k=BQ.indexOf(q);T.bq=T.bq||{};if(tries===1){COMBO.hit();if(!T.bq[k]){T.bq[k]=1;gain(COMBO.pts(1),b);}else{SND.play('ok');FX.burst(b);}}else SND.play('ok');$('#bqScore').textContent=right+' / '+BQ.length;}
+    else{b.classList.add('wrong');b.disabled=true;FX.shake(b);COMBO.miss();w.textContent='Not that one. Try again.';}});});});})();
+
+/* ---------- distractors ---------- */
+var STOP={to:1,and:1,or:1,often:1,the:1,a:1,with:1,if:1,fresh:1,at:1,about:1,of:1,on:1,your:1,its:1,when:1,'(colourless)':1};
+var SYN={nil:'none',indistinct:'poor',distinct:'good',dull:'earthy'};
+function words(s){return s.toLowerCase().replace(/[(),;\-]/g,' ').split(/\s+/).filter(function(w){return w&&!STOP[w];}).map(function(w){return SYN[w]||w;});}
+function range(s){var n=(s.match(/\d+(\.\d+)?/g)||[]).map(Number);return n.length?[Math.min.apply(null,n),Math.max.apply(null,n)]:null;}
+function clash(k,a,b){if(a===b)return true;
+  if(k==='h'||k==='d'){var x=range(a),y=range(b);if(!x||!y)return true;var pad=k==='h'?.6:.35;return x[0]-pad<=y[1]&&y[0]-pad<=x[1];}
+  if(k==='cv'){var fa=words(a)[0],fb=words(b)[0];if(fa===fb)return true;}
+  var wa=words(a),wb=words(b);return wa.some(function(w){return wb.indexOf(w)>=0;});}
+function options(m,k){var right=m.p[k][0],pool=[];M.forEach(function(x){var v=x.p[k][0];if(x!==m&&pool.indexOf(v)<0&&!clash(k,right,v))pool.push(v);});
+  var pick=shuffle(pool).slice(0,3);for(var i=0;i<pick.length;i++)for(var j=i+1;j<pick.length;j++)if(clash(k,pick[i],pick[j])){pick.splice(j,1);j--;}
+  pool.forEach(function(v){if(pick.length<3&&pick.indexOf(v)<0&&pick.every(function(p){return !clash(k,p,v);}))pick.push(v);});
+  return shuffle(pick.concat([right]));}
+
+/* ---------- the grid ---------- */
+function srcTag(m,k){var c=m.p[k];if(c[1]==='D')return '<span class="sk-tag d" title="'+SUDOKU.src[c[2].slice(0,2)]+', '+c[2].slice(3)+'">notes</span>';if(c[1]==='X')return '<span class="sk-tag x">added</span>';return '';}
+function cardDone(m){return blanks(m).every(function(k){return (m.id+'.'+k) in T.done;});}
+function buildGrid(){var g=$('#skGrid');g.innerHTML='';
+  M.forEach(function(m){if(T.f!=='0'&&String(m.t)!==T.f)return;if(T.hide&&cardDone(m))return;
+    var c=node('div','sk-card',null,g);c.id='m-'+m.id;var h=node('div','sk-h',null,c);
+    if(m.code)node('span','sk-code',m.code,h);node('b','',m.n,h);
+    var f=node('div','sk-f',null,c);f.textContent=m.f;if(m.fx)f.insertAdjacentHTML('beforeend',' <span class="sk-tag x">added</span>');
+    if(m.flag&&m.flag.f)flagBtn(f,m.flag.f);
+    var pic=node('div','sk-pic',null,c);showPic(pic,pics(m),0,m.n+' hand specimen');
+    var dl=node('div','sk-rows',null,c);
+    COLS.forEach(function(col){var k=col[0],cell=m.p[k],row=node('div','sk-row',null,dl);node('span','sk-k',col[1].replace(' (g/cm³)',''),row);var v=node('span','sk-v',null,row);
+      if(cell[1]==='S'){v.textContent=cell[0]+(k==='d'?' g/cm³':'');if(m.flag&&m.flag[k])flagBtn(v,m.flag[k]);}
+      else if((m.id+'.'+k) in T.done){v.innerHTML='';v.appendChild(document.createTextNode(cell[0]+(k==='d'?' g/cm³':'')+' '));v.insertAdjacentHTML('beforeend',srcTag(m,k));v.classList.add('got');}
+      else{var b=node('button','sk-q','?',v);b.type='button';b.setAttribute('aria-label','Fill in '+col[1]+' for '+m.n);b.addEventListener('click',function(){ask(m,k,row,v);});}});
+    var bar=node('div','sk-bar',null,c);node('i','',null,bar);paintCard(m,c);});
+  if(!g.children.length)node('p','',T.hide?'Every card in this set is finished. Nice work. Show finished cards again, or pick another set.':'Nothing here.',g);}
+function flagBtn(parent,note){var b=node('button','sk-flag','check',parent);b.type='button';var n=null;b.addEventListener('click',function(){if(n){n.remove();n=null;return;}n=node('span','sk-note',note,null);parent.parentNode.appendChild(n);SND.play('flip');});}
+function paintCard(m,c){var bl=blanks(m),got=bl.filter(function(k){return (m.id+'.'+k) in T.done;}).length;$('.sk-bar i',c).style.width=(bl.length?got/bl.length*100:100)+'%';
+  c.classList.toggle('done',got===bl.length);}
+function ask(m,k,row,v){var open=$('.sk-opts',row.parentNode);if(open)open.remove();
+  var box=node('div','sk-opts',null,null);row.after(box);node('div','sk-ask',CN[k]+' of '+m.n+'?',box);var tries=0;
+  options(m,k).forEach(function(t){var b=node('button','',t,box);b.type='button';b.addEventListener('click',function(){tries++;
+    if(t===m.p[k][0]){T.done[m.id+'.'+k]=tries===1?1:0;var c=row.closest('.sk-card');
+      if(tries===1){COMBO.hit();gain(COMBO.pts(1),b);}else{SND.play('ok');keep();paintScore();}
+      v.innerHTML='';v.appendChild(document.createTextNode(t+(k==='d'?' g/cm³':'')+' '));v.insertAdjacentHTML('beforeend',srcTag(m,k));v.classList.add('got');box.remove();
+      if(cardDone(m)&&!T.rows[m.id]){T.rows[m.id]=1;COMBO.hit();gain(COMBO.pts(3),c);SND.play('coin');toast('<b>'+m.n+'</b> complete. +3 oz bonus');}
+      paintCard(m,c);}
+    else{b.classList.add('wrong');b.disabled=true;FX.shake(b);COMBO.miss();}});});
+  SND.play('flip');}
+function chips(){$$('#skF .chip').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===T.f?'true':'false');});$('#skH .chip').setAttribute('aria-pressed',T.hide?'true':'false');}
+$('#skF').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;T.f=b.dataset.v;keep();chips();buildGrid();});
+$('#skH').addEventListener('click',function(e){if(!e.target.closest('button'))return;T.hide=!T.hide;keep();chips();buildGrid();});
+
+/* ---------- detective ---------- */
+var ORDER=['l','s','h','cv','d','o','c'],dt=null;
+function metal(m){return /metallic/.test(m.p.l[0]);}
+function clues(m){return ORDER.filter(function(k){return !(m.flag&&m.flag[k]);});}
+function dtStart(){var pool=shuffle(M.slice()).slice(0,10);dt={list:pool,i:0,right:0,oz:0};COMBO.n=0;dtRound();}
+function dtRound(){var m=dt.list[dt.i],body=$('#dtBody');body.innerHTML='';var pl=pics(m);dt.pic=pl.length?pl[Math.floor(Math.random()*pl.length)]:null;dt.shown=dt.pic?1:2;dt.over=false;
+  if(dt.pic){var ph=node('div','dt-photo',null,body),im=node('img','',null,ph);im.src=dt.pic.src;im.alt='Unknown mineral specimen';}
+  $('#dtHead').textContent='Mineral '+(dt.i+1)+' of '+dt.list.length;$('#dtTag').textContent=dt.right+' right · '+dt.oz+' oz';
+  var same=shuffle(M.filter(function(x){return x!==m&&metal(x)===metal(m);})),other=shuffle(M.filter(function(x){return x!==m&&metal(x)!==metal(m);}));
+  dt.opts=shuffle(same.slice(0,2).concat(other).slice(0,3).concat([m]));
+  var cl=node('div','dt-clues',null,body);dt.cl=cl;var more=node('button','btn ghost','Another clue (−1 oz)',null);more.type='button';more.id='dtMore';
+  var o=node('div','lt-opts',null,body);dt.o=o;
+  dt.opts.forEach(function(x,j){var b=node('button','',null,o);b.type='button';node('span','k',String(j+1),b);b.appendChild(document.createTextNode(x.n));b.addEventListener('click',function(){dtAnswer(x,b);});});
+  var r=node('div','row',null,body);r.appendChild(more);more.addEventListener('click',function(){if(dt.over)return;dt.shown++;SND.play('flip');paintClues();});
+  node('div','dt-why',null,body);paintClues();}
+function paintClues(){var m=dt.list[dt.i],ks=clues(m),cl=dt.cl;cl.innerHTML='';
+  ks.slice(0,dt.shown).forEach(function(k){var d=node('div','dt-clue',null,cl);node('span','sk-k',CN[k].replace(' (g/cm³)',''),d);node('b','',m.p[k][0]+(k==='d'?' g/cm³':''),d);});
+  var more=$('#dtMore');if(more)more.disabled=dt.over||dt.shown>=ks.length;}
+function dtAnswer(x,btn){if(dt.over)return;var m=dt.list[dt.i];dt.over=true;$$('#dtBody .lt-opts button').forEach(function(b){b.disabled=true;});
+  var idx=dt.opts.indexOf(m);$$('#dtBody .lt-opts button')[idx].classList.add('right');var w=$('#dtBody .dt-why');
+  if(x===m){dt.right++;COMBO.hit();var p=COMBO.pts(Math.max(1,6-dt.shown));dt.oz+=p;gain(p,btn);SND.play('ok');w.innerHTML='<b>Right.</b> +'+p+' oz'+COMBO.tag()+'. ';}
+  else{btn.classList.add('wrong');FX.shake(btn);COMBO.miss();w.innerHTML='<b>It’s '+m.n+'.</b> ';}
+  w.appendChild(document.createTextNode(m.n+' ('+m.f+'): '+COLS.map(function(c){return c[1].replace(' (g/cm³)','').toLowerCase()+' '+m.p[c[0]][0];}).join('; ')+'.'));
+  if(dt.pic){var a=node('a','dt-pic',dt.pic.cap,w);a.href=dt.pic.href;if(dt.pic.ext){a.target='_blank';a.rel='noopener';}}
+  var l=node('a','',' See its Sudoku card →',w);l.href='#m-'+m.id;l.addEventListener('click',function(){if(T.f!=='0'&&String(m.t)!==T.f){T.f='0';chips();}if(T.hide){T.hide=false;chips();}buildGrid();});
+  var nx=node('button','btn',dt.i+1<dt.list.length?'Next mineral':'See the result',null);nx.type='button';$('#dtBody .row').appendChild(nx);nx.focus();
+  nx.addEventListener('click',function(){dt.i++;if(dt.i<dt.list.length)dtRound();else dtEnd();});
+  $('#dtTag').textContent=dt.right+' right · '+dt.oz+' oz';}
+function dtEnd(){var body=$('#dtBody');body.innerHTML='';T.games++;var pb=dt.right>T.best;if(pb)T.best=dt.right;keep();paintScore();
+  $('#dtHead').textContent='Game over';node('div','bigscore num',dt.right+' / '+dt.list.length,body);
+  node('p','',dt.oz+' oz this game.'+(pb?' New best!':' Best so far '+T.best+' / 10.'),body);
+  if(pb){SND.play('rank');FX.rain(90);}else if(dt.right>=7){SND.play('clear');FX.rain(40);}
+  var r=node('div','row',null,body),b=node('button','btn','Play again',r);b.type='button';b.addEventListener('click',dtStart);}
+$('#dtStart').addEventListener('click',dtStart);
+document.addEventListener('keydown',function(e){if(!dt||dt.over||e.metaKey||e.ctrlKey||e.altKey)return;if(/^[1-4]$/.test(e.key)){var b=$$('#dtBody .lt-opts button')[+e.key-1];if(b){e.preventDefault();b.click();}}});
+
+var armed=false;
+$('#skReset').addEventListener('click',function(){if(!armed){armed=true;$('#skResetMsg').textContent='Click again to clear your Sudoku progress and ounces.';setTimeout(function(){armed=false;$('#skResetMsg').textContent='';},4000);return;}
+  try{localStorage.removeItem(K);}catch(e){}T={xp:0,done:{},rows:{},games:0,best:0,f:'1',hide:false};armed=false;$('#skResetMsg').textContent='Cleared.';chips();buildGrid();paintScore();});
+chips();buildGrid();paintScore();
+if(location.hash&&/^#m-/.test(location.hash)){var id=location.hash.slice(3),m=M.filter(function(x){return x.id===id;})[0];if(m){T.f='0';T.hide=false;chips();buildGrid();var c=$('#m-'+id);if(c){var go=function(){c.scrollIntoView({block:'center'});};c.classList.add('sk-hl');go();window.addEventListener('load',go);setTimeout(go,300);}}}
+})();
+</script>
+</body>
+</html>
