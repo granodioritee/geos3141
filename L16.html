@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 16 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L15.html">&larr; Lecture 15</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 16 · T3 2026</div>
+  <h1>Silver veins and basin brines</h1>
+  <p class="lede">This lecture covers four families of base-metal deposits in sedimentary rocks. CMPV deposits are silver-rich veins in deformed metasediments, the far end of a granite system. MVT, Irish-type and Kupferschiefer deposits have no igneous connection at all: warm basin brines carry zinc, lead or copper until they hit something that reduces them. Start with an MVT, because its trick is easy to see.</p>
+
+  <div class="lab" id="bnLab">
+    <h4><span>Squeeze a basin, make an MVT</span><b id="bnTag">0 pulses</b></h4>
+    <svg class="grid-svg" id="bnSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of a foreland basin with a thrust belt on the left, an aquifer rising to the right under platform carbonates with hydrocarbon patches, and brine pulses travelling up the aquifer"></svg>
+    <div class="readout"><div><small>Brine</small><b id="bnB">waiting</b></div><div><small>Reductant</small><b id="bnR">hydrocarbons present</b></div><div><small>Ore bodies</small><b id="bnO">0</b></div></div>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="bnGo">Orogeny: squeeze the basin</button><button class="btn ghost" type="button" id="bnHc">Remove the hydrocarbons</button><button class="btn ghost" type="button" id="bnReset" style="margin-left:auto">Start again</button></div>
+    <p class="say" id="bnSay">A thrust belt is building on the left. Squeeze the basin and follow the brine.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model of the MVT story on slides 23 to 30 (basin brine driven up an aquifer by tectonics, dissolving carbonate and dropping sulphide where it meets organic matter); geometry and numbers are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#families">Four families</a></li>
+      <li><a href="#cmpv">CMPV deposits</a></li>
+      <li><a href="#webbs">Webbs, Conrad and the silver giants</a></li>
+      <li><a href="#cmpvmin">CMPV hosts, alteration and minerals</a></li>
+      <li><a href="#genesis">CMPV textures and genesis</a></li>
+      <li><a href="#mvt">Mississippi Valley-type</a></li>
+      <li><a href="#mvtore">MVT ores and how they form</a></li>
+      <li><a href="#irish">Irish-type</a></li>
+      <li><a href="#kupfer">Kupferschiefer: sediment-hosted copper</a></li>
+      <li><a href="#manuka">Manuka</a></li>
+      <li><a href="#compare">Telling them apart</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="families" data-log="Families"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>Four families</h2>
+  <p>The four styles are clastic metasediment-hosted polymetallic veins (<button class="term" data-t="CMPV">CMPV</button>), Mississippi Valley-type (<button class="term" data-t="MVT">MVT</button>), its Irish-type relatives, and Kupferschiefer-type sediment-hosted copper. CMPV ore sits in veins in metasandstone, metasiltstone, metaconglomerate and even metavolcanics. MVT and Irish ore replaces carbonate. Kupferschiefer ore is very fine grained and finely banded in carbonaceous black shale. <span class="srcs">slides 1 and 2</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · banded zinc ore</span><span class="srcs">slides 1 and 28</span></div>
+    <img loading="lazy" decoding="async" src="img/L16/colloform.jpg" alt="Cut slab with concentric cream, yellow and brown bands wrapped around dark grey patches, 2 cm scale bar">
+    <p class="ask">Describe the banding. Did these minerals grow into open space or replace something solid?</p>
+    <details data-obs="colloform"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Concentric, rounded, cream to yellow-brown bands wrapping around darker grey patches, like layers of an onion.</li><li>Branching dark grey growths between some bands.</li></ul>
+      <p class="so">So the pale bands are <button class="term" data-t="colloform">colloform</button> sphalerite (low-iron, pale) and the branching grey growths are dendritic galena. Both grew into <b>open space</b>, layer by layer. This is MVT ore from Upper Silesia, Poland. <span class="srcs">slide 28</span> (Leach et al., 2005)</p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="cmpv" data-log="CMPV"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">13 to 26 m</span></div>
+  <h2>CMPV deposits</h2>
+  <p>CMPV deposits are often called <b>granite-intrusion-related polymetallic veins</b>. They are spatially and often genetically linked to felsic intrusions, usually large batholiths, but not to porphyry copper systems. They are complex polymetallic deposits, with veins rich in silver and base-metal sulphides. The granite can be several kilometres away: you might drill a deposit and need to go many kilometres further to hit the granite. <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/langbaker.jpg" alt="Schematic intrusion-related system: intrusion-hosted Au-Bi-Te-W styles, proximal skarns and replacements, and distal Ag-Pb-Zn veins and disseminations far from the pluton">
+    <figcaption>Intrusion-related deposit styles from intrusion-hosted to proximal and distal (Lang and Baker, 2001). CMPV deposits are the distal Ag-Pb-Zn veins on the right. <span class="srcs">slide 4</span> <span class="srcs">lecture recording, 27 Oct</span></figcaption>
+  </figure>
+  <p>They form under mesothermal conditions, around 6 km and 250 to 300 °C, much like orogenic gold, from fluids of 0 to 26 wt% salinity, anywhere from 0 to 10 km deep. The veins are strongly structurally controlled, tied to fault zones or to structures secondary to crustal-scale shear zones. The host basins can be (1) continental margins that began as epicratonic embayments on passive margins, (2) collisional boundaries at intracontinental or intraoceanic subduction zones (the Harz Mountains, Příbram), or (3) continental, oceanic or back-arc marginal basins (Keno Hill). They sit in Pb-Zn provinces that often also hold SEDEX deposits, and they form late, after compression or extension. <span class="srcs">slides 5 and 6</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/cordillera.jpg" alt="Map of the North American Cordillera with terranes and the Keno Hill, Kokanee Range and Coeur d'Alene districts along one belt">
+    <figcaption>Keno Hill (Yukon), Kokanee Range (British Columbia) and Coeur d’Alene (Idaho) in the Cordillera. <span class="srcs">slide 8</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="webbs" data-log="Webbs"><div class="wrap">
+  <div class="kicker">The numbers <span class="depth">26 to 39 m</span></div>
+  <h2>Webbs, Conrad and the silver giants</h2>
+  <p>The classic districts are Kokanee Range, Keno Hill, Coeur d’Alene, the Harz Mountains and Freiberg in Germany, Příbram in the Czech Republic, Guangzhou in China, and the New England Orogen of NSW and Queensland. Not a major deposit class, but extremely rich in silver. <span class="srcs">slides 7 and 8</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="lab" id="agLab">
+    <h4><span>Compare the silver</span><b id="agTag"></b></h4>
+    <div class="chips" id="agC" role="group" aria-label="Measure"></div>
+    <svg class="grid-svg" id="agSvg" viewBox="0 0 640 230" role="img" aria-label="Bar chart of CMPV deposits by tonnage, silver grade or contained silver" style="margin-top:.6rem"></svg>
+    <p class="say" id="agSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Tonnages and grades from slides 8 and 9 (Coeur d’Alène is production to 1965, more than 100 Mt). Contained silver = Mt × g/t.</p>
+  </div>
+  <p>In NSW, both main CMPV deposits are in the southern New England Orogen. <b>Conrad</b> (458 000 t at 600 g/t Ag, 8% Pb, 4% Zn, 1.5% Cu and 1.5% Sn), near Inverell, is hosted in the granite itself. <b>Webbs</b> (1.49 Mt at 245 g/t Ag, 0.71% Pb, 1.56% Zn and 0.27% Cu), near Emmaville, sits in dark metasiltstone away from the granite. Deeper in Webbs, drilling started hitting wolframite and cassiterite: the vein system grades toward the granite-related Sn-W system of Lecture 15. Silver, lead and zinc are the low-temperature end, far from the granite; tin and tungsten are the high-temperature end, close to it. <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/nsw-cmpv.jpg" alt="Map of NSW silver occurrences, with Conrad and Webbs in the New England Orogen in the north-east" style="max-width:520px;margin:0 auto">
+    <figcaption>Silver occurrences in NSW; Conrad and Webbs in the southern New England Orogen. <span class="srcs">slide 9</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="cmpvmin" data-log="CMPV minerals"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">39 to 52 m</span></div>
+  <h2>CMPV hosts, alteration and minerals</h2>
+  <p>The hosts are thick, monotonous sequences of fine- to medium-grained clastic sediments with minor carbonate, mafic and tuff units, metamorphosed to at least greenschist facies (at Webbs, dark grey to black carbonaceous rock). Wall-rock alteration (sericite, silica, pyrite) is restricted to a few metres around the veins, so it’s a poor vector. Large zones of hydrothermal <b>bleaching</b>, from loss of iron, are much better: they can extend for kilometres. <span class="srcs">slide 10</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a CMPV core</span><span class="srcs">slide 13</span></div>
+    <img loading="lazy" decoding="async" src="img/L16/cmpv-core.jpg" alt="Six panels: A, a drill core of pale bleached rock with grey and white veins and dark green patches; B to F, microscope images">
+    <p class="ask">Look at A. Describe the host rock’s colour and what crosses it. What would you log?</p>
+    <details data-obs="cmpvcore"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pale, bleached siltstone (Fe has been removed).</li><li>A quartz vein with siderite and disseminated sulphide, a thin massive sulphide veinlet, and dark green chlorite.</li></ul>
+      <p class="so">So you’d log a bleached siltstone cut by a quartz-siderite vein with disseminated sulphide and a massive sulphide veinlet, plus chlorite: classic CMPV gangue and ore, with the bleaching as your wider vector. <span class="srcs">slide 13</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+    </div></details>
+  </div>
+  <p>The ore is mostly <b>galena, sphalerite and tetrahedrite-tennantite</b>, with minor pyrite, chalcopyrite, arsenopyrite, stibnite, native silver and a complex suite of silver sulphosalts (pyrargyrite, stephanite, bournonite), especially around Freiberg and Příbram. <button class="term" data-t="freibergite">Freibergite</button>, the silver-rich tetrahedrite named after Freiberg, usually comes late: silver arrives after the main sulphides, at lower temperature. Near granites you also get tin: sphalerite with exsolved stannite. Arsenopyrite is an early alteration phase but a nuisance, because smelters penalise arsenic. Gangue is quartz and carbonate (dominantly siderite, with minor dolomite, ankerite, calcite), plus minor barite, fluorite and magnetite. Calcite and dolomite usually come late, when meteoric water floods the dying hydrothermal system. <span class="srcs">slides 11 to 13</span> <span class="srcs">slide notes</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/webbs-rl2.jpg" alt="Four microscope panels A to D: reflected light with grey sulphides and yellow chalcopyrite; cross-polarised fine sericite around black sulphide; reflected light grey sphalerite with fine bright lamellae; cross-polarised view with white sulphide and fine sericite">
+    <figcaption>Webbs ore under the microscope: sulphides intergrown with chalcopyrite (A), intense fine sericite around the sulphides (B), sphalerite with stannite exsolution (C), and sericite with recrystallised quartz (D). <span class="srcs">slides 11 and 12</span> <span class="srcs">slide notes</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Webbs ore in reflected light</span><span class="srcs">slide 12</span></div>
+    <img loading="lazy" decoding="async" src="img/L16/webbs-rl.jpg" alt="Reflected light: a broad bright white grain on the right with black triangular pits, irregular pale grey grains on the left with a small yellow patch, all in dark grey gangue, 200 micrometre scale bar">
+    <p class="ask">Find the black triangles in the bright grain on the right. Which mineral do they identify, and what is the small yellow patch on the left?</p>
+    <details data-obs="webbsrl"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A bright white grain with black triangular pits lined up in rows.</li><li>Irregular pale grey grains on the left with a small brassy yellow patch, in dark grey non-reflective gangue.</li></ul>
+      <p class="so">So the bright grain is <b>galena</b>: triangular pits from plucking along its cubic cleavage are its giveaway. The yellow patch is <b>chalcopyrite</b>, and the dark background is quartz-carbonate gangue. Freibergite, arsenopyrite and sphalerite with stannite are the other minerals labelled from Webbs on this slide. <span class="srcs">slide 12</span></p>
+    </div></details>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Webbs silver mine is in the lab ore suites (polymetallic vein). Expect quartz-siderite veins with galena, sphalerite and tetrahedrite group minerals (freibergite), minor arsenopyrite and chalcopyrite, in bleached, sericitised metasiltstone.</li><li>In reflected light: galena white with triangular pits; tetrahedrite-freibergite grey with a slight olive or brownish tint; sphalerite darker grey, possibly with stannite blebs.</li></ul><span class="srcs">slides 10 to 13</span> <span class="srcs">lab ore suites</span></div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="genesis" data-log="CMPV genesis"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">52 to 65 m</span></div>
+  <h2>CMPV textures and genesis</h2>
+  <p>CMPV veins are multiphase, with complex sequences and a variety of textures: <button class="term" data-t="crustiform">crustiform</button>, <button class="term" data-t="cockade">cockade</button>, colloform banding and <button class="term" data-t="comb texture">comb</button> textures. Sulphides come as coarse massive sulphide and fine disseminations, and later deformation, brecciation or shearing can wipe out the primary textures. <span class="srcs">slide 14</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/textures.jpg" alt="Table of sketched vein textures with names such as massive, crustiform, colloform, cockade, moss, comb and replacement textures">
+    <figcaption>A classification of vein textures, from primary growth textures (crustiform, colloform, cockade, comb) to recrystallisation and replacement textures. <span class="srcs">slide 14</span></figcaption>
+  </figure>
+  <p>Three genetic models compete, and the real answer is probably a mix, because most studies look at single deposits. (1) <b>Magmatic differentiation</b>: a volatile fluid from a differentiating (often mafic) magma, concentrated in chalcophile Ag, Pb, Zn and Cu, discharges up faults, with mafic and lamprophyre dykes as evidence. (2) <b>Deep crustal faults</b>: deep faults are first-order conduits for deep-sourced carbon, lead and fluid (seen in isotopes), and ore forms by local boiling and mixing with cooler meteoric and upper-crustal water in subsidiary structures, as in orogenic gold. (3) <b>Intrusion-related</b>: a nearby crystallising intrusion is only the heat engine at 250 to 300 °C; the metals and fluids are exchanged meteoric and metamorphic waters from the country rock. This last one is used for Webbs. <span class="srcs">slides 15 to 18</span> <span class="srcs">slide notes</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="lab">
+    <h4><span>Which genetic model?</span><b id="gnScore">0 / 3</b></h4>
+    <div class="cards" id="gnCards"></div>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="mvt" data-log="MVT"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">65 to 78 m</span></div>
+  <h2>Mississippi Valley-type</h2>
+  <p>MVT deposits are named after classic districts in the Mississippi River drainage of the central USA, and they hold about 24% of the world’s sediment- and volcanic-hosted Pb-Zn resources. They are <b>epigenetic</b>, formed tens to hundreds of millions of years after their host rocks, at low temperature (about 50 to 250 °C, mostly 90 to 150 °C), from basinal brines of 10 to 30 wt% NaCl. They have <b>no spatial or temporal link to igneous rocks</b>, which separates them from skarns and other intrusion-related Pb-Zn. They are commonly stratabound, locally stratiform. <span class="srcs">slides 19 and 20</span> <span class="srcs">slide notes</span></p>
+  <p>Deposits range from 0.2 Mt to 95.3 Mt (Navan), averaging about 7 Mt at 7.9% Pb + Zn, and they come in districts of up to 400 deposits: find one and you’ll find more. Silver is a minor by-product (median 37 g/t). Some are mined for other things: fluorite in Illinois, barite in England. In Australia MVTs hold about 8% of Zn-Pb-Ag resources (about 10.7 Mt Zn, 5.9 Mt Pb and 4888 t Ag). The Lennard Shelf in WA has deposits of 2 to 20 Mt, typically 2 to 4 Mt at about 12% Pb + Zn. Sorby Hills is the biggest Australian MVT resource; the recording notes that a shallow aquifer makes it difficult to mine. <span class="srcs">slides 21 and 22</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <p>Most MVTs sit in passive-margin platform carbonates in the forelands of orogens, in contraction or thrust belts. The Canning Basin (Lennard Shelf) is an exception: its deposits formed during extensional faulting as the basin turned into a passive margin. <span class="srcs">slide 23</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/mvt-world.jpg" alt="World map of MVT districts with many in the central USA, Canada, Europe and North Africa, and a few in Australia including Lennard Shelf and Manuka">
+    <figcaption>MVT districts worldwide (Leach et al., 2005): the central USA, Canada, the circum-Mediterranean and Alpine belt, the Irish Midlands, Upper Silesia, and in Australia the Lennard Shelf and Manuka. <span class="srcs">slide 24</span> <span class="srcs">lecture recording, 27 Oct</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="mvtore" data-log="MVT ores"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">78 to 91 m</span></div>
+  <h2>MVT ores and how they form</h2>
+  <p>Hosts are dolostone or limestone in platform carbonate sequences; dolostone-hosted deposits are generally larger and richer in Pb, Zn and Ag, probably because dolostone transmits fluid better (limestone-hosted Navan is the exception). Alteration is dolomitisation, dissolution of the host and brecciation; silicification is minor, more in hotter systems. Early acid fluid dissolves the carbonate and makes collapse breccias and voids, so the permeability is mostly <b>secondary</b>, and the ore fills it. <span class="srcs">slide 25</span> <span class="srcs">slide notes</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <p>The ore is simple: sphalerite and galena with lesser pyrite and marcasite, some silver, little copper. The Viburnum Trend in Missouri is the complex exception, with Cu, Co, Ni and Sb sulphides. Gangue is carbonate (dolomite, siderite, ankerite, calcite), with barite and fluorite minor or absent, though some deposits are dominated by them. Sulphide mostly replaces carbonate, with some open-space fill; grain size runs from extremely fine to crystals over a metre, and caves can open up with calcite crystals 2 m across (test for gas first: hydrocarbons can leave carbon monoxide). <span class="srcs">slides 26 and 27</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a breccia</span><span class="srcs">slide 28</span></div>
+    <img loading="lazy" decoding="async" src="img/L16/mvt-breccia.jpg" alt="A cut slab of angular pale carbonate blocks separated by thin dark sulphide-filled gaps, a coin for scale">
+    <p class="ask">The blocks are carbonate, the dark seams sulphide. What made the breccia, and when did the sulphide arrive?</p>
+    <details data-obs="breccia"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Angular blocks of pale carbonate that fit back together, separated by thin dark sulphide seams.</li></ul>
+      <p class="so">So this is a <b>dissolution collapse breccia</b>: the carbonate was dissolved, the roof collapsed into blocks, and hydrothermal fluid then altered the breccia and filled and replaced the gaps with sulphide. Collapse first, ore second. Upper Silesia, Poland. <span class="srcs">slide 28</span> (Leach et al., 2005)</p>
+    </div></details>
+  </div>
+  <p>How do they form? Multiple basinal brines with contrasting reduced sulphur and metal contents mix. The metals, and the sulphur, come from the detrital rocks of the basin. The carbonate host was once a reduced environment with abundant hydrocarbons and organic matter; when oxidised basin water carrying metals as chloride or sulphate complexes met that organic matter, the redox reaction destabilised the complexes and Pb and Zn sulphides precipitated. Ore formation is tied to major crustal tectonic events: a stable carbonate platform suddenly uplifted or squeezed. That’s the animation at the top. <span class="srcs">slides 29 and 30</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>MVT</th><th>Source or cause</th></tr>
+    <tr><td>Metals</td><td>Detrital sedimentary rocks of the basin</td></tr>
+    <tr><td>Sulphur</td><td>Biogenic H₂S or sedimentary sulphide</td></tr>
+    <tr><td>Fluid</td><td>Connate (pore) water</td></tr>
+    <tr><td>Fluid circulation</td><td>Compaction? Tectonic deformation? Sea-level rise? (all queried on the slide)</td></tr>
+    <tr><td>Precipitation</td><td>Redox reaction as oxidised basin water meets organic matter in carbonate</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 30</p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/mvt-dendritic.jpg" alt="Cut slab with dark sphalerite dendrites and rounded spheroids in a pale carbonate matrix" style="max-width:420px;margin:0 auto">
+    <figcaption>Spheroidal and dendritic sphalerite with galena, pyrite and marcasite: textures of open-space growth. Upper Silesia, Poland. <span class="srcs">slide 28</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="irish" data-log="Irish-type"><div class="wrap">
+  <div class="kicker">Variation <span class="depth">91 to 104 m</span></div>
+  <h2>Irish-type</h2>
+  <p>Irish-type deposits are transitional: stratabound, structurally controlled, carbonate-hosted Pb-Zn with both SEDEX and MVT characteristics, often treated as an MVT subset. They emerged as a class in the 1970s and early 1980s, when the big Irish Midlands deposits were read as synsedimentary or early diagenetic. Unlike MVTs, they have a close spatial and temporal link to volcanism, and mineralisation happens mostly <b>during diagenesis</b>, in partly to wholly lithified sediment. <span class="srcs">slides 31 and 32</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <p>Deposits are typically under 10 Mt at 5 to 6% Zn, 1 to 2% Pb and 30 g/t Ag (up to 90 g/t), with trace Cu, Cd, As, Ni and Co; the slide notes give Navan as 90 Mt at 10.5% Pb + Zn, Lisheen 14.4 Mt at 11.7% Zn and 2% Pb, and Galmoy 6.7 Mt at 11.9% Zn + Pb. They form on carbonate ramps in extensional basins on extending continental margins, concentrated on the <b>downthrown blocks of normal faults</b>, some in ramp-relay systems; those faults were the fluid pathways. Hosts are non-argillaceous carbonate (mainly limestone) in mixed carbonate-siliciclastic successions, with dolomitisation, Mn halos in some deposits and rare silicification. <span class="srcs">slides 32 to 34</span> <span class="srcs">slide notes</span></p>
+  <p>The sulphur is dominantly bacterial. Ore is sphalerite and galena with minor pyrite, chalcopyrite, arsenopyrite, tennantite and Ni-Co minerals (cobaltite, niccolite); silver sits in tennantite, galena and sphalerite. Exposed at the surface, the oxide zone adds cerussite, anglesite, smithsonite, limonite and pyromorphite, and paid for early mining. Gangue is dolomite, calcite and quartz; barite is common and locally the economic product; fluorite is extremely rare. Two genetic models compete: <b>syngenetic seafloor deposition</b> (stratiform geometry, bedded and clastic sulphides, similar ages for ore and host) and <b>diagenetic to epigenetic replacement</b> (replacement and open-space textures, few laminated sulphides, alteration above the lenses, no seafloor oxidation). The real answer is probably both. <span class="srcs">slides 35 to 37</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="lab">
+    <h4><span>Syngenetic or replacement?</span><b id="irScore">0 / 5</b></h4>
+    <div class="cards" id="irCards"></div>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="kupfer" data-log="Kupferschiefer"><div class="wrap">
+  <div class="kicker">Variation <span class="depth">104 to 117 m</span></div>
+  <h2>Kupferschiefer: sediment-hosted copper</h2>
+  <p><button class="term" data-t="Kupferschiefer">Kupferschiefer</button> deposits, or stratiform sediment-hosted Cu, are hosted in reduced, carbonaceous sedimentary rocks from shallow marine or lacustrine settings, full of in-situ organic matter. The ore zones are thin, generally under 30 m and commonly under 3 m, and follow the layering. They rank just behind porphyries as a copper source, about 23% of world production, and are important for silver and cobalt; some carry Pb, Zn, U, Au and PGE. Grades average about 2% Cu and 50 ppm Ag, with by-products of Pb, Zn, Au, Ni, Pt-Pd, Re and Se. Poland’s Kupferschiefer and the Central African Copperbelt are the giants. <span class="srcs">slides 38 and 39</span> <span class="srcs">slide notes</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <p>They form in intracontinental rifts, at the junction between <b>oxidised aeolian red-bed sandstones</b> and more reduced shales, carbonates and evaporites, in rocks laid down within 20 to 30° of the palaeo-equator, in desert conditions. Hosts are siltstone, shale, aeolian sandstone and dolomite over hematitic red beds. Bleaching extends for kilometres: it can be traced into equivalent red beds, showing the sandstones were once red and lost their Fe³⁺. Rapid rifting and subsidence set basin fluids moving; copper dropped at the <b>redox interface</b> between oxidised and reduced rocks, helped by bacterial sulphate reduction in a sulphidic (euxinic) setting. <span class="srcs">slides 40 to 42, 45</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <p>The ore is chalcocite and covellite, with bornite, chalcopyrite, native copper, galena, low-Fe sphalerite and silver minerals; near-surface oxide ore is malachite, azurite, chrysocolla and cuprite. Gangue is dolomite, calcite, anhydrite, gypsum, barite and marcasite; ore is fine-grained and disseminated, cementing grains, in veinlets and replacements, sometimes nodular where it replaced anhydrite. Unmineralised zones hold framboidal pyrite. <span class="srcs">slides 43 and 44</span></p>
+  <div class="lab">
+    <h4><span>Walk off the red beds</span><b id="kzTag">0 / 5</b></h4>
+    <div class="cards" id="kzBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="kzSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="kzReset">Shuffle again</button></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/cu-world.jpg" alt="World outline map of sediment-hosted stratiform copper districts marked by age">
+    <figcaption>Sediment-hosted stratiform Cu districts worldwide. <span class="srcs">slide 40</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="manuka" data-log="Manuka"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">117 to 130 m</span></div>
+  <h2>Manuka</h2>
+  <p>Manuka, about 90 km SSW of Cobar in NSW, is a silver deposit of three open cuts (Manuka, Boundary and Boundary South) on the western Winduck Shelf of the Cobar Basin, an intracratonic basin in the Palaeozoic Lachlan Orogen. It’s a low-grade, carbonate-hosted Pb-Zn deposit similar to MVT and Irish types, formed on a stable shelf with open platform carbonate and reef, with no igneous link: the limestone onlaps much older, eroded granite. <span class="srcs">slides 46 to 50</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L16/manuka-geol.jpg" alt="Geological map of the Cobar Basin with the Cobar Trough in the middle, the Winduck Shelf on the western side and the Manuka deposits marked on the south-west shelf margin" style="max-width:460px;margin:0 auto">
+    <figcaption>The Cobar Basin: Manuka sits on the Winduck Shelf, on the western margin of the Cobar Trough (David 2000; Harris 2015). <span class="srcs">slide 47</span></figcaption>
+  </figure>
+  <p>It has two styles. <b>Secondary oxide</b> ore sits in Fe- and Mn-bearing clays above the limestone, residue left when the impure limestone weathered and dissolved, keeping its silver (around 30 g/t); this is what’s mined. <b>Primary sulphide</b> ore comes as pyrite-dominant mineralisation in black calcareous shale just above the carbonate, and as galena-sphalerite in fossiliferous dolomitic limestone at the top of the carbonate sequence (more like an Irish type and an MVT, respectively). Ore is low-Fe sphalerite, pyrite and galena, with silver in acanthite (Ag₂S); gangue is dolomite, calcite, quartz, smoky quartz and minor barite. <span class="srcs">slides 48 to 51</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the pit wall</span><span class="srcs">slide 49</span></div>
+    <img loading="lazy" decoding="async" src="img/L16/manuka-pit.jpg" alt="Composite of open-pit photos labelled saprolite, oxide zone, pyritic shale, dolomitic limestone, Gundaroo sandstone and sulfides">
+    <p class="ask">From top to bottom, what layers can you see in the pit, and which one carries the silver that’s mined?</p>
+    <details data-obs="manukapit"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Weathered saprolite and an oxide zone at the top, then black pyritic shale, then dolomitic limestone, over sandstone.</li><li>Sulphide pockets in the limestone.</li></ul>
+      <p class="so">So the silver being mined is in the <b>oxide zone clays</b> above the limestone. Underneath are the two primary styles: pyrite-rich black shale and galena-sphalerite in the dolomitic limestone. <span class="srcs">slide 49</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · under the microscope</span><span class="srcs">slides 51 and 52</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L16/framboids.jpg" alt="Electron image of clusters of tiny spheres made of even tinier crystals, 10 micrometre scale"><div class="cap">A · SEM, scale 10 µm</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L16/covellite.jpg" alt="Reflected light view with blue patches in a dull olive matrix and a bright yellow speck"><div class="cap">B · reflected light, scale 50 µm</div></div>
+    </div>
+    <p class="ask">What are the raspberry-like spheres in A, and the blue mineral in B?</p>
+    <details data-obs="manukarl"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: spheres a few to tens of µm across, each packed with tiny crystals.</li><li>B: patches with a strong indigo-blue colour in reflected light.</li></ul>
+      <p class="so">So A is <b>framboidal pyrite</b>, typical of low-temperature, organic-rich, bacterially influenced sediment such as Manuka’s black shale. B’s blue is <b>covellite</b> (CuS), unmistakable in reflected light; chalcopyrite is rare here. <span class="srcs">slides 51 and 52</span></p>
+    </div></details>
+  </div>
+  <p>Fluid inclusions in calcite give ore temperatures of about 80 to 110 °C, classic MVT. But cavities in the limestone hold big smoky quartz crystals, with calcite, that grew in several stages, probably during tectonic events, and their inclusions suggest around 220 °C: a hot end-member of MVT. <span class="srcs">slide 50</span> <span class="srcs">lecture recording, 27 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L16/cavity.jpg" alt="A cavity in weathered limestone lined with white calcite around a dark smoky quartz crystal, scale bar" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Cavity with calcite and smoky quartz, slide 55</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L16/smokyq.jpg" alt="A dark smoky quartz crystal on a white background" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Smoky quartz from the cavities, slide 55</div></div>
+  </div>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="compare" data-log="Compare"><div class="wrap">
+  <div class="kicker">Wrap-up <span class="depth">130 to 144 m</span></div>
+  <h2>Telling them apart</h2>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>CMPV</th><th>MVT</th><th>Irish-type</th><th>Kupferschiefer</th></tr>
+    <tr><td>Host</td><td>Greenschist clastic metasediments</td><td>Platform dolostone, limestone</td><td>Limestone on a carbonate ramp</td><td>Reduced shale over red beds</td></tr>
+    <tr><td>Form</td><td>Structurally controlled veins</td><td>Stratabound replacement, open space</td><td>Stratabound lenses on normal faults</td><td>Thin stratiform zones</td></tr>
+    <tr><td>Temperature</td><td>250 to 300 °C</td><td>50 to 250 °C, mostly 90 to 150</td><td>Diagenetic</td><td>Low (diagenetic)</td></tr>
+    <tr><td>Igneous link</td><td>Granite, distal</td><td>None</td><td>Associated volcanism</td><td>None</td></tr>
+    <tr><td>Metals</td><td>Ag, Pb, Zn (± Cu, Sn)</td><td>Zn, Pb (± Ag, F, Ba)</td><td>Zn, Pb, Ag, Ba</td><td>Cu, Ag, Co</td></tr>
+    <tr><td>Trap</td><td>Faults, boiling, mixing</td><td>Organic matter, redox</td><td>Faults, bacterial S</td><td>Redox front</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 5 to 45</p>
+  <div class="lab">
+    <h4><span>Classify the deposit</span><b id="clScore">0 / 6</b></h4>
+    <div class="cards" id="clCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>CMPV: Ag-Pb-Zn veins in greenschist metasediments, distal to batholiths, 250 to 300 °C; bleaching is the vector. Webbs, Conrad, Keno Hill, Coeur d’Alene.</li><li>MVT: epigenetic Zn-Pb in platform carbonates, 90 to 150 °C, 10 to 30 wt% NaCl brines, no igneous link; organic matter traps the ore.</li><li>Irish: diagenetic, normal-fault controlled, barite common, fluorite rare.</li><li>Kupferschiefer: thin Cu ore at the red bed / reduced shale redox front; ~23% of world Cu.</li></ul><span class="srcs">slides 5 to 45</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Put this lecture next to Lecture 9: SEDEX, MVT, Irish and Kupferschiefer are all basin-brine deposits, differing in when the brine moved and what trapped the metal. CMPV veins belong with Lecture 15, as the cool, distal end of a granite system.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 16 slides (CMPV and carbonate- and sediment-hosted MVT, Irish-type and Kupferschiefer deposits, 56 slides, with speaker notes; photos and figures tagged by slide) and the Echo360 recording of 27 October 2026. Figures in the slides come from published sources (Lang and Baker 2001, Beaudoin and Sangster 1992, Leach et al. 2005, Hitzman et al. 2005, Hõy 1996 and others) and are shown only as lecture material; the Manuka material includes UNSW student research. The basin animation and the redox-front ordering are teaching models.</p>
+  <p><a href="L15.html">&larr; Lecture 15</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know a vein from a replacement.'],[35,'Graduate geologist','You can spot a bleached siltstone.'],[100,'Project geologist','You can follow a basin brine.'],[180,'Senior geologist','You can tell Irish from MVT.'],[240,'Chief geologist','Silver smelters call you first.']];
+var G={
+ "CMPV":"Clastic metasediment-hosted polymetallic vein: Ag-Pb-Zn veins in deformed, metamorphosed clastic sediments, distal to granites.",
+ "MVT":"Mississippi Valley-type: epigenetic Zn-Pb replacing platform carbonates, from low-temperature basin brines, with no igneous link.",
+ "Irish-type":"Carbonate-hosted Zn-Pb with SEDEX and MVT traits, formed during diagenesis along normal faults.",
+ "Kupferschiefer":"Thin stratiform sediment-hosted copper in reduced shale above oxidised red beds; named after the German-Polish copper shale.",
+ "epigenetic":"Formed after the host rock, here tens to hundreds of millions of years later.",
+ "syngenetic":"Formed at the same time as the host sediment.",
+ "diagenetic":"Formed while sediment is being compacted and lithified.",
+ "stratabound":"Confined to one stratigraphic unit, without necessarily following its layering exactly.",
+ "stratiform":"Following the layering of the host rock.",
+ "batholith":"A very large body of intrusive granite, often many plutons.",
+ "mesothermal":"Intermediate depth and temperature; CMPV forms near 6 km and 250 to 300 °C.",
+ "bleaching":"Pale alteration from loss of iron; in CMPV it can extend kilometres, a better vector than vein selvages.",
+ "freibergite":"Silver-rich tetrahedrite, named after Freiberg, Germany; usually a late phase.",
+ "tetrahedrite-tennantite":"Cu-Fe-Sb-As sulphosalts that often carry silver.",
+ "pyrargyrite":"Ag₃SbS₃, a deep red silver sulphosalt ('ruby silver').",
+ "acanthite":"Ag₂S, the common silver sulphide at low temperature.",
+ "exsolution":"Separation of one mineral out of another on cooling, like stannite blebs in sphalerite.",
+ "crustiform":"Vein banding with layers grown in from the walls.",
+ "cockade":"Concentric bands grown around breccia fragments.",
+ "colloform":"Rounded, finely banded growths, as in colloform sphalerite.",
+ "comb texture":"Crystals grown perpendicular to the vein walls, pointing inward.",
+ "connate water":"Pore water trapped in sediment, modified by burial.",
+ "basinal brine":"Warm, saline water circulating through a sedimentary basin.",
+ "dolomitisation":"Replacement of calcite by dolomite; an MVT and Irish alteration.",
+ "dissolution collapse breccia":"Breccia formed when carbonate dissolves and the overlying rock collapses into the void.",
+ "dendritic":"Branching, tree-like growth, as in dendritic galena.",
+ "marcasite":"FeS₂, the low-temperature polymorph of pyrite.",
+ "framboidal pyrite":"Raspberry-like spheres of tiny pyrite crystals, typical of organic-rich, bacterially influenced sediment.",
+ "red beds":"Oxidised, hematite-coloured continental sediments.",
+ "redox front":"The boundary between oxidised and reduced rocks, where Kupferschiefer copper drops out.",
+ "chalcocite":"Cu₂S, a copper-rich sulphide; a main Kupferschiefer ore.",
+ "covellite":"CuS, strongly indigo-blue in reflected light.",
+ "cerussite":"PbCO₃, a lead carbonate in oxide zones.",
+ "smithsonite":"ZnCO₃, a zinc carbonate in oxide zones.",
+ "pyromorphite":"A green lead chlorophosphate in oxide zones."
+};
+var CP={
+ cp1:{q:'Which of the four families has a clear link to a granite?',o:['MVT','CMPV','Kupferschiefer'],a:1,e:'CMPV veins are distal to batholiths; MVT and Kupferschiefer have no igneous link.'},
+ cp2:{q:'At what conditions do CMPV deposits typically form?',o:['Surface, <100 °C','About 6 km, 250 to 300 °C, structurally controlled','At the base of the crust, 800 °C'],a:1,e:'Mesothermal, like orogenic gold.'},
+ cp3:{q:'What did drilling deeper at Webbs start to find?',o:['Gold','Wolframite and cassiterite, toward the granite','Diamonds'],a:1,e:'Ag-Pb-Zn far from the granite, Sn-W closer: one continuous system.'},
+ cp4:{q:'Why is wall-rock alteration a poor CMPV vector?',o:['There is none','It only extends a few metres from the veins; km-scale bleaching is better','It is invisible'],a:1,e:'Look for hydrothermal bleaching (Fe loss).'},
+ cp5:{q:'In the intrusion-related CMPV model, what does the intrusion supply?',o:['Metals and fluid','Only heat to drive convection','Nothing'],a:1,e:'Metals and fluids come from exchanged meteoric and metamorphic water.'},
+ cp6:{q:'Which statement fits MVT deposits?',o:['Syngenetic, 300 °C, near granites','Epigenetic, mostly 90 to 150 °C, basinal brines, no igneous link','Volcanic-hosted massive sulphide'],a:1,e:'Low-temperature brines in platform carbonates.'},
+ cp7:{q:'What precipitates the sulphides in an MVT?',o:['Boiling','Oxidised metal-bearing brine meeting organic matter and hydrocarbons (redox)','Seawater H₂S at the seafloor'],a:1,e:'Redox destabilises chloride or sulphate complexes.'},
+ cp8:{q:'Irish-type deposits differ from MVTs because they...',o:['form during diagenesis with links to volcanism, along normal faults','are hosted in granite','have no zinc'],a:0,e:'And barite is common, fluorite rare.'},
+ cp9:{q:'Where does Kupferschiefer copper precipitate?',o:['In the red beds','At the redox front between oxidised red beds and reduced shale','In a granite'],a:1,e:'Zoning: hematite → chalcocite → bornite → chalcopyrite → pyrite.'},
+ cp10:{q:'What is mined at Manuka?',o:['Copper sulphide','Silver in oxidised Fe-Mn clays above the limestone','Gold in quartz veins'],a:1,e:'Residual clays from weathered limestone keep the silver.'},
+ cp11:{q:'Thin copper ore in black shale directly above hematitic aeolian sandstone is...',o:['CMPV','Kupferschiefer','MVT'],a:1,e:'Redox front at the red bed contact.'}
+};
+var ST=[
+ ['Define a CMPV deposit and give its conditions of formation.','Recall','Ag-Pb-Zn (± Cu, Sn) veins in greenschist-facies clastic metasediments, distal to batholiths but not porphyry-related; mesothermal, ~6 km and 250 to 300 °C, 0 to 26 wt% salinity, strongly structurally controlled, late in orogenic history.'],
+ ['Compare Webbs and Conrad.','Apply','Both southern New England Orogen. Conrad: 458 000 t at 600 g/t Ag, 8% Pb, 4% Zn, 1.5% Cu, 1.5% Sn, hosted in granite. Webbs: 1.49 Mt at 245 g/t Ag, 0.71% Pb, 1.56% Zn, 0.27% Cu, in dark metasiltstone away from the granite; deeper drilling hits wolframite and cassiterite.'],
+ ['What are the ore and gangue minerals of CMPV deposits?','Recall','Galena, sphalerite, tetrahedrite-tennantite (freibergite); minor pyrite, chalcopyrite, arsenopyrite, stibnite, native silver and Ag sulphosalts (pyrargyrite, stephanite, bournonite); gangue quartz and siderite with minor dolomite, ankerite, calcite, barite, fluorite, magnetite.'],
+ ['Outline the three genetic models for CMPV deposits.','Apply','Magmatic differentiation (volatile fluid from a differentiating magma rich in Ag, Pb, Zn, Cu, with mafic and lamprophyre dykes); deep crustal faults (deep-sourced fluid, with boiling and meteoric mixing in subsidiary structures); intrusion-related (the intrusion only provides heat; metals and fluids from exchanged meteoric and metamorphic waters). Probably a combination.'],
+ ['List the defining characteristics of MVT deposits.','Recall','Epigenetic; 50 to 250 °C, mostly 90 to 150 °C; no igneous link; stratabound, locally stratiform; basinal brines 10 to 30 wt% NaCl; platform carbonate hosts in orogenic forelands; districts of many deposits; avg ~7 Mt at 7.9% Pb + Zn.'],
+ ['Explain how an MVT ore body forms.','Apply','Tectonic squeezing, compaction or sea-level change drives connate basin brine carrying metals (leached from basin sediments) up aquifers to platform carbonates; acid fluid dissolves carbonate, making collapse breccias; where the oxidised brine meets organic matter or hydrocarbons, redox reactions destabilise the metal complexes and sphalerite and galena precipitate.'],
+ ['Why are dolostone-hosted MVTs larger and richer than limestone-hosted ones?','Think','Dolostone generally transmits fluid better (higher transmissivity), so more brine passes through; the exception is the large, high-grade limestone-hosted Navan deposit.'],
+ ['Contrast the two genetic models for Irish-type deposits.','Apply','Syngenetic seafloor deposition: stratiform geometry, bedded and clastic sulphides, similar ages. Diagenetic to epigenetic replacement: replacement and open-space textures, lack of laminated sulphides, alteration above lenses, no seafloor oxidation.'],
+ ['Describe the setting and zoning of Kupferschiefer deposits.','Recall','Intracontinental rifts, within 20 to 30° of the palaeo-equator, at the junction of oxidised aeolian red beds and reduced shales, carbonates and evaporites. From the red beds into the reduced ore: hematite, chalcocite, bornite, chalcopyrite, pyrite, with Pb-Zn near the chalcopyrite to pyrite zones.'],
+ ['Why is Manuka described as a "hot" MVT, and what is actually mined?','Synthesise','Calcite inclusions give 80 to 110 °C, typical MVT, but cavity smoky quartz grown during tectonic events gives ~220 °C. Mining takes silver from residual Fe-Mn oxide clays left after the impure limestone weathered, not the primary sulphides.']
+];
+GEO.start({key:'geos3141-L16-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- basin brine animation ---------- */
+var bns=$('#bnSvg'),bn={n:0,hc:true,busy:false,ore:[],cav:[]},BR=rng(21);
+function aqY(x){return 250-x*.2;}
+function bnDraw(f){var s=bns;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:300,fill:'#CFE3EE'},s);
+  el('path',{d:'M0 300 L0 '+(aqY(0)+10)+' L640 '+(aqY(640)+10)+' L640 300 Z',fill:'#4A4440'},s);txt(s,10,292,'basin shale (metal source)',{'font-size':12,fill:'#EEE'});
+  el('path',{d:'M0 '+(aqY(0)+10)+' L640 '+(aqY(640)+10)+' L640 '+(aqY(640)-14)+' L0 '+(aqY(0)-14)+' Z',fill:'#D9B76A'},s);txt(s,40,aqY(40)-1,'aquifer sandstone',{'font-size':12,fill:'#2E220C','font-weight':600});
+  el('path',{d:'M0 '+(aqY(0)-14)+' L380 '+(aqY(380)-14)+' L380 40 L0 40 Z',fill:'#8C8478'},s);txt(s,20,120,'thick basin fill',{'font-size':12,fill:'#F4F1EA'});
+  el('path',{d:'M380 '+(aqY(380)-14)+' L640 '+(aqY(640)-14)+' L640 40 L380 40 Z',fill:'#C9C6BC'},s);txt(s,470,58,'platform carbonate',{'font-size':12,fill:'#3E3A36'});
+  for(var i=0;i<6;i++){el('path',{d:'M'+(i*60)+' 40 L'+(i*60+30)+' 10 L'+(i*60+60)+' 40 Z',fill:'#7B6A5C'},s);}txt(s,372,30,'\u2190 thrust belt pushing in',{'font-size':12,fill:'#2E2A26'});
+  if(bn.hc){[[480,120],[540,104],[600,96],[510,92]].forEach(function(p){el('ellipse',{cx:p[0],cy:p[1],rx:22,ry:8,fill:'#3B2A1E',opacity:.8},s);});txt(s,560,140,'hydrocarbons',{'font-size':11,fill:'#3B2A1E'});}
+  bn.cav.forEach(function(c){el('ellipse',{cx:c[0],cy:c[1],rx:14,ry:7,fill:'#F2F0EA',stroke:'#8C8478'},s);});
+  bn.ore.forEach(function(o){el('ellipse',{cx:o[0],cy:o[1],rx:12,ry:6,fill:'#B8902E',stroke:'#5A4520'},s);});
+  if(bn.busy&&f!==undefined){var r=rng(bn.n*13+5);for(var i=0;i<26;i++){var t=cl(f*1.4-r()*.4,0,1),x,y;if(t<.75){x=t/.75*470;y=aqY(x)-2+(r()-.5)*14;}else{x=470+r()*130;y=aqY(x)-14-(t-.75)/.25*(40+r()*40);}if(t>0&&t<1)el('circle',{cx:x,cy:y,r:3.2,fill:'#E07A3F',opacity:.85},s);}
+    el('path',{d:'M'+(30+f*20)+' 10 l12 0 l-6 -8 z',fill:'#C8553A'},s);}
+  $('#bnTag').textContent=bn.n+(bn.n===1?' pulse':' pulses');$('#bnO').textContent=bn.ore.length;$('#bnR').textContent=bn.hc?'hydrocarbons present':'no organic matter';$('#bnB').textContent=bn.busy?'moving':'waiting';}
+$('#bnGo').addEventListener('click',function(){if(bn.busy)return;bn.busy=true;bn.n++;var t0=0;SND.play('flip');FX.shake(bns);
+  function step(ts){if(!t0)t0=ts||1;var f=Math.min(1,((ts||t0)-t0)/1800);bnDraw(f);if(f<1&&!reduce)requestAnimationFrame(step);else{bn.busy=false;
+    var newc=[];for(var i=0;i<2;i++)newc.push([460+BR()*150,80+BR()*50]);
+    if(bn.hc){bn.cav.forEach(function(c){bn.ore.push(c);});bn.cav=newc;SND.play('coin');
+      $('#bnSay').innerHTML=bn.n===1?'Squeezed by the thrust belt, warm brine carrying metals leached from the basin shale moved up the aquifer into the carbonate. It was acidic enough to <b>dissolve</b> cavities (white). Squeeze again.':'More brine: where it met the <b>hydrocarbons</b>, the redox reaction dropped sphalerite and galena into the cavities and collapse breccias made by the last pulse (gold). '+(bn.ore.length>=4?'You now have an MVT district: many small ore bodies along the platform edge.':'');
+      if(bn.ore.length>=4)award('bn',5,'Built an MVT district');}
+    else{bn.cav=bn.cav.concat(newc).slice(-6);SND.play('bad');$('#bnSay').innerHTML='The brine dissolved more carbonate but, with <b>no organic matter</b> to reduce it, the metals stayed in solution and leaked away. No reductant, no ore.';}
+    bnDraw();}}
+  requestAnimationFrame(step);});
+$('#bnHc').addEventListener('click',function(){bn.hc=!bn.hc;this.textContent=bn.hc?'Remove the hydrocarbons':'Put the hydrocarbons back';bnDraw();});
+$('#bnReset').addEventListener('click',function(){bn={n:0,hc:true,busy:false,ore:[],cav:[]};$('#bnHc').textContent='Remove the hydrocarbons';$('#bnSay').textContent='A thrust belt is building on the left. Squeeze the basin and follow the brine.';bnDraw();});
+bnDraw();
+
+/* ---------- CMPV silver chart ---------- */
+var AG=[['Coeur d’Alène',100,193],['Kokanee Range',10.4,251],['Keno Hill',4.54,1412],['Webbs',1.49,245],['Conrad',0.458,600]],agK=2,agSeen={};
+[['Tonnage (Mt)',1],['Ag grade (g/t)',2],['Contained Ag (t)',3]].forEach(function(m){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed',m[1]===agK);b.addEventListener('click',function(){agK=m[1];$$('#agC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');agDraw();});$('#agC').appendChild(b);});
+function agDraw(){var s=$('#agSvg');s.innerHTML='';var v=function(r){return agK===3?r[1]*r[2]:r[agK];},d=AG.slice().sort(function(a,b){return v(b)-v(a);}),max=v(d[0]),u=agK===1?' Mt':agK===2?' g/t':' t';
+  d.forEach(function(r,i){var y=6+i*44,w=v(r)/max*320;txt(s,8,y+24,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:160,y:y+8,width:Math.max(3,w),height:24,rx:3,fill:/Webbs|Conrad/.test(r[0])?'var(--gold)':'var(--slate)'},s);txt(s,166+w,y+25,(agK===3?Math.round(v(r)).toLocaleString('en-AU'):v(r).toLocaleString('en-AU'))+u+(r[0].indexOf('Coeur')===0&&agK!==2?'+':''),{'font-size':12,fill:'var(--ink)'});});
+  $('#agTag').textContent=['','tonnage','silver grade','contained silver'][agK];
+  $('#agSay').textContent=agK===2?'Keno Hill is tiny but extraordinarily rich, over 1400 g/t Ag. Conrad’s 600 g/t is world class too.':agK===1?'Coeur d’Alène dwarfs the rest by tonnage.':'Contained silver: Coeur d’Alène’s 100+ Mt at 193 g/t is around 19 000 t of silver; the NSW deposits are a few hundred tonnes each.';
+  agSeen[agK]=1;if(Object.keys(agSeen).length===3)award('ag',4,'Compared the silver districts');}
+agDraw();
+
+/* ---------- genetic model cards ---------- */
+var GNO=['Magmatic differentiation','Deep crustal faults','Intrusion-related (heat engine)'];
+mcCards($('#gnCards'),[
+ {lbl:'Evidence',q:'Veins sit next to mafic and lamprophyre dykes, and the fluid looks like a volatile phase from a differentiating magma',o:GNO,a:0,e:'Volatiles from the magma, discharged up faults.'},
+ {lbl:'Evidence',q:'Isotopes show deep-sourced carbon and lead; ore is in subsidiary structures off a major structural break',o:GNO,a:1,e:'Deep faults as first-order conduits, with boiling and meteoric mixing.'},
+ {lbl:'Evidence',q:'A coeval granite nearby, but metals and fluids look like exchanged meteoric and metamorphic waters from the country rock',o:GNO,a:2,e:'The model used for Webbs: the granite just drives convection.'}
+],'gn',2,function(r,n){$('#gnScore').textContent=r+' / '+n;});
+
+/* ---------- Irish cards ---------- */
+var IRO=['Supports syngenetic seafloor deposition','Supports diagenetic-epigenetic replacement'];
+mcCards($('#irCards'),[
+ {lbl:'Evidence',q:'Stratiform sulphide lenses parallel to bedding',o:IRO,a:0,e:'Though stratiform doesn’t prove syngenetic.'},
+ {lbl:'Evidence',q:'Bedded and clastic sulphides together',o:IRO,a:0,e:'Sulphide behaving like sediment.'},
+ {lbl:'Evidence',q:'Replacement and open-space filling textures',o:IRO,a:1,e:'Sulphide replacing or filling the carbonate.'},
+ {lbl:'Evidence',q:'Alteration and mineralisation above the sulphide lenses',o:IRO,a:1,e:'If the ore formed on the seafloor, the rock above should be unaltered.'},
+ {lbl:'Evidence',q:'No sign of seafloor oxidation of the sulphides',o:IRO,a:1,e:'Exposed seafloor sulphide should show oxidation.'}
+],'ir',2,function(r,n){$('#irScore').textContent=r+' / '+n;});
+
+/* ---------- Kupferschiefer zoning order ---------- */
+var KZ=['Hematite (red beds)','Chalcocite','Bornite','Chalcopyrite','Pyrite (unmineralised, framboidal)'];
+var kzNext=0;
+function kzBuild(){var b=$('#kzBox');b.innerHTML='';kzNext=0;$('#kzTag').textContent='0 / 5';$('#kzSay').textContent='Tap the zones from the red-bed contact into the reduced shale.';
+  var order=[0,1,2,3,4];for(var i=4;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=KZ[i].replace(/ \(.*\)/,'');
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===kzNext){kzNext++;c.disabled=true;c.textContent=kzNext+'. '+KZ[i];c.style.borderColor='var(--mal)';SND.play('ok');$('#kzTag').textContent=kzNext+' / 5';
+      if(kzNext===5){COMBO.hit();award('kz',COMBO.pts(4),'Zoned the redox front'+COMBO.tag());FX.burst(c);$('#kzSay').innerHTML='Copper-richest sulphide first, then less copper, then just iron: the fluid was reduced step by step as it moved into the shale. Galena and sphalerite can sit with or beyond the chalcopyrite. <span class="srcs">slide 43</span>';}}
+      else{FX.shake(c);COMBO.miss();$('#kzSay').textContent='Not yet: which mineral holds the most copper?';}});b.appendChild(c);});}
+$('#kzReset').addEventListener('click',kzBuild);kzBuild();
+
+/* ---------- classify cards ---------- */
+var CLO=['CMPV','MVT','Irish-type','Kupferschiefer'];
+mcCards($('#clCards'),[
+ {lbl:'Deposit',q:'Quartz-siderite veins with galena and freibergite in bleached greenschist metasiltstone, granite several km away',o:CLO,a:0,e:'CMPV, like Webbs.'},
+ {lbl:'Deposit',q:'Sphalerite and galena filling collapse breccias in Ordovician dolostone of a foreland basin, 110 °C fluid inclusions, no igneous rocks',o:CLO,a:1,e:'MVT.'},
+ {lbl:'Deposit',q:'Zn-Pb lenses with abundant barite along the downthrown side of a normal fault in limestone, formed during diagenesis',o:CLO,a:2,e:'Irish-type.'},
+ {lbl:'Deposit',q:'A 2 m layer of chalcocite and bornite in black shale resting on red aeolian sandstone',o:CLO,a:3,e:'Kupferschiefer.'},
+ {lbl:'Deposit',q:'Ag-Pb-Zn veins with 1400 g/t Ag in the Yukon',o:CLO,a:0,e:'Keno Hill, a CMPV.'},
+ {lbl:'Deposit',q:'A district of 400 small Zn-Pb bodies in platform carbonates, some mined for fluorite',o:CLO,a:1,e:'MVT, like Illinois.'}
+],'cl',2,function(r,n){$('#clScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
