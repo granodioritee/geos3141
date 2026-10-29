@@ -485,3 +485,10 @@ body{padding-bottom:3.4rem}
 .dt-clue{display:grid;grid-template-columns:6rem minmax(0,1fr);gap:.5rem;align-items:baseline;font-family:var(--sans);padding:.35rem .6rem;border-radius:7px;background:var(--bg)}
 .dt-why{font-family:var(--sans);font-size:.92rem;margin-top:.7rem}.dt-why b{color:var(--mal)}
 .dt-pic{display:block;margin:.6rem 0;font-size:.78rem;color:var(--muted);text-decoration:none}.dt-pic img{display:block;max-width:100%;max-height:16rem;border-radius:6px}
+
+/* Alteration lab (alteration.html) */
+.cl-key{display:flex;flex-wrap:wrap;gap:.3rem .8rem;font-family:var(--sans);font-size:.8rem;color:var(--muted);margin:.4rem 0}
+.cl-k{display:inline-flex;align-items:center;gap:.3rem}.cl-k i{display:inline-block;width:.85rem;height:.85rem;border-radius:3px}
+#clSvg g:focus{outline:none}#clSvg g:focus rect{stroke:var(--ink);stroke-width:3}
+.al-gal{margin:.6rem 0 1rem}.al-fig img{display:block;width:100%;max-height:20rem;object-fit:contain;background:var(--bg);border-radius:8px}
+.al-cap{font-family:var(--sans);color:var(--ink)}

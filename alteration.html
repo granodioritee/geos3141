@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Alteration Lab</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+<script src="labdata.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lab: oxidation, alteration and structures · T3 2026</div>
+  <h1>Acid, heat and broken rock</h1>
+  <p class="lede">Hydrothermal fluid changes the rock it passes through, and air and groundwater change it again at the surface. This lab is about reading those changes in a hand specimen: gossans, the five alteration types and the structures that steer the fluid. Lecture 2 taught the ideas. This page drills them on the lab’s own specimens and on the Corbett and Leach chart.</p>
+
+  <div class="lab" id="clLab">
+    <h4><span>The Corbett and Leach chart</span><b id="clTag">tap a box</b></h4>
+    <div class="chips" id="clMode" role="group" aria-label="Mode"><button class="chip" type="button" data-v="explore" aria-pressed="true">Explore</button><button class="chip" type="button" data-v="quiz" aria-pressed="false">Where does it plot?</button></div>
+    <svg class="grid-svg" id="clSvg" viewBox="0 0 660 380" role="img" aria-label="Grid of hydrothermal alteration types: pH increases to the right, temperature increases downwards, with epithermal, mesothermal and porphyry levels" style="margin-top:.6rem"></svg>
+    <div class="cl-key" id="clKey"></div>
+    <div class="say" id="clSay"></div>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Simplified and redrawn from the lab’s “Common mineralogy in hydrothermal systems” chart (after Corbett and Leach, 1997). Each box lists the main minerals only.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#oxid">Oxidation and gossans</a></li>
+      <li><a href="#alter">What alteration is</a></li>
+      <li><a href="#types">The five alteration types</a></li>
+      <li><a href="#chart">Reading the chart</a></li>
+      <li><a href="#clays">Kaolinite or illite?</a></li>
+      <li><a href="#struct">Structures and mining</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="oxid" data-log="Oxidation"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 15 m</span></div>
+  <h2>Oxidation and gossans</h2>
+  <p>At the surface, oxidation mostly turns sulphides (largely pyrite and pyrrhotite) into iron oxides. Which oxide tells you about the water: <b>goethite</b> is evidence of a standing water level, <b>hematite</b> of moving water. Depending on which other sulphides were there, their grain size and how they sat together, you get differently textured oxides, and over an ore deposit those are <button class="term" data-t="gossan">gossans</button>. <span class="srcs">lab notes, oxidation</span></p>
+  <p>Oxidation also frees the metals, which combine with anions in oxygenated groundwater (phosphate, sulphate, carbonate, arsenate) to make <b>secondary minerals</b>, commonly brightly coloured: pyromorphite (lead phosphate), azurite and malachite (copper hydroxy-carbonates), cerussite (lead carbonate), smithsonite (zinc carbonate), anglesite (lead sulphate), jarosite (iron sulphate) and scorodite (iron arsenate). <span class="srcs">lab notes, oxidation</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/alteration/profile.jpg" alt="Schematic weathering profile over a copper sulphide body: gossan at the top, then leached zone, oxide zone, the water table, enrichment zone and primary mineralisation at the base, with the reactions and minerals for each">
+    <figcaption>The ideal profile from primary ore up through the enrichment (supergene) zone, oxide zone and leached zone to the gossan (Asmus, 2013). Lecture 2 walks through it. <span class="srcs">lab notes, oxidation</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a gold gossan</span><span class="srcs">lab notes</span></div>
+    <img loading="lazy" decoding="async" src="img/alteration/gossan.jpg" alt="A geologist in a hard hat crouching in a shallow pit dug into red-brown soil and rubble in scrubland, with sample bags beside the pit">
+    <p class="ask">This pit is dug into an exposed gossan in the southern Cobar Basin. What colour is the material, and which iron oxide would you expect to dominate it?</p>
+    <details data-obs="dominion"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Red-brown to orange-brown soil and rubble, much redder than the scrubland around it.</li><li>Sample bags lined up beside the pit.</li></ul>
+      <p class="so">So this is the Dominion Prospect gold gossan, and the red-brown colour points to <b>hematite</b> and goethite from oxidised sulphides. Reddish hematite suggests moving water. The bags are there because gossans are sampled for the metals that stay behind, gold among them. <span class="srcs">lab notes, oxidation</span></p>
+    </div></details>
+  </div>
+  <div class="lab">
+    <h4><span>Lab gossan examples</span><b id="gosTag"></b></h4>
+    <div class="al-gal" id="gosGal"></div>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="alter" data-log="Alteration"><div class="wrap">
+  <div class="kicker">Concept <span class="depth">15 to 30 m</span></div>
+  <h2>What alteration is</h2>
+  <p>Alteration happens when heated, usually acidic hydrothermal water gets into a rock. In igneous rocks the original rock-forming minerals turn into alteration minerals, which ones depending on the original mineralogy and the fluid, and the original igneous texture is often still there. The difference from metamorphism is where it happens: metamorphism affects the whole rock mass, while alteration is restricted to former zones of high permeability, so it’s patchy. <span class="srcs">lab notes, alteration</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/alteration/zoning.jpg" alt="Schematic porphyry deposit: unaltered pink porphyry at the core, a grey potassic zone with quartz, K-feldspar and biotite, a yellow phyllic zone with quartz, sericite and pyrite, patches of advanced argillic alteration, and an outer green propylitic zone, with pyrite shells and the ore zone labelled" style="max-width:560px;margin:0 auto">
+    <figcaption>Ideal porphyry Cu-Au zoning: unaltered porphyry (pink), potassic (grey), phyllic (yellow), propylitic (green). Lecture 11 covers why. <span class="srcs">lab notes, alteration</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="types" data-log="Types"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">30 to 50 m</span></div>
+  <h2>The five alteration types</h2>
+  <p>Each type below comes with the lab notes’ example. Look at the photo first, then open the answer. Where the lab’s own alteration set has more examples, you can flick through them.</p>
+
+  <h3 id="t-prop">Propylitic</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Busai, Woodlark Island</span><span class="srcs">lab notes</span></div>
+    <img loading="lazy" decoding="async" src="img/alteration/propylitic.jpg" alt="A grey-green outcrop surface with yellow-green patches, a geological hammer lying across it">
+    <p class="ask">Name the two colours in this rock and the minerals that make them.</p>
+    <details data-obs="busai"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Patchy yellow-green and duller grey to olive green over the whole surface.</li></ul>
+      <p class="so">So it’s <b>propylitic</b> alteration: yellow-green <b>epidote</b> and grey-green <b>chlorite</b>. <span class="srcs">lab notes, propylitic</span></p>
+    </div></details>
+  </div>
+  <p>Propylitic alteration gives a distinctive yellow-green (epidote) to olive-green (chlorite) colour. The rock gains calcium, iron and magnesium and loses potassium and sodium, though sometimes sodium goes up instead (albite forms). The usual assemblage is chlorite, epidote and abundant fine-grained disseminated pyrite, with carbonate very common and often the last mineral to crystallise, at lower temperature. Hematite can also be common, especially in epithermal systems; when there’s a lot of it, it’s called <b>hematite flooding</b>. <span class="srcs">lab notes, propylitic</span></p>
+  <div class="al-gal" data-cats="Propylitic alteration|Epidote alteration|Chlorite alteration"></div>
+
+  <h3 id="t-phyl">Phyllic</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Hera mine</span><span class="srcs">lab notes</span></div>
+    <img loading="lazy" decoding="async" src="img/alteration/phyllic.jpg" alt="Underground face with a pale grey to white layer above dark rock, a scale card at the bottom">
+    <p class="ask">The pale layer was once a dark siltstone. What gives it its colour and sheen?</p>
+    <details data-obs="hera"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A pale, almost white band with a soft sheen, sharply above darker rock.</li></ul>
+      <p class="so">So it’s <b>phyllic</b>-altered siltstone, made of fine illite-muscovite and quartz. Phyllosilicates crystallising in the rock give it that sheen. <span class="srcs">lab notes, phyllic</span></p>
+    </div></details>
+  </div>
+  <p>Phyllic alteration gives the rock a distinctive sheen from phyllosilicates (mostly chlorite, illite and muscovite) and fine quartz. The illite-to-muscovite change happens at about <b>240 °C</b>, so the mica tells you the temperature. <button class="term" data-t="phengite">Phengite</button>, between illite (a clay) and muscovite (a mica), is common. When the micas are relatively coarse, it’s called <button class="term" data-t="sericitisation">sericitisation</button>. <span class="srcs">lab notes, phyllic</span></p>
+  <div class="al-gal" data-cats="Phyllic alteration|Sericite alteration|Massive illite"></div>
+
+  <h3 id="t-pot">Potassic</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Drake goldfield</span><span class="srcs">lab notes</span></div>
+    <img loading="lazy" decoding="async" src="img/alteration/potassic.jpg" alt="A section of drill core with a pale pink to salmon colour and fine grey speckles, beside a scale">
+    <p class="ask">What mineral makes this core pink?</p>
+    <details data-obs="drake"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pale pink to salmon core with fine grey patches.</li></ul>
+      <p class="so">So it’s <b>potassic</b> alteration: the pink comes from hydrothermal <b>K-feldspar</b>, commonly the low-temperature variety <button class="term" data-t="adularia">adularia</button>. <span class="srcs">lab notes, potassic</span></p>
+    </div></details>
+  </div>
+  <p>Potassic alteration gives a distinctive pink to pale orange colour from crystallising K-feldspar (commonly adularia), with biotite, muscovite and quartz. <span class="srcs">lab notes, potassic</span></p>
+  <div class="al-gal" data-cats="Potassic alteration"></div>
+
+  <h3 id="t-arg">Argillic</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Bowdens silver deposit</span><span class="srcs">lab notes</span></div>
+    <img loading="lazy" decoding="async" src="img/alteration/argillic.jpg" alt="Pale grey, crumbly, soft-looking core with a rough surface, beside a scale">
+    <p class="ask">The core is pale and crumbly. What happened to its feldspar?</p>
+    <details data-obs="bowdensarg"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Very pale grey, rough and crumbly, weak-looking core.</li></ul>
+      <p class="so">So it’s <b>argillic</b> alteration with abundant <b>illite</b>: the feldspar has broken down to clay, which bleaches and badly weakens the rock. <span class="srcs">lab notes, argillic</span></p>
+    </div></details>
+  </div>
+  <p>Argillic alteration makes clay minerals, usually from breaking down feldspar: kaolinite, dickite, illite and montmorillonite, with muscovite and quartz. It makes the rock very pale and substantially weaker. <span class="srcs">lab notes, argillic</span></p>
+
+  <h3 id="t-aa">Advanced argillic</h3>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Bukit Jambi, Sumatra</span><span class="srcs">lab notes</span></div>
+    <img loading="lazy" decoding="async" src="img/alteration/advarg.jpg" alt="A cut slab with pure white, yellow-white, red and yellow-brown patches, beside a ruler">
+    <p class="ask">Four colours: pure white, yellow-white, red and yellow-brown. Match each to a mineral.</p>
+    <details data-obs="bukit"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pure white, yellow-white, red and yellow-brown patches swirled together.</li></ul>
+      <p class="so">So it’s <b>advanced argillic</b> alteration: <b>alunite</b> (yellow-white), <b>hematite</b> (red), <b>goethite</b> (yellow-brown) and <b>kaolinite</b> (pure white). <span class="srcs">lab notes, advanced argillic</span></p>
+    </div></details>
+  </div>
+  <p>Advanced argillic alteration forms close to the surface and is also called <b>steam-heated alteration</b>. It is very low temperature and makes opaline silica (a <button class="term" data-t="silica cap">silica cap</button>), <button class="term" data-t="alunite">alunite</button> (a sulphate), pyrophyllite (similar to talc), dickite (a higher-temperature polymorph of kaolinite) and smectite (swelling clays). <span class="srcs">lab notes, advanced argillic</span></p>
+  <div class="lab">
+    <h4><span>Name the alteration</span><b id="tyScore">0 / 6</b></h4>
+    <div class="cards" id="tyCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Propylitic: chlorite + epidote + fine pyrite ± carbonate, yellow-green to olive green.</li><li>Phyllic: illite-muscovite (sericite) + quartz ± pyrite, a sheen; illite turns to muscovite near 240 °C.</li><li>Potassic: K-feldspar (adularia) + biotite, pink to pale orange.</li><li>Argillic: clays from feldspar, pale and weak.</li><li>Advanced argillic: alunite, kaolinite/dickite, pyrophyllite, opaline silica; near-surface, steam-heated.</li></ul><span class="srcs">lab notes, alteration</span></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="chart" data-log="Chart"><div class="wrap">
+  <div class="kicker">Tool <span class="depth">50 to 65 m</span></div>
+  <h2>Reading the chart</h2>
+  <p>The chart at the top of this page puts all of these on two axes. Across: <b>pH</b>, from strongly acid on the left (silica and alunite) to near-neutral on the right (chlorite and calc-silicates). Down: <b>temperature</b>, from epithermal at the top through mesothermal to porphyry at the bottom. Each box is an assemblage that’s stable there. <span class="srcs">Corbett and Leach chart</span></p>
+  <p>Read it like a map. A rock with alunite and kaolinite sat in cool, very acid fluid, high in an epithermal system. Sericite and quartz means near-neutral fluid hot enough for mica. Biotite with K-feldspar and magnetite is the hot, deep porphyry core. Garnet, clinopyroxene and wollastonite is the same heat meeting limestone: a skarn. Acid alteration doesn’t stop at the surface, either: the chart carries alunite, dickite and pyrophyllite down to andalusite and corundum at porphyry temperatures, which is how a lithocap sits on top of a porphyry. <span class="srcs">Corbett and Leach chart</span></p>
+  <p>Two things to watch. The steam-heated advanced argillic of the lab notes is only the cool top-left corner of the yellow. And the same mineral can turn up in more than one box (quartz is everywhere), so it’s the <b>assemblage</b> that plots, not one mineral. Switch the chart to “Where does it plot?” to practise. <span class="srcs">Corbett and Leach chart</span> <span class="srcs">lab notes</span></p>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="clays" data-log="Clays"><div class="wrap">
+  <div class="kicker">At the bench <span class="depth">65 to 80 m</span></div>
+  <h2>Kaolinite or illite?</h2>
+  <p>The lab asks you to compare kaolinite and illite and work out how you’d tell them apart. Both are white to pale clays, so it’s worth knowing what to test before you’re standing at the bench. Here is what the course material gives you to work with; do the comparison on the real specimens yourself.</p>
+  <ul>
+    <li><b>Where they plot.</b> Kaolinite is the kaolin group, more acid; illite is the illite group, nearer neutral. They grade into each other through the I-K column. <span class="srcs">Corbett and Leach chart</span></li>
+    <li><b>What they turn into.</b> Kaolinite goes to dickite and then pyrophyllite as it heats; illite goes to muscovite (sericite) at about 240 °C, which is why illite-rich rock often has a sheen. <span class="srcs">Corbett and Leach chart</span> <span class="srcs">lab notes, phyllic</span></li>
+    <li><b>Hand-specimen tests.</b> Kaolinite is white with a dull, earthy lustre, soft (2 to 2.5) and smells earthy when wet. <span class="srcs">Mineral Sudoku sheet</span> <span class="srcs">GEOS2181 Labs 1-2, slides 13 and 31</span></li>
+  </ul>
+  <p>Look at the lustre, the feel and the smell side by side, and note which one comes with a sheen. In industry the two are usually split with a short-wave infrared spectrometer, because by eye it’s genuinely hard. (That last point is general background, not from the lab notes.)</p>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="struct" data-log="Structures"><div class="wrap">
+  <div class="kicker">Mining <span class="depth">80 to 95 m</span></div>
+  <h2>Structures and mining</h2>
+  <p>All ore deposits are structurally controlled to some degree, and many (epithermal, orogenic gold, hydrothermal and porphyry deposits especially) are strongly controlled. Structures also cause trouble: faults, shear zones, closely spaced fracture zones and zones weakened by alteration minerals (talc, chlorite, muscovite, pyrite-marcasite) can cause major engineering problems and even close a mine. Health is a structure-and-mineralogy problem too: amphiboles have to be monitored for asbestos, and fine-grained quartz for silicosis. <span class="srcs">lab notes, structures</span></p>
+  <p>For each structure the lab asks for its <b>type</b>, its <b>spacing</b>, whether it’s <b>primary or secondary</b>, and its <b>continuity</b>, then what it means for mining and for the mineralisation. Practise the vocabulary on core you’ve already met on the logging page. <span class="srcs">lab notes, structures</span></p>
+  <div class="lab">
+    <h4><span>Describe the structure</span><b id="stScore">0 / 5</b></h4>
+    <div class="cards" id="stCards"></div>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>For an altered specimen, name the type from its assemblage and colour: yellow-green epidote and chlorite (propylitic), a sheen of sericite and quartz (phyllic), pink K-feldspar (potassic), pale weak clay (argillic), alunite, kaolinite and silica (advanced argillic).</li><li>For a gossan, say whether goethite or hematite dominates and what that implies about the water, and look for bright secondary minerals.</li><li>For a structure, give type, spacing, primary or secondary, and continuity.</li></ul><span class="srcs">lab notes</span></div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">95 to 100 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">100 to 104 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lab uses. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 2 is the theory behind gossans and alteration assemblages; Lecture 11 puts the zoning on a porphyry; Lecture 14 uses the acid side of the chart for high-sulphidation epithermal deposits. For more specimens, the lab test has 78 alteration photos from the lab set.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">105 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a> &nbsp;·&nbsp; <a href="labtest.html">Lab test practice</a> &nbsp;·&nbsp; <a href="logging.html">Logging drill core</a></p>
+  <p><strong>Sources.</strong> “Oxidation, alteration and structures lab” notes (GEOS2181/MINE2810, used in the GEOS3141 lab), with their photos and figures (profile after Asmus, 2013); the lab’s “Common mineralogy in hydrothermal systems” chart (after Corbett and Leach, 1997), redrawn and simplified here; the Mineral Sudoku sheet and GEOS2181 Labs 1-2 deck for the clay properties; lab alteration photos by Ian Graham (course Flickr account). The lab’s own fill-in assignment is left for you to do at the bench.</p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You can spot a rusty rock.'],[30,'Graduate geologist','You can name an alteration type.'],[90,'Project geologist','You can read the chart.'],[150,'Senior geologist','You can vector through the zones.'],[200,'Chief geologist','The core shed fears your hand lens.']];
+var G={
+ "gossan":"The oxidised iron-oxide cap left over a sulphide body after weathering.",
+ "goethite":"FeO(OH), yellow-brown iron oxide; in a gossan, evidence of a standing water level.",
+ "hematite":"Fe₂O₃, red-brown iron oxide; in a gossan, evidence of moving water.",
+ "secondary minerals":"Brightly coloured minerals formed when metals released by oxidation combine with anions in groundwater.",
+ "propylitic":"Chlorite-epidote-pyrite ± carbonate alteration, yellow-green to olive green; adds Ca, Fe, Mg.",
+ "hematite flooding":"Propylitic alteration with abundant hematite, common in epithermal systems.",
+ "phyllic":"Illite-muscovite (sericite) + quartz ± pyrite alteration with a sheen.",
+ "phengite":"A white mica between illite and muscovite in composition.",
+ "sericitisation":"Phyllic alteration where the white micas are relatively coarse.",
+ "potassic":"K-feldspar (adularia) + biotite alteration, pink to pale orange.",
+ "adularia":"The low-temperature hydrothermal variety of K-feldspar.",
+ "argillic":"Clay alteration (kaolinite, dickite, illite, montmorillonite) from feldspar breakdown; pale and weak.",
+ "advanced argillic":"Strongly acid alteration with alunite, kaolinite/dickite, pyrophyllite and opaline silica; near the surface it is steam-heated.",
+ "alunite":"A potassium aluminium sulphate, the signature mineral of advanced argillic alteration.",
+ "silica cap":"A near-surface blanket of opaline silica from steam-heated alteration.",
+ "dickite":"A higher-temperature polymorph of kaolinite.",
+ "pyrophyllite":"A talc-like aluminium silicate of hot, acid alteration.",
+ "pH":"Acidity of a fluid; low pH is acid, 7 is neutral.",
+ "assemblage":"The set of minerals stable together; it, not one mineral, places a rock on the chart.",
+ "skarn":"Calc-silicate rock (garnet, pyroxene, wollastonite) formed where hot fluid meets carbonate rock.",
+ "lithocap":"A large body of advanced argillic alteration above a porphyry system.",
+ "primary structure":"A structure that formed with the rock, such as bedding.",
+ "secondary structure":"A structure that formed later, such as a fault, vein, fold or cleavage.",
+ "continuity":"How far a structure can be traced along strike and down dip.",
+ "silicosis":"Lung disease from breathing fine quartz dust."
+};
+var CP={
+ cp1:{q:'A gossan is dominated by hematite rather than goethite. What does that suggest?',o:['A standing water level','Moving water','No water at all'],a:1,e:'Goethite points to standing water, hematite to moving water.'},
+ cp2:{q:'How does alteration differ from metamorphism?',o:['Alteration is always hotter','Alteration is patchy, restricted to permeable zones; metamorphism affects the whole rock mass','They are the same thing'],a:1,e:'Follow the permeability.'},
+ cp3:{q:'Pink core with K-feldspar and biotite is...',o:['Propylitic','Potassic','Argillic'],a:1,e:'Pink from adularia.'},
+ cp4:{q:'On the chart, which way is more acid?',o:['Left','Right','Down'],a:0,e:'pH increases to the right; temperature increases downwards.'},
+ cp5:{q:'Which clay turns to muscovite at about 240 °C?',o:['Kaolinite','Illite','Smectite'],a:1,e:'Kaolinite goes to dickite and pyrophyllite instead.'},
+ cp6:{q:'Why is a talc-chlorite zone a problem for miners?',o:['It is too hard to drill','It is weak and can cause ground failure','It is radioactive'],a:1,e:'Alteration minerals like talc, chlorite and muscovite weaken the rock.'}
+};
+var ST=[
+ ['What does oxidation do to sulphides, and what decides goethite versus hematite?','Recall','Sulphides (mostly pyrite and pyrrhotite) oxidise to iron oxides; goethite indicates a standing water level, hematite moving water. Over an ore body the oxides form a gossan, with textures set by the original sulphides, their grain size and intergrowth.'],
+ ['Name five secondary minerals and what each is.','Recall','Pyromorphite (lead phosphate), azurite and malachite (copper hydroxy-carbonates), cerussite (lead carbonate), smithsonite (zinc carbonate), anglesite (lead sulphate), jarosite (iron sulphate), scorodite (iron arsenate).'],
+ ['Describe propylitic alteration.','Recall','Yellow-green (epidote) to olive green (chlorite); Ca, Fe and Mg added, K and Na lost (sometimes Na added as albite); chlorite, epidote and fine disseminated pyrite, with late carbonate; hematite flooding common in epithermal systems.'],
+ ['Describe phyllic and potassic alteration and how to tell them apart in hand specimen.','Apply','Phyllic: a sheen from chlorite, illite, muscovite and fine quartz; illite turns to muscovite near 240 °C; phengite common; coarse mica is sericitisation. Potassic: pink to pale orange K-feldspar (adularia) with biotite, muscovite and quartz. Sheen and pale colour versus pink feldspar.'],
+ ['What distinguishes argillic from advanced argillic alteration?','Apply','Argillic: clays (kaolinite, dickite, illite, montmorillonite) from feldspar breakdown, pale and weak. Advanced argillic: strongly acid, near-surface steam-heated, with opaline silica (silica cap), alunite, pyrophyllite, dickite and smectite.'],
+ ['On the Corbett and Leach chart, where do alunite-kaolinite-quartz and biotite-K-feldspar-magnetite plot, and why?','Synthesise','Alunite-kaolinite-quartz plots top left: acid, cool, epithermal. Biotite-K-feldspar-magnetite plots bottom right: near-neutral, hot, porphyry (potassic). The axes are pH (left to right) and temperature (top to bottom).'],
+ ['Why do structures matter for both ore and mining?','Think','All deposits are structurally controlled to some degree, many strongly; faults, shear zones, fracture zones and alteration-weakened zones (talc, chlorite, muscovite, pyrite-marcasite) can cause major engineering problems or closure; amphiboles (asbestos) and fine quartz (silicosis) are health hazards.']
+];
+GEO.start({key:'geos3141-alteration-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:105});
+
+/* ---------- Corbett and Leach chart ---------- */
+var COLS=['Silica','Alunite','Al-K','Kaolin','I-K','Illite','Chlorite','Calc-silicate'],ROWS=['Epithermal','Mesothermal','Porphyry'];
+var TY={aa:['Advanced argillic','#D9B84A','t-aa'],ar:['Argillic','#9DBA5A','t-arg'],ph:['Phyllic','#5DA9C0','t-phyl'],sp:['Outer / sub-propylitic','#D99A4E','t-prop'],pr:['Propylitic','#B5603F','t-prop'],po:['Potassic','#9A7BA6','t-pot'],sk:['Skarn','#7F9480',null]};
+var CELLS=[
+ ['e0',0,0,1,'aa','opaline silica, cristobalite, tridymite (quartz deeper)'],['e1',1,0,1,'aa','alunite, opaline silica, cristobalite'],['e2',2,0,1,'aa','alunite, kaolinite, halloysite, quartz, dickite'],['e3',3,0,1,'ar','halloysite, kaolinite, quartz ± dickite'],['e4',4,0,1,'ar','kaolinite, smectite, illite-smectite, quartz ± siderite'],['e5',5,0,1,'ar','smectite, illite-smectite, illite, quartz or chalcedony, carbonate'],['e6',6,0,1,'sp','chlorite-smectite, chlorite, carbonate, illite-smectite, albite or adularia'],['e7',7,0,2,'sp','chlorite-smectite, zeolites, calcite, dolomite'],
+ ['m0',0,1,1,'aa','quartz'],['m1',1,1,1,'aa','alunite, quartz'],['m2',2,1,1,'aa','alunite, dickite, pyrophyllite, quartz ± diaspore'],['m3',3,1,1,'aa','dickite, pyrophyllite, quartz ± diaspore'],['m4',4,1,1,'ph','dickite, pyrophyllite, sericite, quartz'],['m5',5,1,1,'ph','sericite, quartz, carbonate'],['m6',6,1,1,'ph','sericite, feldspar, quartz, chlorite, carbonate'],['m7',7,1,2,'pr','chlorite, quartz, epidote, actinolite, albite or adularia, calcite'],
+ ['p1',1,2,1,'aa','andalusite, alunite, quartz'],['p2',2,2,1,'aa','andalusite, alunite, pyrophyllite, quartz'],['p3',3,2,1,'aa','andalusite, pyrophyllite, quartz'],['p4',4,2,1,'ph','mica or sericite, pyrophyllite, andalusite, corundum, quartz'],['p5',5,2,1,'ph','mica, quartz ± carbonate, corundum'],['p6',6,2,1,'ph','mica, feldspar, quartz ± chlorite'],['p7',7,2,1,'po','biotite, actinolite, feldspar, quartz, clinopyroxene, magnetite'],['p8',8,2,1,'sk','tremolite, clinopyroxene, garnet, wollastonite, vesuvianite, magnetite, calcite']
+];
+var QZ=[['Alunite + kaolinite + quartz, high in the system',['e2']],['Smectite, illite-smectite, quartz and carbonate',['e5']],['Sericite + quartz + carbonate at mesothermal depth',['m5']],['Biotite + K-feldspar + magnetite deep in a porphyry',['p7']],['Chlorite + epidote + actinolite + albite + calcite',['m7']],['Garnet + clinopyroxene + wollastonite where an intrusion meets limestone',['p8']],['Opaline silica + cristobalite at the surface',['e0']],['Andalusite + pyrophyllite + quartz',['p3','p2']]];
+var cl={mode:'explore',sel:null,q:0,order:[],tries:0,right:0,seen:{}};
+function clDraw(){var s=$('#clSvg');s.innerHTML='';var X0=70,Y0=36,W=(660-X0-6)/9,H=(380-Y0-30)/3;
+  el('line',{x1:X0,y1:16,x2:650,y2:16,stroke:'var(--ink)','stroke-width':1.5},s);el('path',{d:'M650 16 l-8 -4 v8 z',fill:'var(--ink)'},s);txt(s,X0,12,'more acid',{'font-size':16,fill:'var(--muted)'});txt(s,640,12,'increasing pH →',{'font-size':16,'text-anchor':'end',fill:'var(--ink)'});
+  ROWS.forEach(function(r,i){var y=Y0+i*H+H/2;txt(s,X0-8,y+6,r.slice(0,4)+'.',{'font-size':18,'text-anchor':'end',fill:'var(--ink)'});});
+  txt(s,8,Y0+3*H+22,'hotter ↓',{'font-size':16,fill:'var(--muted)'});
+  CELLS.forEach(function(c){var t=TY[c[4]],x=X0+c[1]*W,y=Y0+c[2]*H,w=c[3]*W;var g=el('g',{tabindex:0,role:'button','aria-label':ROWS[c[2]]+' '+(COLS[c[1]]||'Calc-silicate')+': '+t[0]},s);g.style.cursor='pointer';
+    el('rect',{x:x+1.5,y:y+1.5,width:w-3,height:H-3,rx:5,fill:t[1],opacity:cl.sel===c[0]?1:.78,stroke:cl.sel===c[0]?'var(--ink)':'none','stroke-width':3},g);
+    txt(g,x+w/2,y+H/2+6,cl.mode==='explore'||cl.seen[c[0]]?t[0].split(' ')[0].replace('Outer','Sub-prop.').replace('Advanced','Adv. arg.'):'',{'font-size':15,'text-anchor':'middle',fill:'#1E1A14','font-weight':600});
+    g.addEventListener('click',function(){clTap(c);});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();clTap(c);}});});
+  el('rect',{x:X0+1.5,y:Y0+2*H+1.5,width:W-3,height:H-3,rx:5,fill:'none',stroke:'var(--line)','stroke-dasharray':'4 4'},s);txt(s,X0+W/2,Y0+2*H+H/2+4,'none',{'font-size':13,'text-anchor':'middle',fill:'var(--muted)'});
+  COLS.forEach(function(c,i){txt(s,X0+(i===7?i+1:i+.5)*W,Y0+3*H+21,c,{'font-size':i===7?17:15,'text-anchor':'middle',fill:'var(--ink)',transform:''});});}
+function clKey(){var k=$('#clKey');k.innerHTML='';Object.keys(TY).forEach(function(id){var t=TY[id],s=document.createElement('span');s.className='cl-k';s.innerHTML='<i style="background:'+t[1]+'"></i>'+t[0];k.appendChild(s);});}
+function clTap(c){var t=TY[c[4]];
+  if(cl.mode==='explore'){cl.sel=c[0];cl.seen[c[0]]=1;clDraw();SND.play('tick');
+    $('#clSay').innerHTML='<b>'+t[0]+'</b> · '+ROWS[c[2]]+', '+(c[1]===8?'calc-silicate (carbonate host)':COLS[c[1]]+' group')+': '+c[5]+'.'+(t[2]?' <a href="#'+t[2]+'">Read about it →</a>':'');
+    $('#clTag').textContent=Object.keys(cl.seen).length+' / '+CELLS.length+' explored';if(Object.keys(cl.seen).length>=10)award('clx',4,'Explored the alteration chart');return;}
+  var q=QZ[cl.order[cl.q]];if(!q)return;cl.tries++;
+  if(q[1].indexOf(c[0])>=0){cl.sel=c[0];cl.seen[c[0]]=1;clDraw();if(cl.tries===1){COMBO.hit();cl.right++;award('clq'+cl.order[cl.q],COMBO.pts(2),'Plotted it'+COMBO.tag());}else SND.play('ok');FX.burst($('#clSvg'));
+    $('#clSay').innerHTML='<b>Yes: '+t[0]+'.</b> '+ROWS[c[2]]+' level: '+c[5]+'.';cl.q++;setTimeout(clAsk,1300);}
+  else{COMBO.miss();FX.shake($('#clSvg'));$('#clSay').innerHTML='Not there: that box is <b>'+t[0]+'</b> ('+c[5]+'). Try again. <br><b>Plot:</b> '+q[0];}}
+function clAsk(){if(cl.mode!=='quiz')return;var q=QZ[cl.order[cl.q]];cl.tries=0;
+  if(!q){$('#clSay').innerHTML='<b>All '+QZ.length+' plotted, '+cl.right+' first try.</b> Switch back to Explore, or go again.';SND.play('clear');$('#clTag').textContent=cl.right+' / '+QZ.length;return;}
+  $('#clTag').textContent=(cl.q+1)+' of '+QZ.length;$('#clSay').innerHTML='<b>Plot:</b> '+q[0];}
+$('#clMode').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cl.mode=b.dataset.v;$$('#clMode .chip').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});cl.sel=null;
+  if(cl.mode==='quiz'){cl.q=0;cl.right=0;cl.seen={};cl.order=QZ.map(function(_,i){return i;}).sort(function(){return Math.random()-.5;});clDraw();clAsk();}else{$('#clSay').textContent='Tap any box to see its assemblage.';$('#clTag').textContent='tap a box';clDraw();}});
+clKey();clDraw();$('#clSay').textContent='Tap any box to see its assemblage. Left is acid, right near-neutral; top is cool, bottom hot.';
+
+/* ---------- lab photo galleries ---------- */
+var CRED='https://www.flickr.com/photos/188270557@N07/';
+function gallery(box,cats){var list=(LAB.alt||[]).filter(function(x){return cats.indexOf(x.c)>=0;});box.innerHTML='';if(!list.length)return 0;
+  var i=0,fig=document.createElement('div');fig.className='al-fig';box.appendChild(fig);
+  function show(){var x=list[i];fig.innerHTML='';var im=document.createElement('img');im.src='img/lab/alt/'+x.src+'.jpg';im.alt=x.c+' specimen from the lab set';im.loading='lazy';fig.appendChild(im);
+    var bar=document.createElement('div');bar.className='sk-pbar';fig.appendChild(bar);
+    if(list.length>1){var p=document.createElement('button');p.type='button';p.className='sk-pb';p.textContent='‹';p.setAttribute('aria-label','Previous photo');bar.appendChild(p);var n=document.createElement('span');n.className='sk-pn';n.textContent=(i+1)+' / '+list.length;bar.appendChild(n);var q=document.createElement('button');q.type='button';q.className='sk-pb';q.textContent='›';q.setAttribute('aria-label','Next photo');bar.appendChild(q);
+      p.addEventListener('click',function(){i=(i+list.length-1)%list.length;show();SND.play('tick');});q.addEventListener('click',function(){i=(i+1)%list.length;show();SND.play('tick');});}
+    var c=document.createElement('span');c.className='al-cap';c.textContent=x.c+(x.d?' · '+x.d.trim():'');bar.appendChild(c);
+    var a=document.createElement('a');a.className='sk-cr';a.href=CRED+x.src+'/';a.target='_blank';a.rel='noopener';a.textContent='lab set · photo Ian Graham';bar.appendChild(a);}
+  show();return list.length;}
+$('#gosTag').textContent=gallery($('#gosGal'),['Goethite gossan','Hematite gossan','Crystalline goethite','Jarosite'])+' photos';
+$$('.al-gal[data-cats]').forEach(function(b){gallery(b,b.dataset.cats.split('|'));});
+
+/* ---------- name the alteration ---------- */
+var TYO=['Propylitic','Phyllic','Potassic','Argillic','Advanced argillic'];
+mcCards($('#tyCards'),[
+ {lbl:'Description',q:'Yellow-green and olive-green, with chlorite, epidote and fine pyrite',o:TYO,a:0,e:'Propylitic.'},
+ {lbl:'Description',q:'Pale rock with a sheen of illite-muscovite and fine quartz',o:TYO,a:1,e:'Phyllic.'},
+ {lbl:'Description',q:'Pink to pale orange from adularia, with biotite',o:TYO,a:2,e:'Potassic.'},
+ {lbl:'Description',q:'Very pale and weak; feldspar replaced by kaolinite, illite and montmorillonite',o:TYO,a:3,e:'Argillic.'},
+ {lbl:'Description',q:'Opaline silica cap with alunite near the surface, steam-heated',o:TYO,a:4,e:'Advanced argillic.'},
+ {lbl:'Description',q:'Chlorite, epidote and abundant hematite in an epithermal system',o:TYO,a:0,e:'Propylitic with hematite flooding.'}
+],'ty',2,function(r,n){$('#tyScore').textContent=r+' / '+n;});
+
+/* ---------- describe the structure ---------- */
+mcCards($('#stCards'),[
+ {img:'img/logging/s057_1.jpg',alt:'Core with a band of crushed granular material between two blocks',lbl:'Type',q:'What type of structure is the crushed band?',o:['Bedding','Shear zone with gouge','Cross-bedding'],a:1,e:'Ground-up rock along a fault or shear. (logging deck, slide 57)'},
+ {img:'img/logging/s059_1.jpg',alt:'Dark grey core with white veins bent into tight loops',lbl:'Primary or secondary?',q:'Are the folded veins primary or secondary structures?',o:['Primary','Secondary'],a:1,e:'Veins and folds form after the rock does, so both are secondary. (logging deck, slide 59)'},
+ {img:'img/logging/s060_1.jpg',alt:'Core crossed by one thin pale vein nearly at right angles',lbl:'Spacing',q:'How would you describe the spacing of veining in this piece?',o:['Closely spaced fracture zone','A single, isolated vein','Pervasive'],a:1,e:'One thin gypsum vein: note its angle (about 80° to the core axis). (logging deck, slide 60)'},
+ {img:'img/logging/s058_1.jpg',alt:'A tray row of broken rubble between rows of intact core',lbl:'Mining impact',q:'A broad fault zone of broken core like this matters to the mine because...',o:['It is a zone of weakness that can cause ground failure','It makes the ore richer','It has no effect'],a:0,e:'Faults and fracture zones are engineering hazards. (lab notes)'},
+ {lbl:'Health',q:'Which of these must be monitored for asbestos risk?',o:['Amphiboles','Kaolinite','Galena'],a:0,e:'And fine-grained quartz for silicosis. (lab notes)'}
+],'st',2,function(r,n){$('#stScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
