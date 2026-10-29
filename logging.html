@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Drill Core Logging</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lab: logging drill core and chips · T3 2026</div>
+  <h1>Reading the core</h1>
+  <p class="lede">Drilling is the only way to see what’s really under the surface, and the only way to prove an ore body is there. This lab covers how the three main drill types work, what each one costs and gives you, how a core tray is marked up, how to measure a structure in oriented core, and how to log what you see. Start by planning a hole.</p>
+
+  <div class="lab" id="dhLab">
+    <h4><span>Plan a drill hole</span><b id="dhTag">0 / 3 rigs tried</b></h4>
+    <div class="chips" id="dhM" role="group" aria-label="Drilling method"></div>
+    <div class="ctl" style="margin-top:.6rem"><label for="dhD">Target depth (vertical)</label><input type="range" id="dhD" min="25" max="1800" step="25" value="300"><output id="dhDo">300 m</output></div>
+    <svg class="grid-svg" id="dhSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of the ground with a drill rig at the surface and the planned hole going down"></svg>
+    <div class="readout"><div><small>Cost</small><b id="dhC">$0</b></div><div><small>Sample</small><b id="dhS"></b></div><div><small>Reached</small><b id="dhR">not drilled</b></div></div>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="dhGo">Drill it</button></div>
+    <p class="say" id="dhSay">Pick a rig, set the depth and drill. Watch what each method can reach and what it costs.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Costs per metre and maximum depths from slides 27 and 28; the 60° diamond hole follows slide 30. The ground section is a sketch.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#why">Why drill?</a></li>
+      <li><a href="#methods">RAB, RC and diamond</a></li>
+      <li><a href="#choose">Choosing a method</a></li>
+      <li><a href="#sizes">Core sizes</a></li>
+      <li><a href="#tray">Reading a core tray</a></li>
+      <li><a href="#orient">Oriented core: alpha and beta</a></li>
+      <li><a href="#log">What to log</a></li>
+      <li><a href="#intervals">Logging real core</a></li>
+      <li><a href="#storage">When core goes bad</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="why" data-log="Why drill"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>Why drill?</h2>
+  <p>Mapping, geochemistry and geophysics tell you where to look. Only drilling lets you see the actual geology below the surface and sample it directly. It’s the only way to work out the potential size, shape and style of an ore deposit, and the only way to know whether you have one at all. You also have to drill and assay to show an ore body’s economic potential: in Australia that’s a JORC requirement before you can report a resource. <span class="srcs">slide 4</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/logging/s032_1.jpg" alt="Rows of stacked white plastic core trays in an open yard with sheds behind">
+    <figcaption>A core yard: every metre drilled ends up in trays like these, logged, photographed and kept. <span class="srcs">slide 32</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="methods" data-log="Methods"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>RAB, RC and diamond</h2>
+  <p>Mineral exploration uses three main techniques, very different from oil and gas drilling. <button class="term" data-t="RAB">Rotary air blast</button> (RAB) is the cheap, fast first pass, most common in <button class="term" data-t="greenfields">greenfields</button> exploration. A polycrystalline diamond composite head smashes down into the ground, and compressed air blows the cuttings back up the outside of the rods, where they’re laid out on the ground, one pile for every metre. <span class="srcs">slides 5 to 9</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · rows of piles</span><span class="srcs">slide 7</span></div>
+    <img loading="lazy" decoding="async" src="img/logging/s007_1.jpg" alt="A drill rig in scrub behind long rows of small piles of crushed rock on red ground, changing colour from red to orange to pale cream along each row">
+    <p class="ask">What is each little pile, and what does the colour change along a row tell you? How much would you trust these samples?</p>
+    <details data-obs="rabpiles"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Long rows of small piles of rock chips laid out in front of the rig.</li><li>Along each row the colour changes from red-brown to orange to pale cream.</li></ul>
+      <p class="so">So each pile is the cuttings from one metre of a RAB hole, and each row is one hole read from the top down: the colour change is you passing down through the weathering profile. Useful for a first look, but RAB samples are low quality. They come up outside the rods, so chips from higher in the hole can mix in. <span class="srcs">slides 7, 9 and 27</span></p>
+    </div></details>
+  </div>
+  <p><button class="term" data-t="RC">Reverse circulation</button> (RC) is the workhorse of <button class="term" data-t="brownfields">brownfields</button> exploration and of drilling known targets such as mapped gossans or geochemical anomalies. The rods are double-barrelled: water goes down the outside casing and the cuttings are drawn back up the inner tube, so they’re far less contaminated than RAB chips. <span class="srcs">slides 10 to 16</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/logging/s014_1.jpg" alt="Diagram of RC drilling: compressed air going down a double-walled rod and drill cuttings coming up the centre to the sample return, with photos of the drill bit and double barrel rods">
+    <figcaption>RC drilling: the cuttings travel up inside the double-barrelled rods. <span class="srcs">slide 14</span></figcaption>
+  </figure>
+  <p><button class="term" data-t="diamond drilling">Diamond drilling</button> (DD) usually comes after good RC assays. A ring-shaped diamond bit cuts a solid cylinder of rock that slides up into an inner tube, which is winched out on a wire. You get coherent core from a known depth, uncontaminated, so you can see the geology directly. That’s what you need to prove a deposit and report it to the stock exchange. After logging and photography the core is usually cut in half: one half is crushed and assayed, the other kept for reference. Gold deposits are the exception: because of the <button class="term" data-t="nugget effect">nugget effect</button>, it’s common to assay all of the core. <span class="srcs">slides 17 to 24</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/logging/s021_1.jpg" alt="A steel drill tube lying on metal stands with the drill rig behind and blue buckets around"><div class="cap">A · core in the drill tube, slide 21</div></div>
+    <div><img loading="lazy" decoding="async" src="img/logging/s022_1.jpg" alt="A cylinder of grey veined rock core lying in a half-open steel tube on gravel"><div class="cap">B · exposed core, slide 22</div></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/logging/s024_1.jpg" alt="Three ring-shaped diamond core bits with segmented cutting faces" style="max-width:520px;margin:0 auto">
+    <figcaption>Diamond coring heads: the hole in the middle is where the core goes. <span class="srcs">slide 24</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="choose" data-log="Choosing"><div class="wrap">
+  <div class="kicker">Decisions <span class="depth">24 to 36 m</span></div>
+  <h2>Choosing a method</h2>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>RAB</th><th>RC</th><th>Diamond</th></tr>
+    <tr><td>Cost</td><td>Low (about $150/m)</td><td>Reasonable (about $200/m)</td><td>High (about $400/m)</td></tr>
+    <tr><td>Speed</td><td>Fast</td><td>Efficient</td><td>Slow</td></tr>
+    <tr><td>Sample quality</td><td>Low</td><td>Reliable</td><td>High</td></tr>
+    <tr><td>Depth</td><td>to about 125 m</td><td>to about 500 m</td><td>to about 1800 m</td></tr>
+    <tr><td>Sample</td><td>Chips, outside the rods</td><td>Chips, inside the inner tube</td><td>Solid core</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 27 and 28</p>
+  <p>The costs are all-in: contractor, the site geologist, transport to the core shed, logging and sampling per metre. Many holes are at least 300 m these days, so one 300 m diamond hole at $400 a metre is $120 000. (On slide 27 the diamond column’s “technique” cell repeats the air-blast wording of the other two; diamond actually cuts core, as on slides 17 to 23.) <span class="srcs">slides 27 and 28</span></p>
+  <p>Two more decisions. <b>Hole angle:</b> RAB and RC holes are usually vertical, and most diamond holes go in at 60° to cover the most ground, though resource drilling is often vertical. Whatever the method, angle the hole to cut across the local structures and the expected shape of the ore body. <b>Sterilisation drilling:</b> once the resource is defined, but before you decide where the processing plant, waste dumps, tailings dam and offices go, you drill those sites to make sure you aren’t burying ore under infrastructure. Many companies skimp on it because it costs money for no obvious benefit. <span class="srcs">slides 29 and 30</span></p>
+  <div class="lab">
+    <h4><span>Which drilling?</span><b id="chScore">0 / 6</b></h4>
+    <div class="cards" id="chCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>RAB: cheap (~$150/m), fast, low quality, to ~125 m, greenfields.</li><li>RC: ~$200/m, reliable chips, to ~500 m, brownfields and known targets.</li><li>Diamond: ~$400/m, core from a known depth, to ~1800 m; needed to prove and report a deposit; half core assayed, all of it for gold.</li><li>Sterilisation drilling checks infrastructure sites for ore before you build.</li></ul><span class="srcs">slides 6 to 30</span></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="sizes" data-log="Core sizes"><div class="wrap">
+  <div class="kicker">Numbers <span class="depth">36 to 48 m</span></div>
+  <h2>Core sizes</h2>
+  <p>Diamond core comes in standard sizes named after the core barrel. The bigger the barrel, the more rock per metre, the better the sample, and the higher the cost. The table on slide 26 comes from a real site logging guide; here are the common ones, with what a metre of core weighs. <span class="srcs">slide 26</span></p>
+  <div class="lab" id="szLab">
+    <h4><span>How much rock in a metre?</span><b id="szTag"></b></h4>
+    <div class="chips" id="szC" role="group" aria-label="Core barrel"></div>
+    <svg class="grid-svg" id="szSvg" viewBox="0 0 640 200" role="img" aria-label="Core cross-section inside the drill hole, drawn to scale" style="margin-top:.6rem"></svg>
+    <div class="readout"><div><small>Core diameter</small><b id="szD"></b></div><div><small>Hole diameter</small><b id="szH"></b></div><div><small>Core per metre</small><b id="szM"></b></div></div>
+    <p class="say" id="szSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Diameters and core volume per metre from slide 26; the mass assumes a typical rock density of 2.7 g/cm³ (added for this example).</p>
+  </div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="tray" data-log="Core tray"><div class="wrap">
+  <div class="kicker">In the core shed <span class="depth">48 to 60 m</span></div>
+  <h2>Reading a core tray</h2>
+  <p>Core is laid out in trays in long rows at the core shed; at the Peak gold mine near Cobar the laid-out trays even have an overhead watering system. Every tray carries marks from the drillers and the geologists, and you need to read them before you log a single rock. <span class="srcs">slides 33 to 40</span></p>
+  <div class="lab">
+    <h4><span>What does this mark tell you?</span><b id="mkScore">0 / 6</b></h4>
+    <div class="cards" id="mkCards"></div>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="orient" data-log="Oriented core"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">60 to 72 m</span></div>
+  <h2>Oriented core: alpha and beta</h2>
+  <p>A loose cylinder of rock can spin, so on its own it can’t tell you the strike and dip of any bedding, vein or contact. You need an orientation mark. It costs extra and takes time, because it needs downhole orientation equipment (digital these days), so it isn’t always done. When it is, the drillers mark an <button class="term" data-t="orientation line">orientation line</button> along the core with a wax pencil: a straight line with arrows pointing down the hole. <span class="srcs">slides 41 to 43</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · red lines</span><span class="srcs">slide 43</span></div>
+    <img loading="lazy" decoding="async" src="img/logging/s043_1.jpg" alt="Pale grey core in a tray with a long straight red line along it and short angled red strokes off the line">
+    <p class="ask">What is the long red line, and what are the short angled strokes for?</p>
+    <details data-obs="oriline"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A straight red line along the length of the core.</li><li>Short red strokes angled off it, like arrowheads, all pointing the same way.</li></ul>
+      <p class="so">So it’s the orientation line, and the strokes are arrows pointing <b>down the hole</b>. Every structure you measure on this core is measured from that line, so you always know which way was down and which side was the bottom. <span class="srcs">slides 41 to 43</span></p>
+    </div></details>
+  </div>
+  <p>Two angles describe a planar structure in oriented core. <button class="term" data-t="alpha angle">Alpha</button> is the angle between the core axis and the long axis of the ellipse the plane makes where it cuts the core: 90° means the plane is perpendicular to the core, near 0° means it runs along the core. <button class="term" data-t="beta angle">Beta</button> is measured around the core, clockwise looking down the hole, from the bottom-of-hole line to the lower end of the ellipse’s long axis. With the hole’s own orientation, those two give you the true strike and dip. The structure has to cut right through the core to measure it. <span class="srcs">slides 44 to 47</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/logging/s045_1.jpg" alt="Diagram of a core with an intersection ellipse, the alpha angle between core axis and ellipse long axis, and the beta angle measured round the core from the bottom of hole line" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Alpha and beta, slide 45</div></div>
+    <div><img loading="lazy" decoding="async" src="img/logging/s046_1.jpg" alt="3D sketch of a drill core cut by a red plane, the alpha and beta angles, and a stereonet with the pole to the plane" style="aspect-ratio:auto;object-fit:contain"><div class="cap">From core angles to a stereonet, slide 46</div></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/logging/s047_1.jpg" alt="Close-up of pale core with a white vein crossing it obliquely from one side to the other, beside a centimetre scale" style="max-width:520px;margin:0 auto">
+    <figcaption>A measurable structure: the vein cuts right through the core, so its whole ellipse is there to measure. <span class="srcs">slide 47</span></figcaption>
+  </figure>
+  <div class="lab" id="alLab">
+    <h4><span>Cut the core</span><b id="alTag">alpha 45°</b></h4>
+    <div class="ctl"><label for="alA">Alpha</label><input type="range" id="alA" min="5" max="90" step="1" value="45"><output id="alAo">45°</output></div>
+    <svg class="grid-svg" id="alSvg" viewBox="0 0 640 220" role="img" aria-label="Side view of a drill core cut by a vein at the chosen alpha angle"></svg>
+    <div class="readout"><div><small>Vein trace along NQ core</small><b id="alL"></b></div><div><small>True thickness per 1 m intercept</small><b id="alT"></b></div></div>
+    <p class="say" id="alSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model. The true-thickness rule (intercept length × sin α, for a planar body) is standard drilling geometry added for this example, not from the slides.</p>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="log" data-log="What to log"><div class="wrap">
+  <div class="kicker">At the bench <span class="depth">72 to 84 m</span></div>
+  <h2>What to log</h2>
+  <p>Every company has its own logging method and its own codes and symbols, and most now log straight into spreadsheets with abbreviated codes on a rugged laptop. The content is the same everywhere: lithology; grain size (average and range); fracturing (intensity and spacing); mineralisation (type and intensity); alteration (type and intensity); structures (type and extent); and core loss. <span class="srcs">slides 51 and 52</span></p>
+  <p>Two habits matter more than the codes. Always check the metre mark-ups, because field assistants usually do them and mistakes are relatively common. And always log with a hand lens, a steel hardness scratcher and dilute hydrochloric acid beside you. <span class="srcs">slide 51</span></p>
+  <div class="lab">
+    <h4><span>Which column of the log?</span><b id="lgScore">0 / 7</b></h4>
+    <div class="cards" id="lgCards"></div>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Describe core in the logging order: lithology, grain size, fracturing, mineralisation, alteration, structures, core loss. Give a type and an intensity for mineralisation and alteration.</li><li>For any vein or contact, say its angle to the core axis, and use the hand lens, scratcher and acid before you name a mineral.</li></ul><span class="srcs">slides 51 and 52</span></div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="intervals" data-log="Real core"><div class="wrap">
+  <div class="kicker">Practice <span class="depth">84 to 96 m</span></div>
+  <h2>Logging real core</h2>
+  <p>These intervals are from real holes, at the depths the slides give. Describe each one the way you’d log it before you check. <span class="srcs">slides 54 to 61</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the top of the hole</span><span class="srcs">slides 54 to 56</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/logging/s055_1.jpg" alt="Pale orange-pink, finely cracked core beside a centimetre scale"><div class="cap">A · 12 m</div></div>
+      <div><img loading="lazy" decoding="async" src="img/logging/s056_1.jpg" alt="Broken blocks of yellow-brown and grey rock with a crusty surface beside a scale"><div class="cap">B · 23.0 m</div></div>
+    </div>
+    <p class="ask">Both are from the weathered zone. What has happened to A, and what does the slide call the depth in B?</p>
+    <details data-obs="weathered"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: soft-looking, pale pink to orange, cracked all over, no fresh minerals visible.</li><li>B: broken, crumbly blocks with yellow-brown iron staining and some grey rock.</li></ul>
+      <p class="so">So A is completely weathered rock: <b>kaolinite and hematite</b> from weathering, the clay-and-iron-oxide top of the profile. B marks the <b>base of oxidation</b> at 23 m: below here the sulphides are fresh. Log it carefully, because the oxide and primary ores need different processing. <span class="srcs">slides 55 and 56</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · two broken zones</span><span class="srcs">slides 57 and 58</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/logging/s057_1.jpg" alt="Core with a band of crushed, granular grey material running between two blocks, beside a scale card"><div class="cap">A · 40.4 to 40.6 m</div></div>
+      <div><img loading="lazy" decoding="async" src="img/logging/s058_1.jpg" alt="A tray of several rows of core where one long row is broken into rubble and small fragments"><div class="cap">B · a whole row of broken core</div></div>
+    </div>
+    <p class="ask">A is a 20 cm crushed zone. B is broken over a long length of core. What are they, and why is B so long?</p>
+    <details data-obs="faults"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: a narrow band of crushed, granular material, finer than the rock either side.</li><li>B: rubble and fragments along most of a tray row, with intact core above and below.</li></ul>
+      <p class="so">So A is a <b>shear zone with gouge</b>, the ground-up rock along a fault. B is a fault zone running <b>sub-parallel to the core axis</b>: the hole went down along the fault instead of across it, so you get metres of broken core and almost no information about the fault’s orientation. That’s why you angle holes across the expected structures. <span class="srcs">slides 30, 57 and 58</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · 221 m</span><span class="srcs">slide 59</span></div>
+    <img loading="lazy" decoding="async" src="img/logging/s059_1.jpg" alt="Dark grey core with white veins twisting into tight loops and hooks, beside a scale">
+    <p class="ask">Log the host rock and the veins. What happened to the veins after they formed?</p>
+    <details data-obs="folded"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Dark grey, fine-grained host rock.</li><li>White veins bent into tight loops and hooks.</li></ul>
+      <p class="so">So these are <b>folded quartz veins in siltstone</b>. The veins formed first, then the rock was deformed and they folded with it, so the veining is older than (or early in) the deformation. That relative timing matters for orogenic gold, where you want to know which vein generation carries the gold. <span class="srcs">slide 59</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · 802.6 m</span><span class="srcs">slide 60</span></div>
+    <img loading="lazy" decoding="async" src="img/logging/s060_1.jpg" alt="Pinkish-grey core crossed by a thin pale curved vein, with a red line along the top of the core, beside a scale">
+    <p class="ask">The thin pale vein is gypsum. Estimate its alpha angle. Is it a good structure to measure?</p>
+    <details data-obs="gypsum"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A thin pale vein crossing the core almost straight across.</li><li>A red line along the core: the orientation (or cut) line.</li></ul>
+      <p class="so">So the vein is at about <b>80° to the core axis</b>, nearly perpendicular. It cuts right through the core, so it’s measurable: alpha 80°, and with the orientation line you could get beta too. <span class="srcs">slides 47 and 60</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · 375.9 m</span><span class="srcs">slide 61</span></div>
+    <img loading="lazy" decoding="async" src="img/logging/s061_1.jpg" alt="Fine-grained grey metallic core with several small blue pen circles drawn on it">
+    <p class="ask">The core is massive sulphide. What do you think the blue circles mark, and why bother drawing them?</p>
+    <details data-obs="vg"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Fine-grained, grey, metallic rock with no gangue to speak of.</li><li>Small blue circles drawn around tiny bright specks.</li></ul>
+      <p class="so">So it’s <b>massive sulphide with visible gold</b>, each grain circled in blue. Visible gold is logged and marked so nobody misses it and the interval is sampled carefully. Because of the nugget effect, gold core is often assayed whole rather than halved. <span class="srcs">slides 17 and 61</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="storage" data-log="Storage"><div class="wrap">
+  <div class="kicker">Afterwards <span class="depth">96 to 108 m</span></div>
+  <h2>When core goes bad</h2>
+  <p>All sulphides are unstable at the Earth’s surface: they react with oxygen and turn to oxides. So core keeps changing after it’s drilled. Core with disseminated sulphides is especially vulnerable, and core stored somewhere humid or tropical (warmer, wetter) goes off far faster than core in an arid climate. Sulphide oxidation can even eat through metal core trays. The only fixes are wrapping the core in cling wrap or storing it in a freezer. <span class="srcs">slides 62 and 64</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · same deposit, different years</span><span class="srcs">slide 63</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/logging/s063_1.jpg" alt="Core broken into chunks with brown and orange staining and dark patches"><div class="cap">A</div></div>
+      <div><img loading="lazy" decoding="async" src="img/logging/s063_2.jpg" alt="Fresh greenish-grey core with pale angular fragments in a fine matrix"><div class="cap">B</div></div>
+    </div>
+    <p class="ask">Both are tuff-breccia from the Bowdens silver deposit. One was drilled in 2021, the other in 2025. Which is which, and what happened to the older one?</p>
+    <details data-obs="bowdens"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: brown and orange stained, broken, the original texture hard to see.</li><li>B: fresh, greenish grey, with clear pale fragments in a fine matrix.</li></ul>
+      <p class="so">So A is the older core, drilled in <b>2021</b> (164.7 m), and B the <b>2025</b> core (102.5 m). A’s sulphides have oxidised in storage, staining it and breaking it up; a few years in a core yard was enough. Log and photograph core as soon as it comes out. <span class="srcs">slides 62 and 63</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · two more casualties</span><span class="srcs">slides 65 and 67</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/logging/s065_1.jpg" alt="A tray of pale cream core crazed with cracks like dried mud"><div class="cap">A · slide 65</div></div>
+      <div><img loading="lazy" decoding="async" src="img/logging/s067_1.jpg" alt="Core with patches of bright sky-blue crust on pale and red-brown rock, beside a scale"><div class="cap">B · slide 67</div></div>
+    </div>
+    <p class="ask">What has gone wrong in each tray?</p>
+    <details data-obs="decay"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: pale core crazed with cracks all over, falling apart.</li><li>B: bright blue crusts growing on the core.</li></ul>
+      <p class="so">So A has been destroyed by abundant fine-grained, disseminated <b>pyrite and marcasite</b> oxidising (marcasite is especially unstable). B is encrusted with <b>copper sulphates</b> that grew after drilling as copper sulphides oxidised. Neither tells you anything about the original ore unless someone logged it first. <span class="srcs">slides 65 to 67</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/logging/s068_1.jpg" alt="A green frog sitting in the channel of an empty core tray" style="max-width:420px;margin:0 auto">
+    <figcaption>And sometimes you open a tray and find a frog. You never know what to expect in drill cores. <span class="srcs">slide 68</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">108 to 114 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">114 to 118 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lab uses. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>The weathering profile you log at the top of a hole is Lecture 2; the breccias, veins and textures you describe further down are Lecture 3; and the structures you measure in oriented core are Lecture 5. Lecture 3’s Cobar Basin core is good practice for everything on this page.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">120 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a> &nbsp;·&nbsp; <a href="labtest.html">Lab test practice</a> &nbsp;·&nbsp; <a href="sudoku.html">Mineral Sudoku</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 lab deck “Logging and interpreting drillcores and chips” (Introduction to Exploration and Resource Drilling, 68 slides; photos tagged by slide). There is no recording for this lab, so everything here comes from the slides. The hole planner, the core-mass example and the true-thickness rule are teaching additions and are labelled as such; photos of named people in the deck are left out.</p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You can carry a core tray.'],[35,'Core shed hand','You can read a tray’s mark-ups.'],[100,'Graduate geologist','You can log an interval.'],[180,'Project geologist','You can plan the drilling.'],[240,'Chief geologist','The drillers do what you say.']];
+var G={
+ "RAB":"Rotary air blast drilling: cheap, fast, low-quality chips blown up outside the rods; greenfields exploration, to about 125 m.",
+ "RC":"Reverse circulation drilling: chips come up inside double-barrelled rods, so less contamination; brownfields and known targets, to about 500 m.",
+ "diamond drilling":"Coring with a ring-shaped diamond bit, giving solid core from a known depth; to about 1800 m and needed to prove a deposit.",
+ "greenfields":"Exploration in new ground with no known deposits.",
+ "brownfields":"Exploration around known deposits or targets.",
+ "nugget effect":"Gold occurs as scattered grains, so a small sample can miss or hit them by chance; gold core is often assayed whole.",
+ "half core":"Core sawn lengthwise: one half crushed for assay, the other kept for reference.",
+ "sterilisation drilling":"Drilling planned infrastructure sites to make sure no ore ends up buried under them.",
+ "core tray":"The box core is laid out in, read from top left like a page, labelled with the hole name and tray number.",
+ "core loss":"A length of hole the drill recovered no core from; marked with a block giving the missing length.",
+ "metre mark":"A geologist’s mark at each metre of depth on the core or the tray; often done by field assistants, so check it.",
+ "specific gravity":"Density relative to water; an SG mark shows where a sample was taken for density testing.",
+ "orientation line":"A line the drillers draw along oriented core, with arrows pointing down the hole.",
+ "core axis":"The long axis of the core cylinder, parallel to the hole.",
+ "alpha angle":"The angle between the core axis and the long axis of the ellipse a plane makes on the core; 90° is perpendicular.",
+ "beta angle":"The angle round the core, clockwise looking down hole, from the bottom-of-hole line to the lower end of the ellipse long axis.",
+ "intercept":"The length of hole that passes through an ore body or unit.",
+ "true thickness":"The thickness measured perpendicular to a planar body; less than the intercept unless the hole crosses it at 90°.",
+ "base of oxidation":"The depth below which sulphides are fresh rather than oxidised.",
+ "gouge":"Finely ground rock along a fault or shear zone.",
+ "visible gold":"Gold grains big enough to see; logged and marked on the core.",
+ "JORC":"The Australian code for reporting exploration results, resources and reserves."
+};
+var CP={
+ cp1:{q:'Why do you have to drill a deposit before reporting it in Australia?',o:['Drilling looks good to investors','Assays from drilling are needed to show economic potential (a JORC requirement)','Geophysics is banned'],a:1,e:'Only drilling samples the ore body directly.'},
+ cp2:{q:'Why are RC samples more reliable than RAB samples?',o:['RC holes are deeper','RC chips come up inside the inner tube, so less contamination','RC uses diamonds'],a:1,e:'RAB chips come up outside the rods.'},
+ cp3:{q:'Before building the processing plant on a defined resource, you drill the plant site. This is...',o:['Sterilisation drilling','Infill drilling','Greenfields drilling'],a:0,e:'It stops you burying ore under infrastructure.'},
+ cp4:{q:'Compared with NQ core, PQ core gives you...',o:['Less rock per metre','More rock per metre, at higher cost','Exactly the same sample'],a:1,e:'PQ is 85 mm, NQ 47.6 mm.'},
+ cp5:{q:'A red block in the tray reads “CORE LOSS 10 cm”. What does it mean?',o:['10 cm of core was taken for assay','10 cm of hole produced no core','The tray is 10 cm short'],a:1,e:'Log it: lost core is often broken or soft ground.'},
+ cp6:{q:'A vein has an alpha angle of 10°. What does that tell you?',o:['It is nearly perpendicular to the core','It runs nearly along the core, so the hole is drilled almost parallel to it','It is horizontal'],a:1,e:'Angle the next hole across it.'},
+ cp7:{q:'“Moderate pervasive sericite” goes in which part of the log?',o:['Mineralisation','Alteration','Lithology'],a:1,e:'Alteration: type and intensity.'},
+ cp8:{q:'Metres of broken core along one row usually means...',o:['A fault zone running sub-parallel to the hole','Perfect drilling','A gold-rich interval'],a:0,e:'The hole followed the fault.'},
+ cp9:{q:'Which core is most at risk of falling apart in storage?',o:['Fresh granite in a dry climate','Core with disseminated pyrite and marcasite in a humid climate','Quartzite'],a:1,e:'Disseminated sulphides plus heat and water oxidise fastest.'}
+};
+var ST=[
+ ['Give the main reasons for drilling in mineral exploration.','Recall','It is the only way to see the real geology below the surface, to sample it directly, to work out the size, shape and style of a deposit, and to know whether you have one; drilling and assaying are needed to show economic potential under JORC.'],
+ ['Compare RAB, RC and diamond drilling.','Recall','RAB: low cost (~$150/m), fast, low sample quality, to ~125 m, chips blown up outside the rods, greenfields. RC: ~$200/m, efficient, reliable chips up the inner tube of double-barrelled rods, to ~500 m, brownfields and known targets. Diamond: ~$400/m, slow, high quality solid core from a known depth, to ~1800 m, needed to prove and report a deposit.'],
+ ['What happens to diamond core after it comes out of the hole?','Recall','It is laid out in trays, marked up, logged in detail and photographed, then usually cut in half: one half crushed and assayed, the other stored for reference. For gold, because of the nugget effect, all of the core is often assayed.'],
+ ['What is sterilisation drilling and why is it often skipped?','Recall','Drilling the planned sites of infrastructure (plant, waste dumps, tailings, offices) after the resource is defined, so no ore is left buried; it is often skimped because it costs money with no obvious benefit to management.'],
+ ['List the marks you would expect to find in a core tray.','Apply','Tray identification (hole name and tray number), drillers’ depth blocks, geologists’ metre mark-ups, SG testing marks, core loss blocks, and on oriented core the orientation line with arrows pointing down hole.'],
+ ['Define alpha and beta angles and say what you need to measure them.','Apply','Alpha: angle between the core axis and the long axis of the intersection ellipse. Beta: angle round the core, clockwise looking down hole, from the bottom-of-hole line to the lower end of the ellipse long axis. You need oriented core (an orientation line) and a structure that cuts right through the core.'],
+ ['What should a core log record?','Recall','Lithology; grain size (average and range); fracturing (intensity and spacing); mineralisation (type and intensity); alteration (type and intensity); structures (type and extent); core loss. Check the metre mark-ups and use a hand lens, steel scratcher and dilute HCl.'],
+ ['Why does drill core deteriorate in storage, and how can you slow it?','Think','Sulphides are unstable at the surface and oxidise, especially fine disseminated pyrite and marcasite, faster in humid, warm climates; copper sulphates can crust the core and oxidation can destroy metal trays. Wrap core in cling wrap or freeze it, and log and photograph it promptly.']
+];
+GEO.start({key:'geos3141-logging-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:120});
+
+/* ---------- hole planner ---------- */
+var DM={RAB:{r:150,max:125,ang:90,s:'chips on the ground',col:'#C8553A'},RC:{r:200,max:500,ang:90,s:'chips via inner tube',col:'#9A650C'},DD:{r:400,max:1800,ang:60,s:'solid core in trays',col:'#2B7A68'}},dm='RC',tried={},dh={f:0,busy:false,reach:0};
+Object.keys(DM).forEach(function(k){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=k==='DD'?'Diamond':k;b.setAttribute('aria-pressed',k===dm);b.addEventListener('click',function(){if(dh.busy)return;dm=k;$$('#dhM .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');dh.f=0;dhDraw();});$('#dhM').appendChild(b);});
+function dhDepth(){return +$('#dhD').value;}
+function dhDraw(){var s=$('#dhSvg');s.innerHTML='';var M=DM[dm],D=dhDepth(),sc=240/1800;
+  el('rect',{x:0,y:0,width:640,height:40,fill:'var(--sky)'},s);
+  [['weathered',0,60,'var(--goe)'],['fresh rock',60,1800,'var(--crust)']].forEach(function(z){el('rect',{x:0,y:40+z[1]*sc,width:640,height:(z[2]-z[1])*sc,fill:z[3],opacity:z[0]==='weathered'?.8:.45},s);});
+  [125,500,1800].forEach(function(m,i){var y=40+m*sc;el('line',{x1:0,y1:y,x2:640,y2:y,stroke:'var(--line)','stroke-dasharray':'4 4'},s);txt(s,636,y-3,['RAB limit ~125 m','RC limit ~500 m','diamond ~1800 m'][i],{'font-size':20,'text-anchor':'end',fill:'var(--muted)'});});
+  var x0=150,y0=40;el('path',{d:'M'+(x0-14)+' 40 L'+x0+' 6 L'+(x0+14)+' 40 Z',fill:'var(--slate)'},s);txt(s,x0+22,26,M===DM.DD?'diamond rig':M===DM.RC?'RC rig':'RAB rig',{'font-size':20,fill:'var(--ink)'});
+  var a=M.ang*Math.PI/180,len=Math.min(D/Math.sin(a),M.max)*dh.f,dx=Math.cos(a)*len*sc,dy=Math.sin(a)*len*sc;
+  if(dh.f>0){el('line',{x1:x0,y1:y0,x2:x0+dx,y2:y0+dy,stroke:M.col,'stroke-width':4,'stroke-linecap':'round'},s);el('circle',{cx:x0+dx,cy:y0+dy,r:5,fill:M.col},s);}
+  var py=40+D*sc,pa=D/Math.sin(a);el('line',{x1:x0,y1:y0,x2:x0+Math.cos(a)*pa*sc,y2:y0+Math.sin(a)*pa*sc,stroke:'var(--ink)','stroke-width':1,'stroke-dasharray':'2 4',opacity:.5},s);
+  txt(s,8,py+(py>270?-4:12),'target '+D+' m',{'font-size':20,fill:'var(--ink)'});
+  var Ld=Math.round(D/Math.sin(a));$('#dhC').textContent='$'+(Ld*M.r).toLocaleString('en-AU')+(M.ang<90?' ('+Ld+' m drilled)':'');$('#dhS').textContent=M.s;$('#dhDo').textContent=D+' m';
+  $('#dhTag').textContent=Object.keys(tried).length+' / 3 rigs tried';}
+$('#dhD').addEventListener('input',function(){if(!dh.busy){dh.f=0;$('#dhR').textContent='not drilled';}dhDraw();});
+$('#dhGo').addEventListener('click',function(){if(dh.busy)return;dh.busy=true;SND.play('flip');var t0=0,M=DM[dm],D=dhDepth();
+  function step(ts){if(!t0)t0=ts||1;dh.f=Math.min(1,((ts||t0)-t0)/1600);dhDraw();if(dh.f<1&&!reduce)requestAnimationFrame(step);else{dh.f=1;dhDraw();dh.busy=false;
+    var Lh=Math.round(D/Math.sin(M.ang*Math.PI/180)),ok=Lh<=M.max,got=Math.min(Lh,M.max),name=dm==='DD'?'Diamond':dm;$('#dhR').textContent=got+' m'+(M.ang<90?' downhole':'');
+    if(ok){tried[dm]=1;SND.play('coin');$('#dhSay').innerHTML='<b>'+name+'</b>: '+Lh+' m × $'+M.r+'/m = <b>$'+(Lh*M.r).toLocaleString('en-AU')+'</b>. You get '+({RAB:'chips laid out on the ground, one pile per metre',RC:'reliable chips drawn up the inner tube',DD:'solid core in trays'})[dm]+'.'+(dm==='DD'?' Angled at 60° to cover more ground, so reaching '+D+' m vertically takes '+Lh+' m of drilling.':'')+(dm==='RAB'?' Cheap and fast, but low quality.':'');}
+    else{FX.shake($('#dhSvg'));$('#dhSay').innerHTML='<b>'+name+'</b> can’t drill '+Lh+' m: it tops out around '+M.max+' m of hole. Pick a rig that can go deeper, or aim shallower.';}
+    dhDraw();if(Object.keys(tried).length===3)award('dh',5,'Planned a hole with every rig');}}
+  requestAnimationFrame(step);});
+dhDraw();
+
+/* ---------- which drilling ---------- */
+var CHO=['RAB','RC','Diamond','Sterilisation drilling'];
+mcCards($('#chCards'),[
+ {lbl:'Situation',q:'First pass over a soil anomaly in new ground, on a tight budget',o:CHO,a:0,e:'RAB: cheap and fast for greenfields.'},
+ {lbl:'Situation',q:'Testing a mapped gossan to about 200 m with samples you can trust',o:CHO,a:1,e:'RC: brownfields and known targets, reliable chips.'},
+ {lbl:'Situation',q:'Good RC assays; now you need coherent samples from exact depths to report a resource',o:CHO,a:2,e:'Diamond: core from a known depth.'},
+ {lbl:'Situation',q:'The target is 1100 m down',o:CHO,a:2,e:'Only diamond reaches that deep (to ~1800 m).'},
+ {lbl:'Situation',q:'Resource defined; checking the proposed tailings dam site for ore',o:CHO,a:3,e:'Sterilisation drilling, before you build.'},
+ {lbl:'Situation',q:'You need to see vein textures and measure their orientation',o:CHO,a:2,e:'Chips can’t show textures or orientations; core can.'}
+],'ch',2,function(r,n){$('#chScore').textContent=r+' / '+n;});
+
+/* ---------- core sizes ---------- */
+var SZ=[['PQ',85,122.6,.0056743],['HQ',63.5,96.1,.0031668],['NQ2',50.7,75.7,.0020188],['NQ',47.6,75.7,.0017795],['BQ',36.4,60,.0010406]],szk=3,szSeen={};
+SZ.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=r[0];b.setAttribute('aria-pressed',i===szk);b.addEventListener('click',function(){szk=i;$$('#szC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');szDraw();});$('#szC').appendChild(b);});
+function szDraw(){var s=$('#szSvg');s.innerHTML='';var r=SZ[szk],k=1.4;
+  el('circle',{cx:120,cy:100,r:r[2]/2*k,fill:'var(--bg)',stroke:'var(--line)','stroke-width':2},s);el('circle',{cx:120,cy:100,r:r[1]/2*k,fill:'var(--crust)',stroke:'var(--ink)','stroke-width':1.5},s);
+  txt(s,120,104,r[0],{'font-size':17,'text-anchor':'middle',fill:'var(--ink)','font-weight':700});txt(s,120,196,'core inside the hole, to scale',{'font-size':15,'text-anchor':'middle',fill:'var(--muted)'});
+  var kg=r[3]*2700;SZ.forEach(function(x,i){var y=20+i*34,w=x[3]*2700/16*300;el('rect',{x:260,y:y,width:w,height:22,rx:3,fill:i===szk?'var(--gold)':'var(--slate)',opacity:i===szk?1:.45},s);txt(s,250,y+16,x[0],{'font-size':15,'text-anchor':'end',fill:'var(--ink)'});txt(s,266+w,y+16,(x[3]*2700).toFixed(1)+' kg/m',{'font-size':15,fill:'var(--ink)'});});
+  $('#szD').textContent=r[1]+' mm';$('#szH').textContent=r[2]+' mm';$('#szM').textContent=kg.toFixed(1)+' kg';$('#szTag').textContent=r[0];
+  $('#szSay').textContent=r[0]+' core: '+r[3].toFixed(4)+' m³ per metre × 2700 kg/m³ ≈ '+kg.toFixed(1)+' kg per metre, so a 300 m hole is about '+Math.round(kg*300/1000*10)/10+' t of core. Half of it goes to the assay lab.';
+  szSeen[szk]=1;if(Object.keys(szSeen).length>=3)award('sz',3,'Compared core sizes');}
+szDraw();
+
+/* ---------- tray marks ---------- */
+var MKO=['Tray identification','Drillers’ depth block','Metre mark-ups','SG test mark','Core loss','Orientation line'];
+mcCards($('#mkCards'),[
+ {img:'img/logging/s036_1.jpg',alt:'End of a white plastic core tray with HRUD and 603 written on it in marker',lbl:'End of a tray',q:'What is written here?',o:MKO,a:0,e:'Hole name and tray number, so the tray can always be found and laid out in order. (slide 36)'},
+ {img:'img/logging/s037_1.jpg',alt:'A small wooden block with a metal tag stamped with letters and a number, sitting between pieces of core',lbl:'Between two pieces of core',q:'Who put this block here, and why?',o:MKO,a:1,e:'The drillers mark the depth at the end of each run. (slide 37)'},
+ {img:'img/logging/s038_1.jpg',alt:'Pale grey core in tray channels with short blue pen ticks on the tray dividers',lbl:'On the side of the tray',q:'What are the blue ticks?',o:MKO,a:2,e:'Geologist’s metre mark-ups. Check them: mistakes are common. (slides 38 and 51)'},
+ {img:'img/logging/s039_1.jpg',alt:'Core with rusty staining and the letters SG painted in white with a short white line either side',lbl:'Painted on the core',q:'What do the white letters and lines show?',o:MKO,a:3,e:'Where a piece was taken for specific gravity (density) testing. (slide 39)'},
+ {img:'img/logging/s040_1.jpg',alt:'A red-painted wooden block with writing in black marker, between broken pieces of core',lbl:'A red block in the tray',q:'What does this block record?',o:MKO,a:4,e:'10 cm of hole with no core recovered. (slide 40)'},
+ {img:'img/logging/s043_1.jpg',alt:'Pale grey core with a long red line along it and short angled red strokes',lbl:'Drawn along the core',q:'What is the long line?',o:MKO,a:5,e:'The drillers’ orientation line, arrows pointing down hole. (slide 43)'}
+],'mk',2,function(r,n){$('#mkScore').textContent=r+' / '+n;});
+
+/* ---------- alpha widget ---------- */
+var alSeen={};
+function alDraw(){var s=$('#alSvg'),a=+$('#alA').value,r=a*Math.PI/180;s.innerHTML='';
+  var X0=40,X1=600,cy=110,D=110;el('rect',{x:X0,y:cy-D/2,width:X1-X0,height:D,rx:10,fill:'var(--waste)',stroke:'var(--ink)','stroke-width':1.2},s);
+  el('line',{x1:X0-20,y1:cy,x2:X1+20,y2:cy,stroke:'var(--muted)','stroke-dasharray':'6 5'},s);txt(s,X1+16,cy-6,'core axis',{'font-size':20,'text-anchor':'end',fill:'var(--muted)'});
+  el('path',{d:'M'+X1+' '+(cy+D/2+16)+' l14 0 l-6 -5 m6 5 l-6 5',stroke:'var(--ink)',fill:'none'},s);txt(s,X1-4,cy+D/2+20,'down hole',{'font-size':20,'text-anchor':'end',fill:'var(--ink)'});
+  var cx=320,half=D/2/Math.tan(r),th=14/Math.sin(r)/2;half=Math.min(half,250);
+  el('path',{d:'M'+(cx-half-th)+' '+(cy+D/2)+' L'+(cx+half-th)+' '+(cy-D/2)+' L'+(cx+half+th)+' '+(cy-D/2)+' L'+(cx-half+th)+' '+(cy+D/2)+' Z',fill:'#F4F1EA',stroke:'var(--gold)','stroke-width':1.5},s);
+  var ax=cx+70;el('path',{d:'M'+(cx)+' '+cy+' L'+(cx+60)+' '+cy+' A60 60 0 0 0 '+(cx+60*Math.cos(r))+' '+(cy-60*Math.sin(r)),fill:'none',stroke:'var(--hem)','stroke-width':2},s);
+  txt(s,cx+66,cy-8,'α',{'font-size':20,fill:'var(--hem)','font-weight':700});
+  var Lmm=47.6/Math.tan(r);$('#alAo').textContent=a+'°';$('#alTag').textContent='alpha '+a+'°';
+  $('#alL').textContent=a>=89?'straight across':Math.round(Lmm)+' mm';$('#alT').textContent=Math.sin(r).toFixed(2)+' m';
+  $('#alSay').innerHTML=a>=75?'Nearly perpendicular to the core: easy to measure, and the intercept is close to the true thickness. The gypsum vein at 802.6 m (slide 60) is like this.':a>=35?'A good, measurable angle. A 1 m intercept here is '+Math.sin(r).toFixed(2)+' m of true thickness.':'Close to the core axis: the vein smears along the core and a 1 m intercept is only '+Math.sin(r).toFixed(2)+' m thick. The hole is running nearly parallel to the structure, like the fault zone on slide 58. Angle the next hole across it.';
+  alSeen[a>=75?2:a>=35?1:0]=1;if(Object.keys(alSeen).length===3)award('al',4,'Explored the alpha angle');}
+$('#alA').addEventListener('input',alDraw);alDraw();
+
+/* ---------- which column ---------- */
+var LGO=['Lithology','Grain size','Fracturing','Mineralisation','Alteration','Structures','Core loss'];
+mcCards($('#lgCards'),[
+ {lbl:'Log note',q:'Dark grey carbonaceous siltstone',o:LGO,a:0,e:'Lithology: the rock type.'},
+ {lbl:'Log note',q:'Average 0.5 mm, range 0.2 to 2 mm',o:LGO,a:1,e:'Grain size: average and range.'},
+ {lbl:'Log note',q:'Strongly broken, fractures every 2 to 5 cm',o:LGO,a:2,e:'Fracturing: intensity and spacing.'},
+ {lbl:'Log note',q:'5% disseminated pyrite with minor chalcopyrite',o:LGO,a:3,e:'Mineralisation: type and intensity.'},
+ {lbl:'Log note',q:'Pervasive chlorite, moderate',o:LGO,a:4,e:'Alteration: type and intensity.'},
+ {lbl:'Log note',q:'Quartz vein, 3 cm, at 45° to core axis',o:LGO,a:5,e:'Structures: type and extent (with its angle).'},
+ {lbl:'Log note',q:'40.5 to 40.6 m: no core recovered',o:LGO,a:6,e:'Core loss: always record it.'}
+],'lg',2,function(r,n){$('#lgScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>

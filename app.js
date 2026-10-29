@@ -464,11 +464,11 @@ var GEO = {
   /* ---------- landing page: progress per lecture, plus a backup code ---------- */
   index: function (lectures) {
     GEO.themeButton();
-    function load(n) { try { return JSON.parse(localStorage.getItem('geos3141-L' + n + '-progress') || 'null'); } catch (e) { return null; } }
+    function load(n, key) { try { return JSON.parse(localStorage.getItem(key || 'geos3141-L' + n + '-progress') || 'null'); } catch (e) { return null; } }
     var total = 0;
     lectures.forEach(function (L) {
-      var card = $('#lec' + L.n); if (!card || !L.top) return;
-      var sv = load(L.n), xp = sv && typeof sv.xp === 'number' ? sv.xp : 0; total += xp;
+      var card = $('#' + (L.id || 'lec' + L.n)); if (!card || !L.top) return;
+      var sv = load(L.n, L.key), xp = sv && typeof sv.xp === 'number' ? sv.xp : 0; total += xp;
       $('.oz', card).textContent = xp ? xp + ' oz' : 'not started';
       $('.fill', card).style.width = Math.min(100, xp / L.top * 100) + '%';
     });
@@ -869,7 +869,8 @@ var GEO = {
         run.miss.forEach(function (st) {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
           var t = node('div', '', null, row); node('b', '', st.kind === 'obs' ? st.lbl : st.o[st.a], t); if (st.kind === 'obs') node('p', '', st.q, t); node('p', '', st.e, t);
-          if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
+          if (st.page) { var a0 = node('a', '', 'Review in ' + st.pageName + ' →', t); a0.href = st.page + '#' + st.sec; }
+          else if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
           else if (st.link) { var a2 = node('a', '', /^sudoku/.test(st.link) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + st.link.match(/L(\d+)/)[1] + ' →', t); a2.href = st.link; }
           else if (st.credit) { var a3 = node('a', '', 'See the original photo →', t); a3.href = st.credit; a3.target = '_blank'; a3.rel = 'noopener'; }
         });
