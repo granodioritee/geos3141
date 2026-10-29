@@ -724,7 +724,7 @@ var CARDS = [
  {"id": "L13-st8", "lecture": 13, "kind": "q", "lvl": "Apply", "front": "How do Carlin-type deposits differ from typical orogenic deposits?", "back": "Hosted in sub-greenschist argillites and limestones, 2 to 3 km, 200 to 300 °C, Cenozoic back-arc extension; intense silicification, some kaolinisation; invisible gold in arsenian pyrite rims; mined in bulk by open cut."},
  {"id": "L13-st9", "lecture": 13, "kind": "q", "lvl": "Apply", "front": "Calculate the value of Bendigo’s 700 000 kg of gold at US$4000 an ounce.", "back": "700 000 kg = 700 t × 32 150.7 oz/t = about 22.5 Moz × US$4000 = about US$90 billion (the slide gives about US$120 billion at a higher assumed price)."},
  {"id": "L13-st10", "lecture": 13, "kind": "q", "lvl": "Synthesise", "front": "Using Tuena, explain how you would decide which veins to target in an orogenic goldfield.", "back": "Map vein generations by crosscutting and deformation: early pre-kinematic rootless veins, syn-kinematic folded veins, and late post-kinematic planar carbonate veins that cut the foliation. In the Lachlan the gold is in the late set, so target late, undeformed veins along subsidiary faults in the main structural corridor."},
- /* Lecture 14: 30 terms, 11 checkpoints, 10 self-test */
+ /* Lecture 14: 32 terms, 11 checkpoints, 10 self-test */
  {"id": "L14-g-adularia", "lecture": 14, "kind": "term", "front": "Adularia", "back": "A low-temperature K-feldspar typical of low sulphidation veins."},
  {"id": "L14-g-advanced-argillic", "lecture": 14, "kind": "term", "front": "Advanced argillic", "back": "Acid alteration with alunite, kaolinite, dickite, pyrophyllite."},
  {"id": "L14-g-alunite", "lecture": 14, "kind": "term", "front": "Alunite", "back": "KAl₃(SO₄)₂(OH)₆; always low pH."},
@@ -732,6 +732,7 @@ var CARDS = [
  {"id": "L14-g-breccia", "lecture": 14, "kind": "term", "front": "Breccia", "back": "Rock made of broken angular fragments."},
  {"id": "L14-g-caldera", "lecture": 14, "kind": "term", "front": "Caldera", "back": "A collapsed volcanic depression; epithermal deposits cluster along caldera margins."},
  {"id": "L14-g-chalcedony", "lecture": 14, "kind": "term", "front": "Chalcedony", "back": "Microcrystalline quartz deposited quickly at low temperature."},
+ {"id": "L14-g-crack-seal", "lecture": 14, "kind": "term", "front": "Crack-seal", "back": "Repeated opening and sealing of a vein, each increment adding a new band."},
  {"id": "L14-g-crustiform", "lecture": 14, "kind": "term", "front": "Crustiform", "back": "Banding in a vein where layers grow one on another in open space; also colloform."},
  {"id": "L14-g-diatreme", "lecture": 14, "kind": "term", "front": "Diatreme", "back": "A breccia-filled volcanic pipe formed by phreatomagmatic eruption."},
  {"id": "L14-g-enargite", "lecture": 14, "kind": "term", "front": "Enargite", "back": "Cu₃AsS₄; the hallmark copper mineral of high sulphidation systems."},
@@ -739,6 +740,7 @@ var CARDS = [
  {"id": "L14-g-floating-clast-breccia", "lecture": 14, "kind": "term", "front": "Floating clast breccia", "back": "Vein breccia with wall-rock fragments suspended in vein fill."},
  {"id": "L14-g-free-milling-gold", "lecture": 14, "kind": "term", "front": "Free-milling gold", "back": "Native gold that is released by grinding and recovered easily."},
  {"id": "L14-g-geyser", "lecture": 14, "kind": "term", "front": "Geyser", "back": "A hot spring that periodically erupts water and steam."},
+ {"id": "L14-g-ginguro", "lecture": 14, "kind": "term", "front": "Ginguro", "back": "Japanese for silver-black: dark bands of very fine sulphide (silver minerals, gold) in banded epithermal veins."},
  {"id": "L14-g-halloysite", "lecture": 14, "kind": "term", "front": "Halloysite", "back": "A kaolin-group clay; hypogene halloysite in ore suggests acid water mixing and high grade."},
  {"id": "L14-g-high-sulphidation", "lecture": 14, "kind": "term", "front": "High sulphidation", "back": "Epithermal style from saline, acid, SO₂-rich magmatic fluid; vughy silica, alunite, enargite."},
  {"id": "L14-g-hypogene", "lecture": 14, "kind": "term", "front": "Hypogene", "back": "Formed by rising hydrothermal fluid, not by weathering."},
