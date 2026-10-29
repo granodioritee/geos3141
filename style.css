@@ -437,6 +437,11 @@ em{font-style:italic}
 .lt-opts button:disabled{cursor:default}
 .lt-why{font-family:var(--sans);font-size:.95rem;min-height:1.4em;margin:.8rem 0}
 .lt-why.ok b{color:var(--mal)}.lt-why.bad b{color:var(--hem)}
+.lt-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:.5rem;max-width:36rem;margin:0 auto;align-items:start}
+.lt-pair .lt-img img{max-height:18rem}
+.lt-pair>div{min-width:0}.lt-pair .cap{font-family:var(--sans);font-size:.8rem;color:var(--muted);margin-top:.25rem}
+.lt-seen{border-left:3px solid var(--gold);padding:.2rem 0 .2rem .8rem}.lt-seen ul{margin:.3rem 0 .5rem;padding-left:1.2rem}.lt-seen p{margin:.4rem 0}
+.lt-seen .so{font-weight:500}.lt-rate{margin:0 0 .4rem}.lt-rate b{color:var(--mal)}
 .lt-res{text-align:center}
 .lt-res h4{text-align:left;margin-top:1.4rem}
 .lt-miss{display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.8rem;text-align:left;padding:.7rem 0;border-top:1px solid var(--line);font-family:var(--sans);font-size:.92rem}

@@ -644,9 +644,10 @@ var GEO = {
   /* ---------- lab test practice: timed stations over LAB (labdata.js) ---------- */
   labLoad: function () {
     var s = null; try { s = JSON.parse(localStorage.getItem('geos3141-lab') || 'null'); } catch (e) {}
-    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'dhs', 'suite', 'min', 'alter', 'micro', 'hand', 'core'], v: 3 };
+    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'dhs', 'suite', 'min', 'alter', 'micro', 'hand', 'core', 'obs'], v: 4 };
     if (!s.opt.v) { ['mineral', 'alter'].forEach(function (k) { if (s.opt.k.indexOf(k) < 0) s.opt.k.push(k); }); s.opt.v = 2; }
     if (s.opt.v < 3) { if (s.opt.k.indexOf('dhs') < 0) s.opt.k.push('dhs'); s.opt.v = 3; }
+    if (s.opt.v < 4) { if (s.opt.k.indexOf('obs') < 0) s.opt.k.push('obs'); s.opt.v = 4; }
     return s;
   },
   lab: function () {
@@ -655,7 +656,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core' };
+    var KIND = { dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -710,6 +711,8 @@ var GEO = {
           q: 'What does this specimen show?', o: opts, a: opts.indexOf(x.c),
           e: x.c + ', from the lab’s alteration examples' + (x.d ? ' (' + x.d.replace(/\s+$/, '') + ')' : '') + '.', credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
+      /* stations generated from the lecture pages (labpages.js): photo quiz cards and field tasks */
+      (LAB.pages || []).forEach(function (x) { out.push(x); });
       return out;
     }
     function sedexLink(dep) { return /Isa|Loretta|McArthur|Century/.test(dep || '') ? 'L9.html#halo' : 'L10.html#mound'; }
@@ -750,8 +753,12 @@ var GEO = {
     function station() {
       var st = run.list[run.i]; run.cur = { st: st, used: 0, done: false, t0: Date.now(), xpl: false };
       $('#ltStation').textContent = 'Station ' + (run.i + 1) + ' of ' + run.list.length + ' · ' + KIND[st.kind];
-      var ph = $('#ltPhoto'); ph.innerHTML = '';
-      var wrap = node('div', st.mic ? 'mic' : 'lt-img', null, ph), img = node('img', '', null, wrap); img.src = st.img; img.alt = 'Station photo';
+      var ph = $('#ltPhoto'); ph.innerHTML = ''; if ($('#ltSeen')) $('#ltSeen').remove();
+      var imgs = st.imgs || [{ src: st.img, mic: st.mic }], hold = imgs.length > 1 ? node('div', 'lt-pair', null, ph) : ph, img;
+      imgs.forEach(function (p, k) {
+        var cell = imgs.length > 1 ? node('div', '', null, hold) : hold, wrap = node('div', p.mic ? 'mic' : 'lt-img', null, cell), im = node('img', '', null, wrap);
+        im.src = p.src; im.alt = p.alt || 'Station photo'; if (p.cap) node('div', 'cap', p.cap, cell); if (!k) img = im;
+      });
       var tools = $('#ltTools'); tools.innerHTML = '';
       if (st.kind === 'min') {
         var tip = function (label, fn) { var b = node('button', 'chip', label, tools); b.type = 'button'; b.addEventListener('click', function () { if (run.cur.done || b.disabled) return; b.disabled = true; run.cur.used++; SND.play('flip'); fn(b); }); };
@@ -763,12 +770,37 @@ var GEO = {
       }
       $('#ltLbl').textContent = st.lbl; $('#ltQ').textContent = st.q; $('#ltWhy').textContent = ''; $('#ltWhy').className = 'lt-why';
       var o = $('#ltOpts'); o.innerHTML = '';
-      st.o.forEach(function (t, j) {
-        var b = node('button', '', null, o); b.type = 'button'; node('span', 'k', String(j + 1), b); b.appendChild(document.createTextNode(t));
-        b.addEventListener('click', function () { answer(j, b); });
-      });
+      var opt = function (t, j, fn) { var b = node('button', '', null, o); b.type = 'button'; node('span', 'k', String(j + 1), b); b.appendChild(document.createTextNode(t)); b.addEventListener('click', function () { fn(b); }); };
+      if (st.kind === 'obs') opt('Say it out loud or jot it down, then show the answer', 0, function () { reveal(); });
+      else st.o.forEach(function (t, j) { opt(t, j, function (b) { answer(j, b); }); });
       $('#ltNext').hidden = true;
       tick(true);
+    }
+    /* field tasks: reveal the page's answer, then rate yourself */
+    function reveal() {
+      var c = run.cur, st = c.st; if (c.shown) return; c.shown = true; clearInterval(clock); SND.play('flip');
+      var o = $('#ltOpts'), w = node('div', 'lt-why lt-seen', null, null); w.id = 'ltSeen'; w.innerHTML = st.seen; o.parentNode.insertBefore(w, o); o.innerHTML = '';
+      [['I had the main point', true], ['Not quite', false]].forEach(function (r, j) {
+        var b = node('button', '', null, o); b.type = 'button'; node('span', 'k', String(j + 1), b); b.appendChild(document.createTextNode(r[0]));
+        b.addEventListener('click', function () { rateObs(r[1], b); });
+      });
+    }
+    function rateObs(ok, btn) {
+      var c = run.cur, st = c.st; if (c.done) return; c.done = true;
+      $$('#ltOpts button').forEach(function (b) { b.disabled = true; });
+      var r = L.seen[st.id] || [0, 0]; r[1]++;
+      var note = node('p', 'lt-rate', null, null);
+      if (ok) {
+        r[0]++; run.right++; COMBO.hit(); var pts = COMBO.pts(2); run.oz += pts; L.xp += pts;
+        btn.classList.add('right'); FX.burst(btn); FX.float('+' + pts + ' oz'); SND.play('ok');
+        note.innerHTML = '<b>Nice.</b> +' + pts + ' oz' + COMBO.tag() + '.';
+      } else {
+        COMBO.miss(); run.miss.push(st); SND.play('flip');
+        note.innerHTML = '<b>Fair enough.</b> It goes on your revisit list.';
+      }
+      $('#ltWhy').innerHTML = ''; $('#ltWhy').className = 'lt-why ok'; $('#ltWhy').appendChild(note);
+      L.seen[st.id] = r; keep(); GEO.dayMark(); paintCombo();
+      $('#ltNext').hidden = false; $('#ltNext').textContent = run.i + 1 < run.list.length ? 'Next station' : 'See results'; $('#ltNext').focus();
     }
     function say(t) { var w = $('#ltWhy'); w.textContent = (w.textContent ? w.textContent + ' ' : '') + t; }
     function tick(reset) {
@@ -776,12 +808,12 @@ var GEO = {
       if (!T) { $('#ltClock').textContent = ''; $('#ltBar').style.width = '0'; return; }
       var last = -1;
       var draw = function () {
-        if (!run || run.cur.done) { clearInterval(clock); return; }
+        if (!run || run.cur.done || run.cur.shown) { clearInterval(clock); return; }
         var left = Math.max(0, T - (Date.now() - run.cur.t0) / 1000), sec = Math.ceil(left);
         $('#ltClock').textContent = sec + ' s'; $('#ltBar').style.width = (left / T * 100) + '%';
         $('#ltBar').className = left < 6 ? 'low' : left < T / 3 ? 'mid' : '';
         if (sec !== last && sec <= 5 && sec > 0) SND.play('tick'); last = sec;
-        if (left <= 0) { clearInterval(clock); answer(-1, null); }
+        if (left <= 0) { clearInterval(clock); if (run.cur.st.kind === 'obs') reveal(); else answer(-1, null); }
       };
       draw(); clock = setInterval(draw, 200);
     }
@@ -828,7 +860,7 @@ var GEO = {
         node('h4', '', 'Stations to revisit', box);
         run.miss.forEach(function (st) {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
-          var t = node('div', '', null, row); node('b', '', st.o[st.a], t); node('p', '', st.e, t);
+          var t = node('div', '', null, row); node('b', '', st.kind === 'obs' ? st.lbl : st.o[st.a], t); if (st.kind === 'obs') node('p', '', st.q, t); node('p', '', st.e, t);
           if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
           else if (st.link) { var a2 = node('a', '', 'Review in Lecture ' + st.link.match(/L(\d+)/)[1] + ' →', t); a2.href = st.link; }
           else if (st.credit) { var a3 = node('a', '', 'See the original photo →', t); a3.href = st.credit; a3.target = '_blank'; a3.rel = 'noopener'; }
@@ -841,7 +873,7 @@ var GEO = {
     $('#ltMisses').addEventListener('click', function () { begin(run.miss.slice()); });
     document.addEventListener('keydown', function (e) {
       if (!run || $('#ltRun').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
-      if (!run.cur.done && /^[1-9]$/.test(e.key)) { var b = $$('#ltOpts button')[+e.key - 1]; if (b) { e.preventDefault(); answer(+e.key - 1, b); } }
+      if (!run.cur.done && /^[1-9]$/.test(e.key)) { var b = $$('#ltOpts button')[+e.key - 1]; if (b && !b.disabled) { e.preventDefault(); b.click(); } }
       else if (run.cur.done && e.key === 'Enter' && document.activeElement !== $('#ltNext')) { e.preventDefault(); $('#ltNext').click(); }
     });
     var armed = false;
