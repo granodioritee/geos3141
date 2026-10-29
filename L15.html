@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 15 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L14.html">&larr; Lecture 14</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 15 · T3 2026</div>
+  <h1>Tin, tungsten and the last drops of a granite</h1>
+  <p class="lede">Every phone and car you’ve used is held together with tin solder, and tungsten hardens everything from drill bits to armour. Both come mostly from granites: highly fractionated, volatile-rich granites whose last hot fluids pack tin, tungsten, bismuth and molybdenum into veins and greisens. These deposits are also a mineral collector’s dream, so this page doubles as a hand-specimen workout. First, watch one granite zone its metals as its fluid cools.</p>
+
+  <div class="lab" id="mgLab">
+    <h4><span>Cool the fluid, zone the granite</span><b id="mgTag"></b></h4>
+    <svg class="grid-svg" id="mgSvg" viewBox="0 0 640 330" role="img" aria-label="Plan view of a granite intrusion in hornfels country rock with a cooling fluid front spreading outward and deposits appearing in the core, at the margin and in the country rock"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="mgT">Fluid temperature <b id="mgTV"></b></label><input type="range" id="mgT" min="200" max="600" step="5" value="600"></div></div>
+    <div class="readout"><div><small>Depositing now</small><b id="mgDep">?</b></div><div><small>Where</small><b id="mgWh">?</b></div><div><small>Deposits so far</small><b id="mgN">0</b></div></div>
+    <p class="say" id="mgSay">Drag the temperature down from 600 °C and follow the fluid out from the core.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Teaching model after the Mole Granite (slide 36): Sn in the core, W at the margin, Ag-Zn-Pb in the country rock, 600 to 200 °C, with tungsten dropping between 350 and 300 °C (slide 35). Deposit positions are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#metals">Why these metals matter</a></li>
+      <li><a href="#tin">Tin minerals: cassiterite and stannite</a></li>
+      <li><a href="#tungsten">Tungsten: scheelite and wolframite</a></li>
+      <li><a href="#bimo">Bismuth and molybdenum</a></li>
+      <li><a href="#gangue">The gangue</a></li>
+      <li><a href="#drill">Hand-specimen drill</a></li>
+      <li><a href="#granites">The granites behind them</a></li>
+      <li><a href="#volatiles">Volatiles and metal budgets</a></li>
+      <li><a href="#greisen">Greisens, veins and alteration</a></li>
+      <li><a href="#mole">The Mole Granite</a></li>
+      <li><a href="#tallebung">Tallebung</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="metals" data-log="Why"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 13 m</span></div>
+  <h2>Why these metals matter</h2>
+  <p>This lecture is about magmatic-hydrothermal, granite-related deposits of tin (Sn), tungsten (W), bismuth (Bi) and molybdenum (Mo). Tin is the one you can’t live without. Its main use is as <b>solder</b>, about half of all tin mined, and there’s still no better replacement after hundreds of years; you can’t build a computer, phone or car without it. That’s why the USA and many other countries list tin as a critical mineral, and the USA produces none. A worry: about 40% of mined tin comes from artisanal miners or small companies, particularly in Brazil, Indonesia and Myanmar. <span class="srcs">slides 2 to 4 and 11</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="lab" id="prLab">
+    <h4><span>Who mines it, who holds it</span><b id="prTag"></b></h4>
+    <div class="chips" id="prC" role="group" aria-label="Data set"></div>
+    <svg class="grid-svg" id="prSvg" viewBox="0 0 640 390" role="img" aria-label="Bar chart of tin, tungsten or bismuth production or reserves by country" style="margin-top:.6rem"></svg>
+    <p class="say" id="prSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">USGS figures from slides 2, 3, 12 and 18 (tin in kt; tungsten and bismuth in tonnes). The slide marks Australia’s tungsten reserve with an asterisk.</p>
+  </div>
+  <p>In Australia, by far the largest tin producer is Renison Bell on the west coast of Tasmania, with reserves of at least 180 kt Sn. NSW’s largest proven tin deposit is Taronga in the New England Fold Belt: 22 Mt at 0.16% Sn, about 36 kt of tin metal, a deposit that has opened and closed with the tin price. Global tin reserves have been falling, from an estimated 6100 kt in 2010 to 4700 kt in 2019. <span class="srcs">slides 3 and 4</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="tin" data-log="Tin"><div class="wrap">
+  <div class="kicker">Mineralogy <span class="depth">13 to 26 m</span></div>
+  <h2>Tin minerals: cassiterite and stannite</h2>
+  <p>Almost all tin ever mined comes from two minerals. <button class="term" data-t="cassiterite">Cassiterite</button>, SnO₂, is tetragonal, adamantine, hardness 6 to 7 (between feldspar and quartz) and very dense (SG about 7.0). Its colour varies with impurities: black, brown, yellow, white or red. It forms equant to short prismatic crystals, “needle tin”, and also botryoidal, fibrous “wood tin” and granular masses. <span class="srcs">slide 5</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L15/cass-twin.jpg" alt="A black, lustrous, blocky crystal twinned at an angle, on pale mica" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Twinned cassiterite (“knee” twin), Elsmore, NSW, slide 6</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/cass-ruby.jpg" alt="A red-brown specimen on an old handwritten label" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Ruby tin: red cassiterite, Cornwall, slide 7</div></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · wood tin</span><span class="srcs">slide 7</span></div>
+    <img loading="lazy" decoding="async" src="img/L15/cass-wood.jpg" alt="A slab with concentric bands of cream and yellow-brown to dark brown material in a wood-grain pattern">
+    <p class="ask">This doesn’t look like any tin ore you’d expect. Describe the banding, and suggest how it formed.</p>
+    <details data-obs="woodtin"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Concentric, wavy, wood-grain bands of cream and yellow-brown to dark brown, fibrous in texture.</li></ul>
+      <p class="so">So this is <b>wood tin</b>, a fibrous, colloform cassiterite from Cornwall. The bands record sequential deposition from a hydrothermal vein: quartz, then cassiterite, then quartz, then cassiterite, over and over. It looks nothing like cassiterite, which is exactly why it’s worth remembering. <span class="srcs">slide 7</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+    </div></details>
+  </div>
+  <p>Some cassiterite is a curiosity. At Wheal Coates in Cornwall, cassiterite has replaced orthoclase crystals, keeping their shape (pseudomorphs found nowhere else on Earth); at Emmaville in north-eastern NSW it has replaced fossil gastropods. Gem-quality cassiterite cut like a diamond has the same adamantine lustre but is far denser. Most cassiterite mined in eastern Australia has been <b>alluvial</b>, washed out of the granites into river gravels, but there is plenty of hard-rock potential left. <span class="srcs">slides 8 and 9</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L15/cass-massive.jpg" alt="A dark grey to black heavy nodule of massive cassiterite" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Massive cassiterite, slide 8</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/cass-alluvial.jpg" alt="Sand-sized rounded grains of dark and light minerals" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Alluvial cassiterite, slide 8</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/cass-pseudo.jpg" alt="A grey prism-shaped specimen with the outline of a feldspar crystal" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Cassiterite after orthoclase, Wheal Coates, slide 9</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/cass-gem.jpg" alt="A faceted, honey-brown transparent gemstone" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Faceted gem cassiterite, slide 9</div></div>
+  </div>
+  <p><button class="term" data-t="stannite">Stannite</button>, Cu₂FeSnS₄, is a metallic grey tin sulphide. It forms in more sulphur-rich, reduced systems, with chalcopyrite, pyrite, sphalerite and tetrahedrite. <span class="srcs">slide 10</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L15/tin-uses.jpg" alt="Doughnut chart of global tin use in 2019: solders 49%, chemicals 18%, tinplate 12%, batteries 7%, tin copper 5%, other 9%" style="max-width:480px;margin:0 auto">
+    <figcaption>Global tin use, 2019: solders 49%, chemicals 18%, tinplate 12%, batteries 7%, tin-copper alloys 5%, other 9%. <span class="srcs">slide 11</span> (International Tin Association)</figcaption>
+  </figure>
+  <div class="keybox"><b>Memorise</b><ul><li>Cassiterite SnO₂: adamantine, H 6 to 7, SG ~7; black to brown, also red (ruby tin), fibrous (wood tin), prismatic (needle tin), knee twins.</li><li>Stannite Cu₂FeSnS₄: grey, metallic, in reduced, sulphide-rich systems.</li><li>Tin use: about half is solder.</li></ul><span class="srcs">slides 5 to 11</span></div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="tungsten" data-log="Tungsten"><div class="wrap">
+  <div class="kicker">Mineralogy <span class="depth">26 to 39 m</span></div>
+  <h2>Tungsten: scheelite and wolframite</h2>
+  <p>Only two tungsten minerals matter. <button class="term" data-t="scheelite">Scheelite</button>, CaWO₄, is colourless, white, golden yellow, brown or orange, vitreous to adamantine, fairly soft (H 4.5 to 5), dense (SG 6.1) and usually massive or granular, sometimes in pseudo-octahedra. Its giveaway is <b>bright blue-white fluorescence</b> under ultraviolet light, so explorers really do go prospecting for scheelite at night with UV lamps. <span class="srcs">slides 13 and 14</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · night prospecting</span><span class="srcs">slide 14</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L15/sch-massive.jpg" alt="Pale buff, granular rock with yellow-brown patches"><div class="cap">A · daylight</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L15/sch-uv.jpg" alt="Bright blue-white glowing patches on a black background"><div class="cap">B · under UV light</div></div>
+    </div>
+    <p class="ask">In daylight A is easy to overlook. What does B show, and why is it useful in the field?</p>
+    <details data-obs="uv"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: an unremarkable yellow-brown granular mass.</li><li>B: the same kind of material glowing intense blue-white.</li></ul>
+      <p class="so">So it’s <b>scheelite</b>, which fluoresces blue-white under short-wave UV. At night, a UV lamp makes scheelite in outcrop, core or a waste dump light up against the minerals around it, a cheap and fast way to find and map tungsten. <span class="srcs">slide 14</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+    </div></details>
+  </div>
+  <p><button class="term" data-t="wolframite">Wolframite</button> isn’t a single mineral species but the intermediate members of a series between <b>ferberite</b> (FeWO₄, dark brown to black, metallic, SG 7.58) and <b>hübnerite</b> (MnWO₄, yellow-brown to red-brown, SG about 7.1). Both are monoclinic, H 4 to 4.5, in prismatic to bladed crystals. Almost all eastern Australian wolframite is ferberite; South America and Colorado have more hübnerite. <span class="srcs">slides 15 and 16</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L15/ferberite.jpg" alt="Black, lustrous, striated bladed crystals on white quartz" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Ferberite crystals, slide 16</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/hubnerite-zoned.jpg" alt="Pale rock with bladed crystals, red in parts and darker in others" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Hübnerite, zoned red to darker as Fe increases, slide 16</div></div>
+  </div>
+  <p>About 65% of tungsten goes into tungsten carbide, prized for its hardness, then steels and superalloys (17%), tungsten metal (10%) and chemicals (8%). Tungsten has the highest melting (3422 °C) and boiling (5930 °C) points of any element, a density of 19.25 and high corrosion resistance. Armour plating and hardened ammunition are major military uses, and with China producing the overwhelming majority, tungsten supply is a strategic worry; Australia produces little but has large reserves. <span class="srcs">slides 12 and 17</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="bimo" data-log="Bi and Mo"><div class="wrap">
+  <div class="kicker">Mineralogy <span class="depth">39 to 52 m</span></div>
+  <h2>Bismuth and molybdenum</h2>
+  <p>Bismuth occurs in many minerals, but the economic ones are <b>bismuthinite</b> (Bi₂S₃: lead grey, metallic, soft, H 2 to 2.5, SG 6.78, prismatic to acicular, often fibrous) and <b>native bismuth</b> (cream-white to reddish-white, metallic, soft, SG about 9.7 to 9.8, mostly massive with strong cleavage). China dominates production, followed, surprisingly, by Laos. Bismuth goes into fire detectors and extinguishers and electrical fuses, and, as bismuth subsalicylate, into stomach-relief medicine. It’s also odd physically: solid bismuth is less dense than liquid bismuth. <span class="srcs">slides 18 to 21</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L15/bismuthinite.jpg" alt="Radiating sprays of fine, lead-grey metallic needles in pale rock" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Bismuthinite, slide 20</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/bismuth.jpg" alt="A silvery metallic mass with a faint pinkish-bronze tint and flat cleavage faces" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Native bismuth, slide 20</div></div>
+  </div>
+  <p>Molybdenum has one ore mineral, <b>molybdenite</b> (MoS₂: lead grey to black, metallic, extremely soft at H 1 to 1.5, SG about 4.6 to 4.7, in flexible platy hexagonal crystals). At the surface it alters, where iron and water are around, to bright yellow, powdery <b>ferrimolybdite</b>, or to pale blue <b>ilsemannite</b>. Molybdenum is mostly alloyed into steel for strength, hardness, conductivity and resistance to wear and corrosion, and is also used in lubricants, pigments and catalysts. <span class="srcs">slides 22 to 24</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L15/molybdenite.jpg" alt="A rosette of shiny, bluish lead-grey hexagonal plates" style="max-width:420px;margin:0 auto">
+    <figcaption>Molybdenite rosette, Kingsgate, NSW: soft, flexible, platy, with a greasy metallic lustre. <span class="srcs">slide 23</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="gangue" data-log="Gangue"><div class="wrap">
+  <div class="kicker">Mineralogy <span class="depth">52 to 65 m</span></div>
+  <h2>The gangue</h2>
+  <p>The ore minerals are simple; the gangue isn’t. Granite-related Sn-W-Mo deposits carry quartz (often smoky), alkali feldspars (orthoclase, microcline), plagioclase (mostly albite, because these are lower-temperature systems), micas (muscovite, biotite and lithium micas), fluorite, apatite, beryl, black schorl tourmaline, topaz, carbonates (siderite, calcite) and sulphides (pyrite, pyrrhotite, sphalerite, chalcopyrite, arsenopyrite). The lithium micas can be a resource in their own right: Greenbushes in WA, now the world’s biggest hard-rock lithium mine, was first mined for tin. <span class="srcs">slide 25</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L15/panasqueira.jpg" alt="Pale green platy crystals with beige crystals and metallic grains" style="max-width:480px;margin:0 auto">
+    <figcaption>Fluorapatite (pale green plates) with siderite (beige) and arsenopyrite (metallic), Panasqueira W-Sn mine, Portugal. <span class="srcs">slide 26</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a damaged crystal</span><span class="srcs">slide 27</span></div>
+    <img loading="lazy" decoding="async" src="img/L15/topaz.jpg" alt="A clear, colourless crystal with a rough, pitted and frosted surface instead of sharp faces" style="max-width:420px;margin:0 auto">
+    <p class="ask">This colourless topaz has lost its sharp faces. What happened to it?</p>
+    <details data-obs="topaz"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Clear, colourless topaz with rounded, frosted, pitted surfaces.</li></ul>
+      <p class="so">So it’s been <b>etched</b>: partly dissolved by a later, very low-pH hydrothermal fluid. These systems see not one fluid but several pulses, and later ones can attack the minerals that earlier ones grew. <span class="srcs">slide 27</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="drill" data-log="Specimen drill"><div class="wrap">
+  <div class="kicker">Lab test practice <span class="depth">65 to 78 m</span></div>
+  <h2>Hand-specimen drill</h2>
+  <p>Many of these minerals are in the lab hand-specimen set (cassiterite, wolframite, molybdenite, beryl, tourmaline and fluorite among them), so practise naming them from photos. Look at colour, lustre and crystal habit first, then think about hardness and density. <span class="srcs">slides 6 to 27</span></p>
+  <div class="lab">
+    <h4><span>Name the mineral</span><b id="idScore">0 / 13</b></h4>
+    <div class="cards" id="idCards"></div>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Cassiterite: very heavy, adamantine, black to brown, hard (scratches glass); twins and short prisms.</li><li>Wolframite: heavy, black (ferberite) to red-brown (hübnerite), bladed; scheelite: pale, heavy, fluoresces blue-white.</li><li>Molybdenite: very soft (H 1 to 1.5), flexible platy hexagonal crystals, lead grey, metallic.</li><li>Gangue clues to a granite system: topaz, beryl, schorl, fluorite, Li-mica, smoky quartz.</li></ul><span class="srcs">slides 5 to 27</span> <span class="srcs">lab mineral set</span></div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="granites" data-log="Granites"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">78 to 91 m</span></div>
+  <h2>The granites behind them</h2>
+  <p>This lecture focuses on <b>vein and greisen</b> Sn-W-Mo deposits, associated with high-level felsic granites emplaced at shallow depths, commonly 1.5 to 5 km. The granites are K-rich (abundant K-feldspar and micas), metaluminous to peraluminous and <b>highly fractionated</b> (high Rb/Sr). They come in two series: the <button class="term" data-t="magnetite series">magnetite series</button>, linked to Mo-W, and the <button class="term" data-t="ilmenite series">ilmenite series</button>, linked to Sn-W. The fluids come from the intrusions themselves, though metals and especially sulphur may also be leached from the country rocks by convection. <span class="srcs">slide 28</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <p>They form in post-orogenic uplift (back arcs and continental interiors) and in crust thickened by continent-continent collision, mostly in Phanerozoic orogenic belts, as belts parallel to the continental margin with the magnetite series nearer the margin. Redox controls the ore minerals: in the slide’s framing, magnetite-series magmas keep sulphur in the melt and so allow sulphide-rich, stannite-bearing tin ores, while ilmenite-series magmas lose sulphide early, giving sulphide-poor, cassiterite-rich ores. <b>Peraluminous</b> means Al/(Na + K + 2Ca) &gt; 1: the extra aluminium sits in cordierite, garnet, muscovite, andalusite, sillimanite, topaz and biotite. S-type granites are typically peraluminous. <span class="srcs">slides 29 and 30</span></p>
+  <div class="lab">
+    <h4><span>Which granite, which metals?</span><b id="grScore">0 / 4</b></h4>
+    <div class="cards" id="grCards"></div>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="volatiles" data-log="Volatiles"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">91 to 104 m</span></div>
+  <h2>Volatiles and metal budgets</h2>
+  <p>Volatiles make these deposits. Water is the most abundant, but a granite magma has to be water-<b>undersaturated</b> (under about 3 wt% H₂O) to rise high in the crust, because water saturation makes it crystallise at depth. <b>Chlorine</b> carries Sn, W, Mo, Sb and other metals (Cu, Pb, Zn, Ag) as chloride complexes. <b>Lithium, boron and fluorine</b> lower the melting temperature and extend fractionation to low temperatures: an ordinary granite might stop fractionating around 500 °C, one rich in these can carry on below 300 °C. F and B also raise the solubility of H₂O and Cl in the melt, so volatiles exsolve at lower pressure. That’s why tourmaline, topaz and Li-micas are such good indicators. <span class="srcs">slide 34</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <p>The metal budget is surprisingly ordinary. Crustal rocks hold 2 to 5 ppm Sn; unaltered tin-mineralised granites 10 to hundreds of ppm, so simple fractionation of an already Sn-rich granite is enough to make a deposit. Tungsten goes from 1 to 2 ppm in the crust to 10 to 15 ppm in fractionated granites. They precipitate differently. Tin drops by mixing with meteoric water, vapour separation, fluid-wall rock reaction, reaction with feldspars and carbonate replacement, so tin <b>replacement</b> deposits are common. Tungsten is strongly temperature dependent: 99% of it precipitates between <b>350 and 300 °C</b>, so tungsten replacement deposits are rare. <span class="srcs">slide 35</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="lab">
+    <h4><span>What does each one do?</span><b id="vlScore">0 / 5</b></h4>
+    <div class="cards" id="vlCards"></div>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="greisen" data-log="Greisens"><div class="wrap">
+  <div class="kicker">Deposit scale <span class="depth">104 to 117 m</span></div>
+  <h2>Greisens, veins and alteration</h2>
+  <p>A <button class="term" data-t="greisen">greisen</button> is a metasomatised granite in which hydrothermal fluid has replaced more than 90% of the feldspar with muscovite and quartz, often with topaz, tourmaline and cassiterite. Greisens range from millimetre veinlets to zones several metres across and are usually medium to coarse grained; in New England some go to topazite, a rock that is mostly topaz. They typically form where a younger, fluid-rich granite intrudes an older one: its acid fluids attack the feldspars of the older granite, so the ore is on the margins, in the greisen, not in the granite itself. <span class="srcs">slide 31</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a greisen</span><span class="srcs">slide 31</span></div>
+    <img loading="lazy" decoding="async" src="img/L15/greisen.jpg" alt="Pale cream to yellowish, granular rock with no pink or white feldspar visible" style="max-width:480px;margin:0 auto">
+    <p class="ask">This started as granite. What minerals are missing, and what replaced them?</p>
+    <details data-obs="greisen"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A pale, granular rock, yellowish in places, with no visible pink K-feldspar or white plagioclase.</li></ul>
+      <p class="so">So the feldspars are gone, replaced by <b>quartz and muscovite</b>; the yellowish colour is the muscovite. That’s a greisen, and greisens are where tin and tungsten minerals tend to sit. <span class="srcs">slide 31</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+    </div></details>
+  </div>
+  <p>Mineralisation comes as veins, sheeted veins, lodes and breccia fill, sometimes disseminated. Open cavities lined with euhedral crystals are common, with quartz crystals over a metre long (as at Kingsgate in northern NSW). Veins run from the granite out into the surrounding hornfels, up to about a kilometre, so you may not see the granite at all; much of Cornwall’s tin came from the hornfels. Veins have silicic, feldspathic and mica alteration envelopes, extending vertically for hundreds of metres, zoned with falling temperature and distance from the vein. <span class="srcs">slides 32 and 33</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L15/vein-style.jpg" alt="Outcrop with a dark, sheeted vein zone cutting pale rock, a hammer for scale">
+    <figcaption>A mineralised vein zone in outcrop: veins, sheeted veins and lodes are the main styles. <span class="srcs">slide 32</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Zone the vein envelope</span><b id="odTag">0 / 4</b></h4>
+    <div class="cards" id="odBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="odSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="odReset">Shuffle again</button></div>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L15/greisen-model.jpg" alt="Cross-section of an older granite intruded by a younger granite porphyry with greisen along its margin, showing metal zoning and alteration from quartz-biotite-chlorite to quartz-muscovite-topaz-fluorite">
+    <figcaption>A younger granite intruding older granite: greisen and veins develop along the contact, with metal and alteration zoning upward and outward. <span class="srcs">slide 31</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="mole" data-log="Mole Granite"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">117 to 130 m</span></div>
+  <h2>The Mole Granite</h2>
+  <p>The Mole Granite in north-eastern NSW is a lenticular, sill-like body of about 650 km², Triassic (248 Ma), part of the New England Batholith. It intruded Carboniferous and Permian sedimentary and volcanic rocks and hosts more than 1200 small deposits. The <b>tin is in the core</b>, the <b>tungsten along the margin</b>, and lesser <b>Ag, Zn and Pb in the country rocks</b>, all within the top 200 m of the exposed granite. Magmatic fluid from the granite mixed with meteoric water and deposited cassiterite, wolframite, tourmaline and more, over 600 to 200 °C. That’s the slider at the top of the page. <span class="srcs">slides 36 to 38</span> (Audétat et al., 1998, 2000)</p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L15/mole-map.jpg" alt="Map of the Mole Granite with hundreds of small deposit symbols for W, Sn, Bi, Pb-Zn-Cu-Ag and Au, clustered over the granite">
+    <figcaption>Over 1200 mineral occurrences in and around the Mole Granite, all small. The Taronga deposit sits just to the south. <span class="srcs">slide 38</span> <span class="srcs">lecture recording, 26 Oct</span></figcaption>
+  </figure>
+  <p>The tin fields were once busy, with tens of thousands of people working the ground around Emmaville and Torrington, first for alluvial cassiterite and then hard rock; Torrington is a ghost town now. At Emmaville, miners hit open cavities metres across lined with perhaps the world’s best cassiterite crystals on quartz. A student study of sulphur isotopes in the sulphides showed values moving toward magmatic as you approach the granite, a way to tell how far you are from the source. <span class="srcs">slides 37 to 39</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="tallebung" data-log="Tallebung"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">130 to 144 m</span></div>
+  <h2>Tallebung</h2>
+  <p>Tallebung, in central NSW, is a Sn-W deposit now being explored by Sky Metals. It was mined underground in the late 1800s and early 1900s for vein cassiterite and silver, then from about the 1930s to the 1980s a private company sluiced the surface material away hydraulically, which stripped the ground and left the veins beautifully exposed. The host is phyllite; the nearest granite is several kilometres away, though the deepest holes, at about 500 m, show the veins becoming more granite-like. The ore is simple: cassiterite and ferberite in quartz with minor sulphides, coarse enough to separate by gravity after crushing. <span class="srcs">slides 40 to 46</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L15/tallebung-map.jpg" alt="Geological map of the Tallebung area with a north-west trending belt of tin occurrences, sample grades and an exploration target outline" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Tallebung geology and Sn grades (Sky Metals), slide 40</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/tb-veins.jpg" alt="Grey phyllite outcrop cut by pale quartz veins, a notebook for scale" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Quartz-cassiterite veins in phyllite, slide 41</div></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a Tallebung vein</span><span class="srcs">slide 42</span></div>
+    <img loading="lazy" decoding="async" src="img/L15/tb-cass.jpg" alt="Close-up of a white quartz vein with black patches and grains, a scale card beside it">
+    <p class="ask">What are the black patches in this quartz, and why would processing this ore be simple?</p>
+    <details data-obs="tallebung"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Milky white quartz with coarse, black, lustrous patches and grains.</li></ul>
+      <p class="so">So the black mineral is <b>cassiterite</b> (with ferberite). Both are coarse and very dense, so you crush the quartz and separate them by gravity, almost like panning. No complicated chemistry needed. <span class="srcs">slide 42</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+    </div></details>
+  </div>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L15/tb-sluiced.jpg" alt="A broad, bare, gullied excavation of pale rock with a small pond" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Hydraulically sluiced old open cut, slide 45</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L15/tb-floor.jpg" alt="Pale grey rock surface with dark vein lines crossing it, a scale bar" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Cassiterite veins exposed on the floor, slide 46</div></div>
+  </div>
+  <p>The old open cuts nearby were probably dug for silver: goethite and hematite there replace sulphides and carry silver chlorides, supergene ore from the oxide zone (Lecture 2), which the early miners took before the tin. <span class="srcs">slides 43 and 44</span> <span class="srcs">lecture recording, 26 Oct</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>Vein and greisen Sn-W-Mo from high-level (1.5 to 5 km), K-rich, highly fractionated granites; magnetite series (Mo-W) vs ilmenite series (Sn-W).</li><li>Volatiles: H₂O &lt;3 wt% to rise; Cl transports metals; Li, B, F extend fractionation.</li><li>W precipitates at 350 to 300 °C; Sn by mixing, wall-rock and feldspar reaction, replacement.</li><li>Mole Granite: Sn core, W margin, Ag-Zn-Pb in country rock; 1200+ small deposits.</li></ul><span class="srcs">slides 28 to 36</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">144 to 148 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer out loud or on paper before you open each one. Claim the ounces if you got it.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">148 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>Terms this lecture assumes or defines quickly. The dotted words in the text open them in place.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 16 moves away from granites to basin brines again: clastic metasediment-hosted polymetallic veins and Mississippi Valley-type deposits, with silver, lead and zinc instead of tin and tungsten.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 15 slides (Magmatic-hydrothermal granite-related Sn-W-Bi-Mo deposits, 47 slides; photos and figures tagged by slide) and the Echo360 recording of 26 October 2026, which starts at slide 3. Figures in the slides come from published sources (USGS, International Tin Association, Audétat et al. 1998 and 2000, Sky Metals Ltd and others) and are shown only as lecture material. The granite cooling slider is a teaching model with invented deposit positions.</p>
+  <p><a href="L14.html">&larr; Lecture 14</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know tin is in your phone.'],[35,'Graduate geologist','You can tell cassiterite from wolframite.'],[100,'Project geologist','You can spot a greisen.'],[180,'Senior geologist','You can zone a granite by its metals.'],[240,'Chief geologist','Tin smelters call you first.']];
+var G={
+ "cassiterite":"SnO₂, the main tin ore: adamantine, hard (6 to 7), very dense (SG ~7), black to brown.",
+ "stannite":"Cu₂FeSnS₄, a grey metallic tin sulphide of reduced, sulphide-rich systems.",
+ "wood tin":"Fibrous, colloform banded cassiterite that looks like wood.",
+ "needle tin":"Slender prismatic cassiterite crystals.",
+ "ruby tin":"Red, transparent cassiterite.",
+ "knee twin":"A twinned crystal bent at an angle, common in cassiterite.",
+ "scheelite":"CaWO₄, a pale tungsten mineral that fluoresces bright blue-white under UV.",
+ "wolframite":"The (Fe,Mn)WO₄ series between ferberite and hübnerite; heavy, dark, bladed.",
+ "ferberite":"FeWO₄, the iron end of the wolframite series; black; typical of eastern Australia.",
+ "hübnerite":"MnWO₄, the manganese end of the wolframite series; red-brown.",
+ "bismuthinite":"Bi₂S₃, lead-grey, soft, acicular; the main bismuth ore.",
+ "native bismuth":"Bi metal, cream to reddish white, soft, very dense.",
+ "molybdenite":"MoS₂, the only molybdenum ore: very soft, flexible, platy, lead grey.",
+ "ferrimolybdite":"A bright yellow, powdery alteration product of molybdenite.",
+ "ilsemannite":"A pale blue alteration product of molybdenite.",
+ "topaz":"Al₂SiO₄(F,OH)₂, a fluorine-bearing silicate common in Sn-W greisens.",
+ "schorl":"Black iron-rich tourmaline, a boron mineral common in granite systems.",
+ "beryl":"Be₃Al₂Si₆O₁₈; aquamarine is the blue variety.",
+ "fluorite":"CaF₂, a common gangue mineral in granite-related deposits.",
+ "greisen":"Granite in which more than 90% of the feldspar has been replaced by muscovite and quartz, often with topaz, tourmaline and cassiterite.",
+ "topazite":"A rock made mostly of topaz, an extreme greisen.",
+ "hornfels":"Fine-grained rock baked by contact metamorphism next to an intrusion.",
+ "fractionation":"Changing magma composition by crystallising and removing minerals; leaves incompatible elements like Sn in the last melt.",
+ "magnetite series":"Oxidised granites with magnetite; linked to Mo-W deposits.",
+ "ilmenite series":"Reduced granites with ilmenite and no magnetite; linked to Sn-W deposits.",
+ "peraluminous":"Having Al/(Na + K + 2Ca) > 1; extra Al shows as muscovite, garnet, cordierite, topaz.",
+ "metaluminous":"Having Al less than Na + K + 2Ca but more than Na + K.",
+ "S-type granite":"A granite melted from sedimentary rock; typically peraluminous.",
+ "volatile":"A component like H₂O, Cl, F, B or CO₂ that partitions into fluid as magma crystallises.",
+ "sheeted veins":"Many closely spaced parallel veins.",
+ "alluvial":"Deposited by rivers; much eastern Australian tin was mined from alluvial cassiterite.",
+ "artisanal mining":"Small-scale mining by individuals or small groups, often informal."
+};
+var CP={
+ cp1:{q:'What is tin’s main use?',o:['Coins','Solder in electronics, about half of all tin','Steel hardening'],a:1,e:'No better replacement has been found; tin is a critical mineral in many countries.'},
+ cp2:{q:'Which tin mineral forms in reduced, sulphide-rich systems?',o:['Cassiterite','Stannite','Wood tin'],a:1,e:'Stannite, Cu₂FeSnS₄, with chalcopyrite, pyrite, sphalerite and tetrahedrite.'},
+ cp3:{q:'How would you find scheelite in the field quickly?',o:['By its magnetism','With a UV lamp at night: it fluoresces blue-white','By its red streak'],a:1,e:'Scheelite fluoresces strongly under UV.'},
+ cp4:{q:'Bright yellow powder on weathered molybdenum ore is probably...',o:['ferrimolybdite','scheelite','sulphur'],a:0,e:'Molybdenite alters to yellow ferrimolybdite where iron and water are around, or blue ilsemannite.'},
+ cp5:{q:'Etched, frosted topaz in a Sn-W deposit tells you...',o:['it was transported in a river','later low-pH fluids partly dissolved it','it is synthetic'],a:1,e:'Multiple hydrothermal pulses, some very acid.'},
+ cp6:{q:'A very heavy, hard, adamantine black mineral with knee-shaped twins is...',o:['wolframite','cassiterite','molybdenite'],a:1,e:'Cassiterite: H 6 to 7, SG ~7, knee twins.'},
+ cp7:{q:'Which granite series goes with Sn-W deposits?',o:['Magnetite series','Ilmenite series','Neither'],a:1,e:'Ilmenite series: Sn-W; magnetite series: Mo-W.'},
+ cp8:{q:'Why do tin replacement deposits occur but tungsten replacement deposits are rare?',o:['Tungsten is not dissolved','Tungsten drops out almost entirely between 350 and 300 °C, while tin precipitates by many chemical mechanisms','Tin is lighter'],a:1,e:'W is temperature-controlled; Sn reacts with wall rock, feldspar and carbonate.'},
+ cp9:{q:'What defines a greisen?',o:['A granite with more feldspar','A granite where >90% of feldspar has been replaced by muscovite and quartz','A volcanic breccia'],a:1,e:'Often with topaz, tourmaline and cassiterite.'},
+ cp10:{q:'How is metal zoned around the Mole Granite?',o:['W in the core, Sn at the margin','Sn in the core, W along the margin, Ag-Zn-Pb in the country rock','All metals mixed evenly'],a:1,e:'And all within the top 200 m of the granite.'},
+ cp11:{q:'Why can Tallebung ore be processed simply?',o:['It is oxidised','Coarse, dense cassiterite and ferberite in quartz separate by gravity after crushing','It is liquid'],a:1,e:'Minor sulphides, coarse heavy minerals: gravity separation.'}
+};
+var ST=[
+ ['Why is tin a critical mineral, and where does Australia’s tin come from?','Recall','About half of tin is used as solder in all electronics, with no substitute; supply is concentrated and 40% artisanal. Australia’s main producer is Renison Bell, Tasmania (≥180 kt Sn); NSW’s largest proven deposit is Taronga (22 Mt at 0.16% Sn).'],
+ ['Describe cassiterite and three of its varieties.','Recall','SnO₂, tetragonal, adamantine, H 6 to 7, SG ~7, black to brown. Varieties: needle tin (prismatic), wood tin (fibrous banded), ruby tin (red), knee twins; also alluvial grains and pseudomorphs.'],
+ ['How do you tell scheelite from wolframite in hand specimen?','Apply','Scheelite: pale (white, yellow, brown), vitreous to adamantine, H 4.5 to 5, SG 6.1, fluoresces blue-white. Wolframite: dark brown to black or red-brown, metallic to submetallic, bladed, SG 7.1 to 7.6, no fluorescence.'],
+ ['What are the ore minerals of Bi and Mo, and their alteration products?','Recall','Bi: bismuthinite (Bi₂S₃) and native bismuth. Mo: molybdenite (MoS₂), altering to yellow ferrimolybdite and blue ilsemannite.'],
+ ['What kinds of granites form vein and greisen Sn-W-Mo deposits?','Recall','High-level (1.5 to 5 km), K-rich, metaluminous to peraluminous, highly fractionated (high Rb/Sr) granites, mostly in Phanerozoic orogenic belts; magnetite series for Mo-W and ilmenite series for Sn-W.'],
+ ['Explain the roles of H₂O, Cl, F, B and Li in these systems.','Apply','Magma must be water-undersaturated (<3 wt%) to rise high. Cl transports Sn, W, Mo and base metals as chloride complexes. F, B, Li lower the solidus and extend fractionation to low temperature; F and B also raise H₂O and Cl solubility so volatiles exsolve at lower pressure.'],
+ ['Contrast how tin and tungsten precipitate from hydrothermal fluid.','Apply','W is strongly temperature dependent: 99% drops between 350 and 300 °C. Sn precipitates through mixing with meteoric water, vapour separation, wall-rock reaction, reaction with feldspars and carbonate replacement, so Sn replacement deposits are common and W ones are rare.'],
+ ['What is a greisen and where does it form?','Recall','Granite with >90% of feldspar replaced by muscovite and quartz, often with topaz, tourmaline, cassiterite; mm to metres wide. Typically where a younger fluid-rich granite intrudes an older one, along the contact.'],
+ ['Describe the zoning around the Mole Granite and what caused it.','Apply','Sn in the core, W along the margin, Ag-Zn-Pb in the country rock, all in the top 200 m. Magmatic fluid cooled from 600 to 200 °C and mixed with meteoric water as it moved outward, dropping each metal in its own temperature and chemical window.'],
+ ['Using Tallebung, explain why old tin fields are worth re-exploring.','Synthesise','Early miners took supergene silver and alluvial or near-surface tin; later sluicing exposed veins. Modern demand for Sn and W, simple gravity-recoverable ore, veins continuing to at least 500 m and an unintersected granite at depth make it worth exploring with modern methods.']
+];
+GEO.start({key:'geos3141-L15-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- granite cooling slider ---------- */
+var mgs=$('#mgSvg'),mgSeen={};var MR=rng(15),MDEP=[];
+for(var i=0;i<9;i++){var a=i*0.7+MR()*0.4,r=0.35+0.55*Math.sqrt(MR());MDEP.push({k:'sn',x:320+Math.cos(a)*r*100,y:165+Math.sin(a)*r*52,t:560-MR()*160});}
+for(var i=0;i<10;i++){var a=MR()*6.28;MDEP.push({k:'w',x:320+Math.cos(a)*(205+MR()*14),y:165+Math.sin(a)*(110+MR()*8),t:345-MR()*40});}
+for(var i=0;i<9;i++){var a=MR()*6.28;MDEP.push({k:'ag',x:320+Math.cos(a)*(250+MR()*45),y:165+Math.sin(a)*(132+MR()*24),t:290-MR()*80});}
+function mgDraw(){var T=+$('#mgT').value,s=mgs;s.innerHTML='';el('rect',{x:0,y:0,width:640,height:330,fill:'#9C9186'},s);txt(s,10,20,'hornfels country rock',{'font-size':12,fill:'#F2F0EA'});
+  el('ellipse',{cx:320,cy:165,rx:220,ry:120,fill:'#E7B9A8'},s);el('ellipse',{cx:320,cy:165,rx:110,ry:60,fill:'#D99A86'},s);txt(s,306,169,'core',{'font-size':12,fill:'#3E2E12'});txt(s,470,90,'margin',{'font-size':12,fill:'#3E2E12'});
+  var f=(600-T)/400,rx=60+f*270,ry=rx*.55;el('ellipse',{cx:320,cy:165,rx:rx,ry:ry,fill:'none',stroke:'#2F6FA3','stroke-width':3,'stroke-dasharray':'8 5'},s);
+  if(T<450){for(var k=0;k<6;k++){var a=k*1.05;el('path',{d:'M'+(320+Math.cos(a)*330)+' '+(165+Math.sin(a)*180)+' L'+(320+Math.cos(a)*(rx+12))+' '+(165+Math.sin(a)*(ry+8)),stroke:'#7FC3E0','stroke-width':2,'stroke-dasharray':'4 4',fill:'none'},s);}}
+  var n=0;MDEP.forEach(function(d){if(T<=d.t){n++;if(d.k==='sn')el('path',{d:'M'+d.x+' '+(d.y-7)+' l7 7 l-7 7 l-7 -7 z',fill:'#1A1A1A'},s);else if(d.k==='w')el('rect',{x:d.x-6,y:d.y-6,width:12,height:12,fill:'none',stroke:'#1A1A1A','stroke-width':2.5},s);else el('circle',{cx:d.x,cy:d.y,r:6,fill:'none',stroke:'#F2F0EA','stroke-width':2.5},s);}});
+  el('path',{d:'M20 300 l6 6 l-6 6 l-6 -6 z',fill:'#1A1A1A'},s);txt(s,32,311,'Sn',{'font-size':12,fill:'#F2F0EA'});el('rect',{x:64,y:300,width:11,height:11,fill:'none',stroke:'#1A1A1A','stroke-width':2.5},s);txt(s,80,311,'W',{'font-size':12,fill:'#F2F0EA'});el('circle',{cx:112,cy:306,r:6,fill:'none',stroke:'#F2F0EA','stroke-width':2.5},s);txt(s,122,311,'Ag-Zn-Pb',{'font-size':12,fill:'#F2F0EA'});txt(s,200,311,'blue dashes: fluid front; light blue: meteoric water',{'font-size':11,fill:'#F2F0EA'});
+  var z=T>400?'hot':T>350?'warm':T>=300?'w':T>250?'cool':'cold';mgSeen[z]=1;
+  $('#mgTV').textContent=T+' °C';$('#mgN').textContent=n;$('#mgTag').textContent=T+' °C';
+  $('#mgDep').textContent={hot:'cassiterite, tourmaline',warm:'cassiterite',w:'wolframite (and cassiterite)',cool:'cassiterite, sulphides',cold:'Ag-Zn-Pb sulphides'}[z];
+  $('#mgWh').textContent={hot:'granite core',warm:'core to margin',w:'granite margin',cool:'margin to country rock',cold:'country rock'}[z];
+  $('#mgSay').innerHTML={hot:'Hot magmatic fluid in the core: cassiterite and tourmaline start to drop, the core tin deposits.',warm:'The fluid spreads outward and meets meteoric water; cassiterite keeps precipitating over a wide range.',w:'<b>350 to 300 °C</b>: the tungsten window. Almost all the W drops out now, where the fluid has reached the granite margin.',cool:'Cooler still: sulphides begin to form as the fluid leaves the granite.',cold:'Below about 250 °C: silver, zinc and lead in the country rocks, the outermost halo.'}[z]+' <span class="srcs">slides 35 and 36</span>';
+  if(mgSeen.w&&mgSeen.cold&&mgSeen.hot)award('mg',5,'Zoned the Mole Granite');}
+$('#mgT').addEventListener('input',mgDraw);mgDraw();
+
+/* ---------- production chart ---------- */
+var PR={sn:{n:'Tin production 2025 (kt)',u:'kt',d:[['China',71],['Indonesia',61],['Peru',33],['Brazil',28],['Congo',27],['Bolivia',15],['Australia',15],['Myanmar',12],['Vietnam',11]],s:'China and Indonesia lead. Indonesia’s and Brazil’s tin is mostly alluvial; Peru’s and Bolivia’s polymetallic; China’s, Congo’s and Myanmar’s granite-hosted. Australia’s comes mainly from Renison Bell.'},
+ snr:{n:'Tin reserves (kt)',u:'kt',d:[['Indonesia',1400],['China',1200],['Brazil',700],['Myanmar',700],['Australia',570],['Russia',460]],s:'Indonesia holds the most. Russia could produce far more than it does.'},
+ w:{n:'Tungsten production 2025 (t)',u:'t',d:[['China',67000],['Vietnam',3000],['Kazakhstan',2400],['Russia',2000],['North Korea',2000],['Bolivia',1700],['Rwanda',1300],['Australia',1000]],s:'China produces more than twenty times anyone else.'},
+ wr:{n:'Tungsten reserves (t)',u:'t',d:[['China',2500000],['Australia',570000],['Russia',400000],['Vietnam',170000],['North Korea',29000]],s:'Australia produces little tungsten but has large reserves: plenty of exploration potential.'},
+ bi:{n:'Bismuth production 2023 (t)',u:'t',d:[['China',16000],['Laos',2000],['South Korea',850],['Japan',500],['Kazakhstan',160],['Bulgaria',50],['Bolivia',40]],s:'China dominates; Laos, surprisingly, is second.'}},prK='sn',prSeen={};
+Object.keys(PR).forEach(function(k){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=PR[k].n.replace(/ \(.*\)/,'');b.setAttribute('aria-pressed',k===prK);b.addEventListener('click',function(){prK=k;$$('#prC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');prDraw();});$('#prC').appendChild(b);});
+function prDraw(){var s=$('#prSvg'),P=PR[prK],max=P.d[0][1];s.innerHTML='';P.d.forEach(function(r,i){var y=6+i*42,w=r[1]/max*320;txt(s,8,y+23,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:140,y:y+8,width:Math.max(2,w),height:24,rx:3,fill:r[0]==='Australia'?'var(--gold)':r[0]==='China'?'var(--slate)':'var(--line)'},s);txt(s,146+w,y+25,r[1].toLocaleString('en-AU')+' '+P.u,{'font-size':12,fill:'var(--ink)'});});
+  $('#prTag').textContent=P.n;$('#prSay').textContent=P.s;prSeen[prK]=1;if(Object.keys(prSeen).length>=3)award('pr',4,'Compared Sn, W and Bi supply');}
+prDraw();
+
+/* ---------- mineral ID drill ---------- */
+mcCards($('#idCards'),[
+ {img:'img/L15/cass-twin.jpg',alt:'Black, lustrous, blocky crystal twinned at an angle',lbl:'Hand specimen',q:'Very heavy, hard, adamantine, black, twinned at an angle. Name it.',o:['Wolframite','Cassiterite','Schorl','Magnetite'],a:1,e:'Cassiterite, with a classic knee twin. (Elsmore, NSW, slide 6)'},
+ {img:'img/L15/cass-needle.jpg',alt:'A mass of slender prismatic crystals',lbl:'Hand specimen',q:'Slender prismatic crystals of a very dense tin mineral. Which variety?',o:['Wood tin','Ruby tin','Needle tin','Stannite'],a:2,e:'Needle tin: prismatic cassiterite, Bolivia. (slide 6)'},
+ {img:'img/L15/stannite.jpg',alt:'Massive, grey metallic aggregate with some yellow-green patches',lbl:'Hand specimen',q:'Massive, steel-grey metallic tin mineral from a sulphide-rich vein. Name it.',o:['Galena','Stannite','Molybdenite','Bismuthinite'],a:1,e:'Stannite, Cu₂FeSnS₄. (Cornwall, slide 10)'},
+ {img:'img/L15/sch-xl.jpg',alt:'A golden-orange translucent crystal with pseudo-octahedral faces',lbl:'Hand specimen',q:'Golden orange, vitreous to adamantine, heavy for its colour, pseudo-octahedral. Name it.',o:['Fluorite','Scheelite','Topaz','Calcite'],a:1,e:'Scheelite, CaWO₄; check with a UV lamp. (slide 14)'},
+ {img:'img/L15/ferberite.jpg',alt:'Black, lustrous, striated bladed crystals on quartz',lbl:'Hand specimen',q:'Black, bladed, striated, very heavy, on quartz. Name it.',o:['Ferberite (wolframite)','Schorl','Cassiterite','Hematite'],a:0,e:'Ferberite, the Fe end of wolframite. Schorl is lighter, with triangular cross-sections. (slide 16)'},
+ {img:'img/L15/hubnerite.jpg',alt:'Clusters of red-brown to dark red prismatic bladed crystals',lbl:'Hand specimen',q:'Red-brown bladed crystals of a heavy tungsten mineral. Name it.',o:['Hübnerite','Ruby tin','Rutile','Cinnabar'],a:0,e:'Hübnerite, MnWO₄. (slide 16)'},
+ {img:'img/L15/bismuthinite.jpg',alt:'Radiating sprays of fine lead-grey metallic needles',lbl:'Hand specimen',q:'Soft, lead-grey, radiating acicular metallic needles. Name it.',o:['Stibnite','Bismuthinite','Molybdenite','Galena'],a:1,e:'Bismuthinite, Bi₂S₃. Stibnite looks very similar; context (granite Sn-W system) helps. (slide 20)'},
+ {img:'img/L15/bismuth.jpg',alt:'A silvery mass with a faint pinkish-bronze tint and flat cleavage faces',lbl:'Hand specimen',q:'Very dense, soft, silvery with a pinkish tint and strong cleavage. Name it.',o:['Native bismuth','Native silver','Galena','Arsenopyrite'],a:0,e:'Native bismuth: reddish-white tint, SG ~9.8. (slide 20)'},
+ {img:'img/L15/molybdenite.jpg',alt:'A rosette of shiny bluish-grey hexagonal plates',lbl:'Hand specimen',q:'Extremely soft, flexible, greasy grey hexagonal plates. Name it.',o:['Graphite','Molybdenite','Biotite','Hematite'],a:1,e:'Molybdenite: denser and more metallic than graphite. (Kingsgate, NSW, slide 23)'},
+ {img:'img/L15/ferrimolybdite.jpg',alt:'A rock coated in bright yellow powdery material',lbl:'Hand specimen',q:'Bright yellow powder on weathered Mo ore. Name it.',o:['Sulphur','Ferrimolybdite','Jarosite','Scheelite'],a:1,e:'Ferrimolybdite, an alteration product of molybdenite. (slide 23)'},
+ {img:'img/L15/ilsemannite.jpg',alt:'A dark rock with pale blue and yellow powdery coatings',lbl:'Hand specimen',q:'Pale blue powdery coating on oxidised molybdenite ore. Name it.',o:['Azurite','Chrysocolla','Ilsemannite','Fluorite'],a:2,e:'Ilsemannite, a blue molybdenum alteration product. (Carinthia, Austria, slide 23)'},
+ {img:'img/L15/beryl.jpg',alt:'A pale blue-green hexagonal crystal partly wrapped in silvery mica',lbl:'Hand specimen',q:'Pale blue hexagonal prism with mica, from a granite system. Name it.',o:['Beryl (aquamarine)','Apatite','Topaz','Quartz'],a:0,e:'Beryl, var. aquamarine, with muscovite. (slide 27)'},
+ {img:'img/L15/tourmaline.jpg',alt:'A black, striated prismatic crystal in white rock',lbl:'Hand specimen',q:'Black, striated prism with a rounded triangular cross-section. Name it.',o:['Ferberite','Schorl tourmaline','Hornblende','Cassiterite'],a:1,e:'Schorl: striations along the length, triangular cross-section, lighter than wolframite. (slide 27)'}
+],'id',3,function(r,n){$('#idScore').textContent=r+' / '+n;});
+
+/* ---------- granite series cards ---------- */
+var GRO=['Magnetite series','Ilmenite series'];
+mcCards($('#grCards'),[
+ {lbl:'Granite',q:'Contains magnetite; goes with Mo-W deposits',o:GRO,a:0,e:'Magnetite series: more oxidised.'},
+ {lbl:'Granite',q:'No magnetite, ilmenite instead; goes with Sn-W deposits',o:GRO,a:1,e:'Ilmenite series: more reduced.'},
+ {lbl:'Granite',q:'In the slide’s framing, gives sulphide-poor, cassiterite-rich tin ore because sulphides drop out early',o:GRO,a:1,e:'Ilmenite series.'},
+ {lbl:'Granite',q:'Belt that tends to lie closer to the continental margin',o:GRO,a:0,e:'Magnetite series granites lie nearer the margin.'}
+],'gr',2,function(r,n){$('#grScore').textContent=r+' / '+n;});
+
+/* ---------- volatile cards ---------- */
+var VLO=['Lets magma rise high (if low)','Carries metals as complexes','Lowers the solidus, extends fractionation','Precipitates almost entirely at 350 to 300 °C'];
+mcCards($('#vlCards'),[
+ {lbl:'Ingredient',q:'H₂O kept below about 3 wt%',o:VLO,a:0,e:'Water-saturated magma crystallises deep; undersaturated magma rises.'},
+ {lbl:'Ingredient',q:'Chlorine',o:VLO,a:1,e:'Chloride complexes carry Sn, W, Mo, Sb, Cu, Pb, Zn, Ag.'},
+ {lbl:'Ingredient',q:'Fluorine and boron',o:VLO,a:2,e:'They also raise H₂O and Cl solubility; hence topaz and tourmaline.'},
+ {lbl:'Ingredient',q:'Lithium',o:VLO,a:2,e:'Hence Li-micas in these systems.'},
+ {lbl:'Ingredient',q:'Tungsten in the hydrothermal fluid',o:VLO,a:3,e:'Strongly temperature-controlled.'}
+],'vl',2,function(r,n){$('#vlScore').textContent=r+' / '+n;});
+
+/* ---------- alteration zoning order ---------- */
+var OD=['Silicates: micas, tourmaline (hottest, against the vein)','Oxides: cassiterite','Sulphides: pyrite','Carbonates: siderite (coolest, furthest out)'];
+var odNext=0;
+function odBuild(){var b=$('#odBox');b.innerHTML='';odNext=0;$('#odTag').textContent='0 / 4';$('#odSay').textContent='Tap from the vein outward (hot to cool).';
+  var order=[0,1,2,3];for(var i=3;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+  order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=OD[i].replace(/ \(.*\)/,'');
+    c.addEventListener('click',function(){if(c.disabled)return;if(i===odNext){odNext++;c.disabled=true;c.textContent=odNext+'. '+OD[i];c.style.borderColor='var(--mal)';SND.play('ok');$('#odTag').textContent=odNext+' / 4';
+      if(odNext===4){COMBO.hit();award('od',COMBO.pts(4),'Zoned the alteration envelope'+COMBO.tag());FX.burst(c);$('#odSay').innerHTML='Silicates, oxides, sulphides, carbonates, with falling temperature and distance. Siderite is the common carbonate because these systems carry plenty of iron. <span class="srcs">slide 33</span>';}}
+      else{FX.shake(c);COMBO.miss();$('#odSay').textContent='Not yet: which forms hottest, closest to the vein?';}});b.appendChild(c);});}
+$('#odReset').addEventListener('click',odBuild);odBuild();
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>

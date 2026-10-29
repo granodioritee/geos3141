@@ -697,7 +697,8 @@ var GEO = {
         var opts = shuffle(same.concat(other, [x.m])), url = 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/';
         out.push({ id: 'hs-' + x.src, kind: 'mineral', img: 'img/lab/hs/' + x.src + '.jpg', mic: false, lbl: 'Lab mineral set · hand specimen',
           q: x.k === 'streak' ? 'Streak test: which mineral left this streak?' : 'Name the mineral.', o: opts, a: opts.indexOf(x.m),
-          e: x.m + (x.n ? ' (' + x.n + ')' : '') + ', a ' + g.toLowerCase() + ' mineral from the lab hand-specimen set.', credit: url });
+          e: x.m + (x.n ? ' (' + x.n + ')' : '') + ', a ' + g.toLowerCase() + ' mineral from the lab hand-specimen set.', credit: url,
+          link: /^(Cassiterite|Wolframite|Scheelite|Molybdenite|Beryl|Topaz|Tourmaline|Stannite|Bismuthinite)$/.test(x.m) ? 'L15.html#drill' : null });
       });
       /* alteration examples: never offer two names for overlapping assemblages as rivals */
       var OVER = [['Sericite alteration', 'Phyllic alteration', 'Massive illite'], ['Propylitic alteration', 'Epidote alteration', 'Chlorite alteration', 'Garnet-chlorite alteration', 'Chlorite-talc-pyrite'], ['Goethite gossan', 'Crystalline goethite']];
