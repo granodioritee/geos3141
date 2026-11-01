@@ -663,7 +663,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope unknown', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
+    var KIND = { dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope: name the mineral', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -735,6 +735,10 @@ var GEO = {
     }
     function paintSetup() {
       chips($('#ltN'), L.opt.n); chips($('#ltT'), L.opt.t); chips($('#ltK'), L.opt.k, true);
+      $$('#ltQuick button').forEach(function (b) {
+        var p = b.dataset.p === 'all' ? $$('#ltK button').map(function (x) { return x.dataset.v; }) : b.dataset.p.split(',');
+        b.setAttribute('aria-pressed', p.length === L.opt.k.length && p.every(function (k) { return L.opt.k.indexOf(k) >= 0; }) ? 'true' : 'false');
+      });
       var n = all().filter(function (s) { return L.opt.k.indexOf(s.kind) >= 0; }).length;
       $('#ltPool').textContent = n + ' stations available in this mix' + (n < L.opt.n ? ', so this run will use all of them.' : '.');
       $('#ltStart').disabled = !n;
@@ -742,6 +746,10 @@ var GEO = {
     }
     $('#ltN').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; L.opt.n = +b.dataset.v; keep(); paintSetup(); });
     $('#ltT').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; L.opt.t = +b.dataset.v; keep(); paintSetup(); });
+    $('#ltQuick').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      L.opt.k = b.dataset.p === 'all' ? $$('#ltK button').map(function (x) { return x.dataset.v; }) : b.dataset.p.split(','); keep(); paintSetup();
+    });
     $('#ltK').addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return; var v = b.dataset.v, i = L.opt.k.indexOf(v);
       if (i >= 0) { if (L.opt.k.length > 1) L.opt.k.splice(i, 1); } else L.opt.k.push(v); keep(); paintSetup();
@@ -751,7 +759,16 @@ var GEO = {
       var pool = list || all().filter(function (s) { return L.opt.k.indexOf(s.kind) >= 0; });
       /* stations you've missed before come up more often */
       pool = pool.map(function (s) { return { s: s, w: Math.random() + (1 - rate(s.id)) * .9 }; }).sort(function (a, b) { return b.w - a.w; }).map(function (x) { return x.s; });
-      var chosen = shuffle(pool.slice(0, list ? pool.length : L.opt.n));
+      /* take the station types in turn, so a small type (the microscope) still comes up in every run */
+      var chosen = pool;
+      if (!list) {
+        var by = {}, order = [];
+        pool.forEach(function (s) { if (!by[s.kind]) { by[s.kind] = []; order.push(s.kind); } by[s.kind].push(s); });
+        order = shuffle(order).sort(function (a, b) { return (b === 'min') - (a === 'min'); });
+        chosen = [];
+        while (chosen.length < L.opt.n && order.some(function (k) { return by[k].length; })) order.forEach(function (k) { if (by[k].length && chosen.length < L.opt.n) chosen.push(by[k].shift()); });
+      }
+      chosen = shuffle(chosen.slice());
       run = { list: chosen, i: 0, right: 0, oz: 0, miss: [], start: Date.now() };
       COMBO.n = 0; $('#ltSetup').hidden = true; $('#ltRes').hidden = true; $('#ltRun').hidden = false;
       station(); $('#ltRun').scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
