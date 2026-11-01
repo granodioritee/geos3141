@@ -25,8 +25,8 @@
 <header class="hero wrap">
   <div style="font-family:var(--mono);font-size:.78rem;display:flex;justify-content:flex-end;margin-bottom:1rem"><a href="L2.html" style="color:var(--muted);text-decoration:none">Lecture 2 &rarr;</a></div>
   <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 1 · T3 2026</div>
-  <h1>Why a pile of rock is worth billions, or nothing</h1>
-  <p class="lede">Three ideas run under everything in this lecture. Ore is an economic word. Nature has to concentrate metals by enormous factors to make it. And how it does that depends on tectonics, magma and moving water. Let's start with the second one, and you can do the concentrating yourself.</p>
+  <h1>When is rock worth mining?</h1>
+  <p class="lede">This lecture has three main ideas. First, "ore" is an economic word. Second, nature must concentrate a metal many times to make ore. Third, the way nature does this depends on tectonics, magma and moving water. We start with the second idea. Use the tool below to concentrate a metal yourself.</p>
 
   <div class="lab" id="conc">
     <h4><span>Concentrator</span><b>pick a metal, then press the button</b></h4>
@@ -46,7 +46,7 @@
       <div><small>In normal rock</small><b id="concOne" style="font-size:.95rem">1 part in 18 000</b></div>
     </div>
     <p class="say" id="concHow"></p>
-    <div class="row"><button class="btn" type="button" id="concGo">Concentrate it</button><span style="font-size:.85rem;color:var(--muted)">Dots are scaled, not to the atom: common metals get more of them, and a bigger concentration factor squeezes them into a smaller ore body.</span></div>
+    <div class="row"><button class="btn" type="button" id="concGo">Concentrate it</button><span style="font-size:.85rem;color:var(--muted)">The dots are not real atoms. Common metals get more dots. A bigger concentration factor packs the dots into a smaller ore body.</span></div>
   </div>
 
   <nav class="toc" aria-label="Contents">
@@ -56,11 +56,11 @@
       <li><a href="#concentration">Concentration factors</a></li>
       <li><a href="#grade">Grade, tonnage and assays</a></li>
       <li><a href="#resources">From drill hole to reserve</a></li>
-      <li><a href="#words">Timing and depth words</a></li>
-      <li><a href="#tectonics">Tectonics as the first filter</a></li>
-      <li><a href="#magmas">Magma chemistry picks the metals</a></li>
+      <li><a href="#words">Words for timing and depth</a></li>
+      <li><a href="#tectonics">Tectonics comes first</a></li>
+      <li><a href="#magmas">Magma type controls the metals</a></li>
       <li><a href="#hydrothermal">The hydrothermal chain</a></li>
-      <li><a href="#classify">Why classification is slippery</a></li>
+      <li><a href="#classify">Why deposits are hard to classify</a></li>
       <li><a href="#test">Self-test</a></li>
       <li><a href="#glossary">Glossary and flashcards</a></li>
       <li><a href="#next">Where this goes next</a></li>
@@ -73,8 +73,8 @@
 <section id="about" data-log="Big picture"><div class="wrap">
   <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
   <h2>The big picture</h2>
-  <p>This lecture throws a lot of vocabulary at you very quickly: syngenetic, epigenetic, hypogene, supergene, metallotect, mesothermal. Please don't memorise it as a list. Hold onto one sentence instead: <em>an ore deposit is an unusually high concentration of elements that are normally spread thinly through the crust.</em> That's also why deposits are hard to find. Every other idea in Lecture 1 answers one of three follow-up questions.</p>
-  <p>First, <strong>when does a concentration count as ore?</strong> That's an economic question, so you'll meet grade, tonnage, resources, reserves and even geopolitics. Second, <strong>how much does nature have to concentrate a metal?</strong> That's the concentration factor, and it explains why some deposits are common and others are rare. Third, <strong>what processes can do that concentrating?</strong> Tectonic setting, magma type and hydrothermal fluids. Those processes are the backbone of every deposit lecture for the rest of term, so time spent here pays off later.</p>
+  <p>This lecture uses many new words very quickly: syngenetic, epigenetic, hypogene, supergene, metallotect, mesothermal. Do not try to memorise them as a list. Remember one sentence instead: <em>an ore deposit is an unusually high concentration of elements that are normally spread thinly through the crust.</em> This is also why deposits are hard to find. Every other idea in Lecture 1 answers one of three questions.</p>
+  <p>Question 1: <strong>when does a concentration count as ore?</strong> This is an economic question. To answer it you need grade, tonnage, resources, reserves and even politics. Question 2: <strong>how much must nature concentrate a metal?</strong> The answer is the concentration factor. It explains why some deposits are common and others are rare. Question 3: <strong>which processes can concentrate a metal?</strong> The main ones are tectonic setting, magma type and hydrothermal fluids. Every deposit lecture later in the course uses these processes, so it is worth learning them well now.</p>
   <figure>
     <div class="figscroll"><svg viewBox="0 0 720 210" role="img" aria-labelledby="f0t" style="min-width:520px">
       <title id="f0t">The three questions behind Lecture 1 and the topics that answer each</title>
@@ -104,16 +104,16 @@
         <path d="M472 102 h14" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar0)"/>
       </g>
     </svg></div>
-    <figcaption>Every definition you meet in this lecture lives in one of these boxes. When a new term turns up later in the course, ask yourself which box it belongs in.</figcaption>
+    <figcaption>Every definition in this lecture belongs in one of these boxes. When you meet a new term later in the course, decide which box it goes in.</figcaption>
   </figure>
-  <p>One note on how this page works. It's laid out like a drill hole: the bar at the top shows how far down you are, and the games and checkpoints pay out in ounces of gold. Collect enough and you'll work your way from field assistant to chief geologist. Your progress is saved in this browser only.</p>
+  <p>How this page works: it is designed like a drill hole. The bar at the top shows how far down the page you are. The games and checkpoints give you ounces of gold. As you collect gold, your rank goes up from field assistant to chief geologist. Your progress is saved only in this browser.</p>
   <div class="cp" data-cp="cp7"></div>
 </div></section>
 
 <section id="ore" data-log="Ore"><div class="wrap">
   <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
   <h2>Ore is an economic word, not a rock type</h2>
-  <p>Here's the formal definition: ore is <em>any naturally occurring material from which a mineral or aggregate of value can be extracted at a profit</em>. Look hard at the last two words. A body of rock at 0.3 per cent copper can be ore at one copper price and waste at another, without a single atom in it changing. So a rock is never simply "ore". It's ore under a particular set of prices, costs, technology and rules. Don't take my word for it; move the sliders.</p>
+  <p>The formal definition is: ore is <em>any naturally occurring material from which a mineral or aggregate of value can be extracted at a profit</em>. The key words are "at a profit". Imagine a rock with 0.3 per cent copper. At a high copper price it is ore. At a low copper price it is waste. The rock itself does not change at all. So a rock is never simply "ore". It is ore only for a certain price, cost, technology and set of laws. Try it with the sliders below.</p>
 
   <div class="lab" id="cut">
     <h4><span>Cut-off grade: ore or waste?</span><b>block model of a porphyry</b></h4>
@@ -129,24 +129,24 @@
       <div><small>Average grade</small><b id="cutAvg">0%</b></div>
       <div><small>Operating margin</small><b id="cutMargin">US$0</b></div>
     </div>
-    <div class="goal" id="g-cut1"><i>✓</i><span>Crash test: drop copper to US$6 000/t and watch what survives.</span></div>
-    <div class="goal" id="g-cut2"><i>✓</i><span>Boom time: find conditions where more than 100 of the 144 blocks are ore.</span></div>
-    <p class="say" style="font-size:.88rem;color:var(--muted)">Each block is 4 Mt. Cut-off = cost ÷ (price × 85% recovery). The margin ignores the capital cost of building the mine, which can run to billions. Block grades are made up for the game.</p>
+    <div class="goal" id="g-cut1"><i>✓</i><span>Low price test: drop copper to US$6 000/t and see which blocks are still ore.</span></div>
+    <div class="goal" id="g-cut2"><i>✓</i><span>High price test: find settings where more than 100 of the 144 blocks are ore.</span></div>
+    <p class="say" style="font-size:.88rem;color:var(--muted)">Each block is 4 Mt. Cut-off = cost ÷ (price × 85% recovery). The margin does not include the cost of building the mine, which can be billions of dollars. The block grades are invented for this game.</p>
   </div>
 
-  <p>Notice what you just did: the rocks never changed, but the ore did. The same logic decides which minerals count as <button class="term" data-t="ore mineral">ore minerals</button> and which are <button class="term" data-t="gangue">gangue</button>. An ore mineral is the one you get paid for. Gangue comes out of the ground with it, and you pay to crush, process and dump it. Quartz, carbonates, chlorite, micas and pyrite are the usual gangue minerals. But "usual" doesn't mean "always".</p>
+  <p>The rocks did not change, but the amount of ore did. The same idea decides which minerals are <button class="term" data-t="ore mineral">ore minerals</button> and which are <button class="term" data-t="gangue">gangue</button>. An ore mineral is the mineral you sell. Gangue is the worthless mineral that comes out of the ground with it. You must pay to crush it, process it and throw it away. Common gangue minerals are quartz, carbonates, chlorite, micas and pyrite. But a mineral that is usually gangue can sometimes be an ore mineral.</p>
 
   <div class="example">
     <span class="tag"><span>Real deposit · Mount Isa pyrite</span><span class="srcs">slide 15</span></span>
-    <p>At most sulphide deposits pyrite is a nuisance: worthless, acid-generating, and it dilutes your concentrate. At Mount Isa it has been treated as an ore mineral. Why? Phosphate Hill, roughly 150 km south, needs sulphuric acid to turn phosphate rock into fertiliser. Roast pyrite and you get sulphur dioxide, and from there sulphuric acid. Same mineral, same geology. The only thing that changed is that someone nearby will pay for it.</p>
+    <p>In most sulphide deposits pyrite is a problem. It has no value, it makes acid, and it lowers the grade of the concentrate. At Mount Isa, however, pyrite has been treated as an ore mineral. The reason is Phosphate Hill, about 150 km to the south. Phosphate Hill needs sulphuric acid to turn phosphate rock into fertiliser. When you heat (roast) pyrite, it gives off sulphur dioxide, and sulphur dioxide can be made into sulphuric acid. The mineral and the geology are the same. The only difference is that a nearby buyer will pay for it.</p>
   </div>
 
-  <p>It also helps to split ore into three kinds, depending on whether you can actually see what you're mining. <strong>Bulk commodities</strong> like iron and manganese ore are basically the mineral itself, mined by the hundreds of millions of tonnes. <strong>Sulphide ores</strong> are metal-rich and visible: a galena-rich specimen might carry around 10 per cent lead. <strong>Invisible ores</strong> are most gold deposits, where grades are a few grams per tonne and you'll almost never see gold. The Witwatersrand conglomerates are the classic case: the largest gold accumulation known, and you can't see the gold. That's why mines run on-site labs for <button class="term" data-t="grade control">grade control</button>. After every blast the broken rock is sampled and assayed, because you can't tell ore from waste by eye and processing waste costs real money.</p>
+  <p>Ore can also be divided into three kinds, based on whether you can see the valuable mineral. <strong>Bulk commodities</strong>, such as iron ore and manganese ore, are almost pure mineral. They are mined in hundreds of millions of tonnes. <strong>Sulphide ores</strong> are rich in metal and you can see the ore minerals. For example, a galena-rich specimen may contain about 10 per cent lead. <strong>Invisible ores</strong> include most gold deposits. Their grade is only a few grams per tonne, so you almost never see the gold. The Witwatersrand conglomerates are the best example: they hold more gold than any other deposit, but the gold is invisible. For this reason, mines have their own laboratories for <button class="term" data-t="grade control">grade control</button>. After every blast, the broken rock is sampled and assayed. You cannot tell ore from waste by eye, and processing waste by mistake is expensive.</p>
 
   <div class="note">
     <span class="tag"><span>Field note · "economic" now includes politics</span><span class="srcs">lecture recording, 14 Sep</span></span>
-    <p>Over the last three to five years the industry has shifted. Price used to be the whole story. Now governments fund deposits that wouldn't stack up on price alone, because they want secure supply. Tungsten is a good example: it's essential for hardened projectiles, China dominates production and has restricted exports, so US defence money is now flowing into Australian tungsten. The flip side is Australian nickel, which has been squeezed by large, cheap laterite nickel production with on-site processing in Indonesia.</p>
-    <p>This is also why <button class="term" data-t="critical minerals">critical minerals</button> is a slightly misleading phrase. No mineral is critical in itself. A commodity becomes critical when a particular country depends on it and doesn't control the supply, which is why every country's list is different.</p>
+    <p>In the last three to five years the industry has changed. Before, price was the only thing that mattered. Now governments also pay for deposits that would not be profitable on price alone, because they want a secure supply. Tungsten is a good example. Tungsten is needed for hardened military projectiles. China produces most of the world's tungsten and has limited its exports. As a result, the US military is now investing in Australian tungsten. The opposite has happened to Australian nickel. Indonesia now produces large amounts of cheap nickel from laterite deposits and processes it at the mine. This has made it hard for Australian nickel mines to compete.</p>
+    <p>For the same reason, the term <button class="term" data-t="critical minerals">critical minerals</button> can be misleading. No mineral is critical by itself. A commodity is critical for a country when that country needs it but does not control the supply. This is why each country has a different list.</p>
   </div>
 
   <div class="cp" data-cp="cp1"></div>
@@ -154,9 +154,9 @@
 
 <section id="concentration" data-log="Concentration"><div class="wrap">
   <div class="kicker">Concept 2 <span class="depth">24 to 36 m</span></div>
-  <h2>Concentration factors: how hard nature has to work</h2>
-  <p>Every element has an average abundance in the continental crust. To make an ore deposit, some process has to collect that element from a huge volume of ordinary rock and pack it into a small volume at a grade worth mining. Divide the minimum economic grade by the crustal average and you get the <button class="term" data-t="concentration factor">concentration factor</button>. Think of it as a measure of how unlikely a deposit is.</p>
-  <p>Aluminium is already 8.2 per cent of the crust, so you only need to quadruple it to make bauxite, and intense tropical weathering does exactly that by leaching everything else away. Tin is only about 2 parts per million, but you need around half a per cent to mine it, so something has to concentrate it about 2500 times. That's why tin deposits are tied to a narrow set of processes (highly evolved, reduced granites and their fluids), while iron and aluminium deposits are comparatively easy to find.</p>
+  <h2>Concentration factors: how much nature must concentrate a metal</h2>
+  <p>Every element has an average abundance in the continental crust. To make an ore deposit, a process must collect the element from a very large volume of normal rock. It must then put it into a small volume, at a grade high enough to mine. The <button class="term" data-t="concentration factor">concentration factor</button> is the minimum economic grade divided by the crustal average. A high factor means a deposit is less likely to form.</p>
+  <p>Aluminium already makes up 8.2 per cent of the crust. You only need to concentrate it about 4 times to make bauxite. Strong tropical weathering does this by removing the other elements. Tin is only about 2 parts per million in the crust, but you need about 0.5 per cent to mine it. So tin must be concentrated about 2500 times. Only a few processes can do this, mainly highly evolved, reduced granites and their fluids. This is why tin deposits are rare, while iron and aluminium deposits are quite easy to find.</p>
 
   <figure>
     <svg viewBox="0 0 720 380" role="img" aria-labelledby="f1t">
@@ -172,7 +172,7 @@
       </g>
       <g id="bars" font-size="14"></g>
     </svg>
-    <figcaption>Each gridline is ten times the last, and tin runs past the end at 2500×. The red bars need more than 500× concentration. <span class="srcs">slide 29</span></figcaption>
+    <figcaption>Each gridline is ten times the one before. Tin goes past the end of the scale at 2500×. The red bars need more than 500× concentration. <span class="srcs">slide 29</span></figcaption>
   </figure>
 
   <div class="tablewrap"><table>
@@ -191,21 +191,21 @@
 
   <div class="example">
     <span class="tag"><span>Worked example · check the gold number yourself</span></span>
-    <p>Gold averages 4 ppb in the crust, and 5 g/t is a typical mining grade.</p>
+    <p>The average gold content of the crust is 4 ppb. A typical mining grade is 5 g/t.</p>
     <div class="calc">5 g/t  = 5 g per 1 000 000 g = 5 ppm = 5000 ppb
 5000 ppb ÷ 4 ppb     = 1250×</div>
-    <p>Here's the trick that makes all of this easy: <strong>1 g/t is exactly 1 ppm</strong>, because a tonne is a million grams. Once that clicks, every row in the table is a one-line division.</p>
+    <p>The key fact is: <strong>1 g/t is exactly 1 ppm</strong>, because one tonne is one million grams. When you know this, each row in the table is a simple division.</p>
   </div>
 
-  <p>Now a puzzle worth sitting with. Zinc needs a bigger factor than nickel, yet zinc deposits are far more common. How? The factor tells you how big the job is, not how often nature gets it done. Zinc is happily carried by warm, salty fluids that circulate through sedimentary basins all the time. Nickel sulphide ore mostly needs a sulphide liquid to separate from a very hot ultramafic magma, which is a much rarer event. So read the table as "how big is the job", then ask "which processes can do it, and how often do they happen?"</p>
+  <p>Here is a question to think about. Zinc needs a bigger concentration factor than nickel, but zinc deposits are much more common. Why? The factor only tells you how much concentration is needed. It does not tell you how often nature does it. Zinc is easily carried by warm, salty fluids, and these fluids flow through sedimentary basins all the time. Most nickel sulphide ore forms only when a sulphide liquid separates from a very hot ultramafic magma. This happens much less often. So use the table to see how much concentration is needed. Then ask which processes can do it, and how often they happen.</p>
     <div class="keybox"><b>Memorise</b><ul><li>Concentration factor = economic grade ÷ average crustal abundance.</li><li>Copper: 1% is 10 000 ppm; crust about 55 ppm; so about 180 times.</li></ul> <span class="srcs">slide 29</span></div>
 <div class="cp" data-cp="cp2"></div>
 </div></section>
 
 <section id="grade" data-log="Grade"><div class="wrap">
   <div class="kicker">Concept 3 <span class="depth">36 to 48 m</span></div>
-  <h2>Grade, tonnage, and what an assay actually is</h2>
-  <p>Every deposit is described by two numbers: <button class="term" data-t="tonnage">tonnage</button> (how much ore) and <button class="term" data-t="grade">grade</button> (how much metal per tonne). Multiply them and you get <strong>contained metal</strong>, which is what the market actually cares about. The units depend on the commodity. Precious metals (gold, silver, the platinum group elements) go in grams per tonne. Base metals (copper, lead, zinc, tungsten) go in weight per cent. Oxide ores such as iron, manganese, uranium and rare earths are quoted as weight per cent of the <em>oxide</em>. Diamonds are carats per cubic metre, because there's so little gem in the rock (1 carat is 0.2 g). Play with the units until they feel natural.</p>
+  <h2>Grade, tonnage, and what an assay is</h2>
+  <p>Every deposit is described by two numbers. <button class="term" data-t="tonnage">Tonnage</button> is the amount of ore. <button class="term" data-t="grade">Grade</button> is the amount of metal in each tonne. Tonnage × grade gives the <strong>contained metal</strong>, and this is the number the market cares about. The units depend on the commodity. Precious metals (gold, silver, the platinum group elements) use grams per tonne. Base metals (copper, lead, zinc, tungsten) use weight per cent. Oxide ores, such as iron, manganese, uranium and rare earths, use weight per cent of the <em>oxide</em>. Diamonds use carats per cubic metre, because a rock contains very little diamond (1 carat is 0.2 g). Practise with the units below.</p>
 
   <div class="lab" id="assay">
     <h4><span>Assay desk</span><b>convert and calculate</b></h4>
@@ -228,30 +228,30 @@
         <div><label for="cPrice" id="cPriceLbl">Price (US$ per oz)</label><input id="cPrice" type="number" min="0" step="any" value="4500"></div>
       </div>
       <div class="readout" id="cOut"></div>
-      <p class="say" style="font-size:.86rem;color:var(--muted)">Loaded with Alumbrera's gold at about US$4500/oz. In situ value ignores every cost and recovery loss, so it's always far larger than any real profit.</p>
+      <p class="say" style="font-size:.86rem;color:var(--muted)">The starting numbers are Alumbrera's gold, at about US$4500/oz. In situ value ignores all costs and recovery losses. So it is always much larger than any real profit.</p>
     </div>
   </div>
 
-  <h3>Grade is an average, built one metre at a time</h3>
-  <p>A reported grade is an average of drill assays. Standard practice in Australia is to cut the core in half, crush one half and send it for <button class="term" data-t="assay">assay</button> in one-metre intervals. You sample every metre the same way, whether or not you can see mineralisation in it. If you only sampled the bits that looked good, you'd bias the grade upwards and overstate the deposit. Grade is also an economic term, so waste has no grade at all.</p>
-  <p>Inside a deposit you'll hear about low, moderate, high and very high grade zones. In gold deposits the very top end is called <button class="term" data-t="bonanza">bonanza</button> grade, generally over 100 g/t, and epithermal or orogenic systems that average 2 g/t can have patches over 1000 g/t.</p>
+  <h3>Grade is an average of one-metre samples</h3>
+  <p>A reported grade is the average of many drill assays. In Australia, the standard method is to cut the drill core in half. One half is crushed and sent for <button class="term" data-t="assay">assay</button>, in one-metre intervals. You must sample every metre in the same way, even if you cannot see any mineralisation. If you only sampled the parts that look rich, the average grade would be too high and the deposit would look bigger than it is. Also, grade is an economic term, so waste rock does not have a grade.</p>
+  <p>Within a deposit, people talk about low, moderate, high and very high grade zones. In gold deposits the highest grades are called <button class="term" data-t="bonanza">bonanza</button> grades. These are usually over 100 g/t. An epithermal or orogenic gold system with an average of 2 g/t can have small patches over 1000 g/t.</p>
   <div class="note">
-    <span class="tag"><span>Field note · treat bonanzas as a bonus</span><span class="srcs">lecture recording, 14 Sep</span></span>
-    <p>When you model a deposit, leave the bonanza intercepts out or cap them. They're real, but they're unpredictable, and a mine plan built around them will overstate what you actually recover. Industry calls the capping a <button class="term" data-t="top cut">top cut</button>. Quick gut check: is 2.5 g/t gold high or low grade? These days it's quite good. Some operations mine at 0.5 g/t or less.</p>
+    <span class="tag"><span>Field note · do not rely on bonanza grades</span><span class="srcs">lecture recording, 14 Sep</span></span>
+    <p>When you model a deposit, leave out the bonanza intercepts or reduce them to a maximum value. They are real, but you cannot predict where they are. A mine plan based on them will promise more metal than you will really recover. Reducing very high values to a maximum is called a <button class="term" data-t="top cut">top cut</button>. A quick question: is 2.5 g/t gold a high or a low grade? Today it is quite good. Some mines work at 0.5 g/t or less.</p>
   </div>
 
   <div class="example">
     <span class="tag"><span>Real deposit · Bajo de la Alumbrera, Argentina</span><span class="srcs">slides 26 and 27</span></span>
-    <p>Alumbrera is a porphyry copper-gold deposit in the Andes: 605 Mt at 0.54% Cu and 0.64 g/t Au. Turn that into contained metal:</p>
+    <p>Alumbrera is a porphyry copper-gold deposit in the Andes. It has 605 Mt of ore at 0.54% Cu and 0.64 g/t Au. Here is the contained metal:</p>
     <div class="calc">Copper: 605 000 000 t × 0.0054       ≈ 3.3 million t Cu
 Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
-    <p>Neither grade looks impressive on its own, but over 605 million tonnes it's world class. That's the porphyry business model: low grade, enormous tonnage, bulk open pit. It's also why majors like BHP and Rio Tinto mostly chase porphyries and iron ore. Now here's the site before anyone mined it. Can you see where the deposit is?</p>
+    <p>Each grade is low. But because there are 605 million tonnes, the deposit is world class. This is typical of porphyry deposits: low grade, very large tonnage, and a big open pit. It is also why large companies such as BHP and Rio Tinto mostly look for porphyries and iron ore. Below is a photo of the site before mining. Can you see where the deposit is?</p>
   </div>
 
   <div class="lab" id="photo">
-    <h4><span>Spot the deposit · Alumbrera 1975</span><b id="spotState">click where you'd send a field crew</b></h4>
+    <h4><span>Spot the deposit · Alumbrera 1975</span><b id="spotState">click where you would send a field team</b></h4>
     <div class="spot" id="spot"><img loading="lazy" decoding="async" src="img/L1/slide026_emf1.jpg" alt="Alumbrera in 1975: dark mountains behind pale, bleached, bare hills, with scrubby slopes in the foreground"><div class="ring" id="spotRing"></div></div>
-    <p class="say" id="spotSay">Hint: look at colour and plants, not shape.</p>
+    <p class="say" id="spotSay">Hint: look at the colour of the ground and the plants, not the shape of the hills.</p>
     <div class="row"><button class="btn ghost" type="button" id="spotShow">Show me</button></div>
     <div id="wipeWrap" hidden>
       <div class="wipe" id="wipe">
@@ -270,13 +270,13 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
 
 <section id="resources" data-log="Resources"><div class="wrap">
   <div class="kicker">Concept 4 <span class="depth">48 to 60 m</span></div>
-  <h2>From drill hole to reserve: a ladder of confidence</h2>
-  <p>Finding mineralisation in one hole doesn't give you a mine. A deposit has to climb a ladder of knowledge and confidence, and in Australia the words on each rung have legal meaning under the <button class="term" data-t="JORC Code">JORC Code</button>. The bottom rung is <strong>exploration results</strong>: assays from holes. Once you have enough holes to estimate tonnage and grade, you have a <button class="term" data-t="mineral resource">mineral resource</button>, and it comes in three levels. <strong>Inferred</strong> rests on widely spaced holes, so you're assuming the mineralisation continues between them; read company announcements with that in mind, because "inferred" can hide a lot of optimism. <strong>Indicated</strong> means the holes are close enough that continuity is reasonable. <strong>Measured</strong> means the data are dense enough that you know tonnage and grade with high confidence.</p>
-  <p>The jump to an <button class="term" data-t="ore reserve">ore reserve</button> is a different kind of step. A reserve is the part of a resource you've shown can be mined at a profit once you apply the <button class="term" data-t="modifying factors">modifying factors</button>: mining method, metallurgy, economics, marketing, legal, environmental, social and government. Indicated can become <strong>probable</strong>. Measured can become <strong>proved</strong>, or only probable if some factor is still uncertain. Inferred never converts directly. The best way to feel this is to run a drilling program.</p>
+  <h2>From drill hole to reserve: steps of confidence</h2>
+  <p>One drill hole with mineralisation does not make a mine. A deposit must go up a series of steps, and each step means more knowledge and more confidence. In Australia, the name of each step has a legal meaning under the <button class="term" data-t="JORC Code">JORC Code</button>. The lowest step is <strong>exploration results</strong>, which are the assays from drill holes. When you have enough holes to estimate tonnage and grade, you have a <button class="term" data-t="mineral resource">mineral resource</button>. A resource has three levels. An <strong>inferred</strong> resource is based on holes that are far apart, so you are assuming the mineralisation continues between them. Be careful when a company reports an inferred resource, because it may be too optimistic. An <strong>indicated</strong> resource has holes close enough together that it is reasonable to assume continuity. A <strong>measured</strong> resource has enough data to know the tonnage and grade with high confidence.</p>
+  <p>Going from a resource to an <button class="term" data-t="ore reserve">ore reserve</button> is a different kind of step. A reserve is the part of a resource that you have shown can be mined at a profit. To show this, you apply the <button class="term" data-t="modifying factors">modifying factors</button>: mining method, metallurgy, economics, marketing, legal, environmental, social and government factors. An indicated resource can become a <strong>probable</strong> reserve. A measured resource can become a <strong>proved</strong> reserve. It becomes only probable if one of the factors is still uncertain. An inferred resource can never become a reserve directly. The best way to understand this is to run a drilling program yourself.</p>
 
   <div class="lab" id="drill">
     <h4><span>Drill it out</span><b id="drillBudget">14 holes left</b></h4>
-    <p class="say" style="margin-top:0">There's a copper body somewhere under this paddock. Click to drill. Spread your first holes out to find it, then infill to build confidence. When you're ready, run a feasibility study and see what survives as a reserve.</p>
+    <p class="say" style="margin-top:0">A copper ore body is hidden somewhere under this field. Click to drill a hole. First, spread your holes out to find the ore body. Then drill more holes close together (infill) to increase your confidence. When you are ready, run a feasibility study and see how much becomes a reserve.</p>
     <svg class="grid-svg" id="drillSvg" viewBox="0 0 600 400" role="img" aria-label="Exploration grid of 96 cells; click cells to drill holes and classify the resource"></svg>
     <div class="legend"><span><i style="background:var(--paper)"></i>untested</span><span><i id="lgInf"></i>inferred</span><span><i id="lgInd"></i>indicated</span><span><i id="lgMea"></i>measured</span><span><i style="background:var(--mal)"></i>reserve</span></div>
     <div class="readout">
@@ -289,7 +289,7 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
       <button class="btn" type="button" id="drillStudy" disabled>Run feasibility study</button>
       <button class="btn ghost" type="button" id="drillReset">New prospect</button>
     </div>
-    <div class="event" id="drillEvent">Each cell is 2 Mt. A cell counts as resource if its estimated grade is above 0.3% Cu. Measured needs a hole in or next to the cell plus at least three holes nearby.</div>
+    <div class="event" id="drillEvent">Each cell is 2 Mt. A cell counts as resource if its estimated grade is above 0.3% Cu. A measured cell needs a hole in it or next to it, plus at least three holes nearby.</div>
     <div class="goal" id="g-drill"><i>✓</i><span>Declare at least 20 Mt of ore reserve.</span></div>
   </div>
 
@@ -318,22 +318,22 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
         <text x="14" y="185" text-anchor="middle" fill="var(--muted)" font-size="11" transform="rotate(-90 14 185)">more knowledge and confidence</text>
       </g>
     </svg></div>
-    <figcaption>The whole ladder on one page. The dashed line is a measured resource that can only reach probable because some modifying factor is still uncertain. <span class="srcs">slide 30, after Robb 2005</span></figcaption>
+    <figcaption>All the steps on one diagram. The dashed line shows a measured resource that can only become probable, because one modifying factor is still uncertain. <span class="srcs">slide 30, after Robb 2005</span></figcaption>
   </figure>
 
-  <p>Two practical things to keep in mind. First, the gap between discovery and mining is typically <strong>10 to 15 years</strong>, and the capital is eye-watering: a porphyry project on the Argentina and Chile border is spending billions on rail, power and accommodation before a single tonne is mined. Second, most discoveries now come from small and mid-sized companies that can't afford to build mines, so they sell or form a <button class="term" data-t="joint venture">joint venture</button> with a major. Once a mine is running, though, the margins can be huge. Rough numbers: iron ore selling at about US$100/t and costing about US$30/t to produce leaves around 70 per cent as margin.</p>
+  <p>Remember two practical points. First, it usually takes <strong>10 to 15 years</strong> to go from discovery to mining, and the cost is very high. For example, a porphyry project on the border of Argentina and Chile is spending billions of dollars on a railway, power and housing before mining any ore. Second, most discoveries today are made by small and medium-sized companies. They cannot pay to build a mine, so they sell the deposit to a large company or form a <button class="term" data-t="joint venture">joint venture</button> with one. But once a mine is running, the profit can be very large. For example, if iron ore sells for about US$100/t and costs about US$30/t to produce, the margin is about 70 per cent.</p>
     <div class="keybox"><b>Memorise</b><ul><li>Inferred resources never convert directly to reserves.</li><li>Indicated converts to probable; measured to proved or probable.</li></ul> <span class="srcs">slide 30, after Robb 2005</span></div>
 <div class="cp" data-cp="cp4"></div>
 </div></section>
 
 <section id="words" data-log="Timing words"><div class="wrap">
   <div class="kicker">Concept 5 <span class="depth">60 to 72 m</span></div>
-  <h2>Timing, direction and depth: three questions to ask any ore</h2>
-  <p>Most of the definitions in this lecture are really three questions you should ask every time you pick up a piece of ore.</p>
+  <h2>Timing, direction and depth: three questions to ask about any ore</h2>
+  <p>Most definitions in this lecture are really answers to three questions. Ask these questions every time you look at a piece of ore.</p>
   <h3>When did it form? Syngenetic or epigenetic</h3>
-  <p><button class="term" data-t="syngenetic">Syngenetic</button> ore formed at the same time as the rock around it, like a placer gravel or a massive sulphide layer that settled on the seafloor along with the sediment. <button class="term" data-t="epigenetic">Epigenetic</button> ore arrived later. Any vein is epigenetic, because you need solid rock to crack before you can fill the crack. This matters when you explore: syngenetic ore follows stratigraphy, so you trace a favourable layer, while epigenetic ore follows the plumbing, so you trace structures. The shape words fit onto this too. <strong>Stratiform</strong> ore is a layer within the sediment, <strong>stratabound</strong> ore is confined to one unit but may have replaced it later, and <strong>discordant</strong> ore cuts across layering.</p>
-  <h3>Which way was the water going? Hypogene or supergene</h3>
-  <p><button class="term" data-t="hypogene">Hypogene</button> ore was deposited by fluids rising from depth. <button class="term" data-t="supergene">Supergene</button> ore formed from water moving down during weathering, which leaches metals near the surface and redeposits them lower down. Supergene enrichment can make a deposit. The Endeavor mine at Cobar is a good example: supergene enrichment produced zones of native silver rich enough to change the economics. You'll go deep on this in Lecture 2.</p>
+  <p><button class="term" data-t="syngenetic">Syngenetic</button> ore formed at the same time as the rock around it. Examples are a placer gravel, or a massive sulphide layer that was deposited on the seafloor together with the sediment. <button class="term" data-t="epigenetic">Epigenetic</button> ore formed later than the host rock. Every vein is epigenetic, because the rock must already be solid before it can crack and the crack can fill. This matters for exploration. Syngenetic ore follows the stratigraphy, so you follow a favourable layer. Epigenetic ore follows the pathways that fluids used, so you follow structures. There are also three words for the shape of ore. <strong>Stratiform</strong> ore is a layer within the sediment. <strong>Stratabound</strong> ore stays within one rock unit, but it may have replaced that unit later. <strong>Discordant</strong> ore cuts across the layering.</p>
+  <h3>Which way was the water moving? Hypogene or supergene</h3>
+  <p><button class="term" data-t="hypogene">Hypogene</button> ore was deposited by fluids rising from depth. <button class="term" data-t="supergene">Supergene</button> ore was formed by water moving down during weathering. This water dissolves metals near the surface and deposits them again lower down. Supergene enrichment can make a deposit much more valuable. The Endeavor mine at Cobar is a good example: supergene enrichment made zones of native silver, rich enough to change the economics of the mine. Lecture 2 covers this in detail.</p>
 
   <div class="lab" id="gen">
     <h4><span>Watch it form</span><b id="genGoal">play all four</b></h4>
@@ -349,7 +349,7 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
   </div>
 
   <h3>How deep and how hot? Epithermal, mesothermal, hypothermal</h3>
-  <p>These three words describe hydrothermal deposits by the depth and temperature they formed at. They come from Lindgren's classification about a century ago, and "epithermal" in particular is still used every day. Drag the probe down through the crust and watch what changes.</p>
+  <p>These three words describe hydrothermal deposits by the depth and temperature where they formed. They come from Lindgren's classification, which is about 100 years old. The word "epithermal" is still used every day. Drag the probe down through the crust and see what changes.</p>
 
   <div class="lab" id="probeLab">
     <h4><span>Thermometer probe</span><b id="probeGoal">visit all three zones</b></h4>
@@ -369,15 +369,15 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
     <h4 style="margin-top:1.2rem"><span>Minerals as thermometers · which zone?</span></h4>
     <div class="cards3" id="zoneQuiz"></div>
   </div>
-  <p style="font-size:.95rem">The useful habit here is to treat minerals as thermometers. Chalcopyrite generally needs more than about 200 °C, so if a sample is full of it, think twice before calling it epithermal. If a vein is all galena, sphalerite and fine banded quartz, the shallow, cooler end is a better bet. Use the 200 °C line as a rule of thumb rather than a hard law; you'll lean on it constantly in the ore suite labs. <span class="srcs">slide 18 and recording</span></p>
+  <p style="font-size:.95rem">A useful habit is to use minerals as thermometers. Chalcopyrite usually needs more than about 200 °C. So if a sample has a lot of chalcopyrite, it is probably not epithermal. If a vein has only galena, sphalerite and fine banded quartz, it probably formed in the shallow, cooler zone. The 200 °C line is a general guide, not a strict rule. You will use it often in the ore suite labs. <span class="srcs">slide 18 and recording</span></p>
     <div class="labbox"><b>At the lab test</b><ul><li>Minerals are thermometers: abundant chalcopyrite generally means more than about 200 °C, so think twice before calling it epithermal.</li><li>Galena, sphalerite and fine banded quartz or chalcedony with no chalcopyrite points to the cool, shallow epithermal zone.</li><li>A vein that cuts bedding is epigenetic.</li></ul> <span class="srcs">slide 18 and recording</span></div>
 <div class="cp" data-cp="cp5"></div>
 </div></section>
 
 <section id="tectonics" data-log="Tectonics"><div class="wrap">
   <div class="kicker">Concept 6 <span class="depth">72 to 84 m</span></div>
-  <h2>Tectonics is the first filter</h2>
-  <p>Before you worry about a particular hill, ask whether you're even in the right kind of crust. Each deposit type needs a particular combination of heat, fluid, magma and stress, and plate tectonics sets that combination. So the first pass of <button class="term" data-t="greenfield">greenfield</button> exploration is simple to say: which setting does this deposit need, and where is that setting preserved? Test your instincts before I give you the answers.</p>
+  <h2>Tectonics comes first</h2>
+  <p>Before you look at one particular hill, first check that you are in the right kind of crust. Each deposit type needs a certain combination of heat, fluid, magma and stress. Plate tectonics controls this combination. So the first step of <button class="term" data-t="greenfield">greenfield</button> exploration is to ask two questions. Which tectonic setting does this deposit type need? Where is that setting preserved today? Try the game below before reading the answers.</p>
 
   <div class="lab" id="pros">
     <h4><span>Prospector</span><b id="prosScore">0 / 5 first-try</b></h4>
@@ -416,26 +416,26 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
     <div id="prosTabs" hidden>
       <div class="tabs" role="group" aria-label="Choose a deposit type" id="tecTabs"></div>
     </div>
-    <p class="say" style="font-size:.85rem;color:var(--muted)">Schematic and not to scale. The spreading centre stands in for the back-arc basins where most VMS forms; real back-arcs open up behind an arc, on the overriding plate.</p>
+    <p class="say" style="font-size:.85rem;color:var(--muted)">This diagram is simplified and not to scale. The spreading centre represents the back-arc basins where most VMS deposits form. Real back-arc basins open behind a volcanic arc, on the overriding plate.</p>
   </div>
 
-  <p>Two words you'll hear constantly: <button class="term" data-t="greenfield">greenfield</button> and <button class="term" data-t="brownfield">brownfield</button>. Brownfield is near existing or historic mines, like Cobar. Greenfield is where nothing has been found before. Olympic Dam is the great greenfield story: the team was testing an idea about sediment-hosted copper and instead found a completely new style of deposit (iron oxide copper-gold, or IOCG) that turned out to be one of the largest in the world. The lesson for you: a good geological idea, tested properly, can beat a model that only looks for what's already known.</p>
-  <h3>Australia's particular problem: cover</h3>
-  <p>Australia hasn't been glaciated recently, so instead of fresh, scraped bedrock, most of the continent is blanketed by <button class="term" data-t="regolith">regolith</button> and transported sediment, in places more than 100 metres thick. By one industry estimate, around 99 per cent of Australian exploration holes stop shallower than 100 metres. Put those two facts together and you get a badly under-explored continent. Even long-settled country around Orange keeps producing new porphyry discoveries once people look in a different way.</p>
+  <p>You will often hear two words: <button class="term" data-t="greenfield">greenfield</button> and <button class="term" data-t="brownfield">brownfield</button>. Brownfield exploration is near existing or old mines, such as Cobar. Greenfield exploration is in areas where nothing has been found before. Olympic Dam is the most famous greenfield discovery. The exploration team was testing an idea about sediment-hosted copper. Instead, they found a completely new type of deposit, iron oxide copper-gold (IOCG), and it is one of the largest deposits in the world. The lesson: a good geological idea, tested carefully, can find deposits that a standard model would miss.</p>
+  <h3>Australia's special problem: cover</h3>
+  <p>Australia has not had glaciers recently. Glaciers scrape the land and expose fresh bedrock. Instead, most of Australia is covered by <button class="term" data-t="regolith">regolith</button> and transported sediment, in some places more than 100 metres thick. One industry estimate says that about 99 per cent of Australian exploration holes are less than 100 metres deep. Together, these two facts mean that much of Australia has not been properly explored. Even around Orange, an area that has been farmed for a long time, new porphyry deposits are still being found when people explore in new ways.</p>
   <figure>
     <img src="img/L1/slide032_1.jpg" alt="Map of Australia: outcropping shields in orange, the Tasman Fold Belt in grey and covered basins in beige, with major mining districts marked" loading="lazy" style="width:100%;height:auto;border-radius:6px">
-    <figcaption>Look at where the famous districts sit: nearly all on or next to outcropping shield or fold belt. The beige basins cover most of the continent and have barely been tested. Olympic Dam is the exception that proves the point, found under roughly 300 m of cover. <span class="srcs">slide 32, after R.E. Smith, CRC LEME</span></figcaption>
+    <figcaption>Look at where the famous mining districts are. Almost all of them are on or next to outcropping shield or fold belt rocks. The beige basins cover most of the continent, and very little exploration has been done there. Olympic Dam is the exception: it was found under about 300 m of cover. <span class="srcs">slide 32, after R.E. Smith, CRC LEME</span></figcaption>
   </figure>
   <div class="cp" data-cp="cp6"></div>
 </div></section>
 
 <section id="magmas" data-log="Magmas"><div class="wrap">
   <div class="kicker">Concept 7 <span class="depth">84 to 96 m</span></div>
-  <h2>Magma chemistry picks the metals</h2>
-  <p>You met tholeiitic, calc-alkaline and alkaline series in second year as petrology. They come back here because each series carries a different set of metals. Know the magma type and you know which deposits are even possible.</p>
-  <p>Work it out from where each magma comes from. <strong>Tholeiitic</strong> magmas are the most mantle-like: basalts from ridges, young arcs and big mafic intrusions, low in potassium, around 53 per cent silica. Mantle melts carry chromium, nickel, platinum group elements, titanium and vanadium, and the main concentrating process is crystals or sulphide droplets physically separating from the melt. Think Bushveld chromitites and Sudbury nickel-copper sulphides. Hydrothermal overprinting matters much less here.</p>
-  <p><strong>Calc-alkaline</strong> magmas form above subduction zones, from melting of the mantle wedge (fluxed by water from the slab) with varying amounts of crust mixed in. They're wet and oxidised, and when they crystallise in the upper crust they release large volumes of metal-bearing fluid. That's the recipe for porphyry copper-gold-molybdenum, skarns and many epithermal systems, where the hydrothermal stage does the real work.</p>
-  <p><strong>Alkaline</strong> magmas (shoshonites, syenites, carbonatites, kimberlites, lamproites) come from small-degree melting deep in the mantle, in rifts, cratons and some arcs. Small melt fractions concentrate the incompatible elements, so these give you rare earths, phosphate, some iron oxide ores and, through kimberlites and lamproites, diamonds. So if you're after primary rare earths, don't bother with tholeiites or calc-alkaline rocks. Go find the alkaline ones. Now try sorting them yourself.</p>
+  <h2>Magma type controls the metals</h2>
+  <p>In second year you learned about tholeiitic, calc-alkaline and alkaline magma series in petrology. They are important here because each series carries a different group of metals. If you know the magma type, you know which deposits are possible.</p>
+  <p>The metals depend on where each magma comes from. <strong>Tholeiitic</strong> magmas are the closest to mantle composition. They include basalts from mid-ocean ridges and young arcs, and large mafic intrusions. They are low in potassium and have about 53 per cent silica. Mantle melts carry chromium, nickel, platinum group elements, titanium and vanadium. The main way these metals are concentrated is by crystals or sulphide droplets separating from the melt. Examples are the Bushveld chromitites and the Sudbury nickel-copper sulphides. In these deposits, later hydrothermal fluids are much less important.</p>
+  <p><strong>Calc-alkaline</strong> magmas form above subduction zones. Water from the subducting slab rises into the mantle wedge and causes it to melt, and some crust is often mixed in. These magmas are wet and oxidised. When they crystallise in the upper crust, they release large volumes of fluid that carries metals. This is how porphyry copper-gold-molybdenum deposits, skarns and many epithermal deposits form. In these deposits, the hydrothermal stage is the most important.</p>
+  <p><strong>Alkaline</strong> magmas include shoshonites, syenites, carbonatites, kimberlites and lamproites. They form by a small amount of melting deep in the mantle, in rifts, cratons and some arcs. A small amount of melt collects the incompatible elements. So these magmas give rare earth elements, phosphate, some iron oxide ores and, from kimberlites and lamproites, diamonds. If you are looking for primary rare earth deposits, do not look in tholeiitic or calc-alkaline rocks. Look for alkaline rocks. Now sort the deposits yourself.</p>
 
   <div class="lab" id="sorter">
     <h4><span>Magma sorter</span><b id="sortState">tap a deposit, then tap its magma series</b></h4>
@@ -450,15 +450,15 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
   </div>
 
   <h3>Oxidised or reduced</h3>
-  <p>One more split is worth knowing: oxidation state. Oxidised granitoids carry primary magnetite and tend to make porphyry copper-gold deposits, because sulphur stays as sulphate in the melt rather than locking copper and gold into early sulphides. Reduced granitoids (ilmenite instead of magnetite) are where tin and tungsten deposits form, and the most evolved ones make pegmatites with lithium, beryllium and fluorine. That means a quick magnetic susceptibility reading on a granite tells you something about which commodity it could be linked to. <span class="srcs">slide 42</span></p>
+  <p>Granites can also be divided by oxidation state. Oxidised granitoids contain primary magnetite. They tend to form porphyry copper-gold deposits. This is because sulphur stays in the melt as sulphate, so copper and gold are not removed early in sulphide minerals. Reduced granitoids contain ilmenite instead of magnetite. Tin and tungsten deposits form from reduced granitoids, and the most evolved ones form pegmatites with lithium, beryllium and fluorine. So a quick magnetic susceptibility reading on a granite gives you a clue about which metals it could be linked to. <span class="srcs">slide 42</span></p>
   <div class="keybox"><b>Memorise</b><ul><li>Tholeiitic: Cr, Ni, PGE, Ti, V (crystal and sulphide separation).</li><li>Calc-alkaline: porphyry Cu-Au-Mo, skarns, many epithermal systems (hydrothermal stage).</li><li>Alkaline: rare earths, phosphate, some iron oxide ores, diamonds (kimberlite, lamproite).</li></ul> <span class="srcs">slide 42</span></div>
   <div class="cp" data-cp="cp8"></div>
 </div></section>
 
 <section id="hydrothermal" data-log="Hydrothermal"><div class="wrap">
   <div class="kicker">Concept 8 <span class="depth">96 to 108 m</span></div>
-  <h2>The hydrothermal chain: break one link and you get nothing</h2>
-  <p>Most deposits you'll study this term are hydrothermal, at least in part, so you need a clear picture of what it takes to make one. Think of it as a chain: a metal source, a fluid that can carry metal, a pathway to focus it, a trap that makes it drop the metal, a seal to keep it there long enough, and preservation afterwards. Every link must hold. And add one blunt rule: every deposit is structurally controlled. Run the simulation, then switch links off and watch how each failure looks.</p>
+  <h2>The hydrothermal chain: if one link fails, there is no deposit</h2>
+  <p>Most deposits in this course are hydrothermal, at least partly. So you need a clear picture of what is needed to form one. Think of it as a chain with six links. You need a source of metal, a fluid that can carry the metal, a pathway that focuses the fluid, a trap where the metal is deposited, a seal that keeps the fluid there long enough, and preservation of the deposit afterwards. If any link fails, there is no deposit. Also remember this rule: every deposit is structurally controlled. Run the simulation below. Then turn off one link at a time and see what goes wrong.</p>
 
   <div class="lab" id="chain">
     <h4><span>Hydrothermal system simulator</span><b id="chainPct">Deposit 0%</b></h4>
@@ -470,39 +470,39 @@ Gold:   605 000 000 t × 0.64 g/t     ≈ 387 t Au ≈ 12.4 million oz</div>
     <div class="goal" id="g-chain2"><i>✓</i><span>Break the chain at least once and read why it failed.</span></div>
   </div>
 
-  <p>The trap is where most of the chemistry happens, and you'll keep coming back to it. Hydrothermal fluids are usually <em>undersaturated</em> in metals, meaning they're carrying less than they could. They only drop their load when something changes fast: the fluid cools, the pressure falls and it boils, it mixes with cooler groundwater, or it reacts with a rock (limestone is the classic) that neutralises its acidity. Each pass only leaves a little metal behind, so you need an enormous volume of fluid flowing through the same small volume of rock for a long time. That's the deeper reason focused structures and seals matter so much.</p>
+  <p>Most of the chemistry happens in the trap, and this idea will come back many times. Hydrothermal fluids are usually <em>undersaturated</em> in metals. This means they carry less metal than they could. They only deposit metal when conditions change quickly. For example, the fluid cools, the pressure drops and the fluid boils, it mixes with cooler groundwater, or it reacts with a rock that neutralises its acid (limestone is the best example). The fluid leaves only a little metal each time it passes. So a very large volume of fluid must flow through the same small volume of rock for a long time. This is why focused structures and seals are so important.</p>
 
   <div class="example">
     <span class="tag"><span>Worked example · can a magma really supply that much water?</span><span class="srcs">slide 44</span></span>
-    <p>A cubic kilometre of quartz monzonite magma with 3 wt% water is said to release about 100 Mt of water once it rises to around 3.5 km, where water starts to exsolve. Check it yourself with second-year numbers:</p>
+    <p>One cubic kilometre of quartz monzonite magma with 3 wt% water is said to release about 100 Mt of water. This happens when the magma rises to about 3.5 km depth, where water starts to separate (exsolve) from the melt. Check this number with second-year values:</p>
     <div class="calc">Mass  ≈ 1 × 10⁹ m³ × 2600 kg/m³ ≈ 2.6 × 10¹² kg ≈ 2600 Mt
 Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
-    <p>You get about 80 Mt, the same order as 100 Mt. Porphyry intrusions are often tens of cubic kilometres, so the magma alone can supply billions of tonnes of hot, metal-bearing fluid.</p>
+    <p>The answer is about 80 Mt, which is close to 100 Mt. Porphyry intrusions are often tens of cubic kilometres in size. So the magma alone can supply billions of tonnes of hot fluid that carries metal.</p>
   </div>
-  <h3>Alteration: the bigger target</h3>
-  <p>Wherever these fluids go, they react with the wall rock and change its minerals, texture and chemistry. That's <button class="term" data-t="hydrothermal alteration">hydrothermal alteration</button>, a form of <button class="term" data-t="metasomatism">metasomatism</button>. Here's why you should care: alteration halos are far larger than the ore itself, often by orders of magnitude, and they're what geophysical and geochemical surveys pick up first. Find the alteration, then follow it inward to the ore.</p>
+  <h3>Alteration: a bigger target than the ore</h3>
+  <p>When these fluids move through rock, they react with it. They change its minerals, texture and chemistry. This is called <button class="term" data-t="hydrothermal alteration">hydrothermal alteration</button>, which is a type of <button class="term" data-t="metasomatism">metasomatism</button>. Alteration is important for exploration because the alteration zone (halo) is much larger than the ore, often 10 to 100 times larger or more. Geophysical and geochemical surveys usually detect the alteration first. So the method is: find the alteration, then follow it inwards to the ore.</p>
   <h3>Where the water comes from</h3>
-  <p>Magmatic water is only one source. Fluids can also be <button class="term" data-t="meteoric water">meteoric</button>, seawater, <button class="term" data-t="connate water">connate</button> or metamorphic, and real systems often mix several. Picture a continuum. At the hot end, metals separate directly from magma (chromite, Ni-Cu sulphides). In the middle, fluids exsolve from a cooling magma (pegmatites, porphyries). At the cool end, those fluids mix with meteoric water or seawater (epithermal, SEDEX, exhalative deposits). One system can run through the whole range as it cools.</p>
+  <p>Water from magma is only one source. Fluids can also be <button class="term" data-t="meteoric water">meteoric</button> water, seawater, <button class="term" data-t="connate water">connate</button> water or metamorphic water. Real systems often mix several sources. You can think of it as a range. At the hot end, metals separate directly from magma (chromite, Ni-Cu sulphides). In the middle, fluids separate from a cooling magma (pegmatites, porphyries). At the cool end, these fluids mix with meteoric water or seawater (epithermal, SEDEX and exhalative deposits). A single system can move through the whole range as it cools.</p>
   <div class="cp" data-cp="cp9"></div>
 </div></section>
 
 <section id="classify" data-log="Classification"><div class="wrap">
   <div class="kicker">Concept 9 <span class="depth">108 to 120 m</span></div>
-  <h2>Why classification is slippery, and why scale matters</h2>
-  <p>Early classifications (Lindgren) sorted deposits by what you could observe. Later ones (Meyer, Guilbert and Park, Misra, Robb) became genetic, sorting by the process that formed them. Some names never went genetic: Carlin, Mississippi Valley type and Witwatersrand are still named after places, mostly because people still argue about how they formed.</p>
-  <p>Classification is hard because nature ignores our boxes. A magmatic system becomes hydrothermal as it cools. Buried sediments release fluids that alter and mineralise them. Deformation opens new pathways, and fluids reuse old weaknesses, so one area can be mineralised several times by unrelated events. My advice is to be a bit of a non-classifier: "porphyry" is useful shorthand, but every real deposit has its own character, and you shouldn't force it to match the textbook model.</p>
+  <h2>Why deposits are hard to classify, and why scale matters</h2>
+  <p>Early classifications, such as Lindgren's, grouped deposits by what you could see. Later classifications (Meyer, Guilbert and Park, Misra, Robb) became genetic. This means they group deposits by the process that formed them. Some deposit names are still not genetic. Carlin, Mississippi Valley type and Witwatersrand are still named after places, mainly because geologists still disagree about how they formed.</p>
+  <p>Classification is difficult because nature does not follow our categories. A magmatic system becomes hydrothermal as it cools. Buried sediments release fluids, and these fluids alter and mineralise the sediments. Deformation creates new pathways, and fluids use old weak zones again, so one area can be mineralised several times by unrelated events. So do not depend too much on classification. "Porphyry" is a useful short name, but every real deposit is different, and you should not force it to match the textbook model.</p>
   <div class="example">
     <span class="tag"><span>Real deposit · Argyle, and the danger of one model</span><span class="srcs">lecture recording, 14 Sep</span></span>
-    <p>The working model at De Beers held that economic diamonds only occur in kimberlite, and that meant the Argyle area wasn't followed up properly. Argyle turned out to be hosted by <button class="term" data-t="lamproite">lamproite</button>, and it became the world's largest diamond producer by volume and the main source of pink diamonds until it closed in 2020. Use a model as a tool for finding the next deposit. Treat it as a definition and you'll walk straight past the ones that don't fit.</p>
+    <p>The model used at De Beers said that economic diamonds only occur in kimberlite. Because of this, the Argyle area was not properly followed up. Argyle turned out to be hosted by <button class="term" data-t="lamproite">lamproite</button>. It became the world's largest diamond producer by volume, and the main source of pink diamonds until it closed in 2020. A model is a tool that helps you find the next deposit. If you treat a model as a strict definition, you will miss the deposits that do not fit it.</p>
   </div>
   <h3>Look at every scale</h3>
-  <p>Look at a deposit at every scale you can, from metallogenic province down through district, mine, outcrop and microscope, because each scale answers a different question. Is the setting right? Where's the plumbing? What's the sequence of events? Can the ore minerals actually be processed? Kelian in Kalimantan is a cautionary tale: an epithermal gold deposit whose true nature (hosted by a <button class="term" data-t="diatreme">diatreme</button>) wasn't fully understood until it had been mined out.</p>
-  <p>Three labels go with this. A <button class="term" data-t="metallotect">metallotect</button> is any feature that helped concentrate metals (a fault, a reactive unit, a particular intrusion). A <strong>metallogenic province</strong> is a region with a characteristic group of deposits. A <strong>metallogenic epoch</strong> is a favourable time window. The Ordovician Macquarie Arc in central NSW is both the place and the time for porphyry copper-gold in the state.</p>
+  <p>Study a deposit at every scale you can: metallogenic province, district, mine, outcrop and microscope. Each scale answers a different question. Is the tectonic setting right? Where were the fluid pathways? What was the order of events? Can the ore minerals be processed? Kelian in Kalimantan shows why this matters. It is an epithermal gold deposit hosted by a <button class="term" data-t="diatreme">diatreme</button>, but geologists did not fully understand this until the deposit had been mined out.</p>
+  <p>Three more terms belong here. A <button class="term" data-t="metallotect">metallotect</button> is any feature that helped to concentrate metals, such as a fault, a reactive rock unit or a certain intrusion. A <strong>metallogenic province</strong> is a region with a typical group of deposits. A <strong>metallogenic epoch</strong> is a period of time that was favourable for forming deposits. For example, the Ordovician Macquarie Arc in central NSW is both the province and the epoch for porphyry copper-gold deposits in the state.</p>
   <div class="mix">
-    <div><b>Hypogene vs hypothermal</b>Hypogene is fluid direction (rising). Hypothermal is depth and temperature (deep, hot). An epithermal deposit is still hypogene.</div>
-    <div><b>Resource vs reserve</b>Resources are what's in the ground. Reserves are what you've shown you can mine at a profit.</div>
-    <div><b>Stratiform vs stratabound</b>Stratiform forms as a layer. Stratabound is confined to a layer but may have replaced it later.</div>
-    <div><b>ppm and g/t</b>The same thing. 1 g/t = 1 ppm, and 1% = 10 000 ppm.</div>
+    <div><b>Hypogene vs hypothermal</b>Hypogene is about fluid direction (rising). Hypothermal is about depth and temperature (deep, hot). An epithermal deposit is still hypogene.</div>
+    <div><b>Resource vs reserve</b>Resources are what is in the ground. Reserves are what you have shown can be mined at a profit.</div>
+    <div><b>Stratiform vs stratabound</b>Stratiform ore forms as a layer. Stratabound ore stays within a layer, but it may have replaced the layer later.</div>
+    <div><b>ppm and g/t</b>These are the same. 1 g/t = 1 ppm, and 1% = 10 000 ppm.</div>
   </div>
   <div class="cp" data-cp="cp10"></div>
 </div></section>
@@ -510,14 +510,14 @@ Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
 <section id="test" data-log="Self-test"><div class="wrap">
   <div class="kicker">Check yourself <span class="depth">120 to 132 m</span></div>
   <h2>Self-test</h2>
-  <p>Answer out loud or on paper before you open each one. If you got it, claim the ounces. Be honest; nobody's watching but you.</p>
+  <p>Answer each question out loud or on paper before you open it. If your answer was right, claim the ounces. Be honest with yourself.</p>
   <div id="selfTest"></div>
 </div></section>
 
 <section id="glossary" data-log="Glossary"><div class="wrap">
   <div class="kicker">Reference <span class="depth">132 to 144 m</span></div>
   <h2>Glossary and flashcards</h2>
-  <p>These are the terms this lecture assumes you already know, or only defines in passing. The dotted words in the text open them in place. Drill the deck until it's empty.</p>
+  <p>These are terms that the lecture expects you to know already, or only explains briefly. Tap a dotted word in the text to see its meaning. Keep practising the flashcards until the deck is empty.</p>
   <div class="lab" id="flashLab">
     <h4><span>Flashcards</span><b id="flashCount"></b></h4>
     <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
@@ -532,9 +532,9 @@ Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
 <section id="next" data-log="Next"><div class="wrap">
   <div class="kicker">The bigger picture <span class="depth">144 to 156 m</span></div>
   <h2>Where this goes next</h2>
-  <p>The course runs from large-scale processes down to specific deposit types, and this lecture is the map. Here's where each idea comes back.</p>
+  <p>The course starts with large-scale processes and then moves to specific deposit types. This lecture is the overview. The table shows where each idea is used again.</p>
   <div class="tablewrap"><table>
-    <thead><tr><th>Idea from Lecture 1</th><th>Picked up in</th></tr></thead>
+    <thead><tr><th>Idea from Lecture 1</th><th>Used again in</th></tr></thead>
     <tbody>
       <tr><td>Supergene processes, alteration halos</td><td>L2 Weathering, oxidation and alteration</td></tr>
       <tr><td>Veins, stockworks, breccias, replacement</td><td>L3 Breccias, veins and ore textures</td></tr>
@@ -549,7 +549,7 @@ Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
       <tr><td>Resources, reserves, economics</td><td>Mineral Economics lab, JORC material</td></tr>
     </tbody>
   </table></div>
-  <p>One practical point for assessment: the ore suites are worth 50 per cent, and they lean directly on this vocabulary. You'll be describing ore and gangue minerals, textures and likely setting. Your first ore suite page isn't marked, but it's where you get feedback, so take it seriously and redo it.</p>
+  <p>One practical point about assessment: the ore suites are worth 50 per cent, and they use this vocabulary directly. You will describe ore and gangue minerals, textures and the likely tectonic setting. Your first ore suite page is not marked, but you get feedback on it. So do it carefully, and then improve it using the feedback.</p>
   <div class="cp" data-cp="cp11"></div>
 </div></section>
 
@@ -565,7 +565,7 @@ Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
 
 <footer><div class="wrap">
   <p><a href="index.html">All GEOS3141 lectures</a></p>
-  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 1 slides (photos from slides 26, 27 and 32) and the Echo360 recording of 14 September 2026. The small tags next to facts show where they came from. The recording's transcript is machine-generated, so spoken details were cross-checked against the slides where possible. Game numbers (block grades, costs, recoveries, drilling results) are invented for teaching and are not real deposit data. Not an official UNSW resource.</p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 1 slides (photos from slides 26, 27 and 32) and the Echo360 recording of 14 September 2026. The small tags next to facts show where each fact came from. The recording's transcript was made by a computer, so spoken details were checked against the slides where possible. Game numbers (block grades, costs, recoveries, drilling results) are invented for teaching and are not real deposit data. This is not an official UNSW resource.</p>
   <p><a href="L2.html">Next: Lecture 2, weathering, oxidation and alteration &rarr;</a></p>
 </div></footer>
 
@@ -575,80 +575,80 @@ Water ≈ 3% of 2600 Mt              ≈ 78 Mt</div>
 <script>
 (function(){
 'use strict';
-var RANKS=[[0,'Field assistant','You have a hat and a hammer.'],[30,'Graduate geologist','Trusted with the core shed.'],[90,'Project geologist','Running a drill program.'],[160,'Senior geologist','Signing off on resource models.'],[240,'Chief geologist','The board calls you about discoveries.']];
+var RANKS=[[0,'Field assistant','You have a hat and a hammer.'],[30,'Graduate geologist','Trusted with the core shed.'],[90,'Project geologist','Running a drill program.'],[160,'Senior geologist','You approve resource models.'],[240,'Chief geologist','The company board calls you about new discoveries.']];
 var G={
- "ore mineral":"A mineral you get paid for. Which minerals count depends on the deposit and the market.",
- "gangue":"Minerals mined along with the ore that have no value in that deposit, such as quartz, carbonates and usually pyrite. Pronounced 'gang'.",
- "grade control":"Day-to-day sampling and assaying at an operating mine to decide which blasted rock goes to the mill and which to the waste dump.",
- "critical minerals":"A policy term for commodities a particular country considers essential and supply-risky. Lists differ between countries and departments.",
- "concentration factor":"Economic grade divided by average crustal abundance: how much a process has to enrich an element to make ore.",
+ "ore mineral":"A mineral that you sell. Which minerals count as ore minerals depends on the deposit and the market.",
+ "gangue":"Minerals that are mined together with the ore but have no value in that deposit, such as quartz, carbonates and usually pyrite. Pronounced 'gang'.",
+ "grade control":"Daily sampling and assaying at a working mine. It decides which blasted rock goes to the processing plant and which goes to the waste dump.",
+ "critical minerals":"A policy term for commodities that a country thinks are essential and whose supply is at risk. Each country has a different list.",
+ "concentration factor":"Economic grade divided by average crustal abundance. It shows how many times a process must concentrate an element to make ore.",
  "tonnage":"The mass of ore in a deposit, usually in millions of tonnes (Mt).",
- "grade":"The concentration of the valuable commodity in ore: g/t for precious metals, wt% for base metals. Waste has no grade.",
+ "grade":"The amount of the valuable commodity in the ore: g/t for precious metals, wt% for base metals. Waste rock has no grade.",
  "assay":"A laboratory chemical analysis that measures how much of a metal is in a sample.",
- "bonanza":"Exceptionally high grade, usually over 100 g/t gold, typical of some epithermal and orogenic deposits.",
- "top cut":"Capping very high assays at a set value during resource estimation so a few extreme results don't inflate the overall grade.",
+ "bonanza":"A very high grade, usually over 100 g/t gold. It is found in some epithermal and orogenic deposits.",
+ "top cut":"Reducing very high assays to a set maximum value during resource estimation, so that a few extreme results do not make the overall grade too high.",
  "cut-off grade":"The lowest grade that can be mined and processed at a profit. Rock below it is treated as waste.",
- "JORC Code":"The Australasian code for reporting exploration results, mineral resources and ore reserves, signed off by a Competent Person.",
- "mineral resource":"An estimate of tonnage and grade in the ground with reasonable prospects of eventual economic extraction: inferred, indicated or measured.",
- "ore reserve":"The part of a measured or indicated resource shown to be economically mineable after the modifying factors: probable or proved.",
- "modifying factors":"Mining, metallurgical, economic, marketing, legal, environmental, social and government considerations used to turn resources into reserves.",
- "joint venture":"A partnership where companies share the cost and ownership of a project, common when a junior brings in a major to fund a mine.",
- "syngenetic":"Ore formed at the same time as its host rock, such as a seafloor massive sulphide layer or a placer.",
- "epigenetic":"Ore introduced after its host rock formed, such as any vein.",
- "hypogene":"Formed by rising fluids from depth, usually hot hydrothermal fluids.",
- "supergene":"Formed by descending surface waters during weathering, which leach metals near the surface and redeposit them lower down.",
+ "JORC Code":"The Australasian code for reporting exploration results, mineral resources and ore reserves. A Competent Person must approve each report.",
+ "mineral resource":"An estimate of tonnage and grade in the ground that could reasonably be mined one day. It is inferred, indicated or measured.",
+ "ore reserve":"The part of a measured or indicated resource that has been shown to be profitable to mine after the modifying factors are applied. It is probable or proved.",
+ "modifying factors":"Mining, metallurgical, economic, marketing, legal, environmental, social and government factors. They are used to turn resources into reserves.",
+ "joint venture":"A partnership where companies share the cost and ownership of a project. It is common when a small company asks a large company to pay for building a mine.",
+ "syngenetic":"Ore that formed at the same time as its host rock, such as a seafloor massive sulphide layer or a placer.",
+ "epigenetic":"Ore that was added after its host rock formed, such as any vein.",
+ "hypogene":"Formed by fluids rising from depth, usually hot hydrothermal fluids.",
+ "supergene":"Formed by surface water moving down during weathering. The water dissolves metals near the surface and deposits them again lower down.",
  "greenfield":"Exploration in an area with no known deposits or previous mining.",
  "brownfield":"Exploration in or near an existing or historic mining area.",
- "regolith":"The blanket of weathered rock, soil and transported sediment over fresh bedrock; tens to over 100 m thick in much of Australia.",
+ "regolith":"The layer of weathered rock, soil and transported sediment that covers fresh bedrock. In much of Australia it is tens of metres to over 100 m thick.",
  "hydrothermal alteration":"Changes to a rock's minerals, texture and chemistry caused by reaction with hot fluids.",
- "metasomatism":"Changing a rock's chemical composition by adding or removing components through fluid flow, in an open system.",
+ "metasomatism":"A change in a rock's chemical composition when fluids flow through it and add or remove elements (an open system).",
  "meteoric water":"Water that fell as rain or snow and entered the ground as groundwater.",
  "connate water":"Water trapped in sediment pores when the sediment was deposited.",
- "lamproite":"An ultrapotassic, mantle-derived alkaline volcanic rock. Like kimberlite it can carry diamonds, as at Argyle.",
- "kimberlite":"A volatile-rich ultramafic rock erupted from deep in the mantle in narrow pipes; the classic diamond host.",
- "diatreme":"A volcanic pipe filled with broken rock, blasted out when magma or gas meets groundwater explosively.",
- "metallotect":"Any geological, tectonic, lithological or geochemical feature that helped concentrate one or more elements.",
- "exsolution":"One phase separating out of another as conditions change, like water bubbling out of a rising magma as pressure drops.",
- "ligand":"An ion or molecule (such as Cl⁻ or HS⁻) that bonds to a metal in solution and lets the fluid carry it.",
+ "lamproite":"A mantle-derived alkaline volcanic rock that is very rich in potassium. Like kimberlite, it can carry diamonds, for example at Argyle.",
+ "kimberlite":"An ultramafic rock, rich in gas and water, that erupts from deep in the mantle through narrow pipes. It is the most common host rock for diamonds.",
+ "diatreme":"A volcanic pipe filled with broken rock. It forms when magma or gas meets groundwater and explodes.",
+ "metallotect":"Any geological, tectonic, rock-type or geochemical feature that helped to concentrate one or more elements.",
+ "exsolution":"When one phase separates from another as conditions change. For example, water forms bubbles and leaves a rising magma as the pressure drops.",
+ "ligand":"An ion or molecule (such as Cl⁻ or HS⁻) that bonds to a metal in solution. This allows the fluid to carry the metal.",
  "ppm and ppb":"Parts per million and per billion by mass. 1 ppm = 1 g/t = 1000 ppb; 1% = 10 000 ppm.",
- "IOCG":"Iron oxide copper-gold deposit, the class defined by Olympic Dam.",
- "porphyry":"A large, low-grade copper (gold, molybdenum) deposit formed by fluids from an oxidised intrusion in an arc."
+ "IOCG":"Iron oxide copper-gold deposit. Olympic Dam is the type example.",
+ "porphyry":"A large, low-grade copper (gold, molybdenum) deposit. It forms from fluids released by an oxidised intrusion in a volcanic arc."
 };
 var CP={
- cp1:{q:'The copper price halves overnight. What happens to the copper ore at a mine?',o:['Nothing. The rocks haven’t changed.','Some of it becomes waste because the cut-off grade rises.','The grade of every block drops.'],a:1,e:'Ore is defined by profit. A lower price means a higher cut-off, so lower-grade blocks become waste. The grades themselves don’t change.'},
+ cp1:{q:'The copper price falls by half in one day. What happens to the copper ore at a mine?',o:['Nothing. The rocks have not changed.','Some of it becomes waste because the cut-off grade rises.','The grade of every block falls.'],a:1,e:'Ore depends on profit. A lower price means a higher cut-off grade, so the lower-grade blocks become waste. The grades themselves do not change.'},
  cp2:{q:'1 g/t is the same as...',o:['1 ppm','1 ppb','0.1%'],a:0,e:'A tonne is a million grams, so 1 g in a tonne is one part per million. 0.1% would be 1000 ppm.'},
- cp3:{q:'A deposit is 20 Mt at 2.5 g/t Au. Roughly how much gold does it contain?',o:['About 50 000 oz','About 1.6 million oz','About 50 million oz'],a:1,e:'20 000 000 t × 2.5 g/t = 50 000 000 g. Divide by 31.1 g/oz and you get about 1.6 million ounces.'},
- cp4:{q:'Which of these can be converted straight into an ore reserve?',o:['An inferred resource','An indicated resource','Exploration results'],a:1,e:'Indicated converts to probable, and measured to proved or probable. Inferred never converts directly.'},
- cp5:{q:'A galena-sphalerite vein with chalcedony bands and no chalcopyrite cuts across bedding. Best label?',o:['Syngenetic and hypothermal','Epigenetic and epithermal','Syngenetic and epithermal'],a:1,e:'Cutting across bedding makes it epigenetic. Low-temperature minerals and no chalcopyrite point to the shallow, cool epithermal zone.'},
- cp6:{q:'Your company wants a SEDEX zinc deposit. Where do you look first?',o:['A continental arc above a subduction zone','A rifted continental margin or rift basin','The middle of a stable craton with no basins'],a:1,e:'SEDEX forms where basin brines rise up growth faults in rifted margins and intracontinental rifts, not in arcs.'},
- cp7:{q:"In one sentence, what is an ore deposit?",o:["Any rock that contains metal", "An unusually high concentration of elements that are normally spread thinly through the crust", "Any rock that formed from magma"],a:1,e:"Everything else in this lecture hangs off that: when it counts as ore, how much concentrating it takes, and what processes do it."},
- cp8:{q:"An alkaline syenite with carbonatite dykes is most likely to host...",o:["chromite and platinum group elements", "porphyry copper-gold", "rare earths and phosphate"],a:2,e:"Small-degree mantle melts concentrate incompatible elements. Tholeiites give Cr-Ni-PGE; wet, oxidised calc-alkaline magmas give porphyries."},
- cp9:{q:"Hydrothermal fluid flows through a permeable fault zone for a long time, but nothing there cools it, boils it, mixes with it or reacts with it. Which link is missing?",o:["A metal source", "A trap: something that makes the fluid drop its metal", "A pathway"],a:1,e:"Fluids are usually undersaturated, so they only drop metal when cooling, boiling, mixing or reaction with rock changes them fast."},
- cp10:{q:"Why was the Argyle diamond deposit not followed up properly at first?",o:["It was too deep to drill", "The working model said economic diamonds only occur in kimberlite, and Argyle is hosted by lamproite", "Its diamonds were too small to see"],a:1,e:"Use a model as a tool for finding the next deposit, not as a definition."},
- cp11:{q:"The ore suites are worth 50 per cent. What do they lean on most directly?",o:["Describing ore and gangue minerals, textures and likely setting, using this lecture’s vocabulary", "Spreadsheet economics", "Seminar slides"],a:0,e:"Your first ore suite page isn’t marked but gets feedback, so take it seriously and redo it."}
+ cp3:{q:'A deposit is 20 Mt at 2.5 g/t Au. Roughly how much gold does it contain?',o:['About 50 000 oz','About 1.6 million oz','About 50 million oz'],a:1,e:'20 000 000 t × 2.5 g/t = 50 000 000 g. Divide by 31.1 g/oz to get about 1.6 million ounces.'},
+ cp4:{q:'Which of these can be changed directly into an ore reserve?',o:['An inferred resource','An indicated resource','Exploration results'],a:1,e:'Indicated changes to probable, and measured changes to proved or probable. Inferred never changes directly.'},
+ cp5:{q:'A galena-sphalerite vein with chalcedony bands and no chalcopyrite cuts across bedding. What is the best label?',o:['Syngenetic and hypothermal','Epigenetic and epithermal','Syngenetic and epithermal'],a:1,e:'It cuts across bedding, so it is epigenetic. Low-temperature minerals and no chalcopyrite point to the shallow, cool epithermal zone.'},
+ cp6:{q:'Your company wants a SEDEX zinc deposit. Where do you look first?',o:['A continental arc above a subduction zone','A rifted continental margin or rift basin','The middle of a stable craton without basins'],a:1,e:'SEDEX forms where basin brines rise up growth faults in rifted margins and in rifts within continents. It does not form in arcs.'},
+ cp7:{q:"In one sentence, what is an ore deposit?",o:["Any rock that contains metal", "An unusually high concentration of elements that are normally spread thinly through the crust", "Any rock that formed from magma"],a:1,e:"All the other ideas in this lecture follow from this: when it counts as ore, how much concentration is needed, and which processes do it."},
+ cp8:{q:"An alkaline syenite with carbonatite dykes is most likely to host...",o:["chromite and platinum group elements", "porphyry copper-gold", "rare earths and phosphate"],a:2,e:"Small amounts of mantle melting concentrate incompatible elements. Tholeiites give Cr-Ni-PGE. Wet, oxidised calc-alkaline magmas give porphyries."},
+ cp9:{q:"Hydrothermal fluid flows through a permeable fault zone for a long time. But nothing cools it, boils it, mixes with it or reacts with it. Which link is missing?",o:["A metal source", "A trap: something that makes the fluid deposit its metal", "A pathway"],a:1,e:"Fluids are usually undersaturated. They only deposit metal when cooling, boiling, mixing or reaction with rock changes them quickly."},
+ cp10:{q:"Why was the Argyle diamond deposit not properly followed up at first?",o:["It was too deep to drill", "The model in use said economic diamonds only occur in kimberlite, but Argyle is hosted by lamproite", "Its diamonds were too small to see"],a:1,e:"Use a model as a tool to find the next deposit, not as a strict definition."},
+ cp11:{q:"The ore suites are worth 50 per cent. What do they depend on most?",o:["Describing ore and gangue minerals, textures and the likely setting, using the words from this lecture", "Spreadsheet economics", "Seminar slides"],a:0,e:"Your first ore suite page is not marked, but you get feedback on it. So do it carefully, and then improve it."}
 };
 var ST=[
- ['A copper deposit hasn’t changed since last year, but the company has stopped calling part of it ore. How is that possible?','Recall','Ore is defined by whether it can be extracted at a profit. If the copper price fell or costs rose, the cut-off grade went up and the lower-grade parts are no longer economic, so they’re reclassified. The rocks are the same; the economics changed.'],
- ['Why is pyrite gangue at most deposits but ore at Mount Isa?','Recall','Pyrite is only ore if someone pays for it. Phosphate Hill, south of Mount Isa, needs sulphuric acid to process phosphate, and pyrite (FeS₂) is a sulphur source for that acid. Elsewhere it’s worthless and a liability, because it makes acid mine drainage.'],
+ ['A copper deposit has not changed since last year, but the company no longer calls part of it ore. How is this possible?','Recall','Ore depends on whether it can be mined at a profit. If the copper price fell or costs rose, the cut-off grade went up. Then the lower-grade parts are no longer profitable, so they are reclassified as waste. The rocks are the same; only the economics changed.'],
+ ['Why is pyrite gangue at most deposits but ore at Mount Isa?','Recall','Pyrite is only ore if someone pays for it. Phosphate Hill, south of Mount Isa, needs sulphuric acid to process phosphate, and pyrite (FeS₂) can be used to make that acid. In other places pyrite has no value and causes problems, because it makes acid mine drainage.'],
  ['Calculate the concentration factor for copper if average crust is 55 ppm and the economic grade is 1%.','Calculate','1% is 10 000 ppm. 10 000 ÷ 55 ≈ 180, so copper must be concentrated about 180 times.'],
- ['Zinc needs a bigger concentration factor than nickel, yet zinc deposits are more common. Does that contradict the idea?','Think','No. The factor is how much enrichment is needed, not how often it happens. Zinc moves easily in low-temperature saline basin fluids, which circulate commonly. Nickel sulphide ore needs a sulphide liquid to separate from a hot ultramafic magma, which is much rarer.'],
- ['Why do companies sample every metre of half core, even sections with no visible mineralisation?','Recall','Grade is an average over the whole interval. Sampling only what looks mineralised would bias the average upwards. And in many gold deposits the gold is invisible anyway.'],
- ['A company reports a large inferred resource and says it’s "about to start mining". What should make you sceptical?','Think','Inferred is the lowest confidence category and can’t become a reserve directly. Mining needs indicated or measured resources plus studies showing the modifying factors are satisfied, which usually takes years.'],
- ['A quartz vein full of chalcopyrite cuts bedding in a sandstone. Syngenetic or epigenetic, and is it likely epithermal?','Apply','Epigenetic, because it cuts bedding. Probably not epithermal: abundant chalcopyrite suggests more than about 200 °C, pointing to mesothermal or deeper conditions, or a porphyry-related setting.'],
- ['You’re exploring for primary REE in a region with a tholeiitic gabbro, a calc-alkaline granodiorite and an alkaline syenite with carbonatite dykes. Where do you start?','Apply','The alkaline syenite and carbonatite. REE are incompatible elements concentrated by small-degree mantle melting, which is exactly what produces alkaline magmas and carbonatites.'],
- ['Why is an alteration halo usually a better exploration target than the ore body?','Think','The fluid reacted with a much larger volume of rock than the ore occupies, so the halo can be orders of magnitude bigger and easier to detect. Zoning within it then helps you vector toward the ore.'],
- ['Give two different reasons why a region with lots of hot fluid flow might have no deposit.','Synthesise','Any broken link works. No trap, so the metals stayed dissolved and dispersed. No focusing structure, so metal spread thinly through a huge volume. Or a deposit formed and was later eroded, so preservation failed.']
+ ['Zinc needs a bigger concentration factor than nickel, but zinc deposits are more common. Does this disagree with the idea of concentration factors?','Think','No. The factor shows how much concentration is needed, not how often it happens. Zinc moves easily in low-temperature salty basin fluids, and these fluids are common. Nickel sulphide ore needs a sulphide liquid to separate from a hot ultramafic magma, and this is much rarer.'],
+ ['Why do companies sample every metre of half core, even parts with no visible mineralisation?','Recall','Grade is an average over the whole interval. If you only sampled the parts that look mineralised, the average would be too high. Also, in many gold deposits you cannot see the gold anyway.'],
+ ['A company reports a large inferred resource and says it will "start mining soon". Why should you doubt this?','Think','Inferred is the lowest level of confidence, and it cannot become a reserve directly. Mining needs indicated or measured resources, plus studies that show the modifying factors are met. This usually takes years.'],
+ ['A quartz vein full of chalcopyrite cuts bedding in a sandstone. Is it syngenetic or epigenetic? Is it likely to be epithermal?','Apply','Epigenetic, because it cuts bedding. Probably not epithermal: a lot of chalcopyrite suggests more than about 200 °C. This points to mesothermal or deeper conditions, or a porphyry-related setting.'],
+ ['You are exploring for primary REE in a region with a tholeiitic gabbro, a calc-alkaline granodiorite and an alkaline syenite with carbonatite dykes. Where do you start?','Apply','The alkaline syenite and carbonatite. REE are incompatible elements. They are concentrated by small amounts of mantle melting, and this is exactly what produces alkaline magmas and carbonatites.'],
+ ['Why is an alteration halo usually a better exploration target than the ore body itself?','Think','The fluid reacted with a much larger volume of rock than the ore. So the halo can be 10 to 100 times bigger or more, and easier to detect. Zones within the halo then help you move towards the ore.'],
+ ['Give two different reasons why a region with lots of hot fluid flow might have no deposit.','Synthesise','Any broken link is correct. No trap, so the metals stayed dissolved and spread out. No focusing structure, so the metal spread thinly through a huge volume of rock. Or a deposit formed but was later eroded, so it was not preserved.']
 ];
 GEO.start({key:'geos3141-L1-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:156,goals:{'g-cut1':'cut-crash','g-cut2':'cut-boom','g-drill':'drill-reserve','g-chain1':'chain-full','g-chain2':'chain-break'}});
 
 /* concentrator */
 var M={
- Al:{ab:'8.2%',gr:'30%',f:4,one:'1 part in 12',how:'Aluminium only needs roughly quadrupling. Intense tropical weathering leaches the other elements away and leaves bauxite behind, as in northern Queensland and the Northern Territory.'},
- Fe:{ab:'5.6%',gr:'50%',f:9,one:'1 part in 18',how:'Iron needs about nine times. Banded iron formations, upgraded by weathering, do it on a continental scale in the Pilbara.'},
- Cu:{ab:'55 ppm',gr:'1%',f:180,one:'1 part in 18 000',how:'Copper needs about 180 times. Magmatic fluids from oxidised arc intrusions do it in porphyries; basin brines do it in sediment-hosted copper.'},
- Zn:{ab:'70 ppm',gr:'5%',f:700,one:'1 part in 14 000',how:'Zinc needs about 700 times, yet zinc deposits are common: warm basin brines carry it easily into seafloor muds (SEDEX) and black smokers (VMS).'},
- Au:{ab:'4 ppb',gr:'5 g/t',f:1250,one:'1 part in 250 million',how:'Gold needs about 1250 times. Fluids focused through shear zones (orogenic) or boiling near the surface (epithermal) drop it in tiny volumes of rock.'},
- Sn:{ab:'2 ppm',gr:'0.5%',f:2500,one:'1 part in 500 000',how:'Tin needs about 2500 times, the hardest job on the list. Only fluids from highly evolved, reduced granites manage it.'}
+ Al:{ab:'8.2%',gr:'30%',f:4,one:'1 part in 12',how:'Aluminium only needs to be concentrated about 4 times. Strong tropical weathering removes the other elements and leaves bauxite, for example in northern Queensland and the Northern Territory.'},
+ Fe:{ab:'5.6%',gr:'50%',f:9,one:'1 part in 18',how:'Iron needs about 9 times. Banded iron formations, made richer by weathering, do this on a very large scale in the Pilbara.'},
+ Cu:{ab:'55 ppm',gr:'1%',f:180,one:'1 part in 18 000',how:'Copper needs about 180 times. Magmatic fluids from oxidised arc intrusions do this in porphyries. Basin brines do it in sediment-hosted copper deposits.'},
+ Zn:{ab:'70 ppm',gr:'5%',f:700,one:'1 part in 14 000',how:'Zinc needs about 700 times, but zinc deposits are common. Warm basin brines carry zinc easily into seafloor muds (SEDEX) and black smokers (VMS).'},
+ Au:{ab:'4 ppb',gr:'5 g/t',f:1250,one:'1 part in 250 million',how:'Gold needs about 1250 times. Fluids focused through shear zones (orogenic) or boiling near the surface (epithermal) deposit it in very small volumes of rock.'},
+ Sn:{ab:'2 ppm',gr:'0.5%',f:2500,one:'1 part in 500 000',how:'Tin needs about 2500 times, the most on the list. Only fluids from highly evolved, reduced granites can do this.'}
 };
 var cc=$('#concCanvas'),cx=cc.getContext('2d'),cMetal='Cu',cT=0,cDir=0,cLast=0,cW=600,cH=240;
 var R0=rng(7),grains=[],atoms=[];
@@ -713,7 +713,7 @@ function drawCut(){
     else{r.setAttribute('fill',ws);r.setAttribute('stroke',ln);}});
   $('#cutCo').textContent=co.toFixed(2)+'% Cu';$('#cutOre').textContent=fmt(n*4,0)+' Mt';
   $('#cutAvg').textContent=n?(sumg/n).toFixed(2)+'% Cu':'none';$('#cutMargin').textContent=money(margin);
-  if(cutMoved){award('cut-move',8,'You turned ore into waste without touching a rock');if(price<=6000)award('cut-crash',10,'Crash test complete');if(n>100)award('cut-boom',10,'Boom time: low cut-off, huge tonnage');}
+  if(cutMoved){award('cut-move',8,'You changed ore into waste without changing any rock');if(price<=6000)award('cut-crash',10,'Crash test complete');if(n>100)award('cut-boom',10,'High price: low cut-off, very large tonnage');}
 }
 ['cutPrice','cutCost'].forEach(function(id){$('#'+id).addEventListener('input',function(){cutMoved=true;drawCut()})});
 onTheme(drawCut);drawCut();
@@ -743,11 +743,11 @@ var spot=$('#spot'),ring=$('#spotRing'),spotDone=false;
 ring.style.left='10%';ring.style.top='30%';ring.style.width='82%';ring.style.height='36%';
 function reveal(won){spotDone=true;spot.classList.add('found');$('#wipeWrap').hidden=false;$('#spotShow').hidden=true;
   $('#spotState').textContent=won?'found it':'revealed';
-  $('#spotSay').textContent=(won?'Good eye. ':'')+'The pale, bleached hills in the middle ground, with almost no vegetation, sit over the porphyry. Metals in the soil are toxic to many plants, and the top of the system was leached and bleached, so the deposit showed up as a colour anomaly you could see from the air. Now drag the slider to see the same view in 1999.';
-  if(won)award('spot',8,'You spotted a porphyry from its colour anomaly');}
+  $('#spotSay').textContent=(won?'Good eye. ':'')+'The pale, bleached hills in the middle of the photo, with almost no plants, are above the porphyry. Metals in the soil are toxic to many plants. Also, the top of the system was leached and bleached. So the deposit showed as a colour change that you could see from the air. Now drag the slider to see the same view in 1999.';
+  if(won)award('spot',8,'You found a porphyry from its colour anomaly');}
 spot.addEventListener('click',function(e){if(spotDone)return;var r=spot.getBoundingClientRect();var x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
   var p=document.createElement('span');p.className='ping';p.style.left=(x*100)+'%';p.style.top=(y*100)+'%';spot.appendChild(p);
-  if(x>.1&&x<.92&&y>.3&&y<.64)reveal(true);else $('#spotSay').textContent=y<.3?'That’s the barren range behind. Look lower, where the colour changes.':'Those scrubby slopes are normal vegetation. Where do the plants disappear?';});
+  if(x>.1&&x<.92&&y>.3&&y<.64)reveal(true);else $('#spotSay').textContent=y<.3?'That is the barren mountain range at the back. Look lower, where the colour changes.':'Those slopes have normal plants. Where do the plants disappear?';});
 $('#spotShow').addEventListener('click',function(){reveal(false)});
 $('#wipeR').addEventListener('input',function(){var v=$('#wipeR').value;$('#wipeAfter').style.clipPath='inset(0 0 0 '+v+'%)';$('#wipeLine').style.left=v+'%';});
 /* drill it out */
@@ -782,20 +782,20 @@ function drawDrill(){var C=classify(),pa=css('--paper'),gh=css('--gold-hi'),gd=c
   if(!study)$('#dRes').textContent='not yet';
 }
 var EVENTS=[
- {txt:'<b>Metallurgy:</b> test work returns 88% copper recovery. Everything converts as planned.',ex:function(){return false}},
- {txt:'<b>Heritage:</b> a registered Aboriginal heritage site covers the two eastern columns. Those blocks are excluded from the reserve.',ex:function(x){return x>=10}},
- {txt:'<b>Geotechnical:</b> weak rock means a flatter pit wall, so the top row of blocks costs too much to reach and drops out.',ex:function(x,y){return y===0}},
- {txt:'<b>Price:</b> the copper price used in the study drops, so blocks estimated below 0.4% Cu fall below the new cut-off.',ex:function(x,y,c){return c.est<.4}}
+ {txt:'<b>Metallurgy:</b> tests show 88% copper recovery. Everything converts as planned.',ex:function(){return false}},
+ {txt:'<b>Heritage:</b> a registered Aboriginal heritage site covers the two eastern columns. These blocks are removed from the reserve.',ex:function(x){return x>=10}},
+ {txt:'<b>Geotechnical:</b> the rock is weak, so the pit wall must be less steep. Mining the top row of blocks now costs too much, so they are removed.',ex:function(x,y){return y===0}},
+ {txt:'<b>Price:</b> the copper price used in the study falls. Blocks estimated below 0.4% Cu are now below the new cut-off.',ex:function(x,y,c){return c.est<.4}}
 ];
 $('#drillStudy').addEventListener('click',function(){var C=classify();var ev=EVENTS[Math.floor(Math.random()*EVENTS.length)];var res=[],excl=[],prob=0,prov=0;
   C.forEach(function(c,i){var x=i%DW,y=Math.floor(i/DW);var cand=c.cat==='ind'||c.cat==='mea';var out=cand&&ev.ex(x,y,c);excl.push(out);
     var ok=cand&&!out;res.push(ok);if(ok){if(c.cat==='mea')prov+=2;else prob+=2;}});
   study={res:res,excl:excl};drawDrill();
   $('#dRes').textContent=(prov+prob)+' Mt';
-  $('#drillEvent').innerHTML=ev.txt+'<br>Result: <b>'+prov+' Mt proved</b> and <b>'+prob+' Mt probable</b>. Inferred blocks never convert, however good they look.'+(prov+prob<20?' Try again with more infill drilling.':'');
+  $('#drillEvent').innerHTML=ev.txt+'<br>Result: <b>'+prov+' Mt proved</b> and <b>'+prob+' Mt probable</b>. Inferred blocks never convert, even if they look good.'+(prov+prob<20?' Try again with more infill drilling.':'');
   if(prov+prob>=20)award('drill-reserve',15,'Reserve declared');
 });
-$('#drillReset').addEventListener('click',function(){dSeed+=1;newField(dSeed);holes=[];study=null;$('#drillEvent').textContent='New prospect, same rules: find it with spaced holes, then infill to build confidence.';drawDrill();});
+$('#drillReset').addEventListener('click',function(){dSeed+=1;newField(dSeed);holes=[];study=null;$('#drillEvent').textContent='New prospect, same rules: find the ore body with widely spaced holes, then drill infill holes to increase confidence.';drawDrill();});
 newField(dSeed);onTheme(drawDrill);drawDrill();
 /* thermometer probe */
 var pSvg=$('#probeSvg');var PY0=20,PY1=400,KM=7;
@@ -809,9 +809,9 @@ function kmY(k){return PY0+(PY1-PY0)*k/KM}
   el('line',{id:'pLine',x1:46,x2:160,y1:0,y2:0,stroke:'var(--ink)','stroke-width':2.5},pSvg);
   el('circle',{id:'pDot',cx:160,cy:0,r:9,fill:'var(--gold-hi)',stroke:'var(--ink)','stroke-width':2},pSvg);})();
 function tempAt(k){if(k<=1.5)return 50+k/1.5*150;if(k<=4.5)return 200+(k-1.5)/3*200;return Math.min(600,400+(k-4.5)/2.5*200);}
-var ZONES={epi:{n:'Epithermal',s:'Shallow and relatively cool: within about 1.5 km of the surface and 50 to 200 °C. Fluids here often boil or mix with groundwater. Expect galena, sphalerite and banded quartz or chalcedony; chalcopyrite is scarce because it generally needs more than about 200 °C. This is home to bonanza gold-silver veins.'},
- meso:{n:'Mesothermal',s:'Intermediate depth: 1.5 to 4.5 km and 200 to 400 °C. Chalcopyrite becomes common alongside pyrite, galena and sphalerite. Many orogenic gold veins in metamorphic belts formed in roughly these conditions.'},
- hypo:{n:'Hypothermal',s:'Deep and hot: beyond 4.5 km and 400 to 600 °C, getting close to the conditions where rocks begin to melt. Here hydrothermal processes start to grade into magmatic ones.'}};
+var ZONES={epi:{n:'Epithermal',s:'Shallow and fairly cool: within about 1.5 km of the surface and 50 to 200 °C. Fluids here often boil or mix with groundwater. Expect galena, sphalerite and banded quartz or chalcedony. Chalcopyrite is rare, because it usually needs more than about 200 °C. Bonanza gold-silver veins form here.'},
+ meso:{n:'Mesothermal',s:'Medium depth: 1.5 to 4.5 km and 200 to 400 °C. Chalcopyrite becomes common, together with pyrite, galena and sphalerite. Many orogenic gold veins in metamorphic belts formed in about these conditions.'},
+ hypo:{n:'Hypothermal',s:'Deep and hot: more than 4.5 km and 400 to 600 °C, close to the conditions where rocks start to melt. Here hydrothermal processes slowly change into magmatic processes.'}};
 var visited={},probeLive=false;
 function setProbe(k){k=Math.max(0,Math.min(KM,k));$('#probeR').value=k;var y=kmY(k);$('#pLine').setAttribute('y1',y);$('#pLine').setAttribute('y2',y);$('#pDot').setAttribute('cy',y);
   var z=k<1.5?'epi':k<4.5?'meso':'hypo';$('#pzName').textContent=ZONES[z].n;$('#pzSay').textContent=ZONES[z].s;
@@ -824,8 +824,8 @@ pSvg.addEventListener('pointermove',function(e){if(dragging)setProbe(ptK(e))});
 pSvg.addEventListener('pointerup',function(){dragging=false});
 setProbe(0.8);
 var ZQ=[{q:'Banded quartz-chalcedony vein with galena and sphalerite. No chalcopyrite anywhere.',a:'Epithermal'},
- {q:'Quartz vein packed with chalcopyrite and pyrite. Fluid inclusions give about 320 °C.',a:'Mesothermal'},
- {q:'Fluid inclusions homogenise at around 520 °C, and the vein sits several kilometres down.',a:'Hypothermal'}];
+ {q:'Quartz vein full of chalcopyrite and pyrite. Fluid inclusions give about 320 °C.',a:'Mesothermal'},
+ {q:'Fluid inclusions homogenise at about 520 °C, and the vein is several kilometres deep.',a:'Hypothermal'}];
 var zq=$('#zoneQuiz');
 ZQ.forEach(function(item,i){var d=document.createElement('div');d.className='mcard';d.innerHTML='<div>'+item.q+'</div><div class="opts"></div>';
   var o=d.querySelector('.opts');var tries=0;
@@ -834,15 +834,15 @@ ZQ.forEach(function(item,i){var d=document.createElement('div');d.className='mca
   zq.appendChild(d);});
 /* prospector */
 var TZ={
- sed:{x:119,y:140,n:'SEDEX Pb-Zn',t:'<b>SEDEX (sediment-hosted Pb-Zn)</b> forms in rifted continental margins and intracontinental rift basins. Basin brines are driven up growth faults and drop their metals in or just below the seafloor muds. So if you want SEDEX, don’t waste time in arc terrains.'},
- vms:{x:325,y:160,n:'VMS Cu-Zn',t:'<b>Volcanogenic massive sulphide (VMS)</b> forms on the seafloor, mostly in oceanic back-arc basins. Seawater is drawn down through hot volcanic rock, leaches metals, and vents back out as black smokers. It’s syngenetic. Less commonly it forms in continental back-arcs.'},
- por:{x:562,y:108,n:'porphyry Cu-Au',t:'<b>Porphyry Cu-Au-Mo</b> forms above subduction zones in continental and oceanic arcs. Wet, oxidised calc-alkaline magma stalls a few kilometres down and releases huge volumes of metal-bearing fluid into the fractured rock above. Alumbrera, and Cadia in the Macquarie Arc, are examples.'},
- epi:{x:578,y:72,n:'epithermal Au-Ag',t:'<b>Epithermal Au-Ag</b> sits at the very top of arc systems, within about 1.5 km of the surface, often above or beside a porphyry at depth. A useful rule: below a big high-sulphidation epithermal system, expect a porphyry somewhere underneath, though how far down is hard to predict.'},
- oro:{x:683,y:150,n:'orogenic gold',t:'<b>Orogenic gold</b> forms in deforming mountain belts: fore-arc and back-arc settings and craton margins. Metamorphic fluids released deep in the crust rise up crustal-scale shear zones and drop gold where conditions change. Kalgoorlie in the Yilgarn is the Australian type example.'}
+ sed:{x:119,y:140,n:'SEDEX Pb-Zn',t:'<b>SEDEX (sediment-hosted Pb-Zn)</b> forms in rifted continental margins and rift basins within continents. Basin brines move up growth faults and deposit their metals in or just below the seafloor muds. So if you want SEDEX, do not look in arc terrains.'},
+ vms:{x:325,y:160,n:'VMS Cu-Zn',t:'<b>Volcanogenic massive sulphide (VMS)</b> forms on the seafloor, mostly in oceanic back-arc basins. Seawater flows down through hot volcanic rock, dissolves metals, and comes back out through black smokers. It is syngenetic. Less often, it forms in continental back-arcs.'},
+ por:{x:562,y:108,n:'porphyry Cu-Au',t:'<b>Porphyry Cu-Au-Mo</b> forms above subduction zones in continental and oceanic arcs. Wet, oxidised calc-alkaline magma stops a few kilometres below the surface. It releases very large volumes of metal-bearing fluid into the broken rock above. Examples are Alumbrera, and Cadia in the Macquarie Arc.'},
+ epi:{x:578,y:72,n:'epithermal Au-Ag',t:'<b>Epithermal Au-Ag</b> forms at the very top of arc systems, within about 1.5 km of the surface. It is often above or next to a deep porphyry. A useful rule: below a large high-sulphidation epithermal system, expect a porphyry somewhere underneath. But it is hard to predict how deep it is.'},
+ oro:{x:683,y:150,n:'orogenic gold',t:'<b>Orogenic gold</b> forms in mountain belts that are being deformed: fore-arc and back-arc settings and craton margins. Metamorphic fluids released deep in the crust rise along very large shear zones. They deposit gold where conditions change. Kalgoorlie in the Yilgarn is the Australian type example.'}
 };
 var order=['sed','por','vms','oro','epi'],pi=0,ptries=0,pDone=false,tecSvg=$('#tecSvg'),marks=$('#tecMarks'),clicks=$('#tecClicks');
 var markEls={};Object.keys(TZ).forEach(function(k){var g=el('g',{},marks);el('circle',{cx:TZ[k].x,cy:TZ[k].y,r:11,fill:'var(--gold-hi)',stroke:'var(--ink)','stroke-width':2},g);g.style.display='none';markEls[k]=g;});
-function ask(){var k=order[pi];clicks.innerHTML='';ptries=0;$('#prosAsk').innerHTML='Target '+(pi+1)+' of 5: <b>'+TZ[k].n+'</b>. Click where you’d start exploring.';$('#prosSay').textContent='';$('#prosNext').hidden=true;}
+function ask(){var k=order[pi];clicks.innerHTML='';ptries=0;$('#prosAsk').innerHTML='Target '+(pi+1)+' of 5: <b>'+TZ[k].n+'</b>. Click where you would start exploring.';$('#prosSay').textContent='';$('#prosNext').hidden=true;}
 function score(){var n=order.filter(function(k){return S.done['pros-'+k]}).length;$('#prosScore').textContent=n+' / 5 first-try';}
 tecSvg.addEventListener('click',function(e){if(pDone||!$('#prosNext').hidden)return;var pt=tecSvg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;var p=pt.matrixTransform(tecSvg.getScreenCTM().inverse());
   var best=null,bd=1e9;Object.keys(TZ).forEach(function(k){var d=Math.hypot(TZ[k].x-p.x,TZ[k].y-p.y);if(d<bd){bd=d;best=k}});
@@ -850,8 +850,8 @@ tecSvg.addEventListener('click',function(e){if(pDone||!$('#prosNext').hidden)ret
   el('path',{d:'M'+(p.x-7)+' '+(p.y-7)+' l14 14 m0 -14 l-14 14',stroke:hit?'var(--mal)':'var(--hem)','stroke-width':3.5},clicks);
   if(hit){markEls[target].style.display='';$('#prosSay').innerHTML=(ptries===1?'Spot on. ':'Got there. ')+TZ[target].t;
     if(ptries===1)award('pros-'+target,8,'Good ground picked');score();
-    if(pi<order.length-1)$('#prosNext').hidden=false;else{pDone=true;$('#prosFree').hidden=false;$('#prosAsk').innerHTML='All five targets placed. Nice work.';}}
-  else{$('#prosSay').innerHTML=bd<60?'That spot suits <b>'+TZ[best].n+'</b>, not '+TZ[target].n+'. Think about what this deposit needs, then try again.':'Not much forms there. Think about heat, fluid and setting, then try again.';}
+    if(pi<order.length-1)$('#prosNext').hidden=false;else{pDone=true;$('#prosFree').hidden=false;$('#prosAsk').innerHTML='All five targets placed. Well done.';}}
+  else{$('#prosSay').innerHTML=bd<60?'That spot suits <b>'+TZ[best].n+'</b>, not '+TZ[target].n+'. Think about what this deposit needs, then try again.':'Very little forms there. Think about heat, fluid and setting, then try again.';}
 });
 $('#prosNext').addEventListener('click',function(){pi++;ask()});
 $('#prosFree').addEventListener('click',function(){$('#prosTabs').hidden=false;$('#prosFree').hidden=true;freeTab('por')});
@@ -861,7 +861,7 @@ function freeTab(k){$$('#tecTabs button').forEach(function(b){b.setAttribute('ar
 ask();score();
 /* magma sorter */
 var TOK=[['Chromite','tho'],['Platinum group elements','tho'],['Ni-Cu sulphide','tho'],['Ti-V magnetite','tho'],['Porphyry Cu-Au-Mo','calc'],['Skarn','calc'],['Epithermal Au-Ag','calc'],['Rare earth elements','alk'],['Diamonds','alk'],['Apatite-magnetite','alk']];
-var WHY={tho:'Mantle-like melts carry Cr, Ni, PGE, Ti and V, concentrated by crystals or sulphide liquid separating from the magma.',calc:'Wet, oxidised arc magmas release metal-rich fluids: porphyry, skarn and epithermal systems.',alk:'Small-degree, deep mantle melts concentrate incompatible elements (REE, P) and carry diamonds in kimberlite and lamproite.'};
+var WHY={tho:'Melts close to mantle composition carry Cr, Ni, PGE, Ti and V. These metals are concentrated when crystals or sulphide liquid separate from the magma.',calc:'Wet, oxidised arc magmas release fluids rich in metals: porphyry, skarn and epithermal systems.',alk:'Small amounts of deep mantle melt concentrate incompatible elements (REE, P), and kimberlite and lamproite carry diamonds.'};
 var selTok=null;
 function armBins(on){$$('.bin').forEach(function(b){b.classList.toggle('armed',on)})}
 function pick(li){if(selTok)selTok.classList.remove('sel');if(selTok===li){selTok=null;armBins(false);return;}selTok=li;li.classList.add('sel');li.classList.remove('right','wrong');armBins(true);}
@@ -877,7 +877,7 @@ $('#sortPool').addEventListener('click',function(){if(selTok&&selTok.closest('.b
 $('#sortCheck').addEventListener('click',function(){var left=$$('#sortPool .tok').length,wrong=0,miss={};
   $$('.bin').forEach(function(b){$$('.tok',b).forEach(function(t){var ok=t.dataset.ans===b.dataset.bin;t.classList.toggle('right',ok);t.classList.toggle('wrong',!ok);if(!ok){wrong++;miss[t.dataset.ans]=1}})});
   if(left){$('#sortSay').textContent=left+' still to place. Put every deposit in a bin first.';return;}
-  if(!wrong){$('#sortSay').textContent='All ten correct. The pattern to remember: where a magma comes from decides which metals it can carry.';$('#sortState').textContent='sorted';award('sorter',15,'Magmas sorted');}
+  if(!wrong){$('#sortSay').textContent='All ten correct. Remember: where a magma comes from controls which metals it can carry.';$('#sortState').textContent='sorted';award('sorter',15,'Magmas sorted');}
   else $('#sortSay').textContent=wrong+' in the wrong bin. Tap a red one to pick it up again. Clue: '+Object.keys(miss).map(function(k){return WHY[k]}).join(' ');});
 $('#sortReset').addEventListener('click',buildSorter);buildSorter();
 /* hydrothermal chain simulator */
@@ -894,13 +894,13 @@ function along(t){var dd=t*totLen;for(var s=0;s<segLen.length;s++){if(dd<=segLen
 function resizeChain(){var w=hc.clientWidth||720;var h=Math.round(w*HH/HW);var dpr=sizeCanvas(hc,w,h);hx.setTransform(dpr*w/HW,0,0,dpr*w/HW,0,0);drawChain();}
 function spawn(){parts.push({mode:L.pathway?'path':'diffuse',t:0,x:P[0][0]+(Math.random()-.5)*30,y:P[0][1]+(Math.random()-.5)*10,v:.0035+Math.random()*.003,j:(Math.random()-.5)*14,life:0,metal:L.transport});}
 function chainMsg(){var off=LINKS.filter(function(l){return !L[l[0]]}).map(function(l){return l[0]})[0];var m={
-  source:'No metal source: the magma is barren, or nothing has been leached from the rocks, so even perfect plumbing only moves water. No deposit.',
-  transport:'The fluid is the wrong chemistry (not hot, salty or acidic enough, or missing ligands like Cl⁻), so it can’t carry metal. Those grey drops reach the trap empty.',
-  pathway:'No structure: the fluid seeps out in every direction and the metal is spread thinly through a huge volume of rock. Every deposit needs plumbing.',
-  trap:'Nothing changes at the top: no cooling, boiling, mixing or reactive rock, so the fluid stays undersaturated and carries its metal straight out to the surface.',
-  seal:'No seal: the fluid leaks through the trap too quickly. Some metal drops out, but the deposit grows slowly and stays low grade.',
-  preserve:'The deposit formed, but uplift and erosion are now stripping it away from the top. Plenty of great deposits from the past are simply gone.'};
-  $('#chainSay').textContent=off?m[off]:'Every link is working. Metal-rich fluid rises from the magma, the fault focuses it, and it drops its metal in the trap under the seal. Now switch a link off.';}
+  source:'No metal source: the magma has no metal, or no metal has been dissolved from the rocks. Even perfect pathways only move water. No deposit.',
+  transport:'The fluid has the wrong chemistry. It is not hot, salty or acidic enough, or it has no ligands like Cl⁻. So it cannot carry metal. The grey drops reach the trap with no metal.',
+  pathway:'No structure: the fluid flows out in every direction, and the metal is spread thinly through a huge volume of rock. Every deposit needs a pathway.',
+  trap:'Nothing changes at the top: no cooling, boiling, mixing or reactive rock. So the fluid stays undersaturated and carries its metal all the way to the surface.',
+  seal:'No seal: the fluid leaks through the trap too quickly. Some metal is deposited, but the deposit grows slowly and stays low grade.',
+  preserve:'The deposit formed, but uplift and erosion are now removing it from the top. Many great deposits from the past have been completely eroded away.'};
+  $('#chainSay').textContent=off?m[off]:'Every link is working. Metal-rich fluid rises from the magma, the fault focuses it, and it deposits its metal in the trap under the seal. Now turn off one link.';}
 function stepChain(){
   if(L.source&&Math.random()<.9)spawn();
   for(var i=parts.length-1;i>=0;i--){var p=parts[i];p.life++;
@@ -940,10 +940,10 @@ chainMsg();
 /* watch it form: syngenetic, epigenetic, hypogene, supergene */
 var gc=$('#genCanvas'),gx=gc.getContext('2d'),GW=640,GH=260,gMode='syn',gStart=0,gRun=false,gSeen={},gCol={};
 var GTXT={
- syn:'<b>Syngenetic.</b> Metal-rich fluid vents onto the seafloor and sulphide settles out as a layer while sediment is still piling up. Then more sediment buries it. The ore is a layer in the stratigraphy, so you explore by tracing that layer.',
- epi:'<b>Epigenetic.</b> The rock pile is already solid. A fracture opens, hot fluid rises through it, and quartz and sulphide fill the crack. The vein cuts straight across bedding, so you explore by tracing the structure.',
- hyp:'<b>Hypogene.</b> Hot fluid released from a cooling magma rises up a fault and drops its metal where conditions change. The fluid moves upward, from deep and hot to shallow and cooler.',
- sup:'<b>Supergene.</b> Rainwater soaks down into a sulphide body near the surface. Oxygen and acid leach metal from the top, leaving a rusty leached cap (gossan). The water carries the metal down and it reprecipitates at the water table as a high-grade enrichment blanket.'
+ syn:'<b>Syngenetic.</b> Metal-rich fluid flows out onto the seafloor. Sulphide settles as a layer while sediment is still being deposited. Then more sediment covers it. The ore is a layer in the stratigraphy, so you explore by following that layer.',
+ epi:'<b>Epigenetic.</b> The rock layers are already solid. A fracture opens, hot fluid rises through it, and quartz and sulphide fill the crack. The vein cuts across bedding, so you explore by following the structure.',
+ hyp:'<b>Hypogene.</b> Hot fluid released from a cooling magma rises up a fault. It deposits its metal where conditions change. The fluid moves upward, from deep and hot to shallow and cooler.',
+ sup:'<b>Supergene.</b> Rainwater soaks down into a sulphide body near the surface. Oxygen and acid dissolve metal from the top and leave a rusty leached cap (gossan). The water carries the metal down, and the metal is deposited again at the water table as a high-grade enrichment blanket.'
 };
 function gColors(){gCol={sky:css('--sky'),sea:css('--sea'),crust:css('--crust'),paper:css('--paper'),ink:css('--ink'),muted:css('--muted'),gold:css('--gold-hi'),hem:css('--hem'),magma:css('--magma'),slate:css('--slate'),mantle:css('--mantle')};}
 gColors();onTheme(function(){gColors();drawGen(gRun?Math.min(1,(performance.now()-gStart)/5000):1,0)});
@@ -1007,7 +1007,7 @@ function drawGen(p,tau){var c=gx;c.clearRect(0,0,GW,GH);c.font='12px system-ui,s
 }
 function genTick(now){if(!gRun)return;var t=(now-gStart)/1000;drawGen(Math.min(1,t/5),t);if(t>14){gRun=false;return;}requestAnimationFrame(genTick);}
 function playGen(m){gMode=m;$$('#genTabs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.g===m?'true':'false')});$('#genSay').innerHTML=GTXT[m];
-  gSeen[m]=1;var n=Object.keys(gSeen).length;$('#genGoal').textContent=n<4?(n+' of 4 played'):'all four played';if(n===4)award('genesis',6,'Four ways to make ore, watched');
+  gSeen[m]=1;var n=Object.keys(gSeen).length;$('#genGoal').textContent=n<4?(n+' of 4 played'):'all four played';if(n===4)award('genesis',6,'Four ways to make ore');
   if(reduce){drawGen(1,0);return;}gStart=performance.now();if(!gRun){gRun=true;requestAnimationFrame(genTick);}}
 $$('#genTabs button').forEach(function(b){b.addEventListener('click',function(){playGen(b.dataset.g)})});
 $('#genReplay').addEventListener('click',function(){playGen(gMode)});
