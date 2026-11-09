@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 18 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L17.html">&larr; Lecture 17</a><a href="L19.html">Lecture 19 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 18 · T3 2026</div>
+  <h1>Critical elements and their deposits</h1>
+  <p class="lede">Some elements are in great demand now, or will be soon, but their supply is at risk. Governments call them critical. This lecture covers lithium (pegmatites, brines and clays), cobalt, a few other critical metals, and a new kind of deposit: critical elements in coal and in volcanic ash beds. Start with the lithium pegmatite, because it shows how a very large granite can make a very small, very rich ore body.</p>
+
+  <div class="lab" id="frLab">
+    <h4><span>Crystallise a granite, make a lithium pegmatite</span><b id="frTag">0% crystallised</b></h4>
+    <svg class="grid-svg" id="frSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section of an S-type granite magma chamber at depth. As the granite crystallises, the remaining melt becomes smaller and richer in lithium and water, then rises through fractures to form pegmatite pods higher in the crust"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="frF">Granite crystallised <b id="frFV"></b></label><input type="range" id="frF" min="0" max="95" step="1" value="0"></div></div>
+    <div class="readout"><div><small>Melt left</small><b id="frV">18 000 km³</b></div><div><small>Li in the melt</small><b id="frC">1 ×</b></div><div><small>Water in the melt</small><b id="frW">low</b></div></div>
+    <p class="say" id="frSay">This is a melted sedimentary protolith: an S-type granite magma. Drag the slider to crystallise it and watch the melt that is left.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">A teaching model of slides 22 to 25. The 18 000 km³ of melted protolith, the 2 km³ Tanco pegmatite, the 90% fractional crystallisation, the 15% water and the 9 to 6 km depth are real numbers from the slides. The lithium factor assumes lithium stays in the melt (concentration = 1 ÷ fraction of melt left). It is a simplification, and the shapes are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#what">What makes an element critical</a></li>
+      <li><a href="#lithium">Lithium and its three deposit types</a></li>
+      <li><a href="#peg">Lithium pegmatites and Greenbushes</a></li>
+      <li><a href="#lct">How LCT pegmatites form</a></li>
+      <li><a href="#brine">Lithium brines</a></li>
+      <li><a href="#clay">Lithium clays</a></li>
+      <li><a href="#cobalt">Cobalt</a></li>
+      <li><a href="#others">Niobium, tantalum and zirconium</a></li>
+      <li><a href="#coal">Critical elements in coal</a></li>
+      <li><a href="#ash">Hidden ore in volcanic ash beds</a></li>
+      <li><a href="#compare">Putting it together</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="what" data-log="Critical?"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>What makes an element critical</h2>
+  <p>Industry and governments say <b>critical minerals</b>. The lecturer says this is the wrong term, because quartz is a mineral but it is not critical. The correct idea is <b>critical elements</b>: elements that are in great demand now or soon, and that face major supply problems in the future. You will see "critical minerals" everywhere, so you need to know both terms. <span class="srcs">slide 2</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>The idea is political. It only became common in about the last five years. Every country has its own list, and its geology controls the list. In the USA, each government department has a different list (the Department of Energy list is very different from the Department of War list). China controls most of the world market for many of these elements, so other countries now search for their own supply. Australia has one of the shortest lists, because it has deposits of almost everything. For example, zinc, silver and tin are critical in the USA but not in Australia. <span class="srcs">slides 2 to 5</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L18/endangered.jpg" alt="Periodic table with elements coloured by supply risk: yellow for limited availability, orange for rising threat, red for serious threat in the next 100 years"><div class="cap">The American Chemical Society's "endangered elements": red means a serious threat to supply in the next 100 years. Slide 3</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L18/aus-list.jpg" alt="Periodic table with Australia's critical minerals highlighted in blue, including lithium, the rare earths, cobalt, gallium and germanium"><div class="cap">Australia's critical minerals (blue). Slide 5</div></div>
+  </div>
+  <p>Why do they matter? Batteries in phones and laptops, electric vehicles, green energy, carbon capture, hydrogen fuel cells (Pt), microchips (Ga), optical fibre (Ge), LCD screens (In, Sn) and strong magnets (REE). About 70% of all rare earth use is in magnets. One F-35 fighter jet contains 400 kg of rare earths, and one wind turbine contains about 20 kg. <span class="srcs">slides 4 and 6</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>Demand for lithium, cobalt and graphite is expected to rise by 500%. Copper demand is rising fast too, because an electric car contains 5 to 10 times more copper than a normal car. The slide says that by 2030, demand for copper will be more than all the copper ever mined. Most countries are now searching hard for critical element deposits, but mostly for conventional deposit types. The lecturer argues that we must also look at unconventional deposits, such as coal and coal-bearing rocks. <span class="srcs">slides 7 and 8</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="lab" id="cuLab">
+    <h4><span>Copper in one vehicle</span><b id="cuTag">tap each vehicle</b></h4>
+    <div class="chips" id="cuC" role="group" aria-label="Vehicle"></div>
+    <svg class="grid-svg" id="cuSvg" viewBox="0 0 640 170" role="img" aria-label="Bar chart of the copper in a conventional car, a hybrid and a fully electric vehicle"></svg>
+    <p class="say" id="cuSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Copper per vehicle from slide 7: conventional 10 to 20 kg, hybrid 40 to 60 kg, fully electric 90 to 100 kg. Bars show the range.</p>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="lithium" data-log="Lithium"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>Lithium and its three deposit types</h2>
+  <p>Lithium is element 3. Its main use now is in batteries for hybrid and electric vehicles. It is also used in ceramics, glass, greases, bauxite smelting, dehumidifiers and medicines. The world will need about 20 Mt of lithium over the next 80 years. Greenbushes in Western Australia, the largest mined deposit, has only about 0.85 Mt. The price rose sharply after 2015, and it has gone up and down since then. <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>Lithium is very light (atomic mass 6.94), so an electron microprobe cannot analyse it. The average crust has only 16 ppm, and less than 10% is recycled. It is the least dense metal (0.534 g/cm³), and it reacts strongly with water. Economic lithium is found in only three deposit types: <span class="srcs">slide 10</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Type</th><th>Share of resources</th><th>Share of production</th></tr>
+    <tr><td>Granitic lithium pegmatites</td><td>40%</td><td>60%</td></tr>
+    <tr><td>Lithium brines</td><td>60%</td><td>40%</td></tr>
+    <tr><td>Lithium-rich clays</td><td colspan="2">Potentially large; first mines in Nevada</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 10, lecture recording, 2 Nov</p>
+  <p>The list of big deposits has changed fast. In 2012, the largest resources were all pegmatites: Greenbushes (0.85 Mt Li), Jiajika in China, Bessemer City in the USA and Manono-Kitolo in the DRC. By 2020, four of the five largest pegmatite resources were in Australia: Greenbushes (0.94 Mt), Wodgina (0.83), Earl Grey (0.66) and Pilgangoora (0.63). By 2025, brines from China, Chile and Argentina were among the top producers. Brines were almost unknown in 2012. <span class="srcs">slides 11 to 13</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="lab" id="liLab">
+    <h4><span>Who produces lithium (2025)</span><b id="liTag"></b></h4>
+    <div class="chips" id="liC" role="group" aria-label="Measure"></div>
+    <svg class="grid-svg" id="liSvg" viewBox="0 0 640 300" role="img" aria-label="Bar chart of lithium production or reserves by country in 2025, coloured by deposit type"></svg>
+    <p class="say" id="liSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Production and reserves in tonnes, from slide 13. Gold bars are pegmatites, blue bars are brines.</p>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="peg" data-log="Pegmatites"><div class="wrap">
+  <div class="kicker">Deposit type <span class="depth">24 to 36 m</span></div>
+  <h2>Lithium pegmatites and Greenbushes</h2>
+  <p><button class="term" data-t="pegmatite">Pegmatites</button> made from granite are common, but lithium-rich pegmatites are rare. In them, lithium comes with other rare metals: beryllium, tantalum-niobium and tin. A typical grade is 0.6% Li₂O, which is about 0.28% lithium. Most are strongly zoned in rings: a feldspar-rich outer zone, an intermediate zone rich in rare metals (where the lithium is), and a quartz-rich core. Crystals can be several metres long, because the melt was rich in volatiles. <span class="srcs">slide 14</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L18/peg-zoning.jpg" alt="Diagrams of an idealised zoned lithium pegmatite: an elongate body with granite at the base and successive zones upward, and a close-up with a granitic border, alkali feldspar, spodumene and a quartz core">
+    <figcaption>An idealised zoned lithium pegmatite. The spodumene zone (green) sits inside the feldspar zones and outside the quartz core. <span class="srcs">slide 15</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Walk into the pegmatite</span><b id="pzTag">0 / 5</b></h4>
+    <div class="cards" id="pzBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="pzSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="pzReset">Shuffle again</button></div>
+  </div>
+  <p>The main ore mineral is <button class="term" data-t="spodumene">spodumene</button> (LiAlSi₂O₆), a lithium <b>pyroxene</b> with 6 to 9 wt% Li₂O. It has the same physical properties as other pyroxenes and is colourless to white. Petalite (LiAlSi₄O₁₀) and eucryptite (LiAlSiO₄) are other lithium silicates. The lithium micas <button class="term" data-t="lepidolite">lepidolite</button> (pink to purple) and zinnwaldite are common, but nobody extracts lithium from them yet, because it costs too much. Germany is working on a cheaper method, because Germany and the Czech Republic have a lot of these micas. A chlorite-group mineral, <button class="term" data-t="cookeite">cookeite</button>, also carries lithium, and it can be extracted economically. <span class="srcs">slides 16 and 17</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a lithium ore mineral</span><span class="srcs">slide 16</span></div>
+    <img loading="lazy" decoding="async" src="img/L18/spodumene.jpg" alt="A large pale tan to white crystal with long parallel striations along its length">
+    <p class="ask">Describe the colour, the lustre and the long lines on this crystal. Which mineral group does it belong to?</p>
+    <details data-obs="spodumene"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A large, pale cream to white crystal, longer than it is wide.</li><li>Many straight parallel lines and cleavage traces along its length, with a glassy to slightly pearly lustre.</li></ul>
+      <p class="so">This is <b>spodumene</b>, the lithium pyroxene. Like other pyroxenes it has a prismatic shape and two cleavages, but it is pale instead of dark green or black. Crystals like this can be metres long in a pegmatite. The lecturer passed a spodumene specimen from a Wisconsin pegmatite around the class. <span class="srcs">slide 16</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+    </div></details>
+  </div>
+  <p><b>Greenbushes</b>, south of Perth and close to Margaret River, is the largest lithium pegmatite and the largest working lithium mine on Earth. Mining began in 1888 for tin, in the pegmatite and in alluvial deposits eroded from it, and later for tantalum. Lithium production only began in 1985, when there was demand for it. The miners then went back over the old waste dumps for the spodumene. The pegmatite is 2.57 billion years old. It dips steeply (45° to the west) inside amphibolite and schist, and later dolerite dykes cut it. It is about 3 km long and 300 m wide. It is a group of dykes and pods that formed during deformation, mostly parallel to the foliation of the host rocks. The dolerite dykes dilute the ore, so the miners must allow for them. <span class="srcs">slides 18 and 19</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L18/greenbushes-geol.jpg" alt="Geological plan and cross-section of Greenbushes: many pegmatite bodies in amphibolite and schist, cut by a black dolerite dyke, with lithium zones marked">
+    <figcaption>Greenbushes: many pegmatite bodies, cut by a dolerite dyke (black). <span class="srcs">slide 19</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Greenbushes pit</span><span class="srcs">slide 20</span></div>
+    <img loading="lazy" decoding="async" src="img/L18/greenbushes-pit.jpg" alt="An open pit with benches cut into pale and dark grey rock, with folded pale bands in darker rock">
+    <p class="ask">The ore is in one of the two rock types you can see. Which one, and why is it easy to follow during mining?</p>
+    <details data-obs="gbpit"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Pale, almost white bands and lenses in dark grey to black rock.</li><li>Some of the pale bands are folded.</li></ul>
+      <p class="so">The pale rock is the lithium pegmatite, and the dark rock is the host amphibolite and schist. The strong colour contrast makes the ore easy to follow: the miners simply follow the white rock. <span class="srcs">slide 20</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Greenbushes ore</span><span class="srcs">slide 21</span></div>
+    <img loading="lazy" decoding="async" src="img/L18/greenbushes-ore.jpg" alt="A large pale grey and white coarse-grained rock held on a sample tray, with grey and white crystals">
+    <p class="ask">Describe the grain size and the colours. What is the lithium mineral in this ore?</p>
+    <details data-obs="gbore"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A very coarse-grained, pale rock with white and grey crystals several centimetres long.</li><li>No dark minerals.</li></ul>
+      <p class="so">This is typical Greenbushes ore: coarse pegmatite with pale <b>spodumene</b>, the lithium pyroxene, which is what the mine is after. <span class="srcs">slide 21</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Spodumene: pale, glassy, prismatic, with pyroxene cleavage; it can be in huge crystals.</li><li>Lepidolite: pink to lilac mica in flakes; it marks lithium pegmatites, but its lithium is not extracted yet.</li><li>Lithium cannot be seen or analysed with a microprobe, so you name the lithium minerals by their physical properties.</li></ul><span class="srcs">slides 10, 16 and 17</span> <span class="srcs">lecture recording, 2 Nov</span></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="lct" data-log="LCT pegmatites"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">36 to 48 m</span></div>
+  <h2>How LCT pegmatites form</h2>
+  <p>Pegmatites occur in every craton and orogenic belt, at all times in Earth history. There are two main types. <button class="term" data-t="LCT">LCT</button> pegmatites are rich in lithium, caesium and tantalum. <button class="term" data-t="NYF">NYF</button> pegmatites are rich in niobium, yttrium and fluorine. LCT pegmatites are also rich in boron, which suggests the source was once seawater. So they form when a sedimentary protolith melts, and they come from <button class="term" data-t="S-type granite">S-type granites</button>. These granites are emplaced at 8 to 12 km depth. Many LCT pegmatites are outside the granite, several kilometres or more away from it, higher in the crust at about 9 to 6 km. They crystallise at low temperature, about 500 to 400 °C. You usually find many pegmatite lenses and pods in one area: if you find one, you will find more. Some follow the foliation and some do not, so they are hard to explore for. <span class="srcs">slides 22 and 23</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L18/lct-depth.jpg" alt="Block diagram: granite at the base at 12 km and 800 degrees, with zones above it from pegmatite segregations through beryl, spodumene and petalite to Li-Cs-Ta and miarolitic pegmatites at 6 km"><div class="cap">LCT zoning above the parent granite: the most evolved pegmatites are furthest away and highest. Slide 23</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L18/angola.jpg" alt="Geological map of south-west Angola with many small red pegmatite bodies along several trends"><div class="cap">Hundreds of small LCT pegmatites (red) in south-west Angola. Slide 24</div></div>
+  </div>
+  <p>To make an LCT pegmatite, you need a very viscous melt with up to 15% dissolved water and a lot of metal. It comes from <b>90% fractional crystallisation</b> of the parent S-type granite, in a mostly closed system. Each step leaves a smaller volume of melt that is more enriched. The volumes are huge: for the 2 km³ Tanco pegmatite in Canada, about 18 000 km³ of protolith had to melt. <span class="srcs">slide 25</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>Pegmatites do <b>not</b> cool slowly. They can cool in days to weeks, to 200 to 250 °C below their liquidus, so they start to crystallise at about 450 to 500 °C. The crystals are giant because the melt is rich in volatiles, which makes space and helps fast crystal growth. It has nothing to do with slow cooling. Try the animation at the top of the page. <span class="srcs">slide 25</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>LCT = lithium, caesium, tantalum (+ boron), from S-type granites; NYF = niobium, yttrium, fluorine.</li><li>90% fractional crystallisation; up to 15% H₂O; Tanco 2 km³ from 18 000 km³ of melted protolith.</li><li>Pegmatites cool fast (days to weeks); giant crystals come from volatiles, not slow cooling.</li></ul><span class="srcs">slides 22 to 25</span></div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="brine" data-log="Brines"><div class="wrap">
+  <div class="kicker">Deposit type <span class="depth">48 to 60 m</span></div>
+  <h2>Lithium brines</h2>
+  <p>Lithium brines form only in dry, high basins: the Andes and Tibet. The lithium is dissolved, as a lithium chloride complex, in <b>hypersaline</b> water that is 1.7 to 24 times saltier than seawater. The dissolved salts are close to saturation. The brines also contain a lot of potassium, boron, chlorine and sulphate. So in a brine deposit you are really mining water. The big ones are Atacama in Chile (6.3 Mt Li at 0.18%), Uyuni in Bolivia (3.6 Mt) and Zhabuye in Tibet (1.5 Mt). Brine grades are lower than pegmatite grades. China has found many more brines in Tibet, and this changed the market. <span class="srcs">slides 26, 27 and 29</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L18/brine-map.jpg" alt="World map with red dots for lithium brines, clustered in the high Andes of South America and in Tibet, with an inset of the Andean salars">
+    <figcaption>Major lithium brines (red): the high Andes and the Tibetan Plateau. <span class="srcs">slide 27</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a brine operation</span><span class="srcs">slide 28</span></div>
+    <img loading="lazy" decoding="async" src="img/L18/brine-ponds.jpg" alt="Aerial view of large rectangular turquoise and white ponds on a flat salt plain with mountains behind">
+    <p class="ask">This is a lithium mine. Where is the ore, and what do the ponds do?</p>
+    <details data-obs="ponds"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Large flat ponds in different shades of blue and white, on a dry salt flat, with no pit or waste dump.</li></ul>
+      <p class="so">The ore is the <b>brine</b> pumped up from under the salt flat. The water evaporates in the ponds over time. Different salts come out at different stages of evaporation, so the lithium can be separated from the calcium and magnesium salts. The lecturer said it looks more like a fish farm than a mine. <span class="srcs">slide 28</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+    </div></details>
+  </div>
+  <p>There are three types. <b>Immature salars</b> are mostly clay, silt and sand, with only a little halite, ulexite and gypsum. They formed in wetter periods. Their sand beds have 20 to 25% porosity through about 300 m of sediment, so they hold a lot of brine. <b>Mature salars</b> are mostly porous halite, in lower and drier areas. Only the top 15 to 25 m of halite is porous. Deeper, halite cement makes massive beds 60 to 70 m thick, so brine is pumped from the edges and base of the salar. <b>Lithium-rich groundwaters</b> are the third type (Cornish tin mines 220 mg/L, deep oilfield water up to 700 mg/L, Iceland geothermal water 130 mg/L, Salton Sea brine 286 mg/L). <span class="srcs">slides 26, 30, 31 and 34</span></p>
+  <p>Nobody is sure where the lithium comes from: weathered volcanic ash, hot springs, older rocks, wind-blown dust or other basins are all possible. To explore, you need groundwater chemistry and flow models. You sample the water and measure it. Pumping out brine lowers the water table in a region that is already dry, so it causes environmental problems. <span class="srcs">slides 32 and 33</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="clay" data-log="Clays"><div class="wrap">
+  <div class="kicker">Deposit type <span class="depth">60 to 72 m</span></div>
+  <h2>Lithium clays</h2>
+  <p>Lithium clay deposits are linked to nearby rhyolitic volcanic rocks, mostly tuffs that altered to clay. There are three types: lithium in <b>hectorite</b> and other mixed-layer clays; lithium <b>adsorbed</b> onto the surface of clay minerals (ion clay deposits); and lithium in <b>jadarite</b> (LiNaSiB₃O₇(OH)). Jadarite is known from only one deposit, the Jadar Basin in Serbia. The lithium layers are 1 to 90 m thick, but they extend along strike for 20 km or more, because they are ash beds. Nobody is sure whether the lithium came from primary minerals rich in lithium, or from later supergene or hydrothermal alteration. <span class="srcs">slides 35 and 37</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>The biggest are Sonora in Mexico (0.85 Mt Li), Thacker Pass in Nevada (0.58 Mt) and Jadar (0.44 Mt at 0.84% Li). The slide says none is mined, but the lecturer said that Thacker Pass is now being mined. The USA has very few brines and pegmatites, so it wants its own supply. Ten years ago this deposit would not have been economic. Jadar could supply 10% of world demand and all of Europe's, but an Australian company was stopped from mining it after environmental protests. <span class="srcs">slides 36 and 37</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="lab">
+    <h4><span>Which lithium deposit?</span><b id="liCScore">0 / 6</b></h4>
+    <div class="cards" id="liCards"></div>
+  </div>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="cobalt" data-log="Cobalt"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">72 to 84 m</span></div>
+  <h2>Cobalt</h2>
+  <p>Cobalt (element 27) is a silvery blue, magnetic metal with a high melting point (1495 °C). The crust has only 26.6 ppm. It goes into rechargeable batteries (lithium-ion and Ni-Cd), turbines that must stay strong at high temperature, strong magnets and ceramics. In 2011 the Democratic Republic of Congo (DRC) produced 55% of the world's cobalt. In 2025 the DRC produced 230 000 t from sedimentary copper deposits, and Indonesia was second with 44 000 t, as a by-product of its nickel laterites. Chinese companies do most of the mining in both countries, and most of the cobalt goes to China. Canada is the only producer on the list whose cobalt comes from sulphide ore. <span class="srcs">slides 40 to 42</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>The main primary cobalt mineral is <button class="term" data-t="cobaltite">cobaltite</button> (CoAsS), the cobalt version of arsenopyrite (FeAsS): cobalt and arsenic behave in a similar way. In oxide zones, cobalt forms <button class="term" data-t="erythrite">erythrite</button>, Co₃(AsO₄)₂·8H₂O, or "cobalt bloom": soft, velvety, purple-pink needles. <span class="srcs">slide 43</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>Three deposit types supply the cobalt. About <b>60%</b> comes from stratiform sediment-hosted Cu-Co deposits of the Central African Copperbelt (DRC and Zambia). There, chalcopyrite, bornite, pyrite, chalcocite and carrollite form stratiform lenses in clastic and carbonate rocks. Salty, metal-rich fluids came in at low to moderate temperature, during diagenesis and early metamorphism. These are the same family as the Kupferschiefer deposits in <a href="L16.html#kupfer">Lecture 16</a>. About <b>23%</b> comes from magmatic Ni-Cu-(Co-PGE) deposits such as Sudbury, Voisey's Bay and Norilsk (<a href="L8.html">Lecture 8</a>). About <b>15%</b> comes from Ni-Co laterites such as Murrin Murrin in WA, Cuba, New Caledonia and Brazil. <span class="srcs">slides 44 and 45</span></p>
+  <div class="lab">
+    <h4><span>Where does this cobalt come from?</span><b id="coScore">0 / 4</b></h4>
+    <div class="cards" id="coCards"></div>
+  </div>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="others" data-log="Nb, Ta, Zr"><div class="wrap">
+  <div class="kicker">Quick look <span class="depth">84 to 92 m</span></div>
+  <h2>Niobium, tantalum and zirconium</h2>
+  <p>Each of these metals comes mainly from one deposit type. <b>Niobium</b> comes from <a href="L19.html">carbonatites</a>, mostly in Brazil (104 000 t in 2025, with 14 Mt of reserves), then Canada. <b>Tantalum</b> comes from pegmatites, mostly in the DRC, Rwanda and Nigeria. <b>Zirconium</b> comes from zircon in mineral sands, and Australia is the world's largest producer (400 t in 2025, with 55 000 t of reserves). There is no USA or European production in the top lists, which is why these elements are critical for them. <span class="srcs">slides 48 to 50</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Element</th><th>Main deposit type</th><th>Top producer (2025)</th></tr>
+    <tr><td>Niobium</td><td>Carbonatite</td><td>Brazil</td></tr>
+    <tr><td>Tantalum</td><td>Pegmatite</td><td>DRC</td></tr>
+    <tr><td>Zirconium</td><td>Mineral sands (zircon)</td><td>Australia</td></tr>
+    <tr><td>Lithium</td><td>Pegmatite, brine</td><td>Australia</td></tr>
+    <tr><td>Cobalt</td><td>Sediment-hosted Cu-Co</td><td>DRC</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 13, 42, 48 to 50</p>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="coal" data-log="Coal"><div class="wrap">
+  <div class="kicker">Unconventional <span class="depth">92 to 108 m</span></div>
+  <h2>Critical elements in coal</h2>
+  <p>The lecturer calls this "extracting the green from the black". <b>Metalliferous coals</b> contain critical elements at concentrations that could be economic: usually about 10 times more than average world coal. <b>Coal ash</b>, left after the coal is burnt, is richer again, because burning removes the organic matter and volatiles, and the elements stay behind in a smaller mass. Ash can match or beat the grade of conventional ore. Goldschmidt, the "father of geochemistry", noticed this in 1933, but nobody followed it up. Examples: uranium up to 0.4 wt%, Zr and Nb up to 0.2 wt%, and REY up to 1.5 wt%. <span class="srcs">slides 51 to 53</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <p>The grade may be lower than in a conventional deposit, but the size is far larger. These are layers in sedimentary basins. They are conformable with the rocks around them, keep the same thickness and grade, and can extend for hundreds of kilometres. So they hold very large total amounts of critical elements. <span class="srcs">slide 54</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="lab" id="ashLab">
+    <h4><span>Burn the coal, concentrate the metal</span><b id="ashTag"></b></h4>
+    <div class="chips" id="ashC" role="group" aria-label="Coalfield"></div>
+    <div class="ctl"><div><label for="ashY">Ash left after burning <b id="ashYV"></b></label><input type="range" id="ashY" min="5" max="80" step="1" value="20"></div></div>
+    <svg class="grid-svg" id="ashSvg" viewBox="0 0 640 170" role="img" aria-label="Bars comparing the element concentration in the coal and in its ash"></svg>
+    <p class="say" id="ashSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">The coal and ash values are real (Jungar Ga, slide 58; Jincheng Li, slide 60). The model assumes all the element stays in the ash, so ash = coal ÷ ash fraction. That is a simplification: real coal loses some elements when it burns.</p>
+  </div>
+  <p>Real examples, all from China and the Russian Far East:</p>
+  <ul>
+    <li><b>Germanium.</b> Coal at Wulantuga (Inner Mongolia), Lincang (Yunnan) and Spetzugli (Russian Far East) supplies more than 50% of the world's germanium. Germanium is used in infrared lenses, fibre optics, semiconductors and solar cells. The lecturer said every American fighter jet and guided missile uses infrared, but the USA produces no germanium. Germanium production figures are not published because it is so strategic. <span class="srcs">slides 56 and 57</span> <span class="srcs">lecture recording, 2 Nov</span></li>
+    <li><b>Gallium.</b> Jungar coalfield coal has up to 76 ppm Ga and its ash up to 178 ppm, and it produces 150 t of gallium a year. Gallium goes into solar cells, LEDs, lasers and electronics. China produces almost all of it, mostly as a by-product of aluminium processing. <span class="srcs">slides 58 and 59</span></li>
+    <li><b>Lithium.</b> Anthracite in the Jincheng coalfield (Qinshui Basin) has up to 1316 ppm Li in the coal and 2200 ppm in the ash, probably in cookeite veinlets in fractures. <span class="srcs">slide 60</span></li>
+    <li><b>REY, Nb, Ta, Zr, Hf and Ga</b> in alkaline volcanic ash beds next to the coal. The K1 coal ash at Huayingshan (Sichuan) has 1710 ppm REY, 3617 ppm Zr-Hf and 406 ppm Nb-Ta. <span class="srcs">slide 61</span></li>
+  </ul>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L18/cookeite.jpg" alt="Four electron microscope images with fine-grained veinlets labelled cookeite and pyrophyllite in coal, and a close-up of kaolinite and ammonium illite">
+    <figcaption>Cookeite (the lithium chlorite) and pyrophyllite filling fractures in Jincheng anthracite. <span class="srcs">slide 60</span> (Zhao et al. 2018)</figcaption>
+  </figure>
+  <p>The minerals show where the elements came from. <b>Primary</b> minerals came from volcanoes: sanidine, volcanic quartz, zircon, monazite, Ti-Nb-Ta oxides, apatite, rutile and xenotime. <b>Secondary</b> minerals grew later from hydrothermal fluids: REE carbonates and phosphates, anatase, brannerite and new tiny zircons. Organic acids in the peat swamp even moved elements that are normally immobile, such as titanium and zirconium. The lecturer's advice: a power station that burns coal should process its ash, because it is full of critical elements. <span class="srcs">slides 62 to 65</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="ash" data-log="Ash beds"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">108 to 124 m</span></div>
+  <h2>Hidden ore in volcanic ash beds</h2>
+  <p>The lowest Xuanwei Formation of eastern Yunnan, south-west China, hosts critical element ore with <b>no visible alteration</b> at all. It is linked to the <button class="term" data-t="ELIP">Emeishan Large Igneous Province</button>. It was found by accident. Coal geologists log their drill holes with natural gamma rays, because coal gives a strong gamma spike. These holes had strong gamma anomalies where there was no coal. <span class="srcs">slides 66 to 69</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="lab" id="gmLab">
+    <h4><span>Log the hole: find the anomalies with no coal</span><b id="gmTag">0 / 3 found</b></h4>
+    <svg class="grid-svg" id="gmSvg" viewBox="0 0 640 360" role="img" aria-label="A drill hole log with a natural gamma ray curve. Tap a gamma peak to see the rock at that depth"></svg>
+    <p class="say" id="gmSay">Each spike is a high gamma reading. Tap a spike to see the rock at that depth.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented log for teaching. The idea, gamma anomalies with no coal that turned out to be ore beds, is from slide 69 and the recording.</p>
+  </div>
+  <p>The anomalous beds have high Al₂O₃/TiO₂, very high anatase and clay, and low iron compared with the rocks around them. On average they contain Nb 458 ppm, Ta 31, Zr 2814, Hf 77, Th 79, U 19, and REY 1402 ppm (up to 5091 ppm, about half a weight percent). The concentrations and ratios stay almost the same over <b>hundreds of kilometres</b>. <span class="srcs">slides 69, 70 and 73</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the ore that looks like nothing</span><span class="srcs">slide 71</span></div>
+    <img loading="lazy" decoding="async" src="img/L18/tuff-core.jpg" alt="Two pieces of pale grey drill core with fine layering, each with a microscope view: one with yellow labelled volcanic shards, one with labelled plagioclase shards in a clay matrix, 200 micrometre scale">
+    <p class="ask">Look at the core first. Would you log it as ore? Then look at the microscope views. What do the angular grains tell you?</p>
+    <details data-obs="tuffcore"><summary>Show what I see</summary><div class="seen">
+      <ul><li>The core looks like ordinary pale grey claystone or siltstone, with fine layers and no veins, sulphides or alteration.</li><li>Under the microscope: sharp, angular, broken grains (volcanic shards and plagioclase shards) in a clay matrix.</li></ul>
+      <p class="so">In hand specimen you would never log this as ore. The shattered, angular crystal fragments show that it is a <b>tuff</b>: ash blown out of a volcano and laid down in the basin. These ash beds are the ore. The lecturer recognised them as volcanic from the thin sections. <span class="srcs">slide 71</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+    </div></details>
+  </div>
+  <p>The zircons tell the same story: shattered grains with fractures from sudden decompression, round grains that probably partly melted during the eruption, and tiny secondary zircons that grew later. Niobium is in altered ilmenite with anatase. The REE are in apatite, florencite and REE carbonates that form strongly zoned veins. <span class="srcs">slides 75 to 78</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L18/elip-model.jpg" alt="Cross-section model: the Emeishan plume below, alkaline magma with HFSE-bearing fluid rising, volcaniclastics thrown into the air and falling into a sedimentary basin with acidic rain and marine transgression">
+    <figcaption>The proposed model: a final eruption of the Emeishan province throws ash rich in critical elements into a nearby basin (Dai et al. 2018). <span class="srcs">slide 80</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Put the story in order</span><b id="stTag">0 / 6</b></h4>
+    <div class="cards" id="stBox" style="grid-template-columns:1fr"></div>
+    <p class="say" id="stSay"></p>
+    <div class="row"><button class="btn ghost" type="button" id="stReset">Shuffle again</button></div>
+  </div>
+  <p>Can the elements be extracted? A study of a similar tuff from southern China leached out 93% of the gallium and 86% of the REE with simple leaching, but less than 1% of the niobium. Niobium is very hard to leach. The lecturer's conclusion: these deposits should exist elsewhere in the world, but they are almost impossible to see, because there is no visible alteration. <span class="srcs">slides 82 and 83</span> <span class="srcs">lecture recording, 2 Nov</span></p>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="compare" data-log="Together"><div class="wrap">
+  <div class="kicker">Wrap-up <span class="depth">124 to 140 m</span></div>
+  <h2>Putting it together</h2>
+  <div class="lab">
+    <h4><span>Name the mineral</span><b id="idScore">0 / 4</b></h4>
+    <div class="cards" id="idCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>"Critical" is political: every country (and department) has its own list; Australia's is short.</li><li>Lithium: pegmatites (40% of resources, 60% of production), brines (60%, 40%), clays. Greenbushes is the largest pegmatite and mine.</li><li>Spodumene (Li pyroxene) is the ore; lepidolite and zinnwaldite are not processed yet; cookeite can be.</li><li>Cobalt: 60% from African Copperbelt Cu-Co, 23% magmatic Ni-Cu, 15% laterites. Cobaltite primary, erythrite in oxide zones.</li><li>Coal and ash beds: low grade, but huge, uniform and laterally extensive; no visible alteration.</li></ul><span class="srcs">slides 2 to 83</span></div>
+  <div class="lab">
+    <h4><span>Classify the deposit</span><b id="clScore">0 / 6</b></h4>
+    <div class="cards" id="clCards"></div>
+  </div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">140 to 145 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer each question out loud or on paper before you open it. If your answer was right, claim the ounces.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">145 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>These are terms that the lecture expects you to know, or only explains briefly. Tap a dotted word in the text to see its meaning.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 19 covers the rare earth elements, the most famous critical elements, and their carbonatite and ionic clay deposits. Compare the LCT pegmatites here with the granite-related tin and tungsten of Lecture 15: both come from evolved S-type granites.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 18 slides (Critical elements (minerals) and critical element deposits, 84 slides; photos and figures tagged by slide) and the Echo360 recording of 2 November 2026. The speaker notes in this deck belong to a different talk, so they were not used. Figures in the slides come from published sources (Dai et al., Zhao et al., London 2008, Bowell et al. 2020 and others) and are shown only as lecture material. The fractionation animation, the ashing model and the gamma log are teaching models.</p>
+  <p><a href="L17.html">&larr; Lecture 17</a> · <a href="L19.html">Lecture 19 &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know elements from minerals.'],[35,'Graduate geologist','You can spot spodumene.'],[100,'Project geologist','You can follow a pegmatite melt.'],[180,'Senior geologist','You can read a gamma log.'],[240,'Chief geologist','Governments ask you for their critical list.']];
+var G={
+ "critical element":"An element in great demand now or soon, with a risk to its future supply. Each country makes its own list. Industry calls them critical minerals.",
+ "pegmatite":"A very coarse-grained igneous rock, usually granitic, that crystallised from a melt rich in water and other volatiles.",
+ "LCT":"Lithium-caesium-tantalum pegmatite family. Also rich in boron. Forms from S-type granites.",
+ "NYF":"Niobium-yttrium-fluorine pegmatite family.",
+ "S-type granite":"A granite made by melting sedimentary rock.",
+ "fractional crystallisation":"Crystals form and separate from a melt, so the melt that is left becomes more and more enriched in the elements the crystals do not take.",
+ "liquidus":"The temperature above which a melt is completely liquid.",
+ "spodumene":"LiAlSi₂O₆, a pale lithium pyroxene with 6 to 9 wt% Li₂O. The main lithium ore mineral in pegmatites.",
+ "petalite":"LiAlSi₄O₁₀, a lithium silicate in pegmatites.",
+ "eucryptite":"LiAlSiO₄, a lithium silicate in pegmatites.",
+ "lepidolite":"A pink to lilac lithium mica. Common in lithium pegmatites, but its lithium is not extracted yet.",
+ "zinnwaldite":"An iron-bearing lithium mica. Not processed for lithium yet.",
+ "cookeite":"A lithium chlorite. Found in pegmatites and in coal; its lithium can be extracted economically.",
+ "Greenbushes":"The largest lithium pegmatite and lithium mine on Earth, in south-west Western Australia. Mined for tin from 1888, lithium from 1985.",
+ "brine":"Very salty water. Lithium brines are hypersaline, 1.7 to 24 times saltier than seawater.",
+ "salar":"A salt flat in a dry basin in the Andes. Immature salars are mostly clastic sediment; mature salars are mostly halite.",
+ "hectorite":"A lithium-bearing smectite clay.",
+ "jadarite":"LiNaSiB₃O₇(OH), a lithium borosilicate known only from the Jadar Basin, Serbia.",
+ "cobaltite":"CoAsS, the main primary cobalt mineral. The cobalt version of arsenopyrite.",
+ "erythrite":"Co₃(AsO₄)₂·8H₂O, purple-pink \"cobalt bloom\" in oxide zones.",
+ "carrollite":"A copper-cobalt sulphide in the African Copperbelt ores.",
+ "laterite":"A deeply weathered, iron-rich soil profile. Ni-Co laterites form on ultramafic rocks.",
+ "carbonatite":"An igneous rock made mostly of carbonate minerals. The main source of niobium (and many REE).",
+ "mineral sands":"Beach or dune sands with heavy minerals such as zircon, rutile and ilmenite.",
+ "metalliferous coal":"Coal with critical elements at concentrations that may be economic.",
+ "coal ash":"What is left after coal is burnt. Elements become more concentrated in it.",
+ "REY":"Rare earth elements plus yttrium.",
+ "tuff":"A rock made of volcanic ash.",
+ "ELIP":"Emeishan Large Igneous Province, south-west China, about 260 million years old.",
+ "natural gamma log":"A drill hole log of the natural radioactivity of the rocks. Coal and many ore beds give spikes.",
+ "anatase":"A form of TiO₂. Common in the critical element ash beds.",
+ "sanidine":"A high-temperature potassium feldspar found in volcanic rocks."
+};
+var CP={
+ cp1:{q:'Why does the lecturer prefer "critical elements" to "critical minerals"?',o:['Minerals are cheaper','The critical things are elements; a mineral such as quartz is not critical','Elements are easier to mine'],a:1,e:'The industry term is wrong, but you will see it everywhere.'},
+ cp2:{q:'Which lithium deposit type supplies most of today\'s production?',o:['Brines','Pegmatites','Clays'],a:1,e:'Pegmatites: 40% of resources but 60% of production. Brines are the reverse.'},
+ cp3:{q:'What is spodumene?',o:['A lithium mica','A lithium pyroxene, the main lithium ore mineral','A cobalt sulphide'],a:1,e:'LiAlSi₂O₆, pale, with 6 to 9 wt% Li₂O.'},
+ cp4:{q:'Why do pegmatites have giant crystals?',o:['They cool for millions of years','Their melts are rich in volatiles, which make space and speed up crystal growth','They form at the surface'],a:1,e:'Pegmatites can cool in days to weeks.'},
+ cp5:{q:'Where do lithium brines form?',o:['Wet tropical coasts','Dry, high basins such as the Andes and Tibet','Deep ocean floors'],a:1,e:'Hypersaline water in salars.'},
+ cp6:{q:'Which deposit is the only known source of jadarite?',o:['Greenbushes','Jadar, Serbia','Thacker Pass, Nevada'],a:1,e:'It could supply 10% of world lithium demand.'},
+ cp7:{q:'Where does most of the world\'s cobalt come from?',o:['Ni-Co laterites','Stratiform sediment-hosted Cu-Co deposits of the African Copperbelt','Pegmatites'],a:1,e:'About 60%. Magmatic Ni-Cu gives 23% and laterites 15%.'},
+ cp8:{q:'Which country is the top zirconium producer, and from what?',o:['Brazil, carbonatites','Australia, mineral sands','DRC, pegmatites'],a:1,e:'Zircon in mineral sands.'},
+ cp9:{q:'Why is coal ash richer in critical elements than the coal?',o:['Burning adds metals','Burning removes organic matter and volatiles, so the elements are left in a smaller mass','Ash is mixed with ore'],a:1,e:'Ash can match the grade of conventional ore.'},
+ cp10:{q:'How were the Xuanwei ore beds found?',o:['By their bright colours','By gamma ray anomalies in drill holes where there was no coal','By visible alteration haloes'],a:1,e:'They look like ordinary claystone and siltstone.'},
+ cp11:{q:'Thin, laterally extensive layers with uniform REY grades and no alteration, next to coal. What are they?',o:['LCT pegmatites','Volcanic ash (tuff) beds','Lithium brines'],a:1,e:'Unconventional sediment-hosted critical element ore.'}
+};
+var ST=[
+ ['Define a critical element and explain why the lists differ between countries.','Recall','An element in great demand now or soon, with major future supply risks. The lists are geopolitical: each country\'s geology controls what it lacks, and even different government departments have different lists. Australia\'s list is short because it has deposits of almost everything.'],
+ ['Name the three lithium deposit types and their shares of resources and production.','Recall','Granitic pegmatites (40% of resources, 60% of production), brines (60%, 40%), and clays (potentially significant; first mines now in Nevada).'],
+ ['Describe the zoning and minerals of a lithium pegmatite.','Recall','Feldspar-rich outer zones, an intermediate zone rich in rare metals with spodumene (main ore, 6 to 9 wt% Li₂O), petalite, eucryptite, lepidolite and zinnwaldite, and a quartz core. Grades are about 0.6% Li₂O. Be, Ta-Nb and Sn come with the lithium.'],
+ ['Describe the geology of Greenbushes.','Apply','A 2.57 Ga pegmatite, 3 km long and 300 m wide, dipping 45° west in amphibolite and schist, cut by dolerite dykes that dilute the ore. Many dykes and pods parallel to the foliation. Mined for tin from 1888, then tantalum, and lithium from 1985.'],
+ ['Explain how an LCT pegmatite forms.','Apply','A sedimentary protolith melts to an S-type granite. About 90% fractional crystallisation in a mostly closed system leaves a small, viscous melt with up to 15% water, rich in Li, Cs, Ta and B. It moves away from the granite to 9 to 6 km depth and crystallises fast (days to weeks) at about 500 to 400 °C. Volatiles give giant crystals. Tanco: 2 km³ from 18 000 km³ of melt.'],
+ ['Compare immature and mature salars.','Apply','Immature: mostly clastic clay, silt and sand with little evaporite; sand beds with 20 to 25% porosity through ~300 m hold brine. Mature: mostly halite; only the top 15 to 25 m is porous, deeper halite is cemented, so brine comes from the edges and base.'],
+ ['List the three cobalt deposit types with their shares, and the two cobalt minerals.','Recall','Stratiform sediment-hosted Cu-Co of the African Copperbelt (60%), magmatic Ni-Cu-(Co-PGE) (23%), Ni-Co laterites (15%). Cobaltite CoAsS (primary) and erythrite (oxide zone, pink cobalt bloom).'],
+ ['Why could critical elements in coal and ash beds be more important than conventional deposits?','Think','Their grades are moderate, but they are layers that extend for hundreds of kilometres with uniform thickness and grade, so the total amount is huge. Ashing concentrates the elements further, and the ash is a by-product of power generation.'],
+ ['Explain the formation model for the Xuanwei ash beds.','Synthesise','Syenites enriched in critical elements crystallise in the Emeishan province; a final explosive eruption blasts through them; ash spreads and falls as distal tuff in basins; some is reworked; burial and diagenesis; later hydrothermal fluids move some elements, especially the LREE. No visible alteration, so they are found with gamma logs and geochemistry.']
+];
+GEO.start({key:'geos3141-L18-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- fractionation animation ---------- */
+var frS=$('#frSvg'),frDone=false;
+function frDraw(){var F=+$('#frF').value/100,left=1-F,s=frS;s.innerHTML='';
+  el('rect',{x:0,y:0,width:640,height:300,fill:'#8F8576'},s);
+  for(var d=0;d<4;d++){el('line',{x1:0,x2:640,y1:40+d*60,y2:40+d*60,stroke:'#7A7064','stroke-dasharray':'4 6'},s);}
+  txt(s,8,20,'6 km',{'font-size':12,fill:'#F4F1EA'});txt(s,8,140,'9 km',{'font-size':12,fill:'#F4F1EA'});txt(s,8,286,'12 km',{'font-size':12,fill:'#F4F1EA'});
+  var cx=320,cy=250,rx=230,ry=70;
+  el('ellipse',{cx:cx,cy:cy,rx:rx,ry:ry,fill:'#D9C3A5',stroke:'#5C4A36'},s);
+  var mr=Math.sqrt(left);el('ellipse',{cx:cx,cy:cy-6*(1-mr),rx:rx*mr*.96,ry:ry*mr*.92,fill:F>=.9?'#C8553A':'#E59A55',opacity:.92},s);
+  txt(s,cx-80,cy+ry-10,'S-type granite: crystals',{'font-size':12,fill:'#3E2E1E'});
+  if(F>=.9){[[200,70],[260,40],[330,90],[400,55],[470,80]].forEach(function(p,i){el('line',{x1:cx,y1:cy-ry*mr,x2:p[0],y2:p[1]+10,stroke:'#C8553A','stroke-width':2,'stroke-dasharray':'3 4'},s);el('ellipse',{cx:p[0],cy:p[1],rx:18,ry:7,fill:'#F2E9DC',stroke:'#C8553A','stroke-width':2},s);});
+    txt(s,420,30,'LCT pegmatite pods',{'font-size':12,fill:'#FFF','font-weight':600});}
+  var vol=Math.round(18000*left);
+  $('#frFV').textContent=Math.round(F*100)+'%';$('#frTag').textContent=Math.round(F*100)+'% crystallised';
+  $('#frV').textContent=(vol>=1000?vol.toLocaleString('en-AU'):vol)+' km³';$('#frC').textContent=(1/left).toFixed(1)+' ×';
+  $('#frW').textContent=F<.5?'low':F<.85?'rising':'up to 15%';
+  $('#frSay').innerHTML=F<.5?'Feldspar and quartz crystallise. They do not take lithium, so the lithium stays in the melt that is left.':F<.9?'The melt is shrinking fast and getting richer in lithium, caesium, tantalum, boron and water. It is viscous and full of volatiles.':'<b>90% crystallised.</b> The small, water-rich melt that is left escapes through fractures, kilometres away and higher in the crust (9 to 6 km). It crystallises in days to weeks as LCT pegmatite pods. From 18 000 km³ of melt, the Tanco pegmatite is only 2 km³.';
+  if(F>=.9&&!frDone){frDone=true;COMBO.hit();award('fr',COMBO.pts(5),'Made an LCT pegmatite'+COMBO.tag());FX.burst($('#frTag'));}}
+$('#frF').addEventListener('input',frDraw);frDraw();
+
+/* ---------- copper per vehicle ---------- */
+var CU=[['Conventional car',10,20],['Hybrid',40,60],['Fully electric',90,100]],cuSeen={},cuK=-1;
+CU.forEach(function(v,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=v[0];b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){cuK=i;cuSeen[i]=1;$$('#cuC .chip').forEach(function(c,j){c.setAttribute('aria-pressed',j===i?'true':'false');});cuDraw();SND.play('flip');});$('#cuC').appendChild(b);});
+function cuDraw(){var s=$('#cuSvg');s.innerHTML='';CU.forEach(function(v,i){if(!cuSeen[i])return;var y=10+i*52;txt(s,8,y+24,v[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:170,y:y+8,width:v[1]*4.2,height:24,rx:3,fill:'var(--slate)'},s);el('rect',{x:170+v[1]*4.2,y:y+8,width:(v[2]-v[1])*4.2,height:24,rx:3,fill:'var(--gold)'},s);txt(s,176+v[2]*4.2,y+25,v[1]+' to '+v[2]+' kg',{'font-size':12,fill:'var(--ink)'});});
+  $('#cuSay').textContent=cuK<0?'Tap a vehicle.':cuK===2?'A fully electric vehicle carries 90 to 100 kg of copper, 5 to 10 times more than a normal car. A truck can carry double that.':cuK===1?'A hybrid carries 40 to 60 kg.':'A normal car carries 10 to 20 kg of copper.';
+  $('#cuTag').textContent=Object.keys(cuSeen).length+' / 3';
+  if(Object.keys(cuSeen).length===3)award('cu',3,'Compared copper per vehicle');}
+cuDraw();
+
+/* ---------- lithium producers ---------- */
+var LI=[['Australia',92000,8400000,'p'],['China',62000,4600000,'b'],['Chile',56000,9200000,'b'],['Zimbabwe',28000,500000,'p'],['Argentina',23000,4400000,'b'],['Brazil',12000,1600000,'p'],['Canada',5600,9200000,'p']],liK=1,liSeen={};
+[['Production',1],['Reserves',2]].forEach(function(m){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed',m[1]===liK);b.addEventListener('click',function(){liK=m[1];$$('#liC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');liDraw();});$('#liC').appendChild(b);});
+function liDraw(){var s=$('#liSvg');s.innerHTML='';var d=LI.slice().sort(function(a,b){return b[liK]-a[liK];}),max=d[0][liK];
+  d.forEach(function(r,i){var y=4+i*41,w=r[liK]/max*330;txt(s,8,y+25,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:120,y:y+8,width:Math.max(3,w),height:24,rx:3,fill:r[3]==='p'?'var(--gold)':'#4C8DB5'},s);txt(s,126+w,y+25,r[liK].toLocaleString('en-AU')+' t',{'font-size':12,fill:'var(--ink)'});});
+  $('#liTag').textContent=liK===1?'production 2025':'reserves';
+  $('#liSay').textContent=liK===1?'Australia leads production, all from pegmatites (mostly Greenbushes). China is second, from brines.':'Chile and Canada have the largest reserves. Brine countries hold large reserves even when they produce less.';
+  liSeen[liK]=1;if(Object.keys(liSeen).length===2)award('li',3,'Compared lithium producers');}
+liDraw();
+
+/* ---------- ordering games ---------- */
+function orderGame(box,tag,say,reset,items,id,pts,done,hint,startMsg){var next=0;
+  function build(){var b=$(box);b.innerHTML='';next=0;$(tag).textContent='0 / '+items.length;$(say).textContent=startMsg;
+    var order=items.map(function(x,i){return i;});for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;}
+    order.forEach(function(i){var c=document.createElement('button');c.type='button';c.className='btn ghost';c.style.cssText='text-align:left;white-space:normal;justify-content:flex-start';c.textContent=items[i];
+      c.addEventListener('click',function(){if(c.disabled)return;if(i===next){next++;c.disabled=true;c.textContent=next+'. '+items[i];c.style.borderColor='var(--mal)';SND.play('ok');$(tag).textContent=next+' / '+items.length;
+        if(next===items.length){COMBO.hit();award(id,COMBO.pts(pts),'Put it in order'+COMBO.tag());FX.burst(c);$(say).innerHTML=done;}}
+        else{FX.shake(c);COMBO.miss();$(say).textContent=hint;}});b.appendChild(c);});}
+  $(reset).addEventListener('click',build);build();}
+orderGame('#pzBox','#pzTag','#pzSay','#pzReset',['Granitic border (fine-grained wall zone)','Graphic quartz-feldspar zone','Blocky alkali feldspar (microcline) zone','Spodumene zone (the lithium ore)','Quartz core'],'pz',4,'From the fine-grained margin inward: feldspar zones, then the intermediate zone with the rare metals and spodumene, then the quartz core. <span class="srcs">slides 14 and 15</span>','Not yet. Start at the edge that touches the host rock.','Tap the zones from the outer edge to the centre.');
+orderGame('#stBox','#stTag','#stSay','#stReset',['Syenites rich in critical elements crystallise in the Emeishan province','A final explosive eruption blasts through the syenites','The ash cloud spreads the shattered crystals','Ash falls into a distant basin as tuff beds; some is reworked','Burial, compaction and diagenesis','Later hydrothermal fluids move some elements, especially the LREE'],'st',5,'This is the model on slides 79 to 81. The shattered and round zircons record the eruption, and the secondary REE minerals record the last stage.','Not yet. What had to exist before anything erupted?','Tap the stages from first to last.');
+
+/* ---------- lithium deposit cards ---------- */
+var LIO=['Pegmatite','Brine','Clay'];
+mcCards($('#liCards'),[
+ {lbl:'Deposit',q:'Coarse spodumene in a zoned dyke 300 m wide in amphibolite, mined first for tin',o:LIO,a:0,e:'Greenbushes, a pegmatite.'},
+ {lbl:'Deposit',q:'Water pumped from under a halite salt flat at 4000 m in the Andes, at 0.18% Li',o:LIO,a:1,e:'Atacama, a brine.'},
+ {lbl:'Deposit',q:'Altered rhyolitic tuff layers, 1 to 90 m thick, traced for 20 km in Nevada',o:LIO,a:2,e:'Thacker Pass, a clay deposit.'},
+ {lbl:'Deposit',q:'The only known jadarite deposit',o:LIO,a:2,e:'Jadar, Serbia: lithium borosilicate in a clay basin.'},
+ {lbl:'Deposit',q:'Lepidolite, beryl and tantalum oxides around a quartz core',o:LIO,a:0,e:'An LCT pegmatite.'},
+ {lbl:'Deposit',q:'Exploration means sampling groundwater and building flow models',o:LIO,a:1,e:'In a brine, you are mining water.'}
+],'lc',2,function(r,n){$('#liCScore').textContent=r+' / '+n;});
+
+/* ---------- cobalt cards ---------- */
+var COO=['Sediment-hosted Cu-Co','Magmatic Ni-Cu-(Co-PGE)','Ni-Co laterite'];
+mcCards($('#coCards'),[
+ {lbl:'Source',q:'Carrollite and chalcopyrite in stratiform lenses in the Democratic Republic of Congo',o:COO,a:0,e:'The Central African Copperbelt, about 60% of world cobalt.'},
+ {lbl:'Source',q:'Cobalt as a by-product of weathered ultramafic rock in Indonesia',o:COO,a:2,e:'Nickel laterites made Indonesia the second-largest producer.'},
+ {lbl:'Source',q:'Massive pyrrhotite-pentlandite ore at Voisey\'s Bay, Canada',o:COO,a:1,e:'Magmatic sulphide, about 23% of world cobalt.'},
+ {lbl:'Source',q:'Murrin Murrin, Western Australia',o:COO,a:2,e:'A Ni-Co laterite.'}
+],'co',2,function(r,n){$('#coScore').textContent=r+' / '+n;});
+
+/* ---------- name the mineral (photo cards) ---------- */
+var IDO=['Spodumene','Lepidolite','Erythrite','Cobaltite'];
+mcCards($('#idCards'),[
+ {img:'img/L18/spodumene.jpg',alt:'A large pale tan crystal with long parallel lines',lbl:'Specimen',q:'A pale, glassy, prismatic crystal from a lithium pegmatite',o:IDO,a:0,e:'Spodumene, the lithium pyroxene and main lithium ore mineral. <span class="srcs">slide 16</span>'},
+ {img:'img/L18/lepidolite.jpg',alt:'A purple to lilac aggregate of small shiny flakes',lbl:'Specimen',q:'Pink to lilac flakes from a pegmatite',o:IDO,a:1,e:'Lepidolite, the lithium mica. Its lithium is not processed yet. <span class="srcs">slide 17</span>'},
+ {img:'img/L18/erythrite.jpg',alt:'A rock covered in bright magenta to pink fine crystals',lbl:'Specimen',q:'Bright pink coating in an oxide zone',o:IDO,a:2,e:'Erythrite, "cobalt bloom". <span class="srcs">slide 43</span>'},
+ {img:'img/L18/cobaltite.jpg',alt:'A silvery grey, finely crystalline metallic rock',lbl:'Specimen',q:'A silvery grey metallic sulphide, the cobalt version of arsenopyrite',o:IDO,a:3,e:'Cobaltite, CoAsS. <span class="srcs">slide 43</span>'}
+],'id',2,function(r,n){$('#idScore').textContent=r+' / '+n;});
+
+/* ---------- classify cards ---------- */
+var CLO=['LCT pegmatite','Lithium brine','Cu-Co Copperbelt','Coal or ash bed'];
+mcCards($('#clCards'),[
+ {lbl:'Deposit',q:'A 2 km³ body with caesium, tantalum and spodumene, several km from an S-type granite',o:CLO,a:0,e:'Like Tanco, Canada.'},
+ {lbl:'Deposit',q:'Hypersaline water 20 times saltier than seawater in a high Tibetan basin',o:CLO,a:1,e:'Like Zhabuye.'},
+ {lbl:'Deposit',q:'Chalcocite, bornite and carrollite lenses in Zambian siltstone',o:CLO,a:2,e:'Stratiform sediment-hosted Cu-Co.'},
+ {lbl:'Deposit',q:'Germanium in lignite at Wulantuga',o:CLO,a:3,e:'More than 50% of world germanium comes from coal.'},
+ {lbl:'Deposit',q:'A claystone with 1400 ppm REY and shattered zircons, traced for hundreds of km',o:CLO,a:3,e:'A Xuanwei-type ash bed.'},
+ {lbl:'Deposit',q:'Ponds of evaporating water on a salt flat in Chile',o:CLO,a:1,e:'A brine operation.'}
+],'cl',2,function(r,n){$('#clScore').textContent=r+' / '+n;});
+
+/* ---------- ashing concentrator ---------- */
+var ASH=[['Jungar Ga',76,178,'ppm Ga'],['Jincheng Li',1316,2200,'ppm Li']],ashK=0,ashHit={};
+ASH.forEach(function(a,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=a[0];b.setAttribute('aria-pressed',i===0);b.addEventListener('click',function(){ashK=i;$$('#ashC .chip').forEach(function(c,j){c.setAttribute('aria-pressed',j===i?'true':'false');});ashDraw();});$('#ashC').appendChild(b);});
+function ashDraw(){var a=ASH[ashK],y=+$('#ashY').value/100,model=a[1]/y,s=$('#ashSvg'),max=Math.max(model,a[2])*1.1,sc=430/max;s.innerHTML='';
+  [['Coal',a[1],'var(--slate)'],['Ash (model)',model,'var(--gold)'],['Ash (real)',a[2],'var(--mal)']].forEach(function(r,i){var yy=8+i*52;txt(s,8,yy+24,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:120,y:yy+8,width:Math.max(3,r[1]*sc),height:24,rx:3,fill:r[2]},s);txt(s,126+r[1]*sc,yy+25,Math.round(r[1])+' '+a[3],{'font-size':12,fill:'var(--ink)'});});
+  $('#ashYV').textContent=Math.round(y*100)+'%';$('#ashTag').textContent=a[0];
+  var hit=Math.abs(model-a[2])/a[2]<.06;
+  $('#ashSay').innerHTML=hit?'<b>Match.</b> With about '+Math.round(y*100)+'% ash, the model gives the real ash value. Less ash means a stronger concentration.':'Burning removes the organic matter. Move the slider until the model ash value matches the real one.';
+  if(hit&&!ashHit[ashK]){ashHit[ashK]=1;COMBO.hit();award('ash'+ashK,COMBO.pts(3),'Matched the ash grade'+COMBO.tag());FX.burst($('#ashTag'));}}
+$('#ashY').addEventListener('input',ashDraw);ashDraw();
+
+/* ---------- gamma log game ---------- */
+var GM=[[40,'coal','Coal seam: black, organic-rich. A normal gamma spike.'],[95,'tuff','No coal here. Pale grey claystone, but it is a tuff with high REY, Nb and Zr.'],[150,'coal','Coal seam.'],[205,'tuff','No coal. A thin pale bed with shattered zircons: an ore bed.'],[255,'coal','Coal seam.'],[300,'tuff','No coal. Another ash bed with high gamma from Th and U.']],gmF={},gmN=0;
+function gmDraw(){var s=$('#gmSvg');s.innerHTML='';el('rect',{x:0,y:0,width:640,height:360,fill:'var(--bg)'},s);
+  el('rect',{x:60,y:10,width:120,height:340,fill:'#B9B0A2'},s);txt(s,60,8,'Core',{'font-size':11,fill:'var(--muted)'});
+  for(var d=0;d<=6;d++){txt(s,8,14+d*56,(d*50)+' m',{'font-size':11,fill:'var(--muted)'});}
+  GM.forEach(function(g,i){if(gmF[i])el('rect',{x:60,y:g[0]-6,width:120,height:12,fill:g[1]==='coal'?'#1E1A17':'#EDE6D6',stroke:g[1]==='tuff'?'#C8553A':'none','stroke-width':2},s);});
+  var p='M220 10';for(var y=10;y<=350;y+=2){var v=40;GM.forEach(function(g){v+=110*Math.exp(-Math.pow((y-g[0])/7,2));});v+=8*Math.sin(y*.7);p+=' L'+(220+v*2.4)+' '+y;}
+  el('path',{d:p,fill:'none',stroke:'var(--gold)','stroke-width':2},s);txt(s,230,8,'natural gamma →',{'font-size':11,fill:'var(--muted)'});
+  GM.forEach(function(g,i){var c=el('circle',{cx:220+150*2.4-20,cy:g[0],r:16,fill:gmF[i]?(g[1]==='tuff'?'var(--hem)':'var(--slate)'):'transparent',stroke:'var(--gold)','stroke-width':gmF[i]?0:2,style:'cursor:pointer'},s);
+    c.addEventListener('click',function(){if(gmF[i])return;gmF[i]=1;if(g[1]==='tuff'){gmN++;SND.play('coin');FX.burst($('#gmTag'));}else SND.play('flip');$('#gmSay').textContent=g[2];$('#gmTag').textContent=gmN+' / 3 found';
+      if(gmN===3){COMBO.hit();award('gm',COMBO.pts(5),'Found the hidden ore beds'+COMBO.tag());$('#gmSay').innerHTML='<b>All three.</b> Gamma spikes with no coal were the clue. The ore beds look like normal claystone, so only the log and the geochemistry find them.';}gmDraw();});});}
+gmDraw();
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>

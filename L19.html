@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 19 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L18.html">&larr; Lecture 18</a><a href="L20.html">Lecture 20 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 19 · T3 2026</div>
+  <h1>Rare earth elements</h1>
+  <p class="lede">The rare earth elements (REE) are not actually rare. What is rare is a process that concentrates them enough to mine. This lecture explains how the REE behave as a group, how small differences between them record geological processes, which minerals hold them, and the four deposit types that supply them: Bayan Obo, Mt Weld, ion adsorption clays and heavy mineral sands. Start with the plot that geologists use for every REE analysis.</p>
+
+  <div class="lab" id="euLab">
+    <h4><span>Fractionate a granite, watch europium leave</span><b id="euTag">Eu/Eu* 1.00</b></h4>
+    <div class="chips" id="euC" role="group" aria-label="Pattern to show"></div>
+    <svg class="grid-svg" id="euSvg" viewBox="0 0 640 300" role="img" aria-label="A chondrite-normalised REE plot from La to Lu on a log scale, with a line for the melt that changes as plagioclase is removed"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="euF">Plagioclase crystallised and removed <b id="euFV"></b></label><input type="range" id="euF" min="0" max="100" step="1" value="0"></div></div>
+    <p class="say" id="euSay">This is a granite melt plotted against chondrite. Move the slider to crystallise plagioclase and remove it from the melt.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">A teaching model of slides 10 to 14. Eu²⁺ swaps for Ca²⁺ in plagioclase, so removing plagioclase leaves the melt short of Eu. Carbonate melts take up the LREE. The line shapes follow the slides, but the numbers are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#what">What are the REE?</a></li>
+      <li><a href="#geochem">How the REE fractionate</a></li>
+      <li><a href="#minerals">REE minerals</a></li>
+      <li><a href="#resist">Resistate minerals and zircon</a></li>
+      <li><a href="#market">Uses and the market</a></li>
+      <li><a href="#types">Deposit types</a></li>
+      <li><a href="#bayan">Bayan Obo</a></li>
+      <li><a href="#weld">Mt Weld</a></li>
+      <li><a href="#iad">Ion adsorption clays</a></li>
+      <li><a href="#hms">Heavy mineral sands</a></li>
+      <li><a href="#compare">What makes a deposit pay</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="what" data-log="What are REE"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>What are the rare earth elements?</h2>
+  <p>The REE are the <b>lanthanides</b>, lanthanum (La) to lutetium (Lu). Yttrium (Y) behaves like them, so it is usually included, and the group is then called <button class="term" data-t="REY">REY</button>. They are often split into the <b>light REE</b> (LREE, La to Sm) and the <b>heavy REE</b> (HREE, Eu to Lu, plus Y). Some people also use middle REE (Sm to Dy). Promethium (Pm) does not occur naturally, so it is never on plots of natural samples. <span class="srcs">slides 3 to 5</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <p>Their properties are very similar. As the atomic number increases, the atomic weight increases slightly and the ion becomes slightly smaller. That is why they behave as one group. <span class="srcs">slide 5</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L19/abundance.jpg" alt="Plot of element abundance in the crust against atomic number, with the rare earth elements in blue well above the rare metals and platinum-group elements">
+    <figcaption>Abundance of the elements in the crust. The REE (blue) are more abundant than gold, silver and the platinum group, and Ce and La are more common than tin. <span class="srcs">slide 6</span></figcaption>
+  </figure>
+  <p>So how rare are they? <b>Not very.</b> Cerium and lanthanum are more common than tin, and some REE are as common as copper. Their abundance falls from the light to the heavy end. The rare thing is a process that concentrates them enough to make an economic deposit. <span class="srcs">slide 6</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="geochem" data-log="Fractionation"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 26 m</span></div>
+  <h2>How the REE fractionate</h2>
+  <p>The REE are so similar that, in the past, they were hard to analyse separately. Geologists then found that small differences between them record processes. To compare samples, you divide each REE value by a standard. This is <button class="term" data-t="normalisation">normalisation</button>. The usual standard is <b>CI chondrite</b>, a primitive meteorite. Others are Post-Archean Australian Shale (PAAS) for sediments and world average coal for coals. The standard must have formed by a similar process to your samples. <span class="srcs">slide 7</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <p>Almost all the REE are <b>trivalent</b> (3+). There are two exceptions. In reducing conditions, such as a magma, <b>europium</b> can become Eu²⁺. Eu²⁺ has the same charge and almost the same size as Ca²⁺, so it swaps into calcium sites, especially in plagioclase. <b>Cerium</b> can oxidise to Ce⁴⁺ near the surface (more in the clay section). <span class="srcs">slides 8 and 12</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L19/radii.jpg" alt="Circles drawn to scale for the radii of REE 3+ ions, which get smaller from La to Lu, compared with Fe, Ca, Eu 2+ and Ce 4+ ions" style="max-width:460px;margin:0 auto">
+    <figcaption>Ionic radii: the REE³⁺ ions shrink from La to Lu (the lanthanide contraction). Eu²⁺ is close to Ca²⁺ in size and charge. <span class="srcs">slides 8 and 9</span></figcaption>
+  </figure>
+  <p>The ions get smaller from La to Lu. This is the <button class="term" data-t="lanthanide contraction">lanthanide contraction</button>. Some minerals prefer the larger LREE, and others prefer the smaller HREE. This is the main reason the LREE and HREE separate (fractionate). Mafic minerals (garnet, pyroxene, hornblende) prefer the HREE, so melting in the mantle that leaves garnet behind strips HREE from the melt. Feldspar and quartz take few REE, except that plagioclase takes Eu. <span class="srcs">slides 9 and 10</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Feature on the plot</th><th>What caused it</th></tr>
+    <tr><td>Negative Eu anomaly (a dip at Eu)</td><td>Plagioclase crystallised and was removed; a long-fractionated granite</td></tr>
+    <tr><td>Steep slope, LREE high</td><td>LREE-rich source or mineral, such as a carbonatite</td></tr>
+    <tr><td>HREE high relative to LREE</td><td>A mineral that prefers small ions, such as zircon or xenotime</td></tr>
+    <tr><td>Ce anomaly (a spike or dip at Ce)</td><td>Oxidation of Ce³⁺ to Ce⁴⁺ near the surface</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 9 to 12, 23 and 54</p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · fresh rock and its regolith</span><span class="srcs">slide 11</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L19/core-fresh.jpg" alt="Core tray of hard grey-green rock cylinders"><div class="cap">A · core from 76 to 78.5 m</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L19/core-regolith.jpg" alt="Core tray of soft broken brown, red and cream material"><div class="cap">B · core from 14 to 17 m</div></div>
+    </div>
+    <p class="ask">Describe both trays. Which one would you expect to have more REE, and why?</p>
+    <details data-obs="regolith"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: hard, grey-green, complete core: fresh rock (a skarn).</li><li>B: soft, broken, brown to red and cream material: weathered regolith.</li></ul>
+      <p class="so">The weathered regolith (B) is about <b>two orders of magnitude</b> richer in REE than the fresh skarn (A); the richest sample has about 13 000 ppm REE + Y. Both have the same small Eu dip on the chondrite plot, which shows that the regolith formed from this host rock. This is the lecturer's own research. <span class="srcs">slide 11</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+    </div></details>
+  </div>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L19/eu-granites.jpg" alt="Chondrite-normalised REE plot of six granites, all with a deep V-shaped dip at Eu" style="max-width:460px;margin:0 auto">
+    <figcaption>Fractionated granites with a strong negative Eu anomaly. Fractionated granites such as Tallebung show the same thing. <span class="srcs">slide 12</span> <span class="srcs">lecture recording, 3 Nov</span></figcaption>
+  </figure>
+  <div class="lab">
+    <h4><span>Read the plot</span><b id="rdScore">0 / 4</b></h4>
+    <div class="cards" id="rdCards"></div>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="minerals" data-log="Minerals"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">26 to 40 m</span></div>
+  <h2>REE minerals</h2>
+  <p>The REE occur in almost every mineral, but usually in tiny amounts. Some minerals are very rich in them: carbonates and fluorocarbonates, and the phosphates and silicates zircon, apatite and monazite. <b>Carbonatites</b> (igneous rocks with more than 50% carbonate minerals) are very rich in LREE. Carbonate melts take up REE better than silicate melts, and the common carbonate minerals do not take REE. So the REE build up in the remaining melt until REE-rich accessory minerals crystallise. <span class="srcs">slides 13 and 14</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <p>More than 250 minerals contain REE, but three of them supply most economic deposits: <button class="term" data-t="bastnäsite">bastnäsite</button>, <button class="term" data-t="monazite">monazite</button> and <button class="term" data-t="xenotime">xenotime</button>. <span class="srcs">slide 19</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Mineral</th><th>Formula</th><th>% REE oxide</th></tr>
+    <tr><td>Bastnäsite</td><td>(Ce,La,Nd,Y)(CO₃)F, a fluorocarbonate</td><td>70 to 74</td></tr>
+    <tr><td>Monazite</td><td>(Ce,La,Nd,Th)PO₄, a phosphate (LREE)</td><td>35 to 71</td></tr>
+    <tr><td>Xenotime</td><td>YPO₄, a phosphate (HREE)</td><td>52 to 67</td></tr>
+    <tr><td>Cerianite</td><td>(Ce⁴⁺,Th)O₂</td><td>81</td></tr>
+    <tr><td>Loparite</td><td>(Ce,Na,Ca)(Ti,Nb)O₃</td><td>32 to 34</td></tr>
+    <tr><td>Apatite</td><td>Ca₅(PO₄,CO₃)₃(F,Cl,OH)</td><td>up to 19</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slide 16</p>
+  <p>Bastnäsite is a stable mineral because the charges balance: CO₃²⁻ plus F⁻ gives −3, which matches one REE³⁺. Most REE minerals take all the REE but prefer either the light or the heavy ones. Because the REE fractionate as a crystal grows, REE minerals are almost always finely <b>zoned</b>. The REE often occur with carbonate, phosphate, fluorine, iron and titanium. <span class="srcs">slides 16 and 17</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L19/bastnaesite.jpg" alt="A translucent orange-brown prismatic crystal" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Bastnäsite crystal. Slide 16</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L19/cerianite.jpg" alt="Two electron microscope images of crystals with many concentric zones, 50 micrometre scale bars" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Zoned cerianite crystals, Kerimasi Volcano, Tanzania. Slide 16</div></div>
+  </div>
+  <div class="obs">
+    <div class="ttl"><span>Field task · pink crystals in a quarry</span><span class="srcs">slides 20 and 21</span></div>
+    <img loading="lazy" decoding="async" src="img/L19/lanthanite-nd.jpg" alt="Two photos of small pink tabular crystals on weathered rock, with crystal drawings below">
+    <p class="ask">These pink crystals, a few millimetres across, grew in holes in a weathered andesite in New Zealand. Are they primary or secondary? What do you think holds the colour?</p>
+    <details data-obs="lanthanite"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Small pink, bladed to tabular crystals lining holes and fractures on altered rock.</li></ul>
+      <p class="so">This is <b>lanthanite-(Nd)</b>, Nd₂(CO₃)₃·8H₂O, a hydrated REE carbonate from Whitianga quarry. It is <b>secondary</b>: it grew at low temperature from water in the weathered andesite, with zeolite (clinoptilolite), pyrite and siderite. The real formula contains almost every REE, which is typical: you must treat the REE as one group. Ian Graham described this mineral in 2007. <span class="srcs">slides 20 and 21</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>REE minerals are usually fine-grained accessory minerals, so you rarely see big crystals; collectors' specimens are exceptions.</li><li>Look for the associations: carbonate, phosphate, fluorine, iron and titanium.</li><li>Monazite: orange-brown grains (LREE). Xenotime: the HREE phosphate. Apatite can be blue when it has ~10% REE.</li></ul><span class="srcs">slides 15 to 19</span> <span class="srcs">lecture recording, 3 Nov</span></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="resist" data-log="Resistates"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">40 to 50 m</span></div>
+  <h2>Resistate minerals and zircon</h2>
+  <p><button class="term" data-t="resistate mineral">Resistate minerals</button> are very hard to break down or dissolve. Zircon, monazite, xenotime and apatite (apatite less so) all contain a lot of REE, and they survive weathering. So they keep a record of earlier events for which no other evidence remains. <span class="srcs">slide 22</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <p><b>Zircon</b> occurs in most igneous rocks and is common in heavy mineral deposits. It usually has a lot of uranium, so it is the main mineral for U-Pb dating. It contains a few weight percent REY, mostly HREE, and often has a positive Ce anomaly. Zircon megacrysts (very large zircon crystals) in basalts from eastern Australia to Russia came from many older magmas with a wide range of ages and temperatures; young basalts later picked them up. Hf isotopes in zircon give the depth of crystallisation, and Ti content gives its temperature. <span class="srcs">slides 23 to 25</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="market" data-log="Market"><div class="wrap">
+  <div class="kicker">The numbers <span class="depth">50 to 62 m</span></div>
+  <h2>Uses and the market</h2>
+  <p>Today the REE matter mostly for <b>permanent magnets</b>: very small, very strong magnets in electric vehicles, phones, computers, wind turbines and defence systems. Magnets account for about <b>95% of REE use by value</b>. The four "magnet REE" are <b>neodymium, praseodymium, dysprosium and terbium</b>. Demand for them has doubled since 2015 and is expected to rise by another third by 2030. Other uses are metallurgy, ceramics, battery alloys, catalysts, polishing, glass and phosphors. <span class="srcs">slides 27 and 28</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="lab" id="prLab">
+    <h4><span>Who supplies the REE</span><b id="prTag"></b></h4>
+    <div class="chips" id="prC" role="group" aria-label="Measure"></div>
+    <svg class="grid-svg" id="prSvg" viewBox="0 0 640 300" role="img" aria-label="Bar chart of REE oxide production in 2025 or reserves, by country"></svg>
+    <p class="say" id="prSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Tonnes of REE oxide from slide 30 (USGS). Burma, Thailand and Nigeria have no reserve figure.</p>
+  </div>
+  <p>Production was steady from the mid-1990s to the mid-2000s and rose sharply from about 2018. China dominates mining, and it dominates refining and magnet making even more (slide 33). That is why the REE are on every critical list. Prices are very volatile and depend on politics; yttrium, once almost worthless, has recently spiked. The magnet REE and the HREE are worth more than the LREE. At many mines, lanthanum and cerium go to waste. Brazil's reserves have grown fast and are now second (21 Mt in 2026). <span class="srcs">slides 29 to 33, 36</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L19/supply-chain.jpg" alt="Three stacked bar charts for mining, refining and magnet manufacturing, mostly red for China, with refining and magnets above 90 percent China">
+    <figcaption>Share of the magnet REE supply chain in 2024. China (red) dominates mining, refining and magnet making (IEA). <span class="srcs">slide 33</span></figcaption>
+  </figure>
+  <p>History: monazite placers came first, then Mountain Pass in the USA (a carbonatite), then Bayan Obo made China dominant. A REE project is judged by its LREE to HREE ratio, and today mostly by its magnet REE content. <span class="srcs">slides 34 to 36, 59</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="types" data-log="Types"><div class="wrap">
+  <div class="kicker">Overview <span class="depth">62 to 70 m</span></div>
+  <h2>Deposit types</h2>
+  <p>REE deposits are grouped by their geological setting into <b>primary</b> and <b>secondary</b> types. <span class="srcs">slide 38</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Group</th><th>Type</th><th>Examples</th></tr>
+    <tr><td>Primary</td><td>Magmatic: carbonatites, syenites, alkali granites</td><td>Bayan Obo, Mt Weld, Mountain Pass</td></tr>
+    <tr><td>Primary</td><td>Volcanic: trachytes, tuffs and reworked tuffs</td><td>Toongi (Dubbo), NSW; the ash beds of Lecture 18</td></tr>
+    <tr><td>Primary</td><td>Hydrothermal veins</td><td>Cross-cutting veins</td></tr>
+    <tr><td>Secondary</td><td>Weathering: clays, laterites, Mn nodules, placers</td><td>Ion adsorption clays (south China), heavy mineral sands (Eucla)</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 38 and 39, lecture recording, 3 Nov</p>
+  <p>On a world map of REE deposits, the largest are carbonatites (Mt Weld in Australia, Bayan Obo in China). Alkaline igneous deposits include Toongi near Dubbo: its REE are in fine-grained zirconosilicates, which are hard to process. Ion adsorption clays on weathered granites have become important because their HREE are so easy to extract. In Australia, heavy mineral sands along old and modern coasts are common prospects. Mary Kathleen in Queensland, a skarn, produced REE as a by-product of uranium. Olympic Dam probably produces the most REE in Australia, but almost all of it goes to the waste dump. <span class="srcs">slides 39 and 46</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="bayan" data-log="Bayan Obo"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">70 to 82 m</span></div>
+  <h2>Bayan Obo, China</h2>
+  <p>Bayan Obo, at Baotou in Inner Mongolia, is the <b>world's largest REE resource</b>. It is a Fe-Nb-REE deposit of Mesoproterozoic age, part way between a carbonatite (like Mt Weld) and an IOCG deposit (like Olympic Dam). It is hosted in <b>dolomitised marble</b> and minor K-rich slate. The ore is REE-Fe oxide ore with bastnäsite, monazite, niobite and magnetite. It was found as an iron deposit in 1927 and began producing REE in 1960. It would be mined for its iron anyway; the REE are a <b>by-product</b>. <span class="srcs">slides 40 and 41</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <p>It lies in a REE belt 400 km long on the northern margin of the North China block. Most geologists link it to Mesoproterozoic carbonatites and alkaline rocks (syenites) in a continental rift. Palaeozoic intrusions and deformation later strongly affected it. Alteration (<button class="term" data-t="fenitisation">fenitisation</button>) is widespread, with fluorite, aegirine-augite, riebeckite, albite and quartz. The ore is zoned from disseminated (outside) through banded to massive ore. It formed in several hydrothermal episodes. Grades are always above 1% and average about 6% REO in the Main and East ore bodies (57.4 Mt REO). <span class="srcs">slides 41 and 42</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L19/bayan-xs.jpg" alt="Cross-section of the Bayan Obo Main and East ore bodies, with coloured bands of dolomite-hosted and banded ores folded in slate and schist">
+    <figcaption>Cross-section through the Main and East ore bodies: banded and massive ores in dolomite marble. <span class="srcs">slide 44</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="weld" data-log="Mt Weld"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">82 to 94 m</span></div>
+  <h2>Mt Weld, Western Australia</h2>
+  <p>Mt Weld, owned by Lynas, is Australia's main REE deposit. It is a Proterozoic (about 2.03 Ga) <b>carbonatite</b> that intruded the fault-bounded Laverton tectonic zone. It was later metamorphosed to greenschist facies. The region is an alkaline province with alkaline ultramafic-mafic rocks, kimberlites and carbonatites. Most importantly, the REE were enriched again in the <b>supergene</b> zone during lateritic weathering. The ore is LREE-rich, with P, Nb and Ta. The Crown deposit has 37.7 Mt at 1.16% REO and 1.07% Nb₂O₅. The Swan phosphate deposit has 77 Mt at 13.5% P₂O₅. <span class="srcs">slide 47</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Mt Weld section</span><span class="srcs">slides 50</span></div>
+    <img loading="lazy" decoding="async" src="img/L19/mtweld-column.jpg" alt="A vertical column through Mt Weld from alluvium and lake sediments at the top, through a laterite of supergene and residual zones with listed minerals, to carbonatite at the base, 70 to 130 metres thick">
+    <p class="ask">From the top down, which layers are there? Which zone has been mined for REE, and what made it rich?</p>
+    <details data-obs="mtweld"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Young alluvium and lake sediments on top, then a thick laterite (supergene and residual zones), then an apatite-rich zone, then fresh carbonatite at the base.</li><li>The laterite lists many REE minerals in bold: crandallite, goyazite, gorceixite, florencite, monazite.</li></ul>
+      <p class="so">Mining has focused on the <b>laterite</b>. Weathering removed carbonate and kept the resistate REE minerals, so the REE became relatively enriched, and new secondary REE phosphates formed. Below is the apatite-rich phosphate zone, and the fresh carbonatite is only now being considered for mining. <span class="srcs">slide 50</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L19/mtweld-plan.jpg" alt="Map of the circular Mt Weld carbonatite with the central lanthanide deposit, the Crown polymetallic deposit and other deposits"><div class="cap">Plan of the Mt Weld carbonatite: the central lanthanide deposit and the pit. Slide 49</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L19/mtweld-xs.jpg" alt="Cross-section of Mt Weld showing a weathered carbonatite cap with supergene and residual zones above fresh carbonatite"><div class="cap">Section: the supergene and residual zones above the carbonatite. Slide 50</div></div>
+  </div>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="iad" data-log="Ion adsorption"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">94 to 108 m</span></div>
+  <h2>Ion adsorption clays</h2>
+  <p><button class="term" data-t="ion adsorption deposit">Ion adsorption (IAD) clay deposits</button> form when granites weather in southern China and Myanmar. They are very important because they are <b>HREE-rich</b>, unlike the igneous deposits, which are LREE-rich. They supplied 20% of world production in 2010, and more than 80 to 90% of HREE supply by 2017. The weathered granite itself is the ore: about 50% of its REY can be exchanged off the clay. Grades are only 140 to 6500 ppm REY, typically about <b>800 ppm</b>, much lower than carbonatite ore. The parent granites are Jurassic to Cretaceous, related to subduction or to rifts inside plates. Their REE came from fluorcarbonates, allanite and titanite that weathered. <span class="srcs">slide 51</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <p>Why can such low grades pay? The REE are not inside minerals. They are <b>adsorbed</b>: weakly attached to the surface of clay minerals (kaolinite and halloysite). Outer-sphere adsorption is a weak electrostatic attraction between REE³⁺ and the negative clay surface; inner-sphere adsorption makes a direct bond and is stronger. In some places, the miners simply wash the hill with weak acid and collect the REE at the bottom. There is no need to break down minerals in an expensive plant. <span class="srcs">slide 52</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L19/iad-profile.jpg" alt="Diagram of a weathering profile on granite in a subtropical climate, with REE content and Ce anomaly curves next to the horizons">
+    <figcaption>The weathering profile on granite, with the REE content and the Ce anomaly at each level. <span class="srcs">slides 53 and 54</span></figcaption>
+  </figure>
+  <p>How they form: in a <b>subtropical</b> climate, acid weathering breaks down the REE minerals near the top of the profile. REE³⁺ ions move down in solution. Deeper, the pH rises, the REE complexes become unstable, and the REE adsorb onto kaolinite and halloysite (and some REE minerals such as rhabdophane form). <b>Cerium</b> behaves differently: near the surface it oxidises to Ce⁴⁺ and drops out as cerianite (CeO₂) or in Mn oxides. So shallow horizons show a <b>positive Ce anomaly</b>, and the other REE are enriched below, with a negative Ce anomaly. The profile is usually 6 to 10 m thick (up to 60 m), so the ore is very shallow. REE also collect in low valleys between weathered granite hills. <span class="srcs">slides 53 to 55</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="lab" id="iaLab">
+    <h4><span>Drill the weathering profile</span><b id="iaTag">0 / 5 logged</b></h4>
+    <svg class="grid-svg" id="iaSvg" viewBox="0 0 640 330" role="img" aria-label="A weathering profile on granite from soil at the top to fresh granite at 12 m. Tap each horizon to log its REY content and Ce anomaly"></svg>
+    <p class="say" id="iaSay">Tap each horizon to log it. Then pick the horizon to mine.</p>
+    <div class="row" id="iaPick"></div>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Invented values for teaching, based on slides 51 to 54 (typical ore about 800 ppm REY; Ce enriched near the top; profile 6 to 10 m).</p>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="hms" data-log="Mineral sands"><div class="wrap">
+  <div class="kicker">Deposit type <span class="depth">108 to 120 m</span></div>
+  <h2>Heavy mineral sands</h2>
+  <p><button class="term" data-t="heavy mineral sands">Heavy mineral sands</button> are Early Tertiary to Recent. Weathering of igneous and sedimentary rocks over a large catchment releases resistate minerals. Waves then concentrate them along <button class="term" data-t="strand line">strand lines</button>, old or modern beach lines. The main minerals are rutile (TiO₂), ilmenite (FeTiO₃) and zircon, with the REE in monazite, xenotime and zircon. So the deposit is polymetallic: REE, Ti and Zr, plus P, Nb and Ta. Monazite carries mostly LREE, and xenotime mostly HREE. <span class="srcs">slides 56 and 57</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · old shorelines in the Eucla Basin</span><span class="srcs">slide 58</span></div>
+    <img loading="lazy" decoding="async" src="img/L19/eucla.jpg" alt="Map of the eastern Eucla Basin with the present coastline, older barrier shorelines labelled with ages such as 41.5 and 37 Ma, and heavy mineral deposits marked along them">
+    <p class="ask">Find the dated lines on the map. How would you use them to explore for mineral sands?</p>
+    <details data-obs="eucla"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Several curved lines inland of the present coast, with ages in millions of years (for example 41.5 and 37 Ma).</li><li>Heavy mineral deposits marked along these lines.</li></ul>
+      <p class="so">Each line is an old <b>strand line</b>, a former shoreline, dated with zircons. The shore moved north-east over time. Long wave action along each old beach concentrated the heavy minerals, so you explore by following the old shorelines. <span class="srcs">slide 58</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="compare" data-log="Economics"><div class="wrap">
+  <div class="kicker">Wrap-up <span class="depth">120 to 140 m</span></div>
+  <h2>What makes a deposit pay</h2>
+  <p>Each deposit type pays for a different reason. Bayan Obo: the REE are a by-product of an iron mine. Mt Weld: the shallow laterite has very high grades (weight percent REO), so it pays even though it is rich in the less valuable LREE. Ion adsorption clays: shallow, easy to extract, and rich in valuable HREE, so 800 ppm is enough. Heavy mineral sands: shallow, natural concentration, and several products (Ti, Zr, REE). The cost of extraction (<b>metallurgy</b>) is very important. Today people judge a prospect by its magnet REE (Nd, Pr, Dy, Tb), not by total REE + Y. <span class="srcs">slide 59</span> <span class="srcs">lecture recording, 3 Nov</span></p>
+  <div class="lab">
+    <h4><span>Name the mineral</span><b id="idScore">0 / 6</b></h4>
+    <div class="cards" id="idCards"></div>
+  </div>
+  <div class="lab">
+    <h4><span>Classify the deposit</span><b id="clScore">0 / 6</b></h4>
+    <div class="cards" id="clCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>REE = La to Lu (+ Y = REY); LREE La to Sm, HREE Eu to Lu + Y; Pm not natural.</li><li>Not rare in abundance; rare in concentration processes.</li><li>Lanthanide contraction; Eu²⁺ for Ca²⁺ in plagioclase (negative Eu anomaly); Ce⁴⁺ near the surface (Ce anomaly).</li><li>Economic minerals: bastnäsite, monazite (LREE), xenotime (HREE).</li><li>Magnets: ~95% of value; Nd, Pr, Dy, Tb.</li><li>Bayan Obo (by-product of Fe, ~6% REO), Mt Weld (carbonatite + laterite), IAD clays (HREE, ~800 ppm), mineral sands (strand lines).</li></ul><span class="srcs">slides 3 to 59</span></div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">140 to 145 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer each question out loud or on paper before you open it. If your answer was right, claim the ounces.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">145 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>These are terms that the lecture expects you to know, or only explains briefly. Tap a dotted word in the text to see its meaning.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 20 moves to diamonds, which come from kimberlites in the same kind of deep alkaline magmatism that brings carbonatites to the surface. Compare the ion adsorption clays here with the critical element ash beds of Lecture 18 and the laterites of Lecture 8.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 19 slides (Rare earth element geochemistry, mineralogy and deposits, 60 slides; photos and figures tagged by slide) and the Echo360 recording of 3 November 2026. Some speaker notes in this deck belong to a porphyry copper talk, so they were not used. Figures come from published sources (IEA 2026, Hoatson et al. 2012, Chen et al. 2024, Li et al. 2017, Borst et al. 2020 and others) and are shown only as lecture material. The Eu animation and the weathering profile are teaching models.</p>
+  <p><a href="L18.html">&larr; Lecture 18</a> · <a href="L20.html">Lecture 20 &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You know La from Lu.'],[35,'Graduate geologist','You can read a chondrite plot.'],[100,'Project geologist','You can spot a Eu anomaly.'],[180,'Senior geologist','You can follow cerium down a profile.'],[240,'Chief geologist','Magnet makers call you first.']];
+var G={
+ "REY":"The rare earth elements (La to Lu) plus yttrium, which behaves like them.",
+ "LREE":"Light rare earth elements, La to Sm.",
+ "HREE":"Heavy rare earth elements, Eu to Lu, plus Y.",
+ "lanthanide":"One of the 15 elements from lanthanum (57) to lutetium (71).",
+ "normalisation":"Dividing each REE value by the value in a standard (such as CI chondrite), so that the natural zigzag in abundance disappears and processes show up.",
+ "CI chondrite":"A primitive meteorite whose REE pattern is close to that of the early solar system. The usual REE standard.",
+ "lanthanide contraction":"The steady decrease in ionic radius from La to Lu.",
+ "Eu anomaly":"A dip (or spike) at Eu on a normalised plot. A negative anomaly usually means plagioclase was removed from the melt.",
+ "Ce anomaly":"A spike or dip at Ce, caused by Ce³⁺ oxidising to Ce⁴⁺ near the surface.",
+ "partition coefficient":"How strongly an element goes into a mineral compared with the melt.",
+ "fractionation":"Separation of elements, here between the LREE and the HREE, during crystallisation or weathering.",
+ "carbonatite":"An igneous rock with more than 50% carbonate minerals. Very rich in LREE.",
+ "syenite":"An alkaline igneous rock with alkali feldspar and little or no quartz.",
+ "bastnäsite":"(Ce,La,Nd,Y)(CO₃)F, a REE fluorocarbonate with 70 to 74% REO. Named after Bastnäs, Sweden.",
+ "monazite":"(Ce,La,Nd,Th)PO₄, a LREE phosphate.",
+ "xenotime":"YPO₄, a HREE phosphate.",
+ "cerianite":"(Ce⁴⁺,Th)O₂, a cerium oxide.",
+ "allanite":"A REE-bearing epidote-group silicate.",
+ "parisite":"Ca(Ce,La)₂(CO₃)₃F₂, a REE fluorocarbonate.",
+ "rhabdophane":"(Ce,La)PO₄·H₂O, a hydrated REE phosphate formed at low temperature.",
+ "lanthanite":"A hydrated REE carbonate. Lanthanite-(Nd) was described from Whitianga, New Zealand.",
+ "resistate mineral":"A mineral that is very hard to weather or dissolve, such as zircon, monazite and xenotime.",
+ "megacryst":"An exceptionally large crystal, often carried up by a younger magma.",
+ "REO":"Rare earth oxide. Grades and tonnages are given as REO.",
+ "magnet REE":"Nd, Pr, Dy and Tb, the REE used in permanent magnets.",
+ "fenitisation":"Alkali (Na-K) alteration of the rocks around a carbonatite or alkaline intrusion.",
+ "IOCG":"Iron oxide copper-gold deposit, such as Olympic Dam.",
+ "supergene":"Formed by near-surface weathering and groundwater.",
+ "laterite":"A thick, deeply weathered soil profile.",
+ "ion adsorption deposit":"A weathered granite in which the REE are weakly attached to clay surfaces, not locked in minerals.",
+ "adsorption":"Attachment of dissolved ions to a mineral surface, without entering the crystal structure.",
+ "halloysite":"A clay mineral like kaolinite, often tube-shaped.",
+ "heavy mineral sands":"Beach or dune sands rich in dense resistate minerals such as rutile, ilmenite, zircon and monazite.",
+ "strand line":"A former or present shoreline where waves concentrated heavy minerals."
+};
+var CP={
+ cp1:{q:'Why are the rare earths called rare?',o:['They are less common than gold','Processes that concentrate them enough to mine are rare','They are radioactive'],a:1,e:'Ce and La are more common than tin.'},
+ cp2:{q:'A granite has a deep dip at Eu on its chondrite plot. What happened?',o:['Garnet was added','Plagioclase crystallised and was removed, taking Eu²⁺ with it','Cerium oxidised'],a:1,e:'Eu²⁺ swaps for Ca²⁺ in plagioclase.'},
+ cp3:{q:'Which three minerals supply most economic REE?',o:['Zircon, apatite, quartz','Bastnäsite, monazite, xenotime','Galena, sphalerite, pyrite'],a:1,e:'Bastnäsite (fluorocarbonate), monazite (LREE phosphate), xenotime (HREE phosphate).'},
+ cp4:{q:'Why can zircon tell you about events that left no other evidence?',o:['It dissolves easily','It is a resistate mineral that survives weathering and can be dated','It contains no REE'],a:1,e:'U-Pb ages, Hf isotopes and Ti thermometry all come from zircon.'},
+ cp5:{q:'Which use accounts for about 95% of REE value?',o:['Glass polishing','Permanent magnets (Nd, Pr, Dy, Tb)','Catalysts'],a:1,e:'Demand for magnet REE doubled since 2015.'},
+ cp6:{q:'Which deposit type is secondary?',o:['Carbonatite','Ion adsorption clay','Alkali granite'],a:1,e:'Secondary deposits form by weathering.'},
+ cp7:{q:'Why is Bayan Obo mined?',o:['Only for REE','For iron, with REE (and Nb) as by-products','For gold'],a:1,e:'It is a Fe-Nb-REE deposit, the largest REE resource on Earth.'},
+ cp8:{q:'At Mt Weld, which zone has been the main REE target?',o:['Fresh carbonatite','The lateritic supergene and residual zone','The alluvium'],a:1,e:'Weathering enriched the REE above the carbonatite.'},
+ cp9:{q:'In an ion adsorption profile, where is cerium enriched?',o:['At the base, in fresh granite','Near the top, as Ce⁴⁺ (cerianite)','Nowhere'],a:1,e:'A shallow positive Ce anomaly points to the REE-rich horizon below.'},
+ cp10:{q:'Where do waves concentrate heavy minerals?',o:['In river headwaters','Along strand lines (old and modern shorelines)','In lake muds'],a:1,e:'Follow the old shorelines to explore.'},
+ cp11:{q:'Why can ion adsorption clays be mined at 800 ppm REY?',o:['They are deep and hot','The REE are weakly adsorbed and easy to extract, and rich in valuable HREE','They contain gold'],a:1,e:'No need to break down minerals.'}
+};
+var ST=[
+ ['Define the REE and explain the LREE, HREE and REY terms.','Recall','The lanthanides, La to Lu. Y behaves the same and is included as REY. LREE = La to Sm; HREE = Eu to Lu plus Y; MREE = Sm to Dy. Pm is not natural.'],
+ ['Explain why the REE are normalised to chondrite, and what the standard must be like.','Recall','Normalising removes the natural zigzag in abundance, so processes show up. The standard must have formed by a similar process: chondrite for igneous rocks, PAAS for sediments, average coal for coals.'],
+ ['Explain the lanthanide contraction and how it fractionates the REE.','Apply','The ionic radius decreases from La to Lu. Minerals prefer ions of the right size: garnet, pyroxene and hornblende take the small HREE, others take the larger LREE. So crystallisation separates the LREE from the HREE.'],
+ ['What causes a negative Eu anomaly, and what does it tell you about a granite?','Apply','In reducing magmas, Eu becomes Eu²⁺, which has the size and charge of Ca²⁺ and enters plagioclase. Removing plagioclase leaves the melt short of Eu. A strong negative anomaly means a long-fractionated granite, which is often enriched in rare metals (Sn, W).'],
+ ['Why are carbonatites so rich in LREE?','Apply','Carbonate melts take up REE better than silicate melts, and the common carbonate minerals reject REE. So the REE build up in the remaining melt until REE-rich minerals (bastnäsite, monazite) crystallise.'],
+ ['Describe Bayan Obo.','Recall','World\'s largest REE resource, at Baotou, Inner Mongolia. Mesoproterozoic Fe-Nb-REE deposit in dolomitised marble, between carbonatite and IOCG. Bastnäsite, monazite, niobite, magnetite. Multiple hydrothermal stages, fenitisation, zoned disseminated-banded-massive ore, ~6% REO in the main ore bodies. REE are a by-product of iron mining.'],
+ ['Describe Mt Weld.','Recall','~2.03 Ga carbonatite in the Laverton tectonic zone, WA, in an alkaline province with kimberlites. Greenschist overprint. Lateritic weathering enriched the LREE (plus P, Nb, Ta) in supergene and residual zones above the carbonatite. Crown: 37.7 Mt at 1.16% REO and 1.07% Nb₂O₅.'],
+ ['Explain how an ion adsorption clay deposit forms and how you explore for it.','Apply','Granite weathers in a subtropical climate; acids break down REE minerals near the top; REE³⁺ moves down and adsorbs onto kaolinite and halloysite where the pH rises. Ce oxidises to Ce⁴⁺ and stays near the top as cerianite. A shallow positive Ce anomaly points to the REE-rich zone below. Profiles are 6 to 10 m thick.'],
+ ['Compare the four deposit types by what makes them economic.','Synthesise','Bayan Obo: by-product of Fe. Mt Weld: very high grade LREE in shallow laterite. IAD: easy extraction and valuable HREE at ~800 ppm. Heavy mineral sands: shallow, natural concentration, several products. Metallurgy and magnet REE content decide the economics.']
+];
+GEO.start({key:'geos3141-L19-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- Eu anomaly / carbonatite plot ---------- */
+var REE=['La','Ce','Pr','Nd','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu'],euMode=0,euDone={};
+[['Granite melt',0],['Add a carbonatite',1],['Add a zircon',2]].forEach(function(m){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed',m[1]===0);b.addEventListener('click',function(){euMode=m[1];$$('#euC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');euDraw();if(m[1])award('ov'+m[1],2,'Compared REE patterns');});$('#euC').appendChild(b);});
+function lg(v){return 270-(Math.log(v)/Math.LN10)*60;}
+function euDraw(){var f=+$('#euF').value/100,s=$('#euSvg');s.innerHTML='';
+  el('rect',{x:0,y:0,width:640,height:300,fill:'var(--bg)'},s);
+  [1,10,100,1000,10000].forEach(function(v){var y=lg(v);el('line',{x1:50,x2:630,y1:y,y2:y,stroke:'var(--line)'},s);txt(s,8,y+4,String(v),{'font-size':11,fill:'var(--muted)'});});
+  REE.forEach(function(r,i){txt(s,58+i*41,292,r,{'font-size':11,fill:'var(--muted)'});});
+  function line(vals,col,w){var d='';vals.forEach(function(v,i){d+=(i?' L':'M')+(62+i*41)+' '+lg(v);});el('path',{d:d,fill:'none',stroke:col,'stroke-width':w||3},s);vals.forEach(function(v,i){el('circle',{cx:62+i*41,cy:lg(v),r:3.5,fill:col},s);});}
+  var base=REE.map(function(r,i){return 120*Math.pow(0.86,i)+8;}),eu=base.slice();eu[5]=base[5]*(1-0.92*f);
+  if(euMode===1)line(REE.map(function(r,i){return 3000*Math.pow(0.6,i)+4;}),'#4C8DB5');
+  if(euMode===2)line(REE.map(function(r,i){var v=0.4*Math.pow(1.55,i);return i===1?v*30:v;}),'var(--slate)');
+  line(eu,'var(--gold)');
+  var ratio=eu[5]/Math.sqrt(eu[4]*eu[6]);$('#euTag').textContent='Eu/Eu* '+ratio.toFixed(2);$('#euFV').textContent=Math.round(f*100)+'%';
+  $('#euSay').innerHTML=euMode===1?'The blue line is a carbonatite: very high LREE and a steep slope, because carbonate melt soaks up the light REE. <span class="srcs">slide 14</span>':euMode===2?'The grey line is a zircon: low LREE, rising HREE (it prefers small ions), and a spike at Ce from Ce⁴⁺. <span class="srcs">slide 23</span>':f<.3?'Plagioclase is starting to crystallise. Eu²⁺ swaps for Ca²⁺ and leaves the melt.':f<.75?'The dip at Eu is growing. All the other REE stay on a smooth line, because they are trivalent and do not fit in plagioclase.':'<b>A deep negative Eu anomaly.</b> This melt has fractionated for a long time, like the granites on slide 12 and Tallebung. Long fractionation also concentrates Sn and W.';
+  if(f>=.75&&!euDone.f){euDone.f=1;COMBO.hit();award('eu',COMBO.pts(4),'Made a Eu anomaly'+COMBO.tag());FX.burst($('#euTag'));}}
+$('#euF').addEventListener('input',euDraw);euDraw();
+
+/* ---------- read the plot ---------- */
+var RDO=['Plagioclase removed','Carbonatite (LREE-rich)','Zircon or xenotime (HREE-rich)','Ce oxidised near the surface'];
+mcCards($('#rdCards'),[
+ {lbl:'Pattern',q:'A smooth slope with a deep V at Eu',o:RDO,a:0,e:'Negative Eu anomaly: long fractionation.'},
+ {lbl:'Pattern',q:'La at 10 000 × chondrite, falling steeply to Lu',o:RDO,a:1,e:'Very LREE-enriched.'},
+ {lbl:'Pattern',q:'Low La, rising to high Lu, with a spike at Ce',o:RDO,a:2,e:'Zircon prefers the small HREE and often has a positive Ce anomaly.'},
+ {lbl:'Pattern',q:'A shallow soil sample with a big spike at Ce only',o:RDO,a:3,e:'Ce⁴⁺ stayed behind as cerianite; the other REE moved down.'}
+],'rd',2,function(r,n){$('#rdScore').textContent=r+' / '+n;});
+
+/* ---------- production chart ---------- */
+var PR=[['China',270000,44000000],['USA',51000,1900000],['Australia',29000,6300000],['Burma',22000,0],['Thailand',4800,0],['India',2900,1500000],['Russia',2600,3800000],['Brazil',2000,11000000]],prK=1,prSeen={};
+[['Production 2025',1],['Reserves',2]].forEach(function(m){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed',m[1]===prK);b.addEventListener('click',function(){prK=m[1];$$('#prC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');prDraw();});$('#prC').appendChild(b);});
+function prDraw(){var s=$('#prSvg');s.innerHTML='';var d=PR.filter(function(r){return r[prK]>0;}).sort(function(a,b){return b[prK]-a[prK];}),max=d[0][prK];
+  d.forEach(function(r,i){var y=4+i*36,w=r[prK]/max*330;txt(s,8,y+22,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:110,y:y+6,width:Math.max(3,w),height:22,rx:3,fill:r[0]==='China'?'var(--hem)':r[0]==='Australia'?'var(--gold)':'var(--slate)'},s);txt(s,116+w,y+22,r[prK].toLocaleString('en-AU')+' t',{'font-size':12,fill:'var(--ink)'});});
+  $('#prTag').textContent=prK===1?'2025 production':'reserves';
+  $('#prSay').textContent=prK===1?'China produced 270 000 t of REO in 2025, about five times the USA. Australia (Mt Weld) is third.':'China holds 44 Mt of reserves. Brazil (11 Mt on this table, 21 Mt in the 2026 estimate) is now second.';
+  prSeen[prK]=1;if(Object.keys(prSeen).length===2)award('pr',3,'Compared REE suppliers');}
+prDraw();
+
+/* ---------- weathering profile game ---------- */
+var IA=[[0,28,'Humic soil','REY 250 ppm','Ce anomaly: slightly positive'],[28,90,'Upper weathered granite','REY 400 ppm','Ce anomaly: strongly positive (cerianite)'],[90,170,'Lower weathered granite (clay-rich)','REY 1100 ppm','Ce anomaly: negative'],[170,240,'Semi-weathered granite','REY 450 ppm','Ce anomaly: none'],[240,300,'Fresh granite','REY 250 ppm','Ce anomaly: none']],iaLog={},iaN=0,iaDone=false;
+function iaDraw(){var s=$('#iaSvg');s.innerHTML='';var cols=['#5A3E2B','#C98B4E','#E3C9A0','#C7B9A6','#A79E94'];
+  IA.forEach(function(h,i){var r=el('rect',{x:60,y:h[0]+10,width:220,height:h[1]-h[0],fill:cols[i],stroke:iaLog[i]?'var(--gold)':'none','stroke-width':3,style:'cursor:pointer'},s);
+    txt(s,68,h[0]+10+(h[1]-h[0])/2+4,h[2],{'font-size':12,fill:i===0?'#F4F1EA':'#2E2A26','pointer-events':'none'});
+    if(iaLog[i]){txt(s,300,h[0]+10+(h[1]-h[0])/2-4,h[3],{'font-size':13,fill:'var(--ink)','font-weight':600});txt(s,300,h[0]+10+(h[1]-h[0])/2+14,h[4],{'font-size':12,fill:'var(--muted)'});}
+    r.addEventListener('click',function(){if(!iaLog[i]){iaLog[i]=1;iaN++;SND.play('flip');$('#iaTag').textContent=iaN+' / 5 logged';if(iaN===5){$('#iaSay').textContent='All logged. Which horizon would you mine?';iaPicks();}}iaDraw();});});
+  for(var d=0;d<=12;d+=3)txt(s,8,10+d*25+4,d+' m',{'font-size':11,fill:'var(--muted)'});}
+function iaPicks(){var box=$('#iaPick');box.innerHTML='';IA.forEach(function(h,i){var b=document.createElement('button');b.type='button';b.className='btn ghost';b.textContent=h[2];b.addEventListener('click',function(){if(iaDone)return;
+  if(i===2){iaDone=true;COMBO.hit();award('ia',COMBO.pts(5),'Found the REE horizon'+COMBO.tag());FX.burst(b);$('#iaSay').innerHTML='<b>Right.</b> The positive Ce anomaly above shows that the REE were mobilised and moved down. They adsorbed onto clay in the lower weathered zone, and it is only a few metres deep.';}
+  else{COMBO.miss();FX.shake(b);$('#iaSay').textContent=i===1?'This horizon has the Ce spike, but cerium alone is not the ore. Where did the other REE go?':'Not here. Look for the highest REY.';}});box.appendChild(b);});}
+iaDraw();
+
+/* ---------- name the mineral ---------- */
+var IDO=['Bastnäsite','Zircon','Apatite','Allanite','Lanthanite','Parisite'];
+mcCards($('#idCards'),[
+ {img:'img/L19/bastnaesite.jpg',alt:'Orange-brown translucent prismatic crystal',lbl:'Specimen',q:'The most REE-rich fluorocarbonate',o:IDO,a:0,e:'Bastnäsite, 70 to 74% REO. <span class="srcs">slide 16</span>'},
+ {img:'img/L19/zircon.jpg',alt:'Deep red, glassy, prismatic crystal with pointed ends',lbl:'Specimen',q:'A resistate silicate used for U-Pb dating',o:IDO,a:1,e:'Zircon, HREE-rich. <span class="srcs">slide 15</span>'},
+ {img:'img/L19/apatite.jpg',alt:'Blue-green glassy hexagonal crystal',lbl:'Specimen',q:'A calcium phosphate, blue from its REE',o:IDO,a:2,e:'Apatite with about 10% REE. <span class="srcs">slide 22</span> <span class="srcs">lecture recording, 3 Nov</span>'},
+ {img:'img/L19/allanite.jpg',alt:'A dark brown to black elongate crystal',lbl:'Specimen',q:'A REE-bearing epidote-group silicate from a talc deposit in France',o:IDO,a:3,e:'Allanite, Trimouns. <span class="srcs">slide 17</span>'},
+ {img:'img/L19/lanthanite-ce.jpg',alt:'Pink crystalline surface with small dark specks',lbl:'Specimen',q:'A pink hydrated REE carbonate',o:IDO,a:4,e:'Lanthanite. <span class="srcs">slide 15</span>'},
+ {img:'img/L19/parisite.jpg',alt:'A long reddish-brown crystal with a metallic sheen',lbl:'Specimen',q:'A Ca-REE fluorocarbonate',o:IDO,a:5,e:'Parisite. <span class="srcs">slide 18</span>'}
+],'id',2,function(r,n){$('#idScore').textContent=r+' / '+n;});
+
+/* ---------- classify ---------- */
+var CLO=['Carbonatite','Bayan Obo type (Fe-Nb-REE)','Ion adsorption clay','Heavy mineral sands'];
+mcCards($('#clCards'),[
+ {lbl:'Deposit',q:'REE weakly held on kaolinite in 8 m of weathered granite in southern China, 800 ppm REY',o:CLO,a:2,e:'HREE-rich and easy to leach.'},
+ {lbl:'Deposit',q:'Monazite, zircon, rutile and ilmenite along a 37 Ma shoreline',o:CLO,a:3,e:'A strand line deposit, like Eucla.'},
+ {lbl:'Deposit',q:'A circular 2 Ga intrusion of carbonate rock in WA, with a rich laterite cap',o:CLO,a:0,e:'Mt Weld.'},
+ {lbl:'Deposit',q:'Magnetite and bastnäsite in dolomite marble, mined first for iron',o:CLO,a:1,e:'Bayan Obo.'},
+ {lbl:'Deposit',q:'A shallow positive Ce anomaly, with the REE enriched just below',o:CLO,a:2,e:'The classic IAD exploration vector.'},
+ {lbl:'Deposit',q:'Mountain Pass, California',o:CLO,a:0,e:'A carbonatite that once led world supply.'}
+],'cl',2,function(r,n){$('#clScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>

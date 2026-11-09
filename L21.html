@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 21 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L20.html">&larr; Lecture 20</a><span></span></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 21 · T3 2026</div>
+  <h1>Sedimentary iron and manganese</h1>
+  <p class="lede">Iron and manganese ore started as chemical sediments on the sea floor. Both metals dissolve when the water has no oxygen and precipitate when they meet oxygen. So the ore forms as beds, often kilometres long, where reduced water meets oxidised water. Later weathering then removes the silica and carbonate and makes the ore much richer. Start with the basin where manganese ore forms.</p>
+
+  <div class="lab" id="bsLab">
+    <h4><span>Build a manganese shelf</span><b id="bsTag">0 beds</b></h4>
+    <svg class="grid-svg" id="bsSvg" viewBox="0 0 640 280" role="img" aria-label="Cross-section of a stratified sea: oxic water above, anoxic water below, a shelf sloping into the basin, and a river on the land"></svg>
+    <div class="ctl" style="margin-top:.6rem"><div><label for="bsL">Sea level (transgression) <b id="bsLV"></b></label><input type="range" id="bsL" min="0" max="100" step="1" value="30"></div></div>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="bsGo">Upwell the deep water</button><button class="btn ghost" type="button" id="bsRiv">Open the river</button><button class="btn ghost" type="button" id="bsReset" style="margin-left:auto">Start again</button></div>
+    <p class="say" id="bsSay">The deep water has no oxygen, so it holds dissolved Mn²⁺. Choose a sea level, then bring the deep water up onto the shelf.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">A teaching model of slides 8 and 15: a stratified basin, Mn oxide on the shallow oxygenated shelf and Mn carbonate in the deeper reduced water, in a site protected from clastic sediment. Shapes and positions are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#exo">Ore formed at the surface</a></li>
+      <li><a href="#mn">Manganese deposits</a></li>
+      <li><a href="#model">How manganese ore forms</a></li>
+      <li><a href="#groote">Groote Eylandt</a></li>
+      <li><a href="#nodules">Deep-sea nodules</a></li>
+      <li><a href="#fe">Iron ore types and the market</a></li>
+      <li><a href="#bif">Banded iron formations</a></li>
+      <li><a href="#grade">From BIF to ore</a></li>
+      <li><a href="#pilbara">The Pilbara</a></li>
+      <li><a href="#age">New ages and new rivals</a></li>
+      <li><a href="#compare">Putting it together</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="exo" data-log="Surface ores"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>Ore formed at the Earth's surface</h2>
+  <p>Sedimentary iron and manganese deposits are <button class="term" data-t="exogenous">exogenous</button>: they form at or near the Earth's surface. Exogenous deposits can be residual (laterites), detrital (placers) or chemical (evaporites, banded iron formations). Most iron and manganese ores began as <b>chemical precipitates on the sea floor</b>, later changed by weathering. Because they were deposited as beds, they can be continuous for kilometres. Iron and manganese (and bauxite) are <b>bulk commodities</b>: very large tonnages at high grade. The first iron ore mined in Australia was a laterite near Mittagong, formed by deep weathering of Hawkesbury Sandstone. <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a geophysics map of the Pilbara</span><span class="srcs">slide 2</span></div>
+    <img loading="lazy" decoding="async" src="img/L21/gravity.jpg" alt="Coloured gravity map with two pink and white highs, one outlined and labelled 848 Mt at 44.9% Fe, the other labelled exploration potential">
+    <p class="ask">Two strong highs (pink) stand out. Why does iron ore show up so well on a gravity map, and what does the second high suggest?</p>
+    <details data-obs="gravity"><summary>Show what I see</summary><div class="seen">
+      <ul><li>One strong high outlined as a known deposit (848 Mt at 44.9% Fe).</li><li>A second, almost identical high to the south-east marked "exploration potential".</li></ul>
+      <p class="so">Hematite and magnetite are much denser than quartz, so iron ore makes big <b>gravity</b> highs (and magnetic highs). The second high probably holds another deposit of similar size and grade. <span class="srcs">slide 2</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="mn" data-log="Manganese"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">12 to 24 m</span></div>
+  <h2>Manganese deposits</h2>
+  <p>Manganese ore is easy to recognise in the field: it is black and <b>sooty</b>, and if you work in a manganese mine you get covered in it. The main ore mineral is <button class="term" data-t="pyrolusite">pyrolusite</button> (MnO₂). There are several styles: carbonates and silicates with andesitic and basaltic volcanics; MnO₂ or MnCO₃ with BIFs (platform type); Mn-rich graphites or carbonaceous shales; and, the most important for large deposits, <b>sedimentary shelf</b> deposits in estuarine or shallow marine settings. <span class="srcs">slide 4</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L21/mn-oxide.jpg" alt="A dark grey to black, slightly metallic, sooty rock"><div class="cap">Pyrolusite ore (MnO₂). Slide 4</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L21/lump-ore.jpg" alt="A pile of black lumps of rock"><div class="cap">Black manganese "lump ore". Slide 5</div></div>
+  </div>
+  <p>Sedimentary Mn deposits form on <b>stable craton margins or in cratonic basins</b>, in shallow marine to estuarine shelf settings, of many ages, during changes in sea level. The key is an <b>anoxic basin starved of detrital input</b>. <span class="srcs">slide 5</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="lab" id="mpLab">
+    <h4><span>Who mines manganese (2025)</span><b id="mpTag"></b></h4>
+    <div class="chips" id="mpC" role="group" aria-label="Measure"></div>
+    <svg class="grid-svg" id="mpSvg" viewBox="0 0 640 270" role="img" aria-label="Bar chart of manganese ore production or reserves by country"></svg>
+    <p class="say" id="mpSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Thousand tonnes, slide 7. South Africa holds about 70% of world resources.</p>
+  </div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="model" data-log="Mn model"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">24 to 36 m</span></div>
+  <h2>How manganese ore forms</h2>
+  <p>The basin is <b>stratified</b>: oxygenated (oxic) water on top and oxygen-poor (anoxic) water below. Mn²⁺ is soluble in the anoxic water. During a <b>marine transgression</b>, organic-rich runoff and nutrient upwelling bring the deep water onto the shelf. Where the oxic-anoxic boundary meets the shelf, Mn²⁺ oxidises to Mn⁴⁺ and MnO₂ precipitates. Mn oxides form on the shallow, landward side (oxide facies), and Mn carbonates form in deeper, more reduced water basinward (carbonate facies). Over time, carbonates can change to oxides. The site must be protected from clastic sediment, which would dilute the ore and change the chemistry. <span class="srcs">slides 8 and 15</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L21/stratified.jpg" alt="Three panels of a stratified ocean: oxic water over anoxic water, then a marine transgression with Mn oxide deposited on the shelf, then ocean anoxia" style="aspect-ratio:auto;object-fit:contain"><div class="cap">The general model: stratified ocean, transgression, anoxia (Roy 2006). Slide 8</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L21/ehph-mn.jpg" alt="Eh-pH diagram with fields for Mn2+, Mn oxides and Mn carbonates, with the Mn oxide and Mn carbonate deposit fields shaded" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Eh-pH: Mn oxide deposits need high Eh; Mn carbonates form at lower Eh. Slide 8</div></div>
+  </div>
+  <p>The pH range is similar for both (about 4 to 9). What separates them is the redox potential (Eh): manganese oxides need a high, restricted Eh. On the Eh-pH diagram for iron, hematite has a large field, and Mn oxides are stable in the same field, which is why Mn oxides are common in iron ore deposits too. <span class="srcs">slides 8 and 30</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>Mn²⁺ dissolves in anoxic water; it precipitates as MnO₂ where it meets oxygen.</li><li>Ore control: the oxic-anoxic interface meeting shelf sediments, in a site protected from clastics.</li><li>Landward oxide facies (pyrolusite); basinward carbonate facies (rhodochrosite).</li><li>Supergene enrichment can raise the grade two to three times.</li></ul><span class="srcs">slides 8 and 15</span></div>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="groote" data-log="Groote"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">36 to 50 m</span></div>
+  <h2>Groote Eylandt, Northern Territory</h2>
+  <p>Almost all of Australia's manganese comes from one island in the Gulf of Carpentaria. Groote Eylandt has about 250 Mt of ore and supplies about <b>15% of world production</b>. The ore zone covers 22 by 6 km. Beds are 0.1 to 11 m thick, thin to the west, and dip only about 3°, so they are easy to open cut, like a coal seam. Grades are 30 to 50% Mn (pure MnO₂ is 63% Mn). The minerals are pyrolusite, <button class="term" data-t="psilomelane">psilomelane</button> (a field name for a mixture of Mn oxides), cryptomelane (KMn₈O₁₆) and manganocalcite (pale pink; a deep pink carbonate is more likely rhodochrosite). <span class="srcs">slide 9</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Groote open cut</span><span class="srcs">slide 10</span></div>
+    <img loading="lazy" decoding="async" src="img/L21/groote-pit.jpg" alt="A wide open pit with flat-lying red, brown and dark layers and benches">
+    <p class="ask">The ore is flat-lying. Which layers would you mine, and how would you follow them?</p>
+    <details data-obs="groote"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Flat, gently dipping layers in a broad, shallow pit: red and brown sand and clay above, darker layers below.</li></ul>
+      <p class="so">The dark, black Mn oxide layer is the ore; it is easy to pick because it is black. The miners strip the cover, take the ore layer, then move along, like mining a coal seam. Processing removes the clay (in settling tanks) and the quartz. <span class="srcs">slides 9 and 10</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+    </div></details>
+  </div>
+  <p>The ore formed in a Cretaceous intracratonic sea (Carpentaria, Eromanga, Surat basins) along a <b>palaeo-shoreline</b>: Mn oxide ore landward and Mn carbonate seaward. The section is Middle Proterozoic quartzite, an unconformity, Lower Cretaceous quartz sand, then Lower to Middle Cretaceous clays with oolitic and <button class="term" data-t="pisolite">pisolitic</button> Mn ore, then soils. The richest ore is pisolitic. The ore shows sedimentary structures: oolites (less than 2 mm) and pisolites, sorting, grading, ripple marks and cross-bedding. Each pisolite grew in layers around a small particle in shallow water. <span class="srcs">slides 11 and 12</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L21/groote-geol.jpg" alt="Map of Groote Eylandt with the palaeo-shoreline, Mn oxide ores on the landward side and Mn carbonates offshore, with a cross-section above">
+    <figcaption>Groote Eylandt: Mn oxide ores along the Cretaceous palaeo-shoreline, Mn carbonates offshore. <span class="srcs">slide 11</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · pisolites</span><span class="srcs">slide 12</span></div>
+    <img loading="lazy" decoding="async" src="img/L21/pisolites.jpg" alt="Four black and white microscope images of round grains with many concentric layers, some broken and regrown">
+    <p class="ask">Describe the grains. How did they grow?</p>
+    <details data-obs="pisolites"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Round to oval grains with many thin concentric layers, some with a broken core that was coated again.</li></ul>
+      <p class="so">These are <b>Mn pisolites</b>. Each grew layer by layer around a nucleus, rolling in shallow, agitated water. Broken pisolites that were coated again show reworking. They are the highest-grade ore at Groote. <span class="srcs">slide 12</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+    </div></details>
+  </div>
+  <p>Later supergene weathering in a seasonal (monsoonal) climate moved manganese again. MnO₂ is normally insoluble, but Fe²⁺ can dissolve it; it then precipitates again through oxidised surface water, evaporation, microorganisms and a rise in pH. High-grade Mn ore outcrops as black rubble, as at Brumby Creek. <span class="srcs">slides 13 and 14</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L21/mn-outcrop.jpg" alt="Three geologists standing on a ground surface covered in black rubbly rock" style="max-width:420px;margin:0 auto">
+    <figcaption>Outcropping high-grade Mn ore, Brumby Creek. <span class="srcs">slide 14</span></figcaption>
+  </figure>
+  <div class="labbox"><b>At the lab test</b><ul><li>Mn oxide ore: black, sooty, soils your fingers; pyrolusite (MnO₂) and "psilomelane" (mixed oxides, often botryoidal).</li><li>Pisolitic and oolitic textures point to sedimentary Mn.</li><li>Pink carbonate: pale = manganocalcite, deep pink = rhodochrosite.</li></ul><span class="srcs">slides 4, 9 and 12</span> <span class="srcs">lecture recording, 9 Nov</span></div>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="nodules" data-log="Nodules"><div class="wrap">
+  <div class="kicker">Variation <span class="depth">50 to 58 m</span></div>
+  <h2>Deep-sea manganese nodules</h2>
+  <p>Mn-Fe nodules cover parts of the deep ocean floor (deeper than 3000 m) in stable ocean basins, mostly in the Pacific (such as the Clarion-Clipperton zone). They are recent, with pisoid textures and almost no gangue. But they contain only about 15 to 19% Mn, often with as much or more iron, and only about 0.3% Co. A land deposit needs at least about 40% Mn. Proving the grade and tonnage of nodules scattered on the sea floor is very hard. The lecturer thinks the interest is mostly hype, except for countries such as Japan that have no manganese or cobalt of their own. Black smokers also deposit Mn and Fe oxides (see Lecture 6). <span class="srcs">slides 16 to 19</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L21/nodules.jpg" alt="A cut manganese nodule with concentric dark layers and a whole nodule with a knobbly surface" style="max-width:460px;margin:0 auto">
+    <figcaption>A cut nodule with concentric layers, and a whole nodule. <span class="srcs">slide 16</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="fe" data-log="Iron ores"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">58 to 70 m</span></div>
+  <h2>Iron ore types and the market</h2>
+  <p>Sedimentary iron ore forms by low-temperature movement of Fe²⁺ in water with low pH and low Eh (no oxygen): <b>banded iron formations (BIF)</b> and ironstones. Other types are volcanic-associated ores, bog iron ores (iron taken up by peat), high-temperature magmatic ores (Kiruna, Sweden) and hydrothermal skarns. By volume, BIF-hosted ore dominates the world market. <span class="srcs">slide 20</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="lab" id="fpLab">
+    <h4><span>Who mines iron ore (2025)</span><b id="fpTag"></b></h4>
+    <div class="chips" id="fpC" role="group" aria-label="Measure"></div>
+    <svg class="grid-svg" id="fpSvg" viewBox="0 0 640 300" role="img" aria-label="Bar chart of iron ore production or reserves by country"></svg>
+    <p class="say" id="fpSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Production in million tonnes and reserves in million tonnes, slide 22.</p>
+  </div>
+  <p>Iron ore is Australia's most valuable export. BHP and Rio Tinto mine most of it. Their total cost is about US$24 to 30 per tonne, and the price is about US$100 per tonne, so the profit is very large. Lang Hancock first claimed many Pilbara deposits in the 1960s; his daughter, Gina Rinehart, is now the richest person in Australia. <span class="srcs">slides 22 and 23</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="bif" data-log="BIF"><div class="wrap">
+  <div class="kicker">Concept 3 <span class="depth">70 to 84 m</span></div>
+  <h2>Banded iron formations</h2>
+  <p>BIFs are tied to the history of oxygen on Earth. Most formed between about 2.8 and 2 Ga (the traditional range for the main BIFs is 2500 to 1900 Ma). They became common when <b>stromatolites</b> became common: photosynthesis by bacteria began to release oxygen. The early atmosphere was mostly CO₂ and had no oxygen. Big changes, such as crust formation and glaciations, came at the same times as BIF formation. After the <b>Great Oxidation Event</b> (about 2.4 Ga), oxidised minerals such as saléeite could form, and molybdenum in black shales rose as oxygen increased. <span class="srcs">slides 24 to 26</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L21/stromatolite.jpg" alt="Cut surface of a domed stromatolite with many fine orange and brown layers"><div class="cap">A stromatolite. Slide 24</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L21/bif-outcrop.jpg" alt="Outcrop of thin red, grey and white bands with a hammer for scale"><div class="cap">Banded iron formation. Slide 24</div></div>
+  </div>
+  <p>How BIF forms: in reducing water, iron dissolves as <b>Fe²⁺</b>. When it meets oxygen, it precipitates as <b>Fe³⁺</b>, as very insoluble hematite (Fe₂O₃). In the Archean, volcanic exhalations put large amounts of Fe, silica and sulphide into the oceans. With no oxygen, dissolved iron travelled far before it was deposited; the lecturer said the oceans may even have been orange. The sediments were Fe-cherts, carbonates and sulphides; their oxidation formed BIFs. The facies depend on water depth: <b>oxide</b> (Fe₂O₃) in shallow water, <b>carbonate</b> (FeCO₃) deeper, and <b>sulphide</b> (FeS₂) deepest. BIFs mostly formed in shallow water. <span class="srcs">slides 28 and 29</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a BIF slab</span><span class="srcs">slide 1</span></div>
+    <img loading="lazy" decoding="async" src="img/L21/bif-slab.jpg" alt="A cut slab with the upper part red-brown with streaks and the lower part in sharp alternating red and grey-blue bands">
+    <p class="ask">Compare the top and the bottom of this slab. Which part is a classic BIF?</p>
+    <details data-obs="bifslab"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Top: hematite-stained fine-grained silica, without clear bands.</li><li>Bottom: sharp alternating bands of red jasper or chert and grey-blue metallic hematite.</li></ul>
+      <p class="so">The bottom is a classic <b>banded iron formation</b>: alternating Fe-rich and silica-rich layers. The top is a "proto-BIF", hematite impregnated into fine-grained silica. Both are sedimentary in origin. <span class="srcs">slide 1</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+    </div></details>
+  </div>
+  <p>The main BIF provinces are the Hamersley (Australia), Krivoy Rog (Ukraine), Ishpeming (Michigan, USA) and Carajás (Brazil). Many BIF terrains also host orogenic gold, because Fe²⁺ in the BIF reacts with gold-bisulphide complexes: 2[Au(HS)⁻] + Fe²⁺ gives gold plus pyrite (see Lecture 13). BIFs are often linked with greenstone belts and can be more than 300 m thick. Main minerals: hematite, goethite, silica, pyrite, siderite and magnetite. <span class="srcs">slides 27 and 31</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="grade" data-log="Enrichment"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">84 to 98 m</span></div>
+  <h2>From BIF to ore</h2>
+  <p>Primary BIF is not rich enough. Groundwater and weathering leach out the silica, carbonate and clay and leave the insoluble iron oxides behind. This is <b>supergene enrichment</b>. Deeper fluids during burial and deformation (hot saline basin fluids, then cooler meteoric water) can also start the enrichment. <span class="srcs">slides 29 and 31</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="tablewrap"><table>
+    <tr><th>Ore type</th><th>Fe (wt%)</th></tr>
+    <tr><td>Fe-rich primary BIF</td><td>30 to 45</td></tr>
+    <tr><td>Goethite-rich ore</td><td>56 to 63</td></tr>
+    <tr><td>High-grade hematite ore (massive or microplaty)</td><td>60 to 68</td></tr>
+    <tr><td>Pure hematite</td><td>70</td></tr>
+  </table></div>
+  <p class="srcs" style="display:block">slides 32 and 40</p>
+  <div class="lab" id="weLab">
+    <h4><span>Weather a BIF three ways</span><b id="weTag">0 / 3 tried</b></h4>
+    <div class="chips" id="weC" role="group" aria-label="Scenario"></div>
+    <svg class="grid-svg" id="weSvg" viewBox="0 0 640 230" role="img" aria-label="A column of alternating chert and iron-rich bands before and after fluid alteration"></svg>
+    <p class="say" id="weSay">Pick what the fluid does to the BIF.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">The three outcomes are from slide 42. The grade numbers are invented for teaching.</p>
+  </div>
+  <p>Goethite-rich ores formed mostly by supergene enrichment from the Cretaceous to the Cenozoic, mostly in palaeovalleys and other depressions (the "channel iron" deposits). Faults and folds act as pathways for water that dissolves quartz and carbonate and replaces them with goethite. So you must understand the structure to find the supergene ore. <span class="srcs">slide 44</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="pilbara" data-log="Pilbara"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">98 to 114 m</span></div>
+  <h2>The Pilbara (Hamersley Province)</h2>
+  <p>The Pilbara has more than 25 000 Mt of reserves at about 60% Fe, at mines such as Robe River, Mt Tom Price, Paraburdoo, Newman and Yandi. The host rocks are 2.5 to 2.2 Ga shallow-water chemical and detrital shelf sediments (BIF, carbonate, shale) with mafic and felsic volcanics, in a quiet continental margin basin. There were three deformations (about 2.4, 2.2 and 1.7 Ga). The region was also deeply weathered in the Mesozoic and Tertiary. The ore minerals are hematite, goethite, magnetite and <button class="term" data-t="martite">martite</button> (hematite replacing magnetite: it looks like magnetite octahedra but is not magnetic). The gangue is quartz, calcite and kaolinite. <span class="srcs">slides 33 and 38</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L21/hamersley.jpg" alt="Simplified geological map of the Hamersley Province with the Pilbara Block to the north and mine locations"><div class="cap">The Hamersley Province. Slide 39</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L21/pilbara-pit.jpg" alt="A large open pit cut into a red hill"><div class="cap">Mining a red mountain of iron ore. Slide 39</div></div>
+  </div>
+  <p>The bigger, better ore bodies tend to be in the more <b>deformed</b> southern areas, because deformation made weaknesses that let weathering go deeper. Ore bodies are gently dipping sheets near the surface (less than 500 m deep), roughly parallel to the land surface, and linked to faults and folds. They are mostly microplaty hematite at 58 to 64% Fe, plus goethite-rich pisolitic channel deposits. Later dolerite dykes cut the ore and must be mined around. At Mt Whaleback, the richest ore is often in the lower part of a fault block, because the fault let weathering fluids in. <span class="srcs">slides 39 to 43</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Paraburdoo section</span><span class="srcs">slide 41</span></div>
+    <img loading="lazy" decoding="async" src="img/L21/paraburdoo.jpg" alt="Coloured cross-section of folded layers with mineralised and unmineralised units and a green dolerite dyke">
+    <p class="ask">Find the mineralised layers and the dolerite. How has the structure affected the ore?</p>
+    <details data-obs="paraburdoo"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Folded and faulted layers; some units marked mineralised, the same units elsewhere unmineralised.</li><li>A green dolerite dyke cutting across the ore.</li></ul>
+      <p class="so">The ore follows particular BIF units (such as the Joffre and Dales Gorge members) where folding and faulting helped fluids enrich them. The <b>dolerite dyke</b> is barren and dilutes the ore, so it has to be mined around. <span class="srcs">slide 41</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+    </div></details>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="age" data-log="New ideas"><div class="wrap">
+  <div class="kicker">Recent work <span class="depth">114 to 124 m</span></div>
+  <h2>New ages and new rivals</h2>
+  <p>Hematite can now be dated directly by U-Pb, because small amounts of uranium replace iron in its structure. Courtney-Davies et al. (2022, 2024; Curtin University and CSIRO) dated the Pilbara ore hematite. The traditional view was that the ore formed at 2.2 to 2 Ga. The new ages are much younger, <b>1.4 to 1.1 Ga</b>, linked to the amalgamation of Australia after the break-up of the supercontinent Columbia (Nuna). The BIF itself still formed at 2.2 to 2 Ga, during the Great Oxidation Event. <span class="srcs">slide 45</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <p><b>Simandou</b>, in Guinea, West Africa, is a joint venture between Rio Tinto and China that could threaten Australia's dominance. Its hills are almost solid hematite. It has been known for a long time, but it needed a railway across Guinea and a new port. Rain, distance and politics are all problems; its advantage is that it is close to Europe and the USA. <span class="srcs">slides 46 to 48</span> <span class="srcs">lecture recording, 9 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L21/simandou.jpg" alt="Aerial view of a long red ridge rising above green hills" style="max-width:460px;margin:0 auto">
+    <figcaption>The Simandou ridge, Guinea. <span class="srcs">slide 48</span></figcaption>
+  </figure>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="compare" data-log="Together"><div class="wrap">
+  <div class="kicker">Wrap-up <span class="depth">124 to 140 m</span></div>
+  <h2>Putting it together</h2>
+  <div class="lab">
+    <h4><span>Name the rock</span><b id="idScore">0 / 5</b></h4>
+    <div class="cards" id="idCards"></div>
+  </div>
+  <div class="keybox"><b>Memorise</b><ul><li>Mn: stratified basin, Mn²⁺ in anoxic water, MnO₂ where it meets oxygen on the shelf; Groote Eylandt (Cretaceous, ~15% of world supply, 30 to 50% Mn, pisolitic ore).</li><li>South Africa leads Mn production (~70% of resources); Australia has the largest reserves.</li><li>BIF: Fe²⁺ dissolved in an O₂-poor ocean, precipitated as Fe³⁺ oxide; 2.5 to 1.9 Ga; oxide, carbonate, sulphide facies with depth.</li><li>Supergene leaching of silica and carbonate turns 30 to 45% Fe BIF into 60 to 68% Fe ore.</li><li>Pilbara: &gt; 25 000 Mt at ~60% Fe; ore hematite dated 1.4 to 1.1 Ga.</li></ul><span class="srcs">slides 8 to 45</span></div>
+  <div class="lab">
+    <h4><span>Classify the deposit</span><b id="clScore">0 / 6</b></h4>
+    <div class="cards" id="clCards"></div>
+  </div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">140 to 145 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer each question out loud or on paper before you open it. If your answer was right, claim the ounces.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">145 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>These are terms that the lecture expects you to know, or only explains briefly. Tap a dotted word in the text to see its meaning.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Middleback Ranges, one of the lab ore suites, is a BIF iron deposit: use this lecture for it. Compare supergene enrichment here with the oxide zones of Lecture 2 and the laterites of Lecture 8. The BIF-hosted gold link connects to Lecture 13.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 21 slides (Sedimentary Fe and Mn deposits, 50 slides; photos and figures tagged by slide) and the Echo360 recording of 9 November 2026. Figures come from published sources (Roy 2006, Clout and Simonson 2005, Taylor et al. 2001, Courtney-Davies et al. 2022 and 2024, Geoscience Australia and others) and are shown only as lecture material. The basin animation and the weathering scenarios are teaching models.</p>
+  <p><a href="L20.html">&larr; Lecture 20</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','Your hands are black from the Mn ore.'],[35,'Graduate geologist','You can spot a pisolite.'],[100,'Project geologist','You can follow a redox boundary.'],[180,'Senior geologist','You can read a BIF.'],[240,'Chief geologist','The Pilbara is your office.']];
+var G={
+ "exogenous":"Formed at or near the Earth's surface: residual, detrital or chemical deposits.",
+ "bulk commodity":"A raw material mined in very large tonnages, such as iron ore, manganese, bauxite and coal.",
+ "pyrolusite":"MnO₂, the main manganese ore mineral: black and sooty.",
+ "psilomelane":"A field name for a mixture of black Mn oxides, often botryoidal. Not a true mineral species.",
+ "cryptomelane":"KMn₈O₁₆, a potassium manganese oxide.",
+ "manganite":"MnO(OH), a manganese oxide-hydroxide.",
+ "rhodochrosite":"MnCO₃, a deep pink manganese carbonate.",
+ "manganocalcite":"Calcite with manganese; pale pink.",
+ "stratified basin":"A water body with oxic water on top and anoxic water below.",
+ "anoxic":"Without free oxygen.",
+ "Eh":"Redox potential: how oxidising (high Eh) or reducing (low Eh) the water is.",
+ "marine transgression":"A rise in sea level that moves the shoreline inland.",
+ "oolite":"A round sedimentary grain less than 2 mm with concentric layers.",
+ "pisolite":"A round concentric grain larger than 2 mm. Pisolitic Mn is the richest ore at Groote Eylandt.",
+ "supergene enrichment":"Near-surface weathering and groundwater that remove gangue (silica, carbonate) and concentrate the ore metal.",
+ "Mn nodule":"A concentric Mn-Fe oxide ball on the deep ocean floor; low grade (15 to 19% Mn).",
+ "BIF":"Banded iron formation: thin alternating layers of iron oxide and chert, mostly 2.5 to 1.9 Ga.",
+ "Great Oxidation Event":"The rise of free oxygen in the atmosphere about 2.4 Ga.",
+ "stromatolite":"A layered structure built by microbial mats; evidence of early photosynthesis.",
+ "hematite":"Fe₂O₃, the main iron ore mineral; red streak.",
+ "goethite":"FeO(OH), an iron oxide-hydroxide formed by weathering; yellow-brown streak.",
+ "magnetite":"Fe₃O₄, a magnetic iron oxide.",
+ "martite":"Hematite that has replaced magnetite, keeping its octahedral shape. Not magnetic.",
+ "microplaty hematite":"Fine platy hematite, the main high-grade Pilbara ore.",
+ "channel iron deposit":"Goethite-rich pisolitic ore in old river valleys, formed by Cretaceous to Cenozoic weathering.",
+ "jaspilite":"Red jasper banded with iron oxide; a type of BIF.",
+ "U-Pb hematite dating":"Dating hematite directly using the small amount of uranium in its structure."
+};
+var CP={
+ cp1:{q:'Why does iron ore show strongly on gravity maps?',o:['It is radioactive','Hematite and magnetite are much denser than quartz','It is magnetic only'],a:1,e:'Big gravity (and magnetic) highs.'},
+ cp2:{q:'What setting is most important for large sedimentary Mn deposits?',o:['Deep ocean trenches','Shallow marine shelves on stable cratons, in anoxic basins starved of detritus','Granite batholiths'],a:1,e:'Estuarine to shallow marine shelf.'},
+ cp3:{q:'In a stratified basin, where does MnO₂ precipitate?',o:['In the deep anoxic water','Where the oxic-anoxic boundary meets the shelf','In rivers'],a:1,e:'Mn²⁺ oxidises to Mn⁴⁺ when it meets oxygen.'},
+ cp4:{q:'Which ore type is richest at Groote Eylandt?',o:['Siliceous ore','Pisolitic Mn ore','Mn carbonate'],a:1,e:'Pisolites grew in shallow agitated water.'},
+ cp5:{q:'Why are deep-sea nodules not yet mined?',o:['They are radioactive','Low grade (15 to 19% Mn) and very hard to prove tonnage and grade','They are too rich'],a:1,e:'A land deposit needs about 40% Mn.'},
+ cp6:{q:'Which country is by far the largest iron ore producer?',o:['China','Australia','Brazil'],a:1,e:'980 Mt in 2025, more than twice Brazil.'},
+ cp7:{q:'How did iron move through Archean oceans?',o:['As hematite grains','Dissolved as Fe²⁺, because there was no oxygen','As magnetite sand'],a:1,e:'It precipitated as Fe³⁺ oxide when it met oxygen.'},
+ cp8:{q:'What turns a 35% Fe BIF into 62% Fe ore?',o:['Adding more chert','Supergene leaching of silica and carbonate','Metamorphism alone'],a:1,e:'The insoluble iron oxides stay behind.'},
+ cp9:{q:'Why are Pilbara ore bodies better in more deformed areas?',o:['Deformation added iron','Faults and folds let weathering fluids go deeper','Deformed BIF is younger'],a:1,e:'Weaknesses focus the fluids.'},
+ cp10:{q:'What did U-Pb dating of Pilbara hematite show?',o:['The ore is 3.5 Ga','The ore formed at 1.4 to 1.1 Ga, much later than the BIF','The ore is Cenozoic only'],a:1,e:'Linked to the break-up of Columbia (Nuna).'},
+ cp11:{q:'Black, sooty, pisolitic ore in flat Cretaceous beds on an old shoreline. What is it?',o:['BIF hematite','Sedimentary Mn ore (Groote type)','Deep-sea nodules'],a:1,e:'Oxide facies on the landward shelf.'}
+};
+var ST=[
+ ['Define exogenous deposits and give the three types.','Recall','Deposits formed at or near the Earth\'s surface: residual (laterites), detrital (placers) and chemical (evaporites, BIFs).'],
+ ['Describe the tectonic and depositional setting of sedimentary Mn deposits.','Recall','Stable craton margins or cratonic basins; shallow marine to estuarine shelf (15 to 300 m), sheltered sites around islands; anoxic basins starved of detrital input; during transgressions. Oxide facies landward, carbonate facies basinward.'],
+ ['Explain the stratified basin model for Mn ore.','Apply','Oxic water over anoxic water. Mn²⁺ dissolves in the anoxic water. Transgression and upwelling bring it onto the shelf, where the redox interface meets the sediment; Mn²⁺ oxidises and MnO₂ precipitates. Deeper, Mn carbonates form. Clastic input would dilute it.'],
+ ['Describe Groote Eylandt.','Recall','Cretaceous intracratonic shelf deposit, Gulf of Carpentaria; ~250 Mt, ~15% of world production; 22 × 6 km; beds 0.1 to 11 m, dipping ~3°; 30 to 50% Mn; pyrolusite, psilomelane, cryptomelane, manganocalcite; oolitic and pisolitic ore along a palaeo-shoreline; supergene enrichment.'],
+ ['Why are deep-sea Mn nodules not economic?','Apply','Only 15 to 19% Mn (land ore needs ~40%), often more Fe than Mn, ~0.3% Co; deeper than 3000 m; very hard to prove grade and tonnage of scattered nodules; land deposits are higher grade.'],
+ ['Explain how BIFs formed and their link with oxygen.','Apply','In O₂-poor Archean to Palaeoproterozoic oceans, Fe²⁺ (from volcanic exhalation) stayed dissolved and travelled far. It precipitated as Fe³⁺ oxide where oxygen (from photosynthesising bacteria, stromatolites) was present, mostly in shallow water. Oxide, carbonate and sulphide facies form at increasing depth.'],
+ ['List the iron ore types and their grades.','Recall','Primary BIF 30 to 45% Fe; goethite-rich ore 56 to 63%; high-grade hematite (massive or microplaty) 60 to 68%; pure hematite 70%. Pilbara ores 58 to 64%.'],
+ ['Explain the three outcomes of fluid alteration of BIF.','Apply','(1) Iron added and silica lost, stratigraphy kept: richest ore. (2) No iron added, silica lost, stratigraphy kept, porosity created. (3) No iron added, silica lost, layers collapse and stratigraphy is lost.'],
+ ['How did direct dating change the model for Pilbara iron ore?','Synthesise','U-Pb dating of hematite gives 1.4 to 1.1 Ga, not the traditional 2.2 to 2 Ga. The ore formed during the amalgamation of Australia after Columbia (Nuna) broke up, not during the Great Oxidation Event, although the BIF host is still 2.2 to 2 Ga.']
+];
+GEO.start({key:'geos3141-L21-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- Mn basin ---------- */
+var bs={beds:[],riv:false,busy:false};
+function shelfY(x){return x<120?150:x<480?150+(x-120)*0.25:240+(x-480)*0.1;}
+function bsDraw(f){var s=$('#bsSvg'),L=+$('#bsL').value/100,yb=230-L*70;s.innerHTML='';
+  el('rect',{x:0,y:0,width:640,height:280,fill:'#9FC6DA'},s);el('rect',{x:0,y:yb,width:640,height:280,fill:'#3E5560'},s);
+  txt(s,520,40,'oxic water',{'font-size':12,fill:'#1D3340'});txt(s,500,yb+20,'anoxic water: Mn²⁺',{'font-size':12,fill:'#E6EEF2'});
+  el('line',{x1:0,x2:640,y1:yb,y2:yb,stroke:'#E0A23C','stroke-width':2,'stroke-dasharray':'6 4'},s);txt(s,130,yb-4,'redox boundary',{'font-size':11,fill:'#5A3A10'});
+  var d='M0 280 L0 150';for(var x=0;x<=640;x+=10)d+=' L'+x+' '+shelfY(x);d+=' L640 280 Z';el('path',{d:d,fill:'#C9B48E'},s);
+  el('rect',{x:0,y:0,width:120,height:150,fill:'#B9D59A'},s);txt(s,10,140,'land',{'font-size':12,fill:'#2E3A1E'});
+  if(bs.riv){el('path',{d:'M0 120 C40 130 80 140 120 148',stroke:'#7A6A4A','stroke-width':6,fill:'none'},s);el('path',{d:'M120 150 L320 '+(shelfY(320)-6)+' L320 '+shelfY(320)+' L120 152 Z',fill:'#8C7A5A',opacity:.8},s);txt(s,140,170,'clastic sediment',{'font-size':11,fill:'#3E2E1E'});}
+  bs.beds.forEach(function(b){var x1=b.x-50,x2=b.x+50;el('path',{d:'M'+x1+' '+(shelfY(x1)-3)+' L'+x2+' '+(shelfY(x2)-3)+' L'+x2+' '+(shelfY(x2)+2)+' L'+x1+' '+(shelfY(x1)+2)+' Z',fill:b.c},s);});
+  if(f!==undefined){var r=rng(7);for(var i=0;i<22;i++){var t=cl(f*1.3-r()*.3,0,1),xx=600-t*(600-bs.tx)+(r()-.5)*30,yy=250-t*(250-shelfY(bs.tx)+10)+(r()-.5)*20;if(t>0&&t<1)el('circle',{cx:xx,cy:yy,r:3,fill:'#E07A3F'},s);}}
+  $('#bsLV').textContent=L<.34?'low':L<.67?'middle':'high';$('#bsTag').textContent=bs.beds.length+(bs.beds.length===1?' bed':' beds');}
+function bsHitX(){var L=+$('#bsL').value/100,yb=230-L*70;for(var x=120;x<=640;x+=2){if(shelfY(x)>=yb)return x;}return 600;}
+$('#bsL').addEventListener('input',function(){bsDraw();});
+$('#bsGo').addEventListener('click',function(){if(bs.busy)return;bs.busy=true;bs.tx=bsHitX();var t0=0;SND.play('flip');
+  function step(ts){if(!t0)t0=ts||1;var f=Math.min(1,((ts||t0)-t0)/1500);bsDraw(f);if(f<1&&!reduce)requestAnimationFrame(step);else{bs.busy=false;
+    if(bs.riv&&bs.tx<330){SND.play('bad');COMBO.miss();$('#bsSay').innerHTML='The river is dumping clastic sediment here. The Mn is <b>diluted</b> and the chemistry is disturbed. No ore. Close the river.';bsDraw();return;}
+    bs.beds.push({x:bs.tx-20,c:'#1E1A1A'},{x:bs.tx+60,c:'#D88A9A'});SND.play('coin');FX.burst($('#bsTag'));
+    $('#bsSay').innerHTML='Where the boundary meets the shelf, Mn²⁺ met oxygen: <b>black MnO₂ (pyrolusite)</b> on the shallow side and <b>pink Mn carbonate</b> just below, in reduced water. Change the sea level and upwell again to build more beds.';
+    if(bs.beds.length>=6){COMBO.hit();award('bs',COMBO.pts(5),'Built a Mn shelf'+COMBO.tag());$('#bsSay').innerHTML+=' Three transgressions: a Groote-style ore zone along the old shoreline.';}bsDraw();}}
+  requestAnimationFrame(step);});
+$('#bsRiv').addEventListener('click',function(){bs.riv=!bs.riv;this.textContent=bs.riv?'Close the river':'Open the river';bsDraw();});
+$('#bsReset').addEventListener('click',function(){bs={beds:[],riv:false,busy:false};$('#bsRiv').textContent='Open the river';$('#bsSay').textContent='The deep water has no oxygen, so it holds dissolved Mn²⁺. Choose a sea level, then bring the deep water up onto the shelf.';bsDraw();});
+bsDraw();
+
+/* ---------- charts ---------- */
+function barChart(id,data,keyNames,unit,says,col,awardId){var k=1,seen={};
+  keyNames.forEach(function(m,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m;b.setAttribute('aria-pressed',i===0);b.addEventListener('click',function(){k=i+1;$$('#'+id+'C .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');draw();});$('#'+id+'C').appendChild(b);});
+  function draw(){var s=$('#'+id+'Svg');s.innerHTML='';var d=data.slice().sort(function(a,b){return b[k]-a[k];}),max=d[0][k],h=Math.min(36,(+s.getAttribute('viewBox').split(' ')[3]-8)/d.length);
+    d.forEach(function(r,i){var y=4+i*h,w=r[k]/max*330;txt(s,8,y+h*.62,r[0],{'font-size':13,fill:'var(--ink)'});el('rect',{x:120,y:y+4,width:Math.max(3,w),height:h-8,rx:3,fill:r[0]==='Australia'?'var(--gold)':col(r)},s);txt(s,126+w,y+h*.62,r[k].toLocaleString('en-AU')+' '+unit[k-1],{'font-size':12,fill:'var(--ink)'});});
+    $('#'+id+'Tag').textContent=keyNames[k-1];$('#'+id+'Say').textContent=says[k-1];seen[k]=1;if(Object.keys(seen).length===keyNames.length)award(awardId,3,'Compared producers');}
+  draw();}
+barChart('mp',[['South Africa',7600,550000],['Gabon',5000,61000],['Ghana',2000,13000],['Australia',1600,580000],['Brazil',800,300000],['India',790,34000],['China',700,260000]],['Production','Reserves'],['kt','kt'],['South Africa produced 7.6 Mt of Mn ore in 2025. Australia (almost all from Groote Eylandt) was fourth.','Australia has the largest reserves (580 Mt), just ahead of South Africa. Europe and the USA must import all their manganese.'],function(){return 'var(--slate)';},'mp');
+barChart('fp',[['Australia',980,59000],['Brazil',420,34000],['India',310,5500],['China',290,17000],['Iran',93,4200],['Russia',86,35000],['Canada',69,6000],['South Africa',66,1200]],['Production','Reserves'],['Mt','Mt'],['Australia mined 980 Mt of iron ore in 2025, more than twice Brazil.','Australia also has the largest reserves (59 000 Mt).'],function(){return 'var(--hem)';},'fp');
+
+/* ---------- weathering BIF ---------- */
+var WE=[['Fe added, silica lost','Much iron added, much silica lost, stratigraphy preserved. The richest ore.',66],['Silica lost only','No iron added, silica lost, stratigraphy preserved, porosity created.',52],['Silica lost, layers collapse','No iron added, silica lost, the layers collapse and the stratigraphy is lost.',58]],weSeen={};
+WE.forEach(function(w,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=w[0];b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){$$('#weC .chip').forEach(function(c,j){c.setAttribute('aria-pressed',j===i?'true':'false');});weDraw(i);});$('#weC').appendChild(b);});
+function weDraw(k){var s=$('#weSvg');s.innerHTML='';
+  function col(x,label,mode){txt(s,x,16,label,{'font-size':12,fill:'var(--ink)','font-weight':600});var y=24;for(var i=0;i<8;i++){var fe=i%2===0,h=fe?18:22;
+    if(mode===0){el('rect',{x:x,y:y,width:120,height:h,fill:fe?'#7A2E24':'#E8DCCB'},s);}
+    else if(mode===1){el('rect',{x:x,y:y,width:120,height:h,fill:fe?'#7A2E24':'#5E2A22'},s);}
+    else if(mode===2){if(fe)el('rect',{x:x,y:y,width:120,height:h,fill:'#8A3A2A'},s);else{el('rect',{x:x,y:y,width:120,height:h,fill:'var(--bg)',stroke:'#8A7A6A','stroke-dasharray':'3 3'},s);}}
+    else{if(fe)el('rect',{x:x,y:24+i*13,width:120,height:13,fill:'#8A3A2A',transform:'rotate('+((i%3)-1)*4+' '+(x+60)+' '+(30+i*13)+')'},s);}
+    y+=h;}}
+  col(40,'Primary BIF ~35% Fe',0);
+  if(k!==undefined){col(260,'After: ~'+WE[k][2]+'% Fe',k===0?1:k===1?2:3);$('#weSay').innerHTML=WE[k][1]+' <span class="srcs">slide 42</span>';weSeen[k]=1;$('#weTag').textContent=Object.keys(weSeen).length+' / 3 tried';if(Object.keys(weSeen).length===3){COMBO.hit();award('we',COMBO.pts(4),'Weathered a BIF three ways'+COMBO.tag());}}}
+weDraw();
+
+/* ---------- name the rock ---------- */
+var IDO=['Banded iron formation','Mn oxide ore','Mn nodule','Stromatolite','Folded BIF (jaspilite)'];
+mcCards($('#idCards'),[
+ {img:'img/L21/bif-red.jpg',alt:'Outcrop of red and grey bands with a hammer handle',lbl:'Specimen',q:'Alternating red chert and grey metallic iron oxide bands',o:IDO,a:0,e:'BIF. <span class="srcs">slide 34</span>'},
+ {img:'img/L21/mn-oxide.jpg',alt:'Black sooty rock',lbl:'Specimen',q:'Black, sooty and marks your fingers',o:IDO,a:1,e:'Pyrolusite-rich Mn oxide ore. <span class="srcs">slide 4</span>'},
+ {img:'img/L21/nodules.jpg',alt:'A cut nodule with concentric layers beside a knobbly ball',lbl:'Specimen',q:'A concentric ball from the deep ocean floor',o:IDO,a:2,e:'A Mn-Fe nodule. <span class="srcs">slide 16</span>'},
+ {img:'img/L21/stromatolite.jpg',alt:'Domed fine layers in orange and brown',lbl:'Specimen',q:'Domed microbial layers',o:IDO,a:3,e:'A stromatolite. <span class="srcs">slide 24</span>'},
+ {img:'img/L21/bif-polished.jpg',alt:'Polished slab with tightly folded red, gold and black bands',lbl:'Specimen',q:'Tightly folded red jasper, golden and black bands',o:IDO,a:4,e:'Folded BIF (jaspilite with tiger-eye bands). <span class="srcs">slide 50</span>'}
+],'id',2,function(r,n){$('#idScore').textContent=r+' / '+n;});
+
+/* ---------- classify ---------- */
+var CLO=['Sedimentary Mn (shelf)','BIF hematite ore','Channel iron (goethite)','Deep-sea nodules','Magmatic iron'];
+mcCards($('#clCards'),[
+ {lbl:'Deposit',q:'Pisolitic pyrolusite beds dipping 3° along a Cretaceous shoreline',o:CLO,a:0,e:'Groote Eylandt.'},
+ {lbl:'Deposit',q:'Microplaty hematite at 62% Fe in folded Brockman BIF',o:CLO,a:1,e:'Pilbara hematite ore.'},
+ {lbl:'Deposit',q:'Pisolitic goethite filling a Cenozoic palaeovalley',o:CLO,a:2,e:'A channel iron deposit.'},
+ {lbl:'Deposit',q:'15 to 19% Mn balls at 4000 m depth in the Pacific',o:CLO,a:3,e:'Clarion-Clipperton nodules.'},
+ {lbl:'Deposit',q:'Kiruna, Sweden, where the town was moved',o:CLO,a:4,e:'A high-temperature magmatic iron deposit.'},
+ {lbl:'Deposit',q:'Middleback Ranges, South Australia (a lab ore suite)',o:CLO,a:1,e:'BIF-hosted hematite ore.'}
+],'cl',2,function(r,n){$('#clScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>

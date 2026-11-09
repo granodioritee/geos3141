@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lecture 20 Field Guide</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+<div id="bar" aria-label="Reading progress"><div class="in">
+  <span class="num" id="barDepth">0 m</span>
+  <div class="track" aria-hidden="true"><div class="fill" id="barFill"></div></div>
+  <span class="xp num" id="barXp">0 oz Au</span>
+  <span class="rk" id="barRank">Field assistant</span>
+</div></div>
+<aside id="rail" aria-label="Drill log"><div class="dm num" id="railDepth">0 m downhole</div><div class="hole" id="railHole"><span class="bit" id="railBit"></span></div></aside>
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="L19.html">&larr; Lecture 19</a><a href="L21.html">Lecture 21 &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lecture 20 · T3 2026</div>
+  <h1>Diamonds</h1>
+  <p class="lede">Diamond forms deep in the mantle, more than 140 km down, and it is not stable at the Earth's surface. It reaches us only because a very fast, gas-rich volcanic eruption carries it up before it can turn into graphite. This lecture covers diamond properties and value, the famous mines, kimberlite and lamproite pipes, how diamonds form, and how to explore for them. Start with the journey up.</p>
+
+  <div class="lab" id="dwLab">
+    <h4><span>Bring a diamond to the surface</span><b id="dwTag">waiting</b></h4>
+    <svg class="grid-svg" id="dwSvg" viewBox="0 0 640 300" role="img" aria-label="Cross-section from the mantle to the surface, with the diamond stability field below about 140 km and a magma carrying diamonds upward"></svg>
+    <div class="ctl" style="margin-top:.6rem">
+      <div><label for="dwD">Depth where the magma picks up its xenoliths <b id="dwDV"></b></label><input type="range" id="dwD" min="60" max="220" step="5" value="100"></div>
+      <div><label for="dwS">Speed of ascent <b id="dwSV"></b></label><input type="range" id="dwS" min="0" max="2" step="1" value="2"></div>
+    </div>
+    <div class="row" style="margin-top:.6rem"><button class="btn" type="button" id="dwGo">Erupt</button></div>
+    <p class="say" id="dwSay">Choose the depth where the magma starts, and how fast it rises. Then erupt.</p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">A teaching model of slides 37, 39 and 47: diamonds form at about 150 to 200 km (more than 140 km, the "diamond window"); kimberlite rises at up to 8 km/h; slow ascent turns diamond into graphite. The drawing and the slow speeds are invented.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><a href="#value">Properties and value</a></li>
+      <li><a href="#forms">Crystal forms and types</a></li>
+      <li><a href="#where">Where diamonds are mined</a></li>
+      <li><a href="#mines">Famous mines</a></li>
+      <li><a href="#rocks">Kimberlite and lamproite</a></li>
+      <li><a href="#pipes">Pipes and how they erupt</a></li>
+      <li><a href="#origin">How diamonds form</a></li>
+      <li><a href="#nsw">NSW and subduction diamonds</a></li>
+      <li><a href="#explore">Exploring for diamonds</a></li>
+      <li><a href="#cempaka">Cempaka, Kalimantan</a></li>
+      <li><a href="#giants">Giant stones and wrap-up</a></li>
+      <li><a href="#test">Self-test</a></li>
+      <li><a href="#glossary">Glossary and flashcards</a></li>
+      <li><a href="#eoh">End of hole</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+<section id="value" data-log="Value"><div class="wrap">
+  <div class="kicker">Start here <span class="depth">0 to 12 m</span></div>
+  <h2>Properties and value</h2>
+  <p>Diamond is the only gemstone mined by large mining companies. Sapphires, rubies and opals are mostly mined by small prospectors. Diamond is pure carbon, cubic, with hardness 10, specific gravity 3.5 and an <button class="term" data-t="adamantine">adamantine</button> lustre. It grows as octahedra, cubes and macles. Most diamonds are colourless or slightly yellow or brown, but diamond can be any colour. Its name comes from "adamas", unconquerable, but it <b>cleaves</b> easily: hit it with a steel hammer and it shatters. <span class="srcs">slides 5 and 13</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p><b>Gem-quality</b> diamonds are transparent and have no visible inclusions. <b>Industrial</b> diamonds are partly to completely opaque, with many inclusions. <button class="term" data-t="boart">Boart</button> is black, opaque industrial diamond, used in drill bits and grinding wheels. <span class="srcs">slide 6</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>The market has changed in the last three years. Factories now make gem-quality <b>synthetic</b> diamonds up to 5 carats that are cheaper than natural stones. Most stones from a mine are 0.5 to 3 carats, so these now compete with synthetics. A synthetic stone has no inclusions; a natural stone always has some. So mine profits now depend on <b>large stones</b> (100 carats and up) and on rare colours. <span class="srcs">slide 3</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>Value depends on the <b>4 Cs</b>: carat (1 carat = 0.2 g, about 6.5 mm across; 10 carats is 13.6 mm and 100 carats 30.3 mm), cut (round brilliant is best), colour (strong colours are most valuable) and clarity. Value does not rise in a straight line with size: above 10 carats it rises exponentially. <span class="srcs">slide 7</span></p>
+  <div class="lab" id="cpLab">
+    <h4><span>Price one carat</span><b id="cpTag">pick a colour</b></h4>
+    <div class="chips" id="cpC" role="group" aria-label="Colour"></div>
+    <svg class="grid-svg" id="cpSvg" viewBox="0 0 640 230" role="img" aria-label="Bar chart of the minimum price per carat of coloured diamonds, on a log scale"></svg>
+    <p class="say" id="cpSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Minimum US$ per carat (0.2 g) for strongly coloured diamonds, slide 8. The bars use a log scale so that all of them fit.</p>
+  </div>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L20/colours.jpg" alt="Cut diamonds of many colours: white, yellow, pink, red, blue, green, orange"><div class="cap">Diamonds can be any colour. Slide 9</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L20/argyle-pink.jpg" alt="A square-cut bright pink diamond"><div class="cap">A pink diamond from Argyle, WA. Slide 9</div></div>
+  </div>
+  <div class="cp" data-cp="cp1"></div>
+</div></section>
+
+<section id="forms" data-log="Forms"><div class="wrap">
+  <div class="kicker">In the hand <span class="depth">12 to 24 m</span></div>
+  <h2>Crystal forms and types</h2>
+  <p>Diamond crystallises strongly, so it almost always occurs as crystals. <b>Octahedra</b> are the most common form, often with stepped faces. <b>Cubes</b> are common, especially in West Africa. <b>Macles</b> are flattened octahedra (twins) with sharp edges; they are used as blades for microsurgery, because they are already sharp and do not contaminate the patient. <span class="srcs">slide 10</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>There are two main types. <b>Type I</b> diamonds contain nitrogen in an aggregated state, which makes them yellow or brown. <b>Type II</b> diamonds have little or no nitrogen and are colourless to white. Two other carbon forms occur with diamond. <button class="term" data-t="carbonado">Carbonado</button> is a black, porous, fine-grained aggregate, usually as rounded balls, found <b>only in old (palaeo)alluvial</b> deposits. <button class="term" data-t="framesite">Framesite</button> is also a black aggregate, but has crystal faces and is found <b>only in kimberlite and lamproite</b>. <span class="srcs">slides 11 and 12</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="lab">
+    <h4><span>Name the form</span><b id="fmScore">0 / 5</b></h4>
+    <div class="cards" id="fmCards"></div>
+  </div>
+  <div class="labbox"><b>At the lab test</b><ul><li>Diamond: adamantine lustre, crystal forms (octahedron, cube, macle), and it bounces if dropped because it is very elastic.</li><li>A natural stone always has some inclusions; a synthetic one has none.</li><li>Black, porous carbon: carbonado (rounded, alluvial) or framesite (crystal faces, in kimberlite).</li></ul><span class="srcs">slides 5 to 12</span> <span class="srcs">lecture recording, 6 Nov</span></div>
+  <div class="cp" data-cp="cp2"></div>
+</div></section>
+
+<section id="where" data-log="Where"><div class="wrap">
+  <div class="kicker">The numbers <span class="depth">24 to 34 m</span></div>
+  <h2>Where diamonds are mined</h2>
+  <p>Diamond deposits are very low grade. The Kimberley mine produced 3 t of diamond from 24 Mt of ore: 1 part in 8 million. World production is about 100 t a year, and half of it is industrial. Most diamond used today is synthetic. The host rocks are <b>kimberlite and lamproite</b>, found where the continental crust is thick and has been domed up and fractured deeply. <span class="srcs">slide 13</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="lab" id="prLab">
+    <h4><span>Who mines diamonds (2025)</span><b id="prTag"></b></h4>
+    <div class="chips" id="prC" role="group" aria-label="Measure"></div>
+    <svg class="grid-svg" id="prSvg" viewBox="0 0 640 230" role="img" aria-label="Bar chart of diamond production or reserves by country, in millions of carats"></svg>
+    <p class="say" id="prSay"></p>
+    <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Millions of carats, slide 15.</p>
+  </div>
+  <p>Russia dominates, followed by Africa. In 2016, Australia was fourth, all from Argyle, but Argyle closed in 2020 and Australia now has no operating diamond mine. Canada was a big producer by value in 2021, but its Arctic mines are expensive and production has dropped. <span class="srcs">slides 15 to 17</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="cp" data-cp="cp3"></div>
+</div></section>
+
+<section id="mines" data-log="Mines"><div class="wrap">
+  <div class="kicker">Case studies <span class="depth">34 to 50 m</span></div>
+  <h2>Famous mines</h2>
+  <div class="obs">
+    <div class="ttl"><span>Field task · Kimberley, 1872</span><span class="srcs">slide 18</span></div>
+    <img loading="lazy" decoding="async" src="img/L20/kimberley-1872.jpg" alt="Old black and white photo of a huge pit divided into many small square claims with ropes and walkways crossing it">
+    <p class="ask">Describe how the pit is organised. Who do you think was mining here?</p>
+    <details data-obs="kimberley"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A huge pit cut into many small square blocks at different levels, with ropes, roads and walkways across it.</li></ul>
+      <p class="so">Each block was a separate claim, about 5 by 5 m, worked by an individual prospector. Cecil Rhodes later bought and joined them into one company, De Beers (named after the farm where the diamonds were found). The weathered "yellow ground" at the top was easy to dig, but the fresh "blue ground" (blue kimberlite) below was very hard to process until a metallurgist solved it. This became the Big Hole. <span class="srcs">slides 18 and 19</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+    </div></details>
+  </div>
+  <p><b>Kimberley</b>, South Africa, is where primary diamond deposits were first found and described, where the word kimberlite comes from, and where De Beers began. It was the world's main producer from 1891 to about 1920. <span class="srcs">slide 19</span></p>
+  <p><b>Canada</b>: Diavik and Ekati are kimberlite mines at Lac de Gras in the Northwest Territories, about 200 km south of the Arctic Circle. Diavik has three pipes on an island, produces about 8 million carats a year, and started in 2003. The country rocks are 2700 to 2500 Ma, but the kimberlite is only 55 Ma. Ekati's pipes are 45 to 62 Ma. The two geologists who found Ekati, Chuck Fipke and Stewart Blusson, took over the leases when their company wanted to give them up, then sold 80% to BHP and kept 10% each. <span class="srcs">slides 20 to 23</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p><b>Mir</b>, Siberia, works at −50 °C in winter. More than 75% of its production is gem quality, and it produces many stones over 100 carats. <span class="srcs">slide 24</span></p>
+  <p><b>Southern Africa</b> has Kimberley and Premier, the Botswana mines (Orapa, Jwaneng, Letlhakane), rich alluvial deposits in the Congo, and marine deposits off western South Africa and Namibia. Pipes eroded over the last 60 million years and rivers such as the Vaal carried the diamonds to the sea. <b>Jwaneng</b> in Botswana is the richest mine by value: 9.3 Mt of ore a year at about 1.25 carats/t, from three Triassic kimberlite pipes in Proterozoic rocks, found by heavy mineral sampling in 1974. <span class="srcs">slides 25 and 26</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L20/mir.jpg" alt="Aerial view of a huge round open pit next to a town"><div class="cap">The Mir pipe, Siberia. Slide 24</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L20/jwaneng.jpg" alt="A deep oval open pit in flat orange desert"><div class="cap">Jwaneng, Botswana. Slide 26</div></div>
+  </div>
+  <p><b>Argyle</b>, in the Kimberley region of WA, was the world's largest producer by volume (35 million carats a year at about 7 carats/t), but only 5% was gem quality (most mines have about 20%). It produced 90 to 95% of the world's pink and red diamonds. It is an <b>olivine lamproite</b>, not a kimberlite. De Beers had once given up the area because its model said diamonds only occur in kimberlite. The lecturer's lesson: do not trust a model too much. Discovered in 1979 by following diamonds up the alluvial gravels, opened in 1985, closed in 2020. <span class="srcs">slides 27 to 29</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>There are <b>two economic types</b> of deposit: (1) large tonnage with few gem stones, but with a unique colour (Argyle pinks) or unique size (Premier); and (2) moderate to large tonnage with a moderate (Jwaneng) to high (Mir) proportion of gems. <span class="srcs">slide 30</span></p>
+  <div class="cp" data-cp="cp4"></div>
+</div></section>
+
+<section id="rocks" data-log="Host rocks"><div class="wrap">
+  <div class="kicker">Concept 1 <span class="depth">50 to 64 m</span></div>
+  <h2>Kimberlite and lamproite</h2>
+  <p>Almost all diamonds come from a volatile-rich, clast-rich volcanic pipe (a <button class="term" data-t="diatreme">diatreme</button>). The rock is usually <b>kimberlite</b>; <b>lamproite</b> is much rarer. The pipes are mostly clasts, in some cases more than 95%: fragments of country rock and of the mantle (xenoliths), plus broken crystals, carbonate and diamonds. The diamonds are accidental <button class="term" data-t="xenocryst">xenocrysts</button>, carried up from the mantle, usually inside megacrysts and mantle xenoliths. The pipes weather faster than the rocks around them, so on the surface they are low, round depressions, sometimes lakes. <span class="srcs">slide 32</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p><b>Kimberlite</b> is a volatile-rich, potassic, ultramafic rock made mostly of serpentinised olivine, with phlogopite, pyroxenes, carbonate and chromite. The key accessory minerals, which are also the <b>indicator minerals</b> for exploration, are <b>pyrope garnet, picroilmenite</b>, perovskite, monticellite and rutile. It has an uneven texture of large mantle crystals (macrocrysts) in a fine-grained matrix. Diamond is only a very rare part of it. <span class="srcs">slides 33 and 34</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a kimberlite</span><span class="srcs">slide 33</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L20/kimberlite.jpg" alt="A cut slab of dark grey-green rock with many small rounded and angular fragments"><div class="cap">A · hand specimen</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L20/kimberlite-ts.jpg" alt="Thin section with rounded mineral grains and rock fragments of many sizes in a fine brown matrix"><div class="cap">B · thin section</div></div>
+    </div>
+    <p class="ask">Describe the texture. Is this a lava that crystallised evenly, or something else?</p>
+    <details data-obs="kimberlite"><summary>Show what I see</summary><div class="seen">
+      <ul><li>Many fragments of different sizes and shapes: rounded crystals and angular rock pieces.</li><li>A fine-grained matrix, mostly carbonate, between them.</li></ul>
+      <p class="so">It is <b>fragmental</b>: a volcaniclastic rock full of mantle crystals and country rock fragments. That is typical of kimberlite. The lecturer passed around kimberlite from the Kimberley mine and a garnet peridotite mantle xenolith from Bultfontein. <span class="srcs">slide 33</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+    </div></details>
+  </div>
+  <p><b>Lamproite</b> is strongly porphyritic, with phenocrysts of biotite (phlogopite), amphibole, pyroxene, olivine and leucite. It is rich in potassium and magnesium and has unusual accessory minerals: K-Ti-richterite, priderite, wadeite and jeppeite. It is less fragmental than kimberlite and usually rich in mica. <span class="srcs">slide 35</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="lab">
+    <h4><span>Kimberlite or lamproite?</span><b id="rkScore">0 / 4</b></h4>
+    <div class="cards" id="rkCards"></div>
+  </div>
+  <div class="cp" data-cp="cp5"></div>
+</div></section>
+
+<section id="pipes" data-log="Pipes"><div class="wrap">
+  <div class="kicker">Mechanism <span class="depth">64 to 76 m</span></div>
+  <h2>Pipes and how they erupt</h2>
+  <p>Kimberlite magma rises from more than 150 km depth along deep fractures in the lithosphere, at up to 8 km/h (2.3 m/s); the lecturer said it can reach the surface in about a day. It is very rich in CO₂ gas, so the last stage is an <b>explosive eruption</b>, like opening a shaken can of soft drink. The fast ascent stops the diamond turning into graphite. <span class="srcs">slide 39</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="pair">
+    <div><img loading="lazy" decoding="async" src="img/L20/diatreme.jpg" alt="Drawing of a carrot-shaped pipe with crater sediments at the top, a diatreme zone, a root zone and feeder dykes at depth" style="aspect-ratio:auto;object-fit:contain"><div class="cap">A diatreme: crater, diatreme zone, root zone and feeder dykes. Slide 36</div></div>
+    <div><img loading="lazy" decoding="async" src="img/L20/erosion-levels.jpg" alt="Diagram of a kimberlite pipe with erosion levels marked: Orapa near the top, Jagersfontein and Kimberley deeper" style="aspect-ratio:auto;object-fit:contain"><div class="cap">Erosion levels: Orapa still has its crater; at Kimberley about 1 km has been eroded. Slide 40</div></div>
+  </div>
+  <p>The crater often fills with water to form a lake; lake sediments at Orapa preserved beautiful fossils. Some intrusions never reach the surface ("blind" kimberlites). Every pipe is different in shape, extent, depth of erosion, grade and type of clasts. Where the top of a pipe has been eroded, as at Kimberley, the diamonds went into rivers and the sea. <span class="srcs">slides 36 and 40</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="cp" data-cp="cp6"></div>
+</div></section>
+
+<section id="origin" data-log="Origin"><div class="wrap">
+  <div class="kicker">Concept 2 <span class="depth">76 to 88 m</span></div>
+  <h2>How diamonds form</h2>
+  <p>Diamond is <button class="term" data-t="metastable">metastable</button> at the surface: heated with oxygen, it turns into graphite. The traditional view is that diamonds crystallise at about 1100 °C at 150 to 200 km depth. More recent work shows that diamond can also form at shallower depths in <b>subduction zones</b>, because the pressure can be high enough there at low temperature. <span class="srcs">slide 37</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <figure>
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L20/pt-diagram.jpg" alt="Pressure-temperature diagram with the graphite field above and the diamond field below a green boundary line, and ocean and continental geotherms" style="max-width:460px;margin:0 auto">
+    <figcaption>Graphite and diamond stability. A continental geotherm crosses into the diamond field at about 140 km or more. <span class="srcs">slide 37</span></figcaption>
+  </figure>
+  <div class="obs">
+    <div class="ttl"><span>Field task · a mineral inside a diamond</span><span class="srcs">slide 38</span></div>
+    <img loading="lazy" decoding="async" src="img/L20/garnet-inclusion.jpg" alt="A clear octahedral diamond with a small purple-red crystal in its centre">
+    <p class="ask">What is the purple inclusion, and what can it tell you?</p>
+    <details data-obs="inclusion"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A clear diamond octahedron with one small purple-red crystal trapped inside.</li></ul>
+      <p class="so">It is a <b>pyrope garnet</b> that grew with the diamond. Inclusions, the nitrogen aggregation state and C and N isotopes tell you the conditions of diamond growth. K-bearing inclusions such as clinopyroxene can be dated by Ar-Ar. Most diamonds are older than 1500 Ma (the lecturer said about 2 Ga), even though many pipes that carry them are much younger (some only 15 Ma). Why most kimberlites are young is still unknown. <span class="srcs">slide 38</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+    </div></details>
+  </div>
+  <p>Too slow an ascent is fatal: in southern Spain, geologists found perfect <b>graphite pseudomorphs after diamond</b>. The diamonds formed, but the magma rose too slowly and they turned into graphite. Try the animation at the top of the page. <span class="srcs">slide 37</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="cp" data-cp="cp7"></div>
+</div></section>
+
+<section id="nsw" data-log="NSW"><div class="wrap">
+  <div class="kicker">Close to home <span class="depth">88 to 100 m</span></div>
+  <h2>NSW and subduction diamonds</h2>
+  <p>NSW has no craton. It is mostly Palaeozoic fold belts, Permo-Triassic basins and Cretaceous sediments. Still, diamonds are found. The most productive area is <b>Copeton</b>, near Inverell, with more than 0.5 million carats, mostly from palaeoalluvial deposits. Their inclusions show high pressure but low temperature (below 400 °C): they probably formed by <b>subduction</b> in the New England Fold Belt. They are very tough, because they are heavily twinned, so diamond cutters disliked them. <span class="srcs">slide 42</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>Almost every sapphire field in eastern Australia has produced a few diamonds (Rubyvale in Queensland, Black Springs near Oberon), because the alkali basalts that carried up the sapphires also picked up diamonds. Deep leads (old river gravels buried by basalt) near Capertee were mined for diamonds, sapphires and gold. <span class="srcs">slides 43 and 44</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>Subduction diamonds form when oceanic crust, which contains carbonate, is subducted to high pressure at low temperature. Signs: <button class="term" data-t="coesite">coesite</button> inclusions, Na-rich garnet in eclogite, nearby eclogite and blueschist, and low-silica alkaline basalt diatremes (nephelinite, basanite). Indicator minerals: coesite, grossular garnet, Na-rich pyroxene and corundum. No commercial deposit of subduction diamonds has been found yet; the stones tend to be small. <span class="srcs">slides 45 and 46</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="cp" data-cp="cp8"></div>
+</div></section>
+
+<section id="explore" data-log="Exploration"><div class="wrap">
+  <div class="kicker">Method <span class="depth">100 to 112 m</span></div>
+  <h2>Exploring for diamonds</h2>
+  <p>Most kimberlites and lamproites that erupted through Archean to Proterozoic crust contain some diamonds, but of more than 5000 known kimberlites, only about <b>25</b> are economic. Kimberlites through Palaeozoic crust (such as those in eastern NSW) do not contain diamonds: they came from only 60 to 70 km depth, outside the <button class="term" data-t="diamond window">diamond window</button>. So use the minerals of the mantle xenoliths (thermobarometry from mineral pairs) to find the depth they came from: you need more than <b>140 km</b>. <span class="srcs">slide 47</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p>General steps: (1) use satellite images or air photos to find where major lineaments cross and where there are low, round depressions; (2) sample stream sediments for indicator minerals: pyrope garnet, picroilmenite and perovskite in cratons, or grossular garnet, corundum, rutile and clinopyroxene outside cratons; (3) for lamproites, which are rich in potassium, use radiometrics. Outside cratons, look for fold belts with a fore-arc at depth and young alkali basalt diatremes; look for high-Na garnet or garnet with rutile exsolution. If you find <b>graphite pseudomorphs after diamond, leave</b>: the magma rose too slowly. Micro-diamonds alone do not make a deposit. <span class="srcs">slides 48 and 49</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="lab">
+    <h4><span>Keep exploring or walk away?</span><b id="exScore">0 / 5</b></h4>
+    <div class="cards" id="exCards"></div>
+  </div>
+  <div class="cp" data-cp="cp9"></div>
+</div></section>
+
+<section id="cempaka" data-log="Cempaka"><div class="wrap">
+  <div class="kicker">Case study <span class="depth">112 to 124 m</span></div>
+  <h2>Cempaka, Kalimantan</h2>
+  <p>Cempaka is a palaeoalluvial diamond deposit in south-east Kalimantan (Borneo), near Banjarmasin. Kalimantan has produced diamonds since about 300 AD. The nearest cratons are more than 2000 km away. One idea (Griffin et al. 2001) was that glaciers carried the diamonds from the Yangtze Craton. The lecturer's team (White et al. 2016) showed that this is unlikely. <span class="srcs">slides 50 to 52</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="obs">
+    <div class="ttl"><span>Field task · the Cempaka diamonds</span><span class="srcs">slides 55 and 56</span></div>
+    <div class="pair">
+      <div><img loading="lazy" decoding="async" src="img/L20/cempaka-gravel.jpg" alt="A geologist pointing at a pit wall of layered grey gravel and clay"><div class="cap">A · the gravel face</div></div>
+      <div><img loading="lazy" decoding="async" src="img/L20/cempaka-diamond.jpg" alt="A clear diamond crystal with sharp edges on a dark surface"><div class="cap">B · a 16.35 carat diamond</div></div>
+    </div>
+    <p class="ask">Look at the edges of the diamond in B. Did it travel 2000 km with a glacier?</p>
+    <details data-obs="cempaka"><summary>Show what I see</summary><div class="seen">
+      <ul><li>A: a gravel layer about 5 m thick under clay and sand: the diamond-bearing layer.</li><li>B: a crystal with sharp edges and well-preserved faces.</li></ul>
+      <p class="so">Millions of carats of <b>sharp, angular</b> diamonds with delicate surface features cannot have been carried 2000 km; they would be rounded. There are also no kimberlite indicator minerals, and zircons in the gravels date to two Cretaceous eruptions with a <b>lamproite-like</b> chemistry. So the source is probably a local lamproite. <span class="srcs">slides 52 to 57</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+    </div></details>
+  </div>
+  <p>Mining is simple: strip the cover down to the gravel layer with a digger and a truck. Some stones are coated diamonds: industrial-looking outside, gem quality inside, which shows that they left and re-entered the diamond stability field. <span class="srcs">slides 54 and 57</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="cp" data-cp="cp10"></div>
+</div></section>
+
+<section id="giants" data-log="Giants"><div class="wrap">
+  <div class="kicker">Wrap-up <span class="depth">124 to 140 m</span></div>
+  <h2>Giant stones and wrap-up</h2>
+  <p>The <b>Cullinan</b> diamond, found at the Premier mine near Pretoria in 1905, is the largest gem diamond ever found: 3106.75 carats (about 0.62 kg). It was cut into 11 large stones, including the Great Star of Africa (530.2 carats) in the royal sceptre. One face is a cleavage surface, so it is only part of a larger crystal; the rest has never been found. <span class="srcs">slides 58 and 59</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <p><b>Karowe</b> in Botswana was found by De Beers in 1969 but never mined, because De Beers thought it was uneconomic. A small Canadian company, Lucara, bought it in 2009 for US$49 million and began mining in 2012. It has sold more than 216 diamonds for over US$1 million each, including the 813 carat Constellation for US$61.1 million, and found the 2492 carat stone in 2024. Its dividends since 2014 (more than US$271 million) exceed the cost of buying and building the mine. <span class="srcs">slides 2, 60 to 63</span> <span class="srcs">lecture recording, 6 Nov</span></p>
+  <div class="keybox"><b>Memorise</b><ul><li>Diamond: C, cubic, H 10, SG 3.5, adamantine; octahedra, cubes, macles; Type I (N, yellow-brown), Type II (no N, colourless).</li><li>Forms at ~1100 °C, 150 to 200 km (window &gt; 140 km); metastable at the surface; fast CO₂-driven ascent (up to 8 km/h) saves it.</li><li>Hosts: kimberlite (most) and lamproite (Argyle); diamonds are xenocrysts; indicator minerals pyrope, picroilmenite.</li><li>Only ~25 of &gt; 5000 kimberlites are economic; Palaeozoic crust = no diamonds.</li><li>Russia leads production; Australia has no operating mine since Argyle closed (2020).</li></ul><span class="srcs">slides 5 to 49</span></div>
+  <div class="lab">
+    <h4><span>Which deposit?</span><b id="clScore">0 / 6</b></h4>
+    <div class="cards" id="clCards"></div>
+  </div>
+  <div class="cp" data-cp="cp11"></div>
+</div></section>
+
+<section id="test" data-log="Self-test"><div class="wrap">
+  <div class="kicker">Check yourself <span class="depth">140 to 145 m</span></div>
+  <h2>Self-test</h2>
+  <p>Answer each question out loud or on paper before you open it. If your answer was right, claim the ounces.</p>
+  <div id="selfTest"></div>
+</div></section>
+
+<section id="glossary" data-log="Glossary"><div class="wrap">
+  <div class="kicker">Reference <span class="depth">145 to 150 m</span></div>
+  <h2>Glossary and flashcards</h2>
+  <p>These are terms that the lecture expects you to know, or only explains briefly. Tap a dotted word in the text to see its meaning.</p>
+  <div class="lab" id="flashLab">
+    <h4><span>Flashcards</span><b id="flashCount"></b></h4>
+    <div class="flash"><div class="card" id="card" tabindex="0" role="button" aria-label="Flashcard, press to flip">
+      <div class="face front"><b id="cardFront"></b><small>tap to flip</small></div>
+      <div class="face back"><span id="cardBack"></span><small>did you know it?</small></div>
+    </div></div>
+    <div class="row"><button class="btn ghost" type="button" id="cardAgain">Again</button><button class="btn" type="button" id="cardGot">Got it</button><button class="btn ghost" type="button" id="cardReset" style="margin-left:auto">Reset deck</button></div>
+  </div>
+  <dl class="gloss" id="glossList"></dl>
+  <h3>Where this goes next</h3>
+  <p>Lecture 21 returns to sedimentary deposits: banded iron formations and manganese. Compare the kimberlites here with the carbonatites of Lecture 19: both are deep, volatile-rich, alkaline magmas that reach the surface in old, thick continents.</p>
+</div></section>
+
+<section id="eoh" data-log="End of hole"><div class="wrap">
+  <div class="kicker">End of hole <span class="depth">150 m</span></div>
+  <h2>Your assay result</h2>
+  <div class="bigscore num" id="eohOz">0 oz</div>
+  <p id="eohRank" style="font-family:var(--sans);font-size:1.1rem;margin-top:.4rem"></p>
+  <ul class="ladder" id="ladder"></ul>
+  <div class="row"><button class="btn ghost" type="button" id="resetAll">Reset all progress</button><span id="resetMsg" style="font-size:.88rem;color:var(--muted)"></span></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a></p>
+  <p><strong>Sources.</strong> GEOS3141 2026 Lecture 20 slides (Diamonds: origin, deposits and exploration strategies, Dr Ian Graham, 64 slides; photos and figures tagged by slide) and the Echo360 recording of 6 November 2026. Figures and photos come from published sources (White et al. 2016, Groat 2007, Graham et al. 2008 and others) and are shown only as lecture material. The ascent animation is a teaching model.</p>
+  <p><a href="L19.html">&larr; Lecture 19</a> · <a href="L21.html">Lecture 21 &rarr;</a></p>
+</div></footer>
+
+<div id="pop" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var RANKS=[[0,'Field assistant','You can tell an octahedron from a cube.'],[35,'Graduate geologist','You can spot a pyrope garnet.'],[100,'Project geologist','You know the diamond window.'],[180,'Senior geologist','You can read a pipe\'s erosion level.'],[240,'Chief geologist','You found the next Karowe.']];
+var G={
+ "adamantine":"A very bright, brilliant lustre, like diamond.",
+ "carat":"The unit of gem weight: 0.2 g. A 1 carat diamond is about 6.5 mm across.",
+ "boart":"Black, opaque industrial diamond, used in drill bits and grinding wheels.",
+ "macle":"A flattened, twinned octahedron of diamond with sharp edges.",
+ "Type I diamond":"A diamond with aggregated nitrogen, usually yellow or brown.",
+ "Type II diamond":"A diamond with little or no nitrogen, colourless to white.",
+ "carbonado":"Black, porous, fine-grained polycrystalline diamond, as rounded balls, found only in palaeoalluvial deposits.",
+ "framesite":"Black, porous polycrystalline diamond with crystal faces, found only in kimberlite and lamproite.",
+ "synthetic diamond":"Man-made diamond. Gem quality up to 5 carats is now cheaper than natural; it has no inclusions.",
+ "kimberlite":"A volatile-rich, potassic ultramafic rock of serpentinised olivine with mantle crystals and xenoliths, in pipes, dykes and sills.",
+ "lamproite":"A porphyritic K- and Mg-rich volcanic rock with phlogopite, leucite and unusual accessory minerals. Argyle is an olivine lamproite.",
+ "diatreme":"A volcanic pipe filled with broken rock, made by a gas-rich explosive eruption.",
+ "xenolith":"A fragment of foreign rock carried in a magma, such as a mantle peridotite.",
+ "xenocryst":"A foreign crystal carried in a magma. Diamonds are xenocrysts in kimberlite.",
+ "macrocryst":"A large crystal in kimberlite, usually derived from the mantle.",
+ "pyrope":"Mg-rich red-purple garnet from the mantle. A key diamond indicator mineral.",
+ "picroilmenite":"Mg-rich ilmenite. A key kimberlite indicator mineral.",
+ "indicator minerals":"Minerals that travel with kimberlite and survive in streams, used to trace a pipe: pyrope, picroilmenite, chrome diopside, perovskite.",
+ "metastable":"Existing in a form that is not stable under present conditions but changes too slowly to notice. Diamond at the surface.",
+ "diamond window":"The depth range (more than about 140 km) where a magma can pick up diamonds.",
+ "graphite pseudomorph":"Graphite that has the shape of the diamond it replaced. A sign of slow ascent.",
+ "subduction diamond":"Diamond formed at high pressure but low temperature in a subduction zone.",
+ "coesite":"A high-pressure form of SiO₂. Coesite inclusions suggest subduction diamonds.",
+ "eclogite":"A high-pressure rock of garnet and Na-rich pyroxene.",
+ "thermobarometry":"Calculating the temperature and pressure (depth) of formation from coexisting mineral pairs.",
+ "palaeoalluvial":"Old river gravels, often buried. Also called deep leads.",
+ "deep lead":"An old river gravel buried under younger rocks such as basalt.",
+ "radiometrics":"Measuring natural gamma radiation (K, U, Th) from the air. Finds K-rich lamproites.",
+ "craton":"An old, thick, stable part of a continent (Archean to Proterozoic)."
+};
+var CP={
+ cp1:{q:'Why do diamond mine profits now depend on large stones?',o:['Small stones are too hard to cut','Synthetic gems up to 5 carats are now cheaper than natural stones','Large stones are easier to find'],a:1,e:'Most mined stones are 0.5 to 3 carats, the size synthetics now supply.'},
+ cp2:{q:'What makes a Type I diamond yellow or brown?',o:['Iron','Aggregated nitrogen','Boron'],a:1,e:'Type II diamonds have little or no nitrogen and are colourless.'},
+ cp3:{q:'Which country produces the most natural diamonds?',o:['Australia','Russia','Canada'],a:1,e:'16 million carats in 2025. Australia has no operating mine now.'},
+ cp4:{q:'Why is Argyle special?',o:['It is the oldest kimberlite','It is an olivine lamproite that supplied 90 to 95% of the world\'s pink diamonds','It produced only gem stones'],a:1,e:'Only 5% gem quality, but unique pink and red stones.'},
+ cp5:{q:'In kimberlite, what are diamonds?',o:['Phenocrysts that grew from the kimberlite','Xenocrysts carried up from the mantle','Secondary veins'],a:1,e:'They are accidental passengers.'},
+ cp6:{q:'Why do kimberlite pipes form round depressions at the surface?',o:['They are always lakes','They weather faster than the rocks around them','They collapse after mining'],a:1,e:'Some explorers found pipes on Google Earth this way.'},
+ cp7:{q:'You find graphite with the shape of diamond crystals. What does it mean?',o:['A rich deposit nearby','The magma rose too slowly and the diamonds turned to graphite','The diamonds are synthetic'],a:1,e:'Leave the region.'},
+ cp8:{q:'How did the Copeton diamonds probably form?',o:['In a craton at 200 km','At high pressure but low temperature in a subduction zone','In a granite'],a:1,e:'Below 400 °C, in the New England Fold Belt.'},
+ cp9:{q:'Mantle xenoliths in a kimberlite came from 70 km. Should you keep exploring it for diamonds?',o:['Yes','No, it is outside the diamond window (more than 140 km)','Only for gold'],a:1,e:'Thermobarometry on the xenoliths tells you the depth.'},
+ cp10:{q:'What shows that the Cempaka diamonds did not travel far?',o:['They are rounded','They are sharp and angular, with delicate surface features','They are all small'],a:1,e:'No indicator minerals either; zircons suggest lamproite.'},
+ cp11:{q:'Which is the largest gem diamond ever found?',o:['Hope','Cullinan, 3106.75 carats','Constellation'],a:1,e:'Found at the Premier mine in 1905.'}
+};
+var ST=[
+ ['List the physical properties of diamond and its three common forms.','Recall','Carbon, cubic, hardness 10, SG 3.5, adamantine lustre, any colour (mostly colourless, yellow or brown). Octahedra (most common), cubes (common in West Africa) and macles (flattened twinned octahedra).'],
+ ['Explain the 4 Cs and why large stones matter more now.','Recall','Carat (0.2 g), cut (round brilliant best), colour (strong colours most valuable) and clarity. Above 10 carats value rises exponentially. Synthetic gems up to 5 carats are now cheaper, so profit depends on large and rarely coloured stones.'],
+ ['Describe kimberlite and its indicator minerals.','Recall','Volatile-rich potassic ultramafic rock of serpentinised olivine with phlogopite, pyroxenes, carbonate and chromite; fragmental, with mantle macrocrysts and xenoliths in a fine matrix. Indicators: pyrope garnet, picroilmenite, perovskite, monticellite, rutile. Diamond is a very rare xenocryst.'],
+ ['How does lamproite differ from kimberlite? Give an Australian example.','Apply','Lamproite is strongly porphyritic, less fragmental, rich in K and Mg, with phlogopite, leucite and unusual minerals (K-Ti-richterite, priderite, wadeite, jeppeite). Argyle (WA) is an olivine lamproite.'],
+ ['Explain why diamonds survive the trip to the surface.','Apply','They form at ~1100 °C and 150 to 200 km, and are metastable at the surface. Kimberlite is ~95% CO₂-rich and rises explosively at up to 8 km/h, so there is no time to convert to graphite. Slow ascent gives graphite pseudomorphs (southern Spain).'],
+ ['Describe the two economic types of diamond deposit with examples.','Apply','Large tonnage with few gems but unique colour (Argyle) or size (Premier); moderate to large tonnage with a moderate (Jwaneng) to high (Mir) proportion of gems.'],
+ ['What evidence suggests subduction diamonds, and where in NSW?','Recall','Coesite inclusions, Na-rich garnet in eclogite, nearby eclogite and blueschist, nephelinite or basanite diatremes; indicators coesite, grossular garnet, Na pyroxene and corundum. Copeton (Inverell): high P, low T (< 400 °C), New England Fold Belt.'],
+ ['Outline an exploration strategy for diamonds in a craton.','Apply','Satellite and air photos for lineament intersections and round depressions; stream sediment sampling for pyrope, picroilmenite and perovskite; radiometrics for K-rich lamproites; thermobarometry on xenoliths to confirm > 140 km; walk away if you find graphite pseudomorphs.'],
+ ['Why was the glacial origin rejected for the Cempaka diamonds?','Synthesise','Millions of carats of sharp, angular diamonds with preserved surface features show little transport; no kimberlite indicators; two Cretaceous zircon populations with lamproite-like chemistry; nearest cratons are 2000 km away.']
+];
+GEO.start({key:'geos3141-L20-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
+
+/* ---------- ascent animation ---------- */
+var dwS=$('#dwSvg'),dwBusy=false,dwWin={};
+var SPD=['slow (weeks)','moderate (days)','fast (hours, up to 8 km/h)'];
+function dy(km){return 30+km*1.15;}
+function dwBase(dot,col,graph){var s=dwS;s.innerHTML='';
+  el('rect',{x:0,y:0,width:640,height:300,fill:'#B79A77'},s);el('rect',{x:0,y:0,width:640,height:dy(40),fill:'#D9C7A6'},s);
+  el('rect',{x:0,y:dy(140),width:640,height:300-dy(140),fill:'#7E5B4A'},s);
+  txt(s,8,22,'surface',{'font-size':12,fill:'#2E2A26'});txt(s,8,dy(40)+14,'crust',{'font-size':11,fill:'#2E2A26'});txt(s,8,dy(90),'mantle (graphite stable)',{'font-size':11,fill:'#2E2A26'});
+  txt(s,8,dy(140)+16,'diamond stable below ~140 km',{'font-size':12,fill:'#F4F1EA','font-weight':600});
+  [50,100,150,200].forEach(function(k){txt(s,596,dy(k)+4,k+' km',{'font-size':11,fill:'#F4F1EA'});});
+  var d=+$('#dwD').value;el('circle',{cx:320,cy:dy(d),r:9,fill:'none',stroke:'#FFE08A','stroke-width':2,'stroke-dasharray':'3 3'},s);txt(s,334,dy(d)+4,'start',{'font-size':11,fill:'#FFE08A'});
+  el('line',{x1:320,y1:dy(d),x2:320,y2:22,stroke:'#C8553A','stroke-width':6,opacity:.6},s);
+  if(dot!==undefined){var g=el('polygon',{points:'0,-9 8,0 0,9 -8,0',fill:col||'#EAF6FF',stroke:'#3B5A70','stroke-width':1.5,transform:'translate(320,'+dot+')'},s);}}
+function dwPaint(){$('#dwDV').textContent=$('#dwD').value+' km';$('#dwSV').textContent=SPD[+$('#dwS').value];if(!dwBusy)dwBase();}
+$('#dwD').addEventListener('input',dwPaint);$('#dwS').addEventListener('input',dwPaint);
+$('#dwGo').addEventListener('click',function(){if(dwBusy)return;var d=+$('#dwD').value,sp=+$('#dwS').value;dwBusy=true;SND.play('flip');FX.shake(dwS);
+  var has=d>=140,dur=[3200,2400,1300][sp],t0=0,y0=dy(d);
+  function step(ts){if(!t0)t0=ts||1;var f=Math.min(1,((ts||t0)-t0)/dur),y=y0+(22-y0)*f,col='#EAF6FF';
+    if(has&&sp<2&&f>.5)col='#3A3A3A';dwBase(has?y:undefined,col);if(f<1&&!reduce)requestAnimationFrame(step);else{dwBusy=false;dwBase(has?22:undefined,col);
+    if(!has){$('#dwTag').textContent='no diamonds';SND.play('bad');$('#dwSay').innerHTML='The magma started at '+d+' km, <b>above the diamond window</b>. Its xenoliths never held diamond. Like the Palaeozoic kimberlites of eastern NSW (60 to 70 km): barren.';}
+    else if(sp<2){$('#dwTag').textContent='graphite';SND.play('bad');COMBO.miss();$('#dwSay').innerHTML='The diamonds came from deep enough, but the ascent was too slow. They turned into <b>graphite pseudomorphs</b>, as in southern Spain. Leave the region.';}
+    else{$('#dwTag').textContent='diamonds!';SND.play('coin');FX.burst($('#dwTag'));$('#dwSay').innerHTML='<b>Diamonds at the surface.</b> The magma sampled the mantle below 140 km and rose explosively, driven by CO₂, so the diamonds had no time to change. Most still come up as xenocrysts in xenoliths.';
+      if(!dwWin.ok){dwWin.ok=1;COMBO.hit();award('dw',COMBO.pts(5),'Brought diamonds up'+COMBO.tag());}}}}
+  requestAnimationFrame(step);});
+dwPaint();
+
+/* ---------- colour price ---------- */
+var CPR=[['Red, purple or green',2500000],['Blue',400000],['Orange',30000],['Yellow',10000],['Cognac',4000]],cpSeen={};
+CPR.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=c[0];b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){cpSeen[i]=1;$$('#cpC .chip').forEach(function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false');});cpDraw(i);SND.play('coin');});$('#cpC').appendChild(b);});
+function cpDraw(k){var s=$('#cpSvg');s.innerHTML='';CPR.forEach(function(c,i){if(!cpSeen[i])return;var y=6+i*44,w=(Math.log(c[1])/Math.LN10-3)*110;txt(s,8,y+24,c[0],{'font-size':13,fill:'var(--ink)'});el('rect',{x:170,y:y+8,width:w,height:24,rx:3,fill:i===k?'var(--gold)':'var(--slate)'},s);txt(s,176+w,y+25,'US$'+c[1].toLocaleString('en-AU'),{'font-size':12,fill:'var(--ink)'});});
+  if(k!==undefined){$('#cpTag').textContent=CPR[k][0];$('#cpSay').textContent=k===0?'US$2.5 million for 0.2 g: an intense red diamond may be the most valuable substance on Earth.':'Minimum price per carat for a strongly coloured stone. Colourless stones are worth far less.';}
+  if(Object.keys(cpSeen).length===5)award('cp',3,'Priced the colours');}
+cpDraw();
+
+/* ---------- production ---------- */
+var PR=[['Russia',16,750],['Congo',7,150],['Botswana',5,250],['Zimbabwe',5,56],['South Africa',3,87],['Angola',1,150]],prK=1,prSeen={};
+[['Production',1],['Reserves',2]].forEach(function(m){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed',m[1]===prK);b.addEventListener('click',function(){prK=m[1];$$('#prC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');prDraw();});$('#prC').appendChild(b);});
+function prDraw(){var s=$('#prSvg');s.innerHTML='';var d=PR.slice().sort(function(a,b){return b[prK]-a[prK];}),max=d[0][prK];
+  d.forEach(function(r,i){var y=4+i*37,w=r[prK]/max*330;txt(s,8,y+23,r[0],{'font-size':14,fill:'var(--ink)'});el('rect',{x:120,y:y+6,width:Math.max(3,w),height:24,rx:3,fill:r[0]==='Russia'?'var(--hem)':'var(--slate)'},s);txt(s,126+w,y+23,r[prK]+' M ct',{'font-size':12,fill:'var(--ink)'});});
+  $('#prTag').textContent=prK===1?'production 2025':'reserves';$('#prSay').textContent=prK===1?'Russia mined 16 million carats in 2025, more than twice the Congo.':'Russia\'s reserves (750 M ct) are three times Botswana\'s.';
+  prSeen[prK]=1;if(Object.keys(prSeen).length===2)award('pr',3,'Compared diamond producers');}
+prDraw();
+
+/* ---------- forms ---------- */
+var FMO=['Octahedron','Cube','Macle','Carbonado','Framesite'];
+mcCards($('#fmCards'),[
+ {img:'img/L20/octahedron2.jpg',alt:'An orange-brown eight-faced crystal with stepped triangular faces',lbl:'Specimen',q:'The most common diamond form',o:FMO,a:0,e:'An octahedron with stepped faces. <span class="srcs">slide 10</span>'},
+ {img:'img/L20/cube.jpg',alt:'A yellow-brown cube-shaped crystal with rough faces',lbl:'Specimen',q:'Common in West African deposits',o:FMO,a:1,e:'A cube (also a yellow-brown Type I diamond). <span class="srcs">slide 10</span>'},
+ {img:'img/L20/macle.jpg',alt:'A flat, pale yellow triangular crystal with sharp edges',lbl:'Specimen',q:'Flat and triangular, with sharp edges',o:FMO,a:2,e:'A macle: a flattened twinned octahedron, used for microsurgery blades. <span class="srcs">slide 10</span>'},
+ {img:'img/L20/carbonado.jpg',alt:'A black, rounded, porous ball',lbl:'Specimen',q:'A black, rounded, porous ball from an old river gravel',o:FMO,a:3,e:'Carbonado, found only in palaeoalluvial deposits. <span class="srcs">slide 12</span>'},
+ {img:'img/L20/framesite.jpg',alt:'Close-up of dark crystalline aggregate with faces among bright grains',lbl:'Specimen',q:'A black aggregate with crystal faces, from a kimberlite',o:FMO,a:4,e:'Framesite, only in kimberlite and lamproite. <span class="srcs">slide 12</span>'}
+],'fm',2,function(r,n){$('#fmScore').textContent=r+' / '+n;});
+
+/* ---------- kimberlite or lamproite ---------- */
+var RKO=['Kimberlite','Lamproite'];
+mcCards($('#rkCards'),[
+ {img:'img/L20/kimberlite.jpg',alt:'Dark grey-green slab full of fragments',lbl:'Hand specimen',q:'Fragmental, with mantle crystals and rock clasts',o:RKO,a:0,e:'Kimberlite. <span class="srcs">slide 33</span>'},
+ {img:'img/L20/lamproite-ts.jpg',alt:'Thin section with long pale mica laths in a fine dotted groundmass',lbl:'Thin section',q:'Strongly porphyritic, with long phlogopite laths',o:RKO,a:1,e:'Lamproite: porphyritic and mica-rich. <span class="srcs">slide 35</span>'},
+ {img:'img/L20/kimberlite-ts.jpg',alt:'Thin section with rounded olivine and rock fragments in a carbonate matrix',lbl:'Thin section',q:'Rounded macrocrysts and fragments in a carbonate matrix',o:RKO,a:0,e:'Kimberlite. <span class="srcs">slide 33</span>'},
+ {img:'img/L20/lamproite.jpg',alt:'A pale brown fine-grained rock held in a hand',lbl:'Hand specimen',q:'The host rock at Argyle',o:RKO,a:1,e:'Olivine lamproite. <span class="srcs">slides 27 and 35</span>'}
+],'rk',2,function(r,n){$('#rkScore').textContent=r+' / '+n;});
+
+/* ---------- exploration decisions ---------- */
+var EXO=['Keep exploring','Walk away'];
+mcCards($('#exCards'),[
+ {lbl:'Result',q:'Stream sediments full of pyrope and picroilmenite on an Archean craton',o:EXO,a:0,e:'Classic kimberlite indicators.'},
+ {lbl:'Result',q:'Graphite pseudomorphs after diamond in a pipe',o:EXO,a:1,e:'The magma rose too slowly.'},
+ {lbl:'Result',q:'Xenolith thermobarometry gives 160 km',o:EXO,a:0,e:'Inside the diamond window.'},
+ {lbl:'Result',q:'A kimberlite through Palaeozoic crust, xenoliths from 65 km',o:EXO,a:1,e:'Outside the diamond window.'},
+ {lbl:'Result',q:'A K anomaly on radiometrics in a round depression near the Kimberley Craton',o:EXO,a:0,e:'Possibly a lamproite, like Argyle.'}
+],'ex',2,function(r,n){$('#exScore').textContent=r+' / '+n;});
+
+/* ---------- classify ---------- */
+var CLO=['Argyle','Jwaneng','Mir','Kimberley','Ekati','Karowe'];
+mcCards($('#clCards'),[
+ {lbl:'Mine',q:'An olivine lamproite that supplied most of the world\'s pink diamonds',o:CLO,a:0,e:'Argyle, WA, closed 2020.'},
+ {lbl:'Mine',q:'The richest mine by value, three Triassic pipes in Botswana',o:CLO,a:1,e:'Jwaneng.'},
+ {lbl:'Mine',q:'Over 75% gem quality, −50 °C winters',o:CLO,a:2,e:'Mir, Siberia.'},
+ {lbl:'Mine',q:'Where kimberlite got its name and De Beers began',o:CLO,a:3,e:'Kimberley, South Africa.'},
+ {lbl:'Mine',q:'Found by two geologists who kept the leases themselves',o:CLO,a:4,e:'Ekati, Canada.'},
+ {lbl:'Mine',q:'Sold by De Beers as uneconomic; now famous for 800+ carat stones',o:CLO,a:5,e:'Karowe, Botswana.'}
+],'cl',2,function(r,n){$('#clScore').textContent=r+' / '+n;});
+
+GEO.finish();
+})();
+</script>
+</body>
+</html>
