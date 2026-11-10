@@ -15,7 +15,7 @@
 <header class="cs-top wrap">
   <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice &rarr;</a></div>
   <h1>Lab test cheat sheet</h1>
-  <p>A4 pages to print: Part C (deposit type), Part B (reflected light), and Part A (hand specimens: a find-it-fast page plus the full table in Mineral Sudoku sheet order). The lab test allows a printed sheet, not a phone, tablet or laptop. Print it black and white, A4, at 100% scale. Every fact comes from the lecture pages and the lab sheets on this site; the lecture number is given in brackets.</p>
+  <p>Nine A4 pages to print (the two photo atlas pages in colour, the rest black and white is fine): Part C (deposit type), Part B (reflected light: a find-it-fast page plus the full table in lab sheet order), and Part A (hand specimens: a find-it-fast page plus the full table in Mineral Sudoku sheet order). The lab test allows a printed sheet, not a phone, tablet or laptop. Print it black and white, A4, at 100% scale. Every fact comes from the lecture pages and the lab sheets on this site; the lecture number is given in brackets.</p>
   <div class="row"><button class="btn" type="button" id="csPrint">Print the cheat sheet</button></div>
 </header>
 
@@ -117,26 +117,26 @@
   <p class="cs-key">py pyrite · cp chalcopyrite · po pyrrhotite · pn pentlandite · sp sphalerite · gn galena · bn bornite · mo molybdenite · asp arsenopyrite · cc chalcocite · cv covellite · hm hematite · mt magnetite</p>
 </section>
 
-<!-- ================= PAGE 2: PART B ================= -->
+<!-- ================= PART B ================= -->
 <section class="cs-page" id="partB">
-  <div class="cs-h"><b>Part B · Ore minerals in reflected light</b><span>plane-polarised light first, then crossed polars, needle and magnet (L4)</span></div>
+  <div class="cs-h"><b>Part B · Ore minerals in reflected light: find it fast</b><span>work in order: colour, reflectance, anisotropy, polishing hardness, internal reflections (L4)</span></div>
   <div class="cs-box">
-    <h3>Sort by colour first</h3>
-    <div id="csColour" class="cs-colour"></div>
+    <h3>Step 1 · Colour in plane-polarised light, then tell them apart</h3>
+    <table class="cs-t cs-find" id="csRlGroups"><thead><tr><th>Colour</th><th>Mineral: how to tell it apart</th></tr></thead><tbody></tbody></table>
   </div>
-  <table class="cs-t cs-min" id="csMin">
-    <thead><tr><th>Mineral</th><th>Colour (PPL)</th><th>Refl.</th><th>Crossed polars</th><th>Hardness</th><th>Mag.</th><th>Key feature</th></tr></thead>
-    <tbody></tbody>
-  </table>
+  <div class="cs-box">
+    <h3>Step 2 · Tests at a glance</h3>
+    <table class="cs-t cs-find" id="csRlTests"><tbody></tbody></table>
+  </div>
   <div class="cs-grid2">
     <div class="cs-box">
       <h3>How to use the tools</h3>
       <ul class="cs-ul">
         <li><b>Reflectance</b>: compare with pyrite (high) and sphalerite (low). Gold and galena are brightest.</li>
-        <li><b>Crossed polars</b>: isotropic stays dark as you rotate; anisotropic changes colour or brightness.</li>
-        <li><b>Hardness</b>: soft minerals scratch easily and show many polishing scratches (galena, molybdenite, gold); hard ones stand proud and polish poorly (pyrite, magnetite).</li>
-        <li><b>Magnet</b>: magnetite jumps; some pyrrhotite pulls weakly.</li>
-        <li><b>Internal reflections</b>: sphalerite; wolframite (red).</li>
+        <li><b>Bireflectance</b>: rotate in PPL; the brightness changes. <b>Pleochroism</b>: the colour changes.</li>
+        <li><b>Crossed polars</b>: isotropic stays black as you rotate (all cubic minerals); anisotropic shows colours.</li>
+        <li><b>Hardness</b>: soft minerals are full of polishing scratches; hard ones stand proud and polish poorly.</li>
+        <li><b>Internal reflections</b>: crossed polars, high power; light comes back from fractures inside the grain.</li>
       </ul>
     </div>
     <div class="cs-box">
@@ -146,14 +146,37 @@
         <li>chromite with olivine → magmatic chromite (L8)</li>
         <li>cp + bn + mo (+ cc, cv rims) → porphyry Cu (L11)</li>
         <li>fine banded sp + gn + py → SEDEX or VMS (L9, L10)</li>
-        <li>gn with tetrahedrite-freibergite, sp with stannite → CMPV (L16)</li>
-        <li>py + asp, Au in or along them, tellurides → orogenic Au (L13)</li>
+        <li>gn + tetrahedrite-freibergite, sp with stannite → CMPV (L16)</li>
+        <li>py + asp, Au, tellurides → orogenic Au (L13)</li>
         <li>cassiterite, wolframite → Sn-W (L15)</li>
         <li>hm, mt, martite, goethite → iron ore (L21)</li>
         <li>cc, cv replacing cp or bn → supergene enrichment (L2)</li>
       </ul>
     </div>
   </div>
+</section>
+
+<section class="cs-page" id="partB2">
+  <div class="cs-h"><b>Part B · Full table, in the lab sheet order</b><span>"Reflected Light properties of the common ore minerals 2024" columns; values from the Lecture 4 mineral cards</span></div>
+  <table class="cs-t cs-rl" id="csRl">
+    <thead><tr><th>Mineral</th><th>Colour</th><th>Refl.</th><th>Bireflectance / pleochroism</th><th>Anisotropy</th><th>Internal refl.</th><th>H</th><th>Distinguishing</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="cs-box">
+    <h3>Check your filled-in 2025 sheet against the slides</h3>
+    <ul class="cs-ul">
+      <li><b>Arsenopyrite</b>: your sheet says isotropic; the slides say moderately to strongly anisotropic (pale blue, green, reddish brown, yellow).</li>
+      <li><b>Stibnite</b>: your sheet says isotropic; the slides say strongly anisotropic (blue to grey-white or brown).</li>
+      <li><b>Chalcopyrite</b>: the slides say anisotropy is extremely weak, so it can look isotropic.</li>
+      <li><b>Bornite</b> and <b>pentlandite</b>: your sheet says low reflectance; the slides say moderate.</li>
+      <li><b>Chromite</b>: Al-rich chromite has reddish brown internal reflections. <b>Cassiterite</b> is not in the slides: * values are standard ones, check them. The lab sheet lists Tetrahedrite twice.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-page cs-atlas" id="partB3">
+  <div class="cs-h"><b>Part B · Photo atlas (print in colour)</b><span>plane-polarised reflected light; crossed polars where the slides have one · Lecture 4, slides 19 to 71</span></div>
+  <div class="cs-photos cs-photos-b" id="csAtlasB"></div>
 </section>
 
 <!-- ================= PAGE 3+: PART A ================= -->
@@ -174,6 +197,11 @@
   </div>
 </section>
 
+<section class="cs-page cs-atlas" id="partA3">
+  <div class="cs-h"><b>Part A · Photo atlas (print in colour)</b><span>one lab hand specimen per mineral, in Mineral Sudoku sheet order · photos by Ian Graham, GEOS3141 lab collection</span></div>
+  <div class="cs-photos cs-photos-a" id="csAtlasA"></div>
+</section>
+
 <section class="cs-page" id="partA2">
   <div class="cs-h"><b>Part A · Full table, in Mineral Sudoku sheet order</b><span>* = standard value added for this site, check it · ! = sheet value looks wrong, check it</span></div>
   <table class="cs-t cs-hs" id="csHs">
@@ -183,7 +211,7 @@
 </section>
 
 <footer class="cs-foot wrap">
-  <p><strong>Sources.</strong> Part C: the "At the lab test" and "Memorise" boxes of Lectures 2, 3, 6 to 11 and 13 to 16 and 21, and the lab's Ore Deposit Specimen Descriptions sheet. Part B: the Lecture 4 reflected-light slides (19 to 71), as used in the Lab test practice microscope stations. Part A: the Minerals Sudoku 2024 sheet with the GEOS2181 hand-specimen notes, as in the <a href="sudoku.html">Mineral Sudoku</a>.</p>
+  <p><strong>Sources.</strong> Part C: the "At the lab test" and "Memorise" boxes of Lectures 2, 3, 6 to 11 and 13 to 16 and 21, and the lab's Ore Deposit Specimen Descriptions sheet. Part B: the Lecture 4 mineral cards (slides 19 to 71), in the order and columns of the lab's Reflected Light properties sheet; cassiterite values are standard ones (*). Part A: the Minerals Sudoku 2024 sheet with the GEOS2181 hand-specimen notes, as in the <a href="sudoku.html">Mineral Sudoku</a>.</p>
 </footer>
 
 <script>
@@ -193,17 +221,58 @@ GEO.themeButton();
   var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
   document.getElementById('csPrint').addEventListener('click', function () { window.print(); });
 
-  /* Part B: reflected light table from LAB.min (Lecture 4) */
-  var REF = { high: 'high', mod: 'mod.', low: 'low' }, HC = { hard: 'hard', med: 'medium', soft: 'soft' };
-  var ANI = { iso: 'isotropic', weak: 'weakly aniso.', strong: 'strongly aniso.' }, MAG = { yes: 'yes', some: 'some', no: '' };
-  var order = { yellow: 1, white: 2, pink: 3, grey: 4, greybrown: 5, blue: 6 };
-  var mins = LAB.min.slice().sort(function (a, b) { return (order[a.cg[0]] || 9) - (order[b.cg[0]] || 9) || a.n.localeCompare(b.n); });
-  $('#csMin tbody').innerHTML = mins.map(function (m) {
-    return '<tr><td><b>' + esc(m.n) + '</b> ' + esc(m.f) + '</td><td>' + esc(m.col) + '</td><td>' + REF[m.ref] + '</td><td>' + ANI[m.ani] + '</td><td>' + HC[m.hc] + '</td><td>' + (MAG[m.mag] || '') + '</td><td>' + esc(m.dist) + '</td></tr>';
+  /* Part B: the Lecture 4 mineral cards (slides 19 to 71), in the order of the lab's reflected-light sheet.
+     Cassiterite is not in the slides, so its values are standard ones, marked *. */
+  var RL = [
+    ['Pyrite', 'FeS₂', 'pale yellow', 'high', '', 'weak to strong (blue-green to orange-red), unusual for a cubic mineral', '', '6 to 6.5', 'colour, high reflectance, polishing hardness; perfect polish', 'yellow', 'hard'],
+    ['Marcasite', 'FeS₂', 'pale bronze-yellow', 'high', '', 'strong (blue and yellow-green)', '', '6 to 6.5', 'anisotropy and high reflectance; oxidises in humid air', 'yellow', 'hard'],
+    ['Arsenopyrite', 'FeAsS', 'silver-white to grey', 'high', '', 'moderate to strong (pale blue, green, reddish brown, yellow)', '', '5.5 to 6.5', 'rhomb-shaped crystals, colour', 'white', 'hard'],
+    ['Pyrrhotite', 'Fe₁₋ₓS', 'pale brown, bronze', 'moderate', '', 'strong (yellow-grey to greyish blue)', '', '3.5 to 4.5', 'light brown colour, strong anisotropy; some is magnetic', 'pink', 'med'],
+    ['Chalcopyrite', 'CuFeS₂', 'yellow', 'moderate', '', 'extremely weak', '', '3.5 to 4', 'softness, colour; stronger yellow than pyrite', 'yellow', 'med'],
+    ['Galena', 'PbS', 'bright white', 'high', '', 'isotropic', '', '2.5', 'triangular pits, high reflectance', 'white', 'soft'],
+    ['Sphalerite', '(Zn,Fe)S', 'grey-brown', 'low', '', 'isotropic', 'reddish brown or yellowish brown', '3.5 to 4', 'low reflectance and internal reflections', 'greybrown', 'med'],
+    ['Covellite', 'CuS', 'bluish white to dark blue', 'low to moderate', 'extreme pleochroism (blue changes colour and brightness)', 'extreme (blue to bright orange)', '', '1.5 to 2', 'the only common blue ore mineral', 'blue', 'soft'],
+    ['Molybdenite', 'MoS₂', 'lead-grey', 'moderate', 'strongly pleochroic, white to grey', 'strong (dark blue to white)', '', '1 to 1.5', 'very soft, lamellar texture, bends', 'grey', 'soft'],
+    ['Chalcocite', 'Cu₂S', 'white to grey-white', 'moderate', '', 'weak', '', '2.5 to 3', 'tarnishes to a bluish tint, soft', 'white', 'soft'],
+    ['Bornite', 'Cu₅FeS₄', 'rose-brown to pink-brown, tarnishes quickly', 'moderate', '', 'low', '', '3', 'colour, low anisotropy, purple tarnish', 'pink', 'soft'],
+    ['Native gold', 'Au', 'yellow-orange', 'very high', '', 'isotropic', '', '2.5 to 3', 'colour, extremely high reflectance, poor polish', 'yellow', 'soft'],
+    ['Tetrahedrite', 'Cu₁₂Sb₄S₁₃', 'grey with a brownish tint', 'moderate', '', 'isotropic', '', '3.5 to 4.5', 'moderate reflectance and colour; Ag-rich looks bluer', 'greybrown', 'med'],
+    ['Magnetite', 'Fe₃O₄', 'grey with a brown tint', 'low', '', 'isotropic', '', '5.5 to 6.5', 'magnetic, hardness', 'greybrown', 'hard'],
+    ['Hematite', 'Fe₂O₃', 'dark steel-grey', 'moderate', '', 'strong', 'deep red', '5.5 to 6.5', 'moderate reflectance and anisotropy', 'grey', 'hard'],
+    ['Chromite', '(Fe,Mg)(Cr,Al,Fe)₂O₄', 'brownish black', 'low', '', 'isotropic', 'Al-rich: reddish brown', '5.5', 'conchoidal fractures, low reflectance, isotropic; with olivine', 'greybrown', 'hard'],
+    ['Pentlandite', '(Fe,Ni)₉S₈', 'pale yellow', 'moderate', '', 'isotropic', '', '3.5 to 4', 'always with pyrrhotite; hardness', 'yellow', 'med'],
+    ['Wolframite', '(Fe,Mn)WO₄', 'dark grey', 'low', '', 'weak', 'deep red', '4 to 4.5', 'lamellar form, internal reflections, low reflectance', 'grey', 'med'],
+    ['Stibnite', 'Sb₂S₃', 'steel-grey', 'high', 'strongly pleochroic, white to grey', 'strong (blue to grey-white or brown)', '', '2', 'prismatic shape, low hardness', 'grey', 'soft'],
+    ['Cassiterite', 'SnO₂', 'grey*', 'low*', '', 'weak to moderate*', 'abundant, yellow-brown to white*', '6 to 7*', 'very hard, stands proud, many internal reflections*', 'grey', 'hard']
+  ];
+  $('#csRl tbody').innerHTML = RL.map(function (r) {
+    return '<tr><td><b>' + esc(r[0]) + '</b><br><span class="cs-f">' + esc(r[1]) + '</span></td><td>' + esc(r[2]) + '</td><td>' + esc(r[3]) + '</td><td>' + (esc(r[4]) || '·') + '</td><td>' + esc(r[5]) + '</td><td>' + (esc(r[6]) || '·') + '</td><td class="nw">' + esc(r[7]) + '</td><td>' + esc(r[8]) + '</td></tr>';
   }).join('');
-  var NAME = { yellow: 'Yellow', white: 'White', pink: 'Pink, cream, bronze', grey: 'Grey', greybrown: 'Grey-brown, dark', blue: 'Blue' }, groups = {};
-  LAB.min.forEach(function (m) { m.cg.forEach(function (c) { (groups[c] = groups[c] || []).push(m.n); }); });
-  $('#csColour').innerHTML = Object.keys(NAME).filter(function (c) { return groups[c]; }).map(function (c) { return '<span><b>' + NAME[c] + ':</b> ' + groups[c].join(', ') + '</span>'; }).join('');
+  var GN = [['yellow', 'Yellow'], ['white', 'White, silver-white'], ['pink', 'Pink, bronze'], ['grey', 'Grey'], ['greybrown', 'Grey with brown, dark'], ['blue', 'Blue']];
+  $('#csRlGroups tbody').innerHTML = GN.map(function (g) {
+    var list = RL.filter(function (r) { return r[9] === g[0]; });
+    return '<tr><td>' + g[1] + '</td><td>' + list.map(function (r) { return '<b>' + esc(r[0]) + '</b>: ' + esc(r[3]) + ' refl., ' + esc(r[5].replace(/ \(.*\)/, '')) + (r[6] ? ', IR ' + esc(r[6]) : '') + ', H ' + esc(r[7]) + '; ' + esc(r[8]); }).join('<br>') + '</td></tr>';
+  }).join('');
+  var names = function (f) { return RL.filter(f).map(function (r) { return esc(r[0].replace(/\*/, '')); }).join(', '); };
+  [['Isotropic (stays black)', names(function (r) { return /isotropic/.test(r[5]); })],
+   ['Strong or extreme anisotropy', names(function (r) { return /^(strong|extreme \(|moderate to strong)/.test(r[5]); })],
+   ['Weak anisotropy', names(function (r) { return /^(weak|low|extremely weak)/.test(r[5]); })],
+   ['Pleochroic', names(function (r) { return r[4]; })],
+   ['Internal reflections', names(function (r) { return r[6]; })],
+   ['Very high or high reflectance', names(function (r) { return /high/.test(r[3]); })],
+   ['Low reflectance', names(function (r) { return /^low/.test(r[3]); })],
+   ['Soft (scratches, under 3)', names(function (r) { return r[10] === 'soft'; })],
+   ['Hard (over 5, stands proud)', names(function (r) { return r[10] === 'hard'; })],
+   ['Magnetic', 'Magnetite; some pyrrhotite']].forEach(function (x) {
+    var tr = document.createElement('tr'); tr.innerHTML = '<td>' + x[0] + '</td><td>' + x[1] + '</td>'; $('#csRlTests tbody').appendChild(tr);
+  });
+
+  /* Part B photo atlas: the Lecture 4 photomicrographs, in lab sheet order */
+  var byName = {}; LAB.min.forEach(function (m) { byName[m.n] = m; });
+  $('#csAtlasB').innerHTML = RL.map(function (r) {
+    var m = byName[r[0].replace('Native gold', 'Gold')]; if (!m) return '';
+    return '<figure><div class="cs-ph' + (m.xpl ? ' two' : '') + '"><img src="' + m.ppl + '" alt="' + esc(r[0]) + ', plane-polarised light">' + (m.xpl ? '<img src="' + m.xpl + '" alt="' + esc(r[0]) + ', crossed polars">' : '') + '</div><figcaption><b>' + esc(r[0]) + '</b> ' + esc(r[2]) + '; ' + esc(r[3]) + ' refl.; ' + esc(r[5].replace(/ \(.*\)/, '')) + (r[6] ? '; IR ' + esc(r[6]) : '') + (m.xpl ? '<br><span class="cs-f">left PPL, right crossed polars</span>' : '') + '</figcaption></figure>';
+  }).join('');
 
   /* Part A: from the Mineral Sudoku data, in sheet order */
   var hs = (window.SUDOKU || {}).min || [];
@@ -213,6 +282,13 @@ GEO.themeButton();
     var head = m.t !== lastT ? '<tr class="cs-g"><td colspan="9">' + esc(P[m.t - 1] || '') + '</td></tr>' : ''; lastT = m.t;
     var p = m.p;
     return head + '<tr><td>' + esc(m.code) + '</td><td><b>' + esc(m.n) + '</b><br><span class="cs-f">' + esc(m.f) + '</span></td><td>' + val(p.c) + '</td><td>' + val(p.s) + '</td><td>' + val(p.l) + '</td><td class="nw">' + val(p.h) + (m.flag && m.flag.h ? '!' : '') + '</td><td>' + val(p.cv) + '</td><td class="nw">' + val(p.d) + '</td><td>' + val(p.o) + '</td></tr>';
+  }).join('');
+  /* Part A photo atlas: first lab hand-specimen photo of each mineral, else a lecture photo */
+  var hsPic = {}; (LAB.hs || []).forEach(function (x) { if (x.k !== 'streak' && !hsPic[x.m]) hsPic[x.m] = 'img/lab/hs/' + x.src + '.jpg'; });
+  var PICK = window.CS_PICK || {};
+  $('#csAtlasA').innerHTML = hs.map(function (m) {
+    var src = PICK[m.n] || (m.hs && hsPic[m.hs]) || (m.pics && m.pics[0] && m.pics[0][0]); if (!src) return '';
+    return '<figure><div class="cs-ph"><img src="' + src + '" alt="' + esc(m.n) + ' hand specimen" loading="eager"></div><figcaption><b>' + esc(m.n) + '</b> <span class="cs-f">' + esc(m.code) + '</span></figcaption></figure>';
   }).join('');
   var get = function (m, k) { return m.p[k] && m.p[k][0] ? m.p[k][0] : ''; };
   var lab = function (m) { return '<b>' + esc(m.n) + '</b>' + (m.code ? ' <span class="cs-f">' + esc(m.code) + '</span>' : ''); };

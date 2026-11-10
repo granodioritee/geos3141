@@ -532,6 +532,21 @@ body.cs{background:var(--bg)}
   .cs-t th,.cs-g td{background:#e6e6e6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .cs-box{border-color:#888;padding:3px 5px;margin:4px 0}
   .cs-h{border-color:#000}.cs-h span,.cs-note,.cs-key{color:#333}
-  .cs-box h3{color:#000;font-size:9pt}.cs-h b{font-size:14pt}.cs-f{color:#444}.cs-t tr{break-inside:avoid}
+  .cs-box h3{color:#000;font-size:9pt}.cs-h b{font-size:14pt}.cs-f{color:#444}.cs-t tr{break-inside:avoid}.cs-rl{font-size:7.9pt}
   .cs-grid2{grid-template-columns:1.25fr 1fr;gap:6px}
+}
+
+.cs-photos{display:grid;gap:6px;margin-top:6px}
+.cs-photos-b{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.cs-photos-a{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+.cs-photos figure{margin:0;padding:3px;border:1px solid var(--line);border-radius:4px;background:none;box-shadow:none;break-inside:avoid;min-width:0}
+.cs-ph{display:flex;gap:2px}.cs-ph img{flex:1;min-width:0;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;display:block}
+.cs-photos-a .cs-ph img{aspect-ratio:1/1}
+.cs-photos figcaption{font-size:.72rem;line-height:1.25;margin-top:2px}
+@media print{
+  .cs-photos-b{grid-template-columns:repeat(4,1fr);gap:4px}
+  .cs-photos-a{grid-template-columns:repeat(7,1fr);gap:4px}
+  .cs-photos figcaption{font-size:7pt}
+  .cs-photos figure{padding:2px;border-color:#aaa}
+  .cs-ph img{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
