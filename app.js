@@ -693,7 +693,7 @@ var GEO = {
         var opts = shuffle(shuffle(LAB.suiteTypes.filter(function (t) { return t !== type; })).slice(0, 3).concat([type]));
         out.push({ id: 'dhs-' + x.src, kind: 'dhs', img: 'img/lab/dhs/' + x.src + '.jpg', mic: false, lbl: 'Lab ore suite · hand specimen',
           q: 'Which kind of deposit does this hand specimen come from?', o: opts, a: opts.indexOf(type),
-          e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' This specimen on the lab sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''), dep: x.d, type: type,
+          e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' This specimen on the lab sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''), dep: x.d, type: type, seen1: x.s ? x.s + ' (lab sheet)' : null,
           link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
@@ -891,6 +891,14 @@ var GEO = {
     function explain(st, j) {
       var w = $('#ltWhy'), rs = reasons(st, j);
       rs.forEach(function (r) { var p = node('p', 'lt-wp', null, w); if (r[0]) node('b', '', r[0] + '. ', p); p.appendChild(document.createTextNode(r[1])); });
+      if ((st.kind === 'suite' || st.kind === 'dhs') && LAB.typeFacts) {
+        var sub = (LAB.depSub || {})[st.dep] || (st.type === 'VMS / SEDEX' ? 'VMS' : st.type), f = LAB.typeFacts[sub];
+        if (f) {
+          var d = node('details', 'lt-bul', null, w), sm = node('summary', '', 'Write it like this at the test (Part C bullets)', d), ul = node('ul', '', null, d);
+          [['What I see', st.seen1 || 'the minerals, texture and host rock in this specimen'], ['Ore minerals', f.min], ['Texture', f.tex], ['Host rock and alteration', f.host], ['Syngenetic or epigenetic', f.gen], ['Temperature and depth', f.temp], ['Setting', f.set], ['Deposit type', sub + (sub !== st.type ? ' (' + st.type + ')' : '') + ', for example ' + st.dep.replace(/,.*/, '')]].forEach(function (r) { var li = node('li', '', null, ul); node('b', '', r[0] + ': ', li); li.appendChild(document.createTextNode(r[1])); });
+          node('p', 'lt-src', 'Source: ' + f.src + '. Describe first, then interpret.', d);
+        }
+      }
       var href = st.link || (st.lec && st.sec && st.sec !== 'virtual' ? 'L' + st.lec + '.html#' + st.sec : null);
       if (href && (rs.length || j !== st.a)) { var p2 = node('p', 'lt-wp', null, w), a = node('a', '', /^sudoku/.test(href) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + (href.match(/L(\d+)/) || [0, ''])[1] + ' →', p2); a.href = href; a.target = '_blank'; a.rel = 'noopener'; }
     }

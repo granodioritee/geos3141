@@ -437,6 +437,7 @@ em{font-style:italic}
 .lt-opts button:disabled{cursor:default}
 .lt-why{font-family:var(--sans);font-size:.95rem;min-height:1.4em;margin:.8rem 0}
 .lt-why.ok b{color:var(--mal)}.lt-why.bad b{color:var(--hem)}
+.lt-why .lt-bul{margin:.7rem 0 0;border:1px solid var(--line);border-radius:8px;padding:.5rem .75rem;background:var(--paper)}.lt-why .lt-bul summary{cursor:pointer;font-weight:600;color:var(--gold)}.lt-why .lt-bul ul{margin:.5rem 0 0;padding-left:1.1rem}.lt-why .lt-bul li{margin:.25rem 0;line-height:1.45}.lt-why .lt-bul li b{color:var(--ink)}.lt-why .lt-src{margin:.4rem 0 0;font-size:.85rem;color:var(--muted)}
 .lt-why .lt-wp{margin:.55rem 0 0;line-height:1.5}.lt-why .lt-wp b{color:var(--ink)}.lt-why.ok .lt-wp b,.lt-why.bad .lt-wp b{color:var(--ink)}
 .lt-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:.5rem;max-width:36rem;margin:0 auto;align-items:start}
 .lt-pair .lt-img img{max-height:18rem}
