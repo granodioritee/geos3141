@@ -15,7 +15,7 @@
 <header class="cs-top wrap">
   <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice &rarr;</a></div>
   <h1>Lab test cheat sheet</h1>
-  <p>Nine A4 pages to print (the two photo atlas pages in colour, the rest black and white is fine): Part C (deposit type), Part B (reflected light: a find-it-fast page plus the full table in lab sheet order), and Part A (hand specimens: a find-it-fast page plus the full table in Mineral Sudoku sheet order). The lab test allows a printed sheet, not a phone, tablet or laptop. Print it black and white, A4, at 100% scale. Every fact comes from the lecture pages and the lab sheets on this site; the lecture number is given in brackets.</p>
+  <p>Ten A4 pages to print (the two photo atlas pages in colour, the rest black and white is fine): Part C (deposit type), Part B (reflected light: a find-it-fast page plus the full table in lab sheet order), and Part A (hand specimens: a find-it-fast page plus the full table in Mineral Sudoku sheet order). The lab test allows a printed sheet, not a phone, tablet or laptop. Print it black and white, A4, at 100% scale. Every fact comes from the lecture pages and the lab sheets on this site; the lecture number is given in brackets.</p>
   <div class="row"><button class="btn" type="button" id="csPrint">Print the cheat sheet</button></div>
 </header>
 
@@ -120,11 +120,39 @@
 <!-- ================= PART B ================= -->
 <section class="cs-page" id="partB">
   <div class="cs-h"><b>Part B · Ore minerals in reflected light: find it fast</b><span>work in order: colour, reflectance, anisotropy, polishing hardness, internal reflections (L4)</span></div>
+  <div class="cs-box cs-answer">
+    <h3>Your answer: name EVERY ore mineral in the field (1, 2 or at most 3)</h3>
+    <ul class="cs-ul">
+      <li>Scan the whole field first. Count the different <b>colours and brightness levels</b>: each one is usually a different mineral.</li>
+      <li>Look for <b>small things</b> too: tiny yellow blebs inside sphalerite (chalcopyrite disease), a gold speck in a fracture, a rim around pyrite.</li>
+      <li>Don’t name <b>gangue</b> (quartz, carbonate): it is the dark grey, dull background that reflects little light.</li>
+      <li>Then check the partners below: if you find one, look for the other.</li>
+    </ul>
+    <p class="cs-note">Ian, lab revision class, 10 Nov.</p>
+  </div>
+  <table class="cs-t cs-pairs-t">
+    <thead><tr><th>Often together (find one, look for the other)</th><th>What it looks like</th><th>Points to</th></tr></thead>
+    <tbody>
+      <tr><td><b>Pyrrhotite + pentlandite</b> (± chalcopyrite, magnetite)</td><td>pale yellow isotropic pentlandite in bronze, strongly anisotropic pyrrhotite</td><td>magmatic Ni-Cu (L4, L7)</td></tr>
+      <tr><td><b>Sphalerite + chalcopyrite</b></td><td>tiny yellow blebs dusted through grey sphalerite (chalcopyrite disease)</td><td>VMS, CMPV (L4 slide 19)</td></tr>
+      <tr><td><b>Pyrite + sphalerite + galena</b></td><td>hard pale pyrite, dark grey sphalerite, bright white galena with triangular pits</td><td>VMS, SEDEX, CMPV (L4 slides 16, 17, 21)</td></tr>
+      <tr><td><b>Pyrite + marcasite</b></td><td>pyrite core with a strongly anisotropic marcasite rim</td><td>change in fluid pH (L4 slide 23)</td></tr>
+      <tr><td><b>Galena + gold</b>; <b>gold + sphalerite + galena</b></td><td>bright yellow speck next to or inside white galena; cuspate gold grains</td><td>gold veins, epithermal (L4 slide 24, L12)</td></tr>
+      <tr><td><b>Gold + pyrite or arsenopyrite</b></td><td>gold free in quartz, or locked in pyrite and arsenopyrite</td><td>orogenic gold (L13)</td></tr>
+      <tr><td><b>Bornite + chalcopyrite (+ chalcocite)</b></td><td>pink-brown bornite with lamellae of yellow chalcopyrite and blue chalcocite</td><td>porphyry Cu (L4, L11)</td></tr>
+      <tr><td><b>Chalcopyrite or bornite + chalcocite or covellite</b></td><td>bluish chalcocite or deep blue covellite rims replacing the primary Cu sulphide</td><td>supergene enrichment (L2, L11)</td></tr>
+      <tr><td><b>Chalcopyrite + molybdenite</b> (+ pyrite)</td><td>soft lamellar lead-grey molybdenite with yellow chalcopyrite</td><td>porphyry Cu (L11)</td></tr>
+      <tr><td><b>Galena + tetrahedrite (freibergite) + chalcopyrite</b></td><td>white galena, brownish grey tetrahedrite, yellow chalcopyrite</td><td>CMPV, Webbs (L16)</td></tr>
+      <tr><td><b>Magnetite + hematite</b></td><td>martite: hematite replacing magnetite, keeps the octahedral shape</td><td>iron ore (L21)</td></tr>
+      <tr><td><b>Cassiterite + wolframite</b></td><td>both low reflectance with internal reflections; cassiterite very hard</td><td>Sn-W (L15)</td></tr>
+      <tr><td><b>Chromite</b> (with olivine gangue)</td><td>brownish black, isotropic, conchoidal fractures</td><td>magmatic chromite (L8)</td></tr>
+    </tbody>
+  </table>
   <div class="cs-box">
     <h3>Step 1 · Colour in plane-polarised light, then tell them apart</h3>
     <table class="cs-t cs-find" id="csRlGroups"><thead><tr><th>Colour</th><th>Mineral: how to tell it apart</th></tr></thead><tbody></tbody></table>
   </div>
-  <div class="cs-box">
+  <div class="cs-box cs-break">
     <h3>Step 2 · Tests at a glance</h3>
     <table class="cs-t cs-find" id="csRlTests"><tbody></tbody></table>
   </div>
@@ -140,18 +168,8 @@
       </ul>
     </div>
     <div class="cs-box">
-      <h3>Assemblages point to a deposit type</h3>
-      <ul class="cs-ul">
-        <li>po + pn (+ cp, mt) → magmatic Ni-Cu (L7)</li>
-        <li>chromite with olivine → magmatic chromite (L8)</li>
-        <li>cp + bn + mo (+ cc, cv rims) → porphyry Cu (L11)</li>
-        <li>fine banded sp + gn + py → SEDEX or VMS (L9, L10)</li>
-        <li>gn + tetrahedrite-freibergite, sp with stannite → CMPV (L16)</li>
-        <li>py + asp, Au, tellurides → orogenic Au (L13)</li>
-        <li>cassiterite, wolframite → Sn-W (L15)</li>
-        <li>hm, mt, martite, goethite → iron ore (L21)</li>
-        <li>cc, cv replacing cp or bn → supergene enrichment (L2)</li>
-      </ul>
+      <h3>Gangue, not ore</h3>
+      <p>Quartz and carbonate are the dark grey, dull background that reflects little light, as in the Webbs and Tuena photos (L13, L16). You don’t name them. Holes and pits are black.</p>
     </div>
   </div>
 </section>

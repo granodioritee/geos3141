@@ -69,6 +69,28 @@ min: [
 ]
 };
 
+/* Lab test part B: name every ore mineral in the field (1 to 3; gangue such as quartz is not named).
+   req = ore minerals the source names; opt = grains the source does not name for sure, so they are
+   not scored either way. Lecture 4 photos have the mineral names burned in at the bottom, so they use
+   the .mic crop. */
+LAB.multi = [
+{id:'mx-s016',img:'img/L4/slide016_1.jpg',mic:1,req:['Pyrite','Sphalerite','Galena'],opt:[],lec:4,sec:'textures',e:'Pyrite (pale yellow, hard, euhedral), sphalerite (dark grey, low reflectance) and galena (bright white matrix). The paragenesis is pyrite, then sphalerite, then galena. (Lecture 4, slide 16)'},
+{id:'mx-s017',img:'img/L4/slide017_1.jpg',mic:1,req:['Galena','Sphalerite'],opt:[],lec:4,sec:'textures',e:'Galena (bright white, triangular pits) as a cuspate-lobate inclusion in sphalerite (grey, low reflectance). The shape suggests they crystallised at the same time. (Lecture 4, slide 17)'},
+{id:'mx-s018',img:'img/L4/slide018_1.jpg',mic:1,req:['Pyrite','Galena'],opt:[],lec:4,sec:'textures',e:'Pyrite (pale, hard) with caries texture, eaten into by galena (bright bluish white, black triangular pits). The slide names the pyrite; the galena is identified here from its triangular cleavage pits. (Lecture 4, slide 18)'},
+{id:'mx-s019',img:'img/L4/slide019_1.jpg',mic:1,req:['Sphalerite','Chalcopyrite'],opt:[],lec:4,sec:'textures',e:'Sphalerite (grey host) dusted with tiny bright yellow chalcopyrite blebs: chalcopyrite disease. Name both minerals. (Lecture 4, slide 19)'},
+{id:'mx-s020',img:'img/L4/slide020_1.jpg',mic:1,req:['Pyrite'],opt:[],lec:4,sec:'textures',e:'Only pyrite, as framboids (tiny spherical clusters of crystals) in black shale. One ore mineral is a valid answer. (Lecture 4, slide 20)'},
+{id:'mx-s021',img:'img/L4/slide021_1.jpg',mic:1,req:['Pyrite','Galena','Sphalerite'],opt:[],lec:4,sec:'textures',e:'Euhedral pyrite porphyroblasts full of sphalerite and galena inclusions, in a galena matrix. (Lecture 4, slide 21)'},
+{id:'mx-s023',img:'img/L4/slide023_1.jpg',mic:1,req:['Pyrite','Marcasite'],opt:[],lec:4,sec:'textures',e:'A pyrite core with a marcasite rim. Both are FeS₂; marcasite is strongly anisotropic under crossed polars, pyrite only weakly. (Lecture 4, slide 23)'},
+{id:'mx-s024',img:'img/L4/slide024_1.jpg',mic:1,req:['Galena','Gold'],opt:[],lec:4,sec:'textures',e:'Galena (bright white) filling a fracture in quartz, with a tiny yellow gold grain. Quartz is gangue, so you don’t name it. (Lecture 4, slide 24)'},
+{id:'mx-s025',img:'img/L4/slide025_1.jpg',mic:1,req:['Galena'],opt:[],lec:4,sec:'textures',e:'Only galena: bright white with straight cleavage traces. (Lecture 4, slide 25)'},
+{id:'mx-s059',img:'img/L4/slide059_1.jpg',mic:1,req:['Pentlandite','Pyrrhotite'],opt:[],lec:4,sec:'pairs',e:'Pale yellow, isotropic pentlandite intergrown with bronze pyrrhotite. Pentlandite always comes with pyrrhotite, so look for both. (Lecture 4, slide 59)'},
+{id:'mx-webbs',img:'img/L16/webbs-rl.jpg',mic:0,req:['Galena','Chalcopyrite'],opt:['Tetrahedrite','Sphalerite','Arsenopyrite'],lec:16,sec:'cmpvmin',e:'Galena (bright white, black triangular pits) and a small brassy chalcopyrite patch, in dark quartz-carbonate gangue. The pale grey grains on the left are not named on the slide (Webbs ore also has freibergite, arsenopyrite and sphalerite), so they are not scored. (Lecture 16, slide 12)'},
+{id:'mx-l9rl4',img:'img/L9/rl4.jpg',mic:0,req:['Galena'],opt:['Sphalerite','Pyrite'],lec:9,sec:'halo',e:'Galena (bright white, sharp triangular pits). The grey around it is most likely sphalerite, and the cream grain could be pyrite, but the slide does not name them, so they are not scored. (Lecture 9)'},
+{id:'mx-l9rl2',img:'img/L9/rl2.jpg',mic:0,req:['Pyrite'],opt:['Galena'],lec:9,sec:'halo',e:'Euhedral pyrite (pale cream, hard, pitted) in a pale bluish-grey sulphide that is most likely galena (not scored, because it is identified only from colour). Laminated SEDEX ore. (Lecture 9)'},
+{id:'mx-covel',img:'img/L16/covellite.jpg',mic:0,req:['Covellite'],opt:['Chalcopyrite','Pyrite'],lec:16,sec:'manuka',e:'Covellite: strong indigo-blue in reflected light. The bright yellow speck is not named on the slide, so it is not scored. (Lecture 16, slides 51 and 52)'},
+{id:'mx-tuena',img:'img/L13/tuena-gold.jpg',mic:0,req:['Gold'],opt:[],lec:13,sec:'tuena',e:'Only gold: bright yellow, high-reflectance grains along thin fractures in grey gangue. (Lecture 13, slide 40)'}
+];
+
 /* Lab ore suites: reflected-light photos of the polished blocks from the lab collection
    (Moodle "Lab material - deposit photos", RL albums; photos by Ian Graham, hosted on the
    course Flickr account). The burned-in file names are cropped off. The answer is the deposit

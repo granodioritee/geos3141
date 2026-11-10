@@ -651,10 +651,11 @@ var GEO = {
   /* ---------- lab test practice: timed stations over LAB (labdata.js) ---------- */
   labLoad: function () {
     var s = null; try { s = JSON.parse(localStorage.getItem('geos3141-lab') || 'null'); } catch (e) {}
-    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'dhs', 'suite', 'min', 'alter', 'micro', 'hand', 'core', 'obs'], v: 4 };
+    s = s && typeof s === 'object' ? s : {}; s.xp = s.xp || 0; s.runs = s.runs || 0; s.seen = s.seen || {}; s.best = s.best || 0; s.opt = s.opt || { n: 12, t: 60, k: ['mineral', 'dhs', 'suite', 'min', 'multi', 'alter', 'micro', 'hand', 'core', 'obs'], v: 5 };
     if (!s.opt.v) { ['mineral', 'alter'].forEach(function (k) { if (s.opt.k.indexOf(k) < 0) s.opt.k.push(k); }); s.opt.v = 2; }
     if (s.opt.v < 3) { if (s.opt.k.indexOf('dhs') < 0) s.opt.k.push('dhs'); s.opt.v = 3; }
     if (s.opt.v < 4) { if (s.opt.k.indexOf('obs') < 0) s.opt.k.push('obs'); s.opt.v = 4; }
+    if (s.opt.v < 5) { if (s.opt.k.indexOf('multi') < 0) s.opt.k.push('multi'); s.opt.v = 5; }
     return s;
   },
   lab: function () {
@@ -663,7 +664,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope: name the mineral', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
+    var KIND = { multi: 'Microscope: name every ore mineral', dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope: name the mineral', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -718,6 +719,15 @@ var GEO = {
         out.push({ id: 'alt-' + x.src, kind: 'alter', lec: 2, sec: SEC(x.c), img: 'img/lab/alt/' + x.src + '.jpg', mic: false, lbl: 'Lab alteration examples · hand specimen',
           q: 'What does this specimen show?', o: opts, a: opts.indexOf(x.c),
           e: x.c + ', from the lab’s alteration examples' + (x.d ? ' (' + x.d.replace(/\s+$/, '') + ')' : '') + '.', credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+      });
+      /* part B style: name every ore mineral in the field (1 to 3) */
+      var CG = {}; LAB.min.forEach(function (m) { CG[m.n] = m.cg; });
+      (LAB.multi || []).forEach(function (x) {
+        var keep = x.req.concat(x.opt), near = [], far = [];
+        LAB.min.forEach(function (m) { if (keep.indexOf(m.n) >= 0) return; var close = keep.some(function (k) { return (CG[k] || []).some(function (c) { return m.cg.indexOf(c) >= 0; }); }); (close ? near : far).push(m.n); });
+        var opts = shuffle(keep.concat(shuffle(near).concat(shuffle(far)).slice(0, Math.max(0, 8 - keep.length))));
+        out.push({ id: x.id, kind: 'multi', img: x.img, mic: !!x.mic, lec: x.lec, sec: x.sec, lbl: 'Polished section · plane-polarised reflected light',
+          q: 'Name every ore mineral you can see (1 to 3). Don\u2019t name gangue such as quartz. Tap all that apply, then Check.', o: opts, a: -1, req: x.req, opt: x.opt, e: x.e, ansText: x.req.join(' + ') });
       });
       /* stations generated from the lecture pages (labpages.js): photo quiz cards and field tasks */
       (LAB.pages || []).forEach(function (x) { out.push(x); });
@@ -810,6 +820,11 @@ var GEO = {
       var o = $('#ltOpts'); o.innerHTML = '';
       var opt = function (t, j, fn) { var b = node('button', '', null, o); b.type = 'button'; node('span', 'k', String(j + 1), b); b.appendChild(document.createTextNode(t)); b.addEventListener('click', function () { fn(b); }); };
       if (st.kind === 'obs') opt('Say it out loud or jot it down, then show the answer', 0, function () { reveal(); });
+      else if (st.kind === 'multi') {
+        st.o.forEach(function (t, j) { opt(t, j, function (b) { if (run.cur.done) return; var on = b.getAttribute('aria-pressed') === 'true'; b.setAttribute('aria-pressed', on ? 'false' : 'true'); SND.play('flip'); }); });
+        $$('#ltOpts button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        var chk = node('button', 'lt-check', 'Check', o); chk.type = 'button'; chk.addEventListener('click', function () { checkMulti(); });
+      }
       else st.o.forEach(function (t, j) { opt(t, j, function (b) { answer(j, b); }); });
       $('#ltNext').hidden = true;
       tick(true);
@@ -851,7 +866,7 @@ var GEO = {
         $('#ltClock').textContent = sec + ' s'; $('#ltBar').style.width = (left / T * 100) + '%';
         $('#ltBar').className = left < 6 ? 'low' : left < T / 3 ? 'mid' : '';
         if (sec !== last && sec <= 5 && sec > 0) SND.play('tick'); last = sec;
-        if (left <= 0) { clearInterval(clock); if (run.cur.st.kind === 'obs') reveal(); else answer(-1, null); }
+        if (left <= 0) { clearInterval(clock); if (run.cur.st.kind === 'obs') reveal(); else if (run.cur.st.kind === 'multi') checkMulti(true); else answer(-1, null); }
       };
       draw(); clock = setInterval(draw, 200);
     }
@@ -917,6 +932,33 @@ var GEO = {
       var href = st.link || (st.lec && st.sec && st.sec !== 'virtual' ? 'L' + st.lec + '.html#' + st.sec : null);
       if (href && (rs.length || j !== st.a)) { var p2 = node('p', 'lt-wp', null, w), a = node('a', '', /^sudoku/.test(href) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + (href.match(/L(\d+)/) || [0, ''])[1] + ' →', p2); a.href = href; a.target = '_blank'; a.rel = 'noopener'; }
     }
+    /* part B style stations: every named ore mineral, nothing that isn't there */
+    function checkMulti(timeout) {
+      var c = run.cur, st = c.st; if (c.done) return; c.done = true; clearInterval(clock);
+      var bs = $$('#ltOpts button:not(.lt-check)'), picked = [];
+      bs.forEach(function (b, k) { if (b.getAttribute('aria-pressed') === 'true') picked.push(st.o[k]); });
+      var cb = $('#ltOpts .lt-check'); if (cb) cb.parentNode.removeChild(cb);
+      var found = st.req.filter(function (m) { return picked.indexOf(m) >= 0; }), missed = st.req.filter(function (m) { return picked.indexOf(m) < 0; });
+      var extra = picked.filter(function (m) { return st.req.indexOf(m) < 0 && st.opt.indexOf(m) < 0; }), maybe = picked.filter(function (m) { return st.opt.indexOf(m) >= 0; });
+      var ok = !missed.length && !extra.length;
+      bs.forEach(function (b, k) { var m = st.o[k]; b.disabled = true; if (st.req.indexOf(m) >= 0) b.classList.add('right'); else if (extra.indexOf(m) >= 0) b.classList.add('wrong'); else if (st.opt.indexOf(m) >= 0) b.classList.add('maybe'); });
+      var r = L.seen[st.id] || [0, 0]; r[1]++; var w = $('#ltWhy');
+      if (ok) {
+        r[0]++; run.right++; COMBO.hit();
+        var quick = L.opt.t && (Date.now() - c.t0) / 1000 < L.opt.t / 3, pts = COMBO.pts(3 + (quick ? 1 : 0)); run.oz += pts; L.xp += pts;
+        FX.burst($('#ltOpts')); FX.float('+' + pts + ' oz'); SND.play('ok');
+        w.innerHTML = '<b>Right' + (quick ? ', and quick' : '') + '.</b> +' + pts + ' oz' + COMBO.tag() + '. '; w.className = 'lt-why ok';
+      } else {
+        COMBO.miss(); run.miss.push(st); if (timeout) SND.play('alarm'); else FX.shake($('#ltOpts'));
+        w.innerHTML = '<b>' + (timeout ? 'Time\u2019s up.' : 'Not quite.') + '</b> The ore minerals are ' + st.ansText + '. '; w.className = 'lt-why bad';
+      }
+      var line = function (lab, list) { if (!list.length) return; var p = node('p', 'lt-wp', null, w); node('b', '', lab + '. ', p); p.appendChild(document.createTextNode(list.join(', '))); };
+      line('Found', found); line('Missed', missed); line('Not in this field', extra); line('Not scored (the source does not name it for sure)', maybe);
+      var pe = node('p', 'lt-wp', null, w); pe.appendChild(document.createTextNode(st.e));
+      explain(st, ok ? st.a : -2);
+      L.seen[st.id] = r; keep(); GEO.dayMark(); paintCombo();
+      $('#ltNext').hidden = false; $('#ltNext').textContent = run.i + 1 < run.list.length ? 'Next station' : 'See results'; $('#ltNext').focus();
+    }
     function credit(st) {
       if (!st.credit) return; var w = $('#ltWhy'); w.appendChild(document.createTextNode(' '));
       var a = node('a', 'lt-credit', 'Photo: Ian Graham, GEOS3141 lab collection', w); a.href = st.credit; a.target = '_blank'; a.rel = 'noopener';
@@ -939,7 +981,7 @@ var GEO = {
         node('h4', '', 'Stations to revisit', box);
         run.miss.forEach(function (st) {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
-          var t = node('div', '', null, row); node('b', '', st.kind === 'obs' ? st.lbl : st.o[st.a], t); if (st.kind === 'obs') node('p', '', st.q, t); node('p', '', st.e, t);
+          var t = node('div', '', null, row); node('b', '', st.kind === 'obs' ? st.lbl : st.ansText || st.o[st.a], t); if (st.kind === 'obs') node('p', '', st.q, t); node('p', '', st.e, t);
           if ((st.kind === 'suite' || st.kind === 'dhs') && LAB.depWhy && LAB.depWhy[st.dep]) node('p', '', LAB.depWhy[st.dep], t);
           if (st.page) { var a0 = node('a', '', 'Review in ' + st.pageName + ' →', t); a0.href = st.page + '#' + st.sec; }
           else if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
@@ -954,6 +996,7 @@ var GEO = {
     $('#ltMisses').addEventListener('click', function () { begin(run.miss.slice()); });
     document.addEventListener('keydown', function (e) {
       if (!run || $('#ltRun').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (!run.cur.done && e.key === 'Enter' && run.cur.st.kind === 'multi') { e.preventDefault(); checkMulti(); return; }
       if (!run.cur.done && /^[1-9]$/.test(e.key)) { var b = $$('#ltOpts button')[+e.key - 1]; if (b && !b.disabled) { e.preventDefault(); b.click(); } }
       else if (run.cur.done && e.key === 'Enter' && document.activeElement !== $('#ltNext')) { e.preventDefault(); $('#ltNext').click(); }
     });
