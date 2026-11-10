@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Lab Test Cheat Sheet</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+<script src="labdata.js"></script>
+<script src="sudokudata.js"></script>
+</head>
+<body class="cs">
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="cs-top wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice &rarr;</a></div>
+  <h1>Lab test cheat sheet</h1>
+  <p>A4 pages to print: Part C (deposit type), Part B (reflected light), and Part A (hand specimens: a find-it-fast page plus the full table in Mineral Sudoku sheet order). The lab test allows a printed sheet, not a phone, tablet or laptop. Print it black and white, A4, at 100% scale. Every fact comes from the lecture pages and the lab sheets on this site; the lecture number is given in brackets.</p>
+  <div class="row"><button class="btn" type="button" id="csPrint">Print the cheat sheet</button></div>
+</header>
+
+<!-- ================= PAGE 1: PART C ================= -->
+<section class="cs-page" id="partC">
+  <div class="cs-h"><b>Part C · Which deposit type?</b><span>GEOS3141 lab test, 13 Nov 2026 · name the TYPE first, then give the evidence</span></div>
+
+  <div class="cs-grid2">
+    <div class="cs-box">
+      <h3>Decision path</h3>
+      <ol class="cs-ol">
+        <li>Mostly <b>iron oxide</b> (hematite, magnetite, goethite), often banded with chert or jasper → <b>Iron ore (BIF)</b>.</li>
+        <li><b>Weathered</b>: goethite, boxwork holes, jarosite, malachite, azurite, chrysocolla, sooty chalcocite → <b>Regolith / oxide zone</b> (say what it sits on, if you can).</li>
+        <li>Sulphide <b>inside a dark mafic or ultramafic igneous rock</b>: pyrrhotite + pentlandite ± chalcopyrite → <b>Magmatic Ni-Cu</b>. Black chromite in serpentinite → <b>Magmatic chromite</b>.</li>
+        <li>Sulphide in <b>layers parallel to the bedding</b> (banded, massive):
+          <br>volcanic host, chalcopyrite common → <b>VMS</b>;
+          <br>dark carbonaceous or dolomitic siltstone, very fine Zn-Pb, little Cu → <b>SEDEX</b>;
+          <br>very fine Cu sulphide in black shale above red beds → <b>Sediment-hosted Cu</b>.</li>
+        <li>Sulphide in <b>veins that cut the rock</b>:
+          <br>many thin quartz veins (stockwork) in a <b>porphyry</b>, cp-bn-mo, K-feldspar or biotite alteration → <b>Porphyry Cu</b>;
+          <br><b>banded colloform</b> quartz-chalcedony-adularia, vugs, breccia, in volcanic rock, little sulphide → <b>Epithermal</b>;
+          <br>quartz-carbonate veins with py + asp in <b>greenstone or shale</b>, sericite-carbonate alteration, shear zones → <b>Orogenic (mesothermal) Au</b>;
+          <br>galena-sphalerite-freibergite veins cutting <b>dark metasiltstone</b> → <b>Polymetallic vein (CMPV)</b>;
+          <br>cassiterite or wolframite with quartz, topaz, tourmaline, fluorite, near granite → <b>Sn-W (granite-related)</b>.</li>
+        <li>Zn-Pb filling <b>open spaces and breccia in carbonate</b> (dolomite, limestone), no igneous rock → <b>MVT</b>.</li>
+      </ol>
+    </div>
+    <div class="cs-box">
+      <h3>Write it like this (bullets)</h3>
+      <ul class="cs-ul">
+        <li><b>Deposit type</b> (the main answer; the deposit name is not needed)</li>
+        <li><b>Ore minerals</b> and <b>gangue</b> you can see</li>
+        <li><b>Texture</b>: banded, massive, vein, stockwork, breccia, disseminated, boxwork; grain size</li>
+        <li><b>Host rock</b> and <b>alteration</b></li>
+        <li><b>Syngenetic</b> (formed with the host) or <b>epigenetic</b> (formed later)</li>
+        <li><b>Temperature</b> and <b>depth</b></li>
+        <li><b>Setting</b>: where and how it formed</li>
+      </ul>
+      <h3>Temperature ladder</h3>
+      <table class="cs-t cs-temp"><tbody>
+        <tr><td>Magmatic sulphide liquid</td><td>1200 to 1400 °C (L7)</td></tr>
+        <tr><td>Porphyry fluids</td><td>250 to 750 °C (L11)</td></tr>
+        <tr><td>Orogenic Au</td><td>200 to 700 °C, 2 to 20 km (L13)</td></tr>
+        <tr><td>Sn-W veins and greisen</td><td>600 to 200 °C; W at 350 to 300 °C (L15)</td></tr>
+        <tr><td>VMS</td><td>Cu core ≈ 350 °C; Zn-Pb edge ≈ 250 to 150 °C (L10)</td></tr>
+        <tr><td>CMPV</td><td>250 to 300 °C, ≈ 6 km (L16)</td></tr>
+        <tr><td>Carlin-type Au</td><td>200 to 300 °C, 2 to 3 km (L13)</td></tr>
+        <tr><td>SEDEX brine</td><td>≈ 80 to 200 °C (L9)</td></tr>
+        <tr><td>MVT brine</td><td>mostly 90 to 150 °C (L16)</td></tr>
+        <tr><td>Epithermal</td><td>surface to ≈ 3 km, cooler than porphyry (L14)</td></tr>
+        <tr><td>Supergene / oxide zone</td><td>surface temperature (L2)</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <table class="cs-t cs-dep">
+    <thead><tr><th>Type</th><th>Ore minerals</th><th>Texture</th><th>Host rock · alteration</th><th>Syn / epi</th><th>Setting</th></tr></thead>
+    <tbody>
+      <tr><td><b>VMS</b> (L6, L10)</td><td>py, cp ± po (Cu core, stringer); sp, gn, barite (top, edge)</td><td>massive or banded; stringer veins below</td><td>felsic tuff, rhyolite, dacite, basalt · footwall chlorite-sericite-silica</td><td>syngenetic</td><td>seafloor vents (black smokers) over a magma</td></tr>
+      <tr><td><b>SEDEX</b> (L3, L9)</td><td>fine sp, gn, py ± barite; little cp</td><td>fine laminated, parallel to bedding; soft-sediment folds</td><td>dark carbonaceous or dolomitic siltstone, shale · siderite-ankerite halo; no volcanics</td><td>syngenetic (exhalative); or early diagenetic</td><td>reduced basin inside a continent</td></tr>
+      <tr><td><b>Porphyry Cu</b> (L11)</td><td>cp, bn, mo, py, mt; supergene cc, cv</td><td>stockwork; A, B, D veins; disseminated</td><td>porphyritic intrusion (monzonite, diorite) · potassic → phyllic → propylitic</td><td>epigenetic</td><td>magmatic arc above subduction; Cu-Au-Fe skarn in limestone next to it</td></tr>
+      <tr><td><b>Epithermal</b> (L14)</td><td>py, honey sp, gn, Au, Ag minerals, tellurides</td><td>crustiform-colloform bands, vugs, breccia, bladed quartz</td><td>andesite, dacite, rhyolite · adularia-illite; advanced argillic (alunite, pyrophyllite) in high sulphidation</td><td>epigenetic</td><td>hot springs to ≈ 3 km, above porphyries, boiling</td></tr>
+      <tr><td><b>Orogenic Au</b> (L13)</td><td>py, asp, invisible Au; tellurides (Kalgoorlie); Au-Sb shallow, Au-As deep</td><td>quartz-carbonate veins, laminated (crack-seal), lodes</td><td>greenstone, BIF, shale · carbonate (ankerite), sericite, albite, fuchsite</td><td>epigenetic, late</td><td>metamorphic belt, compression, shear zones</td></tr>
+      <tr><td><b>Carlin Au</b> (L13)</td><td>fine As-pyrite (Au in rims); As-Sb minerals; no visible Au</td><td>disseminated, replacement</td><td>carbonaceous argillite, limestone · strong silicification (jasperoid)</td><td>epigenetic</td><td>Nevada, back-arc extension</td></tr>
+      <tr><td><b>Magmatic Ni-Cu</b> (L7, L8)</td><td>po (some magnetic), pn, cp ± mt</td><td>massive at base, matrix, disseminated</td><td>komatiite (spinifex), norite, gabbro · talc-carbonate, serpentine</td><td>syngenetic</td><td>komatiite lava channels; Sudbury impact melt</td></tr>
+      <tr><td><b>Chromite</b> (L8)</td><td>chromite</td><td>massive, nodular, disseminated chromitite</td><td>serpentinised dunite in harzburgite</td><td>syngenetic</td><td>podiform, in an ophiolite</td></tr>
+      <tr><td><b>CMPV</b> (L16)</td><td>gn, sp, freibergite, asp, cp; Ag</td><td>veins cut bedding; crustiform, cockade, comb</td><td>dark metasiltstone (greenschist) · narrow sericite, wide bleaching</td><td>epigenetic</td><td>metasediments away from a granite</td></tr>
+      <tr><td><b>Sn-W</b> (L15)</td><td>cassiterite, wolframite, scheelite, mo, stannite</td><td>quartz veins, greisen</td><td>granite and its roof rocks · greisen (muscovite-quartz-topaz), tourmaline, fluorite</td><td>epigenetic</td><td>shallow (1.5 to 5 km) fractionated granite</td></tr>
+      <tr><td><b>MVT</b> (L16)</td><td>sp (colloform, pale), gn ± fluorite, barite</td><td>open-space fill, breccia</td><td>platform dolomite, limestone · dolomitisation, dissolution</td><td>epigenetic</td><td>basin brines, no igneous link</td></tr>
+      <tr><td><b>Sediment Cu</b> (L16)</td><td>cc, cv, bn, cp, native Cu, Ag; framboidal py outside ore</td><td>very fine, banded, disseminated</td><td>reduced black shale, siltstone, dolomite above red beds · bleaching</td><td>diagenetic (at redox front)</td><td>continental rift, desert</td></tr>
+      <tr><td><b>Iron ore</b> (L21)</td><td>hm, mt, martite, goethite</td><td>banded (BIF), massive, microplaty</td><td>banded iron formation (chert, jasper)</td><td>BIF syngenetic; ore by later leaching</td><td>Precambrian basin; supergene enrichment</td></tr>
+      <tr><td><b>Regolith</b> (L2)</td><td>goethite, hm, jarosite; malachite, azurite, chrysocolla, cuprite; cc, cv below</td><td>gossan, boxwork, botryoidal, leached</td><td>any rock over sulphide · bleached, kaolinite</td><td>supergene (later)</td><td>above the water table; enrichment just below</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cs-box cs-pairs">
+    <h3>Easy to mix up</h3>
+    <p><b>VMS vs SEDEX</b>: both banded. Volcanic host + much cp → VMS. Carbonaceous or dolomitic siltstone + fine Zn-Pb + little Cu → SEDEX. VMS ≈ 350 °C, SEDEX ≈ 80 to 200 °C. <b>Epithermal vs orogenic Au</b>: open space, colloform bands, chalcedony, young volcanic rock → epithermal (shallow). Massive or laminated quartz-carbonate with asp in deformed greenstone or shale → orogenic (deep). <b>Porphyry vs epithermal</b>: many thin veins in an intrusion with cp-bn-mo → porphyry; fewer wide banded veins in volcanics, little Cu → epithermal. <b>Banded ore vs vein</b>: layers parallel to bedding → VMS, SEDEX; sulphide cutting bedding → CMPV, vein. <b>Iron ore vs gossan</b>: dense, hard, banded → iron ore; porous, light, boxwork, Cu stains → gossan. <b>Magmatic vs VMS</b>: po-pn in dark igneous rock, magnetic → magmatic; py-sp-gn-cp, banded, felsic volcanic → VMS. <b>Fresh vs oxide</b>: fresh sulphide = primary ore; goethite and Cu carbonates = oxide zone above it.</p>
+    <p class="cs-note">Lab sheet groupings to remember: Gidginbung is grouped as mesothermal Au (but its silica-pyrophyllite-covellite looks like advanced argillic); Vatukoula is epithermal (tellurides). Mount Isa is SEDEX in L9 (the lab sheet heading says VHMS).</p>
+  </div>
+  <table class="cs-t cs-alt">
+    <thead><tr><th>Alteration</th><th>Minerals you see</th><th>What it tells you</th></tr></thead>
+    <tbody>
+      <tr><td><b>Potassic</b></td><td>pink K-feldspar, dark biotite, quartz (+ magnetite)</td><td>hot, near-magmatic fluid; core of a porphyry (L2, L11)</td></tr>
+      <tr><td><b>Phyllic</b></td><td>pale quartz-sericite-pyrite</td><td>around the potassic core of a porphyry; D veins have this halo (L2, L11)</td></tr>
+      <tr><td><b>Propylitic</b></td><td>green chlorite, epidote, albite, carbonate, pyrite</td><td>far from the centre, cooler, near-neutral fluid (L2)</td></tr>
+      <tr><td><b>Argillic</b></td><td>kaolinite, dickite, sericite, montmorillonite</td><td>acidic, cooler fluid (L2)</td></tr>
+      <tr><td><b>Advanced argillic</b></td><td>quartz (vuggy), alunite, pyrophyllite, dickite, opaline silica</td><td>very acidic fluid near the top of epithermal and porphyry systems; high sulphidation (L2, L14)</td></tr>
+      <tr><td><b>Adularia-illite</b></td><td>adularia, then illite-muscovite, in banded veins</td><td>low sulphidation epithermal; Au and Ag come with the illite stage (L14)</td></tr>
+      <tr><td><b>Chlorite-sericite-silica</b></td><td>dark Fe-rich chlorite under the ore</td><td>VMS footwall and stringer zone (L10)</td></tr>
+      <tr><td><b>Fe-carbonate halo</b></td><td>siderite (brown spots) near ore, ankerite further out</td><td>SEDEX (L9)</td></tr>
+      <tr><td><b>Carbonate-sericite-albite</b></td><td>ankerite, sericite, albite, green fuchsite, py, asp</td><td>orogenic gold (L13)</td></tr>
+      <tr><td><b>Greisen</b></td><td>muscovite + quartz replacing feldspar, topaz, tourmaline, cassiterite</td><td>Sn-W at the edge of a granite (L15)</td></tr>
+      <tr><td><b>Skarn</b></td><td>garnet, diopside, magnetite, epidote in limestone</td><td>Cu-Au-Fe skarn beside a porphyry intrusion (L11)</td></tr>
+      <tr><td><b>Silicification</b></td><td>jasperoid, silicified breccia</td><td>Carlin-type gold (L13)</td></tr>
+      <tr><td><b>Bleaching</b></td><td>pale rock that lost its iron</td><td>CMPV vector (L16); weathering in the oxide zone (L2)</td></tr>
+    </tbody>
+  </table>
+  <p class="cs-key">py pyrite · cp chalcopyrite · po pyrrhotite · pn pentlandite · sp sphalerite · gn galena · bn bornite · mo molybdenite · asp arsenopyrite · cc chalcocite · cv covellite · hm hematite · mt magnetite</p>
+</section>
+
+<!-- ================= PAGE 2: PART B ================= -->
+<section class="cs-page" id="partB">
+  <div class="cs-h"><b>Part B · Ore minerals in reflected light</b><span>plane-polarised light first, then crossed polars, needle and magnet (L4)</span></div>
+  <div class="cs-box">
+    <h3>Sort by colour first</h3>
+    <div id="csColour" class="cs-colour"></div>
+  </div>
+  <table class="cs-t cs-min" id="csMin">
+    <thead><tr><th>Mineral</th><th>Colour (PPL)</th><th>Refl.</th><th>Crossed polars</th><th>Hardness</th><th>Mag.</th><th>Key feature</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="cs-grid2">
+    <div class="cs-box">
+      <h3>How to use the tools</h3>
+      <ul class="cs-ul">
+        <li><b>Reflectance</b>: compare with pyrite (high) and sphalerite (low). Gold and galena are brightest.</li>
+        <li><b>Crossed polars</b>: isotropic stays dark as you rotate; anisotropic changes colour or brightness.</li>
+        <li><b>Hardness</b>: soft minerals scratch easily and show many polishing scratches (galena, molybdenite, gold); hard ones stand proud and polish poorly (pyrite, magnetite).</li>
+        <li><b>Magnet</b>: magnetite jumps; some pyrrhotite pulls weakly.</li>
+        <li><b>Internal reflections</b>: sphalerite; wolframite (red).</li>
+      </ul>
+    </div>
+    <div class="cs-box">
+      <h3>Assemblages point to a deposit type</h3>
+      <ul class="cs-ul">
+        <li>po + pn (+ cp, mt) → magmatic Ni-Cu (L7)</li>
+        <li>chromite with olivine → magmatic chromite (L8)</li>
+        <li>cp + bn + mo (+ cc, cv rims) → porphyry Cu (L11)</li>
+        <li>fine banded sp + gn + py → SEDEX or VMS (L9, L10)</li>
+        <li>gn with tetrahedrite-freibergite, sp with stannite → CMPV (L16)</li>
+        <li>py + asp, Au in or along them, tellurides → orogenic Au (L13)</li>
+        <li>cassiterite, wolframite → Sn-W (L15)</li>
+        <li>hm, mt, martite, goethite → iron ore (L21)</li>
+        <li>cc, cv replacing cp or bn → supergene enrichment (L2)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAGE 3+: PART A ================= -->
+<section class="cs-page" id="partA">
+  <div class="cs-h"><b>Part A · Minerals in hand specimen: find it fast</b><span>lab mineral set; lay this beside your printed Mineral Sudoku sheet</span></div>
+  <div class="cs-box">
+    <h3>Step 1 · Metallic lustre? Use the streak</h3>
+    <table class="cs-t cs-find" id="csMet"><thead><tr><th>Streak</th><th>Minerals (colour · H)</th></tr></thead><tbody></tbody></table>
+  </div>
+  <div class="cs-box">
+    <h3>Step 2 · Not metallic? Use the hardness</h3>
+    <table class="cs-t cs-find" id="csNon"><thead><tr><th>Hardness</th><th>Minerals (colour · streak)</th></tr></thead><tbody></tbody></table>
+  </div>
+  <div class="cs-box">
+    <h3>Step 3 · Special tests</h3>
+    <ul class="cs-ul" id="csSpecial"></ul>
+    <p class="cs-note">Hardness scale (general mineralogy, not from the slides): fingernail ≈ 2.5 · copper coin ≈ 3.5 · steel knife and glass ≈ 5.5 · streak plate ≈ 6.5 (harder minerals leave no streak) · quartz 7.</p>
+  </div>
+</section>
+
+<section class="cs-page" id="partA2">
+  <div class="cs-h"><b>Part A · Full table, in Mineral Sudoku sheet order</b><span>* = standard value added for this site, check it · ! = sheet value looks wrong, check it</span></div>
+  <table class="cs-t cs-hs" id="csHs">
+    <thead><tr><th>Code</th><th>Mineral</th><th>Colour</th><th>Streak</th><th>Lustre</th><th>H</th><th>Cleavage</th><th>SG</th><th>Other</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<footer class="cs-foot wrap">
+  <p><strong>Sources.</strong> Part C: the "At the lab test" and "Memorise" boxes of Lectures 2, 3, 6 to 11 and 13 to 16 and 21, and the lab's Ore Deposit Specimen Descriptions sheet. Part B: the Lecture 4 reflected-light slides (19 to 71), as used in the Lab test practice microscope stations. Part A: the Minerals Sudoku 2024 sheet with the GEOS2181 hand-specimen notes, as in the <a href="sudoku.html">Mineral Sudoku</a>.</p>
+</footer>
+
+<script>
+GEO.themeButton();
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+  document.getElementById('csPrint').addEventListener('click', function () { window.print(); });
+
+  /* Part B: reflected light table from LAB.min (Lecture 4) */
+  var REF = { high: 'high', mod: 'mod.', low: 'low' }, HC = { hard: 'hard', med: 'medium', soft: 'soft' };
+  var ANI = { iso: 'isotropic', weak: 'weakly aniso.', strong: 'strongly aniso.' }, MAG = { yes: 'yes', some: 'some', no: '' };
+  var order = { yellow: 1, white: 2, pink: 3, grey: 4, greybrown: 5, blue: 6 };
+  var mins = LAB.min.slice().sort(function (a, b) { return (order[a.cg[0]] || 9) - (order[b.cg[0]] || 9) || a.n.localeCompare(b.n); });
+  $('#csMin tbody').innerHTML = mins.map(function (m) {
+    return '<tr><td><b>' + esc(m.n) + '</b> ' + esc(m.f) + '</td><td>' + esc(m.col) + '</td><td>' + REF[m.ref] + '</td><td>' + ANI[m.ani] + '</td><td>' + HC[m.hc] + '</td><td>' + (MAG[m.mag] || '') + '</td><td>' + esc(m.dist) + '</td></tr>';
+  }).join('');
+  var NAME = { yellow: 'Yellow', white: 'White', pink: 'Pink, cream, bronze', grey: 'Grey', greybrown: 'Grey-brown, dark', blue: 'Blue' }, groups = {};
+  LAB.min.forEach(function (m) { m.cg.forEach(function (c) { (groups[c] = groups[c] || []).push(m.n); }); });
+  $('#csColour').innerHTML = Object.keys(NAME).filter(function (c) { return groups[c]; }).map(function (c) { return '<span><b>' + NAME[c] + ':</b> ' + groups[c].join(', ') + '</span>'; }).join('');
+
+  /* Part A: from the Mineral Sudoku data, in sheet order */
+  var hs = (window.SUDOKU || {}).min || [];
+  var val = function (cell) { if (!cell || !cell[0]) return ''; return esc(cell[0]) + (cell[1] === 'X' ? '*' : ''); };
+  var P = (window.SUDOKU || {}).part || ['Sheet part 1', 'Sheet part 2'], lastT = 0;
+  $('#csHs tbody').innerHTML = hs.map(function (m) {
+    var head = m.t !== lastT ? '<tr class="cs-g"><td colspan="9">' + esc(P[m.t - 1] || '') + '</td></tr>' : ''; lastT = m.t;
+    var p = m.p;
+    return head + '<tr><td>' + esc(m.code) + '</td><td><b>' + esc(m.n) + '</b><br><span class="cs-f">' + esc(m.f) + '</span></td><td>' + val(p.c) + '</td><td>' + val(p.s) + '</td><td>' + val(p.l) + '</td><td class="nw">' + val(p.h) + (m.flag && m.flag.h ? '!' : '') + '</td><td>' + val(p.cv) + '</td><td class="nw">' + val(p.d) + '</td><td>' + val(p.o) + '</td></tr>';
+  }).join('');
+  var get = function (m, k) { return m.p[k] && m.p[k][0] ? m.p[k][0] : ''; };
+  var lab = function (m) { return '<b>' + esc(m.n) + '</b>' + (m.code ? ' <span class="cs-f">' + esc(m.code) + '</span>' : ''); };
+  /* step 1: metallic minerals grouped by streak */
+  var met = hs.filter(function (m) { return /metallic/i.test(get(m, 'l')); }), byS = {};
+  met.forEach(function (m) { var s = get(m, 's') || '?'; (byS[s] = byS[s] || []).push(m); });
+  $('#csMet tbody').innerHTML = Object.keys(byS).sort().map(function (s) {
+    return '<tr><td>' + esc(s) + '</td><td>' + byS[s].map(function (m) { return lab(m) + ' (' + esc(get(m, 'c')) + ' · H ' + esc(get(m, 'h')) + ')'; }).join('; ') + '</td></tr>';
+  }).join('');
+  /* step 2: the rest by hardness band */
+  var h0 = function (m) { var x = parseFloat(get(m, 'h')); return isNaN(x) ? 99 : x; };
+  var bands = [[0, 2.5, 'under 2.5 (fingernail scratches it)'], [2.5, 3.5, '2.5 to 3.5 (copper coin)'], [3.5, 5.5, '3.5 to 5.5 (knife scratches it)'], [5.5, 99, '5.5 and harder (scratches glass)']];
+  var non = hs.filter(function (m) { return met.indexOf(m) < 0; }).sort(function (a, b) { return h0(a) - h0(b); });
+  $('#csNon tbody').innerHTML = bands.map(function (bd) {
+    var list = non.filter(function (m) { var x = h0(m); return x >= bd[0] && x < bd[1]; });
+    return '<tr><td>' + bd[2] + '</td><td>' + list.map(function (m) { return lab(m) + ' (H ' + esc(get(m, 'h')) + ', ' + esc(get(m, 'c')) + ' · streak ' + esc(get(m, 's')) + ')'; }).join('; ') + '</td></tr>';
+  }).join('');
+  /* step 3: special tests, read from the Other, lustre and density columns */
+  var find = function (re) { return hs.filter(function (m) { return re.test(get(m, 'o')) || re.test(get(m, 'l')); }).map(function (m) { return esc(m.n); }).join(', '); };
+  var dense = hs.filter(function (m) { return parseFloat(get(m, 'd')) >= 6; }).map(function (m) { return esc(m.n) + ' ' + esc(get(m, 'd')); }).join(', ');
+  [['Magnetic', hs.filter(function (m) { return /magnetic/i.test(get(m, 'o')) && !/not magnetic/i.test(get(m, 'o')); }).map(function (m) { return esc(m.n); }).join(', ')], ['Fizzes in acid', find(/fizz/i)], ['Very heavy (SG 6 or more)', dense], ['Glows under UV', find(/UV/i)], ['Smell', find(/smell|odour|garlic/i)], ['Flexible or bends', find(/flexible|bend/i)], ['Soapy or greasy feel', find(/soapy|greasy/i)], ['Striations or twins', find(/striat|twin/i)]].forEach(function (r) {
+    if (r[1]) { var li = document.createElement('li'); li.innerHTML = '<b>' + r[0] + ':</b> ' + r[1]; $('#csSpecial').appendChild(li); }
+  });
+})();
+</script>
+</body>
+</html>
