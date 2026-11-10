@@ -680,21 +680,21 @@ var GEO = {
           e: m.n + ' (' + m.f + '). ' + m.dist + ' Colour: ' + m.col + '; reflectance ' + REF[m.ref] + '.' });
       });
       (LAB.suites || []).forEach(function (x) {
-        var type = LAB.suiteType[x.dep], others = shuffle(LAB.suiteTypes.filter(function (t) { return t !== type; })).slice(0, 3);
+        var type = LAB.suiteType[x.dep], others = rivals(type);
         var opts = shuffle(others.concat([type]));
         out.push({ id: 'suite-' + x.img, kind: 'suite', img: x.img, mic: false, lbl: 'Lab ore suite · polished block, reflected light',
           q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
-          e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '.', dep: x.dep, type: type,
-          link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          e: (type === 'Regolith' ? 'Regolith means the oxide zone and gossan. ' : '') + 'This polished block (' + x.code + ') is from ' + x.dep + ' in the lab ore suites.', dep: x.dep, type: type,
+          link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'SEDEX' ? 'L9.html#halo' : type === 'VMS' ? 'L10.html#mound' : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* ore suite hand specimens: which kind of deposit, with the lab sheet's description once answered */
       (LAB.dhs || []).forEach(function (x) {
         var type = LAB.suiteType[x.d]; if (!type) return;
-        var opts = shuffle(shuffle(LAB.suiteTypes.filter(function (t) { return t !== type; })).slice(0, 3).concat([type]));
+        var opts = shuffle(rivals(type).concat([type]));
         out.push({ id: 'dhs-' + x.src, kind: 'dhs', img: 'img/lab/dhs/' + x.src + '.jpg', mic: false, lbl: 'Lab ore suite · hand specimen',
           q: 'Which kind of deposit does this hand specimen come from?', o: opts, a: opts.indexOf(type),
-          e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' This specimen on the lab sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''), dep: x.d, type: type, seen1: x.s ? x.s + ' (lab sheet)' : null,
-          link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          e: 'This specimen (' + x.code + ') is from ' + x.d + ' in the lab ore suites.' + (x.s ? ' This specimen on the lab sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''), dep: x.d, type: type, seen1: x.s ? x.s + ' (lab sheet)' : null, role: role(x, type),
+          link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'SEDEX' ? 'L9.html#halo' : type === 'VMS' ? 'L10.html#mound' : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
       var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {}), SKID = {};
@@ -722,6 +722,19 @@ var GEO = {
       /* stations generated from the lecture pages (labpages.js): photo quiz cards and field tasks */
       (LAB.pages || []).forEach(function (x) { out.push(x); });
       return out;
+    }
+    /* specimens that are not the primary ore: oxide-zone material or host and wall rock */
+    function role(x, type) {
+      var s = x.s || ''; if (type === 'Regolith') return '';
+      if (/gossan|oxidis|oxide zone|scorodite|oxidation/i.test(s)) return 'ox';
+      if (/hanging wall|footwall|unmineralised|unaltered|host rock|^(south range )?norite|^quartz norite \(diorite SIC\)$|basement|greenstone$|^monzonite$|kaolinised porphyry|^dolerite|^altered dolerite|amphibolite|schist\?/i.test(s)) return 'wr';
+      return '';
+    }
+    /* three wrong options; VMS and SEDEX always appear together, because telling them apart is the hard part */
+    function rivals(type) {
+      var sib = { VMS: 'SEDEX', SEDEX: 'VMS', Epithermal: 'Mesothermal Au', 'Mesothermal Au': 'Epithermal' }[type];
+      var rest = shuffle(LAB.suiteTypes.filter(function (t) { return t !== type && t !== sib; }));
+      return (sib && Math.random() < .8 ? [sib].concat(rest) : rest).slice(0, 3);
     }
     function sedexLink(dep) { return /Isa|Loretta|McArthur|Century/.test(dep || '') ? 'L9.html#halo' : 'L10.html#mound'; }
     function magLink(dep) { return /Coolac/.test(dep) ? 'L8.html#podiform' : /Sudbury/.test(dep) ? 'L8.html#sudbury' : 'L7.html#kambalda'; }
@@ -872,6 +885,8 @@ var GEO = {
     function reasons(st, j) {
       var out = [], picked = j >= 0 && j !== st.a ? st.o[j] : null;
       if (st.kind === 'suite' || st.kind === 'dhs') {
+        if (st.role === 'ox') out.push(['Careful', 'This specimen is weathered material from the oxide zone above the ore, not the primary ore. At the test you could write: oxide zone (gossan) above a ' + st.type + ' deposit. The primary ore would look like the description below.']);
+        if (st.role === 'wr') out.push(['Careful', 'This specimen is a host or wall rock from the deposit, not the ore itself. At the test, describe the rock, then say which deposit type it belongs to and why. The ore would look like the description below.']);
         if (LAB.depWhy && LAB.depWhy[st.dep]) out.push(['Why it is ' + st.type, LAB.depWhy[st.dep]]);
         if (LAB.typeWhy && LAB.typeWhy[st.type]) out.push(['How to recognise ' + st.type, LAB.typeWhy[st.type]]);
         if (picked) {
@@ -892,11 +907,11 @@ var GEO = {
       var w = $('#ltWhy'), rs = reasons(st, j);
       rs.forEach(function (r) { var p = node('p', 'lt-wp', null, w); if (r[0]) node('b', '', r[0] + '. ', p); p.appendChild(document.createTextNode(r[1])); });
       if ((st.kind === 'suite' || st.kind === 'dhs') && LAB.typeFacts) {
-        var sub = (LAB.depSub || {})[st.dep] || (st.type === 'VMS / SEDEX' ? 'VMS' : st.type), f = LAB.typeFacts[sub];
+        var sub = (LAB.depSub || {})[st.dep] || st.type, f = LAB.typeFacts[sub];
         if (f) {
           var d = node('details', 'lt-bul', null, w), sm = node('summary', '', 'Write it like this at the test (Part C bullets)', d), ul = node('ul', '', null, d);
-          [['What I see', st.seen1 || 'the minerals, texture and host rock in this specimen'], ['Ore minerals', f.min], ['Texture', f.tex], ['Host rock and alteration', f.host], ['Syngenetic or epigenetic', f.gen], ['Temperature and depth', f.temp], ['Setting', f.set], ['Deposit type', sub + (sub !== st.type ? ' (' + st.type + ')' : '') + ', for example ' + st.dep.replace(/,.*/, '')]].forEach(function (r) { var li = node('li', '', null, ul); node('b', '', r[0] + ': ', li); li.appendChild(document.createTextNode(r[1])); });
-          node('p', 'lt-src', 'Source: ' + f.src + '. Describe first, then interpret.', d);
+          [['Deposit type', sub + (sub !== st.type ? ' (' + st.type + ')' : '')], ['What I see', (st.seen1 || 'the minerals, texture and host rock in this specimen') + (st.role === 'ox' ? '; this is oxide-zone material, not primary ore' : st.role === 'wr' ? '; this is host or wall rock, not ore' : '')], [st.role ? 'Ore minerals in the primary ore' : 'Ore minerals', f.min], ['Texture', f.tex], ['Host rock and alteration', f.host], ['Syngenetic or epigenetic', f.gen], ['Temperature and depth', f.temp], ['Setting', f.set]].forEach(function (r) { var li = node('li', '', null, ul); node('b', '', r[0] + ': ', li); li.appendChild(document.createTextNode(r[1])); });
+          node('p', 'lt-src', 'Source: ' + f.src + '. The deposit type is the main answer; the other bullets are your evidence for it. You don\u2019t need to name the deposit (Mount Isa, Rosebery and so on).', d);
         }
       }
       var href = st.link || (st.lec && st.sec && st.sec !== 'virtual' ? 'L' + st.lec + '.html#' + st.sec : null);

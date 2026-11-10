@@ -73,18 +73,18 @@ min: [
    (Moodle "Lab material - deposit photos", RL albums; photos by Ian Graham, hosted on the
    course Flickr account). The burned-in file names are cropped off. The answer is the deposit
    type as the Moodle book groups it; src is the Flickr photo id, for the credit link. */
-LAB.suiteTypes = ["Iron ore", "Porphyry Cu", "VMS / SEDEX", "Epithermal", "Magmatic", "Mesothermal Au", "Regolith", "Polymetallic vein"];
+LAB.suiteTypes = ["Iron ore", "Porphyry Cu", "VMS", "SEDEX", "Epithermal", "Magmatic", "Mesothermal Au", "Regolith", "Polymetallic vein"];
 LAB.suiteType = {
 "Middleback Ranges, SA":"Iron ore",
 "Goonumbla (Endeavour), NSW":"Porphyry Cu",
 "Bingham Canyon, Utah":"Porphyry Cu",
 "Ok Tedi, PNG":"Porphyry Cu",
-"Rosebery, Tas":"VMS / SEDEX",
-"Mount Lyell, Tas":"VMS / SEDEX",
-"Scuddles, WA":"VMS / SEDEX",
-"Woodlawn, NSW":"VMS / SEDEX",
-"Lady Loretta, NW Qld":"VMS / SEDEX",
-"Mount Isa, Qld":"VMS / SEDEX",
+"Rosebery, Tas":"VMS",
+"Mount Lyell, Tas":"VMS",
+"Scuddles, WA":"VMS",
+"Woodlawn, NSW":"VMS",
+"Lady Loretta, NW Qld":"SEDEX",
+"Mount Isa, Qld":"SEDEX",
 "Vatukoula, Fiji":"Epithermal",
 "Woodlark Island, PNG":"Epithermal",
 "Sudbury, Canada":"Magmatic",
@@ -105,7 +105,8 @@ LAB.suiteType = {
 LAB.typeWhy = {
 "Iron ore":"Heavy, hard iron oxide rock: red to steel-blue hematite, black magnetite, brown goethite. It is often banded: iron oxide layers between chert or jasper layers (banded iron formation, BIF). There is almost no sulphide. (Lecture 21, slides 1, 33 and 38)",
 "Porphyry Cu":"A porphyritic intrusion (large feldspar crystals in a fine groundmass) cut by many thin quartz veins in all directions (a stockwork). Chalcopyrite, bornite, molybdenite and pyrite sit in the veins or are scattered through the rock. The alteration is potassic (pink K-feldspar, biotite), phyllic (pale quartz-sericite-pyrite) or propylitic (green chlorite-epidote). (Lecture 11, slides 23 and 26 to 29; Lecture 2, slide 57)",
-"VMS / SEDEX":"Massive or banded sulphide: layers of pyrite, sphalerite, galena and chalcopyrite that run parallel to the bedding. The sulphide formed at the same time as the host rock. VMS sits in volcanic rock (tuff, felsic schist, a chlorite-altered stringer zone below). SEDEX sits in fine, dark carbonaceous or dolomitic siltstone. (Lecture 3, slide 33; Lecture 9, slide 36; Lecture 10, slides 57 to 61)",
+"VMS":"Massive or banded sulphide (pyrite, chalcopyrite, sphalerite, galena, barite) in volcanic rock: felsic tuff, rhyolite, dacite or basalt. Below the massive lens there is often a stringer zone of chalcopyrite-pyrite veins in rock altered to chlorite and sericite. Cu-rich parts are common. (Lecture 10, slides 16, 21 and 57 to 61; Lecture 6, slide 18)",
+"SEDEX":"Fine-grained, finely laminated sphalerite, galena and pyrite in dark carbonaceous or dolomitic siltstone and shale. The sulphide bands run parallel to the bedding and are often folded with soft-sediment folds. There is no volcanic rock and little copper. (Lecture 3, slide 33; Lecture 9, slide 36)",
 "Epithermal":"Veins in volcanic rock (often andesite) with crustiform or colloform banding of quartz, chalcedony and adularia, open spaces (vugs) and breccias. There is little sulphide: pyrite, honey-yellow sphalerite, galena, and sometimes visible gold, silver minerals or tellurides. (Lecture 14, slides 3 and 26 to 29)",
 "Magmatic":"The ore is part of a dark mafic or ultramafic igneous rock. For Ni-Cu: bronze pyrrhotite with pentlandite and chalcopyrite in norite or komatiite. For chromium: black chromite (massive, nodular or scattered) in serpentinised dunite. There are no quartz veins. (Lecture 7, slide 18; Lecture 8, slide 39)",
 "Mesothermal Au":"Quartz-carbonate veins and lodes with pyrite and arsenopyrite in metamorphosed rock (greenstone such as metabasalt or dolerite, or shale). The wall rock is altered to sericite, carbonate and albite. Gold is rarely visible. Bright green fuchsite is a strong hint. (Lecture 13, slides 11, 14 and 15)",
@@ -117,12 +118,12 @@ LAB.depWhy = {
 "Goonumbla (Endeavour), NSW":"The specimens are monzonite porphyry with quartz-bornite-chalcopyrite stockwork veins, anhydrite veins, potassic andesite and epidote alteration (lab specimen sheet). A stockwork of Cu veins in a porphyry intrusion, with zoned alteration, is the porphyry pattern (Lecture 11).",
 "Bingham Canyon, Utah":"The specimens are granite and quartz monzonite porphyry with quartz-molybdenite-chalcopyrite stockwork veins, and K-silicate (biotite, K-feldspar), sericite and propylitic alteration (lab specimen sheet). Bingham has good B veins with molybdenite (Lecture 11).",
 "Ok Tedi, PNG":"The specimens are porphyry with quartz stockwork and breccia, high-grade bornite-chalcopyrite ore and K-silicate alteration, plus supergene chalcocite and an oxidised magnetite skarn (lab specimen sheet). Stockwork Cu ore in a porphyry intrusion is the porphyry pattern (Lecture 11).",
-"Rosebery, Tas":"The specimens are banded pyritic Cu-Zn and Pb-Zn ore and a barite-rich lens in sericite schist and pyroclastic rock, with a chlorite-sericite schist footwall (lab specimen sheet). Banded sulphide in volcanic rock is VMS (Lecture 10).",
+"Rosebery, Tas":"The specimens are banded pyritic Cu-Zn and Pb-Zn ore and a barite-rich lens in sericite schist and pyroclastic rock, with a chlorite-sericite schist footwall (lab specimen sheet). Banded sulphide in volcanic rock is VMS, not SEDEX (Lecture 10).",
 "Mount Lyell, Tas":"The specimens are scattered and stringer chalcopyrite and pyrite in altered felsic (dacitic) volcanic rock, quartz-chlorite ore, massive bornite and a banded Pb-Zn sulphide layer (lab specimen sheet). Cu stringer ore and banded sulphide in volcanic rock is VMS (Lectures 6 and 10).",
 "Scuddles, WA":"The specimens are massive chalcopyrite, pyrite and sphalerite, and banded pyrite-sphalerite, with tuff, rhyodacite and a chert-magnetite marker bed (lab specimen sheet). Massive sulphide in a volcanic sequence is VMS. Scuddles is an Archaean VMS deposit in Western Australia (Lecture 10).",
 "Woodlawn, NSW":"The specimens are massive and banded pyrite-sphalerite-chalcopyrite ore, galena with barite, a quartz-epidote-chlorite stockwork from the footwall, and gossan and supergene ore from the top (lab specimen sheet). Banded sulphide above a stringer zone in volcanic rock is VMS (Lecture 10).",
 "Lady Loretta, NW Qld":"The specimens are fine-grained, folded bands of sulphide and carbonaceous shale: galena, sphalerite, pyrite and white barite (lab specimen sheet). There is no volcanic rock. Sulphide laid down with mud in a basin is SEDEX (Lectures 3 and 9).",
-"Mount Isa, Qld":"The specimens are fine metasediment, regular banded sulphide, slump-folded banded ore, and massive Cu ore with dolomite (lab specimen sheet). Galena-sphalerite bands in dark dolomitic siltstone are SEDEX. A Mount Isa specimen feels heavy for a black rock, because it is full of fine galena (Lecture 9). The lab sheet heading says VHMS, but both fit the VMS / SEDEX group here.",
+"Mount Isa, Qld":"The specimens are fine metasediment, regular banded sulphide, slump-folded banded ore, and massive Cu ore with dolomite (lab specimen sheet). Galena-sphalerite bands in dark dolomitic siltstone are SEDEX. A Mount Isa specimen feels heavy for a black rock, because it is full of fine galena (Lecture 9). Note: the lab sheet heading calls Mount Isa VHMS, but Lecture 9 teaches it as SEDEX, because the host is sedimentary and there is no volcanic rock.",
 "Vatukoula, Fiji":"The specimens are sub-volcanic altered andesite and breccia with quartz-telluride veins and fine pyrite (lab specimen sheet). Gold tellurides in an alkalic volcanic system are epithermal (Lecture 14; tellurides in Lecture 12). Note: the specimen sheet puts Fiji under a heading that says Mesothermal Au, but the lab photo book and Lecture 14 group Vatukoula as epithermal.",
 "Woodlark Island, PNG":"The specimens are open-space and colloform-banded quartz and chalcedony veins with honey-coloured sphalerite and galena, dark ginguro bands (high-grade gold), and veined breccia in altered andesite (lab specimen sheet). These are epithermal vein textures (Lecture 14).",
 "Sudbury, Canada":"The specimens are norite and quartz norite of the Sudbury Igneous Complex with patches of pyrrhotite and pyrite, the Onaping fallback breccia, micropegmatite, and pentlandite (lab specimen sheet). Sulphide that separated from a mafic magma is magmatic Ni-Cu. At Sudbury a meteorite impact made the magma (Lecture 8).",
@@ -137,7 +138,7 @@ LAB.depWhy = {
 };
 /* Part C bullet answer: what to write for each kind of deposit, in the order of the lab test
    answer (what you see, then what it means). From the lecture pages; each list ends with its source. */
-LAB.depSub = {"Mount Isa, Qld":"SEDEX","Lady Loretta, NW Qld":"SEDEX","Coolac, NSW":"Chromite"};
+LAB.depSub = {"Coolac, NSW":"Chromite"};
 LAB.typeFacts = {
 "VMS":{min:"pyrite and chalcopyrite (± pyrrhotite) in the Cu-rich core and stringer zone; sphalerite, galena and barite at the top and edge",tex:"massive or banded sulphide; stringer veins below the massive lens",host:"volcanic rocks (felsic tuff, rhyolite, dacite, basalt), with chlorite-sericite-silica alteration in the footwall",gen:"syngenetic, because it formed on or just under the seafloor, at the same time as the volcanic rocks",temp:"about 350 °C for the Cu-rich core; about 250 down to 150 °C for the Zn-Pb edge",set:"hydrothermal vents (black smokers) on the seafloor, with a magma below as the heat source",src:"Lectures 6 and 10"},
 "SEDEX":{min:"fine-grained sphalerite, galena and pyrite (± barite)",tex:"fine laminated (banded) sulphide parallel to the bedding; soft-sediment folds",host:"dark carbonaceous or dolomitic siltstone and shale; no volcanic rock",gen:"syngenetic (exhalative), because metal-rich brine vented into the basin and the sulphide settled with the mud; another model is early diagenetic replacement",temp:"brine about 80 to 200 °C",set:"a reduced sedimentary basin inside or at the edge of a continent (intracratonic or epicratonic)",src:"Lectures 3 and 9"},
@@ -152,11 +153,14 @@ LAB.typeFacts = {
 };
 LAB.pairWhy = [
 [["Epithermal","Mesothermal Au"],"Epithermal veins formed shallow: open spaces, colloform banding and chalcedony, in young volcanic rock. Mesothermal (orogenic) veins formed deeper: massive or laminated quartz-carbonate with arsenopyrite, in metamorphosed greenstone or shale. (Lectures 13 and 14)"],
-[["VMS / SEDEX","Polymetallic vein"],"In VMS and SEDEX ore, the sulphide layers run parallel to the bedding. In a polymetallic vein, the sulphide fills a vein that cuts across the bedding. (Lectures 3, 9 and 16)"],
+[["VMS","SEDEX"],"Both are banded sulphide parallel to the bedding, so look at the host rock. Volcanic host (tuff, rhyolite, chlorite-altered stringer zone) and plenty of chalcopyrite mean VMS. Dark carbonaceous or dolomitic siltstone with very fine Zn-Pb laminations and little copper mean SEDEX. VMS fluid is hotter (about 350 °C) than SEDEX brine (about 80 to 200 °C). (Lectures 9 and 10)"],
+[["VMS","Polymetallic vein"],"In VMS ore, the sulphide layers run parallel to the bedding. In a polymetallic vein, the sulphide fills a vein that cuts across the bedding. (Lectures 3, 9 and 16)"],
 [["Porphyry Cu","Epithermal"],"Porphyry: many thin veins through a porphyritic intrusion, with chalcopyrite, bornite or molybdenite and K-feldspar or biotite alteration. Epithermal: fewer, wider banded veins in volcanic rock, with little copper. (Lectures 11 and 14)"],
 [["Iron ore","Regolith"],"Both can be red and brown. Iron ore is dense, hard hematite or magnetite, often banded. A gossan is porous and light, with boxwork holes, and may carry green or blue copper minerals. (Lectures 2 and 21)"],
-[["Magmatic","VMS / SEDEX"],"Magmatic sulphide is pyrrhotite with pentlandite in a dark mafic or ultramafic igneous rock, with no sedimentary layering. VMS sulphide is pyrite, sphalerite, galena and chalcopyrite, banded, in felsic volcanic rock. (Lectures 7 and 10)"],
-[["Regolith","VMS / SEDEX"],"Look for fresh sulphide. Banded fresh pyrite, sphalerite and galena mean primary VMS or SEDEX ore. Goethite, boxwork and copper carbonates mean the oxide zone above it, even when it formed from a VMS body. (Lecture 2)"],
+[["Magmatic","VMS"],"Magmatic sulphide is pyrrhotite with pentlandite in a dark mafic or ultramafic igneous rock, with no sedimentary layering. VMS sulphide is pyrite, sphalerite, galena and chalcopyrite, banded, in felsic volcanic rock. (Lectures 7 and 10)"],
+[["Regolith","VMS"],"Look for fresh sulphide. Banded fresh pyrite, sphalerite and galena mean primary VMS ore. Goethite, boxwork and copper carbonates mean the oxide zone above it, even when it formed from a VMS body. (Lecture 2)"],
+[["Regolith","SEDEX"],"Look for fresh sulphide. Fine laminated fresh galena, sphalerite and pyrite mean primary SEDEX ore. Goethite, boxwork and copper carbonates mean the oxide zone above it. (Lecture 2)"],
+[["SEDEX","Polymetallic vein"],"In SEDEX ore the fine sulphide laminations run parallel to the bedding. In a polymetallic vein the sulphide fills a vein that cuts across the bedding, and the grains are coarser. (Lectures 9 and 16)"],
 [["Porphyry Cu","Mesothermal Au"],"Porphyry ore is in an intrusion, with copper minerals (chalcopyrite, bornite) and potassic alteration. Mesothermal gold lodes are in greenstone or shale, with pyrite and arsenopyrite and carbonate-sericite alteration. (Lectures 11 and 13)"]
 ];
 LAB.suites = [
