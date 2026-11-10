@@ -684,8 +684,8 @@ var GEO = {
         var opts = shuffle(others.concat([type]));
         out.push({ id: 'suite-' + x.img, kind: 'suite', img: x.img, mic: false, lbl: 'Lab ore suite · polished block, reflected light',
           q: 'Which kind of deposit does this polished block come from?', o: opts, a: opts.indexOf(type),
-          e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '. Look at which sulphides and oxides are there and how they sit together, then ask what kind of system makes that assemblage.',
-          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          e: x.dep + ': ' + type + (type === 'Regolith' ? ' (oxide zone and gossan)' : '') + ' deposit in the lab ore suites, polished block ' + x.code + '.', dep: x.dep, type: type,
+          link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* ore suite hand specimens: which kind of deposit, with the lab sheet's description once answered */
       (LAB.dhs || []).forEach(function (x) {
@@ -693,8 +693,8 @@ var GEO = {
         var opts = shuffle(shuffle(LAB.suiteTypes.filter(function (t) { return t !== type; })).slice(0, 3).concat([type]));
         out.push({ id: 'dhs-' + x.src, kind: 'dhs', img: 'img/lab/dhs/' + x.src + '.jpg', mic: false, lbl: 'Lab ore suite · hand specimen',
           q: 'Which kind of deposit does this hand specimen come from?', o: opts, a: opts.indexOf(type),
-          e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' Lab specimen sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''),
-          link: type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
+          e: x.d + ': ' + type + ' deposit in the lab ore suites, specimen ' + x.code + '.' + (x.s ? ' This specimen on the lab sheet: ' + x.s + (/[.)]$/.test(x.s) ? '' : '.') : ''), dep: x.d, type: type,
+          link: type === 'Iron ore' ? 'L21.html#bif' : type === 'Regolith' ? 'L2.html#supergene' : type === 'VMS / SEDEX' ? sedexLink(x.dep || x.d) : type === 'Magmatic' ? magLink(x.dep || x.d) : type === 'Porphyry Cu' ? 'L11.html#veins' : type === 'Mesothermal Au' ? 'L13.html#recipe' : type === 'Epithermal' ? 'L14.html#ls' : type === 'Polymetallic vein' ? 'L16.html#cmpvmin' : null, credit: 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/' });
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
       var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {}), SKID = {};
@@ -704,7 +704,7 @@ var GEO = {
         var same = shuffle(MINS.filter(function (m) { return ok(m) && LAB.minGroup[m] === g; })).slice(0, 2);
         var other = shuffle(MINS.filter(function (m) { return ok(m) && same.indexOf(m) < 0; })).slice(0, 3 - same.length);
         var opts = shuffle(same.concat(other, [x.m])), url = 'https://www.flickr.com/photos/188270557@N07/' + x.src + '/';
-        out.push({ id: 'hs-' + x.src, kind: 'mineral', img: 'img/lab/hs/' + x.src + '.jpg', mic: false, lbl: 'Lab mineral set · hand specimen',
+        out.push({ id: 'hs-' + x.src, kind: 'mineral', m: x.m, img: 'img/lab/hs/' + x.src + '.jpg', mic: false, lbl: 'Lab mineral set · hand specimen',
           q: x.k === 'streak' ? 'Streak test: which mineral left this streak?' : 'Name the mineral.', o: opts, a: opts.indexOf(x.m),
           e: x.m + (x.n ? ' (' + x.n + ')' : '') + ', a ' + g.toLowerCase() + ' mineral from the lab hand-specimen set.', credit: url,
           link: /^(Cassiterite|Wolframite|Scheelite|Molybdenite|Beryl|Topaz|Tourmaline|Stannite|Bismuthinite)$/.test(x.m) ? 'L15.html#drill' : SKID[x.m] ? 'sudoku.html#m-' + SKID[x.m] : null });
@@ -853,15 +853,46 @@ var GEO = {
         var pts = COMBO.pts(Math.max(1, 3 - c.used) + (quick ? 1 : 0)); run.oz += pts; L.xp += pts;
         FX.burst(btn); FX.float('+' + pts + ' oz'); SND.play('ok');
         $('#ltWhy').innerHTML = '<b>Right' + (quick ? ', and quick' : '') + '.</b> +' + pts + ' oz' + COMBO.tag() + '. ';
-        $('#ltWhy').appendChild(document.createTextNode(st.e)); credit(st); $('#ltWhy').className = 'lt-why ok';
+        $('#ltWhy').appendChild(document.createTextNode(st.e)); explain(st, j); credit(st); $('#ltWhy').className = 'lt-why ok';
       } else {
         COMBO.miss(); run.miss.push(st);
         if (btn) { btn.classList.add('wrong'); FX.shake(btn); } else SND.play('alarm');
         $('#ltWhy').innerHTML = '<b>' + (btn ? 'Not that one.' : 'Time’s up.') + '</b> It’s ' + st.o[st.a] + '. ';
-        $('#ltWhy').appendChild(document.createTextNode(st.e)); credit(st); $('#ltWhy').className = 'lt-why bad';
+        $('#ltWhy').appendChild(document.createTextNode(st.e)); explain(st, j); credit(st); $('#ltWhy').className = 'lt-why bad';
       }
       L.seen[st.id] = r; keep(); GEO.dayMark(); paintCombo();
       $('#ltNext').hidden = false; $('#ltNext').textContent = run.i + 1 < run.list.length ? 'Next station' : 'See results'; $('#ltNext').focus();
+    }
+    /* the reasons behind an answer: why the right one fits, and why the one you picked does not */
+    function tests(name) {
+      var m = ((window.SUDOKU || {}).min || []).filter(function (x) { return x.hs === name; })[0]; if (!m) return '';
+      var p = m.p, bit = function (k, lab) { return p[k] && p[k][0] ? lab + ' ' + p[k][0] : null; };
+      return [bit('c', 'colour'), bit('s', 'streak'), bit('l', 'lustre'), bit('h', 'hardness'), bit('cv', 'cleavage'), bit('o', '')].filter(Boolean).join('; ').replace(';  ', '; ') + '.';
+    }
+    function reasons(st, j) {
+      var out = [], picked = j >= 0 && j !== st.a ? st.o[j] : null;
+      if (st.kind === 'suite' || st.kind === 'dhs') {
+        if (LAB.depWhy && LAB.depWhy[st.dep]) out.push(['Why it is ' + st.type, LAB.depWhy[st.dep]]);
+        if (LAB.typeWhy && LAB.typeWhy[st.type]) out.push(['How to recognise ' + st.type, LAB.typeWhy[st.type]]);
+        if (picked) {
+          if (LAB.typeWhy[picked]) out.push(['Why not ' + picked, 'If it were ' + picked + ', you would expect this: ' + LAB.typeWhy[picked]]);
+          (LAB.pairWhy || []).forEach(function (pr) { if (pr[0].indexOf(picked) >= 0 && pr[0].indexOf(st.type) >= 0) out.push(['Telling them apart', pr[1]]); });
+        }
+      } else if (st.kind === 'mineral') {
+        var t = tests(st.m); if (t) out.push(['Tests for ' + st.m, t.charAt(0).toUpperCase() + t.slice(1)]);
+        var u = picked ? tests(picked) : ''; if (picked) out.push(['Why not ' + picked, u ? picked + ': ' + u : 'Compare the two in the Mineral Sudoku.']);
+        if (t || u) out.push(['', 'Values are from the Mineral Sudoku; check the ones marked "added" against your lab notes.']);
+      } else if (st.kind === 'min' && picked) {
+        var w = LAB.min.filter(function (x) { return x.n === picked; })[0];
+        if (w) out.push(['Why not ' + picked, w.dist + ' Colour: ' + w.col + '; reflectance ' + REF[w.ref] + '; ' + ANI[w.ani] + '.']);
+      }
+      return out;
+    }
+    function explain(st, j) {
+      var w = $('#ltWhy'), rs = reasons(st, j);
+      rs.forEach(function (r) { var p = node('p', 'lt-wp', null, w); if (r[0]) node('b', '', r[0] + '. ', p); p.appendChild(document.createTextNode(r[1])); });
+      var href = st.link || (st.lec && st.sec && st.sec !== 'virtual' ? 'L' + st.lec + '.html#' + st.sec : null);
+      if (href && (rs.length || j !== st.a)) { var p2 = node('p', 'lt-wp', null, w), a = node('a', '', /^sudoku/.test(href) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + (href.match(/L(\d+)/) || [0, ''])[1] + ' →', p2); a.href = href; a.target = '_blank'; a.rel = 'noopener'; }
     }
     function credit(st) {
       if (!st.credit) return; var w = $('#ltWhy'); w.appendChild(document.createTextNode(' '));
@@ -886,6 +917,7 @@ var GEO = {
         run.miss.forEach(function (st) {
           var row = node('div', 'lt-miss', null, box), w = node('div', st.mic ? 'mic' : 'lt-img', null, row), im = node('img', '', null, w); im.src = st.img; im.alt = ''; im.loading = 'lazy';
           var t = node('div', '', null, row); node('b', '', st.kind === 'obs' ? st.lbl : st.o[st.a], t); if (st.kind === 'obs') node('p', '', st.q, t); node('p', '', st.e, t);
+          if ((st.kind === 'suite' || st.kind === 'dhs') && LAB.depWhy && LAB.depWhy[st.dep]) node('p', '', LAB.depWhy[st.dep], t);
           if (st.page) { var a0 = node('a', '', 'Review in ' + st.pageName + ' →', t); a0.href = st.page + '#' + st.sec; }
           else if (st.lec) { var a = node('a', '', 'Review in Lecture ' + st.lec + ' →', t); a.href = 'L' + st.lec + '.html#' + st.sec; }
           else if (st.link) { var a2 = node('a', '', /^sudoku/.test(st.link) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + st.link.match(/L(\d+)/)[1] + ' →', t); a2.href = st.link; }
