@@ -643,7 +643,8 @@ body.cs{background:var(--bg)}
   .cs-break{break-before:page;page-break-before:always}
   .cs-h{margin-bottom:7px;padding-bottom:6px}
   .cs-badge{font-size:17pt;border-radius:6px}.cs-ht b{font-size:15pt}.cs-ht span{font-size:8pt}.cs-meta{font-size:6.2pt}
-  .cs-t{font-size:7.9pt;margin:4px 0}.cs-t th,.cs-t td{padding:1.7px 4px}.cs-t thead th{padding:2.5px 4px}
+  .cs-t{font-size:7.8pt;margin:4px 0;line-height:1.25}.cs-t th,.cs-t td{padding:1.4px 4px}.cs-t thead th{padding:2.2px 4px}
+  .cs-chip{line-height:1.3}.cs-chips{gap:2px 4px}.cs-ul li{margin:1px 0}.cs-box{padding:4px 7px}
   .cs-t tr,.cs-step,.cs-box.keep{break-inside:avoid}
   .cs-rl{font-size:7.6pt}.cs-card{padding:3px 6px;font-size:7.9pt}.cs-card b{font-size:7pt}.cs-cards{gap:5px}
   .cs-box{padding:5px 8px;margin:6px 0;border-radius:6px}
