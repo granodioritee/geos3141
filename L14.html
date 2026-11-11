@@ -63,7 +63,7 @@
     <p class="ask">Describe the banding. What does it tell you about how this vein filled?</p>
     <details data-obs="banded"><summary>Show what I see</summary><div class="seen">
       <ul><li>Many thin, roughly parallel bands of white quartz, and grey and clear blue-grey chalcedony, repeated across the slab.</li><li>No wall-rock fragments, and no single coarse filling.</li></ul>
-      <p class="so">The vein filled a little at a time, band after band. Each layer grew on the one before, in open space. This is <button class="term" data-t="crustiform">crustiform</button> (colloform) banding. It is crack-seal behaviour: the vein opens, minerals are deposited, and it opens again. Each time, the fluid chemistry has changed a little, and this makes the very clear banding. Each band records a pulse of fluid, and fine chalcedony means fast deposition at low temperature. This is the typical texture of low sulphidation epithermal veins, and the gold is often in certain bands. <span class="srcs">slides 1, 27 to 29</span></p>
+      <p class="so">The vein filled a little at a time, band after band. Each new layer grew on the one before. It is crack-seal behaviour: the vein opens, minerals are deposited, and it opens again. Each time, the fluid chemistry has changed a little, and this makes the very clear banding. Each band records a pulse of fluid, and fine chalcedony means fast deposition at low temperature. This is the typical texture of low sulphidation epithermal veins, and the gold is often in certain bands. <span class="srcs">slides 1, 27 to 29</span></p>
     </div></details>
   </div>
   <figure>
@@ -159,7 +159,7 @@
     <figcaption>High sulphidation deposits are close to the volcano and its porphyry. Low sulphidation deposits form further away, in arc and back-arc settings. <span class="srcs">slide 14</span> (Corbett and Leach)</figcaption>
   </figure>
   <figure>
-    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/fluids.jpg" alt="Diagram contrasting high sulphidation fluid (oxidised acidic SO2-rich magmatic volatiles near the intrusion forming vuggy silica and advanced argillic alteration) with low sulphidation fluid (reduced near-neutral H2S fluid diluted by groundwater, forming epithermal quartz Au and carbonate-base metal Au)">
+    <img loading="lazy" decoding="async" class="fig-img" src="img/L14/fluids.jpg" alt="Diagram contrasting high sulphidation fluid (oxidised acidic SO2-rich magmatic volatiles near the intrusion forming barren advanced argillic alteration) with low sulphidation fluid (reduced near-neutral H2S fluid diluted by groundwater, forming epithermal quartz Au and carbonate-base metal Au)">
     <figcaption>High and low sulphidation fluids: acidic, oxidised magmatic vapour (SO₂, HCl) near the intrusion, and reduced, almost neutral, diluted fluid further out. <span class="srcs">slide 17</span> (Corbett and Leach)</figcaption>
   </figure>
   <div class="lab">
@@ -234,7 +234,7 @@
     <tr><th>Mechanism</th><th>Clue in the rock</th><th>Grade</th></tr>
     <tr><td>Slow cooling</td><td>Coarse sulphides</td><td>Low Au</td></tr>
     <tr><td>Rapid cooling or quenching</td><td>Fine sulphides; low-T quartz (opal) against high-T sulphides</td><td>High precious metals in polymetallic veins</td></tr>
-    <tr><td>Boiling</td><td>Adularia, quartz after platy (bladed) calcite, chalcedony</td><td>Mostly gangue</td></tr>
+    <tr><td>Boiling</td><td>Adularia, quartz after platy calcite, chalcedony</td><td>Mostly gangue</td></tr>
     <tr><td>Mixing with oxygenated groundwater</td><td>Hypogene hematite in the ore</td><td>Elevated Au</td></tr>
     <tr><td>Mixing with bicarbonate (CO₂) water</td><td>Carbonate with base metals</td><td>Higher Au: the carbonate-base metal group</td></tr>
     <tr><td>Mixing with low-pH acid sulphate water</td><td>Hypogene kaolin and halloysite in the ore</td><td>The highest Au grades</td></tr>
@@ -356,13 +356,12 @@
 <script>
 (function(){
 'use strict';
-var RANKS=[[0,'Field assistant','You know that a hot spring can become an ore deposit.'],[35,'Graduate geologist','You can tell crustiform banding from breccia.'],[100,'Project geologist','You can tell high sulphidation from low sulphidation.'],[180,'Senior geologist','You can use kaolin and hematite to predict grade.'],[240,'Chief geologist','Bonanza veins call you first.']];
+var RANKS=[[0,'Field assistant','You know that a hot spring can become an ore deposit.'],[35,'Graduate geologist','You can tell a banded vein from a breccia.'],[100,'Project geologist','You can tell high sulphidation from low sulphidation.'],[180,'Senior geologist','You can use kaolin and hematite to predict grade.'],[240,'Chief geologist','Bonanza veins call you first.']];
 var G={
  "epithermal":"Formed at shallow depth (surface to about 3 km) and low temperature, in volcanic settings.",
  "bonanza":"Extremely rich ore, with more than about 1 kg of gold or silver per tonne.",
  "free-milling gold":"Native gold that is released by grinding and is easy to recover.",
  "refractory gold":"Gold locked in sulphides such as enargite or arsenopyrite. It needs extra processing.",
- "crustiform":"Banding in a vein where layers grow on top of each other in open space. Also called colloform.",
  "chalcedony":"Microcrystalline quartz deposited quickly at low temperature.",
  "adularia":"A low-temperature K-feldspar, typical of low sulphidation veins.",
  "platy calcite":"Blade-shaped calcite formed during boiling. It is often replaced by quartz, and is a sign of boiling.",
@@ -410,8 +409,8 @@ var ST=[
  ['Compare magmatic, phreatomagmatic and phreatic breccias.','Apply','Magmatic: violent release of volatiles from an intrusion, deep, and does not need to reach the surface (Kidston). Phreatomagmatic: magma meets groundwater; diatremes with a milled matrix that reach the surface (Wau, Kelian). Phreatic: the pressure of a geothermal system drops; eruption breccias at the surface (Champagne Pool, McLaughlin).'],
  ['Compare high and low sulphidation systems: fluid, alteration and ore minerals.','Recall','HS: salty, acidic SO₂ fluid; vughy silica, alunite, kaolinite, illite, a lot of pyrite; enargite-luzonite, Au > Ag + Cu. LS: dilute, almost neutral H₂S fluid; adularia-sericite, illite, quartz, carbonate; <2% sulphide (pyrite, sphalerite, galena, Ag sulphosalts), Au > Ag.'],
  ['How does vughy silica form, and why is it important for gold?','Apply','Condensed magmatic SO₂ and HCl make extremely acidic water. It dissolves everything except silica, and leaves porous silica. The pores trap later gold-enargite fluid that is rich in liquid (the two-stage model).'],
- ['Describe the textures of a low sulphidation vein and what they record.','Apply','Crustiform-colloform banding of quartz, chalcedony and adularia (repeated pulses in open space); quartz that replaced platy calcite (boiling); floating clast breccias (repeated fracturing); and gold in certain bands or in the vein centre.'],
- ['Rank Corbett\'s deposition processes by gold grade, and give the evidence for each.','Think','Slow cooling (coarse sulphides, low Au) < boiling (mostly gangue: adularia, quartz replacing bladed calcite) < fast cooling (fine sulphides, opal on sulphides) ≈ mixing with groundwater with oxygen (hypogene hematite) < mixing with bicarbonate water (carbonate-base metal) < mixing with low-pH water (hypogene kaolin, halloysite, highest grades).'],
+ ['Describe the textures of a low sulphidation vein and what they record.','Apply','Banded quartz, chalcedony and adularia (crack-seal: the vein opened again and again, and the fluid changed each time); dark ginguro bands with chalcedony; quartz that replaced platy calcite (boiling); floating clast breccias (repeated fracturing); and gold in certain bands or in the vein centre.'],
+ ['Rank Corbett\'s deposition processes by gold grade, and give the evidence for each.','Think','Slow cooling (coarse sulphides, low Au) < boiling (mostly gangue: adularia, quartz replacing platy calcite) < fast cooling (fine sulphides, opal on sulphides) ≈ mixing with groundwater with oxygen (hypogene hematite) < mixing with bicarbonate water (carbonate-base metal) < mixing with low-pH water (hypogene kaolin, halloysite, highest grades).'],
  ['Why must you be careful with a layer of acid sulphate alteration?','Think','Steam-heated alteration above the water table (kaolin, powdery alunite, opal) looks like high sulphidation advanced argillic alteration, but it is barren. It can be above a low sulphidation system and can mislead you.'],
  ['Summarise the Lihir deposit and what caused its gold.','Recall','Luise caldera, Lihir Island, PNG. 649 Mt at 2.25 g/t Au. Monzonite porphyries in andesitic-latitic volcanic rocks. Active geothermal system. Potassic alteration 0.917 to 0.342 Ma. Collapse of one side of the volcano at 0.34 Ma removed ~1 km of rock, which lowered the pressure and caused boiling. Epithermal gold since 0.336 Ma.'],
  ['Place porphyry, high sulphidation, low sulphidation and steam-heated alteration in one volcanic system.','Synthesise','Porphyry stock at depth (1 to 5 km). HS lithocap and vughy silica above it and near it, fed by magmatic vapour. LS veins further out, where meteoric water dilutes the fluid. Intermediate sulphidation between them. A steam-heated acid sulphate layer above the water table. Hot springs and sinter at the surface.']
@@ -475,7 +474,7 @@ mcCards($('#slCards'),[
 ],'sl',2,function(r,n){$('#slScore').textContent=r+' / '+n;});
 
 /* ---------- grade gauge ---------- */
-var MX=[['Coarse sulphides','Slow cooling',.12,'Slow cooling grows coarse sulphides but leaves little gold.'],['Quartz after platy calcite','Boiling',.3,'Boiling: deposits mostly gangue (adularia, quartz replacing bladed calcite, chalcedony). It shows the boiling level, but not always the grade.'],['Opal on fine sulphides','Rapid cooling',.55,'Fast cooling, or mixing with cool meteoric water: fine sulphides, and low-T opal against high-T sulphides, with high precious metal grades.'],['Hypogene hematite','Oxygenated groundwater mixing',.6,'Groundwater with oxygen mixed with the ore fluid at high levels: higher gold.'],['Carbonate with base metals','Bicarbonate water mixing',.72,'CO₂ from a cooling intrusion condensed into bicarbonate water: the carbonate-base metal group, with higher gold.'],['Hypogene kaolin and halloysite','Low-pH water mixing',.95,'Acidic water from H₂S that condensed above the water table mixed back down: the highest gold grades.']],mxSeen={};
+var MX=[['Coarse sulphides','Slow cooling',.12,'Slow cooling grows coarse sulphides but leaves little gold.'],['Quartz after platy calcite','Boiling',.3,'Boiling: deposits mostly gangue (adularia, quartz replacing platy calcite, chalcedony). It shows the boiling level, but not always the grade.'],['Opal on fine sulphides','Rapid cooling',.55,'Fast cooling, or mixing with cool meteoric water: fine sulphides, and low-T opal against high-T sulphides, with high precious metal grades.'],['Hypogene hematite','Oxygenated groundwater mixing',.6,'Groundwater with oxygen mixed with the ore fluid at high levels: higher gold.'],['Carbonate with base metals','Bicarbonate water mixing',.72,'CO₂ from a cooling intrusion condensed into bicarbonate water: the carbonate-base metal group, with higher gold.'],['Hypogene kaolin and halloysite','Low-pH water mixing',.95,'Acidic water from H₂S that condensed above the water table mixed back down: the highest gold grades.']],mxSeen={};
 MX.forEach(function(m,i){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=m[0];b.setAttribute('aria-pressed','false');b.addEventListener('click',function(){$$('#mxC .chip').forEach(function(c){c.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');mxDraw(i);});$('#mxC').appendChild(b);});
 function mxDraw(i){var s=$('#mxSvg');s.innerHTML='';var gr=el('linearGradient',{id:'mxg'},s);el('stop',{offset:'0','stop-color':'#C9C0A8'},gr);el('stop',{offset:'1','stop-color':'#E8B923'},gr);
   el('rect',{x:30,y:60,width:580,height:30,rx:15,fill:'url(#mxg)'},s);txt(s,30,50,'low Au',{'font-size':12,fill:'var(--muted)'});txt(s,610,50,'highest Au',{'font-size':12,fill:'var(--muted)','text-anchor':'end'});
