@@ -248,7 +248,7 @@ Grade = 15 / 40 = 37.5 wt% Al2O3   (concentration factor 2.5)</div>
     </div></details>
   </div>
 
-  <p>A gossan is a good sign, but it does not guarantee ore. Many large gossans in central NSW turned out to be goethite that replaced massive pyrite or pyrrhotite, with no valuable metals at all. Experienced explorers look at the texture. In a <button class="term" data-t="boxwork">boxwork</button> texture, goethite has filled the spaces left when sulphide crystals dissolved. The shapes of the boxes copy the shapes of the original crystals. So a boxwork tells you which sulphide was there. Some boxworks show pyrite. Others show the copper, lead or zinc sulphides that you want.</p>
+  <p>A gossan is a good sign, but it does not always mean that there is an economic ore deposit below it. Most of a gossan comes from oxidised pyrite, with much less of the valuable sulphides. <span class="srcs">slide 27</span> In the lab, look for a <button class="term" data-t="boxwork">boxwork</button> texture: the Pyrite Hill specimens include cellular boxwork gossan made of goethite and quartz. <span class="srcs">lab specimen sheet</span></p>
   <div class="cp" data-cp="cp3"></div>
 </div></section>
 
@@ -648,7 +648,7 @@ var G={
  "jarosite":"A group of potassium iron sulphate minerals that form when sulphides weather in acidic conditions.",
  "acid mine drainage":"Acidic water with dissolved metals. It forms when pyrite and other sulphides oxidise. Each mole of pyrite releases four moles of H⁺.",
  "gossan":"The oxidised, iron-rich cap on top of a sulphide body, mostly goethite and hematite. There may or may not be ore below it.",
- "boxwork":"A gossan texture where goethite fills the spaces left by dissolved sulphide crystals. The spaces keep the shapes of the crystals.",
+ "boxwork":"A gossan texture: a network of small cells of goethite and quartz, as in the Pyrite Hill lab specimens.",
  "leached zone":"The part of a weathered profile where metals have been dissolved and removed.",
  "oxide zone":"The zone above the water table where metals are in oxide, carbonate and silicate minerals, such as malachite and azurite.",
  "supergene enrichment":"Metals dissolved from above are deposited again at the water table, where conditions change from oxidising to reducing.",
@@ -718,7 +718,7 @@ function wmModel(){var rock=$('#wmRock').value,T=+$('#wmT').value,R=+$('#wmR').v
   else if(dry){v='<b>Desert.</b> Wind-blown sand and large temperature changes between day and night break the rock physically. There is too little water to dissolve much, so soluble salts survive. In the Atacama, even nitrates are stable.';if(T>=10)goal='wm-desert';}
   else if(rock==='limestone'&&chem>.4){v='<b>Karst.</b> Weakly acidic water is dissolving the calcite. This makes caves, sinkholes and collapse structures.';goal='wm-karst';}
   else if(rock==='sulphide'&&chem>.25){v='<b>Gossan forming.</b> Sulphides are not stable with oxygen and water. They oxidise to iron oxides and sulphuric acid, leaving a rusty cap and acidic water.';}
-  else if((rock==='granite'||rock==='basalt')&&chem>.6&&T>=22&&V>=60){v='<b>Lateritic profile, bauxite possible.</b> All mobile elements are being removed, and in this heat even silica is removed. Aluminium stays as gibbsite. Examples are Weipa in Cape York and Gove in the Northern Territory.';goal='wm-baux';}
+  else if((rock==='granite'||rock==='basalt')&&chem>.6&&T>=22&&V>=60){v='<b>Lateritic profile, bauxite possible.</b> All mobile elements are being removed, and in this heat even silica is removed. Aluminium stays as gibbsite. Australia mines its bauxite in Queensland and the Northern Territory.';goal='wm-baux';}
   else if(rock==='sandstone'){v='<b>Quartz hardly reacts.</b> Even with a lot of water, this rock weathers slowly. You get loose sand, not clay.';}
   else if(chem>phys){v='<b>Chemical weathering is strongest.</b> Feldspars change to kaolinite, iron moves around as oxides, and the rock becomes pale (bleached) where iron leaves.';}
   else{v='<b>Physical weathering is strongest.</b> Steep slopes, gravity and temperature changes break the rock into pieces faster than water can dissolve it.';}
@@ -840,7 +840,7 @@ mcCards($('#naCards'),[
  {q:'Pale rock. Quartz, fine white mica, 10% pyrite. The feldspars have been destroyed.',o:AOPTS,a:1,e:'Phyllic (sericitic). This is the pyrite shell around a porphyry: a lot of pyrite, but no ore.'},
  {q:'Pink K-feldspar, flaky brown biotite, quartz veins, scattered magnetite.',o:AOPTS,a:2,e:'Potassic: hot fluid, close to magmatic, that adds potassium. The core of a porphyry.'},
  {q:'Soft white clay replacing feldspar: kaolinite with some montmorillonite.',o:AOPTS,a:3,e:'Argillic: clay alteration from moderately acidic, cooler fluid.'},
- {q:'Quartz with holes (vuggy quartz), alunite, pyrophyllite, dickite, opaline silica. Near the top of the system.',o:AOPTS,a:4,e:'Advanced argillic: very acidic fluid. It is usually in the lithocap above porphyries and in high-sulphidation epithermal systems.'},
+ {q:'Quartz with holes (vuggy quartz), alunite, pyrophyllite, dickite, opaline silica. Near the top of the system.',o:AOPTS,a:4,e:'Advanced argillic: very acidic fluid. It is usually near the top of porphyry systems and in high sulphidation epithermal systems.'},
  {q:'Quartz is the most common mineral. No other mineral is recorded.',o:AOPTS.concat(['Can’t tell']),a:5,e:'You cannot tell. Quartz is in almost every assemblage, so quartz alone tells you nothing about the alteration type.',hint:'Is quartz diagnostic of anything?',win:'Not fooled by quartz'}
 ],'na',4,function(n,t){$('#naScore').textContent=n+' / '+t;});
 /* ---------- porphyry zoning animation ---------- */
@@ -858,7 +858,7 @@ var porG={};
     if(z.id==='stock')el('ellipse',{cx:CX,cy:BY,rx:z.rx,ry:z.ry,fill:'url(#plus)'},g);porG[z.id]=g;});
   var aa=el('g',{'class':'z','data-z':'aa',tabindex:0,role:'button','aria-label':'Advanced argillic'},por);el('path',{d:'M150 70 Q300 20 450 70 L430 92 Q300 54 170 92 Z',fill:'#B8A2C8',opacity:.9,stroke:'var(--ink)','stroke-opacity':.35},aa);porG.aa=aa;
   var lab=el('g',{id:'porLab'},por);[['propylitic',40,250],['phyllic',140,175],['ore shell',200,305],['potassic',262,255],['porphyry',268,385],['advanced argillic',238,52]].forEach(function(l){txt(lab,l[1],l[2],l[0],{'font-size':16,'font-weight':700});});})();
-PZ.push({id:'aa',name:'Advanced argillic',t:'Quartz, alunite, pyrophyllite, dickite, kaolinite. Very acidic fluid near the top of the system (the lithocap). It can contain high-sulphidation epithermal gold above a porphyry.'});
+PZ.push({id:'aa',name:'Advanced argillic',t:'Quartz, alunite, pyrophyllite, dickite, kaolinite. Very acidic fluid near the top of the system. It can contain high-sulphidation epithermal gold above a porphyry.'});
 var seenZ={};
 function porInfo(id){var z=PZ.filter(function(q){return q.id===id})[0];$('#porInfo').innerHTML='<b class="n">'+z.name+'</b>'+z.t;seenZ[id]=1;if(Object.keys(seenZ).length>=6)award('porzones',6,'Every porphyry zone read');}
 $$('#porSvg g.z').forEach(function(g){g.addEventListener('click',function(){porInfo(g.dataset.z)});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();porInfo(g.dataset.z)}});});

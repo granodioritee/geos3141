@@ -25,7 +25,7 @@
 
   <div class="lab" id="arLab">
     <h4><span>From porphyry to hot spring</span><b id="arCount">0 / 6 zones</b></h4>
-    <svg class="grid-svg" id="arSvg" viewBox="0 0 640 330" role="img" aria-label="Cross-section of a volcanic arc with a porphyry intrusion at depth, a high sulphidation lithocap near the volcano, intermediate and low sulphidation veins further away, a steam-heated blanket and a hot spring"></svg>
+    <svg class="grid-svg" id="arSvg" viewBox="0 0 640 330" role="img" aria-label="Cross-section of a volcanic arc with a porphyry intrusion at depth, high sulphidation advanced argillic alteration near the volcano, intermediate and low sulphidation veins further away, a steam-heated blanket and a hot spring"></svg>
     <p class="say" id="arSay">Tap each labelled zone, from the porphyry at depth to the hot spring at the surface.</p>
     <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">A simplified section based on the Corbett and Leach style diagrams on slides 14 to 17. The positions are idealised, and real systems rarely show every zone.</p>
   </div>
@@ -331,7 +331,7 @@
   </div>
   <dl class="gloss" id="glossList"></dl>
   <h3>Where this goes next</h3>
-  <p>This finishes the gold lectures. If you put Lectures 11 to 14 together, you have the whole magmatic-hydrothermal column: porphyry at depth, high sulphidation lithocaps above it, low sulphidation veins and hot springs further out, and orogenic gold in the deeper, metamorphic crust.</p>
+  <p>This finishes the gold lectures. If you put Lectures 11 to 14 together, you have the whole magmatic-hydrothermal column: porphyry at depth, high sulphidation alteration above it, low sulphidation veins and hot springs further out, and orogenic gold in the deeper, metamorphic crust.</p>
 </div></section>
 
 <section id="eoh" data-log="End of hole"><div class="wrap">
@@ -374,7 +374,6 @@ var G={
  "alunite":"KAl₃(SO₄)₂(OH)₆. It always means low pH.",
  "enargite":"Cu₃AsS₄. The typical copper mineral of high sulphidation systems.",
  "luzonite":"The low-temperature polymorph of enargite.",
- "lithocap":"A large layer of advanced argillic alteration above a porphyry.",
  "steam-heated alteration":"A barren acid sulphate layer (kaolin, alunite, opal) formed above the water table by condensed H₂S.",
  "hypogene":"Formed by rising hydrothermal fluid, not by weathering.",
  "halloysite":"A kaolin-group clay. Hypogene halloysite in ore suggests mixing with acidic water and a high grade.",
@@ -413,7 +412,7 @@ var ST=[
  ['Rank Corbett\'s deposition processes by gold grade, and give the evidence for each.','Think','Slow cooling (coarse sulphides, low Au) < boiling (mostly gangue: adularia, quartz replacing platy calcite) < fast cooling (fine sulphides, opal on sulphides) ≈ mixing with groundwater with oxygen (hypogene hematite) < mixing with bicarbonate water (carbonate-base metal) < mixing with low-pH water (hypogene kaolin, halloysite, highest grades).'],
  ['Why must you be careful with a layer of acid sulphate alteration?','Think','Steam-heated alteration above the water table (kaolin, powdery alunite, opal) looks like high sulphidation advanced argillic alteration, but it is barren. It can be above a low sulphidation system and can mislead you.'],
  ['Summarise the Lihir deposit and what caused its gold.','Recall','Luise caldera, Lihir Island, PNG. 649 Mt at 2.25 g/t Au. Monzonite porphyries in andesitic-latitic volcanic rocks. Active geothermal system. Potassic alteration 0.917 to 0.342 Ma. Collapse of one side of the volcano at 0.34 Ma removed ~1 km of rock, which lowered the pressure and caused boiling. Epithermal gold since 0.336 Ma.'],
- ['Place porphyry, high sulphidation, low sulphidation and steam-heated alteration in one volcanic system.','Synthesise','Porphyry stock at depth (1 to 5 km). HS lithocap and vughy silica above it and near it, fed by magmatic vapour. LS veins further out, where meteoric water dilutes the fluid. Intermediate sulphidation between them. A steam-heated acid sulphate layer above the water table. Hot springs and sinter at the surface.']
+ ['Place porphyry, high sulphidation, low sulphidation and steam-heated alteration in one volcanic system.','Synthesise','Porphyry stock at depth (1 to 5 km). HS advanced argillic alteration and vughy silica above it and near it, fed by magmatic vapour. LS veins further out, where meteoric water dilutes the fluid. Intermediate sulphidation between them. A steam-heated acid sulphate layer above the water table. Hot springs and sinter at the surface.']
 ];
 GEO.start({key:'geos3141-L14-progress',ranks:RANKS,glossary:G,checkpoints:CP,selftest:ST,maxDepth:150});
 
@@ -421,7 +420,7 @@ GEO.start({key:'geos3141-L14-progress',ranks:RANKS,glossary:G,checkpoints:CP,sel
 var ars=$('#arSvg'),arSeen={};
 var AZ=[
  {k:'por',n:'Porphyry Cu-Au',x:170,y:275,d:'At 1 to 5 km, the intrusion and its potassic core (Lecture 11). It is the source of the magmatic fluid for everything above it.'},
- {k:'hs',n:'High sulphidation',x:170,y:120,d:'Magmatic SO₂ vapour rises straight from the intrusion into the volcano: a lithocap of vughy silica, alunite and kaolinite, with enargite-luzonite and Au > Ag + Cu. El Indio, Veladero, Lepanto.'},
+ {k:'hs',n:'High sulphidation',x:170,y:120,d:'Magmatic SO₂ vapour rises straight from the intrusion into the volcano: vughy silica, alunite and kaolinite, with enargite-luzonite and Au > Ag + Cu. El Indio, Veladero, Lepanto.'},
  {k:'is',n:'Intermediate sulphidation',x:330,y:175,d:'Partly neutralised fluid: quartz-carbonate-base metal veins with sphalerite, galena, tetrahedrite and gold.'},
  {k:'ls',n:'Low sulphidation',x:470,y:155,d:'Dilute, almost neutral H₂S fluid mixed with meteoric water: banded quartz-adularia-sericite veins, <2% sulphide, bonanza ore shoots. Hishikari, McLaughlin, Edie Creek.'},
  {k:'sh',n:'Steam-heated blanket',x:470,y:68,d:'H₂S that boiled off below condenses above the water table and forms sulphuric acid: powdery alunite, kaolin, opal. It looks like HS alteration, but it is barren.'},
@@ -489,7 +488,7 @@ mcCards($('#atCards'),[
  {lbl:'Alteration',q:'Adularia and illite next to banded quartz veins',o:ATO,a:1,e:'LS vein selvage.'},
  {lbl:'Alteration',q:'Soft, powdery alunite, kaolin and opal in a flat layer at the old water table',o:ATO,a:2,e:'Steam-heated acid sulphate: barren, but looks like HS.'},
  {lbl:'Alteration',q:'Chlorite, epidote and calcite with a little pyrite, far from the veins',o:ATO,a:3,e:'Propylitic: the outer halo.'},
- {lbl:'Alteration',q:'Pyrophyllite and dickite with a lot of pyrite, below vughy silica',o:ATO,a:0,e:'Higher-temperature advanced argillic alteration, deeper in a HS lithocap.'}
+ {lbl:'Alteration',q:'Pyrophyllite and dickite with a lot of pyrite, below vughy silica',o:ATO,a:0,e:'Higher-temperature advanced argillic alteration, deeper in a HS system.'}
 ],'at',2,function(r,n){$('#atScore').textContent=r+' / '+n;});
 
 /* ---------- Lihir collapse ---------- */
