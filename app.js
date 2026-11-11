@@ -664,7 +664,7 @@ var GEO = {
     var keep = function () { try { localStorage.setItem('geos3141-lab', JSON.stringify(L)); } catch (e) {} };
     var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var KIND = { multi: 'Microscope: name every ore mineral', dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope: name the mineral', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
+    var KIND = { simC: 'Simulation 10 Nov · ore sample', multi: 'Microscope: name every ore mineral', dhs: 'Ore suite, hand specimen', mineral: 'Mineral hand specimen', alter: 'Alteration example', suite: 'Ore suite, polished block', min: 'Microscope: name the mineral', micro: 'Microscope texture', hand: 'Breccia or ore texture', core: 'Drill core, vein or mine face', obs: 'Field task' };
     var REF = { high: 'high', mod: 'moderate', low: 'low' }, HC = { hard: 'hard: the needle won’t scratch it', med: 'medium: scratches with some pressure', soft: 'soft: scratches easily, polish full of scratches' };
     var ANI = { iso: 'isotropic: stays dark as you rotate under crossed polars', weak: 'weakly anisotropic', strong: 'strongly anisotropic: colours change as you rotate' };
 
@@ -699,7 +699,7 @@ var GEO = {
       });
       /* mineral hand specimens: distractors mostly from the same mineral class, never another pyroxene for a pyroxene */
       var PYX = ['Augite', 'Diopside', 'Enstatite', 'Hypersthene'], MINS = Object.keys(LAB.minGroup || {}), SKID = {};
-      ((window.SUDOKU || {}).min || []).forEach(function (m) { if (m.hs) SKID[m.hs] = m.id; });
+      ((window.SUDOKU || {}).min || []).forEach(function (m) { if (m.hs) SKID[m.hs] = m.id; if (!SKID[m.n]) SKID[m.n] = m.id; });
       (LAB.hs || []).forEach(function (x) {
         var g = LAB.minGroup[x.m], ok = function (m) { return m !== x.m && !(PYX.indexOf(m) >= 0 && PYX.indexOf(x.m) >= 0); };
         var same = shuffle(MINS.filter(function (m) { return ok(m) && LAB.minGroup[m] === g; })).slice(0, 2);
@@ -728,6 +728,32 @@ var GEO = {
         var opts = shuffle(keep.concat(shuffle(near).concat(shuffle(far)).slice(0, Math.max(0, 8 - keep.length))));
         out.push({ id: x.id, kind: 'multi', img: x.img, mic: !!x.mic, lec: x.lec, sec: x.sec, lbl: 'Polished section · plane-polarised reflected light',
           q: 'Name every ore mineral you can see (1 to 3). Don\u2019t name gangue such as quartz. Tap all that apply, then Check.', o: opts, a: -1, req: x.req, opt: x.opt, e: x.e, ansText: x.req.join(' + ') });
+      });
+      /* lab simulation photos (simdata.js): Part A, B and C as practised with Ian on 10 Nov */
+      var SIM = LAB.sim || {}, simImgs = function (f, mic) { return f.map(function (n, k) { return { src: 'img/sim/' + n + '.jpg', mic: false, cap: f.length > 1 ? (k ? 'Another view' : 'Photo 1') : null }; }); };
+      (SIM.a || []).forEach(function (x) {
+        var grp = function (m) { return LAB.minGroup[m] || (LAB.simGroup || {})[m]; }, g = grp(x.m);
+        var pool = MINS.concat(Object.keys(LAB.simGroup || {}).filter(function (m) { return m !== 'Kyanite'; })), ok = function (m) { return m !== x.m; };
+        var same = shuffle(pool.filter(function (m) { return ok(m) && grp(m) === g; })).slice(0, 2);
+        var other = shuffle(pool.filter(function (m) { return ok(m) && same.indexOf(m) < 0; })).slice(0, 3 - same.length);
+        var opts = shuffle(same.concat(other, [x.m]));
+        out.push({ id: 'simA-' + x.f[0], kind: 'mineral', grp: 'sim', head: 'Simulation 10 Nov · Part A hand specimen', m: x.m, img: 'img/sim/' + x.f[0] + '.jpg', imgs: x.f.length > 1 ? simImgs(x.f) : null, mic: false,
+          lbl: 'Your photo from the lab simulation, 10 Nov', q: 'Name the mineral.', o: opts, a: opts.indexOf(x.m),
+          e: x.m + (g ? ', a ' + g.toLowerCase() + ' mineral' : '') + '. Your label from the simulation.' + (x.n ? ' ' + x.n : ''), link: SKID[x.m] ? 'sudoku.html#m-' + SKID[x.m] : null });
+      });
+      (SIM.b || []).forEach(function (x) {
+        var keep = x.req.concat(x.opt), near = [], far = [];
+        LAB.min.forEach(function (m) { if (keep.indexOf(m.n) >= 0) return; var close = keep.some(function (k) { return (CG[k] || []).some(function (c) { return m.cg.indexOf(c) >= 0; }); }); (close ? near : far).push(m.n); });
+        var opts = shuffle(keep.concat(shuffle(near).concat(shuffle(far)).slice(0, Math.max(0, 8 - keep.length))));
+        out.push({ id: 'simB-' + x.id, kind: 'multi', grp: 'sim', head: 'Simulation 10 Nov · Part B microscope', img: 'img/sim/' + x.f[0] + '.jpg', imgs: x.f.length > 1 ? simImgs(x.f) : null, mic: false, lec: 4, sec: 'virtual',
+          lbl: 'Your photo down the microscope, reflected light, 10 Nov', q: 'Name every ore mineral you can see (1 to 3). Don\u2019t name gangue such as quartz. Tap all that apply, then Check.', o: opts, a: -1, req: x.req, opt: x.opt, e: x.e, ansText: x.req.join(' + ') });
+      });
+      (SIM.c || []).forEach(function (x) {
+        var types = SIM.cTypes, sib = SIM.cRival[x.type], rest = shuffle(types.filter(function (t) { return t !== x.type && t !== sib; }));
+        var opts = shuffle((sib ? [sib].concat(rest) : rest).slice(0, 3).concat([x.type]));
+        out.push({ id: 'simC-' + x.id, kind: 'simC', grp: 'sim', img: 'img/sim/' + x.f[0] + '.jpg', imgs: x.f.length > 1 ? simImgs(x.f) : null, mic: false,
+          lbl: 'Ore sample ' + x.id + ' from the simulation with Ian, 10 Nov', q: 'Part C: what type of deposit is this? Think of your evidence bullets first.', o: opts, a: opts.indexOf(x.type),
+          e: 'Sample ' + x.id + '.', sim: x, link: x.link, type: x.type });
       });
       /* stations generated from the lecture pages (labpages.js): photo quiz cards and field tasks */
       (LAB.pages || []).forEach(function (x) { out.push(x); });
@@ -762,7 +788,7 @@ var GEO = {
         var p = b.dataset.p === 'all' ? $$('#ltK button').map(function (x) { return x.dataset.v; }) : b.dataset.p.split(',');
         b.setAttribute('aria-pressed', p.length === L.opt.k.length && p.every(function (k) { return L.opt.k.indexOf(k) >= 0; }) ? 'true' : 'false');
       });
-      var n = all().filter(function (s) { return L.opt.k.indexOf(s.kind) >= 0; }).length;
+      var n = all().filter(function (s) { return L.opt.k.indexOf(s.grp || s.kind) >= 0; }).length;
       $('#ltPool').textContent = n + ' stations available in this mix' + (n < L.opt.n ? ', so this run will use all of them.' : '.');
       $('#ltStart').disabled = !n;
       $('#ltBest').textContent = L.runs ? 'Best ' + L.best + '% · ' + L.xp + ' oz' : '';
@@ -779,7 +805,7 @@ var GEO = {
     });
 
     function begin(list) {
-      var pool = list || all().filter(function (s) { return L.opt.k.indexOf(s.kind) >= 0; });
+      var pool = list || all().filter(function (s) { return L.opt.k.indexOf(s.grp || s.kind) >= 0; });
       /* stations you've missed before come up more often */
       pool = pool.map(function (s) { return { s: s, w: Math.random() + (1 - rate(s.id)) * .9 }; }).sort(function (a, b) { return b.w - a.w; }).map(function (x) { return x.s; });
       /* take the station types in turn, so a small type (the microscope) still comes up in every run */
@@ -800,7 +826,7 @@ var GEO = {
 
     function station() {
       var st = run.list[run.i]; run.cur = { st: st, used: 0, done: false, t0: Date.now(), xpl: false };
-      $('#ltStation').textContent = 'Station ' + (run.i + 1) + ' of ' + run.list.length + ' · ' + KIND[st.kind];
+      $('#ltStation').textContent = 'Station ' + (run.i + 1) + ' of ' + run.list.length + ' · ' + (st.head || KIND[st.kind]);
       var ph = $('#ltPhoto'); ph.innerHTML = ''; if ($('#ltSeen')) $('#ltSeen').remove();
       var imgs = st.imgs || [{ src: st.img, mic: st.mic }], hold = imgs.length > 1 ? node('div', 'lt-pair', null, ph) : ph, img;
       imgs.forEach(function (p, k) {
@@ -893,7 +919,7 @@ var GEO = {
     }
     /* the reasons behind an answer: why the right one fits, and why the one you picked does not */
     function tests(name) {
-      var m = ((window.SUDOKU || {}).min || []).filter(function (x) { return x.hs === name; })[0]; if (!m) return '';
+      var m = ((window.SUDOKU || {}).min || []).filter(function (x) { return x.hs === name; })[0] || ((window.SUDOKU || {}).min || []).filter(function (x) { return x.n === name; })[0]; if (!m) return '';
       var p = m.p, bit = function (k, lab) { return p[k] && p[k][0] ? lab + ' ' + p[k][0] : null; };
       return [bit('c', 'colour'), bit('s', 'streak'), bit('l', 'lustre'), bit('h', 'hardness'), bit('cv', 'cleavage'), bit('o', '')].filter(Boolean).join('; ').replace(';  ', '; ') + '.';
     }
@@ -928,6 +954,12 @@ var GEO = {
           [['Deposit type', sub + (sub !== st.type ? ' (' + st.type + ')' : '')], ['What I see', (st.seen1 || 'the minerals, texture and host rock in this specimen') + (st.role === 'ox' ? '; this is oxide-zone material, not primary ore' : st.role === 'wr' ? '; this is host or wall rock, not ore' : '')], [st.role ? 'Ore minerals in the primary ore' : 'Ore minerals', f.min], ['Texture', f.tex], ['Host rock and alteration', f.host], ['Syngenetic or epigenetic', f.gen], ['Temperature and depth', f.temp], ['Setting', f.set]].forEach(function (r) { var li = node('li', '', null, ul); node('b', '', r[0] + ': ', li); li.appendChild(document.createTextNode(r[1])); });
           node('p', 'lt-src', 'Source: ' + f.src + '. The deposit type is the main answer; the other bullets are your evidence for it. You don\u2019t need to name the deposit (Mount Isa, Rosebery and so on).', d);
         }
+      }
+      if (st.kind === 'simC' && st.sim) {
+        var blk = function (title, list, open) { if (!list || !list.length) return; var d2 = node('details', 'lt-bul', null, w); if (open) d2.open = true; node('summary', '', title, d2); var u2 = node('ul', '', null, d2); list.forEach(function (s) { node('li', '', s, u2); }); };
+        blk('Your notes from Ian', st.sim.notes, true);
+        blk('Added from the lectures', st.sim.add, true);
+        blk('Check (my reading, not Ian\u2019s words)', st.sim.check, true);
       }
       var href = st.link || (st.lec && st.sec && st.sec !== 'virtual' ? 'L' + st.lec + '.html#' + st.sec : null);
       if (href && (rs.length || j !== st.a)) { var p2 = node('p', 'lt-wp', null, w), a = node('a', '', /^sudoku/.test(href) ? 'Check its properties in the Mineral Sudoku →' : 'Review in Lecture ' + (href.match(/L(\d+)/) || [0, ''])[1] + ' →', p2); a.href = href; a.target = '_blank'; a.rel = 'noopener'; }
