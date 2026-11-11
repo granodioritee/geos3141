@@ -603,6 +603,7 @@ body.cs{background:var(--bg)}
 
 /* Part A */
 .cs-m{display:block;margin:0}
+.cs-rules td:first-child{width:24%}.cs-rules td:last-child{width:15%}.cs-first td:first-child{width:24%}.cs-first td:last-child{width:24%}
 .cs-rl th:nth-child(1){width:15%}.cs-rl th:nth-child(2){width:17%}.cs-rl th:nth-child(4){width:14%}.cs-rl th:nth-child(5){width:16%}.cs-rl th:nth-child(6){width:10%}.cs-rl th:nth-child(8){width:19%}
 .cs-mcols{columns:2;column-gap:14px}.cs-mcols .cs-m{break-inside:avoid}
 .cs-mohs{position:relative;margin:20px 4px 18px;height:14px;border-radius:4px;background:linear-gradient(90deg,var(--b1) 0 16.67%,var(--b2) 16.67% 27.78%,var(--b3) 27.78% 50%,var(--b4) 50%);-webkit-print-color-adjust:exact;print-color-adjust:exact;--b1:#E7D9B8;--b2:#D9B98A;--b3:#B98E63;--b4:#7C5B45}
