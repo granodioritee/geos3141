@@ -661,3 +661,26 @@ body.cs{background:var(--bg)}
   .cs-photos figcaption{font-size:6.9pt;padding:2px 4px 3px;border-top-width:2px}
   .cs-photos figure{border-radius:5px;border-color:#999}
 }
+
+/* Part C crash course (partc.html) */
+.pc .pc-ol{margin:.2rem 0 0;padding-left:1.3rem}.pc .pc-ol li{margin:.2rem 0}
+.pc-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:1.2rem 0;font-family:var(--sans);font-size:.97rem;line-height:1.55;scroll-margin-top:1rem}
+.pc-card h3{margin:0 0 .6rem;font-size:1.2rem}
+.pc-pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.6rem;margin:0 0 .8rem}
+.pc-pics figure{margin:0;min-width:0}
+.pc-pics img{display:block;width:100%;height:12rem;object-fit:cover;border-radius:6px;background:var(--bg)}
+.pc-pics figcaption{font-size:.8rem;color:var(--muted);margin-top:.25rem;line-height:1.35}
+.pc-see,.pc-vs{margin:0 0 .5rem}
+.pc-more{display:inline-block;margin-top:.4rem;font-weight:650}
+.pc-trail{font-family:var(--mono);font-size:.8rem;color:var(--muted);margin:.2rem 0 .6rem}
+.pc-tree-opts{grid-template-columns:1fr}
+.pc-read{font-family:var(--sans);font-size:.98rem;padding-left:1.3rem}.pc-read li{margin:.45rem 0}
+@keyframes pcflash{0%{box-shadow:0 0 0 0 var(--gold-hi)}40%{box-shadow:0 0 0 6px var(--gold-hi)}100%{box-shadow:0 0 0 0 transparent}}
+.pc-card.pc-flash{animation:pcflash 1.4s ease-out}
+/* Cheat sheet: simulation sample photos */
+.cs-simstrip{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;margin:.4rem 0 .2rem}
+.cs-page .cs-simstrip figure{margin:0;min-width:0;padding:0;border:0;background:none;box-shadow:none;border-radius:0}
+.cs-page .cs-simstrip figure img{margin:0;max-height:none}
+.cs-simstrip img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.cs-simstrip figcaption{font-family:var(--sans);font-size:.62rem;line-height:1.2;margin-top:2px;color:var(--ink)}
+@media (max-width:520px){.cs-simstrip{grid-template-columns:repeat(4,1fr)}}

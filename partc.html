@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GEOS3141 Part C Crash Course</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+<script src="labdata.js"></script>
+<script src="simdata.js"></script>
+</head>
+<body class="lt pc">
+<button class="themebtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+
+<header class="hero wrap">
+  <div class="toplinks"><a href="index.html">All lectures</a><a href="labtest.html">Lab test practice</a><a href="cheatsheet.html">Cheat sheet &rarr;</a></div>
+  <div class="course">GEOS3141 Mineral and Energy Resources · Lab test Part C · T3 2026</div>
+  <h1>Part C crash course</h1>
+  <p class="lede">In Part C you look at an ore sample and say what type of deposit it comes from. This page teaches only that. You need about 12 deposit types, and for each one you need one or two strong clues. Read the cards, try the sorting tool, then do the quiz.</p>
+</header>
+
+<main>
+
+<section id="answer" style="padding-top:0;border-top:0"><div class="wrap">
+  <h2>How to answer</h2>
+  <p>Ian explained the format in the lab revision class (10 Nov). You write bullet points. The deposit type comes first, because it is the main answer. Then you give the evidence. You don’t need the name of the mine or deposit.</p>
+  <div class="keybox"><b>Memorise</b><ol class="pc-ol">
+    <li><b>Deposit type</b> (VMS, SEDEX, porphyry Cu, and so on)</li>
+    <li><b>Ore and gangue minerals</b> you can see</li>
+    <li><b>Texture</b>: banded, massive, vein, stockwork, breccia, disseminated</li>
+    <li><b>Host rock and alteration</b></li>
+    <li><b>Syngenetic or epigenetic</b>: formed at the same time as the host rock, or later</li>
+    <li><b>Temperature and depth</b></li>
+    <li><b>Setting</b>: where and how it formed</li>
+  </ol></div>
+  <div class="labbox"><b>At the lab test</b><ul>
+    <li>If the specimen is only host rock or gossan, say so. Then name the deposit type it belongs to.</li>
+    <li>Your printed cheat sheet has all of this on pages 1 to 3, plus the simulation samples A to I.</li>
+  </ul></div>
+</div></section>
+
+<section id="sort"><div class="wrap">
+  <h2>Find the type in a few questions</h2>
+  <p>Answer each question about the specimen in front of you. The tool takes you to the right card below. Try it with a photo from the quiz, or with your simulation samples.</p>
+  <div class="lab" id="pcTree">
+    <h4><span>Sorting tool</span><button class="chip" type="button" id="pcTreeReset">Start again</button></h4>
+    <p class="pc-trail" id="pcTrail"></p>
+    <p class="lt-q" id="pcTreeQ"></p>
+    <div class="lt-opts pc-tree-opts" id="pcTreeOpts"></div>
+  </div>
+</div></section>
+
+<section id="types"><div class="wrap">
+  <h2>The types, one card each</h2>
+  <p>Each card shows what you see on the bench, the type it is easy to confuse with, and your seven answer bullets already filled in. Tap “Write it like this” to open the bullets. Photos marked “your sample” are from the simulation with Ian.</p>
+  <div id="pcCards"></div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+  <h2>Quiz: which type?</h2>
+  <p>Each question shows a hand specimen from the lab ore suites with its line from the lab’s specimen sheet. That is like reading the label and looking at the rock at the same time. Pick the deposit type. After every answer you see why.</p>
+  <div class="lab" id="pcQuiz">
+    <div class="lt-head"><span id="pcQn"></span><span id="pcCombo" class="lt-combo" hidden></span><b id="pcScore" class="num"></b></div>
+    <div class="lt-photo"><div class="lt-img"><img id="pcImg" alt="Ore suite hand specimen"></div></div>
+    <p class="lt-lbl" id="pcLbl"></p>
+    <p class="lt-q">Which type of deposit is this from?</p>
+    <div class="lt-opts" id="pcOpts"></div>
+    <div class="lt-why" id="pcWhy"></div>
+    <div class="row"><button class="btn" type="button" id="pcNext" hidden>Next</button><span id="pcBest" style="margin-left:auto;font-family:var(--mono);font-size:.85rem;color:var(--muted)"></span></div>
+  </div>
+  <p style="font-family:var(--sans);font-size:.95rem">More practice: on the <a href="labtest.html">lab test page</a>, tap “Your simulation photos (10 Nov)” for samples A to I, or tick “Ore suite specimens: which deposit?”.</p>
+</div></section>
+
+<section id="read"><div class="wrap">
+  <h2>Read more, in this order</h2>
+  <p>You don’t need whole lectures. Read these sections, and read each page’s green “At the lab test” box first. Times are rough.</p>
+  <ol class="pc-read">
+    <li><a href="L10.html#what">L10 VMS</a>: <a href="L10.html#mound">Anatomy of a mound</a>, <a href="L10.html#alteration">Alteration around the ore</a> <span class="srcs">15 min</span></li>
+    <li><a href="L9.html#what">L9 SEDEX</a>: <a href="L9.html#anatomy">Anatomy of a deposit</a>, <a href="L9.html#halo">North Australian deposits</a> <span class="srcs">15 min</span></li>
+    <li><a href="L11.html#intro">L11 Porphyry</a>: <a href="L11.html#veins">Reading the veins</a>, <a href="L11.html#alteration">Alteration in the hand</a> <span class="srcs">15 min</span></li>
+    <li><a href="L14.html#what">L14 Epithermal</a>: <a href="L14.html#ls">Low sulphidation</a>, <a href="L14.html#hs">High sulphidation in the hand</a> <span class="srcs">15 min</span></li>
+    <li><a href="L13.html#what">L13 Orogenic gold</a>: <a href="L13.html#recipe">The recipe</a>, <a href="L13.html#carlin">Carlin-type gold</a> <span class="srcs">15 min</span></li>
+    <li><a href="L7.html#minerals">L7 Magmatic Ni</a>: <a href="L7.html#kambalda">Kambalda</a>; <a href="L8.html#podiform">L8 Podiform chromitites</a> <span class="srcs">10 min</span></li>
+    <li><a href="L16.html#cmpv">L16 CMPV</a>: <a href="L16.html#cmpvmin">Host rocks and minerals</a>, <a href="L16.html#kupfer">Kupferschiefer</a>, <a href="L16.html#compare">Telling them apart</a> <span class="srcs">10 min</span></li>
+    <li><a href="L15.html#greisen">L15 Sn-W: greisens and veins</a>, <a href="L15.html#tallebung">Tallebung</a> <span class="srcs">5 min</span></li>
+    <li><a href="L2.html#gossans">L2 Gossans</a>, <a href="L2.html#supergene">The supergene profile</a> <span class="srcs">5 min</span></li>
+    <li><a href="L21.html#bif">L21 Banded iron formations</a> <span class="srcs">5 min</span></li>
+  </ol>
+</div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <p><a href="index.html">All GEOS3141 lectures</a> · <a href="labtest.html">Lab test practice</a> · <a href="cheatsheet.html">Cheat sheet</a></p>
+  <p><strong>Sources.</strong> Answer format: lab revision class, 10 Nov 2026. Card facts: the lecture pages on this site (each card names its lectures), the same checked data the lab test page and cheat sheet use. Quiz photos: lab ore suite hand specimens, photos by Ian Graham on the course Flickr account; descriptions from the lab’s Ore Deposit Specimen Descriptions sheet. “Your sample” photos and notes: your own, from the simulation with Ian. “Check” lines are my reading, not Ian’s words.</p>
+</div></footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  GEO.themeButton();
+  var node = function (tag, cls, text, parent) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined && text !== null) e.textContent = text; if (parent) parent.appendChild(e); return e; };
+  var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
+  var F = LAB.typeFacts;
+
+  /* facts for the three types the lab ore suite data does not cover (from the lecture pages) */
+  var EXTRA = {
+    cuag: { min: 'chalcocite, covellite, bornite, chalcopyrite, native copper and silver minerals; framboidal pyrite in the zones with no ore', tex: 'very fine-grained, finely banded ore', host: 'carbonaceous black shale and siltstone, above oxidised red beds', gen: 'syngenetic in your notes from Ian; Lecture 16 says the copper came at a redox boundary and fills grain spaces, veinlets and replacements, which is later (diagenetic)', temp: 'basin brine (no number on the slides)', set: 'continental rifts, at the redox boundary between oxidised red beds and reduced shale', src: 'Lecture 16' },
+    carlin: { min: 'pyrite with gold in its rims; the gold is too fine to see', tex: 'silicified rock (jasperoid), breccia; finely disseminated gold', host: 'sub-greenschist argillite (claystone) and limestone', gen: 'epigenetic', temp: '200 to 300 °C, 2 to 3 km', set: 'back-arc extension and thinning of continental crust (Basin and Range, Nevada); Cenozoic', src: 'Lecture 13, slides 31 to 34' },
+    snw: { min: 'cassiterite, wolframite (± scheelite, molybdenite, bismuthinite); gangue of quartz, muscovite, topaz, tourmaline, fluorite', tex: 'quartz veins and greisen (granite altered to quartz and muscovite)', host: 'the top of a highly fractionated felsic granite and the rock above it', gen: 'epigenetic, from fluid released by the granite', temp: 'about 600 down to 200 °C; granites intruded at 1.5 to 5 km', set: 'granite cupolas; fluid from the granite mixed with meteoric water', src: 'Lecture 15' }
+  };
+  var dhsPics = function (dep, n) {
+    return (LAB.dhs || []).filter(function (x) { return dep.indexOf(x.d) >= 0 && x.s && !/hanging wall|footwall|unmineralised|unaltered|host|norite|basement|monzonite$|kaolinised porphyry|dolerite|amphibolite|schist\?/i.test(x.s); }).slice(0, n || 2)
+      .map(function (x) { return { src: 'img/lab/dhs/' + x.src + '.jpg', cap: 'Lab ore suite: ' + x.s }; });
+  };
+  var sim = function (id, cap) { return { src: 'img/sim/' + id + '.jpg', cap: 'Your sample ' + cap }; };
+
+  /* the cards: what you see, the look-alike, the bullets */
+  var TYPES = [
+    { id: 'vms', name: 'VMS', lec: 'L10.html#mound', f: F['VMS'], see: 'Banded or massive pyrite, sphalerite, galena and plenty of chalcopyrite, in volcanic rock. A chlorite-altered stringer zone may sit below.', vs: 'SEDEX: same banding, but the host is dark carbonaceous siltstone and there is little copper.', pics: [sim('IMG_9260', 'A, simulation: banded chalcopyrite and pyrrhotite')].concat(dhsPics(['Scuddles, WA', 'Woodlawn, NSW'], 1)) },
+    { id: 'sedex', name: 'SEDEX', lec: 'L9.html#halo', f: F['SEDEX'], see: 'Very fine laminated sphalerite, galena and pyrite in dark carbonaceous siltstone. The laminae follow the bedding and are often folded. It feels heavy. Little copper.', vs: 'VMS (volcanic host, more chalcopyrite) and CMPV (sulphide in veins that cut the bedding).', pics: [sim('IMG_9258', 'F, simulation: carbonaceous siltstone')].concat(dhsPics(['Lady Loretta, NW Qld', 'Mount Isa, Qld'], 1)) },
+    { id: 'cuag', name: 'Sediment-hosted Cu-Ag', lec: 'L16.html#kupfer', f: EXTRA.cuag, see: 'Very fine, finely banded pyrite or copper sulphides in carbonaceous black shale or siltstone.', vs: 'SEDEX: also fine banded in dark siltstone, but the ore is zinc and lead, not copper and silver.', pics: [sim('IMG_9265', 'G, simulation: fine-banded pyrite in carbonaceous siltstone')] },
+    { id: 'mag', name: 'Magmatic Ni-Cu sulphide', lec: 'L7.html#kambalda', f: F['Magmatic'], see: 'Bronze pyrrhotite with pale pentlandite (± chalcopyrite), massive or between the grains of a dark mafic or ultramafic rock. Some pyrrhotite is magnetic.', vs: 'VMS: banded pyrite, sphalerite and galena in felsic volcanic rock, not pyrrhotite in dark igneous rock.', pics: [sim('IMG_9261', 'B, simulation: massive pyrrhotite')].concat(dhsPics(['Kambalda, WA', 'Sudbury, Canada'], 1)) },
+    { id: 'chr', name: 'Chromite (magmatic)', lec: 'L8.html#podiform', f: F['Chromite'], see: 'Black chromite, massive, nodular or scattered, in serpentinised dunite.', vs: 'Magmatic Ni-Cu: that is bronze sulphide; chromite is a black oxide with no sulphide.', pics: dhsPics(['Coolac, NSW'], 2) },
+    { id: 'por', name: 'Porphyry Cu', lec: 'L11.html#veins', f: F['Porphyry Cu'], see: 'A porphyry (large feldspar crystals in a fine groundmass) cut by many thin quartz veins in all directions (a stockwork). Chalcopyrite, bornite, molybdenite. Pink K-feldspar or biotite alteration.', vs: 'Skarn: garnet, pyroxene and magnetite rock in limestone beside the intrusion. Epithermal: banded veins, little sulphide.', pics: dhsPics(['Goonumbla (Endeavour), NSW', 'Bingham Canyon, Utah', 'Ok Tedi, PNG'], 2) },
+    { id: 'epi', name: 'Epithermal', lec: 'L14.html#ls', f: F['Epithermal'], see: 'Banded quartz-adularia or chalcedony veins, breccias, little sulphide, in volcanic rock. Honey-yellow sphalerite is a good sign for gold and silver.', vs: 'Orogenic gold: deeper, quartz-carbonate veins with pyrite and arsenopyrite in metamorphosed rock.', pics: [sim('IMG_9256', 'E, simulation: quartz vein, dark sphalerite, breccia (type is my reading)')].concat(dhsPics(['Woodlark Island, PNG'], 1)) },
+    { id: 'oro', name: 'Orogenic (mesothermal) Au', lec: 'L13.html#recipe', f: F['Mesothermal Au'], see: 'Quartz-carbonate veins with pyrite and arsenopyrite in greenstone or shale, often deformed. Ankerite, sericite, green fuchsite. Stibnite means the shallow (Au-Sb) part.', vs: 'Epithermal (shallow, banded veins in volcanic rock) and CMPV (Ag-Pb-Zn veins with siderite).', pics: [sim('IMG_9268', 'I, simulation: stibnite in foliated rock (type is my reading)')].concat(dhsPics(['Kalgoorlie, WA', 'Lancefield, WA'], 1)) },
+    { id: 'car', name: 'Carlin gold', lec: 'L13.html#carlin', f: EXTRA.carlin, see: 'Jasperoid or silicified claystone or limestone. You can’t see the gold.', vs: 'SEDEX: there you can see the fine zinc and lead sulphide bands.', pics: [{ src: 'img/L13/carlin-ore.jpg', cap: 'Carlin ore (Lecture 13)' }] },
+    { id: 'cmpv', name: 'CMPV (polymetallic vein)', lec: 'L16.html#cmpvmin', f: F['Polymetallic vein'], see: 'Veins of galena, sphalerite and freibergite (silver-rich tetrahedrite) with siderite that cut dark metasiltstone.', vs: 'SEDEX and VMS: there the sulphide layers run parallel to the bedding.', pics: dhsPics(['Webbs silver mine, NSW'], 2) },
+    { id: 'snw', name: 'Sn-W (granite-related)', lec: 'L15.html#greisen', f: EXTRA.snw, see: 'Cassiterite or wolframite in quartz, with topaz, tourmaline or muscovite (greisen), near a granite.', vs: 'Porphyry Cu: also tied to an intrusion, but the ore is copper sulphide in a stockwork.', pics: [sim('IMG_9263', 'H, simulation: cassiterite in quartz'), { src: 'img/L15/greisen.jpg', cap: 'Greisen (Lecture 15)' }] },
+    { id: 'fe', name: 'Iron ore', lec: 'L21.html#bif', f: F['Iron ore'], see: 'Dense hematite and magnetite, often banded with chert or jasper (banded iron formation).', vs: 'Gossan: goethite over sulphide, with boxwork and jarosite.', pics: dhsPics(['Middleback Ranges, SA'], 2) },
+    { id: 'ox', name: 'Oxide zone (regolith, gossan)', lec: 'L2.html#gossans', f: F['Regolith'], see: 'Rusty goethite, cellular boxwork, yellow jarosite, green malachite or blue azurite. No fresh sulphide.', vs: 'Iron ore: hematite-magnetite, still banded like the BIF.', pics: dhsPics(['Pyrite Hill, NSW', 'Mount Kelly, NW Qld'], 2) }
+  ];
+  var byId = {}; TYPES.forEach(function (t) { byId[t.id] = t; });
+
+  var box = document.getElementById('pcCards');
+  TYPES.forEach(function (t) {
+    var c = node('article', 'pc-card', null, box); c.id = 'c-' + t.id;
+    node('h3', '', t.name, c);
+    if (t.pics.length) { var g = node('div', 'pc-pics', null, c); t.pics.forEach(function (p) { var fg = node('figure', '', null, g), im = node('img', '', null, fg); im.src = p.src; im.alt = p.cap; im.loading = 'lazy'; node('figcaption', '', p.cap, fg); }); }
+    var p1 = node('p', 'pc-see', null, c); node('b', '', 'You see: ', p1); p1.appendChild(document.createTextNode(t.see));
+    var p2 = node('p', 'pc-vs', null, c); node('b', '', 'Don’t confuse with: ', p2); p2.appendChild(document.createTextNode(t.vs));
+    if (t.f) {
+      var d = node('details', 'lt-bul', null, c); node('summary', '', 'Write it like this (your seven bullets)', d); var ul = node('ul', '', null, d);
+      [['Deposit type', t.name], ['Ore minerals', t.f.min], ['Texture', t.f.tex], ['Host rock and alteration', t.f.host], ['Syngenetic or epigenetic', t.f.gen], ['Temperature and depth', t.f.temp], ['Setting', t.f.set]].forEach(function (r) { var li = node('li', '', null, ul); node('b', '', r[0] + ': ', li); li.appendChild(document.createTextNode(r[1])); });
+      node('p', 'lt-src', 'Source: ' + t.f.src + '.', d);
+    }
+    var a = node('a', 'pc-more', 'Read more →', c); a.href = t.lec;
+  });
+
+  /* sorting tool */
+  var TREE = {
+    start: { q: 'Can you see fresh, shiny sulphide (pyrite, chalcopyrite, galena, sphalerite, pyrrhotite)?', o: [['Yes', 'how'], ['No, or hardly any', 'nosul']] },
+    nosul: { q: 'What does it look like instead?', o: [['Rusty goethite, boxwork, jarosite, green or blue copper minerals', '=ox'], ['Dense hematite and magnetite, often banded with chert', '=fe'], ['Black chromite in serpentinite', '=chr'], ['Silicified, jasper-like claystone or limestone', '=car'], ['Dark cassiterite or wolframite in quartz', '=snw']] },
+    how: { q: 'How does the sulphide sit in the rock?', o: [['In layers parallel to the rock’s layering, or massive', 'layer'], ['In veins or a stockwork that cut the rock', 'vein'], ['Massive or between the grains of a dark igneous rock, mostly bronze pyrrhotite', '=mag']] },
+    layer: { q: 'What is the host rock?', o: [['Volcanic rock (tuff, rhyolite, basalt); plenty of chalcopyrite', '=vms'], ['Dark carbonaceous siltstone; very fine zinc and lead laminae', '=sedex'], ['Dark carbonaceous siltstone; fine pyrite with copper (Cu-Ag)', '=cuag']] },
+    vein: { q: 'What fills the veins, and what do they cut?', o: [['Many thin quartz veins in all directions through a porphyry; chalcopyrite, bornite, molybdenite', '=por'], ['Banded quartz-adularia or chalcedony, little sulphide, volcanic host', '=epi'], ['Quartz-carbonate with pyrite and arsenopyrite (or stibnite) in greenstone or shale', '=oro'], ['Galena, sphalerite and freibergite with siderite, cutting dark metasiltstone', '=cmpv'], ['Cassiterite or wolframite in quartz, near a granite', '=snw']] }
+  };
+  var trail = [];
+  function ask(k) {
+    var n = TREE[k]; $('#pcTreeQ').textContent = n.q; var o = $('#pcTreeOpts'); o.innerHTML = '';
+    $('#pcTrail').textContent = trail.length ? trail.join(' → ') : 'Look at the specimen, then tap an answer.';
+    n.o.forEach(function (op, j) {
+      var b = node('button', '', null, o); b.type = 'button'; node('span', 'k', String(j + 1), b); b.appendChild(document.createTextNode(op[0]));
+      b.addEventListener('click', function () {
+        SND.play('flip'); trail.push(op[0]);
+        if (op[1].charAt(0) === '=') {
+          var t = byId[op[1].slice(1)]; $('#pcTrail').textContent = trail.join(' → ');
+          $('#pcTreeQ').textContent = 'Most likely: ' + t.name + '.'; o.innerHTML = '';
+          var go = node('button', '', null, o); go.type = 'button'; go.appendChild(document.createTextNode('Open the ' + t.name + ' card'));
+          go.addEventListener('click', function () { var c = document.getElementById('c-' + t.id); c.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' }); c.classList.remove('pc-flash'); void c.offsetWidth; c.classList.add('pc-flash'); });
+          FX.burst(go);
+        } else ask(op[1]);
+      });
+    });
+  }
+  $('#pcTreeReset').addEventListener('click', function () { trail = []; ask('start'); });
+  ask('start');
+
+  /* quiz: lab ore suite hand specimens with their sheet line */
+  var NAME = { 'Mesothermal Au': 'Orogenic (mesothermal) Au', 'Polymetallic vein': 'CMPV (polymetallic vein)', 'Regolith': 'Oxide zone (regolith)', 'Magmatic': 'Magmatic' };
+  var nm = function (t) { return NAME[t] || t; };
+  var POOL = (LAB.dhs || []).filter(function (x) {
+    var t = LAB.suiteType[x.d]; if (!t || !x.s) return false;
+    if (t !== 'Regolith' && /gossan|oxidis|oxide zone|scorodite|oxidation/i.test(x.s)) return false;
+    return !/hanging wall|footwall|unmineralised|unaltered|host rock|^(south range )?norite|^quartz norite|basement|greenstone$|^monzonite$|kaolinised porphyry|^dolerite|^altered dolerite|amphibolite|schist\?/i.test(x.s);
+  });
+  var Q = { list: [], i: 0, right: 0, oz: 0 }, KEY = 'geos3141-partc', best = 0;
+  try { best = +(JSON.parse(localStorage.getItem(KEY) || '{}').best || 0); } catch (e) {}
+  function rivals(type) {
+    var sib = { VMS: 'SEDEX', SEDEX: 'VMS', Epithermal: 'Mesothermal Au', 'Mesothermal Au': 'Epithermal', 'Porphyry Cu': 'Epithermal', 'Polymetallic vein': 'SEDEX', 'Iron ore': 'Regolith', Regolith: 'Iron ore' }[type];
+    var rest = shuffle(LAB.suiteTypes.filter(function (t) { return t !== type && t !== sib; }));
+    return (sib ? [sib].concat(rest) : rest).slice(0, 3);
+  }
+  function round() { Q.list = shuffle(POOL.slice()).slice(0, 10); Q.i = 0; Q.right = 0; Q.oz = 0; COMBO.n = 0; show(); }
+  function show() {
+    var x = Q.list[Q.i], type = LAB.suiteType[x.d], opts = shuffle(rivals(type).concat([type]));
+    Q.cur = { x: x, type: type, opts: opts, done: false };
+    $('#pcQn').textContent = 'Question ' + (Q.i + 1) + ' of ' + Q.list.length; $('#pcScore').textContent = Q.oz + ' oz';
+    $('#pcImg').src = 'img/lab/dhs/' + x.src + '.jpg'; $('#pcLbl').textContent = 'Lab sheet: ' + x.s;
+    $('#pcWhy').innerHTML = ''; $('#pcWhy').className = 'lt-why'; $('#pcNext').hidden = true;
+    $('#pcBest').textContent = best ? 'Best ' + best + '/10' : '';
+    var o = $('#pcOpts'); o.innerHTML = '';
+    opts.forEach(function (t, j) { var b = node('button', '', null, o); b.type = 'button'; node('span', 'k', String(j + 1), b); b.appendChild(document.createTextNode(nm(t))); b.addEventListener('click', function () { pick(j, b); }); });
+  }
+  function para(w, lab, text) { var p = node('p', 'lt-wp', null, w); if (lab) node('b', '', lab + '. ', p); p.appendChild(document.createTextNode(text)); }
+  function pick(j, btn) {
+    var c = Q.cur; if (c.done) return; c.done = true;
+    var ok = c.opts[j] === c.type, bs = $$('#pcOpts button'), w = $('#pcWhy');
+    bs.forEach(function (b, k) { b.disabled = true; if (c.opts[k] === c.type) b.classList.add('right'); });
+    if (ok) { Q.right++; COMBO.hit(); var pts = COMBO.pts(3); Q.oz += pts; FX.burst(btn); FX.float('+' + pts + ' oz'); SND.play('ok'); w.innerHTML = '<b>Right.</b> +' + pts + ' oz' + COMBO.tag() + '. '; w.className = 'lt-why ok'; }
+    else { COMBO.miss(); btn.classList.add('wrong'); FX.shake(btn); w.innerHTML = '<b>Not that one.</b> It’s ' + nm(c.type) + '. '; w.className = 'lt-why bad'; }
+    var sub = (LAB.depSub || {})[c.x.d];
+    if (LAB.depWhy[c.x.d]) para(w, 'Why it is ' + nm(sub || c.type), LAB.depWhy[c.x.d]);
+    if (LAB.typeWhy[c.type]) para(w, 'How to recognise ' + nm(c.type), LAB.typeWhy[c.type]);
+    if (!ok) { var picked = c.opts[j]; (LAB.pairWhy || []).forEach(function (pr) { if (pr[0].indexOf(picked) >= 0 && pr[0].indexOf(c.type) >= 0) para(w, 'Telling them apart', pr[1]); }); if (LAB.typeWhy[picked]) para(w, 'If it were ' + nm(picked), LAB.typeWhy[picked]); }
+    var cr = node('a', 'lt-credit', 'Photo: Ian Graham, GEOS3141 lab collection', w); cr.href = 'https://www.flickr.com/photos/188270557@N07/' + c.x.src + '/'; cr.target = '_blank'; cr.rel = 'noopener';
+    $('#pcScore').textContent = Q.oz + ' oz';
+    var pc = $('#pcCombo'); pc.hidden = COMBO.n < 2; pc.textContent = COMBO.n + ' in a row' + (COMBO.mult() > 1 ? ' ×' + COMBO.mult() : '');
+    var last = Q.i + 1 >= Q.list.length; $('#pcNext').hidden = false; $('#pcNext').textContent = last ? 'Finish and start a new round' : 'Next';
+    if (last) {
+      if (Q.right > best) { best = Q.right; try { localStorage.setItem(KEY, JSON.stringify({ best: best })); } catch (e) {} }
+      para(w, 'Round done', Q.right + ' of ' + Q.list.length + ' right, ' + Q.oz + ' oz.'); if (Q.right >= 8) FX.rain(60);
+      GEO.dayMark && GEO.dayMark();
+    }
+  }
+  $('#pcNext').addEventListener('click', function () { if (Q.i + 1 >= Q.list.length) round(); else { Q.i++; show(); } $('#pcQuiz').scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' }); });
+  round();
+})();
+</script>
+</body>
+</html>
